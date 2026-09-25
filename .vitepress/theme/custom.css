@@ -1,0 +1,47 @@
+/* Lustro-flavored VitePress theme: deep indigo-black, glass, gradient accents. */
+:root {
+  --lustro-indigo: #6366f1;
+  --lustro-indigo-soft: #818cf8;
+  --lustro-pink: #ec4899;
+  --lustro-cyan: #22d3ee;
+  --lustro-bg: #07070f;
+
+  --vp-c-brand-1: var(--lustro-indigo-soft);
+  --vp-c-brand-2: var(--lustro-indigo);
+  --vp-c-brand-3: #4f46e5;
+  --vp-c-bg: var(--lustro-bg);
+  --vp-c-bg-alt: #0b0b18;
+  --vp-c-bg-elv: rgba(148, 140, 255, 0.07);
+  --vp-c-divider: rgba(148, 140, 255, 0.16);
+  --vp-font-family-base: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  color-scheme: dark;
+}
+
+body {
+  background-image:
+    radial-gradient(60rem 30rem at 85% -10%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(50rem 25rem at -10% 110%, rgba(236, 72, 153, 0.12), transparent 60%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, .vp-doc h1, .vp-doc h2, .vp-doc h3 {
+  font-family: 'Space Grotesk', 'DM Sans', ui-sans-serif, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.vp-doc h1 {
+  background-image: linear-gradient(90deg, var(--lustro-indigo-soft), var(--lustro-pink), var(--lustro-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Color swatches used inside the guides */
+.swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 16px 0; }
+.swatch { border: 1px solid rgba(148, 140, 255, 0.16); border-radius: 12px; overflow: hidden; background: rgba(148, 140, 255, 0.07); backdrop-filter: blur(8px); }
+.swatch .chip { height: 64px; }
+.swatch .meta { padding: 8px 10px; font-size: 12px; line-height: 1.5; }
+.swatch .meta code { font-size: 11px; }
+.gradient-bar { height: 56px; border-radius: 12px; border: 1px solid rgba(148, 140, 255, 0.16); margin: 8px 0 20px; }
