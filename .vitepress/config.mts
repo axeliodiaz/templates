@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Templates',
   description: 'Design-language guides by Axel Diaz',
+  appearance: 'force-dark',
   cleanUrls: true,
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
