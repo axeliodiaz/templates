@@ -39,7 +39,8 @@ export default defineConfig({
               items: [
                 { text: 'Atoms', link: '/felix/components/atoms' },
                 { text: 'Molecules', link: '/felix/components/molecules' },
-                { text: 'Organisms', link: '/felix/components/organisms' }
+                { text: 'Organisms', link: '/felix/components/organisms' },
+                { text: 'Charts', link: '/felix/components/charts' }
               ]
             }
           ]

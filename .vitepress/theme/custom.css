@@ -320,6 +320,17 @@ html.felix .fx-steps { list-style: none; padding: 0; }
 html.felix .fx-side button { border: 0; background: transparent; color: #fefcf9; text-align: left; border-radius: 8px; padding: 6px 8px; cursor: pointer; font: inherit; }
 html.felix .fx-side button.on { background: #2bf2f1; color: #082422; }
 html.felix .fx-toast[hidden] { display: none; }
+html.felix .fx-charts { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 16px 0 28px; }
+html.felix .fx-chart { background: #fff; border: 1px solid #cfcabf; border-radius: 16px; padding: 14px 14px 8px; }
+html.felix .fx-chart h3 { margin: 0 0 8px; font-size: 16px; }
+html.felix .fx-chart svg { width: 100%; height: auto; display: block; }
+html.felix .fx-chart text { font-size: 11px; fill: #35605f; }
+html.felix .fx-legend { display: flex; gap: 12px; align-items: center; font-size: 12px; color: #234343; }
+html.felix .fx-legend i { width: 10px; height: 10px; border-radius: 99px; display: inline-block; }
+html.felix .fx-metric { margin: 0; font-size: 28px; font-weight: 700; color: #082422; }
+html.felix .fx-metric small { font-size: 13px; color: #35605f; font-weight: 600; }
+html.felix .fx-heat { display: grid; grid-template-columns: 42px repeat(4, 1fr); gap: 6px; align-items: center; font-size: 12px; color: #35605f; }
+html.felix .fx-heat i { display: block; height: 28px; border-radius: 6px; }
 html.felix .fx-choice { border: 1px solid #cfcabf; border-radius: 16px; padding: 12px 14px; min-width: 140px; display: grid; }
 html.felix .fx-choice.on { border-color: #2bf2f1; box-shadow: 0 0 0 3px #2bf2f133; }
 html.felix .fx-choice small { color: #35605f; }
