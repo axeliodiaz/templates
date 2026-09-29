@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-const toast = ref('')
+const toasts = ref([])
+let nextToastId = 0
+const toastTimers = new Map()
 const alertOpen = ref(true)
 const modalOpen = ref(false)
 const tab = ref('Overview')
@@ -8,8 +10,16 @@ const search = ref('')
 const choice = ref('Design')
 const accordion = ref('Tokens')
 const page = ref(1)
-let toastTimer
-function showToast(message) { toast.value = message; clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.value = '', 3800) }
+function dismissToast(id) {
+  toasts.value = toasts.value.filter(item => item.id !== id)
+  clearTimeout(toastTimers.get(id))
+  toastTimers.delete(id)
+}
+function showToast(message, type = 'info') {
+  const id = ++nextToastId
+  toasts.value.push({ id, message, type })
+  toastTimers.set(id, setTimeout(() => dismissToast(id), 6000))
+}
 </script>
 
 # Components
@@ -46,10 +56,12 @@ Alerts occupy the page and stay until dismissed. Notifications need a clear sour
 
 ### Toasts
 
-A toast confirms a short-lived result; it must never be the only place for an error that needs fixing. Try the button below.
+A toast confirms a short-lived result; it must never be the only place for an error that needs fixing. Trigger several in quick succession: each one stays visible independently until dismissed or its six-second timer ends. Color, a label and a message communicate the variant together.
 
-<div class="l-demo"><button class="l-btn l-primary" @click="showToast('Changes saved')">Show toast</button></div>
-<div v-if="toast" class="l-toast" role="status" aria-live="polite"><span class="l-dot l-dot-success"></span>{{toast}}<button class="l-icon-btn" aria-label="Dismiss toast" @click="toast=''">×</button></div>
+<div class="l-demo l-actions"><button class="l-btn l-primary" @click="showToast('Changes saved', 'success')">Show toast</button><button class="l-btn l-secondary" @click="showToast('Secondary action queued', 'info')">Show secondary toast</button><button class="l-btn l-secondary" @click="showToast('Review before continuing', 'warn')">Show warning</button><button class="l-btn l-secondary" @click="showToast('Could not save changes', 'error')">Show error</button></div>
+<div class="l-toast-stack" aria-label="Toast notifications"><div v-for="item in toasts" :key="item.id" class="l-toast" :class="'l-toast-' + item.type" :role="item.type === 'error' ? 'alert' : 'status'"><span class="l-dot" :class="'l-dot-' + item.type" aria-hidden="true"></span><span class="l-toast-copy"><strong>{{ { success: 'Success', info: 'Info', warn: 'Warning', error: 'Error' }[item.type] }}</strong><span>{{ item.message }}</span></span><button class="l-icon-btn" :aria-label="'Dismiss ' + item.type + ' toast: ' + item.message" @click="dismissToast(item.id)">×</button></div></div>
+
+For production, keep independent IDs and timers so a new arrival never overwrites an earlier one. Render the stack in a portal above app content, cap its height and let it scroll on small screens. Keep errors that need user action inline too; the toast is only a short announcement. Respect reduced-motion when animating entry and exit.
 
 ### Badges, progress, spinners and skeletons
 
