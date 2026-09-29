@@ -394,3 +394,8 @@ html.felix .fx-side .on { background: #2bf2f1; color: #082422; }
 
 /* Lustro transactional email gallery */
 .l-mail-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0}.l-mail-meta>div{padding:12px 15px;border:1px solid #444665;border-radius:10px;background:#191a30;min-width:0}.l-mail-meta strong{display:block;color:#b7b9db;font-size:12px}.l-mail-meta span{display:block;overflow-wrap:anywhere}.l-mail-preview{max-width:650px;margin:20px auto 48px;border:1px solid #4c4f75;border-radius:16px;background:#1a1a30;overflow:hidden;box-shadow:0 16px 48px #0006;color:#f4f2fc}.l-mail-brand{padding:20px 24px;border-bottom:1px solid #444665;font:700 17px 'Space Grotesk',sans-serif;letter-spacing:.12em}.l-mail-brand span{color:#ec4899}.l-mail-body{padding:28px 24px 32px}.l-mail-body h3{font-size:25px;line-height:1.25;color:#fff}.l-mail-body p{color:#d4d2e6}.l-mail-body .l-btn{display:inline-flex;text-decoration:none;margin:16px 0}.l-mail-body .l-mail-detail{border-top:1px solid #444665;padding-top:16px;font-size:13px;color:#bebbd1}.l-mail-preview footer{padding:15px 24px;background:#121323;font-size:12px;color:#bbb9d4}.l-mail-preview footer a{color:#b8b9ff}@media(max-width:600px){.l-mail-meta{grid-template-columns:1fr}.l-mail-body{padding:22px 18px}.l-mail-body h3{font-size:21px}}
+
+/* Keep Lustro demo actions legible against VitePress link styles. */
+.l-demo a.l-btn{color:#fff;text-decoration:none}
+.l-demo a.l-primary{background-image:linear-gradient(90deg,#4338ca,#9d174d)}
+.l-demo a.l-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
