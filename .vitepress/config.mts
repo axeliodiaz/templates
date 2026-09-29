@@ -99,7 +99,15 @@ export default defineConfig({
         items: [
           { text: 'Lustro', link: '/lustro' },
           { text: 'Felix', link: '/felix' },
-          { text: 'Graphs', link: '/graphs' },
+          { text: 'Charts', link: '/graphs', collapsed: true, items: [
+            { text: 'Introducción', link: '/graphs#data-charts' },
+            { text: 'Line & Area', link: '/graphs#charts-line-area' },
+            { text: 'Bar', link: '/graphs#charts-bar' },
+            { text: 'Pie & Doughnut', link: '/graphs#charts-pie-doughnut' },
+            { text: 'Radar & Polar', link: '/graphs#charts-radar-polar' },
+            { text: 'Scatter & Bubble', link: '/graphs#charts-scatter-bubble' },
+            { text: 'Mixed', link: '/graphs#charts-mixed' }
+          ] },
           { text: 'Motion', link: '/motion' }
         ]
       }
