@@ -51,6 +51,12 @@ export default defineConfig({
         }
       ],
       '/': [
+      { text: 'Getting started', items: [{ text: 'Introducción', link: '/introduccion' }] },
+      { text: 'Fundamentos', items: [
+        { text: 'Colores', link: '/fundamentos/colores' },
+        { text: 'Tipografía', link: '/fundamentos/tipografia' },
+        { text: 'Iconos', link: '/fundamentos/iconos' }
+      ] },
       {
         text: 'Design languages',
         items: [
