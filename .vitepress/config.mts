@@ -14,6 +14,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Lustro', link: '/lustro' },
+      { text: 'Felix', link: '/felix' },
       { text: 'Components', link: '/components' },
       { text: 'Graphs', link: '/graphs' },
       { text: 'Motion', link: '/motion' }
@@ -23,6 +24,7 @@ export default defineConfig({
         text: 'Design languages',
         items: [
           { text: 'Lustro', link: '/lustro' },
+          { text: 'Felix', link: '/felix' },
           { text: 'Components', link: '/components' },
           { text: 'Graphs', link: '/graphs' },
           { text: 'Motion', link: '/motion' }
