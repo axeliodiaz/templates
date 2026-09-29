@@ -55,6 +55,10 @@ Same catalog as the Felix design system: atoms, molecules, organisms. Import fro
 - [Toast](/felix/components/molecules#toast)
 - [Tooltip](/felix/components/molecules#tooltip)
 
+## Charts
+
+[Line, bar, pie, donut, and the rest](/felix/components/charts)
+
 ## Organisms
 
 - [MessageScroller](/felix/components/organisms#messagescroller)
