@@ -331,6 +331,28 @@ html.felix .fx-metric { margin: 0; font-size: 28px; font-weight: 700; color: #08
 html.felix .fx-metric small { font-size: 13px; color: #35605f; font-weight: 600; }
 html.felix .fx-heat { display: grid; grid-template-columns: 42px repeat(4, 1fr); gap: 6px; align-items: center; font-size: 12px; color: #35605f; }
 html.felix .fx-heat i { display: block; height: 28px; border-radius: 6px; }
+html.felix .fx-motion { margin: 16px 0 28px; }
+html.felix .fx-board { position: relative; height: 360px; border: 1px solid #cfcabf; border-radius: 16px; background: #fff; overflow: hidden; }
+html.felix .fx-board-labels { display: grid; grid-template-columns: repeat(3, 1fr); padding: 14px 12px 0; font-size: 12px; font-weight: 700; color: #35605f; letter-spacing: .04em; text-transform: uppercase; }
+html.felix .fx-task { position: absolute; width: calc(33.333% - 20px); display: grid; gap: 4px; padding: 12px; border: 1px solid #cfcabf; border-radius: 14px; background: #fefcf9; box-shadow: 0 8px 20px #08242214; transition: left .5s cubic-bezier(.16, 1, .3, 1), top .5s cubic-bezier(.16, 1, .3, 1); }
+html.felix .fx-task small, html.felix .fx-task-state { color: #35605f; font-size: 12px; }
+html.felix .fx-task .fx-btn { margin-top: 6px; }
+html.felix .fx-task .fx-btn:disabled { background: #d4fffe; }
+html.felix .fx-status-row { display: flex; flex-wrap: wrap; gap: 18px; }
+html.felix .fx-state { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+html.felix .fx-state i { width: 12px; height: 12px; border-radius: 99px; background: #2bf2f1; position: relative; }
+html.felix .fx-blocked { background: #f26629; }
+html.felix .fx-done { background: #60d06f; }
+html.felix .fx-pulse:after { content: ""; position: absolute; inset: -6px; border: 1px solid #2bf2f1; border-radius: 99px; animation: fx-ring 1.6s ease-out infinite; }
+html.felix .fx-expand { width: 100%; display: flex; justify-content: space-between; gap: 12px; padding: 14px; border: 1px solid #cfcabf; border-radius: 14px; background: #fff; color: #082422; font: inherit; cursor: pointer; }
+html.felix .fx-expand-detail { margin-top: -1px; padding: 14px; border: 1px solid #cfcabf; border-radius: 0 0 14px 14px; background: #fff; animation: fx-enter .28s ease both; }
+html.felix .fx-stagger { display: grid; gap: 8px; margin-top: 12px; }
+html.felix .fx-stagger > div { padding: 12px; border: 1px solid #cfcabf; border-radius: 12px; background: #fff; animation: fx-enter .35s ease both; animation-delay: var(--item-delay); }
+@keyframes fx-ring { to { transform: scale(1.6); opacity: 0; } }
+@keyframes fx-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html.felix .fx-task, html.felix .fx-expand-detail, html.felix .fx-stagger > div, html.felix .fx-pulse:after { animation: none; transition: none; }
+}
 html.felix .fx-choice { border: 1px solid #cfcabf; border-radius: 16px; padding: 12px 14px; min-width: 140px; display: grid; }
 html.felix .fx-choice.on { border-color: #2bf2f1; box-shadow: 0 0 0 3px #2bf2f133; }
 html.felix .fx-choice small { color: #35605f; }
