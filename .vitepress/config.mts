@@ -13,13 +13,19 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Lustro', link: '/lustro' }
+      { text: 'Lustro', link: '/lustro' },
+      { text: 'Components', link: '/components' },
+      { text: 'Graphs', link: '/graphs' },
+      { text: 'Motion', link: '/motion' }
     ],
     sidebar: [
       {
         text: 'Design languages',
         items: [
-          { text: 'Lustro', link: '/lustro' }
+          { text: 'Lustro', link: '/lustro' },
+          { text: 'Components', link: '/components' },
+          { text: 'Graphs', link: '/graphs' },
+          { text: 'Motion', link: '/motion' }
         ]
       }
     ],
