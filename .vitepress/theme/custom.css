@@ -275,6 +275,7 @@ html.felix .fx-skel { display: block; height: 12px; border-radius: 8px; backgrou
 html.felix .fx-skel.w1 { width: 70%; } html.felix .fx-skel.w2 { width: 45%; }
 html.felix .fx-slider { width: min(100%, 280px); }
 html.felix .fx-spin { width: 22px; height: 22px; border: 3px solid #d4fffe; border-top-color: #0f8c8b; border-radius: 50%; display: inline-block; animation: fx-spin .8s linear infinite; }
+html.felix .fx-switch { position: relative; }
 html.felix .fx-switch input { position: absolute; opacity: 0; }
 html.felix .fx-switch span { width: 36px; height: 22px; background: #cfcabf; border-radius: 99px; position: relative; }
 html.felix .fx-switch span:after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }
@@ -295,7 +296,30 @@ html.felix .fx-crumbs { color: #35605f; font-size: 14px; }
 html.felix .fx-cal { width: 220px; }
 html.felix .fx-cal-h { font-weight: 700; margin-bottom: 8px; }
 html.felix .fx-cal-g { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; font-size: 12px; text-align: center; }
-html.felix .fx-cal-g .on { background: #2bf2f1; border-radius: 99px; }
+html.felix .fx-cal-g button { border: 0; background: transparent; border-radius: 99px; min-height: 28px; cursor: pointer; color: #082422; }
+html.felix .fx-cal-g button.on, html.felix .fx-cal-g .on { background: #2bf2f1; }
+html.felix .fx-date-btn { text-align: left; cursor: pointer; }
+html.felix .fx-date-pop { margin-top: 8px; padding: 10px; border: 1px solid #cfcabf; border-radius: 12px; background: #fff; width: 240px; }
+html.felix .fx-scrim { display: none; position: absolute; inset: 0; background: #08242233; border-radius: 16px; place-items: center; padding: 16px; }
+html.felix .fx-scrim.is-open { display: grid; }
+html.felix .fx-scrim-end { justify-items: end; align-items: stretch; }
+html.felix .fx-scrim-end .fx-drawer, html.felix .fx-scrim-end .fx-sheet { height: 100%; }
+html.felix .fx-preview { position: relative; }
+html.felix .fx-hover-wrap { position: relative; display: inline-block; }
+html.felix .fx-hover-wrap .fx-hover { display: none; position: absolute; top: calc(100% + 8px); left: 0; z-index: 2; background: #fff; border: 1px solid #cfcabf; border-radius: 12px; padding: 10px; min-width: 200px; }
+html.felix .fx-hover-wrap:hover .fx-hover, html.felix .fx-hover-wrap:focus-within .fx-hover { display: flex; }
+html.felix .fx-tip { position: relative; }
+html.felix .fx-tip:hover:after, html.felix .fx-tip:focus:after { content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 6px); background: #082422; color: #fefcf9; font-size: 12px; padding: 4px 8px; border-radius: 8px; white-space: nowrap; }
+html.felix .fx-file { position: relative; padding-right: 28px; }
+html.felix .fx-file [data-remove] { position: absolute; top: 6px; right: 6px; border: 0; background: transparent; cursor: pointer; color: #082422; }
+html.felix .fx-choice { cursor: pointer; text-align: left; font: inherit; color: inherit; background: #fff; }
+html.felix .fx-nav button, html.felix .fx-steps button { border: 0; cursor: pointer; padding: 6px 10px; border-radius: 999px; background: #efebe7; color: #082422; font: inherit; font-size: 13px; }
+html.felix .fx-nav button.on, html.felix .fx-steps button.on { background: #2bf2f1; }
+html.felix .fx-steps button.done { background: #d4fffe; }
+html.felix .fx-steps { list-style: none; padding: 0; }
+html.felix .fx-side button { border: 0; background: transparent; color: #fefcf9; text-align: left; border-radius: 8px; padding: 6px 8px; cursor: pointer; font: inherit; }
+html.felix .fx-side button.on { background: #2bf2f1; color: #082422; }
+html.felix .fx-toast[hidden] { display: none; }
 html.felix .fx-choice { border: 1px solid #cfcabf; border-radius: 16px; padding: 12px 14px; min-width: 140px; display: grid; }
 html.felix .fx-choice.on { border-color: #2bf2f1; box-shadow: 0 0 0 3px #2bf2f133; }
 html.felix .fx-choice small { color: #35605f; }
