@@ -4,7 +4,7 @@ Full regions built from atoms and molecules.
 
 ## MessageScroller {#messagescroller}
 
-<div class="fx-preview"><div class="fx-thread"><header>María Álvarez</header><div class="fx-bubble them">¿Ya salió?</div><div class="fx-bubble">Sí, hoy en la tarde.</div><footer><input value="Escribe un mensaje"><button class="fx-btn fx-btn-primary" type="button">Enviar</button></footer></div></div>
+<div class="fx-preview" data-fx="thread"><div class="fx-thread"><header>María Álvarez</header><div data-thread><div class="fx-bubble them">¿Ya salió?</div><div class="fx-bubble">Sí, hoy en la tarde.</div></div><footer><input placeholder="Escribe un mensaje"><button class="fx-btn fx-btn-primary" type="button" data-send>Enviar</button></footer></div></div>
 
 Chat surface: header, thread or empty state, and input.
 
@@ -12,7 +12,7 @@ The complete frame of a conversation: a header with title and refresh button, th
 
 ## Sidebar {#sidebar}
 
-<div class="fx-preview"><aside class="fx-side"><b class="fx-logo">felix</b><span class="on">Envíos</span><span>Historial</span><div class="fx-sfoot"><span class="fx-avatar sm">AD</span><small>Axel</small></div></aside></div>
+<div class="fx-preview" data-fx="select-one"><aside class="fx-side"><b class="fx-logo">felix</b><button type="button" data-item class="on">Envíos</button><button type="button" data-item>Historial</button><div class="fx-sfoot"><span class="fx-avatar sm">AD</span><small>Axel</small></div></aside></div>
 
 Full side navigation: header, sections, and footer.
 

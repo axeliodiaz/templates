@@ -5,7 +5,7 @@ Composed components: feedback, overlays, navigation, and conversation pieces. Al
 
 ## Accordion {#accordion}
 
-<div class="fx-preview"><details class="fx-acc" open><summary>¿Cuándo llega?</summary><p>En 1–3 días hábiles.</p></details><details class="fx-acc"><summary>¿Hay comisión?</summary><p>La comisión es $0.00.</p></details></div>
+<div class="fx-preview" data-fx="accordion"><details class="fx-acc" open><summary>¿Cuándo llega?</summary><p>En 1–3 días hábiles.</p></details><details class="fx-acc"><summary>¿Hay comisión?</summary><p>La comisión es $0.00.</p></details></div>
 
 Collapsible sections. One open at a time.
 
@@ -21,7 +21,7 @@ Status message that lives on the page without interrupting: transfer completed, 
 
 ## Attachment {#attachment}
 
-<div class="fx-preview fx-row"><div class="fx-file"><b>recibo.pdf</b><small>PDF · 240 KB</small></div><div class="fx-file err"><b>foto.jpg</b><small>No se pudo adjuntar</small></div></div>
+<div class="fx-preview fx-row"><div class="fx-file"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file err"><b>foto.jpg</b><small>No se pudo adjuntar</small><button type="button" data-remove aria-label="Quitar">×</button></div></div>
 
 Attached file or image chip. 3 sizes × 3 states × 2 types.
 
@@ -37,7 +37,7 @@ Shows the hierarchical trail and lets users go back up levels in deep flows. Imp
 
 ## Calendar {#calendar}
 
-<div class="fx-preview"><div class="fx-cal"><div class="fx-cal-h">Septiembre 2026</div><div class="fx-cal-g"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span class="on">10</span><span>11</span><span>12</span><span>13</span></div></div></div>
+<div class="fx-preview" data-fx="calendar"><div class="fx-cal"><div class="fx-cal-h"></div><div class="fx-cal-g"></div></div></div>
 
 Calendar to pick a date.
 
@@ -53,7 +53,7 @@ Base container to group related information, like a transfer summary. Import Car
 
 ## ChoiceCard {#choicecard}
 
-<div class="fx-preview fx-row"><div class="fx-choice on"><b>Depósito</b><small>A su cuenta</small></div><div class="fx-choice"><b>Efectivo</b><small>Elektra</small></div></div>
+<div class="fx-preview fx-row" data-fx="choice"><button type="button" class="fx-choice on"><b>Depósito</b><small>A su cuenta</small></button><button type="button" class="fx-choice"><b>Efectivo</b><small>Elektra</small></button></div>
 
 Mutually-exclusive option cards (rich radio).
 
@@ -69,7 +69,7 @@ Shows or hides a block of secondary content, like the exchange rate detail. Impo
 
 ## DatePicker {#datepicker}
 
-<div class="fx-preview"><label class="fx-field"><span>Fecha</span><input value="10 sep 2026"></label></div>
+<div class="fx-preview" data-fx="datepicker"><label class="fx-field"><span>Fecha</span><button type="button" class="fx-date-btn">10 sep 2026</button></label><div class="fx-cal fx-date-pop" hidden><div class="fx-cal-h"></div><div class="fx-cal-g"></div></div></div>
 
 Field with a calendar in a popover.
 
@@ -77,7 +77,7 @@ Form field that opens a calendar in a popover, ideal for picking dates without t
 
 ## Dialog {#dialog}
 
-<div class="fx-preview"><div class="fx-dialog"><b>¿Enviar $100.00?</b><p>María recibe $1,724.00 MXN.</p><div class="fx-row"><button class="fx-btn fx-btn-primary" type="button">Confirmar</button><button class="fx-btn fx-btn-line" type="button">Volver</button></div></div></div>
+<div class="fx-preview" data-fx="overlay"><button class="fx-btn fx-btn-primary" type="button" data-open>Confirmar envío</button><div class="fx-scrim"><div class="fx-dialog"><b>¿Enviar $100.00?</b><p>María recibe $1,724.00 MXN.</p><div class="fx-row"><button class="fx-btn fx-btn-primary" type="button" data-close>Confirmar</button><button class="fx-btn fx-btn-line" type="button" data-close>Volver</button></div></div></div></div>
 
 Centered modal dialog for confirmations.
 
@@ -85,7 +85,7 @@ Centered modal for confirmations that demand full attention, like confirming a m
 
 ## Drawer {#drawer}
 
-<div class="fx-preview"><div class="fx-drawer"><b>Detalle</b><p>Referencia FX-20491</p></div></div>
+<div class="fx-preview" data-fx="overlay"><button class="fx-btn fx-btn-line" type="button" data-open>Ver detalle</button><div class="fx-scrim fx-scrim-end"><div class="fx-drawer"><b>Detalle</b><p>Referencia FX-20491</p><button class="fx-btn fx-btn-primary" type="button" data-close>Cerrar</button></div></div></div>
 
 Edge-anchored sliding panel (mobile-first).
 
@@ -101,7 +101,7 @@ Contextual action menu anchored to a button, like the account menu. Import Dropd
 
 ## HoverCard {#hovercard}
 
-<div class="fx-preview"><div class="fx-hover"><span class="fx-avatar sm">MA</span><div><b>María Álvarez</b><small>CDMX · Elektra</small></div></div></div>
+<div class="fx-preview"><span class="fx-hover-wrap"><button type="button" class="fx-btn fx-btn-line">María</button><div class="fx-hover"><span class="fx-avatar sm">MA</span><div><b>María Álvarez</b><small>CDMX · Elektra</small></div></div></span></div>
 
 Card that appears on hover.
 
@@ -117,7 +117,7 @@ One entry in the conversation: an optional avatar plus a column with a header (w
 
 ## NavigationMenu {#navigationmenu}
 
-<div class="fx-preview"><nav class="fx-nav"><span class="on">Envíos</span><span>Recargas</span><span>Historial</span></nav></div>
+<div class="fx-preview" data-fx="select-one"><nav class="fx-nav"><button type="button" data-item class="on">Envíos</button><button type="button" data-item>Recargas</button><button type="button" data-item>Historial</button></nav></div>
 
 Primary navigation with dropdown menus.
 
@@ -125,7 +125,7 @@ Horizontal primary navigation with dropdown menus, typical of the site header. I
 
 ## Pagination {#pagination}
 
-<div class="fx-preview fx-row"><button class="fx-page" type="button">‹</button><button class="fx-page on" type="button">1</button><button class="fx-page" type="button">2</button><button class="fx-page" type="button">3</button><button class="fx-page" type="button">›</button></div>
+<div class="fx-preview" data-fx="pages"><div class="fx-row"><button class="fx-page" type="button" data-dir="prev">‹</button><button class="fx-page on" type="button" data-page="1">1</button><button class="fx-page" type="button" data-page="2">2</button><button class="fx-page" type="button" data-page="3">3</button><button class="fx-page" type="button" data-dir="next">›</button></div><p class="fx-body" data-page-label>Página 1 de 3</p></div>
 
 Navigation across pages of results.
 
@@ -133,7 +133,7 @@ Navigation across long result sets, like the transfer history. Import Pagination
 
 ## Popover {#popover}
 
-<div class="fx-preview"><div class="fx-pop"><b>Tipo de cambio</b><p>1 USD = 17.24 MXN</p></div></div>
+<div class="fx-preview"><details class="fx-menu"><summary class="fx-btn fx-btn-line">Tipo de cambio</summary><div class="fx-pop"><b>Tipo de cambio</b><p>1 USD = 17.24 MXN</p></div></details></div>
 
 Floating panel anchored to a trigger.
 
@@ -149,7 +149,7 @@ Pick one option from a dropdown list, like the destination country. Import Selec
 
 ## Sheet {#sheet}
 
-<div class="fx-preview"><div class="fx-sheet"><b>Detalle del envío</b><p>Estado: en camino</p><button class="fx-btn fx-btn-primary" type="button">Cerrar</button></div></div>
+<div class="fx-preview" data-fx="overlay"><button class="fx-btn fx-btn-line" type="button" data-open>Abrir detalle</button><div class="fx-scrim fx-scrim-end"><div class="fx-sheet"><b>Detalle del envío</b><p>Estado: en camino</p><button class="fx-btn fx-btn-primary" type="button" data-close>Cerrar</button></div></div></div>
 
 Side panel for secondary flows.
 
@@ -165,7 +165,7 @@ Sidebar footer showing the active user's account. Import it from @felix/ui and p
 
 ## Stepper {#stepper}
 
-<div class="fx-preview"><ol class="fx-steps"><li class="done">Monto</li><li class="on">Destino</li><li>Confirmar</li></ol></div>
+<div class="fx-preview" data-fx="select-one"><ol class="fx-steps"><li><button type="button" data-item class="done">Monto</button></li><li><button type="button" data-item class="on">Destino</button></li><li><button type="button" data-item>Confirmar</button></li></ol></div>
 
 Step progress through a flow.
 
@@ -181,7 +181,7 @@ Presents tabular data like the transfer history. Import Table, TableHeader, Tabl
 
 ## Tabs {#tabs}
 
-<div class="fx-preview"><div class="fx-tabs"><span class="fx-tab is-on">Envíos</span><span class="fx-tab">Recargas</span></div><p class="fx-body">Tu historial de envíos aparece aquí.</p></div>
+<div class="fx-preview" data-fx="tabs"><div class="fx-tabs"><button type="button" class="fx-tab is-on" data-tab="envios">Envíos</button><button type="button" class="fx-tab" data-tab="recargas">Recargas</button></div><p class="fx-body" data-panel="envios">Tu historial de envíos aparece aquí.</p><p class="fx-body" data-panel="recargas" hidden>Tus recargas aparecen aquí.</p></div>
 
 Switchable views under one area.
 
@@ -189,7 +189,7 @@ Switches between same-level views within one area, like transfers and top-ups. I
 
 ## Toast {#toast}
 
-<div class="fx-preview"><div class="fx-toast">Transferencia enviada</div></div>
+<div class="fx-preview" data-fx="toast"><button class="fx-btn fx-btn-primary" type="button" data-fire>Mostrar toast</button><div class="fx-toast" hidden>Transferencia enviada</div></div>
 
 Transient notification. Fire with toast(...).
 
