@@ -54,6 +54,18 @@ export default defineConfig({
         { text: 'Tipografía', link: '/fundamentos/tipografia' },
         { text: 'Iconos', link: '/fundamentos/iconos' }
       ] },
+      { text: 'Email templates', items: [
+        { text: 'Correos transaccionales', link: '/correos' },
+        { text: 'Bienvenida', link: '/correos#bienvenida' },
+        { text: 'Verificar correo', link: '/correos#verificar-correo' },
+        { text: 'Recuperar contraseña', link: '/correos#recuperar-contrasena' },
+        { text: 'Reserva confirmada', link: '/correos#reserva-confirmada' },
+        { text: 'Recordatorio de clase', link: '/correos#recordatorio-de-clase' },
+        { text: 'Cupo en lista de espera', link: '/correos#cupo-en-lista-de-espera' },
+        { text: 'Clase cancelada', link: '/correos#clase-cancelada' },
+        { text: 'Comprobante de compra', link: '/correos#comprobante-de-compra' },
+        { text: 'Membresía por vencer', link: '/correos#membresia-por-vencer' }
+      ] },
       {
         text: 'Design languages',
         items: [
