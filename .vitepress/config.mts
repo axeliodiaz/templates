@@ -54,6 +54,34 @@ export default defineConfig({
         { text: 'Tipografía', link: '/fundamentos/tipografia' },
         { text: 'Iconos', link: '/fundamentos/iconos' }
       ] },
+      { text: 'Componentes', link: '/components', collapsed: true, items: [
+        { text: 'Accordion', link: '/components#accordion' },
+        { text: 'Alerts', link: '/components#alerts' },
+        { text: 'Badge', link: '/components#badge' },
+        { text: 'Breadcrumb', link: '/components#breadcrumb' },
+        { text: 'Buttons', link: '/components#buttons' },
+        { text: 'Button group', link: '/components#button-group' },
+        { text: 'Card', link: '/components#card' },
+        { text: 'Carousel', link: '/components#carousel' },
+        { text: 'Close button', link: '/components#close-button' },
+        { text: 'Collapse', link: '/components#collapse' },
+        { text: 'Dropdowns', link: '/components#dropdowns' },
+        { text: 'Forms', link: '/components#forms' },
+        { text: 'List group', link: '/components#list-group' },
+        { text: 'Modal', link: '/components#modal' },
+        { text: 'Navbar & Footer', link: '/components#navbar-and-footer' },
+        { text: 'Navs & tabs', link: '/components#navs-tabs' },
+        { text: 'Offcanvas', link: '/components#offcanvas' },
+        { text: 'Pagination', link: '/components#pagination' },
+        { text: 'Placeholders', link: '/components#placeholders' },
+        { text: 'Popovers', link: '/components#popovers' },
+        { text: 'Progress', link: '/components#progress' },
+        { text: 'Scrollspy', link: '/components#scrollspy' },
+        { text: 'Spinners/Loaders', link: '/components#spinners-loaders' },
+        { text: 'Tables', link: '/components#tables' },
+        { text: 'Toasts', link: '/components#toasts' },
+        { text: 'Tooltips', link: '/components#tooltips' }
+      ] },
       { text: 'Email templates', items: [
         { text: 'Correos transaccionales', link: '/correos' },
         { text: 'Bienvenida', link: '/correos#bienvenida' },
@@ -71,27 +99,6 @@ export default defineConfig({
         items: [
           { text: 'Lustro', link: '/lustro' },
           { text: 'Felix', link: '/felix' },
-          {
-            text: 'Components',
-            link: '/components',
-            collapsed: true,
-            items: [
-              { text: 'Buttons', link: '/components#buttons' },
-              { text: 'Button group and dropdown', link: '/components#button-group-and-dropdown' },
-              { text: 'Links and pagination', link: '/components#links-and-pagination' },
-              { text: 'Alerts and notifications', link: '/components#alerts-and-notifications' },
-              { text: 'Toasts', link: '/components#toasts' },
-              { text: 'Badges, progress, spinners and skeletons', link: '/components#badges-progress-spinners-and-skeletons' },
-              { text: 'Cards', link: '/components#cards' },
-              { text: 'Accordion', link: '/components#accordion' },
-              { text: 'Tabs, breadcrumbs and list group', link: '/components#tabs-breadcrumbs-and-list-group' },
-              { text: 'Table and empty state', link: '/components#table-and-empty-state' },
-              { text: 'Inputs, select, checkbox, radio and switch', link: '/components#inputs-select-checkbox-radio-and-switch' },
-              { text: 'Modal dialog', link: '/components#modal-dialog' },
-              { text: 'Tooltip and popover', link: '/components#tooltip-and-popover' },
-              { text: 'Layout primitives', link: '/components#layout-primitives' }
-            ]
-          },
           { text: 'Graphs', link: '/graphs' },
           { text: 'Motion', link: '/motion' }
         ]
