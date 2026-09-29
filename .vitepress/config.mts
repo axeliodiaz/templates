@@ -1,6 +1,10 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  transformHtml(code, _id, ctx) {
+    if (!ctx.page.startsWith('felix/') && ctx.page !== 'felix.md') return
+    return code.replace('<html ', '<html class="felix" ')
+  },
   title: 'Templates',
   description: 'Design-language guides by Axel Diaz',
   appearance: 'force-dark',
@@ -19,7 +23,34 @@ export default defineConfig({
       { text: 'Graphs', link: '/graphs' },
       { text: 'Motion', link: '/motion' }
     ],
-    sidebar: [
+    sidebar: {
+      '/felix': [
+        {
+          text: 'Foundations',
+          items: [
+            { text: 'Overview', link: '/felix' },
+            { text: 'Principles', link: '/felix/principles' },
+            { text: 'Colors', link: '/felix/colors' },
+            { text: 'Typography', link: '/felix/typography' }
+          ]
+        },
+        {
+          text: 'Build',
+          items: [
+            { text: 'Design tokens', link: '/felix/tokens' },
+            {
+              text: 'Components',
+              link: '/felix/components/',
+              items: [
+                { text: 'Atoms', link: '/felix/components/atoms' },
+                { text: 'Molecules', link: '/felix/components/molecules' },
+                { text: 'Organisms', link: '/felix/components/organisms' }
+              ]
+            }
+          ]
+        }
+      ],
+      '/': [
       {
         text: 'Design languages',
         items: [
@@ -50,7 +81,8 @@ export default defineConfig({
           { text: 'Motion', link: '/motion' }
         ]
       }
-    ],
+    ]
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/axeliodiaz/templates' }
     ]
