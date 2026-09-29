@@ -25,7 +25,27 @@ export default defineConfig({
         items: [
           { text: 'Lustro', link: '/lustro' },
           { text: 'Felix', link: '/felix' },
-          { text: 'Components', link: '/components' },
+          {
+            text: 'Components',
+            link: '/components',
+            collapsed: true,
+            items: [
+              { text: 'Buttons', link: '/components#buttons' },
+              { text: 'Button group and dropdown', link: '/components#button-group-and-dropdown' },
+              { text: 'Links and pagination', link: '/components#links-and-pagination' },
+              { text: 'Alerts and notifications', link: '/components#alerts-and-notifications' },
+              { text: 'Toasts', link: '/components#toasts' },
+              { text: 'Badges, progress, spinners and skeletons', link: '/components#badges-progress-spinners-and-skeletons' },
+              { text: 'Cards', link: '/components#cards' },
+              { text: 'Accordion', link: '/components#accordion' },
+              { text: 'Tabs, breadcrumbs and list group', link: '/components#tabs-breadcrumbs-and-list-group' },
+              { text: 'Table and empty state', link: '/components#table-and-empty-state' },
+              { text: 'Inputs, select, checkbox, radio and switch', link: '/components#inputs-select-checkbox-radio-and-switch' },
+              { text: 'Modal dialog', link: '/components#modal-dialog' },
+              { text: 'Tooltip and popover', link: '/components#tooltip-and-popover' },
+              { text: 'Layout primitives', link: '/components#layout-primitives' }
+            ]
+          },
           { text: 'Graphs', link: '/graphs' },
           { text: 'Motion', link: '/motion' }
         ]
