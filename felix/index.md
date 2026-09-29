@@ -13,6 +13,7 @@ Linen canvas, slate ink, turquoise primary, lime accent. Plain for display, Saan
 ## Build
 
 - [Design tokens](/felix/tokens)
+- [Motion](/felix/motion) — task cards moving between states
 - [Components](/felix/components/) — atoms, molecules (toast, collapse, alert, tabs), organisms
 
 ## Rules of thumb

@@ -33,6 +33,7 @@ export default defineConfig({
           text: 'Build',
           items: [
             { text: 'Design tokens', link: '/felix/tokens' },
+            { text: 'Motion', link: '/felix/motion' },
             {
               text: 'Components',
               link: '/felix/components/',
