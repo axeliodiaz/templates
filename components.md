@@ -85,7 +85,7 @@ Use a compact summary with a clear title, metadata and the next action; keep car
 
 ### Modal dialog
 
-Use a modal for a decision that cannot be made inline. Esc and backdrop dismiss this native dialog; in an app, restore focus to the trigger.
+Use a modal for a decision that cannot be made inline. In a production app, use the native modal API for Escape, focus trapping, and focus return. This guide shows the visual treatment and a backdrop click.
 
 <div class="l-demo"><button class="l-btn l-secondary" @click="modalOpen=true">Open dialog</button><dialog :open="modalOpen" class="l-dialog" aria-labelledby="dialog-heading" @cancel.prevent="modalOpen=false"><h3 id="dialog-heading">Confirm action</h3><p>This is a visual example. No data is deleted.</p><div class="l-actions"><button class="l-btn l-secondary" @click="modalOpen=false">Cancel</button><button class="l-btn l-danger" @click="modalOpen=false;showToast('Demo only: nothing deleted')">Confirm</button></div></dialog><div v-if="modalOpen" class="l-backdrop" @click="modalOpen=false"></div></div>
 
