@@ -68,6 +68,8 @@ CSS `background-color` cannot hold a gradient. Frameworks that paint buttons via
 
 ## Components {#components}
 
+Explore the interactive [component catalog](/components), [graphs](/graphs), and [motion patterns](/motion).
+
 ### Glass card
 
 ```css
