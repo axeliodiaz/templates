@@ -1,20 +1,20 @@
 # Felix
 
+Remittances are not transactions. They are acts of presence.
+
 Warm, electric, and radically transparent. A financial compañero for the Latino community in the United States — not a bank.
 
-Linen canvas, slate ink, turquoise primary, lime accent. Plain for display, Saans for UI. This guide is the Markdown build reference for the live system.
+Version 1.0.0 Alpha. This guide is the Markdown build reference for the live system.
 
-## Foundations
+## Start here
 
-- [Principles](/felix/principles)
-- [Colors](/felix/colors)
-- [Typography](/felix/typography)
-
-## Build
-
+- [Principles](/felix/principles) — the four ideas
+- [Colors](/felix/colors) — turquoise, slate, warm neutral base
+- [Typography](/felix/typography) — Plain for impact, Saans for everything else
+- [Illustrations](/felix/illustrations) — Felix illustrations, flags, Phosphor, payment marks
+- [Components](/felix/components/) — 43 pieces
 - [Design tokens](/felix/tokens)
-- [Motion](/felix/motion) — task cards moving between states
-- [Components](/felix/components/) — atoms, molecules (toast, collapse, alert, tabs), organisms
+- [Markdown](/felix/markdown) — DESIGN.md and components.md for LLMs
 
 ## Rules of thumb
 

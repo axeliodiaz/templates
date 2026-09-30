@@ -4,7 +4,13 @@ Full regions built from atoms and molecules.
 
 ## MessageScroller {#messagescroller}
 
-<div class="fx-preview" data-fx="thread"><div class="fx-thread"><header>María Álvarez</header><div data-thread><div class="fx-bubble them">¿Ya salió?</div><div class="fx-bubble">Sí, hoy en la tarde.</div></div><footer><input placeholder="Escribe un mensaje"><button class="fx-btn fx-btn-primary" type="button" data-send>Enviar</button></footer></div></div>
+### Estado vacío
+
+<div class="fx-preview"><div class="fx-thread"><header>María</header><div class="fx-empty">Quiero saber cuándo llega mi envío…</div></div></div>
+
+### Con mensajes
+
+<div class="fx-preview" data-fx="thread"><div class="fx-thread"><header>María</header><div data-thread><div class="fx-msg"><span class="fx-avatar sm">MG</span><div><small>María</small><div class="fx-bubble them">Déjame revisarlo por ti.</div></div></div><div class="fx-msg end"><div><small>Tú</small><div class="fx-bubble">¡Hola! ¿Cómo va tu envío?</div><small>Leído · 2:34 PM</small></div></div></div><footer><input placeholder="Escribe un mensaje"><button class="fx-btn fx-btn-primary" type="button" data-send>Enviar</button></footer></div></div>
 
 Chat surface: header, thread or empty state, and input.
 
@@ -12,7 +18,9 @@ The complete frame of a conversation: a header with title and refresh button, th
 
 ## Sidebar {#sidebar}
 
-<div class="fx-preview" data-fx="select-one"><aside class="fx-side"><b class="fx-logo">felix</b><button type="button" data-item class="on">Envíos</button><button type="button" data-item>Historial</button><div class="fx-sfoot"><span class="fx-avatar sm">AD</span><small>Axel</small></div></aside></div>
+### Sidebar
+
+<div class="fx-preview"><aside class="fx-side" data-fx="select-one"><b class="fx-logo">felix</b><button type="button" data-item class="on">Inicio</button><button type="button" data-item>Enviar</button><button type="button" data-item>Perfil</button><div class="fx-sfoot"><span class="fx-avatar sm">MG</span></div></aside></div>
 
 Full side navigation: header, sections, and footer.
 

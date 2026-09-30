@@ -139,11 +139,33 @@ function bind(root: ParentNode) {
   root.querySelectorAll<HTMLElement>('[data-fx="toast"]').forEach((host) => {
     if (host.dataset.bound) return
     host.dataset.bound = '1'
-    const toast = host.querySelector<HTMLElement>('.fx-toast')
-    host.querySelector('[data-fire]')?.addEventListener('click', () => {
-      if (!toast) return
-      toast.hidden = false
-      window.setTimeout(() => { toast.hidden = true }, 2200)
+    host.querySelectorAll<HTMLButtonElement>('[data-fire]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const name = button.dataset.fire
+        const toast = host.querySelector<HTMLElement>(`[data-toast="${name}"]`) ?? host.querySelector<HTMLElement>('.fx-toast')
+        if (!toast) return
+        host.querySelectorAll<HTMLElement>('.fx-toast').forEach((node) => { node.hidden = true })
+        toast.hidden = false
+        window.setTimeout(() => { toast.hidden = true }, 2200)
+      })
+    })
+  })
+
+  root.querySelectorAll<HTMLElement>('[data-fx="amount"]').forEach((host) => {
+    if (host.dataset.bound) return
+    host.dataset.bound = '1'
+    const amount = host.querySelector<HTMLElement>('[data-amount-value]')
+    if (!amount) return
+    let value = Number(amount.dataset.amountValue ?? '0')
+    const paint = () => {
+      amount.dataset.amountValue = String(value)
+      amount.innerHTML = `$${value.toLocaleString('en-US')}<span>.00</span> <small>USD</small>`
+    }
+    host.querySelectorAll<HTMLButtonElement>('[data-amt]').forEach((button) => {
+      button.addEventListener('click', () => {
+        value = Math.max(0, value + Number(button.dataset.amt))
+        paint()
+      })
     })
   })
 
