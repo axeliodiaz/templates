@@ -5,7 +5,7 @@ Composed components: feedback, overlays, navigation, and conversation pieces. Al
 
 ## Accordion {#accordion}
 
-<div class="fx-preview" data-fx="accordion"><details class="fx-acc" open><summary>¿Cuándo llega?</summary><p>En 1–3 días hábiles.</p></details><details class="fx-acc"><summary>¿Hay comisión?</summary><p>La comisión es $0.00.</p></details></div>
+<div class="fx-preview" data-fx="accordion"><details class="fx-acc" open><summary>¿Hay comisión?</summary><p>No cobramos comisión. El tipo de cambio se muestra antes de confirmar.</p></details><details class="fx-acc"><summary>¿Cuánto tarda un envío?</summary><p>La mayoría llega en minutos; algunos bancos pueden tardar hasta 30.</p></details></div>
 
 Collapsible sections. One open at a time.
 
@@ -13,7 +13,7 @@ Organizes content into collapsible sections where only one stays open at a time,
 
 ## Alert {#alert}
 
-<div class="fx-preview fx-stack"><div class="fx-alert ok"><strong>Transferencia completada.</strong> María ya puede retirarla.</div><div class="fx-alert warn"><strong>En camino.</strong> Llega en 1–3 días hábiles.</div><div class="fx-alert err"><strong>No se pudo enviar.</strong> Revisa los datos de la cuenta.</div></div>
+<div class="fx-preview fx-stack"><div class="fx-alert ok"><strong>Transferencia completada</strong> María recibió $1,020.00 MXN.</div><div class="fx-alert warn"><strong>Envío en camino</strong> Llega en aproximadamente 30 minutos.</div><div class="fx-alert err"><strong>No pudimos procesar el pago</strong> Revisa tu método de pago e intenta de nuevo.</div></div>
 
 Contextual status message.
 
@@ -21,7 +21,17 @@ Status message that lives on the page without interrupting: transfer completed, 
 
 ## Attachment {#attachment}
 
-<div class="fx-preview fx-row"><div class="fx-file"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file err"><b>foto.jpg</b><small>No se pudo adjuntar</small><button type="button" data-remove aria-label="Quitar">×</button></div></div>
+### Archivos · sm / md / lg
+
+<div class="fx-preview fx-row"><div class="fx-file sm"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file lg"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div></div>
+
+### Imágenes · sm / md / lg
+
+<div class="fx-preview fx-row"><div class="fx-file img sm"><b>foto-ticket.jpg</b><small>JPG · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file img"><b>foto-ticket.jpg</b><small>JPG · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file img lg"><b>foto-ticket.jpg</b><small>JPG · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div></div>
+
+### Estados · error / loading
+
+<div class="fx-preview fx-row"><div class="fx-file err"><b>No se pudo adjuntar</b><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file loading"><b>recibo.pdf</b><small>PDF · 240 KB</small><div class="fx-progress"><span style="width:62%"></span></div></div></div>
 
 Attached file or image chip. 3 sizes × 3 states × 2 types.
 
@@ -29,7 +39,9 @@ The attachment that travels with a message or the chat composer: a PDF receipt, 
 
 ## Breadcrumb {#breadcrumb}
 
-<div class="fx-preview"><nav class="fx-crumbs">Envíos / México / Confirmación</nav></div>
+### Ruta
+
+<div class="fx-preview"><nav class="fx-crumbs"><a href="#">Inicio</a> / <a href="#">Envíos</a> / <span>Confirmar</span></nav></div>
 
 Hierarchical navigation trail.
 
@@ -45,7 +57,9 @@ Calendar to pick a date directly on the page, for example when scheduling a tran
 
 ## Card {#card}
 
-<div class="fx-preview"><div class="fx-card"><div class="fx-card-title">Resumen</div><p>Envías $100.00 · Recibe $1,724.00 MXN</p></div></div>
+### Composición
+
+<div class="fx-preview"><div class="fx-card"><div class="fx-card-title">Recibe María</div><p class="fx-amount">1,020<span>.00</span> <small>MXN</small></p><p>Banco · ****1234</p><button class="fx-btn fx-btn-primary" type="button">Confirmar</button></div></div>
 
 Content container. Border or shadow, never both.
 
@@ -61,7 +75,7 @@ Rich radio in card form for key decisions, like choosing between cash pickup and
 
 ## Collapse {#collapse}
 
-<div class="fx-preview"><details class="fx-collapse" open><summary>Tipo de cambio</summary><p>1 USD = 17.24 MXN. La comisión es $0.00.</p></details></div>
+<div class="fx-preview"><details class="fx-collapse" open><summary>Ver detalle del envío</summary><p>Tipo de cambio 17.00 · Comisión $0.00 · Llega en ~30 min.</p></details></div>
 
 Content that expands and collapses.
 
@@ -77,7 +91,9 @@ Form field that opens a calendar in a popover, ideal for picking dates without t
 
 ## Dialog {#dialog}
 
-<div class="fx-preview" data-fx="overlay"><button class="fx-btn fx-btn-primary" type="button" data-open>Confirmar envío</button><div class="fx-scrim"><div class="fx-dialog"><b>¿Enviar $100.00?</b><p>María recibe $1,724.00 MXN.</p><div class="fx-row"><button class="fx-btn fx-btn-primary" type="button" data-close>Confirmar</button><button class="fx-btn fx-btn-line" type="button" data-close>Volver</button></div></div></div></div>
+### Modal
+
+<div class="fx-preview" data-fx="overlay"><button class="fx-btn fx-btn-primary" type="button" data-open>Abrir diálogo</button><div class="fx-scrim"><div class="fx-dialog"><b>Confirmar envío</b><p>Vas a enviar $60.00 USD a María. Comisión $0.00.</p><div class="fx-row"><button class="fx-btn fx-btn-ghost" type="button" data-close>Cancelar</button><button class="fx-btn fx-btn-primary" type="button" data-close>Confirmar</button></div></div></div></div>
 
 Centered modal dialog for confirmations.
 
@@ -85,7 +101,9 @@ Centered modal for confirmations that demand full attention, like confirming a m
 
 ## Drawer {#drawer}
 
-<div class="fx-preview" data-fx="overlay"><button class="fx-btn fx-btn-line" type="button" data-open>Ver detalle</button><div class="fx-scrim fx-scrim-end"><div class="fx-drawer"><b>Detalle</b><p>Referencia FX-20491</p><button class="fx-btn fx-btn-primary" type="button" data-close>Cerrar</button></div></div></div>
+### Drawer
+
+<div class="fx-preview" data-fx="overlay"><button class="fx-btn fx-btn-line" type="button" data-open>Abrir drawer</button><div class="fx-scrim fx-scrim-end"><div class="fx-drawer"><b>Detalle del envío</b><p>$60.00 USD → $1,020.00 MXN</p><button class="fx-btn fx-btn-primary" type="button" data-close>Listo</button></div></div></div>
 
 Edge-anchored sliding panel (mobile-first).
 
@@ -93,7 +111,9 @@ Panel that slides in from the edge of the screen, mobile-first for details and q
 
 ## DropdownMenu {#dropdownmenu}
 
-<div class="fx-preview"><details class="fx-menu"><summary class="fx-btn fx-btn-line">Cuenta</summary><div><button type="button">Perfil</button><button type="button">Salir</button></div></details></div>
+### Menú
+
+<div class="fx-preview"><details class="fx-menu"><summary class="fx-btn fx-btn-line">Opciones</summary><div><div class="fx-menu-label">Mi cuenta</div><button type="button">Perfil</button><button type="button">Envíos</button><hr><button type="button">Cerrar sesión</button></div></details></div>
 
 Contextual menu anchored to a trigger.
 
@@ -109,7 +129,9 @@ Card with extra context that appears on hover, like a recipient's profile. Impor
 
 ## Message {#message}
 
-<div class="fx-preview"><div class="fx-msg"><span class="fx-avatar sm">MA</span><div><small>María · 14:03</small><div class="fx-bubble them">Ya lo recibí, gracias.</div></div></div></div>
+### Alineación · start / end
+
+<div class="fx-preview fx-stack"><div class="fx-msg"><span class="fx-avatar sm">MG</span><div><small>María</small><div class="fx-bubble them">Déjame revisarlo por ti.</div><small>2:32 PM</small></div></div><div class="fx-msg end"><div><small>Tú</small><div class="fx-bubble">¡Hola! ¿Cómo va tu envío?</div><small>Leído · 2:34 PM</small></div></div></div>
 
 One thread entry: avatar, sender, Bubble, and time.
 
@@ -117,7 +139,9 @@ One entry in the conversation: an optional avatar plus a column with a header (w
 
 ## NavigationMenu {#navigationmenu}
 
-<div class="fx-preview" data-fx="select-one"><nav class="fx-nav"><button type="button" data-item class="on">Envíos</button><button type="button" data-item>Recargas</button><button type="button" data-item>Historial</button></nav></div>
+### Navegación
+
+<div class="fx-preview"><nav class="fx-nav"><details class="fx-menu"><summary>Productos</summary><div><button type="button">Enviar dinero</button><button type="button">Recargas</button></div></details><button type="button">Ayuda</button></nav></div>
 
 Primary navigation with dropdown menus.
 
@@ -141,7 +165,9 @@ Floating panel anchored to a trigger for lightweight content, like the exchange 
 
 ## Select {#select}
 
-<div class="fx-preview"><label class="fx-field"><span>País</span><select><option>México</option><option>Guatemala</option></select></label></div>
+### Por defecto
+
+<div class="fx-preview"><label class="fx-field"><span>País</span><select><option>México</option><option>Colombia</option><option>Guatemala</option></select></label></div>
 
 Select one option from a list.
 
@@ -149,7 +175,9 @@ Pick one option from a dropdown list, like the destination country. Import Selec
 
 ## Sheet {#sheet}
 
-<div class="fx-preview" data-fx="overlay"><button class="fx-btn fx-btn-line" type="button" data-open>Abrir detalle</button><div class="fx-scrim fx-scrim-end"><div class="fx-sheet"><b>Detalle del envío</b><p>Estado: en camino</p><button class="fx-btn fx-btn-primary" type="button" data-close>Cerrar</button></div></div></div>
+### Sheet
+
+<div class="fx-preview" data-fx="overlay"><button class="fx-btn fx-btn-line" type="button" data-open>Abrir panel</button><div class="fx-scrim fx-scrim-end"><div class="fx-sheet"><b>Detalle del envío</b><p>$60.00 USD → $1,020.00 MXN</p><p>Tipo de cambio 17.00</p><p>Comisión $0.00</p><p>Llega en ~30 min</p><button class="fx-btn fx-btn-primary" type="button" data-close>Listo</button></div></div></div>
 
 Side panel for secondary flows.
 
@@ -165,7 +193,9 @@ Sidebar footer showing the active user's account. Import it from @felix/ui and p
 
 ## Stepper {#stepper}
 
-<div class="fx-preview" data-fx="select-one"><ol class="fx-steps"><li><button type="button" data-item class="done">Monto</button></li><li><button type="button" data-item class="on">Destino</button></li><li><button type="button" data-item>Confirmar</button></li></ol></div>
+### 3 pasos · activo en el 2º
+
+<div class="fx-preview"><ol class="fx-steps" data-fx="select-one"><li><button type="button" data-item class="done">Monto</button></li><li><button type="button" data-item class="on">Destino<small>Destinatario</small></button></li><li><button type="button" data-item>Listo<small>Confirmar</small></button></li></ol></div>
 
 Step progress through a flow.
 
@@ -173,7 +203,9 @@ Shows step-by-step progress through a flow, like amount, recipient, and confirma
 
 ## Table {#table}
 
-<div class="fx-preview"><table class="fx-table"><thead><tr><th>Fecha</th><th>Destino</th><th>Estado</th></tr></thead><tbody><tr><td>10 sep</td><td>María</td><td>En camino</td></tr><tr><td>02 sep</td><td>Luis</td><td>Completado</td></tr></tbody></table></div>
+### Historial
+
+<div class="fx-preview"><table class="fx-table"><thead><tr><th>Fecha</th><th>Monto</th><th>Destinatario</th></tr></thead><tbody><tr><td>12 jun</td><td>$60.00 USD</td><td>María</td></tr><tr><td>03 jun</td><td>$120.00 USD</td><td>Carlos</td></tr><tr><td>28 may</td><td>$45.00 USD</td><td>Ana</td></tr></tbody></table></div>
 
 Tabular data with a header.
 
@@ -189,7 +221,9 @@ Switches between same-level views within one area, like transfers and top-ups. I
 
 ## Toast {#toast}
 
-<div class="fx-preview" data-fx="toast"><button class="fx-btn fx-btn-primary" type="button" data-fire>Mostrar toast</button><div class="fx-toast" hidden>Transferencia enviada</div></div>
+### Disparadores
+
+<div class="fx-preview" data-fx="toast"><button class="fx-btn fx-btn-primary" type="button" data-fire="primary">Mostrar toast</button><button class="fx-btn fx-btn-line" type="button" data-fire="secondary">Toast secundario</button><div class="fx-toast" data-toast="primary" hidden>Transferencia enviada</div><div class="fx-toast fx-toast-secondary" data-toast="secondary" hidden>Revisa tu historial</div></div>
 
 Transient notification. Fire with toast(...).
 

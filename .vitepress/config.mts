@@ -26,24 +26,27 @@ export default defineConfig({
             { text: 'Overview', link: '/felix' },
             { text: 'Principles', link: '/felix/principles' },
             { text: 'Colors', link: '/felix/colors' },
-            { text: 'Typography', link: '/felix/typography' }
+            { text: 'Typography', link: '/felix/typography' },
+            { text: 'Illustrations', link: '/felix/illustrations' }
+          ]
+        },
+        {
+          text: 'Components',
+          items: [
+            { text: 'Overview', link: '/felix/components/' },
+            { text: 'Atoms', link: '/felix/components/atoms' },
+            { text: 'Molecules', link: '/felix/components/molecules' },
+            { text: 'Organisms', link: '/felix/components/organisms' },
+            { text: 'Charts', link: '/felix/components/charts' }
           ]
         },
         {
           text: 'Build',
           items: [
             { text: 'Design tokens', link: '/felix/tokens' },
+            { text: 'Markdown', link: '/felix/markdown' },
             { text: 'Motion', link: '/felix/motion' },
-            {
-              text: 'Components',
-              link: '/felix/components/',
-              items: [
-                { text: 'Atoms', link: '/felix/components/atoms' },
-                { text: 'Molecules', link: '/felix/components/molecules' },
-                { text: 'Organisms', link: '/felix/components/organisms' },
-                { text: 'Charts', link: '/felix/components/charts' }
-              ]
-            }
+            { text: 'Graphs', link: '/felix/graphs' }
           ]
         }
       ],

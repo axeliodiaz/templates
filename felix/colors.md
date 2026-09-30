@@ -1,54 +1,49 @@
 # Colors
 
-### Named brand colors
+The palette is deliberately small — every color earns its place. Turquoise carries the brand energy; slate carries weight and authority.
+
+## Brand and base
 
 <div class="swatch-grid">
   <div class="swatch"><div class="chip" style="background:#2bf2f1"></div><div class="meta">Turquoise<br><code>#2bf2f1</code></div></div>
-  <div class="swatch"><div class="chip" style="background:#dcff00"></div><div class="meta">Lime<br><code>#dcff00</code></div></div>
   <div class="swatch"><div class="chip" style="background:#082422"></div><div class="meta">Slate<br><code>#082422</code></div></div>
-  <div class="swatch"><div class="chip" style="background:#fefcf9"></div><div class="meta">Linen<br><code>#fefcf9</code></div></div>
-  <div class="swatch"><div class="chip" style="background:#efebe7"></div><div class="meta">Stone<br><code>#efebe7</code></div></div>
+  <div class="swatch"><div class="chip" style="background:#fefcf9;box-shadow:inset 0 0 0 1px #08242214"></div><div class="meta">Linen<br><code>#fefcf9</code></div></div>
+  <div class="swatch"><div class="chip" style="background:#dcff00"></div><div class="meta">Lime<br><code>#dcff00</code></div></div>
+  <div class="swatch"><div class="chip" style="background:#efebe7;box-shadow:inset 0 0 0 1px #08242214"></div><div class="meta">Stone<br><code>#efebe7</code></div></div>
   <div class="swatch"><div class="chip" style="background:#cfcabf"></div><div class="meta">Concrete<br><code>#cfcabf</code></div></div>
-  <div class="swatch"><div class="chip" style="background:#877867"></div><div class="meta">Mocha<br><code>#877867</code></div></div>
-  <div class="swatch"><div class="chip" style="background:#f26629"></div><div class="meta">Papaya<br><code>#f26629</code></div></div>
-  <div class="swatch"><div class="chip" style="background:#60d06f"></div><div class="meta">Cactus<br><code>#60d06f</code></div></div>
-  <div class="swatch"><div class="chip" style="background:#6060bf"></div><div class="meta">Blueberry<br><code>#6060bf</code></div></div>
-  <div class="swatch"><div class="chip" style="background:#f19d38"></div><div class="meta">Mango<br><code>#f19d38</code></div></div>
-  <div class="swatch"><div class="chip" style="background:#35605f"></div><div class="meta">Evergreen<br><code>#35605f</code></div></div>
+  <div class="swatch"><div class="chip" style="background:#636158"></div><div class="meta">FG muted<br><code>#636158</code></div></div>
+  <div class="swatch"><div class="chip" style="background:#d4fffe;box-shadow:inset 0 0 0 1px #08242214"></div><div class="meta">Light sky<br><code>#d4fffe</code></div></div>
 </div>
 
-### Semantic tokens
+## Status
 
-Light is the default. Dark flips surfaces and keeps turquoise as primary.
+<div class="swatch-grid">
+  <div class="swatch"><div class="chip" style="background:#60d06f"></div><div class="meta">Success<br><code>#60d06f</code></div></div>
+  <div class="swatch"><div class="chip" style="background:#ffd200"></div><div class="meta">Warning<br><code>#ffd200</code></div></div>
+  <div class="swatch"><div class="chip" style="background:#f26629"></div><div class="meta">Error<br><code>#f26629</code></div></div>
+  <div class="swatch"><div class="chip" style="background:#3b2e8c"></div><div class="meta">Info<br><code>#3b2e8c</code></div></div>
+</div>
 
-| Token | Light | Dark |
+Status never borrows turquoise or lime. Warning is yellow, not orange.
+
+## Semantic tokens
+
+Light values from the live tokens page.
+
+| CSS variable | Value | Use |
 |---|---|---|
-| Background | `#fefcf9` linen | `#082422` slate |
-| Foreground | `#082422` | `#fefcf9` |
-| Card | `#fefcf9` | `#234343` |
-| Muted | `#efebe7` stone | `#152b2a` |
-| Muted foreground | `#6ab3b1` | `#cfcabf` |
-| Primary | `#2bf2f1` | `#2bf2f1` |
-| Primary foreground | `#082422` | `#082422` |
-| Accent | `#dcff00` lime | `#b2d000` |
-| Border | `#cfcabf` | `#35605f` |
-| Link | `#10a8a7` | — |
-| Destructive | `#f26629` | `#f26629` |
+| `--primary` | `#2bf2f1` | CTAs, focus, brand |
+| `--foreground` | `#082422` | Text, dark surfaces |
+| `--background` | `#fefcf9` | Warm canvas |
+| `--muted` | `#efebe7` | Hover, secondary fills |
+| `--status-success` | `#60d06f` | Completed, received |
+| `--status-warning` | `#ffd200` | Pending, on its way |
+| `--status-error` | `#f26629` | Blocking, destructive |
+| `--interactive-primary-hover` | `#1abfbe` | Primary hover |
 
-Primary button states (light): hover `#1abfbe`, active `#2bf2f1`, disabled `#d4fffe`. Danger hover `#cc4d14`.
+In dark mode the canvas is slate `#082422` and text is linen `#fefcf9`. Cards are `#234343`, muted fills are `#152b2a`, the lime accent steps to `#b2d000`, and borders are `#35605f`. Turquoise stays primary. Text on turquoise and lime is always `#082422`.
 
-### Status
-
-Keep status on semantic colors, never on the brand accent.
-
-| Role | Background | Mark | Text |
-|---|---|---|---|
-| Success | `#eefbf0` | `#60d06f` | `#1b7a29` |
-| Warning | `#fffce0` | `#ffd200` | `#665500` |
-| Error | `#fff5ef` | `#f26629` | `#a03808` |
-| Info | `#f2eeff` | `#3b2e8c` | `#1c1249` |
-
-### Core ramps
+## Core ramps
 
 Each ramp runs 50–900. Brand steps called out below are the ones UI actually paints.
 
@@ -60,85 +55,6 @@ Each ramp runs 50–900. Brand steps called out below are the ones UI actually p
 
 **Neutral** — `#ffffff` · `#fefcf9` · `#efebe7` · `#ddd9cf` · `#cfcabf` · `#adaa9e` · `#8a8780` · `#636158` · `#3e3c35` · `#1c1b16`
 
-## Typography {#typography}
+## Data visualization
 
-| Role | Font | Usage |
-|---|---|---|
-| Display / headings | **Plain** (800–900) | h1, hero, tight `-0.02em` tracking, line-height `1.1` |
-| Body / UI | **Saans** (300–700) | paragraphs, labels, controls. Heading tracking `-0.01em` |
-| Code / data | **SF Mono** / ui-monospace | code, hex values, IDs |
-
-Plain and Saans are licensed faces. Load them from the product font files (`PlainLTStd-Black`, `SaansLTStd-Light` / `Regular` / `SemiBold`). Fallback stack:
-
-```css
---font-heading: "Plain", "Saans", system-ui, sans-serif;
---font-sans: "Saans", system-ui, sans-serif;
---font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-```
-
-| Step | Size | Line height |
-|---|---|---|
-| Caption / xxs | `0.6875rem` | — |
-| Body | `1rem` | `1.5` |
-| Heading 3 | `1.25rem` | `1.5` |
-| Heading 2 | `1.75rem` | `1.4` |
-| Display | `3.75rem`–`4.5rem` | `1.1` |
-
-## Shape and elevation {#shape}
-
-Radius: `2px` xs · `4px` sm · `8px` md · `12px` lg · `16px` xl · `24px` 2xl · `32px` 3xl · pill `9999px`. Buttons use a full pill: `border-radius: calc(1rem + 999px)`.
-
-```css
---shadow-sm: 0 1px 3px #0824220f, 0 1px 2px #0824220a;
---shadow-md: 0 4px 6px #0824220f, 0 2px 4px #0824220a;
---shadow-turquoise: 0 4px 14px #2bf2f140; /* primary button glow */
---shadow-selection: 0 0 0 6px #2bf2f11a;  /* turquoise focus, 6px */
-```
-
-Spacing scale (px): 0, 4, 8, 12, 16, 20, 24, 28, 32, 40, 48, 64, 80, 96.
-
-## Components {#components}
-
-### Primary button
-
-```css
-.btn-primary {
-  background-color: #2bf2f1;
-  color: #082422;
-  border: 0;
-  border-radius: 9999px;
-  font-family: "Saans", system-ui, sans-serif;
-  font-weight: 600;
-  box-shadow: 0 4px 14px #2bf2f140;
-}
-.btn-primary:hover { background-color: #1abfbe; }
-.btn-primary:disabled { background-color: #d4fffe; }
-```
-
-Accent (lime) is for highlights and emphasis, not a second primary button in the same view.
-
-### Surface card
-
-```css
-.card {
-  background: #fefcf9;
-  color: #082422;
-  border: 1px solid #cfcabf;
-  border-radius: 16px;
-  box-shadow: 0 1px 3px #0824220f, 0 1px 2px #0824220a;
-}
-```
-
-Dark card: background `#234343`, border `#35605f`, text `#fefcf9`.
-
-## Data visualization {#data-viz}
-
-Series order: turquoise `#2bf2f1`, cactus `#42b552`, mango `#f19d38`, blueberry `#6e58d8`, papaya `#f77b42`. Dark charts shift one step lighter: `#5af5f4`, `#60d06f`, `#ffb05a`, `#9882f5`, `#ff9f66`.
-
-## Rules of thumb
-
-1. Linen canvas in light mode; slate canvas in dark. Turquoise stays the primary in both.
-2. Text on turquoise and lime is slate `#082422`, never white.
-3. One electric accent per view. If the primary button is turquoise, nearby emphasis is lime or flat slate, not a second glow.
-4. Status stays semantic: success, warning, error, and info never borrow turquoise or lime.
-5. Selection and focus use turquoise at low opacity (`#2bf2f14d` selection, 6px focus ring), not a border color change alone.
+Chart series, not brand colors. Series order: turquoise `#2bf2f1`, cactus `#42b552`, mango `#f19d38`, blueberry `#6e58d8`, papaya `#f77b42`. Dark charts shift one step lighter: `#5af5f4`, `#60d06f`, `#ffb05a`, `#9882f5`, `#ff9f66`.
