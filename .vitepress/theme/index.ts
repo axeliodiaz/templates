@@ -2,6 +2,7 @@ import { h, nextTick, watchEffect } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { inBrowser, useRoute } from 'vitepress'
 import './custom.css'
+import './mail-buttons.css'
 import { mountFelixDemos } from './felix-demos'
 
 export default {
