@@ -20,13 +20,4 @@ features:
   - title: Felix
     details: Linen and slate, turquoise and lime, Plain for display and Saans for UI.
     link: /felix
-  - title: Components
-    details: Interactive catalog of actions, feedback, cards, forms, tables and overlays.
-    link: /components
-  - title: Graphs
-    details: Dependency graph demo with curved edges, particles and state language.
-    link: /graphs
-  - title: Motion
-    details: Lane moves, pulses, inline expansion and entrance patterns.
-    link: /motion
 ---
