@@ -186,10 +186,22 @@ function resetProcs() {
   procLive.value = 'Cotización y KYC están completados. Ledger está en curso.'
 }
 
+const darkClassDefs = [
+  ['fill:#eefbf0,stroke:#60d06f,color:#1b7a29', 'fill:#1f4d3a,stroke:#60d06f,color:#8ee79a'],
+  ['fill:#fffce0,stroke:#ffd200,color:#665500', 'fill:#4a4210,stroke:#ffd200,color:#ffe066'],
+  ['fill:#fefcf9,stroke:#cfcabf,color:#35605f', 'fill:#152b2a,stroke:#35605f,color:#c3e2e1'],
+  ['fill:#fff5ef,stroke:#f26629,color:#a03808', 'fill:#4a2a1c,stroke:#f26629,color:#ff9f66']
+]
+
+function mermaidSource(code, dark) {
+  return dark ? darkClassDefs.reduce((out, [from, to]) => out.split(from).join(to), code) : code
+}
+
 async function drawMermaid() {
   if (typeof window === 'undefined') return
-  if (!mermaidApi) {
-    mermaidApi = (await import('mermaid')).default
+  const dark = document.documentElement.classList.contains('felix-dark')
+  if (!mermaidApi) mermaidApi = (await import('mermaid')).default
+  {
     mermaidApi.initialize({
       startOnLoad: false,
       securityLevel: 'strict',
@@ -198,19 +210,19 @@ async function drawMermaid() {
       fontFamily: 'Saans, ui-sans-serif, system-ui, sans-serif',
       flowchart: { curve: 'basis', htmlLabels: false, padding: 12, nodeSpacing: 24, rankSpacing: 40 },
       themeVariables: {
-        darkMode: false,
-        background: '#ffffff',
+        darkMode: dark,
+        background: dark ? '#234343' : '#ffffff',
         fontFamily: 'Saans, ui-sans-serif, system-ui, sans-serif',
         fontSize: '14px',
-        primaryColor: '#fefcf9',
-        primaryTextColor: '#082422',
-        primaryBorderColor: '#cfcabf',
-        lineColor: '#35605f',
-        textColor: '#082422',
-        mainBkg: '#fefcf9',
-        nodeBorder: '#cfcabf',
-        edgeLabelBackground: '#ffffff',
-        nodeTextColor: '#082422'
+        primaryColor: dark ? '#152b2a' : '#fefcf9',
+        primaryTextColor: dark ? '#fefcf9' : '#082422',
+        primaryBorderColor: dark ? '#35605f' : '#cfcabf',
+        lineColor: dark ? '#97cbc9' : '#35605f',
+        textColor: dark ? '#fefcf9' : '#082422',
+        mainBkg: dark ? '#152b2a' : '#fefcf9',
+        nodeBorder: dark ? '#35605f' : '#cfcabf',
+        edgeLabelBackground: dark ? '#234343' : '#ffffff',
+        nodeTextColor: dark ? '#fefcf9' : '#082422'
       }
     })
   }
@@ -218,7 +230,7 @@ async function drawMermaid() {
     const host = mermaidEls.get(diagram.key)
     if (!host) continue
     try {
-      const { svg } = await mermaidApi.render(`fxm${diagram.key}${++mermaidSeq}`, diagram.code)
+      const { svg } = await mermaidApi.render(`fxm${diagram.key}${++mermaidSeq}`, mermaidSource(diagram.code, dark))
       host.innerHTML = svg
       host.querySelectorAll('path[marker-end], line[marker-end], .flowchart-link, path.transition').forEach((el) => {
         el.classList.add('fx-flow-edge')
@@ -255,7 +267,10 @@ onMounted(() => {
     layoutProcs()
   })
   drawMermaid()
+  const themeObserver = new MutationObserver(() => drawMermaid())
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
   cleanup = () => {
+    themeObserver.disconnect()
     media.removeEventListener('change', onMotion)
     observers.forEach((observer) => observer.disconnect())
   }
