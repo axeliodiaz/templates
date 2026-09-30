@@ -1,0 +1,152 @@
+/* Felix dark mode. Slate canvas, linen text, turquoise stays primary.
+   Values come from felix/colors.md and felix/tokens.md (Dark mode). */
+html.felix.felix-dark {
+  color-scheme: dark;
+  --vp-c-bg: #082422;
+  --vp-c-bg-alt: #152b2a;
+  --vp-c-bg-elv: #234343;
+  --vp-c-bg-soft: #152b2a;
+  --vp-c-bg-mute: #152b2a;
+  --vp-c-text-1: #fefcf9;
+  --vp-c-text-2: #c3e2e1;
+  --vp-c-text-3: #97cbc9;
+  --vp-c-divider: #35605f;
+  --vp-c-gutter: #35605f;
+  --vp-c-border: #35605f;
+  --vp-c-default-1: #152b2a;
+  --vp-c-default-2: #234343;
+  --vp-c-default-3: #35605f;
+  --vp-c-default-soft: #152b2a;
+  --vp-c-brand-1: #2bf2f1;
+  --vp-c-brand-2: #5af5f4;
+  --vp-c-brand-3: #2bf2f1;
+  --vp-c-brand-soft: #2bf2f126;
+  --vp-sidebar-bg-color: #082422;
+  --vp-nav-bg-color: rgba(8, 36, 34, 0.92);
+  --vp-code-color: #fefcf9;
+  --vp-code-bg: #152b2a;
+  --vp-code-block-bg: #031312;
+  --vp-c-text-code: #5af5f4;
+  --vp-custom-block-info-bg: #152b2a;
+}
+html.felix.felix-dark body { background: #082422; color: #fefcf9; }
+html.felix.felix-dark .VPNav,
+html.felix.felix-dark .VPNavBar,
+html.felix.felix-dark .VPSidebar,
+html.felix.felix-dark .VPDoc,
+html.felix.felix-dark .VPContent,
+html.felix.felix-dark .VPNavBar .content,
+html.felix.felix-dark .VPNavBar .title,
+html.felix.felix-dark .VPNavBarMenuLink,
+html.felix.felix-dark .VPSidebarItem .text,
+html.felix.felix-dark .VPDocAside,
+html.felix.felix-dark .VPDocFooter { background: #082422; color: #fefcf9; }
+html.felix.felix-dark .VPNavBar.has-sidebar .divider,
+html.felix.felix-dark .VPNavBar .divider-line,
+html.felix.felix-dark .VPSidebar { -webkit-text-fill-color: #fefcf9; color: #fefcf9; }
+html.felix.felix-dark .VPNavBarMenuLink:hover,
+html.felix.felix-dark .VPSidebarItem .link:hover .text { color: #2bf2f1; }
+html.felix.felix-dark .VPSidebarItem.is-active > .item > .link > .text { color: #2bf2f1; }
+html.felix.felix-dark h1, html.felix.felix-dark h2, html.felix.felix-dark h3,
+html.felix.felix-dark .vp-doc h1, html.felix.felix-dark .vp-doc h2, html.felix.felix-dark .vp-doc h3 { color: #fefcf9; -webkit-text-fill-color: #fefcf9; }
+html.felix.felix-dark .vp-doc a { color: #5af5f4; }
+html.felix.felix-dark .vp-doc th, html.felix.felix-dark .vp-doc td { border-color: #35605f; }
+html.felix.felix-dark .vp-doc tr { background: transparent; }
+html.felix.felix-dark .vp-doc tr:nth-child(2n) { background: #152b2a; }
+
+/* swatches */
+html.felix.felix-dark .swatch { background: #234343; border-color: #35605f; }
+html.felix.felix-dark .swatch .meta, html.felix.felix-dark .swatch .meta code { color: #fefcf9; }
+html.felix.felix-dark .gradient-bar { border-color: #35605f; }
+
+/* buttons: text on turquoise, lime and error stays slate */
+html.felix.felix-dark .fx-btn-primary { background: #2bf2f1; color: #082422; box-shadow: 0 4px 14px #2bf2f133; }
+html.felix.felix-dark .fx-btn-secondary { background: #152b2a; color: #fefcf9; border-color: #35605f; }
+html.felix.felix-dark .fx-btn-ghost { color: #fefcf9; }
+html.felix.felix-dark .fx-btn-line { background: #234343; color: #fefcf9; border-color: #35605f; }
+html.felix.felix-dark .fx-btn-danger { background: #f26629; color: #082422; }
+
+/* badges */
+html.felix.felix-dark .fx-badge { background: #2bf2f126; color: #8dfdfa; }
+html.felix.felix-dark .fx-badge-lime { background: #b2d000; color: #082422; }
+html.felix.felix-dark .fx-badge-slate { background: #fefcf9; color: #082422; }
+html.felix.felix-dark .fx-badge-warn { background: #ffd2002e; color: #ffe066; }
+html.felix.felix-dark .fx-badge-err { background: #f266292e; color: #ff9f66; }
+
+/* surfaces */
+html.felix.felix-dark .fx-alert,
+html.felix.felix-dark .fx-collapse,
+html.felix.felix-dark .fx-card,
+html.felix.felix-dark .fx-preview,
+html.felix.felix-dark .fx-chart,
+html.felix.felix-dark .fx-mermaid,
+html.felix.felix-dark .fx-menu div,
+html.felix.felix-dark .fx-page { background: #234343; border-color: #35605f; color: #fefcf9; box-shadow: none; }
+html.felix.felix-dark .fx-menu button { background: #234343; color: #fefcf9; }
+html.felix.felix-dark .fx-toast { background: #fefcf9; color: #082422; }
+html.felix.felix-dark .fx-tab, html.felix.felix-dark .fx-nav span, html.felix.felix-dark .fx-steps li { background: #152b2a; color: #fefcf9; }
+html.felix.felix-dark .fx-tab.is-on, html.felix.felix-dark .fx-nav .on, html.felix.felix-dark .fx-steps .on,
+html.felix.felix-dark .fx-page.on { background: #2bf2f1; color: #082422; border-color: #2bf2f1; }
+html.felix.felix-dark .fx-steps .done { background: #2bf2f126; color: #8dfdfa; }
+html.felix.felix-dark .fx-amount, html.felix.felix-dark .fx-label, html.felix.felix-dark .fx-logo,
+html.felix.felix-dark .fx-check, html.felix.felix-dark .fx-switch, html.felix.felix-dark .fx-dep strong { color: #fefcf9; }
+html.felix.felix-dark .fx-amount span, html.felix.felix-dark .fx-amount small,
+html.felix.felix-dark .fx-field, html.felix.felix-dark .fx-marker, html.felix.felix-dark .fx-sep,
+html.felix.felix-dark .fx-heat, html.felix.felix-dark .fx-choice small, html.felix.felix-dark .fx-hover small,
+html.felix.felix-dark .fx-sfoot small, html.felix.felix-dark .fx-msg small, html.felix.felix-dark .fx-source summary,
+html.felix.felix-dark .fx-mermaid { color: #97cbc9; }
+html.felix.felix-dark .fx-legend { color: #c3e2e1; }
+html.felix.felix-dark .fx-avatar { background: #2bf2f126; color: #8dfdfa; }
+html.felix.felix-dark .fx-avatar.ok:after { border-color: #234343; }
+html.felix.felix-dark .fx-bubble { background: #2bf2f1; color: #082422; }
+html.felix.felix-dark .fx-bubble.them { background: #152b2a; color: #fefcf9; }
+html.felix.felix-dark .fx-dots i { background: #fefcf9; }
+html.felix.felix-dark .fx-field input, html.felix.felix-dark .fx-field textarea, html.felix.felix-dark .fx-field select { background: #152b2a; color: #fefcf9; border-color: #35605f; }
+html.felix.felix-dark .fx-marker:before, html.felix.felix-dark .fx-marker:after { background: #35605f; }
+html.felix.felix-dark .fx-progress { background: #152b2a; }
+html.felix.felix-dark .fx-choice, html.felix.felix-dark .fx-dialog, html.felix.felix-dark .fx-sheet,
+html.felix.felix-dark .fx-drawer, html.felix.felix-dark .fx-pop { background: #234343; border-color: #35605f; color: #fefcf9; }
+html.felix.felix-dark .fx-choice.on { border-color: #2bf2f1; }
+html.felix.felix-dark .fx-table th, html.felix.felix-dark .fx-table td { border-bottom-color: #35605f; }
+
+/* dependency cards and process objects */
+html.felix.felix-dark .fx-dep { background: #234343; border-color: #35605f; box-shadow: none; }
+html.felix.felix-dark .fx-dep.done { background: #60d06f1f; border-color: #60d06f; }
+html.felix.felix-dark .fx-dep.run { background: #ffd2001f; border-color: #ffd200; }
+html.felix.felix-dark .fx-dep header span, html.felix.felix-dark .fx-dep small, html.felix.felix-dark .fx-obj small { color: #97cbc9; }
+html.felix.felix-dark .fx-dep.done header span, html.felix.felix-dark .fx-dep.done small, html.felix.felix-dark .fx-obj.done small { color: #8ee79a; }
+html.felix.felix-dark .fx-dep.run header span, html.felix.felix-dark .fx-dep.run small, html.felix.felix-dark .fx-obj.run small { color: #ffe066; }
+html.felix.felix-dark .fx-obj { color: #fefcf9; }
+html.felix.felix-dark .fx-obj i { background: #234343; border-color: #35605f; box-shadow: none; }
+html.felix.felix-dark .fx-obj.done i { background: #60d06f26; border-color: #60d06f; }
+html.felix.felix-dark .fx-obj.run i { background: #ffd20026; border-color: #ffd200; }
+
+/* charts: dark series shift one step lighter, slate series flips to linen */
+html.felix.felix-dark .fx-chart text { fill: #97cbc9; }
+html.felix.felix-dark .fx-chart [fill="#082422"] { fill: #fefcf9; }
+html.felix.felix-dark .fx-chart [stroke="#efebe7"] { stroke: #35605f; }
+html.felix.felix-dark .fx-chart [stroke="#cfcabf"] { stroke: #35605f; }
+html.felix.felix-dark .fx-chart [fill="#fefcf9"] { fill: #234343; }
+html.felix.felix-dark .fx-chart [fill="#2bf2f1"] { fill: #5af5f4; }
+html.felix.felix-dark .fx-chart [stroke="#2bf2f1"] { stroke: #5af5f4; }
+html.felix.felix-dark .fx-chart [fill="#42b552"] { fill: #60d06f; }
+html.felix.felix-dark .fx-chart [fill="#f19d38"] { fill: #ffb05a; }
+html.felix.felix-dark .fx-chart [fill="#6e58d8"] { fill: #9882f5; }
+html.felix.felix-dark .fx-chart [fill="#f77b42"] { fill: #ff9f66; }
+html.felix.felix-dark .fx-legend i[style*="082422"] { background: #fefcf9 !important; }
+
+/* Mermaid diagrams are re-rendered with a dark palette in felix/graphs.md */
+
+/* toggle */
+.fx-theme-toggle { display: none; }
+html.felix .fx-theme-toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  position: fixed; right: 18px; bottom: 18px; z-index: 60;
+  border-radius: 9999px; border: 1px solid #cfcabf; background: #fff; color: #082422;
+  padding: 10px 16px; font: 600 14px "Saans", ui-sans-serif, system-ui, sans-serif; cursor: pointer;
+  box-shadow: 0 4px 14px #08242226;
+}
+html.felix .fx-theme-toggle:hover { border-color: #2bf2f1; }
+html.felix .fx-theme-toggle:focus-visible { outline: 0; box-shadow: 0 0 0 6px #2bf2f14d; }
+html.felix.felix-dark .fx-theme-toggle { background: #234343; color: #fefcf9; border-color: #35605f; }
+html.felix ::selection { background: #2bf2f14d; }
