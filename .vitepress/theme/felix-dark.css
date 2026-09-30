@@ -137,6 +137,58 @@ html.felix.felix-dark .fx-legend i[style*="082422"] { background: #fefcf9 !impor
 
 /* Mermaid diagrams are re-rendered with a dark palette in felix/graphs.md */
 
+
+/* graph boards, metrics, status legend */
+html.felix.felix-dark .fx-graph { background: #152b2a; border-color: #35605f; }
+html.felix.felix-dark .fx-graph-note { color: #8ee79a; }
+html.felix.felix-dark .fx-graph-toolbar button:disabled { background: #152b2a; color: #97cbc9; }
+html.felix.felix-dark .fx-edge[data-status="done"] { stroke: #97cbc9; }
+html.felix.felix-dark .fx-edge[data-status="run"] { stroke: #ffe066; }
+html.felix.felix-dark .fx-edge[data-status="wait"] { stroke: #4d9290; }
+html.felix.felix-dark .fx-edges circle { fill: #ffe066; }
+html.felix.felix-dark .fx-metric { color: #fefcf9; }
+html.felix.felix-dark .fx-metric small { color: #97cbc9; }
+html.felix.felix-dark .fx-status-legend li { background: #234343; border-color: #35605f; color: #c3e2e1; }
+html.felix.felix-dark .fx-status-legend .ok { background: #60d06f26; border-color: #60d06f; color: #8ee79a; }
+html.felix.felix-dark .fx-status-legend .run { background: #ffd20026; border-color: #ffd200; color: #ffe066; }
+html.felix.felix-dark .fx-status-legend .bad { background: #f2662926; border-color: #f26629; color: #ff9f66; }
+
+/* typography samples, helper text, markers, files, crumbs, tasks */
+html.felix.felix-dark .fx-t, html.felix.felix-dark .fx-body, html.felix.felix-dark .fx-sep-v,
+html.felix.felix-dark .fx-label.disabled { color: #fefcf9; }
+html.felix.felix-dark .fx-help, html.felix.felix-dark .fx-menu-label, html.felix.felix-dark .fx-marker-default,
+html.felix.felix-dark .fx-marker-sep, html.felix.felix-dark .fx-marker-border, html.felix.felix-dark .fx-label.optional:after { color: #97cbc9; }
+html.felix.felix-dark .fx-field-error .fx-help { color: #ff9f66; }
+html.felix.felix-dark .fx-marker-default:before, html.felix.felix-dark .fx-marker-sep:before,
+html.felix.felix-dark .fx-marker-sep:after { background: #35605f; }
+html.felix.felix-dark .fx-marker-border, html.felix.felix-dark .fx-sep-v span + span { border-color: #35605f; }
+html.felix.felix-dark .fx-crumbs { color: #97cbc9; }
+html.felix.felix-dark .fx-crumbs a { color: #5af5f4; }
+html.felix.felix-dark .fx-file, html.felix.felix-dark .fx-thread, html.felix.felix-dark .fx-task,
+html.felix.felix-dark .fx-expand, html.felix.felix-dark .fx-expand-detail { background: #234343; border-color: #35605f; color: #fefcf9; box-shadow: none; }
+html.felix.felix-dark .fx-file small, html.felix.felix-dark .fx-task small, html.felix.felix-dark .fx-task-state { color: #97cbc9; }
+html.felix.felix-dark .fx-file.err { background: #f2662926; border-color: #f26629; }
+html.felix.felix-dark .fx-file [data-remove] { color: #fefcf9; }
+html.felix.felix-dark .fx-thread input { background: #152b2a; color: #fefcf9; border-color: #35605f; }
+html.felix.felix-dark .fx-btn:disabled, html.felix.felix-dark .fx-task .fx-btn:disabled { background: #2bf2f133; color: #8dfdfa; }
+html.felix.felix-dark .fx-badge-secondary, html.felix.felix-dark .fx-toast-secondary { background: #152b2a; color: #fefcf9; }
+html.felix.felix-dark .fx-badge-destructive { background: #f26629; color: #082422; }
+html.felix.felix-dark .fx-badge-outline { background: transparent; border-color: #35605f; color: #fefcf9; }
+html.felix.felix-dark .fx-badge-ghost { background: transparent; color: #fefcf9; }
+html.felix.felix-dark .fx-bubble.secondary { background: #b2d000; color: #082422; }
+html.felix.felix-dark .fx-bubble.tinted { background: #2bf2f126; color: #8dfdfa; }
+html.felix.felix-dark .fx-bubble.ghost { background: transparent; color: #fefcf9; }
+html.felix.felix-dark .fx-bubble.outline { background: #234343; border-color: #35605f; color: #fefcf9; }
+html.felix.felix-dark .fx-bubble.destructive { background: #f2662926; color: #ff9f66; }
+html.felix.felix-dark .fx-tip { border-bottom-color: #5af5f4; }
+html.felix.felix-dark .fx-check input, html.felix.felix-dark .fx-slider { accent-color: #2bf2f1; }
+html.felix.felix-dark .fx-side { background: #031312; border: 1px solid #35605f; }
+html.felix.felix-dark .fx-side .on { background: #2bf2f1; color: #082422; }
+html.felix.felix-dark .fx-stagger > div { background: #234343; border-color: #35605f; color: #fefcf9; }
+html.felix.felix-dark .fx-empty { color: #97cbc9; border-color: #35605f; }
+html.felix.felix-dark .fx-page { color: #fefcf9; }
+html.felix.felix-dark .fx-page.on { color: #082422; }
+
 /* toggle */
 .fx-theme-toggle { display: none; }
 html.felix .fx-theme-toggle {
