@@ -45,7 +45,8 @@ export default defineConfig({
           items: [
             { text: 'Design tokens', link: '/felix/tokens' },
             { text: 'Markdown', link: '/felix/markdown' },
-            { text: 'Motion', link: '/felix/motion' }
+            { text: 'Motion', link: '/felix/motion' },
+            { text: 'Graphs', link: '/felix/graphs' }
           ]
         }
       ],

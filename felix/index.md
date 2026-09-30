@@ -14,6 +14,7 @@ Version 1.0.0 Alpha. This guide is the Markdown build reference for the live sys
 - [Illustrations](/felix/illustrations) — Felix illustrations, flags, Phosphor, payment marks
 - [Components](/felix/components/) — 43 pieces
 - [Design tokens](/felix/tokens)
+- [Graphs](/felix/graphs) — dependent task cards, process objects, animated Mermaid
 - [Markdown](/felix/markdown) — DESIGN.md and components.md for LLMs
 
 ## Rules of thumb

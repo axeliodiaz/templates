@@ -81,4 +81,4 @@ En camino pulses once per cycle. Bloqueado stays still. Entregado shows a single
   </div>
 </div>
 
-Keep labels visible when motion is reduced. Animate a card only after the state actually changes.
+Keep labels visible when motion is reduced. Animate a card only after the state actually changes. Dependent work drawn as cards, process objects, or Mermaid lives on [Graphs](/felix/graphs).

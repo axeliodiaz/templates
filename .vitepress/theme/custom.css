@@ -383,6 +383,68 @@ html.felix .fx-stagger > div { padding: 12px; border: 1px solid #cfcabf; border-
 @media (prefers-reduced-motion: reduce) {
   html.felix .fx-task, html.felix .fx-expand-detail, html.felix .fx-stagger > div, html.felix .fx-pulse:after { animation: none; transition: none; }
 }
+html.felix .fx-graph-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 8px 0 18px; }
+html.felix .vp-doc ul.fx-status-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+html.felix .fx-status-legend li { display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 4px 10px; border: 1px solid #cfcabf; border-radius: 999px; background: #fefcf9; color: #35605f; font-size: 12px; font-weight: 600; }
+html.felix .fx-status-legend li:before { content: ""; width: 8px; height: 8px; border-radius: 99px; background: #cfcabf; }
+html.felix .fx-status-legend .ok { background: #eefbf0; border-color: #60d06f; color: #1b7a29; }
+html.felix .fx-status-legend .ok:before { background: #60d06f; }
+html.felix .fx-status-legend .run { background: #fffce0; border-color: #ffd200; color: #665500; }
+html.felix .fx-status-legend .run:before { background: #ffd200; }
+html.felix .fx-status-legend .bad { background: #fff5ef; border-color: #f26629; color: #a03808; }
+html.felix .fx-status-legend .bad:before { background: #f26629; }
+html.felix .fx-graph { position: relative; margin: 16px 0 28px; padding: 16px; border: 1px solid #cfcabf; border-radius: 16px; background: #fff; }
+html.felix .fx-graph-bar { display: flex; align-items: center; gap: 12px; min-height: 36px; margin-bottom: 12px; }
+html.felix .fx-graph-bar .fx-btn { margin-left: auto; }
+html.felix .fx-graph-note { margin: 0; color: #1b7a29; font-weight: 600; }
+html.felix .fx-graph button, html.felix .fx-graph-toolbar button, html.felix .fx-obj, html.felix .fx-source summary { cursor: pointer; }
+html.felix .fx-graph button:focus-visible, html.felix .fx-graph-toolbar button:focus-visible, html.felix .fx-obj:focus-visible { outline: 2px solid #0f8c8b; outline-offset: 3px; }
+html.felix .fx-graph-toolbar button:disabled { cursor: default; opacity: 1; background: #efebe7; color: #35605f; }
+html.felix .fx-dep-board, html.felix .fx-obj-board { position: relative; display: grid; }
+html.felix .fx-dep-board { grid-template-columns: 1fr 1fr; gap: 36px 20px; }
+html.felix .fx-obj-board { grid-template-columns: repeat(3, minmax(0, 1fr)); justify-items: center; gap: 28px 8px; }
+html.felix .fx-edges { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+html.felix .fx-edge { fill: none; stroke-width: 1.5; stroke-linecap: round; }
+html.felix .fx-edge[data-status="done"] { stroke: #35605f; }
+html.felix .fx-edge[data-status="run"] { stroke: #665500; stroke-width: 2; }
+html.felix .fx-edge[data-status="wait"] { stroke: #cfcabf; stroke-dasharray: 4 5; }
+html.felix .fx-dep { position: relative; z-index: 1; grid-column: var(--col); grid-row: var(--row); display: grid; align-content: start; gap: 4px; min-width: 0; padding: 14px; border: 1px solid #cfcabf; border-radius: 16px; background: #fefcf9; box-shadow: 0 1px 3px #0824220f, 0 1px 2px #0824220a; }
+html.felix .fx-dep.wide { grid-column: 1 / -1; width: min(100%, 340px); justify-self: center; }
+html.felix .fx-dep.done { border-color: #60d06f; background: #eefbf0; }
+html.felix .fx-dep.run { border-color: #ffd200; background: #fffce0; animation: fx-node-in .55s ease; }
+html.felix .fx-dep header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+html.felix .fx-dep strong { color: #082422; }
+html.felix .fx-dep header span { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #35605f; white-space: nowrap; }
+html.felix .fx-dep small { color: #35605f; font-size: 13px; }
+html.felix .fx-dep.done header span, html.felix .fx-dep.done small { color: #1b7a29; }
+html.felix .fx-dep.run header span, html.felix .fx-dep.run small { color: #665500; }
+html.felix .fx-dep .fx-btn { justify-self: start; margin-top: 6px; }
+html.felix .fx-obj { position: relative; z-index: 1; grid-column: var(--col); grid-row: var(--row); width: min(100%, 148px); display: grid; justify-items: center; align-content: start; gap: 4px; padding: 0; border: 0; background: transparent; color: #082422; font: inherit; text-align: center; }
+html.felix .fx-obj i { width: 64px; height: 64px; box-sizing: border-box; border: 2px solid #cfcabf; border-radius: 50%; background: #fefcf9; box-shadow: 0 1px 3px #0824220f; }
+html.felix .fx-obj.done i { border-color: #60d06f; background: #eefbf0; }
+html.felix .fx-obj.run i { border-color: #ffd200; background: #fffce0; animation: fx-node-in .55s ease; }
+html.felix .fx-obj-name { font-weight: 700; font-size: 13px; line-height: 1.3; }
+html.felix .fx-obj small { color: #35605f; font-size: 11px; line-height: 1.35; }
+html.felix .fx-obj.done small { color: #1b7a29; }
+html.felix .fx-obj[aria-disabled="true"] { cursor: default; }
+html.felix .fx-obj.run small { color: #665500; }
+html.felix .fx-mermaid-list { display: grid; gap: 22px; margin: 8px 0 28px; }
+html.felix .fx-mermaid { min-height: 72px; padding: 8px; border: 1px solid #cfcabf; border-radius: 16px; background: #fff; color: #35605f; overflow-x: auto; }
+html.felix .fx-mermaid svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+html.felix .fx-mermaid:not(.is-static) .fx-flow-edge { stroke-dasharray: 8 6; animation: fx-dash 1.15s linear infinite; }
+html.felix .fx-source { margin-top: 8px; }
+html.felix .fx-source summary { font-weight: 600; color: #35605f; }
+html.felix .fx-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+@keyframes fx-node-in { from { box-shadow: 0 0 0 0 #ffd20099; } to { box-shadow: 0 0 0 8px #ffd20000; } }
+@keyframes fx-dash { to { stroke-dashoffset: -28; } }
+@media (max-width: 640px) {
+  html.felix .fx-dep-board { gap: 28px 10px; }
+  html.felix .fx-dep { padding: 10px; }
+  html.felix .fx-obj i { width: 52px; height: 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.felix .fx-dep.run, html.felix .fx-obj.run i, html.felix .fx-mermaid .fx-flow-edge { animation: none; }
+}
 html.felix .fx-choice { border: 1px solid #cfcabf; border-radius: 16px; padding: 12px 14px; min-width: 140px; display: grid; }
 html.felix .fx-choice.on { border-color: #2bf2f1; box-shadow: 0 0 0 3px #2bf2f133; }
 html.felix .fx-choice small { color: #35605f; }
