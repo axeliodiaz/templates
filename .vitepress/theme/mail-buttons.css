@@ -1,0 +1,8 @@
+/* Email preview buttons: keep label text white and readable (VitePress link color was overriding it). */
+.l-mail-body a.l-btn,
+.l-mail-body a.l-btn:link,
+.l-mail-body a.l-btn:visited,
+.l-mail-body a.l-btn:hover,
+.l-mail-body a.l-btn:focus-visible{color:#fff;text-decoration:none}
+.l-mail-body a.l-primary{background-image:linear-gradient(90deg,#4338ca,#9d174d)}
+.l-mail-body a.l-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
