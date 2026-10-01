@@ -106,6 +106,8 @@ Same gradient as the primary button, with a soft glow: `box-shadow: 0 0 16px rgb
 
 Series order for charts and sparklines: indigo `#6366f1`, pink `#ec4899`, cyan `#22d3ee`, indigo-soft `#818cf8`, emerald `#10b981`, amber `#fbbf24`. Sparklines default to the indigo stroke with a 20%-opacity fill of the same color.
 
+Reference overlays stay on that same scale and off the brand gradient: a **dashed cyan** `#22d3ee` line for the arithmetic mean, and a **solid indigo-soft** `#818cf8` stroke for an ordinary-least-squares linear trend. Name both in the legend. Average is a horizontal reference; trend is a fitted line across ordered categories, not a smoothed path through every point. See [Graphs](/graphs#charts-overlay).
+
 ## Rules of thumb
 
 1. Dark canvas always; Lustro has no light mode.
