@@ -5,6 +5,7 @@ import './custom.css'
 import './mail-buttons.css'
 import './felix-dark.css'
 import './messaging.css'
+import './calendar.css'
 import { mountFelixDemos } from './felix-demos'
 
 const THEME_KEY = 'felix-theme'
