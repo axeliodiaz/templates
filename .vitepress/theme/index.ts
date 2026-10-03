@@ -9,6 +9,7 @@ import './calendar.css'
 import './projects.css'
 import './pulsefit.css'
 import './dependency-graph.css'
+import './node-flow.css'
 import { mountFelixDemos } from './felix-demos'
 
 const THEME_KEY = 'felix-theme'
