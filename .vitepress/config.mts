@@ -53,7 +53,8 @@ export default defineConfig({
             { text: 'Projects', link: '/felix/projects' },
             { text: 'Dependencies', link: '/felix/dependencies' },
             { text: 'Node flow', link: '/felix/node-flow' },
-            { text: 'Finance', link: '/felix/finance' }
+            { text: 'Finance', link: '/felix/finance' },
+            { text: 'Shipping', link: '/felix/shipping' }
           ]
         }
       ],
@@ -69,7 +70,8 @@ export default defineConfig({
             { text: 'Projects', link: '/pulsefit/projects' },
             { text: 'Dependencies', link: '/pulsefit/dependencies' },
             { text: 'Node flow', link: '/pulsefit/node-flow' },
-            { text: 'Finance', link: '/pulsefit/finance' }
+            { text: 'Finance', link: '/pulsefit/finance' },
+            { text: 'Shipping', link: '/pulsefit/shipping' }
           ]
         }
       ],
@@ -138,6 +140,7 @@ export default defineConfig({
           { text: 'Dependencies (Lustro)', link: '/dependencies' },
           { text: 'Node flow (Lustro)', link: '/node-flow' },
           { text: 'Finance (Lustro)', link: '/finance' },
+          { text: 'Shipping (Lustro)', link: '/shipping' },
           { text: 'Charts', link: '/graphs', collapsed: true, items: [
             { text: 'Introducción', link: '/graphs#data-charts' },
             { text: 'Line & Area', link: '/graphs#charts-line-area' },
