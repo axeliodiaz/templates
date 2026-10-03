@@ -34,6 +34,7 @@ export default defineConfig({
           text: 'Components',
           items: [
             { text: 'Overview', link: '/felix/components/' },
+            { text: 'Full UI catalog', link: '/felix/components/catalog' },
             { text: 'Atoms', link: '/felix/components/atoms' },
             { text: 'Molecules', link: '/felix/components/molecules' },
             { text: 'Organisms', link: '/felix/components/organisms' },
@@ -61,6 +62,7 @@ export default defineConfig({
           text: 'PulseFit',
           items: [
             { text: 'Foundations', link: '/pulsefit' },
+            { text: 'Components', link: '/pulsefit/components' },
             { text: 'Messaging', link: '/pulsefit/messaging' },
             { text: 'Calendar', link: '/pulsefit/calendar' },
             { text: 'Staff', link: '/pulsefit/staff' },
@@ -78,6 +80,7 @@ export default defineConfig({
         { text: 'Tipografía', link: '/fundamentos/tipografia' },
         { text: 'Iconos', link: '/fundamentos/iconos' }
       ] },
+      { text: 'Full UI catalog', link: '/ui-kit' },
       { text: 'Componentes', link: '/components', collapsed: true, items: [
         { text: 'Accordion', link: '/components#accordion' },
         { text: 'Alerts', link: '/components#alerts' },
