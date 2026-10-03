@@ -121,6 +121,12 @@ export default defineConfig({
         { text: 'Comprobante de compra', link: '/correos#comprobante-de-compra' },
         { text: 'Membresía por vencer', link: '/correos#membresia-por-vencer' }
       ] },
+      { text: 'Ejemplos', link: '/ejemplos/', collapsed: true, items: [
+        { text: 'Introducción', link: '/ejemplos/' },
+        { text: 'Users', link: '/ejemplos/users' },
+        { text: 'Coaches', link: '/ejemplos/coaches' },
+        { text: 'Admin', link: '/ejemplos/admin' }
+      ] },
       {
         text: 'Design languages',
         items: [

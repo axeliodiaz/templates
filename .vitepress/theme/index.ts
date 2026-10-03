@@ -11,6 +11,7 @@ import './pulsefit.css'
 import './component-catalog.css'
 import './dependency-graph.css'
 import './node-flow.css'
+import './ejemplos.css'
 import { mountFelixDemos } from './felix-demos'
 
 const THEME_KEY = 'felix-theme'
