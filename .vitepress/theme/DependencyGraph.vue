@@ -105,8 +105,9 @@ function advance(id: string) {
   const s = status(id)
   if (s === 'ready') { state.value[id] = 'doing'; notice.value = `${byId[id].title} started.` }
   else if (s === 'doing') {
+    const was = rows.filter(r => r[4].some(d => d[0] === id) && status(r[0]) === 'blocked').map(r => r[0])
     state.value[id] = 'done'
-    const freed = rows.filter(r => r[4].some(d => d[0] === id) && status(r[0]) === 'ready').map(r => r[1])
+    const freed = rows.filter(r => was.includes(r[0]) && status(r[0]) === 'ready').map(r => r[1])
     notice.value = freed.length ? `${byId[id].title} is done. ${freed.join(', ')} can start now.` : `${byId[id].title} is done.`
   }
 }
