@@ -50,6 +50,7 @@ export default defineConfig({
             { text: 'Messaging', link: '/felix/messaging' },
             { text: 'Calendar', link: '/felix/calendar' },
             { text: 'Projects', link: '/felix/projects' },
+            { text: 'Dependencies', link: '/felix/dependencies' },
             { text: 'Finance', link: '/felix/finance' }
           ]
         }
@@ -63,6 +64,7 @@ export default defineConfig({
             { text: 'Calendar', link: '/pulsefit/calendar' },
             { text: 'Staff', link: '/pulsefit/staff' },
             { text: 'Projects', link: '/pulsefit/projects' },
+            { text: 'Dependencies', link: '/pulsefit/dependencies' },
             { text: 'Finance', link: '/pulsefit/finance' }
           ]
         }
@@ -122,6 +124,7 @@ export default defineConfig({
           { text: 'Messaging (Lustro)', link: '/messaging' },
           { text: 'Calendar (Lustro)', link: '/calendar' },
           { text: 'Projects (Lustro)', link: '/projects' },
+          { text: 'Dependencies (Lustro)', link: '/dependencies' },
           { text: 'Finance (Lustro)', link: '/finance' },
           { text: 'Charts', link: '/graphs', collapsed: true, items: [
             { text: 'Introducción', link: '/graphs#data-charts' },
