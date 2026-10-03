@@ -7,6 +7,7 @@ import './felix-dark.css'
 import './messaging.css'
 import './calendar.css'
 import './projects.css'
+import './pulsefit.css'
 import { mountFelixDemos } from './felix-demos'
 
 const THEME_KEY = 'felix-theme'
