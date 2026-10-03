@@ -48,7 +48,8 @@ export default defineConfig({
             { text: 'Motion', link: '/felix/motion' },
             { text: 'Graphs', link: '/felix/graphs' },
             { text: 'Messaging', link: '/felix/messaging' },
-            { text: 'Calendar', link: '/felix/calendar' }
+            { text: 'Calendar', link: '/felix/calendar' },
+            { text: 'Projects', link: '/felix/projects' }
           ]
         }
       ],
@@ -106,6 +107,7 @@ export default defineConfig({
           { text: 'Felix', link: '/felix' },
           { text: 'Messaging (Lustro)', link: '/messaging' },
           { text: 'Calendar (Lustro)', link: '/calendar' },
+          { text: 'Projects (Lustro)', link: '/projects' },
           { text: 'Charts', link: '/graphs', collapsed: true, items: [
             { text: 'Introducción', link: '/graphs#data-charts' },
             { text: 'Line & Area', link: '/graphs#charts-line-area' },
