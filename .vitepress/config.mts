@@ -53,6 +53,18 @@ export default defineConfig({
           ]
         }
       ],
+      '/pulsefit': [
+        {
+          text: 'PulseFit',
+          items: [
+            { text: 'Foundations', link: '/pulsefit' },
+            { text: 'Messaging', link: '/pulsefit/messaging' },
+            { text: 'Calendar', link: '/pulsefit/calendar' },
+            { text: 'Staff', link: '/pulsefit/staff' },
+            { text: 'Projects', link: '/pulsefit/projects' }
+          ]
+        }
+      ],
       '/': [
       { text: 'Getting started', items: [{ text: 'Introducción', link: '/introduccion' }] },
       { text: 'Fundamentos', items: [
