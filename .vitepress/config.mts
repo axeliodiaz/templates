@@ -52,7 +52,7 @@ export default defineConfig({
             { text: 'Graphs', link: '/felix/graphs' }
           ]
         },
-        { text: 'Charts', link: '/felix/components/charts', items: [{ text: 'Reporting patterns', link: '/felix/components/charts#reporting-patterns' }] },
+        { text: 'Charts', link: '/felix/components/charts', items: [{ text: '30 animated charts', link: '/felix/components/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/felix/components/charts#reporting-patterns' }] },
         { text: 'Examples', collapsed: false, items: [
             { text: 'Messaging', link: '/felix/messaging' },
             { text: 'Calendar', link: '/felix/calendar' },
@@ -74,7 +74,7 @@ export default defineConfig({
             { text: 'Components', link: '/pulsefit/components' }
           ]
         },
-        { text: 'Charts', link: '/pulsefit/charts', items: [{ text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
+        { text: 'Charts', link: '/pulsefit/charts', items: [{ text: '30 animated charts', link: '/pulsefit/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
         { text: 'Examples', collapsed: false, items: [
             { text: 'Messaging', link: '/pulsefit/messaging' },
             { text: 'Calendar', link: '/pulsefit/calendar' },
@@ -155,6 +155,7 @@ export default defineConfig({
         ] }
       ] },
           { text: 'Charts', link: '/graphs', collapsed: true, items: [
+            { text: '30 animated charts', link: '/graphs#animated-chart-catalog' },
             { text: 'Introducción', link: '/graphs#data-charts' },
             { text: 'Line & Area', link: '/graphs#charts-line-area' },
             { text: 'Bar', link: '/graphs#charts-bar' },
