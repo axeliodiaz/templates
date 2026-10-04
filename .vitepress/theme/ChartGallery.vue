@@ -80,7 +80,7 @@ const ticks=[0,25,50,75,100]
     <template v-else-if="c.type==='donut'">
      <circle cx="160" cy="98" r="58" class="cg-ring-bg" stroke-width="21"/>
      <circle v-for="(v,i) in shares" :key="i" cx="160" cy="98" r="58" fill="none" stroke="var(--cg-accent)" stroke-width="21" stroke-linecap="round" :stroke-dasharray="`${ringLengths[i]-25} ${365-ringLengths[i]+25}`" :stroke-dashoffset="-shares.slice(0,i).reduce((a,b)=>a+b,0)/100*365" transform="rotate(-90 160 98)" :opacity="1-i*.2" tabindex="0" :aria-label="`${['Core','UI','Assets','Other'][i]} ${v}%`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"/>
-     <text x="160" y="100" text-anchor="middle" class="cg-metric">100%</text><text x="160" y="119" text-anchor="middle">allocation</text>
+     <text x="160" y="100" text-anchor="middle" class="cg-metric">{{ shares[current(c.id)%4] }}%</text><text x="160" y="119" text-anchor="middle">{{ ['Core','UI','Assets','Other'][current(c.id)%4] }}</text>
     </template>
     <template v-else-if="c.type==='scatter'||c.type==='bubble'">
      <line x1="28" y1="170" x2="296" y2="170" class="cg-gridline"/><line x1="28" y1="20" x2="28" y2="170" class="cg-gridline"/>
