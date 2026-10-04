@@ -1,8 +1,23 @@
 <script setup>
+import ChartGallery from '../.vitepress/theme/ChartGallery.vue'
 import ReportsDashboard from '../.vitepress/theme/ReportsDashboard.vue'
 </script>
 
+
+
 # Charts (PulseFit)
+
+## Animated chart catalog
+
+30 patterns from the [Amicro reference](https://amicro.vercel.app/mono-charts), adapted to this template. Each card has synthetic data, hover/focus readouts, keyboard buttons and reduced-motion support. Dataset A/B updates time-series charts; allocation, target and flow examples use their own labeled fixtures. Existing chart examples remain below.
+
+<ChartGallery language="pulsefit" />
+
+### Integration notes
+
+Import ChartGallery.vue for a demo or extract a single card into your application. Replace the synthetic arrays, label units, handle missing data, and add loading/empty/error states before live use. Sankey band width encodes flow; treemap tile area encodes share; waterfall bars encode signed deltas; candlesticks expose open/high/low/close in the readout. Charts should supplement, not replace, accessible data tables. The three colored activity grids are variants of one chart family.
+
+
 
 Reusable chart patterns in the PulseFit design language. Data is fictitious.
 
