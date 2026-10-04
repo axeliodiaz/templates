@@ -148,6 +148,8 @@ Use a compact summary with a clear title, metadata and the next action; keep car
 
 ### Tables {#tables}
 
+See the full set at [Tables](/tables).
+
 <div class="l-demo"><div class="l-table-scroll"><table class="l-table"><thead><tr><th scope="col">Component</th><th scope="col">Status</th><th scope="col">Owner</th></tr></thead><tbody><tr><td>Buttons</td><td><span class="l-badge l-badge-success">Ready</span></td><td>Design</td></tr><tr><td>Notifications</td><td><span class="l-badge l-badge-warn">Review</span></td><td>Product</td></tr><tr><td>Graphs</td><td><span class="l-badge">Example</span></td><td>Motion</td></tr></tbody></table></div><div class="l-empty"><strong>No results</strong><p>Try a different search or clear your filters.</p><button class="l-btn l-secondary" @click="search=''">Clear filters</button></div></div>
 
 ## Form controls
