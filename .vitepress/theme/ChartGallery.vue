@@ -16,7 +16,8 @@ function spline(arr){return arr.reduce((p,v,i)=>i?p+` C${X(i-1)+24},${Y(arr[i-1]
 const line=computed(()=>spline(values.value)), line2=computed(()=>spline(second.value))
 const area=computed(()=>line.value+' L274,166 L34,166 Z')
 const rangeUpper=computed(()=>values.value.map(v=>Math.min(v+15,96))), rangeLower=computed(()=>values.value.map(v=>Math.max(v-15,0)))
-const band=computed(()=>spline(rangeUpper.value)+rangeLower.value.slice().reverse().map((v,j)=>` L${X(5-j)},${Y(v)}`).join('')+' Z')
+const reverseSpline=arr=>arr.slice().reverse().map((v,j)=>j?` C${X(6-j)-24},${Y(arr[6-j])} ${X(5-j)+24},${Y(v)} ${X(5-j)},${Y(v)}`:` L${X(5)},${Y(v)}`).join('')
+const band=computed(()=>spline(rangeUpper.value)+reverseSpline(rangeLower.value)+' Z')
 const step=computed(()=>values.value.map((v,i)=>i?` H${X(i)} V${Y(v)}`:`M${X(i)},${Y(v)}`).join(''))
 const sum=computed(()=>values.value.reduce((a,b)=>a+b,0))
 const radar=computed(()=>values.value.map((v,i)=>{const a=i*Math.PI/3-Math.PI/2;return `${160+Math.cos(a)*v*.85},${100+Math.sin(a)*v*.85}`}).join(' '))
@@ -32,7 +33,8 @@ case 'heat':case 'matrix':return `Cell ${i+1}: ${heat(i,c.id)*3} events`;
 case 'donut':return `${names[i%4]}: ${shares[i%4]}%`;
 case 'sankey':return ['Source A: 60 units','Source B: 40 units','Destination X: 50 units','Destination Y: 50 units'][i%4];
 case 'waterfall':return ['Opening 60','Inflow +30','Outflow -20','Closing 70'][i%4];
-case 'candle':{let v=values.value[j];return `${labels[j]}: open ${v+100}, high ${v+115}, low ${v+94}, close ${v+109}`}
+case 'candle':{let v=values.value[j];return `${labels[j]}: open ${v+100}, high ${v+115}, low ${v+94}, close ${v+(j%2?-9:9)}`}
+case 'stream':return `${labels[j]}: lower ${Math.round(second.value[j]*.25+18)}, middle ${Math.round(second.value[j]*.65+28)}, upper ${Math.round(values.value[j]*.8+20)}`;
 case 'range':return `${labels[j]}: min ${rangeLower.value[j]}, max ${rangeUpper.value[j]}`;
 case 'pyramid':return `Tier ${4-i%4}: ${[24,50,75,100][i%4]} units`;
 case 'funnel':return `Stage ${i%4+1}: ${[100,75,50,24][i%4]}%`;
@@ -86,7 +88,7 @@ const ticks=[0,25,50,75,100]
      <text x="160" y="191" text-anchor="middle">secondary units (x) · primary units (y)</text>
     </template>
     <template v-else-if="c.type==='candle'">
-     <g v-for="(v,i) in values" :key="i" tabindex="0" :aria-label="`${labels[i]} open ${v+100}, high ${v+115}, low ${v+94}, close ${v+109}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><line :x1="X(i)" :x2="X(i)" :y1="Y(v+15)" :y2="Y(v-6)" class="cg-stroke"/><rect :x="X(i)-9" :y="Y(v+9)" width="18" height="13.5" rx="3" :fill="i%2?'var(--cg-panel)':'var(--cg-accent)'" stroke="var(--cg-accent)" stroke-width="2"/></g><text x="298" y="17" text-anchor="end">price offset +100</text>
+     <g v-for="(v,i) in values" :key="i" tabindex="0" :aria-label="`${labels[i]} open ${v+100}, high ${v+115}, low ${v+94}, close ${v+(j%2?-9:9)}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><line :x1="X(i)" :x2="X(i)" :y1="Y(v+15)" :y2="Y(v-6)" class="cg-stroke"/><rect :x="X(i)-9" :y="Y(v+(i%2?0:9))" width="18" height="13.5" rx="3" :fill="i%2?'var(--cg-panel)':'var(--cg-accent)'" stroke="var(--cg-accent)" stroke-width="2"/></g><text x="298" y="17" text-anchor="end">price offset +100</text>
     </template>
     <template v-else-if="c.type==='pyramid'||c.type==='funnel'">
      <g v-for="(v,i) in c.type==='pyramid'?[24,50,75,100]:[100,75,50,24]" :key="i" tabindex="0" :aria-label="`Stage ${i+1}: ${v} percent`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="c.type==='pyramid'?160-(24+i*25):35" :y="18+i*40" :width="c.type==='pyramid'?48+i*50:v*2.5" height="28" rx="10" class="cg-fill" :opacity="1-i*.18"/><text :x="c.type==='pyramid'?160:45" :y="37+i*40" :text-anchor="c.type==='pyramid'?'middle':'start'" class="cg-inverse">{{ c.type==='pyramid'?`Tier ${4-i}`:`${v}%` }}</text></g>
@@ -97,7 +99,7 @@ const ticks=[0,25,50,75,100]
     <template v-else-if="c.type==='speed'||c.type==='arc'">
      <path d="M65 140 A95 95 0 0 1 255 140" class="cg-ring-bg" stroke-width="22" stroke-linecap="round"/>
      <path d="M65 140 A95 95 0 0 1 255 140" fill="none" stroke="var(--cg-accent)" stroke-width="22" stroke-linecap="round" pathLength="100" stroke-dasharray="84 100" tabindex="0" aria-label="84 percent performance" @mouseenter="pick(c.id,4)" @focus="pick(c.id,4)"/>
-     <line v-if="c.type==='speed'" x1="160" y1="135" x2="212" y2="89" class="cg-stroke"/><text x="160" y="160" text-anchor="middle" class="cg-metric">84%</text><text x="160" y="185" text-anchor="middle">{{ c.type==='speed'?'performance index':'load index' }}</text>
+     <line v-if="c.type==='speed'" x1="160" y1="135" x2="232" y2="95" class="cg-stroke"/><text x="160" y="160" text-anchor="middle" class="cg-metric">84%</text><text x="160" y="185" text-anchor="middle">{{ c.type==='speed'?'performance index':'load index' }}</text>
     </template>
     <template v-else-if="c.type==='bullet'">
      <g v-for="(v,i) in [82,65,95]" :key="i" tabindex="0" :aria-label="`${['Throughput','Latency','Uptime'][i]}: ${v}%, target ${[75,80,90][i]}%`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><text x="25" :y="25+i*55">{{ ['Throughput','Latency','Uptime'][i] }} · {{ v }} / {{ [75,80,90][i] }}%</text><rect x="25" :y="34+i*55" width="270" height="15" rx="7" fill="var(--cg-line)"/><rect x="25" :y="34+i*55" :width="v*2.7" height="15" rx="7" class="cg-fill"/><line :x1="25+[75,80,90][i]*2.7" :x2="25+[75,80,90][i]*2.7" :y1="29+i*55" :y2="54+i*55" stroke="var(--cg-text)" stroke-width="2"/></g>
@@ -124,7 +126,7 @@ const ticks=[0,25,50,75,100]
      <g v-for="(r,i) in [{x:20,y:20,w:124.2,h:160,t:'Storage',pct:45},{x:144.2,y:20,w:151.8,h:87.27,t:'Compute',pct:30},{x:144.2,y:107.27,w:91.08,h:72.73,t:'Network',pct:15},{x:235.28,y:107.27,w:60.72,h:72.73,t:'Cache',pct:10}]" :key="i" tabindex="0" :aria-label="r.t+' '+r.pct+'%'" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="r.x" :y="r.y" :width="r.w" :height="r.h" rx="8" class="cg-fill" stroke="var(--cg-panel)" stroke-width="4" :opacity="1-i*.2"/><text :x="r.x+6" :y="r.y+20" class="cg-inverse">{{ r.t }}</text><text :x="r.x+6" :y="r.y+r.h-10" class="cg-inverse">{{ r.pct }}%</text></g>
     </template>
     <template v-else-if="c.type==='stream'">
-     <path :d="spline(values.map(v=>v*.8+20))+second.slice().reverse().map((v,j)=>` L${X(5-j)},${Y(v*.25+18)}`).join('')+' Z'" fill="var(--cg-accent)" opacity=".25"/><path :d="spline(second.map(v=>v*.65+28))+second.slice().reverse().map((v,j)=>` L${X(5-j)},${Y(v*.25+18)}`).join('')+' Z'" fill="var(--cg-accent)" opacity=".35"/><path :d="spline(values.map(v=>v*.8+20))" class="cg-stroke"/><path :d="spline(second.map(v=>v*.65+28))" class="cg-stroke cg-secondary"/>
+     <path :d="spline(values.map(v=>v*.8+20))+reverseSpline(second.map(v=>v*.25+18))+' Z'" fill="var(--cg-accent)" opacity=".25"/><path :d="spline(second.map(v=>v*.65+28))+reverseSpline(second.map(v=>v*.25+18))+' Z'" fill="var(--cg-accent)" opacity=".35"/><path :d="spline(values.map(v=>v*.8+20))" class="cg-stroke"/><path :d="spline(second.map(v=>v*.65+28))" class="cg-stroke cg-secondary"/>
     </template>
     <template v-else-if="c.type==='waterfall'">
      <g v-for="(r,i) in [{v:60,b:0,t:'Start'},{v:30,b:60,t:'Inflow'},{v:20,b:70,t:'Outflow'},{v:70,b:0,t:'Net'}]" :key="i" tabindex="0" :aria-label="`${r.t}: ${i===2?'-':i===1?'+':''}${r.v}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="30+i*73" :y="Y(r.b+r.v)" width="45" :height="r.v*1.5" rx="7" class="cg-fill" :opacity="i===2?.4:1"/><text :x="52+i*73" y="190" text-anchor="middle">{{ r.t }}</text></g><path d="M75 76 H103 M148 31 H176 M221 61 H249" class="cg-gridline"/>
