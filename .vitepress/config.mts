@@ -97,6 +97,7 @@ export default defineConfig({
         { text: 'Iconos', link: '/fundamentos/iconos' }
       ] },
       { text: 'Full UI catalog', link: '/ui-kit' },
+      { text: 'Tables', link: '/tables', collapsed: true, items: ['Basic','Striped','Hover rows','Compact','Bordered','Sticky header','Sortable','Search and column filters','Pagination','Selectable rows','Row actions','Expandable rows','Numeric columns with deltas','Footer totals','Empty state','Loading skeleton','Responsive card layout'].map(t=>({ text: t, link: '/tables#' + ({'Search and column filters':'filterable','Numeric columns with deltas':'deltas','Responsive card layout':'responsive','Hover rows':'hover'}[t]||t.toLowerCase().replace(/ /g,'-')) })) },
       { text: 'Componentes', link: '/components', collapsed: true, items: [
         { text: 'Accordion', link: '/components#accordion' },
         { text: 'Alerts', link: '/components#alerts' },
@@ -121,7 +122,7 @@ export default defineConfig({
         { text: 'Progress', link: '/components#progress' },
         { text: 'Scrollspy', link: '/components#scrollspy' },
         { text: 'Spinners/Loaders', link: '/components#spinners-loaders' },
-        { text: 'Tables', link: '/components#tables' },
+        { text: 'Tables', link: '/tables' },
         { text: 'Toasts', link: '/components#toasts' },
         { text: 'Tooltips', link: '/components#tooltips' }
       ] },
