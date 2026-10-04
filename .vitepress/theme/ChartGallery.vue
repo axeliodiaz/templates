@@ -130,6 +130,7 @@ const ticks=[0,25,50,75,100]
      <g v-for="(r,i) in [{v:60,b:0,t:'Start'},{v:30,b:60,t:'Inflow'},{v:20,b:70,t:'Outflow'},{v:70,b:0,t:'Net'}]" :key="i" tabindex="0" :aria-label="`${r.t}: ${i===2?'-':i===1?'+':''}${r.v}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="30+i*73" :y="Y(r.b+r.v)" width="45" :height="r.v*1.5" rx="7" class="cg-fill" :opacity="i===2?.4:1"/><text :x="52+i*73" y="190" text-anchor="middle">{{ r.t }}</text></g><path d="M75 76 H103 M148 31 H176 M221 61 H249" class="cg-gridline"/>
     </template>
     <template v-else-if="c.type==='range'"><path :d="band" :fill="`url(#grad-${props.language}-${c.id})`"/><path :d="spline(rangeUpper)" class="cg-stroke"/><path :d="spline(rangeLower)" class="cg-stroke cg-secondary"/></template>
+    <g v-if="c.type==='stream'||c.type==='range'"><circle v-for="(v,i) in values" :key="i" :cx="X(i)" :cy="Y(c.type==='range'?rangeUpper[i]:v*.8+20)" r="6" class="cg-dot" tabindex="0" :aria-label="`${labels[i]}: ${c.type==='range'?'min '+rangeLower[i]+', max '+rangeUpper[i]:values[i]+' primary, '+second[i]+' secondary'}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"/></g>
    </svg>
    <div class="cg-readout" aria-live="polite">{{ readout(c) }}</div>
    <div class="cg-values" role="group" :aria-label="c.title+' data readout'"><button v-for="o in options(c)" :key="o.i" :aria-pressed="current(c.id)===o.i" @click="pick(c.id,o.i)" @focus="pick(c.id,o.i)">{{ o.label }}</button></div>
@@ -146,5 +147,5 @@ const ticks=[0,25,50,75,100]
 </style>
 
 <style>
-.cg-note{color:var(--vp-c-text-2)}.cg-card svg{animation:cg-reveal .65s ease-out both}.cg-card .cg-stroke{animation:cg-line-in .8s ease-out both}.cg-card:nth-child(2n) svg{animation-delay:.08s}@keyframes cg-reveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}@keyframes cg-line-in{from{stroke-dasharray:400;stroke-dashoffset:400}to{stroke-dashoffset:0}}@media(prefers-reduced-motion:reduce){.cg-card svg,.cg-card .cg-stroke{animation:none!important}}
+.cg-note{color:var(--vp-c-text-2)}.cg-card svg{animation:cg-reveal .65s ease-out both}.cg-card .cg-stroke:not(.cg-secondary){animation:cg-line-in .8s ease-out}.cg-card:nth-child(2n) svg{animation-delay:.08s}@keyframes cg-reveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}@keyframes cg-line-in{from{stroke-dasharray:400;stroke-dashoffset:400}to{stroke-dashoffset:0}}@media(prefers-reduced-motion:reduce){.cg-card svg,.cg-card .cg-stroke{animation:none!important}}
 </style>
