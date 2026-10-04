@@ -33,7 +33,7 @@ case 'heat':case 'matrix':return `Cell ${i+1}: ${heat(i,c.id)*3} events`;
 case 'donut':return `${names[i%4]}: ${shares[i%4]}%`;
 case 'sankey':return ['Source A: 60 units','Source B: 40 units','Destination X: 50 units','Destination Y: 50 units'][i%4];
 case 'waterfall':return ['Opening 60','Inflow +30','Outflow -20','Closing 70'][i%4];
-case 'candle':{let v=values.value[j];return `${labels[j]}: open ${v+100}, high ${v+115}, low ${v+94}, close ${v+(j%2?-9:9)}`}
+case 'candle':{let v=values.value[j];return `${labels[j]}: open ${v+100}, high ${v+115}, low ${v+85}, close ${v+100+(j%2?-9:9)}`}
 case 'stream':return `${labels[j]}: lower ${Math.round(second.value[j]*.25+18)}, middle ${Math.round(second.value[j]*.65+28)}, upper ${Math.round(values.value[j]*.8+20)}`;
 case 'range':return `${labels[j]}: min ${rangeLower.value[j]}, max ${rangeUpper.value[j]}`;
 case 'pyramid':return `Tier ${4-i%4}: ${[24,50,75,100][i%4]} units`;
@@ -88,7 +88,7 @@ const ticks=[0,25,50,75,100]
      <text x="160" y="191" text-anchor="middle">secondary units (x) · primary units (y)</text>
     </template>
     <template v-else-if="c.type==='candle'">
-     <g v-for="(v,i) in values" :key="i" tabindex="0" :aria-label="`${labels[i]} open ${v+100}, high ${v+115}, low ${v+94}, close ${v+(j%2?-9:9)}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><line :x1="X(i)" :x2="X(i)" :y1="Y(v+15)" :y2="Y(v-6)" class="cg-stroke"/><rect :x="X(i)-9" :y="Y(v+(i%2?0:9))" width="18" height="13.5" rx="3" :fill="i%2?'var(--cg-panel)':'var(--cg-accent)'" stroke="var(--cg-accent)" stroke-width="2"/></g><text x="298" y="17" text-anchor="end">price offset +100</text>
+     <g v-for="(v,i) in values" :key="i" tabindex="0" :aria-label="`${labels[i]} open ${v+100}, high ${v+115}, low ${v+85}, close ${v+100+(i%2?-9:9)}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><line :x1="X(i)" :x2="X(i)" :y1="Y(v+15)" :y2="Y(v-15)" class="cg-stroke"/><rect :x="X(i)-9" :y="Y(v+(i%2?0:9))" width="18" height="13.5" rx="3" :fill="i%2?'var(--cg-panel)':'var(--cg-accent)'" stroke="var(--cg-accent)" stroke-width="2"/></g><text x="298" y="17" text-anchor="end">price offset +100</text>
     </template>
     <template v-else-if="c.type==='pyramid'||c.type==='funnel'">
      <g v-for="(v,i) in c.type==='pyramid'?[24,50,75,100]:[100,75,50,24]" :key="i" tabindex="0" :aria-label="`Stage ${i+1}: ${v} percent`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="c.type==='pyramid'?160-(24+i*25):35" :y="18+i*40" :width="c.type==='pyramid'?48+i*50:v*2.5" height="28" rx="10" class="cg-fill" :opacity="1-i*.18"/><text :x="c.type==='pyramid'?160:45" :y="37+i*40" :text-anchor="c.type==='pyramid'?'middle':'start'" class="cg-inverse">{{ c.type==='pyramid'?`Tier ${4-i}`:`${v}%` }}</text></g>
