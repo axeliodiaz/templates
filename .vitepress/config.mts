@@ -16,7 +16,10 @@ export default defineConfig({
   ],
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' }
+      { text: 'Home', link: '/' },
+      { text: 'Lustro', link: '/lustro' },
+      { text: 'Felix', link: '/felix' },
+      { text: 'PulseFit', link: '/pulsefit' }
     ],
     sidebar: {
       '/felix': [
@@ -37,8 +40,7 @@ export default defineConfig({
             { text: 'Full UI catalog', link: '/felix/components/catalog' },
             { text: 'Atoms', link: '/felix/components/atoms' },
             { text: 'Molecules', link: '/felix/components/molecules' },
-            { text: 'Organisms', link: '/felix/components/organisms' },
-            { text: 'Charts', link: '/felix/components/charts' }
+            { text: 'Organisms', link: '/felix/components/organisms' }
           ]
         },
         {
@@ -47,7 +49,11 @@ export default defineConfig({
             { text: 'Design tokens', link: '/felix/tokens' },
             { text: 'Markdown', link: '/felix/markdown' },
             { text: 'Motion', link: '/felix/motion' },
-            { text: 'Graphs', link: '/felix/graphs' },
+            { text: 'Graphs', link: '/felix/graphs' }
+          ]
+        },
+        { text: 'Charts', link: '/felix/components/charts', items: [{ text: 'Reporting patterns', link: '/felix/components/charts#reporting-patterns' }] },
+        { text: 'Examples', collapsed: false, items: [
             { text: 'Messaging', link: '/felix/messaging' },
             { text: 'Calendar', link: '/felix/calendar' },
             { text: 'Projects', link: '/felix/projects' },
@@ -65,7 +71,11 @@ export default defineConfig({
           text: 'PulseFit',
           items: [
             { text: 'Foundations', link: '/pulsefit' },
-            { text: 'Components', link: '/pulsefit/components' },
+            { text: 'Components', link: '/pulsefit/components' }
+          ]
+        },
+        { text: 'Charts', link: '/pulsefit/charts', items: [{ text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
+        { text: 'Examples', collapsed: false, items: [
             { text: 'Messaging', link: '/pulsefit/messaging' },
             { text: 'Calendar', link: '/pulsefit/calendar' },
             { text: 'Staff', link: '/pulsefit/staff' },
@@ -127,26 +137,23 @@ export default defineConfig({
         { text: 'Comprobante de compra', link: '/correos#comprobante-de-compra' },
         { text: 'Membresía por vencer', link: '/correos#membresia-por-vencer' }
       ] },
-      { text: 'Ejemplos', link: '/ejemplos/', collapsed: true, items: [
-        { text: 'Introducción', link: '/ejemplos/' },
-        { text: 'Users', link: '/ejemplos/users' },
-        { text: 'Coaches', link: '/ejemplos/coaches' },
-        { text: 'Admin', link: '/ejemplos/admin' }
+      { text: 'Examples', collapsed: false, items: [
+        { text: 'Messaging', link: '/messaging' },
+        { text: 'Calendar', link: '/calendar' },
+        { text: 'Projects', link: '/projects' },
+        { text: 'Dependencies', link: '/dependencies' },
+        { text: 'Node flow', link: '/node-flow' },
+        { text: 'Finance', link: '/finance' },
+        { text: 'Reports', link: '/reports' },
+        { text: 'Shipping', link: '/shipping' },
+        { text: 'Pricing', link: '/pricing' },
+        { text: 'Role examples', link: '/ejemplos/', collapsed: true, items: [
+          { text: 'Introducción', link: '/ejemplos/' },
+          { text: 'Users', link: '/ejemplos/users' },
+          { text: 'Coaches', link: '/ejemplos/coaches' },
+          { text: 'Admin', link: '/ejemplos/admin' }
+        ] }
       ] },
-      {
-        text: 'Design languages',
-        items: [
-          { text: 'Lustro', link: '/lustro' },
-          { text: 'Felix', link: '/felix' },
-          { text: 'Messaging (Lustro)', link: '/messaging' },
-          { text: 'Calendar (Lustro)', link: '/calendar' },
-          { text: 'Projects (Lustro)', link: '/projects' },
-          { text: 'Dependencies (Lustro)', link: '/dependencies' },
-          { text: 'Node flow (Lustro)', link: '/node-flow' },
-          { text: 'Finance (Lustro)', link: '/finance' },
-          { text: 'Reports (Lustro)', link: '/reports' },
-          { text: 'Shipping (Lustro)', link: '/shipping' },
-          { text: 'Pricing (Lustro)', link: '/pricing' },
           { text: 'Charts', link: '/graphs', collapsed: true, items: [
             { text: 'Introducción', link: '/graphs#data-charts' },
             { text: 'Line & Area', link: '/graphs#charts-line-area' },
@@ -154,11 +161,10 @@ export default defineConfig({
             { text: 'Pie & Doughnut', link: '/graphs#charts-pie-doughnut' },
             { text: 'Radar & Polar', link: '/graphs#charts-radar-polar' },
             { text: 'Scatter & Bubble', link: '/graphs#charts-scatter-bubble' },
-            { text: 'Mixed', link: '/graphs#charts-mixed' }
+            { text: 'Mixed', link: '/graphs#charts-mixed' },
+            { text: 'Reporting patterns', link: '/graphs#reporting-patterns' }
           ] },
           { text: 'Motion', link: '/motion' }
-        ]
-      }
     ]
     },
     socialLinks: [
