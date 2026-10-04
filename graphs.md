@@ -1,4 +1,5 @@
 <script setup>
+import ReportsDashboard from './.vitepress/theme/ReportsDashboard.vue'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 const canvas = ref(null)
 const playing = ref(true)
@@ -145,3 +146,29 @@ Adapted from two private motion prototypes created on September 29, 2026. This c
 <style>
 .chart-intro{display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:22px 0;padding:18px 20px;border:1px solid #4e4e72;border-radius:16px;background:linear-gradient(120deg,#2b264a,#181a31 70%);box-shadow:0 14px 35px #0004}.chart-intro p{margin:6px 0 0;color:#d3d1e5}.chart-chooser{display:flex;gap:5px;padding:4px;border:1px solid #606187;border-radius:10px;background:#151627}.chart-chooser button{min-height:38px;padding:6px 13px;border:0;border-radius:7px;background:transparent;color:#cfcde4;font:600 13px 'DM Sans',sans-serif;cursor:pointer}.chart-chooser button[aria-pressed=true]{background:linear-gradient(120deg,#595bc5,#9b4e9b);color:white}.chart-chooser button:focus-visible{outline:2px solid #67e8f9;outline-offset:2px}.chart-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:20px 0}.chart-card{min-width:0;display:flex;flex-direction:column;padding:18px;border:1px solid #414361;border-radius:16px;background:linear-gradient(145deg,#23223b,#17182a);box-shadow:0 10px 30px #0003}.chart-card .chart-top{min-height:106px}.chart-top span{font:600 10px 'JetBrains Mono',monospace;color:#b8adff;letter-spacing:.1em}.chart-top h3{margin:5px 0!important;font-size:20px!important;color:#fff}.chart-top p{margin:0;color:#cac8dc;font-size:13px}.chart-card svg{display:block;width:100%;height:190px;overflow:visible}.chart-card svg text{fill:#bfc0d8;font:10px 'DM Sans',sans-serif}.chart-card svg .chart-value{fill:#fafaff;font-weight:700}.chart-grid{fill:none;stroke:#777b9a;stroke-opacity:.4;stroke-width:1}.chart-card small{display:block;margin-top:auto;padding-top:13px;color:#c6c3da;line-height:1.45}.chart-legend{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:11px;color:#d7d4e8;min-height:22px}.chart-legend span{display:inline-flex;align-items:center;gap:4px}.chart-legend i{display:inline-block;width:9px;height:9px;margin-right:2px;border-radius:2px;background:#a5b4fc}.chart-legend i.pink{background:#f9a8d4}.chart-legend i.avg{width:14px;height:0;border-radius:0;background:transparent;border-top:2px dashed #22d3ee}.chart-legend i.trend{width:14px;height:2px;border-radius:0;background:#818cf8}.chart-avg{stroke:#22d3ee;stroke-width:2;stroke-dasharray:5 4;fill:none}.chart-trend{stroke:#818cf8;stroke-width:2.5;stroke-linecap:round}.chart-donut,.chart-gauge{width:174px;height:174px;display:grid;place-items:center;border-radius:50%;margin:8px auto 15px}.chart-donut>div,.chart-gauge>div{display:flex;flex-direction:column;align-items:center;justify-content:center;width:110px;height:110px;border-radius:50%;background:#1b1c33;color:#fff}.chart-donut strong,.chart-gauge strong,.chart-metric strong{font:700 29px 'Space Grotesk',sans-serif}.chart-donut span,.chart-gauge span{font:600 10px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#c3c1dc}.chart-gauge{background:conic-gradient(#818cf8 var(--progress),#363850 0)}.chart-metric{display:flex;align-items:baseline;gap:10px;color:white}.chart-metric span{color:#c7c4da;font-size:12px}.chart-heat{display:grid;grid-template-columns:27px repeat(7,minmax(0,1fr));gap:4px;align-items:center;margin:20px 0 42px}.chart-heat>span{text-align:center;font-size:10px;color:#d9d6e8;min-width:0}.chart-heat .chart-heat-cell{display:grid;place-items:center;height:48px;border:1px solid #ffffff24;border-radius:6px;font-weight:700;color:#fff}.chart-table-wrap{overflow-x:auto}.chart-data{width:100%;min-width:300px;border-collapse:collapse}.chart-data caption{text-align:left;color:#d6d3e9;margin-bottom:8px}.chart-data th,.chart-data td{padding:8px 12px;border-bottom:1px solid #484a67;text-align:left}.chart-data th{color:#e3dfff}@media(max-width:720px){.chart-gallery{grid-template-columns:1fr}.chart-card{padding:15px}.chart-intro{align-items:start}.chart-chooser{width:100%;justify-content:space-around}.chart-chooser button{flex:1}}@media(prefers-reduced-motion:reduce){.chart-gallery *, .chart-intro *{transition:none!important;animation:none!important}}
 </style>
+
+## Reporting patterns
+
+These are reusable patterns, not a template or a complete product. The [Reports example](/reports) composes them into a dashboard.
+
+### KPI cards with change and target
+Use one main value, an explicit unit, a change badge and a target or sample size. Never communicate change with color alone.
+
+### Two-series line
+Compare trends with solid and dashed strokes, a legend and a keyboard-accessible month readout. Keep units explicit; normalize or use separate axes when units differ in real data.
+
+### Ranked category bars
+Show count and percentage with each label. Rank the shares and use one common scale.
+
+### Sortable performance table
+Offer jobs, response and rating sorts. Keep column labels readable; narrow screens get a keyboard-focusable horizontal scroll region.
+
+<ReportsDashboard language="lustro" />
+
+### Usage
+
+```vue
+<ReportsDashboard language="lustro" />
+```
+
+Import the shared ReportsDashboard.vue source and replace the synthetic data. Preserve labels, keyboard focus and the readout; add loading, empty and error states before connecting a backend.
