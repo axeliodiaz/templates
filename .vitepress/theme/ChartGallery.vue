@@ -61,7 +61,7 @@ const ticks=[0,25,50,75,100]
    <div v-else-if="c.type==='kpi'" class="cg-kpi"><strong>${{ (48920+(sample==='B'?7400:0)).toLocaleString('en-US') }}</strong><span>+14.2% · monthly revenue</span><svg viewBox="0 0 320 190" role="img" aria-label="Revenue sparkline"><path :d="line" class="cg-stroke"/><circle v-for="(v,i) in values" :key="i" :cx="X(i)" :cy="Y(v)" r="5" class="cg-dot" tabindex="0" :aria-label="`${labels[i]} revenue index ${v}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"/></svg></div>
    <svg v-else viewBox="0 0 320 200" role="group" :aria-label="c.title+', sample dataset '+sample">
     <defs><linearGradient :id="`grad-${props.language}-${c.id}`" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--cg-accent)" stop-opacity=".5"/><stop offset="1" stop-color="var(--cg-accent)" stop-opacity=".04"/></linearGradient></defs>
-    <template v-if="['line','area','hybrid','bars','step','stacked','candle','range','stream'].includes(c.type)">
+    <template v-if="['line','area','hybrid','bars','step','stacked','candle','range','stream'].includes(c.type)&&!(c.type==='bars'&&mode[c.id])">
      <g v-for="v in ticks" :key="v"><line x1="30" x2="294" :y1="Y(v)" :y2="Y(v)" class="cg-gridline"/><text x="6" :y="Y(v)+4">{{ v }}</text></g>
      <text v-for="(m,i) in labels" :key="m" :x="X(i)" y="191" text-anchor="middle">{{ m }}</text>
     </template>
@@ -73,7 +73,7 @@ const ticks=[0,25,50,75,100]
      <circle v-for="(v,i) in values" :key="i" :cx="X(i)" :cy="Y(v)" r="5" class="cg-dot" tabindex="0" :aria-label="`${labels[i]} ${v} units`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"/>
     </template>
     <template v-else-if="c.type==='bars'">
-     <g v-for="(v,i) in values" :key="i" tabindex="0" :aria-label="`${labels[i]} ${v} units`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect v-if="!mode[c.id]" :x="X(i)-12" :y="Y(v)" width="24" :height="166-Y(v)" rx="12" class="cg-fill"/><rect v-else x="45" :y="17+i*25" :width="v*2.4" height="16" rx="8" class="cg-fill"/></g>
+     <g v-for="(v,i) in values" :key="i" tabindex="0" :aria-label="`${labels[i]} ${v} units`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect v-if="!mode[c.id]" :x="X(i)-12" :y="Y(v)" width="24" :height="166-Y(v)" rx="12" class="cg-fill"/><text v-if="mode[c.id]" x="8" :y="29+i*25">{{ labels[i] }}</text><rect v-else-if="false"/><rect v-if="mode[c.id]" x="45" :y="17+i*25" :width="v*2.4" height="16" rx="8" class="cg-fill"/></g><text v-if="mode[c.id]" x="45" y="190">0</text><text v-if="mode[c.id]" x="165" y="190">50</text><text v-if="mode[c.id]" x="285" y="190">100</text>
     </template>
     <template v-else-if="c.type==='donut'">
      <circle cx="160" cy="98" r="58" class="cg-ring-bg" stroke-width="21"/>
@@ -86,7 +86,7 @@ const ticks=[0,25,50,75,100]
      <text x="160" y="191" text-anchor="middle">secondary units (x) · primary units (y)</text>
     </template>
     <template v-else-if="c.type==='candle'">
-     <g v-for="(v,i) in values" :key="i" tabindex="0" :aria-label="`${labels[i]} open ${v+100}, high ${v+115}, low ${v+94}, close ${v+109}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><line :x1="X(i)" :x2="X(i)" :y1="Y(v+15)" :y2="Y(v-9)" class="cg-stroke"/><rect :x="X(i)-9" :y="Y(v+9)" width="18" height="14" rx="3" :fill="i%2?'var(--cg-panel)':'var(--cg-accent)'" stroke="var(--cg-accent)" stroke-width="2"/></g><text x="298" y="17" text-anchor="end">price offset +100</text>
+     <g v-for="(v,i) in values" :key="i" tabindex="0" :aria-label="`${labels[i]} open ${v+100}, high ${v+115}, low ${v+94}, close ${v+109}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><line :x1="X(i)" :x2="X(i)" :y1="Y(v+15)" :y2="Y(v-6)" class="cg-stroke"/><rect :x="X(i)-9" :y="Y(v+9)" width="18" height="13.5" rx="3" :fill="i%2?'var(--cg-panel)':'var(--cg-accent)'" stroke="var(--cg-accent)" stroke-width="2"/></g><text x="298" y="17" text-anchor="end">price offset +100</text>
     </template>
     <template v-else-if="c.type==='pyramid'||c.type==='funnel'">
      <g v-for="(v,i) in c.type==='pyramid'?[24,50,75,100]:[100,75,50,24]" :key="i" tabindex="0" :aria-label="`Stage ${i+1}: ${v} percent`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="c.type==='pyramid'?160-(24+i*25):35" :y="18+i*40" :width="c.type==='pyramid'?48+i*50:v*2.5" height="28" rx="10" class="cg-fill" :opacity="1-i*.18"/><text :x="c.type==='pyramid'?160:45" :y="37+i*40" :text-anchor="c.type==='pyramid'?'middle':'start'" class="cg-inverse">{{ c.type==='pyramid'?`Tier ${4-i}`:`${v}%` }}</text></g>
