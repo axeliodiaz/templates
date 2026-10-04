@@ -1,3 +1,7 @@
+<script setup>
+import ReportsDashboard from '../../.vitepress/theme/ReportsDashboard.vue'
+</script>
+
 # Charts
 
 Data graphics in the Felix palette. Series order: turquoise `#2bf2f1`, cactus `#42b552`, mango `#f19d38`, blueberry `#6e58d8`, papaya `#f77b42`, lime `#dcff00`. Numbers below are a sample of monthly transfers, not live data.
@@ -189,3 +193,29 @@ Data graphics in the Felix palette. Series order: turquoise `#2bf2f1`, cactus `#
 </div>
 
 Start every bar and area at zero. Pie and donut slices must sum to one whole. Status colors stay semantic: do not use papaya or cactus as a brand series when the mark means error or success.
+
+## Reporting patterns
+
+These are reusable patterns, not a template or a complete product. The [Reports example](/felix/reports) composes them into a dashboard.
+
+### KPI cards with change and target
+Use one main value, an explicit unit, a change badge and a target or sample size. Never communicate change with color alone.
+
+### Two-series line
+Compare trends with solid and dashed strokes, a legend and a keyboard-accessible month readout. Keep units explicit; normalize or use separate axes when units differ in real data.
+
+### Ranked category bars
+Show count and percentage with each label. Rank the shares and use one common scale.
+
+### Sortable performance table
+Offer jobs, response and rating sorts. Keep column labels readable; narrow screens get a keyboard-focusable horizontal scroll region.
+
+<ReportsDashboard language="felix" />
+
+### Usage
+
+```vue
+<ReportsDashboard language="felix" />
+```
+
+Import the shared ReportsDashboard.vue source and replace the synthetic data. Preserve labels, keyboard focus and the readout; add loading, empty and error states before connecting a backend.
