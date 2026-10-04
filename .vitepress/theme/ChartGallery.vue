@@ -4,9 +4,11 @@ const props = defineProps({ language: { type: String, default: 'lustro' } })
 const sample = ref('A')
 const focus = ref({})
 const mode = ref({})
+const displayState = ref('ready')
 const cards = [
  ['heat-green','Activity heatmap · Emerald','heat'],['heat-blue','Activity heatmap · Sky','heat'],['heat-purple','Activity heatmap · Violet','heat'],
  ['line','Spline line · single / dual','line'],['bars','Pill bars · column / row','bars'],['area','Gradient spline area','area'],['donut','Rounded donut','donut'],['hybrid','Pill bars + spline','hybrid'],['scatter','Scatter matrix','scatter'],['candle','Financial candlesticks','candle'],['kpi','KPI with sparkline','kpi'],['pyramid','Tier pyramid','pyramid'],['radial','Grouped radial arcs','radial'],['speed','Speedometer','speed'],['bullet','Bullet targets','bullet'],['sankey','Sankey flow','sankey'],['step','Step progression','step'],['stacked','Stacked tones','stacked'],['radar','Radar web','radar'],['rings','Concentric progress rings','rings'],['funnel','Stage funnel','funnel'],['matrix','Dot-matrix heatmap','matrix'],['telemetry','Telemetry sparklines','telemetry'],['bubble','Bubble clusters','bubble'],['treemap','Tile treemap','treemap'],['stream','Stream wave','stream'],['arc','Arc meter','arc'],['waterfall','Waterfall steps','waterfall'],['polar','Polar radial pillars','polar'],['range','Min/max range band','range']
+,['histogram','Histogram · attendance distribution','histogram'],['gantt','Gantt · studio timeline','gantt'],['hourmap','Day × hour · studio occupancy','hourmap'],['cohort','Cohort · member retention','cohort'],['boxplot','Box plot · revenue spread','boxplot'],['combo','Dual-axis · revenue / occupancy','combo'],['dumbbell','Dumbbell · plan / actual','dumbbell'],['sunburst','Sunburst · expense hierarchy','sunburst']
 ].map(([id,title,type])=>({id,title,type}))
 const values = computed(()=>sample.value==='A'?[35,48,41,61,56,74]:[42,36,55,48,72,64])
 const second = computed(()=>sample.value==='A'?[20,28,25,39,33,46]:[26,19,35,28,43,36])
@@ -23,12 +25,20 @@ const sum=computed(()=>values.value.reduce((a,b)=>a+b,0))
 const radar=computed(()=>values.value.map((v,i)=>{const a=i*Math.PI/3-Math.PI/2;return `${160+Math.cos(a)*v*.85},${100+Math.sin(a)*v*.85}`}).join(' '))
 const shares=[40,30,20,10]
 const ringLengths=shares.map(v=>v/100*2*Math.PI*58)
-const options=c=>{let n=6;if(c.type==='radial')n=4;else if(['rings','polar','bullet','telemetry'].includes(c.type))n=3;else if(['donut','sankey','waterfall','pyramid','funnel','treemap'].includes(c.type))n=4;else if(['speed','arc'].includes(c.type))n=1;return Array.from({length:n},(_,i)=>({i,label:['line','area','bars','hybrid','scatter','candle','kpi','step','stacked','radar','bubble','stream','range'].includes(c.type)?labels[i]:'Item '+(i+1)}))}
+const options=c=>{if(extraTypes.includes(c.type))return extraOptions(c.type);let n=6;if(c.type==='radial')n=4;else if(['rings','polar','bullet','telemetry'].includes(c.type))n=3;else if(['donut','sankey','waterfall','pyramid','funnel','treemap'].includes(c.type))n=4;else if(['speed','arc'].includes(c.type))n=1;return Array.from({length:n},(_,i)=>({i,label:['line','area','bars','hybrid','scatter','candle','kpi','step','stacked','radar','bubble','stream','range'].includes(c.type)?labels[i]:'Item '+(i+1)}))}
 const heat=(i,variant)=>((i*13+(variant.length*7)+(sample.value==='B'?19:0))%6)
 const current=(id)=>focus.value[id]??0
 function pick(id,i){focus.value={...focus.value,[id]:i}}
 function toggle(id){mode.value={...mode.value,[id]:!mode.value[id]}}
 function readout(c){const i=current(c.id), j=i%6;const names=['Core','UI','Assets','Other'];switch(c.type){
+case 'histogram':return `${bins[i]} attendees: ${histogram.value[i]} classes`;
+case 'gantt':return `${tasks[i].label}: ${tasks[i].start}:00–${tasks[i].end}:00`;
+case 'hourmap':return `${days[Math.floor(i/6)]} ${hours[i%6]}:00: ${occupancy(i)}% occupied`;
+case 'cohort':return `${cohortNames[Math.floor(i/4)]}, month ${i%4}: ${retention(i)}% retained`;
+case 'boxplot':return `${classNames[i]} revenue: min $${boxes.value[i][0]}, Q1 $${boxes.value[i][1]}, median $${boxes.value[i][2]}, Q3 $${boxes.value[i][3]}, max $${boxes.value[i][4]}`;
+case 'combo':return `${labels[i]}: revenue $${values.value[i]*100}, occupancy ${occupancySeries.value[i]}%`;
+case 'dumbbell':return `${classNames[i]}: plan ${planned[i]}, actual ${actual.value[i]} attendees`;
+case 'sunburst':return `${sunNodes[i].label}: ${sunNodes[i].value}% of total expenses`;
 case 'heat':case 'matrix':return `Cell ${i+1}: ${heat(i,c.id)*3} events`;
 case 'donut':return `${names[i%4]}: ${shares[i%4]}%`;
 case 'sankey':return ['Source A: 60 units','Source B: 40 units','Destination X: 50 units','Destination Y: 50 units'][i%4];
@@ -48,16 +58,37 @@ case 'scatter':case 'bubble':return `Node ${j+1}: x ${second.value[j]}, y ${valu
 case 'stacked':return `${labels[j]}: base ${second.value[j]}, top ${values.value[j]-second.value[j]}, total ${values.value[j]}`;
 default:return `${labels[j]}: ${values.value[j]} units · secondary ${second.value[j]}`}}
 
+
+const extraTypes=['histogram','gantt','hourmap','cohort','boxplot','combo','dumbbell','sunburst']
+const bins=['0–9','10–19','20–29','30–39','40–49','50–59']
+const histogram=computed(()=>sample.value==='A'?[3,8,16,22,12,5]:[2,6,13,25,18,8])
+const days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], hours=[6,9,12,15,18,21]
+const occupancy=i=>(i*17+23+(sample.value==='B'?11:0))%101
+const cohortNames=['Jan','Feb','Mar','Apr']
+const retention=i=>i%4===0?100:Math.max(0,100-(i%4)*15-Math.floor(i/4)*4+(sample.value==='B'?5:0))
+const cohortCells=Array.from({length:16},(_,i)=>i).filter(i=>Math.floor(i/4)+i%4<4)
+const tasks=[{label:'Coach A',start:6,end:10},{label:'Coach B',start:9,end:14},{label:'Coach C',start:13,end:18},{label:'Coach D',start:17,end:22}]
+const classNames=['Ride','Power','Endurance','Sprint']
+const boxes=computed(()=>[[20,40,55,70,90],[30,50,65,80,100],[15,35,50,65,85],[25,45,60,75,95]].map(a=>a.map(v=>v+(sample.value==='B'?5:0))))
+const planned=[25,35,40,30], actual=computed(()=>sample.value==='A'?[21,38,32,34]:[27,31,43,28])
+const occupancySeries=computed(()=>sample.value==='A'?[62,74,68,85,79,91]:[68,61,76,72,89,83])
+const sunNodes=[{label:'Operations',value:60,start:0,end:216,inner:28,outer:56},{label:'People',value:40,start:216,end:360,inner:28,outer:56},{label:'Operations / Rent',value:35,start:0,end:126,inner:60,outer:86},{label:'Operations / Utilities',value:25,start:126,end:216,inner:60,outer:86},{label:'People / Coaches',value:30,start:216,end:324,inner:60,outer:86},{label:'People / Support',value:10,start:324,end:360,inner:60,outer:86}]
+function sector(n){const point=(r,a)=>[160+r*Math.cos((a-90)*Math.PI/180),100+r*Math.sin((a-90)*Math.PI/180)];const a=point(n.outer,n.start),b=point(n.outer,n.end),c=point(n.inner,n.end),d=point(n.inner,n.start),large=n.end-n.start>180?1:0;return `M${a} A${n.outer},${n.outer} 0 ${large} 1 ${b} L${c} A${n.inner},${n.inner} 0 ${large} 0 ${d} Z`}
+function extraOptions(type){let names=type==='histogram'?bins:type==='gantt'?tasks.map(t=>t.label):type==='hourmap'?Array.from({length:42},(_,i)=>`${days[Math.floor(i/6)]} ${hours[i%6]}h`):type==='cohort'?cohortCells.map(i=>`${cohortNames[Math.floor(i/4)]} M${i%4}`):type==='sunburst'?sunNodes.map(n=>n.label):type==='combo'?labels:classNames;return names.map((label,i)=>({label,i:type==='cohort'?cohortCells[i]:i}))}
+const chartNotes={histogram:'Classes grouped into equal 10-attendee bins. Bar height = class count.',gantt:'Coach shifts on a 06:00–22:00 timeline. Bar length = duration.',hourmap:'Rows = day, columns = hour. Darker cells = higher occupancy (0–100%).',cohort:'Signup month × months since signup. Blank future months are not zero.',boxplot:'Whiskers = min/max; box = Q1–Q3; line = median. Revenue in dollars.',combo:'Bars use the left dollar axis; dashed line uses the right occupancy axis (%).',dumbbell:'Outlined dot = planned; filled dot = actual attendees.',sunburst:'Inner ring = category; outer ring = subcategory. Angle = share of total.'}
+
 const ticks=[0,25,50,75,100]
 </script>
 <template>
 <div class="cg" :class="`cg-${props.language}`">
- <div class="cg-toolbar"><p>30 live chart patterns · synthetic data</p><label>Dataset <select v-model="sample"><option>A</option><option>B</option></select></label></div>
+ <div class="cg-toolbar"><p>38 live chart patterns · synthetic data</p><label>Dataset <select v-model="sample"><option>A</option><option>B</option></select></label><label>Chart state <select v-model="displayState"><option value="ready">Ready</option><option value="loading">Loading</option><option value="empty">Empty</option></select></label></div>
  <p class="cg-note">Hover or focus a mark to read its value. Use the readout buttons for a keyboard and touch readout. Motion follows your reduced-motion setting. These are Vue/SVG demos, not the reference's React package.</p>
  <div class="cg-grid">
   <section v-for="c in cards" :key="c.id" class="cg-card" :id="`mono-${c.id}`">
    <header><h3>{{ c.title }}</h3><button v-if="['line','bars'].includes(c.type)" @click="toggle(c.id)" :aria-pressed="!!mode[c.id]">{{ c.type==='line'?(mode[c.id]?'Single':'Dual'):(mode[c.id]?'Column':'Row') }}</button></header>
-   <div v-if="c.type==='heat'||c.type==='matrix'" class="cg-matrix" :class="c.type==='heat'?'weeks':'dots'" :style="{'--heat':c.id==='heat-green'?'#21875d':c.id==='heat-blue'?'#1678b5':c.id==='heat-purple'?'#8052c7':'var(--cg-accent)'}" role="group" :aria-label="c.title">
+   <div v-if="displayState==='loading'" class="cg-state" role="status" aria-busy="true"><div class="cg-skeleton" aria-hidden="true"><i v-for="i in 6" :key="i" :style="{height:(20+i*10)+'%'}"></i></div><span>Loading chart data…</span></div>
+   <div v-else-if="displayState==='empty'" class="cg-state" role="status"><strong>No data yet</strong><span>Choose a date range with records to show this chart.</span><button @click="displayState='ready'">Show sample data</button></div>
+   <div v-else-if="c.type==='heat'||c.type==='matrix'" class="cg-matrix" :class="c.type==='heat'?'weeks':'dots'" :style="{'--heat':c.id==='heat-green'?'#21875d':c.id==='heat-blue'?'#1678b5':c.id==='heat-purple'?'#8052c7':'var(--cg-accent)'}" role="group" :aria-label="c.title">
     <button v-for="i in c.type==='heat'?140:35" :key="i" :style="{background:'var(--heat)',opacity:.15+heat(i-1,c.id)*.17}" :aria-label="`Cell ${i}: ${heat(i-1,c.id)*3} events`" @mouseenter="pick(c.id,i-1)" @focus="pick(c.id,i-1)"></button>
    </div>
    <div v-else-if="c.type==='kpi'" class="cg-kpi"><strong>${{ (48920+(sample==='B'?7400:0)).toLocaleString('en-US') }}</strong><span>+14.2% · monthly revenue</span><svg viewBox="0 0 320 190" role="img" aria-label="Revenue sparkline"><path :d="line" class="cg-stroke"/><circle v-for="(v,i) in values" :key="i" :cx="X(i)" :cy="Y(v)" r="5" class="cg-dot" tabindex="0" :aria-label="`${labels[i]} revenue index ${v}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"/></svg></div>
@@ -132,10 +163,45 @@ const ticks=[0,25,50,75,100]
      <g v-for="(r,i) in [{v:60,b:0,t:'Start'},{v:30,b:60,t:'Inflow'},{v:20,b:70,t:'Outflow'},{v:70,b:0,t:'Net'}]" :key="i" tabindex="0" :aria-label="`${r.t}: ${i===2?'-':i===1?'+':''}${r.v}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="30+i*73" :y="Y(r.b+r.v)" width="45" :height="r.v*1.5" rx="7" class="cg-fill" :opacity="i===2?.4:1"/><text :x="52+i*73" y="190" text-anchor="middle">{{ r.t }}</text></g><path d="M75 76 H103 M148 31 H176 M221 61 H249" class="cg-gridline"/>
     </template>
     <template v-else-if="c.type==='range'"><path :d="band" :fill="`url(#grad-${props.language}-${c.id})`"/><path :d="spline(rangeUpper)" class="cg-stroke"/><path :d="spline(rangeLower)" class="cg-stroke cg-secondary"/></template>
+
+
+    <template v-else-if="c.type==='histogram'">
+     <g v-for="v in [0,10,20,30]" :key="v"><line x1="30" x2="302" :y1="166-v*4" :y2="166-v*4" class="cg-gridline"/><text x="6" :y="170-v*4">{{ v }}</text></g>
+     <g v-for="(v,i) in histogram" :key="i" tabindex="0" :aria-label="`${bins[i]} attendees: ${v} classes`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="32+i*45" :y="166-v*4" width="43" :height="v*4" class="cg-fill" :opacity="current(c.id)===i?1:.55"/><text :x="53+i*45" y="184" text-anchor="middle">{{ bins[i] }}</text></g><text x="32" y="12">Classes</text>
+    </template>
+    <template v-else-if="c.type==='gantt'">
+     <g v-for="h in [6,10,14,18,22]" :key="h"><line :x1="75+(h-6)*14" :x2="75+(h-6)*14" y1="25" y2="165" class="cg-gridline"/><text :x="75+(h-6)*14" y="185" text-anchor="middle">{{ h }}h</text></g>
+     <g v-for="(t,i) in tasks" :key="i" tabindex="0" :aria-label="`${t.label}: ${t.start}:00 to ${t.end}:00`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><text x="4" :y="49+i*33">{{ t.label }}</text><rect :x="75+(t.start-6)*14" :y="33+i*33" :width="(t.end-t.start)*14" height="23" rx="5" class="cg-fill" :opacity="current(c.id)===i?1:.5"/></g>
+    </template>
+    <template v-else-if="c.type==='hourmap'">
+     <text v-for="(h,j) in hours" :key="h" :x="69+j*41" y="13" text-anchor="middle">{{ h }}h</text><text v-for="(d,j) in days" :key="d" x="3" :y="35+j*22">{{ d }}</text>
+     <rect v-for="i in 42" :key="i" :x="50+((i-1)%6)*41" :y="20+Math.floor((i-1)/6)*22" width="37" height="19" rx="3" class="cg-fill" :opacity=".12+occupancy(i-1)*.0088" tabindex="0" :aria-label="`${days[Math.floor((i-1)/6)]} ${hours[(i-1)%6]}:00: ${occupancy(i-1)}% occupied`" @mouseenter="pick(c.id,i-1)" @focus="pick(c.id,i-1)"/><text x="50" y="192">Light 0% → dark 100%</text>
+    </template>
+    <template v-else-if="c.type==='cohort'">
+     <text v-for="j in 4" :key="j" :x="93+(j-1)*58" y="20" text-anchor="middle">M{{ j-1 }}</text><text v-for="(d,j) in cohortNames" :key="d" x="12" :y="56+j*34">{{ d }}</text>
+     <g v-for="i in cohortCells" :key="i" tabindex="0" :aria-label="`${cohortNames[Math.floor(i/4)]}, month ${i%4}: ${retention(i)}% retained`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="65+(i%4)*58" :y="34+Math.floor(i/4)*34" width="54" height="30" rx="4" class="cg-fill" :opacity=".35+retention(i)*.0065"/><text :x="92+(i%4)*58" :y="54+Math.floor(i/4)*34" text-anchor="middle" class="cg-inverse">{{ retention(i) }}%</text></g><text x="65" y="190">M0 = signup month · future = blank</text>
+    </template>
+    <template v-else-if="c.type==='boxplot'">
+     <g v-for="v in [0,50,100]" :key="v"><line :x1="75+v*2" :x2="75+v*2" y1="15" y2="170" class="cg-gridline"/><text :x="75+v*2" y="190" text-anchor="middle">${{ v }}</text></g>
+     <g v-for="(b,i) in boxes" :key="i" tabindex="0" :aria-label="`${classNames[i]}: min ${b[0]}, Q1 ${b[1]}, median ${b[2]}, Q3 ${b[3]}, max ${b[4]} dollars`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><text x="2" :y="37+i*36">{{ classNames[i] }}</text><line :x1="75+b[0]*2" :x2="75+b[4]*2" :y1="33+i*36" :y2="33+i*36" class="cg-stroke"/><path :d="`M${75+b[0]*2},${24+i*36} v18 M${75+b[4]*2},${24+i*36} v18`" class="cg-stroke"/><rect :x="75+b[1]*2" :y="22+i*36" :width="(b[3]-b[1])*2" height="22" class="cg-fill"/><line :x1="75+b[2]*2" :x2="75+b[2]*2" :y1="22+i*36" :y2="44+i*36" stroke="var(--cg-ink)" stroke-width="3"/></g>
+    </template>
+    <template v-else-if="c.type==='combo'">
+     <g v-for="v in [0,25,50,75,100]" :key="v"><line x1="40" x2="275" :y1="Y(v)" :y2="Y(v)" class="cg-gridline"/><text x="0" :y="Y(v)+4">${{ v*100 }}</text><text x="282" :y="Y(v)+4">{{ v }}%</text></g>
+     <text x="0" y="10">Revenue</text><text x="264" y="10">Occupied</text>
+     <g v-for="(v,i) in values" :key="i" tabindex="0" :aria-label="`${labels[i]}: ${v*100} dollars revenue, ${occupancySeries[i]}% occupancy`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><rect :x="48+i*42" :y="Y(v)" width="19" :height="166-Y(v)" rx="4" class="cg-fill" opacity=".4"/><circle :cx="57+i*42" :cy="Y(occupancySeries[i])" r="4" class="cg-dot"/><text :x="57+i*42" y="188" text-anchor="middle">{{ labels[i] }}</text></g><polyline :points="occupancySeries.map((v,i)=>`${57+i*42},${Y(v)}`).join(' ')" class="cg-stroke cg-secondary"/>
+    </template>
+    <template v-else-if="c.type==='dumbbell'">
+     <text v-for="v in [0,25,50]" :key="v" :x="80+v*4" y="189" text-anchor="middle">{{ v }}</text>
+     <g v-for="(v,i) in actual" :key="i" tabindex="0" :aria-label="`${classNames[i]}: ${planned[i]} planned, ${v} actual attendees`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"><text x="0" :y="39+i*35">{{ classNames[i] }}</text><line :x1="80+planned[i]*4" :x2="80+v*4" :y1="35+i*35" :y2="35+i*35" class="cg-stroke"/><circle :cx="80+planned[i]*4" :cy="35+i*35" r="6" fill="var(--cg-panel)" stroke="var(--cg-accent)" stroke-width="2"/><circle :cx="80+v*4" :cy="35+i*35" r="6" class="cg-dot"/></g>
+    </template>
+    <template v-else-if="c.type==='sunburst'">
+     <path v-for="(n,i) in sunNodes" :key="n.label" :d="sector(n)" class="cg-fill" :opacity="current(c.id)===i?1:.38+i*.08" stroke="var(--cg-panel)" stroke-width="2" tabindex="0" :aria-label="`${n.label}: ${n.value}% of total expenses`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"/><text x="160" y="104" text-anchor="middle">100%</text>
+    </template>
     <g v-if="c.type==='stream'||c.type==='range'"><circle v-for="(v,i) in values" :key="i" :cx="X(i)" :cy="Y(c.type==='range'?rangeUpper[i]:v*.8+20)" r="6" class="cg-dot" tabindex="0" :aria-label="`${labels[i]}: ${c.type==='range'?'min '+rangeLower[i]+', max '+rangeUpper[i]:values[i]+' primary, '+second[i]+' secondary'}`" @mouseenter="pick(c.id,i)" @focus="pick(c.id,i)"/></g>
    </svg>
-   <div class="cg-readout" aria-live="polite">{{ readout(c) }}</div>
-   <div class="cg-values" role="group" :aria-label="c.title+' data readout'"><button v-for="o in options(c)" :key="o.i" :aria-pressed="current(c.id)===o.i" @click="pick(c.id,o.i)" @focus="pick(c.id,o.i)">{{ o.label }}</button></div>
+   <p v-if="chartNotes[c.type]" class="cg-explanation">{{ chartNotes[c.type] }}</p>
+   <div v-if="displayState==='ready'" class="cg-readout" aria-live="polite">{{ readout(c) }}</div>
+   <div v-if="displayState==='ready'" class="cg-values" role="group" :aria-label="c.title+' data readout'"><button v-for="o in options(c)" :key="o.i" :aria-pressed="current(c.id)===o.i" @click="pick(c.id,o.i)" @focus="pick(c.id,o.i)">{{ o.label }}</button></div>
   </section>
  </div>
 </div>
@@ -145,6 +211,7 @@ const ticks=[0,25,50,75,100]
 .cg-felix{--cg-bg:#f5f1eb;--cg-panel:#fffefa;--cg-line:#ded9d1;--cg-text:#172d2c;--cg-muted:#526460;--cg-accent:#087b76;--cg-ink:#fffefa}html.felix-dark .cg-felix{--cg-bg:#082422;--cg-panel:#152f2e;--cg-line:#35605f;--cg-text:#fefcf9;--cg-muted:#c3e2e1;--cg-accent:#69d7d2;--cg-ink:#082422}
 .cg-pulsefit{--cg-bg:#f5f5f5;--cg-panel:#fff;--cg-line:#dedede;--cg-text:#212121;--cg-muted:#5f666d;--cg-accent:#7a5a1f;--cg-ink:#fff;font-family:'Rubik',sans-serif}
 .cg *{box-sizing:border-box}.cg-toolbar{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:16px;background:var(--cg-bg);border:1px solid var(--cg-line);border-radius:14px}.cg-toolbar p{margin:0!important}.cg select,.cg button{font:inherit;color:var(--cg-text);background:var(--cg-panel);border:1px solid var(--cg-line);border-radius:8px;padding:5px 9px}.cg button{cursor:pointer}.cg button:focus-visible,.cg [tabindex]:focus-visible{outline:2px solid var(--cg-accent);outline-offset:3px}.cg button[aria-pressed=true]{background:var(--cg-accent);color:var(--cg-ink)}.cg-note{color:var(--cg-muted);font-size:12px}.cg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.cg-card{min-width:0;background:var(--cg-panel);border:1px solid var(--cg-line);padding:18px;border-radius:18px;scroll-margin-top:80px;transition:transform .25s,border-color .25s}.cg-card:hover{transform:translateY(-2px);border-color:var(--cg-accent)}.cg-card header{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:44px}.cg-card h3{margin:0!important;font-size:14px!important;line-height:1.4;letter-spacing:0;border:0!important;color:var(--cg-text)!important}.cg-card svg{width:100%;height:auto;display:block;min-height:150px;margin:12px 0}.cg-card svg text{fill:var(--cg-muted);font-size:10px;font-family:inherit}.cg-card svg .cg-metric{font-size:23px;fill:var(--cg-text);font-weight:700}.cg-card svg .cg-inverse{fill:var(--cg-ink);font-size:10px}.cg-gridline{stroke:var(--cg-line);stroke-width:1;stroke-dasharray:3 4;fill:none}.cg-stroke{stroke:var(--cg-accent);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:d .4s}.cg-secondary{stroke-dasharray:5 5;opacity:.6}.cg-fill,.cg-dot{fill:var(--cg-accent)}.cg-dot{stroke:var(--cg-panel);stroke-width:1}.cg-faint{opacity:.25}.cg-ring-bg{stroke:var(--cg-line);fill:none}.cg-readout{color:var(--cg-muted);min-height:36px;font-size:11px}.cg-values{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}.cg-values button{font-size:10px;padding:4px 6px}.cg-matrix{display:grid;gap:3px;margin:24px 0;min-height:160px}.cg-matrix.weeks{grid-template-rows:repeat(7,1fr);grid-template-columns:repeat(20,1fr);grid-auto-flow:column}.cg-matrix.dots{grid-template-columns:repeat(7,1fr)}.cg-matrix button{border:0;padding:0;border-radius:3px;min-width:0;transition:opacity .2s}.cg-kpi strong{display:block;font-size:28px;margin-top:16px}.cg-kpi span{font-size:11px;color:var(--cg-muted)}.cg-kpi svg{min-height:120px}
+.cg-explanation{font-size:11px;color:var(--cg-muted);min-height:36px;margin:10px 0!important}.cg-state{height:210px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;color:var(--cg-muted);text-align:center}.cg-skeleton{height:130px;width:90%;display:flex;align-items:flex-end;gap:8px}.cg-skeleton i{flex:1;background:var(--cg-line);border-radius:6px;animation:cg-skeleton 1.5s ease-in-out infinite alternate}@keyframes cg-skeleton{to{opacity:.3}}
 @container(max-width:580px){.cg-grid{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){.cg *{transition:none!important;animation:none!important}.cg-card:hover{transform:none}} 
 </style>
 
