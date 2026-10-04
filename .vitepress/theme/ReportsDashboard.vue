@@ -55,7 +55,7 @@ const smooth = arr => arr.map((v, i) => `${i ? 'L' : 'M'}${x(i)},${y(v)}`).join(
   </div>
   <section class="rp-panel"><div class="rp-panel-head"><h4>Contractor performance · last quarter</h4><label><span class="rp-sr">Sort by</span><select v-model="sort"><option>Jobs</option><option>Response</option><option>Rating</option></select></label></div>
     <p class="rp-table-hint">On narrow screens, scroll the table horizontally to see every column.</p>
-    <div class="rp-scroll" tabindex="0" role="region" aria-label="Contractor performance, horizontally scrollable"><table><thead><tr><th>Contractor</th><th>Jobs</th><th aria-label="Average response">Response</th><th aria-label="Completion rate">Done %</th><th>On time</th><th aria-label="Average cost">Cost</th><th aria-label="Tenant rating">Rating</th></tr></thead><tbody>
+    <div class="rp-scroll" tabindex="0" role="region" aria-label="Contractor performance, horizontally scrollable"><table><thead><tr><th>Contractor</th><th>Jobs</th><th aria-label="Average response">Resp.</th><th aria-label="Completion rate">Done</th><th>On time</th><th aria-label="Average cost">Cost</th><th aria-label="Tenant rating">Rating</th></tr></thead><tbody>
       <tr v-for="r in rows" :key="r.name"><td>{{ r.name }}</td><td>{{ r.jobs }}</td><td>{{ r.resp }} min</td><td>{{ r.done }}%</td><td>{{ r.ontime }}%</td><td>${{ r.cost }}</td><td>★ {{ r.rating }}</td></tr>
     </tbody></table></div>
   </section>
@@ -92,4 +92,8 @@ html.felix-dark .rp-felix{--rp-bg:#082422;--rp-panel:#152f2e;--rp-line:#35605f;-
 </style>
 <style>
 .vp-doc .rp table{display:table!important;width:100%!important;table-layout:fixed!important}.vp-doc .rp th,.vp-doc .rp td{padding:8px 4px!important;white-space:normal!important}.vp-doc .rp th:first-child{width:23%}.vp-doc .rp th:not(:first-child){width:12.833%}.vp-doc .rp tr{border-top:0!important}
+</style>
+
+<style>
+.vp-doc .rp th,.vp-doc .rp td{padding-left:6px!important;padding-right:6px!important}.vp-doc .rp th{font-size:10px!important;text-transform:none!important;letter-spacing:0!important}.vp-doc .rp th:not(:first-child){width:12.833%}
 </style>
