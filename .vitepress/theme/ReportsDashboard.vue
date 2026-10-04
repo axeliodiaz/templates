@@ -55,7 +55,7 @@ const smooth = arr => arr.map((v, i) => `${i ? 'L' : 'M'}${x(i)},${y(v)}`).join(
   </div>
   <section class="rp-panel"><div class="rp-panel-head"><h4>Contractor performance · last quarter</h4><label><span class="rp-sr">Sort by</span><select v-model="sort"><option>Jobs</option><option>Response</option><option>Rating</option></select></label></div>
     <p class="rp-table-hint">On narrow screens, scroll the table horizontally to see every column.</p>
-    <div class="rp-scroll" tabindex="0" role="region" aria-label="Contractor performance, horizontally scrollable"><table><thead><tr><th>Contractor</th><th>Jobs</th><th>Avg response</th><th>Completion</th><th>On time</th><th>Avg cost</th><th>Tenant rating</th></tr></thead><tbody>
+    <div class="rp-scroll" tabindex="0" role="region" aria-label="Contractor performance, horizontally scrollable"><table><thead><tr><th>Contractor</th><th>Jobs</th><th aria-label="Average response">Response</th><th aria-label="Completion rate">Done %</th><th>On time</th><th aria-label="Average cost">Cost</th><th aria-label="Tenant rating">Rating</th></tr></thead><tbody>
       <tr v-for="r in rows" :key="r.name"><td>{{ r.name }}</td><td>{{ r.jobs }}</td><td>{{ r.resp }} min</td><td>{{ r.done }}%</td><td>{{ r.ontime }}%</td><td>${{ r.cost }}</td><td>★ {{ r.rating }}</td></tr>
     </tbody></table></div>
   </section>
