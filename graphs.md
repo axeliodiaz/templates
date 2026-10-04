@@ -68,6 +68,10 @@ const meanY = computed(() => py(overlay.value.mean))
 const trendPath = computed(() => path(overlay.value.fitted))
 </script>
 
+
+
+# Graphs
+
 ## Animated chart catalog
 
 30 patterns from the [Amicro reference](https://amicro.vercel.app/mono-charts), adapted to this template. Each card has synthetic data, hover/focus readouts, keyboard buttons and reduced-motion support. Dataset A/B updates time-series charts; allocation, target and flow examples use their own labeled fixtures. Existing chart examples remain below.
@@ -79,8 +83,6 @@ const trendPath = computed(() => path(overlay.value.fitted))
 Import ChartGallery.vue for a demo or extract a single card into your application. Replace the synthetic arrays, label units, handle missing data, and add loading/empty/error states before live use. Sankey band width encodes flow; treemap tile area encodes share; waterfall bars encode signed deltas; candlesticks expose open/high/low/close in the readout. Charts should supplement, not replace, accessible data tables. The three colored activity grids are variants of one chart family.
 
 
-
-# Graphs
 
 Data visualization examples and a dependency graph for Lustro. All numbers below are **synthetic samples**, not live metrics. Switch between the sample series to see how the charts respond. [Motion patterns](/motion) explain when movement helps.
 
