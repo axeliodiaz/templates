@@ -19,6 +19,7 @@ import './node-flow.css'
 import './ejemplos.css'
 import { mountFelixDemos } from './felix-demos'
 import { mountCartMotion } from './cartmotion'
+import { mountLumenMotion } from './lumenmotion'
 
 const THEME_KEY = 'felix-theme'
 
@@ -61,6 +62,7 @@ export default {
         document.documentElement.classList.toggle('tpl-sc', m('/scopecraft'))
         document.documentElement.classList.toggle('tpl-lmn', m('/lumen'))
         if (route.path.endsWith('/cart-summary') || route.path.endsWith('/lustro')) nextTick(() => setTimeout(mountCartMotion, 50))
+        if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
         if (onFelix) syncFelixTheme()
         if (onFelix) nextTick(() => mountFelixDemos())
       })

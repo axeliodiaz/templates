@@ -79,8 +79,12 @@ export default defineConfig({
             { text: 'Cart summary', link: '/lumen/cart-summary' },
             { text: 'Price timeline', link: '/lumen/price-timeline' }
         ] },
+        { text: 'Charts', link: '/lumen/charts' },
         { text: 'Examples', collapsed: false, items: [
-            { text: 'Overview', link: '/lumen/overview' }
+            { text: 'Overview', link: '/lumen/overview' },
+            { text: 'Traces', link: '/lumen/traces' },
+            { text: 'Agents', link: '/lumen/agents' },
+            { text: 'Evals', link: '/lumen/evals' }
         ] }
       ],
       '/scopecraft': [

@@ -27,4 +27,4 @@ Model series colors are stable everywhere: purple, yellow, cyan. Amber marks an 
 
 ## Pages
 
-[Components](/lumen/components) and the [Overview](/lumen/overview) example. More pages are added as the template grows: Traces, Agents, Evals, Prompts, Playground, Gateway, Cost and Budget, API Keys, Team, Settings.
+[Components](/lumen/components), [Charts](/lumen/charts) (38 patterns) and the [Overview](/lumen/overview), [Traces](/lumen/traces), [Agents](/lumen/agents) and [Evals](/lumen/evals) examples. More pages are added as the template grows: Prompts, Playground, Gateway, Cost and Budget, API Keys, Team, Settings.
