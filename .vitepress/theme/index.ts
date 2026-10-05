@@ -10,6 +10,8 @@ import './projects.css'
 import './pulsefit.css'
 import './scopecraft.css'
 import './lumen.css'
+import './chrome.css'
+import './bsx.css'
 import './component-catalog.css'
 import './dependency-graph.css'
 import './node-flow.css'
@@ -51,6 +53,11 @@ export default {
       watchEffect(() => {
         const onFelix = route.path === '/felix' || route.path.startsWith('/felix/')
         document.documentElement.classList.toggle('felix', onFelix)
+        const p = route.path
+        const m = (b: string) => p === b || p.startsWith(b + '/')
+        document.documentElement.classList.toggle('tpl-pf', m('/pulsefit'))
+        document.documentElement.classList.toggle('tpl-sc', m('/scopecraft'))
+        document.documentElement.classList.toggle('tpl-lmn', m('/lumen'))
         if (onFelix) syncFelixTheme()
         if (onFelix) nextTick(() => mountFelixDemos())
       })

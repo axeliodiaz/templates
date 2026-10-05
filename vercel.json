@@ -2,5 +2,11 @@
   "framework": "vitepress",
   "buildCommand": "npm run build",
   "outputDirectory": ".vitepress/dist",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "git": {
+    "deploymentEnabled": {
+      "*": false,
+      "main": true
+    }
+  }
 }
