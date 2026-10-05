@@ -41,3 +41,8 @@
 
 .sc-page .VPDoc .container,.sc-page .VPDoc .content-container,.sc-page .VPDoc .content{max-width:1180px!important}.sc-page .VPDoc .content{padding-right:24px}
 .sc-wide{overflow-x:auto}
+.sc-chart-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}.sc-chart-grid .sc-card{padding:12px}.sc-chart-grid svg{display:block;margin:2px 0}
+@media(prefers-reduced-motion:no-preference){.sc-chart-grid svg polyline,.sc-chart-grid svg rect,.sc-chart-grid svg path{animation:scfade .8s ease-out both}}
+@keyframes scfade{from{opacity:0}to{opacity:1}}
+.vp-doc .sc table.sc-t{display:table;width:100%;margin:0}.vp-doc .sc table.sc-t tr,.vp-doc .sc table.sc-t tr:nth-child(2n){background:#fff!important}.vp-doc .sc table.sc-t td{color:var(--text);background:#fff!important;font-size:13px}.vp-doc .sc table.sc-t th{color:var(--muted);background:#fff!important}
+.vp-doc .sc table.sc-t tbody tr:hover td{background:var(--bg)!important}
