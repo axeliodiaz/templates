@@ -114,3 +114,7 @@ Reference overlays stay on that same scale and off the brand gradient: a **dashe
 2. One gradient accent per view - if the primary button is a gradient, nearby accents stay flat.
 3. Text over glass sits at full opacity; only surfaces are translucent.
 4. Status stays semantic: success/error/warning never use brand gradients.
+
+## More components
+
+The full Bootstrap-depth set (52 sections) is on [Components: Bootstrap set](/lustro/components-more).
