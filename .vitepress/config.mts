@@ -114,7 +114,8 @@ export default defineConfig({
           items: [
             { text: 'Foundations', link: '/pulsefit' },
             { text: 'Components', link: '/pulsefit/components' },
-            { text: 'Components: Bootstrap set', link: '/pulsefit/components-more' }
+            { text: 'Components: Bootstrap set', link: '/pulsefit/components-more' },
+            { text: 'KPI cards', link: '/pulsefit/kpi-cards' }
           ]
         },
         { text: 'Charts', link: '/pulsefit/charts', items: [{ text: '38 animated charts', link: '/pulsefit/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
