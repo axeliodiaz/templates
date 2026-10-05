@@ -43,6 +43,7 @@ export default defineConfig({
             { text: 'Bootstrap set', link: '/felix/components-more' },
             { text: 'Cart summary', link: '/felix/cart-summary' },
             { text: 'Price timeline', link: '/felix/price-timeline' },
+            { text: 'Gauges', link: '/felix/gauges' },
             { text: 'Atoms', link: '/felix/components/atoms' },
             { text: 'Molecules', link: '/felix/components/molecules' },
             { text: 'Organisms', link: '/felix/components/organisms' }
@@ -77,7 +78,8 @@ export default defineConfig({
             { text: 'Components', link: '/lumen/components' },
             { text: 'Components: Bootstrap set', link: '/lumen/components-more' },
             { text: 'Cart summary', link: '/lumen/cart-summary' },
-            { text: 'Price timeline', link: '/lumen/price-timeline' }
+            { text: 'Price timeline', link: '/lumen/price-timeline' },
+            { text: 'Gauges', link: '/lumen/gauges' }
         ] },
         { text: 'Charts', link: '/lumen/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -93,7 +95,8 @@ export default defineConfig({
             { text: 'Components', link: '/scopecraft/components' },
             { text: 'Components: Bootstrap set', link: '/scopecraft/components-more' },
             { text: 'Cart summary', link: '/scopecraft/cart-summary' },
-            { text: 'Price timeline', link: '/scopecraft/price-timeline' }
+            { text: 'Price timeline', link: '/scopecraft/price-timeline' },
+            { text: 'Gauges', link: '/scopecraft/gauges' }
         ] },
         { text: 'Charts', link: '/scopecraft/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -127,7 +130,8 @@ export default defineConfig({
             { text: 'Components: Bootstrap set', link: '/pulsefit/components-more' },
             { text: 'KPI cards', link: '/pulsefit/kpi-cards' },
             { text: 'Cart summary', link: '/pulsefit/cart-summary' },
-            { text: 'Price timeline', link: '/pulsefit/price-timeline' }
+            { text: 'Price timeline', link: '/pulsefit/price-timeline' },
+            { text: 'Gauges', link: '/pulsefit/gauges' }
           ]
         },
         { text: 'Charts', link: '/pulsefit/charts', items: [{ text: '38 animated charts', link: '/pulsefit/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
