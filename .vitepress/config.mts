@@ -20,7 +20,8 @@ export default defineConfig({
       { text: 'Lustro', link: '/lustro' },
       { text: 'Felix', link: '/felix' },
       { text: 'PulseFit', link: '/pulsefit' },
-      { text: 'Scopecraft', link: '/scopecraft' }
+      { text: 'Scopecraft', link: '/scopecraft' },
+      { text: 'Lumen', link: '/lumen' }
     ],
     sidebar: {
       '/felix': [
@@ -66,6 +67,15 @@ export default defineConfig({
             { text: 'Pricing', link: '/felix/pricing' }
           ]
         }
+      ],
+      '/lumen': [
+        { text: 'Lumen', items: [
+            { text: 'Foundations', link: '/lumen' },
+            { text: 'Components', link: '/lumen/components' }
+        ] },
+        { text: 'Examples', collapsed: false, items: [
+            { text: 'Overview', link: '/lumen/overview' }
+        ] }
       ],
       '/scopecraft': [
         { text: 'Scopecraft', items: [
