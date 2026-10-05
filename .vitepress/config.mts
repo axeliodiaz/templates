@@ -49,6 +49,7 @@ export default defineConfig({
             { text: 'Project dashboard', link: '/felix/project-dashboard' },
             { text: 'Forecast', link: '/felix/forecast' },
             { text: 'Order view', link: '/felix/order-view' },
+            { text: 'Dashboard blocks', link: '/felix/blocks' },
             { text: 'Atoms', link: '/felix/components/atoms' },
             { text: 'Molecules', link: '/felix/components/molecules' },
             { text: 'Organisms', link: '/felix/components/organisms' }
@@ -89,7 +90,8 @@ export default defineConfig({
             { text: 'Waste dashboard', link: '/lumen/waste-dashboard' },
             { text: 'Project dashboard', link: '/lumen/project-dashboard' },
             { text: 'Forecast', link: '/lumen/forecast' },
-            { text: 'Order view', link: '/lumen/order-view' }
+            { text: 'Order view', link: '/lumen/order-view' },
+            { text: 'Dashboard blocks', link: '/lumen/blocks' }
         ] },
         { text: 'Charts', link: '/lumen/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -111,7 +113,8 @@ export default defineConfig({
             { text: 'Waste dashboard', link: '/scopecraft/waste-dashboard' },
             { text: 'Project dashboard', link: '/scopecraft/project-dashboard' },
             { text: 'Forecast', link: '/scopecraft/forecast' },
-            { text: 'Order view', link: '/scopecraft/order-view' }
+            { text: 'Order view', link: '/scopecraft/order-view' },
+            { text: 'Dashboard blocks', link: '/scopecraft/blocks' }
         ] },
         { text: 'Charts', link: '/scopecraft/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -151,7 +154,8 @@ export default defineConfig({
             { text: 'Waste dashboard', link: '/pulsefit/waste-dashboard' },
             { text: 'Project dashboard', link: '/pulsefit/project-dashboard' },
             { text: 'Forecast', link: '/pulsefit/forecast' },
-            { text: 'Order view', link: '/pulsefit/order-view' }
+            { text: 'Order view', link: '/pulsefit/order-view' },
+            { text: 'Dashboard blocks', link: '/pulsefit/blocks' }
           ]
         },
         { text: 'Charts', link: '/pulsefit/charts', items: [{ text: '38 animated charts', link: '/pulsefit/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
