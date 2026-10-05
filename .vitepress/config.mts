@@ -19,7 +19,8 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Lustro', link: '/lustro' },
       { text: 'Felix', link: '/felix' },
-      { text: 'PulseFit', link: '/pulsefit' }
+      { text: 'PulseFit', link: '/pulsefit' },
+      { text: 'Scopecraft', link: '/scopecraft' }
     ],
     sidebar: {
       '/felix': [
@@ -65,6 +66,18 @@ export default defineConfig({
             { text: 'Pricing', link: '/felix/pricing' }
           ]
         }
+      ],
+      '/scopecraft': [
+        { text: 'Scopecraft', items: [
+            { text: 'Foundations', link: '/scopecraft' },
+            { text: 'Components', link: '/scopecraft/components' }
+        ] },
+        { text: 'Examples', collapsed: false, items: [
+            { text: 'Dashboard', link: '/scopecraft/dashboard' },
+            { text: 'Scope questions', link: '/scopecraft/scope' },
+            { text: 'Similar projects', link: '/scopecraft/similar' },
+            { text: 'Proposal', link: '/scopecraft/proposal' }
+        ] }
       ],
       '/pulsefit': [
         {
