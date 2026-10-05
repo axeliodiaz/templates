@@ -40,6 +40,7 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/felix/components/' },
             { text: 'Full UI catalog', link: '/felix/components/catalog' },
+            { text: 'Bootstrap set', link: '/felix/components-more' },
             { text: 'Atoms', link: '/felix/components/atoms' },
             { text: 'Molecules', link: '/felix/components/molecules' },
             { text: 'Organisms', link: '/felix/components/organisms' }
@@ -71,7 +72,8 @@ export default defineConfig({
       '/lumen': [
         { text: 'Lumen', items: [
             { text: 'Foundations', link: '/lumen' },
-            { text: 'Components', link: '/lumen/components' }
+            { text: 'Components', link: '/lumen/components' },
+            { text: 'Components: Bootstrap set', link: '/lumen/components-more' }
         ] },
         { text: 'Examples', collapsed: false, items: [
             { text: 'Overview', link: '/lumen/overview' }
@@ -80,7 +82,8 @@ export default defineConfig({
       '/scopecraft': [
         { text: 'Scopecraft', items: [
             { text: 'Foundations', link: '/scopecraft' },
-            { text: 'Components', link: '/scopecraft/components' }
+            { text: 'Components', link: '/scopecraft/components' },
+            { text: 'Components: Bootstrap set', link: '/scopecraft/components-more' }
         ] },
         { text: 'Charts', link: '/scopecraft/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -110,7 +113,8 @@ export default defineConfig({
           text: 'PulseFit',
           items: [
             { text: 'Foundations', link: '/pulsefit' },
-            { text: 'Components', link: '/pulsefit/components' }
+            { text: 'Components', link: '/pulsefit/components' },
+            { text: 'Components: Bootstrap set', link: '/pulsefit/components-more' }
           ]
         },
         { text: 'Charts', link: '/pulsefit/charts', items: [{ text: '38 animated charts', link: '/pulsefit/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
