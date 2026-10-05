@@ -1,0 +1,41 @@
+/* Per-template page chrome (nav, sidebar, doc, outline) so the shell follows each template. */
+html.tpl-pf{color-scheme:light;--vp-c-bg:#f5f5f5;--vp-c-bg-alt:#fafafa;--vp-c-bg-elv:#fff;--vp-c-bg-soft:#fafafa;--vp-c-bg-mute:#fafafa;--vp-c-text-1:#212121;--vp-c-text-2:#5f666d;--vp-c-text-3:#8a9097;--vp-c-divider:#e0e0e0;--vp-c-gutter:#e0e0e0;--vp-c-border:#e0e0e0;--vp-c-default-1:#fafafa;--vp-c-default-2:#e0e0e0;--vp-c-default-3:#e0e0e0;--vp-c-default-soft:#fafafa;--vp-c-brand-1:#8b6a2c;--vp-c-brand-2:#C9A66B;--vp-c-brand-3:#b8955c;--vp-c-brand-soft:#F5E6D3;--vp-sidebar-bg-color:#fff;--vp-nav-bg-color:#212529;--vp-code-bg:#fafafa;--vp-code-color:#212121;--vp-c-text-code:#8b6a2c;--vp-font-family-base:'Rubik',ui-sans-serif,system-ui,sans-serif}
+html.tpl-pf body{background:#f5f5f5;background-image:none;color:#212121}
+html.tpl-pf .VPNav,html.tpl-pf .VPNavBar,html.tpl-pf .VPNavBar .content,html.tpl-pf .VPNavBar .title,html.tpl-pf .VPNavBarMenuLink,html.tpl-pf .VPNavBarSearch .DocSearch-Button{background:#212529;color:#f5f5f5}
+html.tpl-pf .VPSidebar{background:#fff;border-right:1px solid #e0e0e0}
+html.tpl-pf .VPSidebarItem .text{color:#5f666d}html.tpl-pf .VPSidebarItem.is-active>.item .text,html.tpl-pf .VPSidebarItem .link:hover .text{color:#8b6a2c}
+html.tpl-pf .VPContent,html.tpl-pf .VPDoc,html.tpl-pf .VPDocAside,html.tpl-pf .VPDocFooter,html.tpl-pf .VPLocalNav{background:#f5f5f5}
+html.tpl-pf .vp-doc h1,html.tpl-pf .vp-doc h2,html.tpl-pf .vp-doc h3{color:#212121;letter-spacing:-.01em}html.tpl-pf .vp-doc h2{border-top-color:#e0e0e0}
+html.tpl-pf .vp-doc a{color:#8b6a2c}
+html.tpl-pf .VPDocAsideOutline .outline-link:hover,html.tpl-pf .VPDocAsideOutline .outline-link.active{color:#8b6a2c}
+html.tpl-pf .VPNavBarMenuLink.active,html.tpl-pf .VPNavBarMenuLink:hover{color:#8b6a2c}
+html.tpl-pf .VPNavBar.has-sidebar .divider,html.tpl-pf .VPNavBar .divider-line{background:#e0e0e0}
+html.tpl-pf .vp-doc :not(pre)>code{background:#fafafa;color:#8b6a2c}
+html.tpl-pf .VPSwitchAppearance,html.tpl-pf .VPNavBarAppearance{display:none}
+html.tpl-pf .vp-doc h1,html.tpl-pf .vp-doc h2,html.tpl-pf .vp-doc h3{font-family:'Montserrat',ui-sans-serif,sans-serif}
+html.tpl-sc{color-scheme:light;--vp-c-bg:#f4f4f5;--vp-c-bg-alt:#fff;--vp-c-bg-elv:#fff;--vp-c-bg-soft:#fff;--vp-c-bg-mute:#fff;--vp-c-text-1:#111113;--vp-c-text-2:#4a4d54;--vp-c-text-3:#6b6f76;--vp-c-divider:#e6e6e8;--vp-c-gutter:#e6e6e8;--vp-c-border:#e6e6e8;--vp-c-default-1:#fff;--vp-c-default-2:#e6e6e8;--vp-c-default-3:#e6e6e8;--vp-c-default-soft:#fff;--vp-c-brand-1:#2f6fdc;--vp-c-brand-2:#2f6fdc;--vp-c-brand-3:#1f56b8;--vp-c-brand-soft:#e8f0fd;--vp-sidebar-bg-color:#fff;--vp-nav-bg-color:#fff;--vp-code-bg:#fff;--vp-code-color:#111113;--vp-c-text-code:#2f6fdc;--vp-font-family-base:ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif}
+html.tpl-sc body{background:#f4f4f5;background-image:none;color:#111113}
+html.tpl-sc .VPNav,html.tpl-sc .VPNavBar,html.tpl-sc .VPNavBar .content,html.tpl-sc .VPNavBar .title,html.tpl-sc .VPNavBarMenuLink,html.tpl-sc .VPNavBarSearch .DocSearch-Button{background:#fff;color:#111113}
+html.tpl-sc .VPSidebar{background:#fff;border-right:1px solid #e6e6e8}
+html.tpl-sc .VPSidebarItem .text{color:#4a4d54}html.tpl-sc .VPSidebarItem.is-active>.item .text,html.tpl-sc .VPSidebarItem .link:hover .text{color:#2f6fdc}
+html.tpl-sc .VPContent,html.tpl-sc .VPDoc,html.tpl-sc .VPDocAside,html.tpl-sc .VPDocFooter,html.tpl-sc .VPLocalNav{background:#f4f4f5}
+html.tpl-sc .vp-doc h1,html.tpl-sc .vp-doc h2,html.tpl-sc .vp-doc h3{color:#111113;letter-spacing:-.01em}html.tpl-sc .vp-doc h2{border-top-color:#e6e6e8}
+html.tpl-sc .vp-doc a{color:#2f6fdc}
+html.tpl-sc .VPDocAsideOutline .outline-link:hover,html.tpl-sc .VPDocAsideOutline .outline-link.active{color:#2f6fdc}
+html.tpl-sc .VPNavBarMenuLink.active,html.tpl-sc .VPNavBarMenuLink:hover{color:#2f6fdc}
+html.tpl-sc .VPNavBar.has-sidebar .divider,html.tpl-sc .VPNavBar .divider-line{background:#e6e6e8}
+html.tpl-sc .vp-doc :not(pre)>code{background:#fff;color:#2f6fdc}
+html.tpl-sc .VPSwitchAppearance,html.tpl-sc .VPNavBarAppearance{display:none}
+html.tpl-lmn{color-scheme:light;--vp-c-bg:#fbfbfa;--vp-c-bg-alt:#f3f3f1;--vp-c-bg-elv:#fff;--vp-c-bg-soft:#f3f3f1;--vp-c-bg-mute:#f3f3f1;--vp-c-text-1:#17171a;--vp-c-text-2:#45464c;--vp-c-text-3:#74767d;--vp-c-divider:#e7e7e9;--vp-c-gutter:#e7e7e9;--vp-c-border:#e7e7e9;--vp-c-default-1:#f3f3f1;--vp-c-default-2:#e7e7e9;--vp-c-default-3:#e7e7e9;--vp-c-default-soft:#f3f3f1;--vp-c-brand-1:#6b5be0;--vp-c-brand-2:#7c6cf0;--vp-c-brand-3:#5a49d0;--vp-c-brand-soft:#efecfd;--vp-sidebar-bg-color:#fff;--vp-nav-bg-color:#fbfbfa;--vp-code-bg:#f3f3f1;--vp-code-color:#17171a;--vp-c-text-code:#6b5be0;--vp-font-family-base:ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif}
+html.tpl-lmn body{background:#fbfbfa;background-image:none;color:#17171a}
+html.tpl-lmn .VPNav,html.tpl-lmn .VPNavBar,html.tpl-lmn .VPNavBar .content,html.tpl-lmn .VPNavBar .title,html.tpl-lmn .VPNavBarMenuLink,html.tpl-lmn .VPNavBarSearch .DocSearch-Button{background:#fbfbfa;color:#17171a}
+html.tpl-lmn .VPSidebar{background:#fff;border-right:1px solid #e7e7e9}
+html.tpl-lmn .VPSidebarItem .text{color:#45464c}html.tpl-lmn .VPSidebarItem.is-active>.item .text,html.tpl-lmn .VPSidebarItem .link:hover .text{color:#6b5be0}
+html.tpl-lmn .VPContent,html.tpl-lmn .VPDoc,html.tpl-lmn .VPDocAside,html.tpl-lmn .VPDocFooter,html.tpl-lmn .VPLocalNav{background:#fbfbfa}
+html.tpl-lmn .vp-doc h1,html.tpl-lmn .vp-doc h2,html.tpl-lmn .vp-doc h3{color:#17171a;letter-spacing:-.01em}html.tpl-lmn .vp-doc h2{border-top-color:#e7e7e9}
+html.tpl-lmn .vp-doc a{color:#6b5be0}
+html.tpl-lmn .VPDocAsideOutline .outline-link:hover,html.tpl-lmn .VPDocAsideOutline .outline-link.active{color:#6b5be0}
+html.tpl-lmn .VPNavBarMenuLink.active,html.tpl-lmn .VPNavBarMenuLink:hover{color:#6b5be0}
+html.tpl-lmn .VPNavBar.has-sidebar .divider,html.tpl-lmn .VPNavBar .divider-line{background:#e7e7e9}
+html.tpl-lmn .vp-doc :not(pre)>code{background:#f3f3f1;color:#6b5be0}
+html.tpl-lmn .VPSwitchAppearance,html.tpl-lmn .VPNavBarAppearance{display:none}
