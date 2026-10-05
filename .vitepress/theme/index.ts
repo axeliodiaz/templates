@@ -18,6 +18,7 @@ import './dependency-graph.css'
 import './node-flow.css'
 import './ejemplos.css'
 import { mountFelixDemos } from './felix-demos'
+import { mountCartMotion } from './cartmotion'
 
 const THEME_KEY = 'felix-theme'
 
@@ -59,6 +60,7 @@ export default {
         document.documentElement.classList.toggle('tpl-pf', m('/pulsefit'))
         document.documentElement.classList.toggle('tpl-sc', m('/scopecraft'))
         document.documentElement.classList.toggle('tpl-lmn', m('/lumen'))
+        if (route.path.endsWith('/cart-summary') || route.path.endsWith('/lustro')) nextTick(() => setTimeout(mountCartMotion, 50))
         if (onFelix) syncFelixTheme()
         if (onFelix) nextTick(() => mountFelixDemos())
       })
