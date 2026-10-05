@@ -118,3 +118,5 @@ Reference overlays stay on that same scale and off the brand gradient: a **dashe
 ## More components
 
 The full Bootstrap-depth set (52 sections) is on [Components: Bootstrap set](/lustro/components-more).
+
+See also the [Cart summary](/lustro/cart-summary) receipt component.
