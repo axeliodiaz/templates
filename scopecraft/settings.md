@@ -1,0 +1,10 @@
+---
+aside: false
+pageClass: sc-page
+---
+
+# Settings
+
+Workspace fields and a switch row for each AI check.
+
+<div class="sc"><div class="sc-app"><aside class="sc-side"><div class="sc-brand"><i></i><div>Scopecraft<small>Brackenhall Studio</small></div></div><div class="sc-lab">Workspace</div><div class="sc-nav"><span>Dashboard</span></div><div class="sc-nav"><span>Opportunities</span><span class="sc-chip gr">8</span></div><div class="sc-nav"><span>Proposals</span><span class="sc-chip dn">1</span></div><div class="sc-nav"><span>Projects</span></div><div class="sc-lab">Library</div><div class="sc-nav"><span>Templates</span></div><div class="sc-nav"><span>Pricing</span></div><div class="sc-lab">Account</div><div class="sc-nav on"><span>Settings</span></div><div class="sc-nav"><span>Help and docs</span></div></aside><div class="sc-main"><div class="sc-top"><div class="sc-search">Search opportunities, clients, projects <kbd>&#8984;K</kbd></div><span class="sc-btn">This quarter</span><span class="sc-btn pri">+ New opportunity</span></div><h4 class="sc-hi">Settings</h4><div class="sc-grid2e"><div class="sc-card" style=""><div class="sc-cl">Workspace</div><div class="sc-wrap"><span class="sc-input">Brackenhall Studio</span><span class="sc-input f">USD</span></div></div><div class="sc-card" style=""><div class="sc-cl">AI checks</div><div class="sc-row" style="grid-template-columns:1fr auto"><span>Deliverables match scope</span><span class="sc-seg"><span class="on">On</span><span>Off</span></span></div><div class="sc-row" style="grid-template-columns:1fr auto"><span>Price matches recommendation</span><span class="sc-seg"><span class="on">On</span><span>Off</span></span></div><div class="sc-row" style="grid-template-columns:1fr auto"><span>Exclusions listed</span><span class="sc-seg"><span class="on">On</span><span>Off</span></span></div><div class="sc-row" style="grid-template-columns:1fr auto"><span>No unsupported commitments</span><span class="sc-seg"><span class="on">On</span><span>Off</span></span></div></div></div></div></div></div>

@@ -72,11 +72,27 @@ export default defineConfig({
             { text: 'Foundations', link: '/scopecraft' },
             { text: 'Components', link: '/scopecraft/components' }
         ] },
+        { text: 'Charts', link: '/scopecraft/charts' },
         { text: 'Examples', collapsed: false, items: [
             { text: 'Dashboard', link: '/scopecraft/dashboard' },
-            { text: 'Scope questions', link: '/scopecraft/scope' },
+            { text: 'Opportunities', link: '/scopecraft/opportunities' },
+            { text: 'Proposals', link: '/scopecraft/proposals' },
+            { text: 'Projects', link: '/scopecraft/projects' },
+            { text: 'Templates library', link: '/scopecraft/templates' },
+            { text: 'Rate card', link: '/scopecraft/rate-card' },
+            { text: 'Settings', link: '/scopecraft/settings' }
+        ] },
+        { text: 'Opportunity tabs', collapsed: false, items: [
+            { text: 'Overview', link: '/scopecraft/overview' },
+            { text: 'Discovery', link: '/scopecraft/discovery' },
+            { text: 'Scope', link: '/scopecraft/scope' },
             { text: 'Similar projects', link: '/scopecraft/similar' },
-            { text: 'Proposal', link: '/scopecraft/proposal' }
+            { text: 'Estimate', link: '/scopecraft/estimate' },
+            { text: 'Pricing', link: '/scopecraft/pricing-tab' },
+            { text: 'Risks', link: '/scopecraft/risks' },
+            { text: 'Proposal', link: '/scopecraft/proposal' },
+            { text: 'SOW', link: '/scopecraft/sow' },
+            { text: 'Activity', link: '/scopecraft/activity' }
         ] }
       ],
       '/pulsefit': [
