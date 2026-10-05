@@ -47,6 +47,7 @@ export default defineConfig({
             { text: 'Operations dashboard', link: '/felix/ops-dashboard' },
             { text: 'Waste dashboard', link: '/felix/waste-dashboard' },
             { text: 'Project dashboard', link: '/felix/project-dashboard' },
+            { text: 'Forecast', link: '/felix/forecast' },
             { text: 'Atoms', link: '/felix/components/atoms' },
             { text: 'Molecules', link: '/felix/components/molecules' },
             { text: 'Organisms', link: '/felix/components/organisms' }
@@ -85,7 +86,8 @@ export default defineConfig({
             { text: 'Gauges', link: '/lumen/gauges' },
             { text: 'Operations dashboard', link: '/lumen/ops-dashboard' },
             { text: 'Waste dashboard', link: '/lumen/waste-dashboard' },
-            { text: 'Project dashboard', link: '/lumen/project-dashboard' }
+            { text: 'Project dashboard', link: '/lumen/project-dashboard' },
+            { text: 'Forecast', link: '/lumen/forecast' }
         ] },
         { text: 'Charts', link: '/lumen/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -105,7 +107,8 @@ export default defineConfig({
             { text: 'Gauges', link: '/scopecraft/gauges' },
             { text: 'Operations dashboard', link: '/scopecraft/ops-dashboard' },
             { text: 'Waste dashboard', link: '/scopecraft/waste-dashboard' },
-            { text: 'Project dashboard', link: '/scopecraft/project-dashboard' }
+            { text: 'Project dashboard', link: '/scopecraft/project-dashboard' },
+            { text: 'Forecast', link: '/scopecraft/forecast' }
         ] },
         { text: 'Charts', link: '/scopecraft/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -143,7 +146,8 @@ export default defineConfig({
             { text: 'Gauges', link: '/pulsefit/gauges' },
             { text: 'Operations dashboard', link: '/pulsefit/ops-dashboard' },
             { text: 'Waste dashboard', link: '/pulsefit/waste-dashboard' },
-            { text: 'Project dashboard', link: '/pulsefit/project-dashboard' }
+            { text: 'Project dashboard', link: '/pulsefit/project-dashboard' },
+            { text: 'Forecast', link: '/pulsefit/forecast' }
           ]
         },
         { text: 'Charts', link: '/pulsefit/charts', items: [{ text: '38 animated charts', link: '/pulsefit/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
