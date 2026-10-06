@@ -1,0 +1,17 @@
+name: Purge jsDelivr cache
+on:
+  push:
+    branches: [develop, main]
+    paths:
+      - '.vitepress/theme/lumen.css'
+      - '.vitepress/theme/lumen-dark.css'
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge the Lumen stylesheets for this branch
+        run: |
+          for f in lumen.css lumen-dark.css; do
+            curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/.vitepress/theme/$f" || true
+            echo
+          done
