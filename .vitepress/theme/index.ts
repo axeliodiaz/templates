@@ -8,6 +8,7 @@ import './messaging.css'
 import './calendar.css'
 import './projects.css'
 import './pulsefit.css'
+import './pulsefit-dark.css'
 import './scopecraft.css'
 import './scopecraft-dark.css'
 import './lumen.css'
@@ -115,6 +116,32 @@ function syncScopecraftTheme() {
   applyScopecraftTheme(localStorage.getItem(SC_KEY) === 'dark')
 }
 
+const PF_KEY = 'pulsefit-theme'
+
+function applyPulsefitTheme(dark: boolean) {
+  document.documentElement.classList.toggle('pf-dark', dark)
+  const btn = document.querySelector<HTMLButtonElement>('.pf-theme-toggle')
+  if (btn) {
+    paintThemeBtn(btn, dark)
+  }
+}
+
+function syncPulsefitTheme() {
+  let btn = document.querySelector<HTMLButtonElement>('.pf-theme-toggle')
+  if (!btn) {
+    btn = document.createElement('button')
+    btn.type = 'button'
+    btn.className = 'pf-theme-toggle'
+    btn.addEventListener('click', () => {
+      const dark = !document.documentElement.classList.contains('pf-dark')
+      localStorage.setItem(PF_KEY, dark ? 'dark' : 'light')
+      applyPulsefitTheme(dark)
+    })
+    document.body.appendChild(btn)
+  }
+  applyPulsefitTheme(localStorage.getItem(PF_KEY) === 'dark')
+}
+
 export default {
   extends: DefaultTheme,
   Layout() {
@@ -134,6 +161,8 @@ export default {
         if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
         if (m('/lumen') || p === '/lumen') syncLumenTheme()
         else document.documentElement.classList.remove('lmn-dark')
+        if (m('/pulsefit')) syncPulsefitTheme()
+        else document.documentElement.classList.remove('pf-dark')
         if (m('/scopecraft')) syncScopecraftTheme()
         else document.documentElement.classList.remove('sc-dark')
         if (onFelix) syncFelixTheme()
@@ -143,4 +172,5 @@ export default {
     return h(DefaultTheme.Layout)
   }
 }
+
 
