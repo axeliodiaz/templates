@@ -106,7 +106,14 @@ export default defineConfig({
             { text: 'Overview', link: '/lumen/overview' },
             { text: 'Traces', link: '/lumen/traces' },
             { text: 'Agents', link: '/lumen/agents' },
-            { text: 'Evals', link: '/lumen/evals' }
+            { text: 'Evals', link: '/lumen/evals' },
+            { text: 'Prompts', link: '/lumen/prompts' },
+            { text: 'Playground', link: '/lumen/playground' },
+            { text: 'Gateway', link: '/lumen/gateway' },
+            { text: 'Cost & Budget', link: '/lumen/cost-budget' },
+            { text: 'API Keys', link: '/lumen/api-keys' },
+            { text: 'Team', link: '/lumen/team' },
+            { text: 'Settings', link: '/lumen/settings' }
         ] }
       ],
       '/scopecraft': [
