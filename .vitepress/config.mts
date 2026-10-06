@@ -53,6 +53,7 @@ export default defineConfig({
             { text: 'Sales dashboard', link: '/felix/sales-dashboard' },
             { text: 'AP dashboard', link: '/felix/ap-dashboard' },
             { text: 'Log entry', link: '/felix/log-entry' },
+            { text: 'Workflow operations', link: '/felix/workflow-ops' },
             { text: 'Atoms', link: '/felix/components/atoms' },
             { text: 'Molecules', link: '/felix/components/molecules' },
             { text: 'Organisms', link: '/felix/components/organisms' }
@@ -97,7 +98,8 @@ export default defineConfig({
             { text: 'Dashboard blocks', link: '/lumen/blocks' },
             { text: 'Sales dashboard', link: '/lumen/sales-dashboard' },
             { text: 'AP dashboard', link: '/lumen/ap-dashboard' },
-            { text: 'Log entry', link: '/lumen/log-entry' }
+            { text: 'Log entry', link: '/lumen/log-entry' },
+            { text: 'Workflow operations', link: '/lumen/workflow-ops' }
         ] },
         { text: 'Charts', link: '/lumen/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -123,7 +125,8 @@ export default defineConfig({
             { text: 'Dashboard blocks', link: '/scopecraft/blocks' },
             { text: 'Sales dashboard', link: '/scopecraft/sales-dashboard' },
             { text: 'AP dashboard', link: '/scopecraft/ap-dashboard' },
-            { text: 'Log entry', link: '/scopecraft/log-entry' }
+            { text: 'Log entry', link: '/scopecraft/log-entry' },
+            { text: 'Workflow operations', link: '/scopecraft/workflow-ops' }
         ] },
         { text: 'Charts', link: '/scopecraft/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -167,7 +170,8 @@ export default defineConfig({
             { text: 'Dashboard blocks', link: '/pulsefit/blocks' },
             { text: 'Sales dashboard', link: '/pulsefit/sales-dashboard' },
             { text: 'AP dashboard', link: '/pulsefit/ap-dashboard' },
-            { text: 'Log entry', link: '/pulsefit/log-entry' }
+            { text: 'Log entry', link: '/pulsefit/log-entry' },
+            { text: 'Workflow operations', link: '/pulsefit/workflow-ops' }
           ]
         },
         { text: 'Charts', link: '/pulsefit/charts', items: [{ text: '38 animated charts', link: '/pulsefit/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
