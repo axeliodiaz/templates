@@ -13,6 +13,7 @@ import './scopecraft.css'
 import './scopecraft-dark.css'
 import './lumen.css'
 import './lumen-dark.css'
+import './lustro-light.css'
 import './chrome.css'
 import './bsx.css'
 import './bsx-live.css'
@@ -142,6 +143,32 @@ function syncPulsefitTheme() {
   applyPulsefitTheme(localStorage.getItem(PF_KEY) === 'dark')
 }
 
+const LU_KEY = 'lustro-theme'
+
+function applyLustroTheme(light: boolean) {
+  document.documentElement.classList.toggle('lu-light', light)
+  const btn = document.querySelector<HTMLButtonElement>('.lu-theme-toggle')
+  if (btn) {
+    paintThemeBtn(btn, !light)
+  }
+}
+
+function syncLustroTheme() {
+  let btn = document.querySelector<HTMLButtonElement>('.lu-theme-toggle')
+  if (!btn) {
+    btn = document.createElement('button')
+    btn.type = 'button'
+    btn.className = 'lu-theme-toggle'
+    btn.addEventListener('click', () => {
+      const light = !document.documentElement.classList.contains('lu-light')
+      localStorage.setItem(LU_KEY, light ? 'light' : 'dark')
+      applyLustroTheme(light)
+    })
+    document.body.appendChild(btn)
+  }
+  applyLustroTheme(localStorage.getItem(LU_KEY) === 'light')
+}
+
 export default {
   extends: DefaultTheme,
   Layout() {
@@ -161,6 +188,10 @@ export default {
         if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
         if (m('/lumen') || p === '/lumen') syncLumenTheme()
         else document.documentElement.classList.remove('lmn-dark')
+        const onLustro = !(m('/felix') || m('/pulsefit') || m('/scopecraft') || m('/lumen'))
+        document.documentElement.classList.toggle('tpl-lu', onLustro)
+        if (onLustro) syncLustroTheme()
+        else document.documentElement.classList.remove('lu-light')
         if (m('/pulsefit')) syncPulsefitTheme()
         else document.documentElement.classList.remove('pf-dark')
         if (m('/scopecraft')) syncScopecraftTheme()
@@ -172,5 +203,6 @@ export default {
     return h(DefaultTheme.Layout)
   }
 }
+
 
 
