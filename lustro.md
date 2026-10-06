@@ -114,3 +114,9 @@ Reference overlays stay on that same scale and off the brand gradient: a **dashe
 2. One gradient accent per view - if the primary button is a gradient, nearby accents stay flat.
 3. Text over glass sits at full opacity; only surfaces are translucent.
 4. Status stays semantic: success/error/warning never use brand gradients.
+
+## More components
+
+The full Bootstrap-depth set (52 sections) is on [Components: Bootstrap set](/lustro/components-more).
+
+See also the [Cart summary](/lustro/cart-summary) receipt component and the [Price timeline](/lustro/price-timeline) chart card the [Gauges](/lustro/gauges) the [Operations dashboard](/lustro/ops-dashboard) the [Waste dashboard](/lustro/waste-dashboard) the [Project dashboard](/lustro/project-dashboard) the [Forecast](/lustro/forecast) the [Order view](/lustro/order-view) the [Dashboard blocks](/lustro/blocks) the [Sales dashboard](/lustro/sales-dashboard) the [AP dashboard](/lustro/ap-dashboard) the [Log entry](/lustro/log-entry) and the [Workflow operations](/lustro/workflow-ops).

@@ -40,6 +40,20 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/felix/components/' },
             { text: 'Full UI catalog', link: '/felix/components/catalog' },
+            { text: 'Bootstrap set', link: '/felix/components-more' },
+            { text: 'Cart summary', link: '/felix/cart-summary' },
+            { text: 'Price timeline', link: '/felix/price-timeline' },
+            { text: 'Gauges', link: '/felix/gauges' },
+            { text: 'Operations dashboard', link: '/felix/ops-dashboard' },
+            { text: 'Waste dashboard', link: '/felix/waste-dashboard' },
+            { text: 'Project dashboard', link: '/felix/project-dashboard' },
+            { text: 'Forecast', link: '/felix/forecast' },
+            { text: 'Order view', link: '/felix/order-view' },
+            { text: 'Dashboard blocks', link: '/felix/blocks' },
+            { text: 'Sales dashboard', link: '/felix/sales-dashboard' },
+            { text: 'AP dashboard', link: '/felix/ap-dashboard' },
+            { text: 'Log entry', link: '/felix/log-entry' },
+            { text: 'Workflow operations', link: '/felix/workflow-ops' },
             { text: 'Atoms', link: '/felix/components/atoms' },
             { text: 'Molecules', link: '/felix/components/molecules' },
             { text: 'Organisms', link: '/felix/components/organisms' }
@@ -71,16 +85,55 @@ export default defineConfig({
       '/lumen': [
         { text: 'Lumen', items: [
             { text: 'Foundations', link: '/lumen' },
-            { text: 'Components', link: '/lumen/components' }
+            { text: 'Components', link: '/lumen/components' },
+            { text: 'Components: Bootstrap set', link: '/lumen/components-more' },
+            { text: 'Cart summary', link: '/lumen/cart-summary' },
+            { text: 'Price timeline', link: '/lumen/price-timeline' },
+            { text: 'Gauges', link: '/lumen/gauges' },
+            { text: 'Operations dashboard', link: '/lumen/ops-dashboard' },
+            { text: 'Waste dashboard', link: '/lumen/waste-dashboard' },
+            { text: 'Project dashboard', link: '/lumen/project-dashboard' },
+            { text: 'Forecast', link: '/lumen/forecast' },
+            { text: 'Order view', link: '/lumen/order-view' },
+            { text: 'Dashboard blocks', link: '/lumen/blocks' },
+            { text: 'Sales dashboard', link: '/lumen/sales-dashboard' },
+            { text: 'AP dashboard', link: '/lumen/ap-dashboard' },
+            { text: 'Log entry', link: '/lumen/log-entry' },
+            { text: 'Workflow operations', link: '/lumen/workflow-ops' }
         ] },
+        { text: 'Charts', link: '/lumen/charts' },
         { text: 'Examples', collapsed: false, items: [
-            { text: 'Overview', link: '/lumen/overview' }
+            { text: 'Overview', link: '/lumen/overview' },
+            { text: 'Traces', link: '/lumen/traces' },
+            { text: 'Agents', link: '/lumen/agents' },
+            { text: 'Evals', link: '/lumen/evals' },
+            { text: 'Prompts', link: '/lumen/prompts' },
+            { text: 'Playground', link: '/lumen/playground' },
+            { text: 'Gateway', link: '/lumen/gateway' },
+            { text: 'Cost & Budget', link: '/lumen/cost-budget' },
+            { text: 'API Keys', link: '/lumen/api-keys' },
+            { text: 'Team', link: '/lumen/team' },
+            { text: 'Settings', link: '/lumen/settings' }
         ] }
       ],
       '/scopecraft': [
         { text: 'Scopecraft', items: [
             { text: 'Foundations', link: '/scopecraft' },
-            { text: 'Components', link: '/scopecraft/components' }
+            { text: 'Components', link: '/scopecraft/components' },
+            { text: 'Components: Bootstrap set', link: '/scopecraft/components-more' },
+            { text: 'Cart summary', link: '/scopecraft/cart-summary' },
+            { text: 'Price timeline', link: '/scopecraft/price-timeline' },
+            { text: 'Gauges', link: '/scopecraft/gauges' },
+            { text: 'Operations dashboard', link: '/scopecraft/ops-dashboard' },
+            { text: 'Waste dashboard', link: '/scopecraft/waste-dashboard' },
+            { text: 'Project dashboard', link: '/scopecraft/project-dashboard' },
+            { text: 'Forecast', link: '/scopecraft/forecast' },
+            { text: 'Order view', link: '/scopecraft/order-view' },
+            { text: 'Dashboard blocks', link: '/scopecraft/blocks' },
+            { text: 'Sales dashboard', link: '/scopecraft/sales-dashboard' },
+            { text: 'AP dashboard', link: '/scopecraft/ap-dashboard' },
+            { text: 'Log entry', link: '/scopecraft/log-entry' },
+            { text: 'Workflow operations', link: '/scopecraft/workflow-ops' }
         ] },
         { text: 'Charts', link: '/scopecraft/charts' },
         { text: 'Examples', collapsed: false, items: [
@@ -110,7 +163,22 @@ export default defineConfig({
           text: 'PulseFit',
           items: [
             { text: 'Foundations', link: '/pulsefit' },
-            { text: 'Components', link: '/pulsefit/components' }
+            { text: 'Components', link: '/pulsefit/components' },
+            { text: 'Components: Bootstrap set', link: '/pulsefit/components-more' },
+            { text: 'KPI cards', link: '/pulsefit/kpi-cards' },
+            { text: 'Cart summary', link: '/pulsefit/cart-summary' },
+            { text: 'Price timeline', link: '/pulsefit/price-timeline' },
+            { text: 'Gauges', link: '/pulsefit/gauges' },
+            { text: 'Operations dashboard', link: '/pulsefit/ops-dashboard' },
+            { text: 'Waste dashboard', link: '/pulsefit/waste-dashboard' },
+            { text: 'Project dashboard', link: '/pulsefit/project-dashboard' },
+            { text: 'Forecast', link: '/pulsefit/forecast' },
+            { text: 'Order view', link: '/pulsefit/order-view' },
+            { text: 'Dashboard blocks', link: '/pulsefit/blocks' },
+            { text: 'Sales dashboard', link: '/pulsefit/sales-dashboard' },
+            { text: 'AP dashboard', link: '/pulsefit/ap-dashboard' },
+            { text: 'Log entry', link: '/pulsefit/log-entry' },
+            { text: 'Workflow operations', link: '/pulsefit/workflow-ops' }
           ]
         },
         { text: 'Charts', link: '/pulsefit/charts', items: [{ text: '38 animated charts', link: '/pulsefit/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },

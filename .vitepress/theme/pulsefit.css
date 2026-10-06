@@ -139,3 +139,12 @@
 .pf-pwx .pw .pw-avatar{background:#C9A66B!important;color:#000!important;border-color:#fff!important}.pf-pwx .pw .pw-avatar.person-1{background:#333!important;color:#fff!important}.pf-pwx .pw .pw-avatar.person-2{background:#8b7355!important;color:#fff!important}
 .pf-pwx .pw .pw-tabs button.active{border-bottom-color:#C9A66B}.pf-pwx .pw button:focus-visible,.pf-pwx .pw input:focus-visible,.pf-pwx .pw select:focus-visible{outline:3px solid rgba(201,166,107,.55)}
 .pf-pwx .pw .pw-task,.pf-pwx .pw .pw-column{border-radius:12px}
+
+/* KPI cards: gold border, Montserrat label, gold value, pill-style comparison (matches pulsefit/kpi-cards) */
+.fin-pulsefit .fin-kpis section,.rp-pulsefit .rp-kpis section{background:#fff;border:2px solid #C9A66B;border-radius:14px;padding:12px 12px;display:flex;flex-direction:column;gap:6px}
+.fin-pulsefit .fin-kpis section:nth-child(3){background:#fff}
+.fin-pulsefit .fin-kpi-label,.rp-pulsefit .rp-kpis .rp-label{display:flex;align-items:center;justify-content:space-between;gap:8px;font:700 11px/1.25 'Montserrat',sans-serif;letter-spacing:0;text-transform:none;color:#212121}
+.fin-pulsefit .fin-kpi-label::after,.rp-pulsefit .rp-kpis .rp-label::after{content:'';width:14px;height:14px;border-radius:50%;border:2px solid #C9A66B;flex:none}
+.fin-pulsefit .fin-kpis strong,.rp-pulsefit .rp-kpis strong{font:800 24px/1.1 'Montserrat',sans-serif;color:#C9A66B;margin:2px 0}
+.fin-pulsefit .fin-kpis small,.rp-pulsefit .rp-kpis small{font:400 11px 'Rubik',sans-serif;color:#6b6b6b}
+.fin-pulsefit .fin-kpis strong{font-size:20px}
