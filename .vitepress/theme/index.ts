@@ -9,6 +9,7 @@ import './calendar.css'
 import './projects.css'
 import './pulsefit.css'
 import './scopecraft.css'
+import './scopecraft-dark.css'
 import './lumen.css'
 import './lumen-dark.css'
 import './chrome.css'
@@ -88,6 +89,32 @@ function syncLumenTheme() {
   applyLumenTheme(localStorage.getItem(LMN_KEY) === 'dark')
 }
 
+const SC_KEY = 'scopecraft-theme'
+
+function applyScopecraftTheme(dark: boolean) {
+  document.documentElement.classList.toggle('sc-dark', dark)
+  const btn = document.querySelector<HTMLButtonElement>('.sc-theme-toggle')
+  if (btn) {
+    paintThemeBtn(btn, dark)
+  }
+}
+
+function syncScopecraftTheme() {
+  let btn = document.querySelector<HTMLButtonElement>('.sc-theme-toggle')
+  if (!btn) {
+    btn = document.createElement('button')
+    btn.type = 'button'
+    btn.className = 'sc-theme-toggle'
+    btn.addEventListener('click', () => {
+      const dark = !document.documentElement.classList.contains('sc-dark')
+      localStorage.setItem(SC_KEY, dark ? 'dark' : 'light')
+      applyScopecraftTheme(dark)
+    })
+    document.body.appendChild(btn)
+  }
+  applyScopecraftTheme(localStorage.getItem(SC_KEY) === 'dark')
+}
+
 export default {
   extends: DefaultTheme,
   Layout() {
@@ -107,6 +134,8 @@ export default {
         if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
         if (m('/lumen') || p === '/lumen') syncLumenTheme()
         else document.documentElement.classList.remove('lmn-dark')
+        if (m('/scopecraft')) syncScopecraftTheme()
+        else document.documentElement.classList.remove('sc-dark')
         if (onFelix) syncFelixTheme()
         if (onFelix) nextTick(() => mountFelixDemos())
       })
@@ -114,3 +143,4 @@ export default {
     return h(DefaultTheme.Layout)
   }
 }
+
