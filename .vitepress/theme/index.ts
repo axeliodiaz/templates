@@ -10,6 +10,7 @@ import './projects.css'
 import './pulsefit.css'
 import './scopecraft.css'
 import './lumen.css'
+import './lumen-dark.css'
 import './chrome.css'
 import './bsx.css'
 import './cartsum.css'
@@ -48,6 +49,33 @@ function syncFelixTheme() {
   applyFelixTheme(localStorage.getItem(THEME_KEY) === 'dark')
 }
 
+const LMN_KEY = 'lumen-theme'
+
+function applyLumenTheme(dark: boolean) {
+  document.documentElement.classList.toggle('lmn-dark', dark)
+  const btn = document.querySelector<HTMLButtonElement>('.lmn-theme-toggle')
+  if (btn) {
+    btn.textContent = dark ? 'Light mode' : 'Dark mode'
+    btn.setAttribute('aria-pressed', String(dark))
+  }
+}
+
+function syncLumenTheme() {
+  let btn = document.querySelector<HTMLButtonElement>('.lmn-theme-toggle')
+  if (!btn) {
+    btn = document.createElement('button')
+    btn.type = 'button'
+    btn.className = 'lmn-theme-toggle'
+    btn.addEventListener('click', () => {
+      const dark = !document.documentElement.classList.contains('lmn-dark')
+      localStorage.setItem(LMN_KEY, dark ? 'dark' : 'light')
+      applyLumenTheme(dark)
+    })
+    document.body.appendChild(btn)
+  }
+  applyLumenTheme(localStorage.getItem(LMN_KEY) === 'dark')
+}
+
 export default {
   extends: DefaultTheme,
   Layout() {
@@ -63,6 +91,8 @@ export default {
         document.documentElement.classList.toggle('tpl-lmn', m('/lumen'))
         if (route.path.endsWith('/cart-summary') || route.path.endsWith('/lustro')) nextTick(() => setTimeout(mountCartMotion, 50))
         if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
+        if (m('/lumen') || p === '/lumen') syncLumenTheme()
+        else document.documentElement.classList.remove('lmn-dark')
         if (onFelix) syncFelixTheme()
         if (onFelix) nextTick(() => mountFelixDemos())
       })
