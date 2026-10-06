@@ -52,3 +52,6 @@
 .lmn-chip.sm{font-size:10.5px;padding:0 7px}
 .lmn-seg button{padding:4px 11px;border:0;border-radius:7px;background:transparent;color:var(--muted);font:inherit;cursor:pointer}
 .lmn-seg button[aria-pressed="true"]{background:var(--surf);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.lmn-btn.ico{width:42px;height:42px;padding:0;justify-content:center;border-radius:50%;position:relative;cursor:pointer}.lmn-btn.ico[aria-pressed=true]{border-color:var(--purple);color:#5446c9}
+.lmn-input.pill{border-radius:999px}select.lmn-input{min-width:0;font:inherit;color:var(--text)}.lmn-input.on{border-color:var(--purple);box-shadow:0 0 0 3px #7c6cf029}
+.lmn table.lmn-t{border-collapse:collapse;width:100%}.lmn table.lmn-t th{color:var(--muted);background:var(--surf);border-bottom:1px solid var(--bd);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:8px;text-align:left}.lmn table.lmn-t td{border-bottom:1px solid var(--bd2);padding:9px 8px;vertical-align:middle}
