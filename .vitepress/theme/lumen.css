@@ -46,8 +46,8 @@
 .lmn-up.good{color:var(--ok)}.lmn-dn.bad{color:var(--bad)}
 /* Chip and segmented-control variants used by apps that consume this file (Finances). */
 .lmn-chip.info{background:color-mix(in srgb,var(--cyan) 16%,var(--surf));color:var(--cyan)}
-.lmn-chip.out{background:var(--surf);color:var(--text);box-shadow:inset 0 0 0 1px var(--bd)}
-.lmn-chip.dot:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:middle}
+.lmn-chip.outline{background:var(--surf);color:var(--text);box-shadow:inset 0 0 0 1px var(--bd)}
+.lmn-chip.has-dot:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:middle}
 .lmn-chip.pill{border-radius:999px}
 .lmn-chip.sm{font-size:10.5px;padding:0 7px}
 .lmn-seg button{padding:4px 11px;border:0;border-radius:7px;background:transparent;color:var(--muted);font:inherit;cursor:pointer}
