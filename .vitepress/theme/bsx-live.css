@@ -1,0 +1,50 @@
+/* Live preview behavior for .bsx blocks. Uses the same --b-* tokens as bsx.css. */
+.bsx-liveblock{position:relative}
+.bsx .bsx-livebar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px;padding:8px 10px;border:1px dashed var(--b-bd);border-radius:var(--b-r);background:var(--b-surf)}
+.bsx .bsx-livebar .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--b-mut);margin-right:2px}
+.bsx .bsx-livebar select.inp{width:auto;padding:4px 28px 4px 8px}
+.bsx .bsx-reset{position:absolute;top:6px;right:8px;border:1px solid var(--b-bd);background:var(--b-surf);color:var(--b-mut);border-radius:999px;font:600 11px var(--b-font);padding:2px 9px;cursor:pointer}
+.bsx .bsx-reset:hover{color:var(--b-ink)}
+.bsx .bsx-val{font-size:12px;color:var(--b-mut);margin-left:6px}
+.bsx .btn.pressed{transform:translateY(1px) scale(.98)}
+.bsx .btn,.bsx .ck,.bsx .sw,.bsx .nav a,.bsx .pg a,.bsx .menu a,.bsx .rng,.bsx .car .ar,.bsx .car .ind i,.bsx .step .s,.bsx .tip,.bsx .pop,.bsx .alert .x{cursor:pointer;user-select:none}
+.bsx .btn.dis,.bsx .ck.dis,.bsx .sw.dis,.bsx .nav a.dis,.bsx .pg a.dis,.bsx .menu a.dis{cursor:not-allowed}
+.bsx .alert{transition:opacity .18s,transform .18s}
+.bsx .gone{opacity:0;transform:scale(.97)}
+.bsx .tip.dim,.bsx .pop.dim{opacity:.35}
+.bsx .dd.shut .menu{display:none}
+.bsx .cl{display:none}
+.bsx .cl.open{display:block}
+.bsx .car .sl{transition:background .25s}
+.bsx .menu a:hover:not(.act):not(.dis),.bsx .nav a:hover:not(.act):not(.dis),.bsx .pg a:hover:not(.act):not(.dis){background:var(--b-surf);filter:brightness(.97)}
+
+/* overlays and toasts render outside the block, so they carry their own tokens */
+.bsx.bsx-live-layer{border:0;background:transparent;padding:0;margin:0;border-radius:0;overflow:visible;font-size:14px}
+.bsx-ov{position:fixed;inset:0;z-index:2000;display:flex;align-items:flex-start;justify-content:center;padding:8vh 16px;background:rgba(0,0,0,0);transition:background .18s;overflow:auto}
+.bsx-ov.in{background:rgba(0,0,0,.45)}
+.bsx-ov.ctr{align-items:center}
+.bsx-ov .modal{transform:translateY(-12px);opacity:0;transition:transform .18s,opacity .18s}
+.bsx-ov.in .modal{transform:none;opacity:1}
+.bsx-ov .modal.scr .bd{max-height:46vh;overflow:auto}
+.bsx-ov .modal .x{cursor:pointer}
+.bsx-ov .oc.live{position:fixed;background:var(--b-surf);color:var(--b-text);border:1px solid var(--b-bd);box-shadow:0 20px 50px rgba(0,0,0,.3);transition:transform .2s;width:min(340px,90vw);max-width:none;max-height:none;display:flex;flex-direction:column;border-radius:0}
+.bsx-ov .oc.live .hd{display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--b-bd);font-weight:700;color:var(--b-ink)}
+.bsx-ov .oc.live .bd{padding:16px}
+.bsx-ov .oc.live .x{cursor:pointer}
+.bsx-ov .oc.live.start{left:0;top:0;bottom:0;transform:translateX(-100%)}
+.bsx-ov .oc.live.end{right:0;top:0;bottom:0;transform:translateX(100%)}
+.bsx-ov .oc.live.top{left:0;right:0;top:0;width:auto;height:min(220px,60vh);transform:translateY(-100%)}
+.bsx-ov .oc.live.bottom{left:0;right:0;bottom:0;width:auto;height:min(220px,60vh);transform:translateY(100%)}
+.bsx-ov.in .oc.live{transform:none}
+.bsx-toasts{position:fixed;z-index:2100;display:flex;flex-direction:column;gap:10px;width:min(340px,92vw);pointer-events:none}
+.bsx-toasts .toast{pointer-events:auto;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:opacity .2s,transform .2s}
+.bsx-toasts .toast .x{cursor:pointer}
+.bsx-toasts.top-left{top:16px;left:16px}.bsx-toasts.top-center{top:16px;left:50%;transform:translateX(-50%)}.bsx-toasts.top-right{top:16px;right:16px}
+.bsx-toasts.bottom-left{bottom:16px;left:16px}.bsx-toasts.bottom-center{bottom:16px;left:50%;transform:translateX(-50%)}.bsx-toasts.bottom-right{bottom:16px;right:16px}
+.bsx-toast-in{animation:bsxToastIn .22s ease-out}
+.bsx-toasts .toast.out{opacity:0;transform:translateY(-6px)}
+@keyframes bsxToastIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.bsx-toast-in{animation:none}.bsx-ov,.bsx-ov .modal,.bsx-ov .oc.live{transition:none}}
+.bsx .toast.col-warn{background:var(--b-warn);color:#fff;border-color:var(--b-warn)}
+.bsx .toast.col-info{background:var(--b-info);color:#fff;border-color:var(--b-info)}
+.bsx .toast.col-ok .hd,.bsx .toast.col-bad .hd,.bsx .toast.col-warn .hd,.bsx .toast.col-info .hd{color:#fff;border-bottom-color:rgba(255,255,255,.3)}

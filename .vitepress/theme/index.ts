@@ -13,6 +13,7 @@ import './lumen.css'
 import './lumen-dark.css'
 import './chrome.css'
 import './bsx.css'
+import './bsx-live.css'
 import './cartsum.css'
 import './component-catalog.css'
 import './dependency-graph.css'
@@ -21,6 +22,7 @@ import './ejemplos.css'
 import { mountFelixDemos } from './felix-demos'
 import { mountCartMotion } from './cartmotion'
 import { mountLumenMotion } from './lumenmotion'
+import { mountBsxLive } from './bsx-live'
 
 const THEME_KEY = 'felix-theme'
 
@@ -89,6 +91,7 @@ export default {
         document.documentElement.classList.toggle('tpl-pf', m('/pulsefit'))
         document.documentElement.classList.toggle('tpl-sc', m('/scopecraft'))
         document.documentElement.classList.toggle('tpl-lmn', m('/lumen'))
+        nextTick(() => setTimeout(mountBsxLive, 80))
         if (route.path.endsWith('/cart-summary') || route.path.endsWith('/lustro')) nextTick(() => setTimeout(mountCartMotion, 50))
         if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
         if (m('/lumen') || p === '/lumen') syncLumenTheme()
