@@ -1,0 +1,33 @@
+html.tpl-sc.sc-dark{color-scheme:dark;--vp-c-bg:#17171a;--vp-c-bg-alt:#1f2024;--vp-c-bg-elv:#26282d;--vp-c-bg-soft:#1f2024;--vp-c-bg-mute:#1f2024;--vp-c-text-1:#f4f4f5;--vp-c-text-2:#c8c9ce;--vp-c-text-3:#9a9ca4;--vp-c-divider:#2e3036;--vp-c-gutter:#2e3036;--vp-c-border:#2e3036;--vp-c-default-1:#1f2024;--vp-c-default-2:#26282d;--vp-c-default-3:#2e3036;--vp-c-default-soft:#1f2024;--vp-c-brand-1:#7fa8f0;--vp-c-brand-2:#5b8fe8;--vp-c-brand-3:#2f6fdc;--vp-c-brand-soft:#2f6fdc33;--vp-sidebar-bg-color:#1f2024;--vp-nav-bg-color:#17171a;--vp-code-bg:#1f2024;--vp-code-block-bg:#101012;--vp-code-color:#f4f4f5;--vp-c-text-code:#7fa8f0}
+html.tpl-sc.sc-dark body{background:#17171a;color:#f4f4f5}
+html.tpl-sc.sc-dark .VPNav,html.tpl-sc.sc-dark .VPNavBar,html.tpl-sc.sc-dark .VPNavBar .content,html.tpl-sc.sc-dark .VPNavBar .title,html.tpl-sc.sc-dark .VPNavBarMenuLink,html.tpl-sc.sc-dark .VPNavBarSearch .DocSearch-Button{background:#17171a;color:#f4f4f5}
+html.tpl-sc.sc-dark .VPSidebar{background:#1f2024;border-right:1px solid #2e3036}
+html.tpl-sc.sc-dark .VPSidebarItem .text{color:#c8c9ce}
+html.tpl-sc.sc-dark .VPSidebarItem.is-active>.item .text,html.tpl-sc.sc-dark .VPSidebarItem .link:hover .text,html.tpl-sc.sc-dark .VPNavBarMenuLink.active,html.tpl-sc.sc-dark .VPNavBarMenuLink:hover,html.tpl-sc.sc-dark .VPDocAsideOutline .outline-link:hover,html.tpl-sc.sc-dark .VPDocAsideOutline .outline-link.active,html.tpl-sc.sc-dark .vp-doc a{color:#7fa8f0}
+html.tpl-sc.sc-dark .VPContent,html.tpl-sc.sc-dark .VPDoc,html.tpl-sc.sc-dark .VPDocAside,html.tpl-sc.sc-dark .VPDocFooter,html.tpl-sc.sc-dark .VPLocalNav{background:#17171a}
+html.tpl-sc.sc-dark .vp-doc h1,html.tpl-sc.sc-dark .vp-doc h2,html.tpl-sc.sc-dark .vp-doc h3{color:#f4f4f5}
+html.tpl-sc.sc-dark .vp-doc h2{border-top-color:#2e3036}
+html.tpl-sc.sc-dark .vp-doc th,html.tpl-sc.sc-dark .vp-doc td{border-color:#2e3036}
+html.tpl-sc.sc-dark .vp-doc tr{background:#17171a;border-color:#2e3036}html.tpl-sc.sc-dark .vp-doc tr:nth-child(2n){background:#1f2024}
+/* tokens */
+html.tpl-sc.sc-dark .sc{--ink:#f4f4f5;--text:#d6d7db;--muted:#9a9ca4;--faint:#74767d;--bg:#0e0e10;--surf:#1f2024;--bd:#2e3036;--bd2:#26282d;--blue:#6ea0f5;--blue-soft:#6ea0f533;--ok:#3ccf75;--ok-soft:#3ccf7526;--bad:#f06a6a;--bad-soft:#f06a6a26;--warn:#f0b050;--warn-soft:#f0b05026;--sh:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.35)}
+/* surfaces that were hard-coded white or fixed light */
+html.tpl-sc.sc-dark .sc-doc,html.tpl-sc.sc-dark .sc-input{background:var(--surf)}
+html.tpl-sc.sc-dark .sc-nav{color:var(--text)}
+html.tpl-sc.sc-dark .sc-btn.pri,html.tpl-sc.sc-dark .sc-seg span.on{color:#17171a}
+html.tpl-sc.sc-dark .sc-toast{background:#2e3036;color:#f4f4f5}
+html.tpl-sc.sc-dark .sc-bar.hatch i{background:repeating-linear-gradient(135deg,#d6d7db 0 3px,#8b8d94 3px 6px)}
+html.tpl-sc.sc-dark .sc-sw i{border-color:rgba(255,255,255,.14)}
+html.tpl-sc.sc-dark .vp-doc .sc table.sc-t tr,html.tpl-sc.sc-dark .vp-doc .sc table.sc-t tr:nth-child(2n),html.tpl-sc.sc-dark .vp-doc .sc table.sc-t td,html.tpl-sc.sc-dark .vp-doc .sc table.sc-t th{background:var(--surf)!important}
+html.tpl-sc.sc-dark .vp-doc .sc table.sc-t tbody tr:hover td{background:var(--bg)!important}
+html.tpl-sc.sc-dark .sc svg [stroke="#eee"],html.tpl-sc.sc-dark .sc svg [stroke="#ddd"],html.tpl-sc.sc-dark .sc svg [stroke="#e6e6e8"],html.tpl-sc.sc-dark .sc svg [stroke="#efeff1"]{stroke:var(--bd)}
+html.tpl-sc.sc-dark .sc svg [fill="#fff"]{fill:var(--surf)}
+html.tpl-sc.sc-dark .sc svg [fill="#555"],html.tpl-sc.sc-dark .sc svg [fill="#6b6f76"]{fill:var(--muted)}
+html.tpl-sc.sc-dark .sc svg [fill="#111113"],html.tpl-sc.sc-dark .sc svg [fill="#111"]{fill:var(--ink)}
+html.tpl-sc.sc-dark .sc svg [stroke="#111113"],html.tpl-sc.sc-dark .sc svg [stroke="#111"]{stroke:var(--ink)}
+html.tpl-sc.sc-dark .sc svg text:not([fill]){fill:var(--ink)}
+html.tpl-sc.sc-dark .sc-av.g{background:#2e3036}
+/* toggle */
+.sc-theme-toggle{display:none}
+html.tpl-sc .sc-theme-toggle{display:inline-flex;align-items:center;gap:8px;position:fixed;right:18px;bottom:18px;z-index:60;border-radius:9999px;border:1px solid #e7e7e9;background:#fff;color:#17171a;padding:0;width:44px;height:44px;justify-content:center;font:600 14px 'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 10px rgba(20,20,25,.12)}
+html.tpl-sc.sc-dark .sc-theme-toggle{background:#26282d;color:#f4f4f5;border-color:#2e3036}
