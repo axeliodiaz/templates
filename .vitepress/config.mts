@@ -16,12 +16,7 @@ export default defineConfig({
   ],
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Lustro', link: '/lustro' },
-      { text: 'Felix', link: '/felix' },
-      { text: 'PulseFit', link: '/pulsefit' },
-      { text: 'Scopecraft', link: '/scopecraft' },
-      { text: 'Lumen', link: '/lumen' }
+      { text: 'Home', link: '/' }
     ],
     sidebar: {
       '/felix': [
