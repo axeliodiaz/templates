@@ -195,7 +195,7 @@ html.felix .fx-theme-toggle {
   display: inline-flex; align-items: center; gap: 8px;
   position: fixed; right: 18px; bottom: 18px; z-index: 60;
   border-radius: 9999px; border: 1px solid #cfcabf; background: #fff; color: #082422;
-  padding: 10px 16px; font: 600 14px "Saans", ui-sans-serif, system-ui, sans-serif; cursor: pointer;
+  padding:0;width:44px;height:44px;justify-content:center; font: 600 14px "Saans", ui-sans-serif, system-ui, sans-serif; cursor: pointer;
   box-shadow: 0 4px 14px #08242226;
 }
 html.felix .fx-theme-toggle:hover { border-color: #2bf2f1; }

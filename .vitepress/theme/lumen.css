@@ -44,3 +44,14 @@
 .lmn-btn.xs{padding:2px 8px;font-size:11px}.lmn-btn.sm{padding:4px 9px;font-size:12px}.lmn-btn.lg{padding:10px 18px;font-size:15px;border-radius:11px}.lmn-btn.dis{opacity:.45;pointer-events:none}.lmn-btn.blk{display:flex;justify-content:center;width:100%}.lmn-btn.on{background:#e8e8e6;box-shadow:inset 0 1px 3px rgba(0,0,0,.15);font-weight:600}
 .lmn-bg{display:inline-flex}.lmn-bg .lmn-btn{border-radius:0;margin-left:-1px}.lmn-bg .lmn-btn:first-child{border-radius:9px 0 0 9px;margin-left:0}.lmn-bg .lmn-btn:last-child{border-radius:0 9px 9px 0}
 .lmn-up.good{color:var(--ok)}.lmn-dn.bad{color:var(--bad)}
+/* Chip and segmented-control variants used by apps that consume this file (Finances). */
+.lmn-chip.info{background:color-mix(in srgb,var(--cyan) 16%,var(--surf));color:var(--cyan)}
+.lmn-chip.outline{background:var(--surf);color:var(--text);box-shadow:inset 0 0 0 1px var(--bd)}
+.lmn-chip.has-dot:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:middle}
+.lmn-chip.pill{border-radius:999px}
+.lmn-chip.sm{font-size:10.5px;padding:0 7px}
+.lmn-seg button{padding:4px 11px;border:0;border-radius:7px;background:transparent;color:var(--muted);font:inherit;cursor:pointer}
+.lmn-seg button[aria-pressed="true"]{background:var(--surf);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.lmn-btn.ico{width:42px;height:42px;padding:0;justify-content:center;border-radius:50%;position:relative;cursor:pointer}.lmn-btn.ico[aria-pressed=true]{border-color:var(--purple);color:#5446c9}
+.lmn-input.pill{border-radius:999px}select.lmn-input{min-width:0;font:inherit;color:var(--text)}.lmn-input.on{border-color:var(--purple);box-shadow:0 0 0 3px #7c6cf029}
+.lmn table.lmn-t{border-collapse:collapse;width:100%}.lmn table.lmn-t th{color:var(--muted);background:var(--surf);border-bottom:1px solid var(--bd);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:8px;text-align:left}.lmn table.lmn-t td{border-bottom:1px solid var(--bd2);padding:9px 8px;vertical-align:middle}

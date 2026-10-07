@@ -1,0 +1,36 @@
+/* Live preview helpers for the Scopecraft and Lumen component pages. */
+.tpl-liveblock{position:relative}
+.tpl-livebar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;padding:8px 10px;border:1px dashed var(--bd);border-radius:10px;background:var(--surf);width:100%}
+.tpl-livebar .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tpl-livebar select{border:1px solid var(--bd);border-radius:8px;padding:4px 8px;background:var(--surf);color:var(--text);font:inherit;font-size:12.5px}
+.tpl-livebar label{display:inline-flex;gap:6px;align-items:center;font-size:12.5px;color:var(--text)}
+.tpl-livebar [data-toast],.tpl-livebar [data-m]{cursor:pointer}
+.tpl-reset{position:absolute;top:6px;right:8px;border:1px solid var(--bd);background:var(--surf);color:var(--muted);border-radius:999px;font:600 11px inherit;padding:2px 9px;cursor:pointer}
+.tpl-reset:hover{color:var(--ink)}
+.tpl-liveblock .sc-btn,.tpl-liveblock .lmn-btn,.tpl-liveblock .sc-seg span,.tpl-liveblock .sc-tabs span,.tpl-liveblock .lmn-seg span,.tpl-liveblock .scx-pg span,.tpl-liveblock .scx-st span,.tpl-liveblock .sc-nav,.tpl-liveblock .lmn-tog,.tpl-liveblock .sc-chip,.tpl-liveblock .lmn-chip,.tpl-liveblock .sc-bar,.tpl-liveblock .lmn-bar2{cursor:pointer;user-select:none}
+.tpl-liveblock .sc-btn.dis{cursor:not-allowed}
+.tpl-pressed{transform:translateY(1px) scale(.98)}
+.tpl-dim{opacity:.4}
+.tpl-liveblock .scx-al{position:relative;transition:opacity .18s;padding-right:34px}
+.tpl-liveblock .scx-al .x{position:absolute;right:12px;top:9px;cursor:pointer;opacity:.7}
+.tpl-spin{width:11px;height:11px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;display:inline-block;animation:tplspin .7s linear infinite}
+@keyframes tplspin{to{transform:rotate(360deg)}}
+.tpl-menu{z-index:2200;min-width:170px;background:#fff;border:1px solid var(--bd,#e6e6e8);border-radius:10px;padding:5px;box-shadow:0 10px 30px rgba(0,0,0,.15);font:13px system-ui,sans-serif;color:#1b1c1f}
+.tpl-menu a{display:block;padding:6px 10px;border-radius:7px;cursor:pointer}
+.tpl-menu a:hover{background:#f1f1f3}
+.tpl-layer{position:fixed;inset:0;z-index:2000;pointer-events:none}
+.tpl-ov{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition:background .18s;pointer-events:auto}
+.tpl-ov.in{background:rgba(0,0,0,.45)}
+.tpl-ov .scx-md{transform:translateY(-10px);opacity:0;transition:transform .18s,opacity .18s}
+.tpl-ov.in .scx-md{transform:none;opacity:1}
+.tpl-toasts{position:fixed;z-index:2100;display:flex;flex-direction:column;gap:10px;width:min(360px,92vw);pointer-events:none}
+.tpl-toasts.top-left{top:16px;left:16px}.tpl-toasts.top-center{top:16px;left:50%;transform:translateX(-50%)}.tpl-toasts.top-right{top:16px;right:16px}
+.tpl-toasts.bottom-left{bottom:16px;left:16px}.tpl-toasts.bottom-center{bottom:16px;left:50%;transform:translateX(-50%)}.tpl-toasts.bottom-right{bottom:16px;right:16px}
+.tpl-toast{pointer-events:auto;display:flex;gap:8px;align-items:center;color:#fff;border-radius:10px;padding:10px 12px;font:13px system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.22);animation:tpltin .22s ease-out;transition:opacity .2s,transform .2s}
+.tpl-toast .x{margin-left:auto;cursor:pointer;opacity:.8}
+.tpl-toast.out{opacity:0;transform:translateY(-6px)}
+@keyframes tpltin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.tpl-toast,.tpl-ov,.tpl-ov .scx-md,.tpl-spin{animation:none;transition:none}}
+.sc.tpl-toasts,.sc.tpl-layer{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;margin:0!important;container-type:normal!important;overflow:visible!important}
+.sc.tpl-toasts{padding:0!important}
+.sc.tpl-layer{padding:0!important}

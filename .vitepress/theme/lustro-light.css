@@ -1,0 +1,103 @@
+/* Lustro light mode. The base theme (custom.css) is the dark one; this keeps the indigo/pink/cyan accents and flips canvas, surfaces and text.
+   Colors in the .l-* demo rules are derived from the dark ones. Toggle: bottom-right button on /lustro pages. */
+html.tpl-lu.lu-light{color-scheme:light;--lustro-indigo-soft:#4f46e5;--lustro-bg:#fafaff;--vp-c-bg:#fafaff;--vp-c-bg-alt:#f2f2fb;--vp-c-bg-elv:#ffffff;--vp-c-bg-soft:#f2f2fb;--vp-c-bg-mute:#ebebf7;--vp-c-text-1:#17172b;--vp-c-text-2:#4a4a68;--vp-c-text-3:#6b6b8a;--vp-c-divider:rgba(99,102,241,.2);--vp-c-gutter:rgba(99,102,241,.14);--vp-c-border:rgba(99,102,241,.28);--vp-c-default-1:#e4e4f3;--vp-c-default-2:#ebebf7;--vp-c-default-3:#f2f2fb;--vp-c-default-soft:#ebebf7;--vp-c-brand-1:#4f46e5;--vp-c-brand-2:#6366f1;--vp-c-brand-3:#4338ca;--vp-c-brand-soft:rgba(99,102,241,.14);--vp-sidebar-bg-color:#f2f2fb;--vp-nav-bg-color:#fafaff;--vp-code-bg:#ebebf7;--vp-code-block-bg:#f2f2fb;--vp-code-color:#17172b;--vp-c-text-code:#4338ca}
+html.tpl-lu.lu-light body{background-color:#fafaff;color:#17172b;background-image:radial-gradient(60rem 30rem at 85% -10%,rgba(99,102,241,.1),transparent 60%),radial-gradient(50rem 25rem at -10% 110%,rgba(236,72,153,.07),transparent 60%)}
+html.tpl-lu.lu-light .VPNav,html.tpl-lu.lu-light .VPNavBar,html.tpl-lu.lu-light .VPNavBar .content,html.tpl-lu.lu-light .VPNavBar .content-body,html.tpl-lu.lu-light .VPNavBar .title,html.tpl-lu.lu-light .VPLocalNav{background:#fafaff;color:#17172b}
+html.tpl-lu.lu-light .VPNavBarMenuLink,html.tpl-lu.lu-light .VPNavBarSearch .DocSearch-Button{color:#17172b}
+html.tpl-lu.lu-light .VPSidebar{background:#f2f2fb;border-right:1px solid rgba(99,102,241,.18)}
+html.tpl-lu.lu-light .VPContent,html.tpl-lu.lu-light .VPDoc,html.tpl-lu.lu-light .VPDocAside,html.tpl-lu.lu-light .VPDocFooter{background:transparent}
+html.tpl-lu.lu-light .vp-doc h2{border-top-color:rgba(99,102,241,.2)}
+html.tpl-lu.lu-light .vp-doc th,html.tpl-lu.lu-light .vp-doc td{border-color:rgba(99,102,241,.2)}
+html.tpl-lu.lu-light .vp-doc tr{background:#fafaff;border-color:rgba(99,102,241,.2)}html.tpl-lu.lu-light .vp-doc tr:nth-child(2n){background:#f2f2fb}
+html.tpl-lu.lu-light .swatch .meta,html.tpl-lu.lu-light .swatch .meta code{color:#17172b}
+html.tpl-lu.lu-light .l-demo{border:1px solid #bebfd0;background:#f5f5f9;color:#120b2f}
+html.tpl-lu.lu-light .l-demo p{color:#252339}
+html.tpl-lu.lu-light .l-demo h3{color:#1a1a1a}
+html.tpl-lu.lu-light .l-btn{color:#1a1a1a}
+html.tpl-lu.lu-light .l-secondary{background:#f2f2f6;border-color:#a6a7b9}
+html.tpl-lu.lu-light .l-quiet{color:#040648}
+html.tpl-lu.lu-light .l-danger{background:#f8f0f2;border-color:#c8939f}
+html.tpl-lu.lu-light .l-segment{background:#f6f6fa;border:1px solid #b1b3c5}
+html.tpl-lu.lu-light .l-segment button{color:#26293d}
+html.tpl-lu.lu-light .l-segment button.is-active{background:#5758a4;color:#1a1a1a}
+html.tpl-lu.lu-light .l-dropdown summary{border:1px solid #a8a9bb}
+html.tpl-lu.lu-light .l-menu{border:1px solid #b2b4c5;background:#f5f5f9}
+html.tpl-lu.lu-light .l-menu button{color:#1a1a1a}
+html.tpl-lu.lu-light .l-menu button:hover{background:#eeeef4}
+html.tpl-lu.lu-light .l-pages button{background:#f3f3f7;color:#1a1a1a;border:1px solid #a8a9bb}
+html.tpl-lu.lu-light .l-alert{border:1px solid #afbbc5;background:#f1f4f7}
+html.tpl-lu.lu-light .l-alert-warn{border-color:#d2bfa1;background:#f8f6f3}
+html.tpl-lu.lu-light .l-alert-success{border-color:#bad8cf;background:#f4f9f8}
+html.tpl-lu.lu-light .l-alert strong{color:#1a1a1a}
+html.tpl-lu.lu-light .l-icon-btn{color:#1a1a1a}
+html.tpl-lu.lu-light .l-toast{border:1px solid #abacc2;background:#f2f2f7;color:#1a1a1a}
+html.tpl-lu.lu-light .l-badge{border:1px solid #acafc3;background:#f1f1f6;color:#030541}
+html.tpl-lu.lu-light .l-badge-success{border-color:#badfd5;background:#f4f9f8;color:#16674a}
+html.tpl-lu.lu-light .l-badge-warn{border-color:#d3c3a9;background:#f8f7f4;color:#674305}
+html.tpl-lu.lu-light .l-badge-error{border-color:#cca4af;background:#f8f3f5;color:#5b0514}
+html.tpl-lu.lu-light .l-spinner{border:3px solid #abacc0}
+html.tpl-lu.lu-light .l-skeleton{background:linear-gradient(100deg,#e4e4ed 20%,#d8d9e3 45%,#e4e4ed 70%)}
+html.tpl-lu.lu-light .l-card{background:#f2f2f6;border:1px solid #b5b6c9}
+html.tpl-lu.lu-light .l-eyebrow{color:#0f0453}
+html.tpl-lu.lu-light .l-accordion{border-bottom:1px solid #bbbccb}
+html.tpl-lu.lu-light .l-accordion button,html.tpl-lu.lu-light .l-expand-button{color:#1a1a1a}
+html.tpl-lu.lu-light .l-breadcrumb{color:#2d2b40}
+html.tpl-lu.lu-light .l-tabs{border-bottom:1px solid #b2b3c6}
+html.tpl-lu.lu-light .l-tabs button{color:#29273f}
+html.tpl-lu.lu-light .l-tabs button[aria-selected=true]{border-color:#2b0a5b;color:#1a1a1a}
+html.tpl-lu.lu-light .l-list li{border-bottom:1px solid #bcbccd}
+html.tpl-lu.lu-light .l-table th,html.tpl-lu.lu-light .l-table td{border-bottom:1px solid #babbcd}
+html.tpl-lu.lu-light .l-table th{color:#202141}
+html.tpl-lu.lu-light .l-empty{border:1px dashed #b2b3c3}
+html.tpl-lu.lu-light .l-field-label{color:#161232}
+html.tpl-lu.lu-light .l-form input:not([type=checkbox]):not([type=radio]),html.tpl-lu.lu-light .l-form select,html.tpl-lu.lu-light .l-form textarea{background:#f6f6f9;color:#1a1a1a;border:1px solid #a6a7b8}
+html.tpl-lu.lu-light .l-form small{color:#29273f}
+html.tpl-lu.lu-light .l-form fieldset{border:1px solid #b6b7c6}
+html.tpl-lu.lu-light .l-switch span{background:#ededf1}
+html.tpl-lu.lu-light .l-switch input:focus-visible+span{outline:2px solid #0f0f0f}
+html.tpl-lu.lu-light .l-dialog{border:1px solid #605d86;background:#f4f4f8;color:#1a1a1a}
+html.tpl-lu.lu-light .l-backdrop{background:#1e1e5ac4}
+html.tpl-lu.lu-light .l-popover{color:#18162f}
+html.tpl-lu.lu-light .l-graph{background:radial-gradient(circle at 50% 40%,#d9dae950,#eeeef5 72%)}
+html.tpl-lu.lu-light .l-lane-track{background:linear-gradient(90deg,#e4e5ed,#e7e7f0,#eaf1f0)}
+html.tpl-lu.lu-light .l-lane-labels{color:#23203b}
+html.tpl-lu.lu-light .l-lane-card{border:1px solid #454375;background:#f1f1f5}
+html.tpl-lu.lu-light .l-lane-card small{color:#252134}
+html.tpl-lu.lu-light .l-expand-button{border:1px solid #aeafc2;background:#f3f3f7}
+html.tpl-lu.lu-light .l-expand-detail{border:1px solid #aeafc2}
+html.tpl-lu.lu-light .l-stagger>div{border:1px solid #b3b4c6;background:#f3f3f7}
+html.tpl-lu.lu-light .l-toast-success{border-color:#acd7cb;background:#f3f9f8}
+html.tpl-lu.lu-light .l-toast-warn{border-color:#cab593;background:#f8f6f2}
+html.tpl-lu.lu-light .l-toast-error{border-color:#c398a2;background:#f7f1f3}
+html.tpl-lu.lu-light .l-toast-info{border-color:#484d92;background:#f1f1f6}
+html.tpl-lu.lu-light .l-dot-info{background:#0c1851}
+html.tpl-lu.lu-light .l-mail-meta>div{border:1px solid #bcbdce;background:#f5f6f9}
+html.tpl-lu.lu-light .l-mail-meta strong{color:#212342}
+html.tpl-lu.lu-light .l-mail-preview{border:1px solid #b2b4c9;background:#f5f5f9;color:#120b2f}
+html.tpl-lu.lu-light .l-mail-brand{border-bottom:1px solid #bcbdce}
+html.tpl-lu.lu-light .l-mail-brand span{color:#810d46}
+html.tpl-lu.lu-light .l-mail-body h3{color:#1a1a1a}
+html.tpl-lu.lu-light .l-mail-body p{color:#201d35}
+html.tpl-lu.lu-light .l-mail-body .l-mail-detail{border-top:1px solid #bcbdce;color:#2c293d}
+html.tpl-lu.lu-light .l-mail-preview footer{background:#f7f7fa;color:#29273f}
+html.tpl-lu.lu-light .l-mail-preview footer a{color:#04054f}
+html.tpl-lu.lu-light .l-demo a.l-btn{color:#1a1a1a}
+html.tpl-lu.lu-light .l-demo a.l-primary{background-image:linear-gradient(90deg,#4338ca,#f1c7d8)}
+html.tpl-lu.lu-light .l-demo a.l-btn:focus-visible{outline:3px solid #0f0f0f}
+html.tpl-lu.lu-light .l-carousel-dots button,html.tpl-lu.lu-light .l-spy-nav button{border:1px solid #a2a2b7;background:#f2f2f6;color:#1a1a1a}
+html.tpl-lu.lu-light .l-carousel-dots [aria-current],html.tpl-lu.lu-light .l-spy-nav [aria-current]{background:#5758a4;border-color:#0c1851}
+html.tpl-lu.lu-light .l-close{border:1px solid #a2a3b8;background:#f2f2f6;color:#1a1a1a}
+html.tpl-lu.lu-light .l-collapse summary{color:#120b2f}
+html.tpl-lu.lu-light .l-site-footer{border-top:1px solid #b2b3c3;color:#252339}
+html.tpl-lu.lu-light .l-drawer{background:#f5f5f9;border-left:1px solid #abacc0}
+/* keep white text on saturated fills */
+html.tpl-lu.lu-light .l-primary,html.tpl-lu.lu-light .l-btn.l-primary,html.tpl-lu.lu-light .l-demo a.l-btn,html.tpl-lu.lu-light .l-segment button.is-active,html.tpl-lu.lu-light .l-carousel-dots [aria-current],html.tpl-lu.lu-light .l-spy-nav [aria-current],html.tpl-lu.lu-light .l-avatar{color:#fff}
+html.tpl-lu.lu-light .l-switch span:after{background:#fff}
+html.tpl-lu.lu-light .l-demo :focus-visible{outline-color:#4f46e5}
+html.tpl-lu.lu-light .l-switch span:after{background:#0f0f0f}
+html.tpl-lu.lu-light .l-demo :focus-visible{outline:2px solid #0c1851}
+/* toggle */
+.lu-theme-toggle{display:none}
+html.tpl-lu .lu-theme-toggle{display:inline-flex;align-items:center;gap:8px;position:fixed;right:18px;bottom:18px;z-index:60;border-radius:9999px;border:1px solid #e7e7e9;background:#fff;color:#17171a;padding:0;width:44px;height:44px;justify-content:center;font:600 14px 'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 10px rgba(20,20,25,.12)}
+html.tpl-lu.lu-light .lu-theme-toggle{background:#fff;color:#17172b;border-color:#d4d4ea}
+html.tpl-lu:not(.lu-light) .lu-theme-toggle{background:#1b1b30;color:#f4f2fc;border-color:#414361}
