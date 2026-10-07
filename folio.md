@@ -1,18 +1,29 @@
 ---
 aside: false
 ---
-<script setup>
-import FolioDashboard from './.vitepress/theme/FolioDashboard.vue'
-</script>
+# Folio
 
-# Folio finance
+Charcoal finance workspace with mint actions, calm balance typography and thin cash-flow lines. A reusable design system, separate from the dashboard example.
 
-Charcoal finance dashboard with mint accents, balance sparkline, cash-flow allocation, upcoming payments and transaction search. Payment controls add local fictitious rows only.
+## Start here
 
-Source-inspired implementation from [the reference post](https://x.com/olatheuiuxguy/status/2107377813783544110?s=46). Recreated with local components, not downloaded product code or assets. No real money, contractor message or account action is performed.
+- [Principles and tokens](/folio/foundations): palette, type, spacing, radius, semantics and CSS API.
+- [Components](/folio/components): Live component patterns and states.
+- [Charts](/folio/charts): line, area, bar, stack, donut and cash-flow comparison.
+- [Motion](/folio/motion): timing, state feedback and reduced motion.
+- [Layouts](/folio/layouts): app shell, navigation and form composition.
+- [Dashboard](/folio/overview): the source-inspired interactive overview.
 
-<FolioDashboard />
+## Principles
 
-## Motion and accessibility
+1. One brand accent per surface. Brand color is an action, not a synonym for success or failure.
+2. Numbers use tabular digits, currency labels and explicit periods. Never hide units in a tooltip.
+3. Every control has focus, disabled, loading or feedback states where applicable.
+4. Dense reports keep horizontal table scrolling on small screens. Core forms and cards stack.
+5. All live previews are local. No payment, message or account connection occurs.
 
-Cards enter with short fades; chart lines and bars reveal on load; controls transition on focus, hover and press. Local updates receive shared state feedback. Reduced-motion preferences stop animations and keep all information visible. Native dialogs support Escape. Tables scroll on narrow screens.
+## Using the system
+
+Load `studio-systems.css`, wrap content in `studio-kit studio-folio` and use the `sk-*` component classes. `StudioCatalog.vue` renders the live component examples with `theme="folio"`. The dashboard has its own domain layout and is available at /folio/overview.
+
+[Implementation tokens](/folio/tokens) · [Full live catalog](/folio/components)
