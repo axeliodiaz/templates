@@ -23,6 +23,12 @@ hero:
       link: /lumen
 
 features:
+  - title: Folio
+    details: Charcoal finance system, mint actions, component states and cash-flow patterns.
+    link: /folio
+  - title: Spark
+    details: Dark orange analytics system, pixel histograms, reporting components and live variants.
+    link: /spark
   - title: Lustro
     details: Dark glassmorphism, indigo-to-pink/cyan gradients, Space Grotesk / DM Sans / JetBrains Mono.
     link: /lustro
