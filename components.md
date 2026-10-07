@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import LangSelect from './.vitepress/theme/LangSelect.vue'
 const toasts = ref([])
 let nextToastId = 0
 const toastTimers = new Map()
@@ -57,6 +58,12 @@ Button group chooses one mode; the adjacent dropdown holds secondary actions.
 
 
 
+
+### Language select {#language-select}
+
+A compact language switcher: a globe, the current language code and a chevron. Click it to open the list, move with the arrow keys, Home and End, press Enter to choose and Escape to close. The choice updates the code on the button; wire it to your i18n routing.
+
+<div class="l-demo"><LangSelect theme="lustro" /></div>
 
 <span id="links-and-pagination"></span>
 
