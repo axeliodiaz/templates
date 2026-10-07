@@ -24,6 +24,7 @@ import './dependency-graph.css'
 import './node-flow.css'
 import './template-motion.css'
 import './reference-dashboards.css'
+import './pulse-dashboard.css'
 import './ejemplos.css'
 import { mountFelixDemos } from './felix-demos'
 import { mountCartMotion } from './cartmotion'
@@ -207,4 +208,3 @@ export default {
     return h(DefaultTheme.Layout)
   }
 }
-
