@@ -10,7 +10,6 @@ Dark analytics workspace with orange actions, pixel histograms and compact tabul
 - [Principles and tokens](/spark/foundations): palette, type, spacing, radius, semantics and CSS API.
 - [Components](/spark/components): Live component patterns and states.
 - [Charts](/spark/charts): line, area, bar, stack, donut and pixel-grid histogram.
-- [Motion](/spark/motion): timing, state feedback and reduced motion.
 - [Layouts](/spark/layouts): app shell, navigation and form composition.
 - [Dashboard](/spark/overview): the source-inspired interactive overview.
 
