@@ -90,6 +90,6 @@ import ComponentCatalog from '../.vitepress/theme/ComponentCatalog.vue'
 
 ## Full interactive component catalog
 
-All 43 families have local previews, usage, markup and keyboard notes. [Extended variants](/lumen/components-more) · [Motion](/lumen/motion).
+All 43 families have local previews, usage, markup and keyboard notes. [Extended variants](/lumen/components-more).
 
 <ComponentCatalog language="lumen" />
