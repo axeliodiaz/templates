@@ -431,6 +431,7 @@ export default defineConfig({
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Orange analytics', link: '/spark-analytics' },
+        { text: 'Pulse projects', link: '/pulse-projects' },
         { text: 'Finance', link: '/finance' },
         { text: 'Reports', link: '/reports' },
         { text: 'Shipping', link: '/shipping' },
