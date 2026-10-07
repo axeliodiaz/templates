@@ -10,7 +10,6 @@ Charcoal finance workspace with mint actions, calm balance typography and thin c
 - [Principles and tokens](/folio/foundations): palette, type, spacing, radius, semantics and CSS API.
 - [Components](/folio/components): Live component patterns and states.
 - [Charts](/folio/charts): line, area, bar, stack, donut and cash-flow comparison.
-- [Motion](/folio/motion): timing, state feedback and reduced motion.
 - [Layouts](/folio/layouts): app shell, navigation and form composition.
 - [Dashboard](/folio/overview): the source-inspired interactive overview.
 
