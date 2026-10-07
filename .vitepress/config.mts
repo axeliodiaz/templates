@@ -19,6 +19,9 @@ export default defineConfig({
       { text: 'Home', link: '/' }
     ],
     sidebar: {
+      '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Charts', link: '/folio/charts' }, { text: 'Motion', link: '/folio/motion' }, { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
+      '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Charts', link: '/spark/charts' }, { text: 'Motion', link: '/spark/motion' }, { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
+
       '/felix': [
         {
           text: 'Foundations',
