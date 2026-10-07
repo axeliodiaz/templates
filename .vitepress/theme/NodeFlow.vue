@@ -20,11 +20,36 @@ const nodes = ref<N[]>(seed().nodes), edges = ref<E[]>(seed().edges)
 const sel = ref<string | null>('a'), panel = ref(false), zoom = ref(1), fit = ref(1)
 const past = ref<string[]>([]), future = ref<string[]>([]), saved = ref('Auto-saved draft'), live = ref(false)
 const wrap = ref<HTMLElement | null>(null)
+const running = ref(false), current = ref<string | null>(null), completed = ref<string[]>([]), runningEdge = ref<string | null>(null)
+const runStatus = ref('Ready for a local simulation')
+let runToken = 0
+function stopRun() { runToken++; running.value = false; current.value = null; runningEdge.value = null; runStatus.value = 'Simulation stopped' }
+async function runDemo() {
+  stopRun(); completed.value = []; running.value = true
+  const token = runToken, reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const pause = () => new Promise(resolve => setTimeout(resolve, reduce ? 0 : 650))
+  let id: string | undefined = nodes.value.find(n => n.kind === 'trigger')?.id
+  const visited = new Set<string>()
+  while (id && !visited.has(id) && token === runToken) {
+    visited.add(id); current.value = id; runStatus.value = `Running: ${byId.value[id]?.title}`
+    await pause(); if (token !== runToken) return
+    completed.value.push(id)
+    // Simulated $100k deal takes the second branch; other branches stay idle.
+    const options = edges.value.filter(e => e.from === id)
+    const next = byId.value[id]?.kind === 'branch' ? options.find(e => e.row === 1) || options[0] : options[0]
+    if (next) { runningEdge.value = `${next.from}-${next.row ?? 'o'}-${next.to}`; await pause() }
+    if (token !== runToken) return
+    runningEdge.value = null; id = next?.to
+  }
+  if (token !== runToken) return
+  running.value = false; current.value = null; runStatus.value = `Simulation complete: ${completed.value.length} steps. No external action.`
+}
+
 const W = 780, H = 460
 const scale = computed(() => fit.value * zoom.value)
 let ro: ResizeObserver | null = null
 onMounted(() => { if (wrap.value && 'ResizeObserver' in window) { ro = new ResizeObserver(() => { fit.value = Math.min(1, (wrap.value!.clientWidth) / W) }); ro.observe(wrap.value) } })
-onBeforeUnmount(() => ro?.disconnect())
+onBeforeUnmount(() => { ro?.disconnect(); stopRun() })
 const label: Record<Kind, string> = { trigger: 'TRIGGER', action: 'ACTION', ai: 'AI AGENT', branch: 'BRANCH' }
 const height = (n: N) => n.rows ? 62 + n.rows.length * 26 : 62
 const byId = computed(() => Object.fromEntries(nodes.value.map(n => [n.id, n])))
@@ -32,15 +57,16 @@ const paths = computed(() => edges.value.map(e => {
   const a = byId.value[e.from], b = byId.value[e.to]
   const sx = a.x + NW, sy = a.y + (e.row === undefined ? height(a) / 2 : 62 + e.row * 26 + 13), tx = b.x, ty = b.y + height(b) / 2
   const d = Math.max(40, (tx - sx) * 0.5)
-  return { key: `${e.from}-${e.row ?? 'o'}-${e.to}`, d: `M${sx} ${sy} C${sx + d} ${sy} ${tx - d} ${ty} ${tx} ${ty}`, on: sel.value === e.from || sel.value === e.to }
+  return { key: `${e.from}-${e.row ?? 'o'}-${e.to}`, d: `M${sx} ${sy} C${sx + d} ${sy} ${tx - d} ${ty} ${tx} ${ty}`, on: sel.value === e.from || sel.value === e.to, running: runningEdge.value === `${e.from}-${e.row ?? 'o'}-${e.to}` }
 }))
 function snap() { return JSON.stringify({ n: nodes.value, e: edges.value }) }
-function commit(before: string, msg: string) { past.value.push(before); future.value = []; saved.value = msg }
+function commit(before: string, msg: string) { stopRun(); past.value.push(before); future.value = []; saved.value = msg }
 function restore(s: string) { const o = JSON.parse(s); nodes.value = o.n; edges.value = o.e; if (sel.value && !byId.value[sel.value]) sel.value = null }
 function undo() { const p = past.value.pop(); if (p) { future.value.push(snap()); restore(p); saved.value = 'Undone' } }
 function redo() { const f = future.value.pop(); if (f) { past.value.push(snap()); restore(f); saved.value = 'Redone' } }
 let drag: { id: string; sx: number; sy: number; ox: number; oy: number; before: string; moved: boolean } | null = null
 function down(e: PointerEvent, n: N) {
+  if (running.value) stopRun()
   sel.value = n.id; drag = { id: n.id, sx: e.clientX, sy: e.clientY, ox: n.x, oy: n.y, before: snap(), moved: false }
   ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
 }
@@ -78,13 +104,13 @@ const out = (id: string) => edges.value.filter(e => e.from === id).length
 <template>
 <section class="nf" aria-label="Node flow builder example">
   <header class="nf-top"><div><span class="nf-eyebrow">AUTOMATIONS</span><b>Big deal routing</b><span class="nf-chip">{{ live ? 'Live' : 'Draft' }}</span></div>
-    <div class="nf-actions"><button type="button" class="nf-btn nf-ghost" :aria-pressed="live" @click="live = !live">{{ live ? 'Switch to draft' : 'Set live' }}</button><button type="button" class="nf-btn" @click="panel = !panel" :aria-expanded="panel">+ Node</button></div></header>
+    <div class="nf-actions"><button type="button" class="nf-btn nf-ghost" @click="running ? stopRun() : runDemo()">{{ running ? 'Stop simulation' : 'Run simulation' }}</button><button type="button" class="nf-btn nf-ghost" :aria-pressed="live" @click="live = !live">{{ live ? 'Switch to draft' : 'Set live' }}</button><button type="button" class="nf-btn" @click="panel = !panel" :aria-expanded="panel">+ Node</button></div></header>
   <div class="nf-bar"><button type="button" class="nf-ic" :disabled="!past.length" @click="undo" aria-label="Undo">↶</button><button type="button" class="nf-ic" :disabled="!future.length" @click="redo" aria-label="Redo">↷</button><button type="button" class="nf-ic" @click="zoom = Math.max(.6, +(zoom - .1).toFixed(1))" aria-label="Zoom out">−</button><span class="nf-zoom">{{ Math.round(scale * 100) }}%</span><button type="button" class="nf-ic" @click="zoom = Math.min(1.4, +(zoom + .1).toFixed(1))" aria-label="Zoom in">+</button><button type="button" class="nf-ic nf-text" @click="reset">Reset</button><span class="nf-saved" role="status">{{ saved }}</span></div>
   <div class="nf-main">
     <div ref="wrap" class="nf-canvas" :style="{ height: H * scale + 'px' }" @click.self="sel = null">
       <div class="nf-stage" :style="{ width: W + 'px', height: H + 'px', transform: `scale(${scale})` }" @click.self="sel = null">
-        <svg :width="W" :height="H" class="nf-edges" aria-hidden="true"><path v-for="p in paths" :key="p.key" :d="p.d" :class="{ on: p.on }" /></svg>
-        <div v-for="n in nodes" :key="n.id" class="nf-node" :class="[`k-${n.kind}`, { sel: sel === n.id }]" :style="{ left: n.x + 'px', top: n.y + 'px', width: NW + 'px' }" tabindex="0" role="button" :aria-pressed="sel === n.id" :aria-label="`${label[n.kind]}: ${n.title}. Arrow keys move it, Delete removes it.`" @pointerdown="down($event, n)" @pointermove="move" @pointerup="up" @pointercancel="up" @keydown="nudge($event, n)">
+        <svg :width="W" :height="H" class="nf-edges" aria-hidden="true"><path v-for="p in paths" :key="p.key" :d="p.d" :class="{ on: p.on, running: p.running }" /></svg>
+        <div v-for="n in nodes" :key="n.id" class="nf-node" :class="[`k-${n.kind}`, { sel: sel === n.id, executing: current === n.id, completed: completed.includes(n.id) }]" :style="{ left: n.x + 'px', top: n.y + 'px', width: NW + 'px' }" tabindex="0" role="button" :aria-pressed="sel === n.id" :aria-label="`${label[n.kind]}: ${n.title}. Arrow keys move it, Delete removes it.`" @pointerdown="down($event, n)" @pointermove="move" @pointerup="up" @pointercancel="up" @keydown="nudge($event, n)">
           <span class="nf-kind">{{ label[n.kind] }}</span><b>{{ n.title }}</b><small>{{ n.sub }}</small>
           <div v-if="n.rows" class="nf-rows"><span v-for="r in n.rows" :key="r">{{ r }}<i></i></span></div>
           <span v-else class="nf-out">{{ out(n.id) }} output{{ out(n.id) === 1 ? '' : 's' }}</span>
@@ -98,6 +124,7 @@ const out = (id: string) => edges.value.filter(e => e.from === id).length
       <div v-for="g in library" :key="g.group"><span class="nf-eyebrow">{{ g.group.toUpperCase() }}</span><button v-for="it in g.items" :key="it.title" type="button" class="nf-item" :class="`k-${it.kind}`" @click="add(it)"><i></i><span><b>{{ it.title }}</b><small>{{ it.sub }}</small></span><kbd>{{ it.key }}</kbd></button></div>
     </aside>
   </div>
+  <p class="nf-note" role="status" aria-live="polite">{{ runStatus }}</p>
   <p class="nf-note nf-foot">Demo only. Drag cards or use arrow keys. Nothing runs or saves outside this page.</p>
 </section>
 </template>
