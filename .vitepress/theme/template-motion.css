@@ -1,0 +1,28 @@
+/* Shared interaction motion across Felix, Lustro, Lumen, Scopecraft and PulseFit.
+   Motion conveys entry, focus and state changes; static content never loops. */
+@media (prefers-reduced-motion: no-preference) {
+  .vp-doc :where(button, a, input, select, textarea, summary, [role="button"], [role="tab"], [role="switch"], .fx-btn, .sc-btn, .lmn-btn, .pf-btn, .btn) {
+    transition-property: background-color, border-color, color, box-shadow, opacity, translate;
+    transition-duration: 160ms;
+    transition-timing-function: ease-out;
+  }
+  .vp-doc :where(button, [role="button"], summary, .fx-btn, .sc-btn, .lmn-btn, .pf-btn, .btn):not(:disabled):not([aria-disabled="true"]):not(.dis):hover { translate: 0 -1px; }
+  .vp-doc :where(button, [role="button"], summary, .fx-btn, .sc-btn, .lmn-btn, .pf-btn, .btn):not(:disabled):not([aria-disabled="true"]):not(.dis):active { translate: 0 1px; }
+  .vp-doc :where(.fx-card, .l-card, .sc-card, .lmn-card, .pf-card, .kit-bubble, .fx-bubble, .l-badge, .fx-badge, .sc-chip, .lmn-chip, .l-avatar, .fx-avatar) { transition: translate 180ms ease-out, box-shadow 180ms ease-out, border-color 180ms ease-out; }
+  .vp-doc :where(.fx-card, .l-card, .sc-card, .lmn-card, .pf-card, .kit-bubble, .fx-bubble, .l-avatar, .fx-avatar):hover { translate: 0 -2px; }
+  .vp-doc :where(dialog[open], [role="tooltip"], .tpl-menu, .fx-scrim.is-open .fx-dialog) { animation: template-appear 180ms ease-out; }
+  .vp-doc :where(details[open]) > :not(summary) { animation: template-appear 180ms ease-out; }
+}
+@keyframes template-appear { from { opacity: 0.5; } to { opacity: 1; } }
+/* Includes older CSS loops and pseudo-elements, even in body-mounted overlays.
+   Keep loaders visible and semantic feedback intact, but eliminate motion. */
+@media (prefers-reduced-motion: reduce) {
+  :is(html.felix, html.tpl-lu, html.tpl-lmn, html.tpl-sc, html.tpl-pf) *,
+  :is(html.felix, html.tpl-lu, html.tpl-lmn, html.tpl-sc, html.tpl-pf) *::before,
+  :is(html.felix, html.tpl-lu, html.tpl-lmn, html.tpl-sc, html.tpl-pf) *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+    translate: none !important;
+  }
+}

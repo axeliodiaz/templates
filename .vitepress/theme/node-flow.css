@@ -30,3 +30,12 @@ html.felix.felix-dark .nf{--nf-bg:#082422;--nf-dot:#2c5553;--nf-panel:#152b2a;--
 .nf-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--nf-card);color:var(--nf-text);border:1px solid var(--nf-line);border-radius:10px;padding:7px 10px;margin-top:5px;cursor:pointer;font-family:var(--nf-font)}.nf-item i{width:8px;height:8px;border-radius:50%;background:var(--c)}.nf-item span{flex:1;display:grid}.nf-item b{font-size:12.5px}.nf-item small{color:var(--nf-muted);font-size:11px}.nf-item kbd{font:600 10px var(--nf-mono);color:var(--nf-muted);border:1px solid var(--nf-line);border-radius:5px;padding:0 5px}
 .nf-note{margin:0!important;color:var(--nf-muted);font-size:12px}.nf-foot{margin-top:10px!important;font-size:11px}
 @media (min-width:900px){.nf-main:has(.nf-panel){grid-template-columns:minmax(0,1fr) 230px}}
+
+/* Local run simulation. The selected $100k branch is illustrative only. */
+.nf-node.executing{border-color:var(--nf-trigger);box-shadow:0 0 0 3px color-mix(in srgb,var(--nf-trigger) 30%,transparent)}
+.nf-node.completed .nf-kind{color:var(--nf-trigger)}
+.nf-edges path.running{stroke:var(--nf-trigger);stroke-width:3;stroke-dasharray:7 5;opacity:1}
+@media(prefers-reduced-motion:no-preference){.nf-edges path.running{animation:nf-flow .45s linear infinite}.nf-node.executing{animation:nf-execute .65s ease-in-out}}
+@keyframes nf-flow{to{stroke-dashoffset:-24}}
+@keyframes nf-execute{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--nf-trigger) 15%,transparent)}}
+@media(prefers-reduced-motion:reduce){.nf-edges path.running,.nf-node.executing{animation:none}}
