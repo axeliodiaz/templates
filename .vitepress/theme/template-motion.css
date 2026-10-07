@@ -17,12 +17,14 @@
 /* Includes older CSS loops and pseudo-elements, even in body-mounted overlays.
    Keep loaders visible and semantic feedback intact, but eliminate motion. */
 @media (prefers-reduced-motion: reduce) {
-  :is(html.felix, html.tpl-lu, html.tpl-lmn, html.tpl-sc, html.tpl-pf) *,
-  :is(html.felix, html.tpl-lu, html.tpl-lmn, html.tpl-sc, html.tpl-pf) *::before,
-  :is(html.felix, html.tpl-lu, html.tpl-lmn, html.tpl-sc, html.tpl-pf) *::after {
+  :is(html.felix, html.tpl-lu, html.tpl-lmn, html.tpl-sc, html.tpl-pf, html.tpl-folio, html.tpl-spark) *,
+  :is(html.felix, html.tpl-lu, html.tpl-lmn, html.tpl-sc, html.tpl-pf, html.tpl-folio, html.tpl-spark) *::before,
+  :is(html.felix, html.tpl-lu, html.tpl-lmn, html.tpl-sc, html.tpl-pf, html.tpl-folio, html.tpl-spark) *::after {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
     translate: none !important;
   }
 }
+
+@media(prefers-reduced-motion:reduce){.kit-folio *,.kit-spark *,.studio-kit *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

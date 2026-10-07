@@ -122,3 +122,14 @@ Every piece used in the Scopecraft examples. Fictitious data.
 .scx-empty{display:flex;flex-direction:column;gap:8px;align-items:flex-start;width:260px}.scx-sk{height:12px;border-radius:6px;background:linear-gradient(90deg,var(--bd2),var(--bd),var(--bd2));background-size:200% 100%;margin:8px 0;animation:scxsk 1.4s linear infinite}@keyframes scxsk{to{background-position:-200% 0}}
 @media(prefers-reduced-motion:reduce){.scx-sk{animation:none}.scx-sw,.scx-sw:after{transition:none}}
 </style>
+
+
+<script setup>
+import ComponentCatalog from '../.vitepress/theme/ComponentCatalog.vue'
+</script>
+
+## Full interactive component catalog
+
+All 43 families have local previews, usage, markup and keyboard notes. [Extended variants](/scopecraft/components-more) · [Motion](/scopecraft/motion).
+
+<ComponentCatalog language="scopecraft" />

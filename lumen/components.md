@@ -82,3 +82,14 @@ Pieces used by the Lumen examples. Fictitious data.
 ## Table
 
 <div class="lmn"><div class="lmn-wrap"><table class="lmn-t"><thead><tr><th>Model</th><th style=text-align:right>Requests</th><th style=text-align:right>Cost</th></tr></thead><tbody><tr><td>gpt-4o</td><td style=text-align:right>62,400</td><td style=text-align:right>$1,242</td></tr><tr><td>claude-sonnet</td><td style=text-align:right>37,440</td><td style=text-align:right>$745</td></tr><tr><td>gemini-pro</td><td style=text-align:right>24,960</td><td style=text-align:right>$497</td></tr></tbody></table></div></div>
+
+
+<script setup>
+import ComponentCatalog from '../.vitepress/theme/ComponentCatalog.vue'
+</script>
+
+## Full interactive component catalog
+
+All 43 families have local previews, usage, markup and keyboard notes. [Extended variants](/lumen/components-more) · [Motion](/lumen/motion).
+
+<ComponentCatalog language="lumen" />

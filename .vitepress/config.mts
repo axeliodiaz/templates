@@ -170,6 +170,7 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/lumen/components' },
+          { text: 'Motion', link: '/lumen/motion' },
           { text: 'Buttons', link: '/lumen/components-more#buttons-variants' },
           { text: 'Button groups', link: '/lumen/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/lumen/components-more#badges-variants' },
@@ -236,6 +237,7 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/scopecraft/components' },
+          { text: 'Motion', link: '/scopecraft/motion' },
           { text: 'Buttons', link: '/scopecraft/components-more#buttons-variants' },
           { text: 'Button groups', link: '/scopecraft/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/scopecraft/components-more#badges-variants' },
@@ -313,6 +315,7 @@ export default defineConfig({
         },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/pulsefit/components' },
+          { text: 'Motion', link: '/pulsefit/motion' },
           { text: 'Buttons', link: '/pulsefit/components-more#buttons-variants' },
           { text: 'Button groups', link: '/pulsefit/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/pulsefit/components-more#badges-variants' },
@@ -383,6 +386,7 @@ export default defineConfig({
       ] },
       { text: 'Full UI catalog', link: '/ui-kit' },
       { text: 'Lustro full live catalog', link: '/lustro/components' },
+          { text: 'Motion', link: '/lustro/motion' },
       { text: 'Lustro expanded set (52 sections)', link: '/lustro/components-more' },
       { text: 'Componentes', link: '/components', collapsed: true, items: [
         { text: 'Accordion', link: '/components#accordion' },
