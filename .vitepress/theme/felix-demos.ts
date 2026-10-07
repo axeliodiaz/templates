@@ -209,4 +209,111 @@ function bind(root: ParentNode) {
 
 export function mountFelixDemos() {
   bind(document)
+  enhancePreviews(document)
+}
+
+
+// Every atom and molecule preview keeps its own local state and reset control.
+function enhancePreviews(root: ParentNode) {
+  root.querySelectorAll<HTMLElement>('.fx-preview').forEach((host) => {
+    if (host.dataset.live) return
+    host.dataset.live = '1'
+    const original = host.innerHTML
+    const status = document.createElement('output')
+    status.className = 'fx-live-status'
+    status.setAttribute('aria-live', 'polite')
+    const controls = document.createElement('div')
+    controls.className = 'fx-live-controls'
+    const reset = document.createElement('button')
+    reset.type = 'button'
+    reset.className = 'fx-btn fx-btn-line fx-btn-sm'
+    reset.textContent = 'Reset preview'
+    reset.addEventListener('click', () => {
+      const fresh = host.cloneNode(false) as HTMLElement
+      fresh.innerHTML = original
+      delete fresh.dataset.bound
+      delete fresh.dataset.live
+      host.replaceWith(fresh)
+      bind(fresh.parentElement || document)
+      enhancePreviews(fresh.parentElement || document)
+    })
+    controls.append(reset, status)
+    host.append(controls)
+    const say = (text: string) => { status.textContent = text }
+    host.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea').forEach((field) => {
+      if (!field.getAttribute('aria-label') && !field.closest('label')) field.setAttribute('aria-label', 'Demo value')
+      field.addEventListener('input', () => say(field.type === 'checkbox' || field.type === 'radio' ? (field as HTMLInputElement).checked ? 'Selected' : 'Not selected' : `Value: ${field.value}`))
+    })
+    // Static button examples gain harmless, visible action feedback.
+    host.addEventListener('click', (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>('button')
+      if (!button || button.closest('.fx-live-controls') || button.disabled) return
+      say(`${button.textContent?.trim() || button.getAttribute('aria-label') || 'Action'} selected`)
+    })
+    // Keyboard shortcuts preserve native behavior and close transient menus.
+    host.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return
+      host.querySelectorAll<HTMLDetailsElement>('details').forEach((node) => { node.open = false })
+      host.querySelectorAll<HTMLElement>('.fx-date-pop').forEach((node) => { node.hidden = true })
+    })
+    const tabs = Array.from(host.querySelectorAll<HTMLButtonElement>('.fx-tab'))
+    if (tabs.length) {
+      tabs[0].parentElement?.setAttribute('role', 'tablist')
+      const panels = Array.from(host.querySelectorAll<HTMLElement>('[data-panel]'))
+      const sync = () => tabs.forEach((tab, i) => {
+        const selected = tab.classList.contains('is-on')
+        tab.setAttribute('role', 'tab')
+        tab.setAttribute('aria-selected', String(selected))
+        tab.tabIndex = selected ? 0 : -1
+        tab.id ||= `fx-tab-${Math.random().toString(36).slice(2)}`
+        const panel = panels.find((p) => p.dataset.panel === tab.dataset.tab)
+        if (panel) {
+          panel.id ||= `${tab.id}-panel`
+          panel.setAttribute('role', 'tabpanel')
+          panel.setAttribute('aria-labelledby', tab.id)
+          panel.tabIndex = 0
+          tab.setAttribute('aria-controls', panel.id)
+        }
+        tab.addEventListener('keydown', (event) => {
+          const next = event.key === 'ArrowRight' ? (i + 1) % tabs.length : event.key === 'ArrowLeft' ? (i + tabs.length - 1) % tabs.length : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : -1
+          if (next < 0) return
+          event.preventDefault()
+          tabs[next].click()
+          tabs[next].focus()
+        })
+      })
+      sync()
+      tabs.forEach((tab) => tab.addEventListener('click', () => {
+        tabs.forEach((node) => {
+          const selected = node.classList.contains('is-on')
+          node.setAttribute('aria-selected', String(selected))
+          node.tabIndex = selected ? 0 : -1
+        })
+      }))
+    }
+    // Dialogs and drawers trap focus while open, dismiss on Escape or backdrop,
+    // and return focus to their opener. They remain local to the preview.
+    const scrim = host.querySelector<HTMLElement>('.fx-scrim')
+    const opener = host.querySelector<HTMLButtonElement>('[data-open]')
+    const dialog = scrim?.firstElementChild as HTMLElement | null
+    if (scrim && opener && dialog) {
+      scrim.style.position = 'fixed'
+      scrim.style.zIndex = '1000'
+      dialog.setAttribute('role', 'dialog')
+      dialog.setAttribute('aria-modal', 'true')
+      dialog.setAttribute('aria-label', dialog.querySelector('b')?.textContent || 'Demo dialog')
+      const close = () => { scrim.classList.remove('is-open'); opener.focus() }
+      opener.addEventListener('click', () => dialog.querySelector<HTMLElement>('button, input, select, textarea, [tabindex]')?.focus())
+      scrim.addEventListener('click', (event) => { if (event.target === scrim) close() })
+      host.querySelectorAll('[data-close]').forEach((node) => node.addEventListener('click', close))
+      dialog.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') { event.preventDefault(); close(); return }
+        if (event.key !== 'Tab') return
+        const focusable = Array.from(dialog.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), select, textarea, a[href], [tabindex="0"]'))
+        const first = focusable[0], last = focusable[focusable.length - 1]
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus() }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus() }
+      })
+    }
+  })
 }
