@@ -379,6 +379,8 @@ export default defineConfig({
         { text: 'Iconos', link: '/fundamentos/iconos' }
       ] },
       { text: 'Full UI catalog', link: '/ui-kit' },
+      { text: 'Lustro full live catalog', link: '/lustro/components' },
+      { text: 'Lustro expanded set (52 sections)', link: '/lustro/components-more' },
       { text: 'Componentes', link: '/components', collapsed: true, items: [
         { text: 'Accordion', link: '/components#accordion' },
         { text: 'Alerts', link: '/components#alerts' },
@@ -456,4 +458,3 @@ export default defineConfig({
     ]
   }
 })
-
