@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { animate, stagger } from 'motion'
+import LangSelect from './LangSelect.vue'
 const props = defineProps({ theme: { type: String, default: 'pulsefit' } })
 const T = {
   lustro: ['#0b0b18', 'rgba(148,140,255,.08)', '#fff', '#a5b4fc', 'rgba(148,140,255,.22)', '#6366f1', '#fff', '#34d399', '#f472b6', 'rgba(99,102,241,.2)', "'DM Sans',sans-serif", '14px', '#6366f1', '#fbbf24', '#22d3ee', '#f472b6', '#64648c'],
@@ -30,7 +31,7 @@ onMounted(() => { if (reduce() || !root.value) return; animate(root.value.queryS
       <button type="button" class="nb-burger" :aria-expanded="open" aria-controls="nb-p1" aria-label="Toggle navigation" @click="open = !open"><span></span><span></span><span></span></button>
       <div class="nb-links" :class="{ show: open }" id="nb-p1" ref="panel"><a v-for="l in links" :key="l" href="#" :class="{ on: active === l }" :aria-current="active === l ? 'page' : null" @click.prevent="pick(l)">{{ l }}</a>
         <div class="nb-dd"><button type="button" :aria-expanded="dd" aria-haspopup="menu" @click="dd = !dd">More &#9662;</button><div v-if="dd" ref="menu" class="nb-menu" role="menu"><a role="menuitem" href="#" @click.prevent="dd = false">Billing</a><a role="menuitem" href="#" @click.prevent="dd = false">Integrations</a><hr><a role="menuitem" href="#" @click.prevent="dd = false">Help center</a></div></div>
-        <span class="nb-search"><input v-model="q" type="search" placeholder="Search" aria-label="Search" /></span></div></nav>
+        <LangSelect :theme="theme" align="right" /><span class="nb-search"><input v-model="q" type="search" placeholder="Search" aria-label="Search" /></span></div></nav>
     <p class="nb-note">Responsive collapse: narrow the window under 700 px and use the menu button. Current: <b>{{ active }}</b>{{ q ? ', searching "' + q + '"' : '' }}.</p>
     <nav class="nb-bar sec" aria-label="Secondary"><a class="nb-brand"><i></i>Brand</a><div class="nb-links show"><a v-for="l in links" :key="l" href="#" :class="{ on: active === l }" @click.prevent="active = l">{{ l }}</a></div><button type="button" class="nb-tg" :aria-pressed="dark" @click="dark = !dark">{{ dark ? 'Dark' : 'Light' }}</button></nav>
     <nav class="nb-bar dk" aria-label="Inverted"><a class="nb-brand"><i></i>Brand</a><div class="nb-links show"><a v-for="l in links" :key="l" href="#" :class="{ on: active === l }" @click.prevent="active = l">{{ l }}</a></div><span class="nb-pill">3</span></nav>
