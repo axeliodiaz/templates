@@ -28,3 +28,21 @@
 }
 
 @media(prefers-reduced-motion:reduce){.kit-folio *,.kit-spark *,.studio-kit *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Motion is a normal component default, not an opt-in demo. */
+@media(prefers-reduced-motion:no-preference){
+.vp-doc :where(button,a,input,select,textarea,summary,[role=button],[role=tab],[role=switch]):focus-visible{transition:outline-offset 160ms ease-out,box-shadow 160ms ease-out;outline-offset:4px}
+.vp-doc :where(progress){transition:accent-color 180ms ease-out}
+.vp-doc :where(progress)::-webkit-progress-value{transition:width 240ms ease-out}
+.vp-doc :where([role=tooltip],.sk-popover,.l-menu){animation:template-appear 180ms ease-out}
+.tpl-feedback-enter-active,.tpl-feedback-leave-active{transition:opacity 180ms ease-out,transform 180ms ease-out!important}
+.tpl-feedback-enter-from,.tpl-feedback-leave-to{opacity:0;transform:translateY(8px)}
+.tpl-feedback-move{transition:transform 180ms ease-out!important}
+.tpl-content-enter-active,.tpl-content-leave-active{transition:opacity 160ms ease-out,transform 160ms ease-out!important}
+.tpl-content-enter-from,.tpl-content-leave-to{opacity:0;transform:translateY(5px)}
+.vp-doc dialog{opacity:0;translate:0 8px;transition:opacity 180ms ease-out,translate 180ms ease-out,display 180ms allow-discrete,overlay 180ms allow-discrete}
+.vp-doc dialog[open]{opacity:1;translate:0 0}
+.vp-doc dialog::backdrop{background:#0000;transition:background 180ms ease-out,display 180ms allow-discrete,overlay 180ms allow-discrete}
+.vp-doc dialog[open]::backdrop{background:#0009}
+@starting-style{.vp-doc dialog[open]{opacity:0;translate:0 8px}.vp-doc dialog[open]::backdrop{background:#0000}}
+}
+@media(prefers-reduced-motion:reduce){.vp-doc *,.vp-doc *::before,.vp-doc *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;translate:none!important}}

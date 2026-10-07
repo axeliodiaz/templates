@@ -130,6 +130,6 @@ import ComponentCatalog from '../.vitepress/theme/ComponentCatalog.vue'
 
 ## Full interactive component catalog
 
-All 43 families have local previews, usage, markup and keyboard notes. [Extended variants](/scopecraft/components-more) · [Motion](/scopecraft/motion).
+All 43 families have local previews, usage, markup and keyboard notes. [Extended variants](/scopecraft/components-more).
 
 <ComponentCatalog language="scopecraft" />
