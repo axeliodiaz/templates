@@ -19,6 +19,9 @@ export default defineConfig({
       { text: 'Home', link: '/' }
     ],
     sidebar: {
+      '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Charts', link: '/folio/charts' }, { text: 'Motion', link: '/folio/motion' }, { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
+      '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Charts', link: '/spark/charts' }, { text: 'Motion', link: '/spark/motion' }, { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
+
       '/felix': [
         {
           text: 'Foundations',
@@ -167,6 +170,7 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/lumen/components' },
+          { text: 'Motion', link: '/lumen/motion' },
           { text: 'Buttons', link: '/lumen/components-more#buttons-variants' },
           { text: 'Button groups', link: '/lumen/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/lumen/components-more#badges-variants' },
@@ -233,6 +237,7 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/scopecraft/components' },
+          { text: 'Motion', link: '/scopecraft/motion' },
           { text: 'Buttons', link: '/scopecraft/components-more#buttons-variants' },
           { text: 'Button groups', link: '/scopecraft/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/scopecraft/components-more#badges-variants' },
@@ -310,6 +315,7 @@ export default defineConfig({
         },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/pulsefit/components' },
+          { text: 'Motion', link: '/pulsefit/motion' },
           { text: 'Buttons', link: '/pulsefit/components-more#buttons-variants' },
           { text: 'Button groups', link: '/pulsefit/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/pulsefit/components-more#badges-variants' },
@@ -380,6 +386,7 @@ export default defineConfig({
       ] },
       { text: 'Full UI catalog', link: '/ui-kit' },
       { text: 'Lustro full live catalog', link: '/lustro/components' },
+          { text: 'Motion', link: '/lustro/motion' },
       { text: 'Lustro expanded set (52 sections)', link: '/lustro/components-more' },
       { text: 'Componentes', link: '/components', collapsed: true, items: [
         { text: 'Accordion', link: '/components#accordion' },
