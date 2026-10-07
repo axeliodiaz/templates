@@ -432,6 +432,7 @@ export default defineConfig({
         { text: 'Folio finance', link: '/folio' },
         { text: 'Orange analytics', link: '/spark-analytics' },
         { text: 'Pulse projects', link: '/pulse-projects' },
+        { text: 'Crestway financials', link: '/crestway-financials' },
         { text: 'Finance', link: '/finance' },
         { text: 'Reports', link: '/reports' },
         { text: 'Shipping', link: '/shipping' },
