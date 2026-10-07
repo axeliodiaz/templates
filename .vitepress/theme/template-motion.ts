@@ -1,4 +1,4 @@
-/** Shared motion for all five languages, without replacing component transforms. */
+/** Default component motion across every system, without replacing component transforms. */
 const scope = '.vp-doc'
 const surfaces = '.fx-preview, .l-demo, .bsx, .sc, .lmn, .pf, .csx, .kit-section, [class$="-app"], [class$="-dash"], .vp-doc > div, section, article, table, svg, img, [class*="card"], [class*="kpi"]'
 const controls = 'button, a, input, select, textarea, summary, [role="button"], [role="tab"], [role="switch"]'
@@ -58,6 +58,22 @@ export function mountTemplateMotion() {
     running.add(animation)
     animation.finished.catch(() => {}).finally(() => running.delete(animation))
   }
+  // Native disclosure keeps semantic open state while its content expands/collapses.
+  const disclosureClick = (event: Event) => {
+    const summary = event.target instanceof Element ? event.target.closest('summary') : null
+    const details = summary?.parentElement
+    if (!summary || !(details instanceof HTMLDetailsElement) || media.matches) return
+    event.preventDefault()
+    const oldHeight = details.getBoundingClientRect().height
+    const closing = details.open
+    if (!closing) details.open = true
+    const newHeight = closing ? summary.getBoundingClientRect().height + parseFloat(getComputedStyle(details).paddingTop) + parseFloat(getComputedStyle(details).paddingBottom) : details.getBoundingClientRect().height
+    details.style.overflow = 'hidden'
+    const animation = details.animate([{height:oldHeight+'px'},{height:newHeight+'px'}],{duration:200,easing:'ease-out'})
+    running.add(animation)
+    animation.finished.catch(()=>{}).finally(()=>{if(closing)details.open=false;details.style.overflow='';running.delete(animation)})
+  }
+  root.addEventListener('click', disclosureClick)
   root.addEventListener('change', inputChanged)
   const preferenceChanged = () => {
     if (media.matches) { root.getAnimations({ subtree: true }).forEach(animation => animation.cancel()); running.clear() }
@@ -65,7 +81,7 @@ export function mountTemplateMotion() {
   }
   media.addEventListener('change', preferenceChanged)
   cleanup = () => {
-    observer.disconnect(); changes.disconnect(); media.removeEventListener('change', preferenceChanged); root.removeEventListener('change', inputChanged)
+    observer.disconnect(); changes.disconnect(); media.removeEventListener('change', preferenceChanged); root.removeEventListener('change', inputChanged); root.removeEventListener('click', disclosureClick)
     running.forEach(animation => animation.cancel()); running.clear()
   }
 }
