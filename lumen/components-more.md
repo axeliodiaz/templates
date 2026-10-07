@@ -214,12 +214,19 @@ Every component Bootstrap 5.3 documents, rebuilt in the Lumen style. 52 componen
 
 <div class="bsx bsx-lmn"><div class="step"><span class="s done"><i>&#10003;</i> Account</span><span class="ln"></span><span class="s cur"><i>2</i> Details</span><span class="ln"></span><span class="s"><i>3</i> Review</span></div><div class="row" style="margin-top:12px">Press <span class="kbd">Ctrl</span> + <span class="kbd">K</span> to search</div></div>
 
+## Language select
+
+A compact language switcher: a globe, the current language code and a chevron. Click it to open the list, move with the arrow keys, Home and End, press Enter to choose and Escape to close. The choice updates the code on the button; wire it to your i18n routing.
+
+<LangSelect theme="lumen" />
+
 ## Navbar
 
 A top navigation bar with a brand, links, a dropdown, search and a collapse button under 700 px. Click a link to mark the current page, open "More", or press Escape to close menus. A secondary tinted bar and an inverted bar show the same links in other treatments. Menus animate in with Motion and stay still with reduced motion.
 
 <script setup>
 import NavbarDemo from '../.vitepress/theme/NavbarDemo.vue'
+import LangSelect from '../.vitepress/theme/LangSelect.vue'
 </script>
 
 <NavbarDemo theme="lumen" />
