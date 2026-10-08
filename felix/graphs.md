@@ -1,14 +1,14 @@
 <script setup>
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 
-const statusLabel = { done: 'Completado', run: 'En curso', wait: 'Pendiente', error: 'Con error', idle: 'Inactivo', unknown: 'Desconocido' }
+const statusLabel = { done: 'Completado', run: 'En curso', wait: 'Pendiente', block: 'Bloqueado', error: 'Con error', idle: 'Inactivo', unknown: 'Desconocido' }
 
 const taskSeed = [
-  { id: 'identity', name: 'Verificar identidad', detail: 'María · INE', depends: 'Sin dependencias', status: 'done', col: 1, row: 1, wide: false },
-  { id: 'destination', name: 'Elegir destino', detail: 'OXXO · CDMX', depends: 'Sin dependencias', status: 'done', col: 2, row: 1, wide: false },
-  { id: 'transfer', name: 'Crear envío', detail: '$100.00 · comisión $0.00', depends: 'Verificar identidad y Elegir destino', status: 'run', col: 1, row: 2, wide: true },
-  { id: 'confirm', name: 'Confirmar monto', detail: 'María revisa el total', depends: 'Crear envío', status: 'wait', col: 1, row: 3, wide: true },
-  { id: 'deliver', name: 'Entregar', detail: '1–3 días hábiles', depends: 'Confirmar monto', status: 'wait', col: 1, row: 4, wide: true }
+  { id: 'identity', name: 'Verificar identidad', detail: 'María · INE', desc: 'Validar el documento de María contra el registro.', tags: ['Cumplimiento'], depends: 'Sin dependencias', status: 'done', col: 1, row: 1, wide: false },
+  { id: 'destination', name: 'Elegir destino', detail: 'OXXO · CDMX', desc: 'María elige dónde cobra la familia.', tags: ['Envíos'], depends: 'Sin dependencias', status: 'done', col: 2, row: 1, wide: false },
+  { id: 'transfer', name: 'Crear envío', detail: '$100.00 · comisión $0.00', desc: 'Crear el envío cuando identidad y destino estén listos.', tags: ['Envíos', 'Pagos'], depends: 'Verificar identidad y Elegir destino', status: 'run', col: 1, row: 2, wide: true },
+  { id: 'confirm', name: 'Confirmar monto', detail: 'María revisa el total', desc: 'María revisa el total antes de pagar.', tags: ['Pagos'], depends: 'Crear envío', status: 'wait', col: 1, row: 3, wide: true },
+  { id: 'deliver', name: 'Entregar', detail: '1–3 días hábiles', desc: 'La familia cobra en la tienda.', tags: ['Entregas'], depends: 'Confirmar monto', status: 'wait', col: 1, row: 4, wide: true }
 ]
 const taskLinks = [
   ['identity', 'transfer'],
@@ -151,6 +151,8 @@ function layout(board, elements, items, links, paths) {
     next.push({
       id: `${from}-${to}`,
       d: `M ${x1.toFixed(1)} ${y1.toFixed(1)} C ${x1.toFixed(1)} ${mid.toFixed(1)}, ${x2.toFixed(1)} ${mid.toFixed(1)}, ${x2.toFixed(1)} ${y2.toFixed(1)}`,
+      from,
+      to,
       status: target?.status || 'wait'
     })
   }
@@ -224,6 +226,45 @@ function retryProc(id) {
 function setProcView(view) {
   procView.value = view
   if (view === 'graph') nextTick(() => layoutProcs())
+}
+
+const taskFocus = ref(null)
+const taskById = computed(() => Object.fromEntries(tasks.value.map((item) => [item.id, item])))
+const taskDeps = computed(() => taskFocus.value ? taskLinks.filter((link) => link[1] === taskFocus.value).map((link) => link[0]) : [])
+const taskNext = computed(() => taskFocus.value ? taskLinks.filter((link) => link[0] === taskFocus.value).map((link) => link[1]) : [])
+const taskFocusText = computed(() => {
+  const item = taskById.value[taskFocus.value]
+  if (!item) return 'Pasa el cursor o enfoca una tarea para ver de qué depende y a quién desbloquea.'
+  const names = (ids) => ids.map((id) => taskById.value[id].name).join(' y ')
+  const from = taskDeps.value.length ? `depende de ${names(taskDeps.value)}` : 'no depende de nada'
+  const to = taskNext.value.length ? `desbloquea ${names(taskNext.value)}` : 'no desbloquea nada'
+  return `${item.name} ${from} y ${to}.`
+})
+
+function focusClass(id) {
+  if (!taskFocus.value) return ''
+  if (id === taskFocus.value) return 'is-focus'
+  if (taskDeps.value.includes(id)) return 'is-dep'
+  if (taskNext.value.includes(id)) return 'is-next'
+  return ''
+}
+
+function edgeHot(edge) {
+  return !!taskFocus.value && (edge.from === taskFocus.value || edge.to === taskFocus.value)
+}
+
+function blockTask(id) {
+  const item = taskById.value[id]
+  if (!item || item.status !== 'run') return
+  item.status = 'block'
+  taskLive.value = `${item.name} quedó bloqueado.`
+}
+
+function resumeTask(id) {
+  const item = taskById.value[id]
+  if (!item || item.status !== 'block') return
+  item.status = 'run'
+  taskLive.value = `${item.name} se reanudó y está en curso.`
 }
 
 function advanceTasks(id) {
@@ -351,35 +392,42 @@ A dependency is a line between two pieces of work. Status uses the Felix semanti
 
 ## Dependent task cards
 
-The card is the task. The line is the dependency, and the same dependency is written on the card. Press **Avanzar** on the task in progress. The next task starts once every card that points to it is complete.
+The card is the task. The line is the dependency, and the same dependency is written on the card. Hover or focus a card to light up what it waits on and what it unblocks. Press **Avanzar** on the task in progress, or **Bloquear** to stop it; a blocked task keeps everything after it waiting until you press **Reanudar**. Tags name the teams involved. The next task starts once every card that points to it is complete.
 
 Identity and destination can finish on their own. Creating the transfer waits for both.
 
 <div class="fx-graph">
   <div class="fx-graph-bar">
     <p v-if="tasksDone" class="fx-graph-note">Todas las tareas quedaron listas.</p>
+    <p v-else class="fx-focus-note" :class="{ 'is-active': taskFocus }">{{ taskFocusText }}</p>
     <button type="button" class="fx-btn fx-btn-line" @click="resetTasks">Reiniciar</button>
   </div>
-  <div class="fx-dep-board" ref="taskBoard">
+  <div class="fx-dep-board" :class="{ 'is-focusing': taskFocus }" ref="taskBoard">
     <svg class="fx-edges" aria-hidden="true">
       <defs>
         <marker id="fx-arrow-tasks" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
           <path d="M1 1.5 L8 5 L1 8.5" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
         </marker>
       </defs>
-      <path v-for="edge in taskPaths" :key="edge.id" class="fx-edge" :data-status="edge.status" :d="edge.d" marker-end="url(#fx-arrow-tasks)" />
+      <path v-for="edge in taskPaths" :key="edge.id" class="fx-edge fx-link" :class="{ 'is-hot': edgeHot(edge) }" :data-status="edge.status" :d="edge.d" marker-end="url(#fx-arrow-tasks)" />
       <circle v-for="edge in taskPaths.filter((edge) => showParticles && edge.status === 'run')" :key="`${edge.id}-dot`" r="3.5" fill="#665500">
         <animateMotion dur="1.5s" repeatCount="indefinite" :path="edge.d" />
       </circle>
     </svg>
-    <article v-for="task in tasks" :key="task.id" :ref="(el) => bind(taskEls, task.id, el)" class="fx-dep" :class="[task.status, { wide: task.wide }]" :style="{ '--col': task.col, '--row': task.row }">
+    <article v-for="task in tasks" :key="task.id" :ref="(el) => bind(taskEls, task.id, el)" class="fx-dep" :class="[task.status, focusClass(task.id), { wide: task.wide }]" :style="{ '--col': task.col, '--row': task.row }" tabindex="0" @mouseenter="taskFocus = task.id" @mouseleave="taskFocus = null" @focus="taskFocus = task.id" @blur="taskFocus = null">
       <header>
         <strong>{{ task.name }}</strong>
         <span>{{ statusLabel[task.status] }}</span>
       </header>
       <small>{{ task.detail }}</small>
-      <small>{{ dependsText(task) }}</small>
-      <button v-if="task.status === 'run'" type="button" class="fx-btn fx-btn-primary" @click="advanceTasks(task.id)">Avanzar</button>
+      <small>{{ task.desc }}</small>
+      <small class="fx-depends">{{ dependsText(task) }}</small>
+      <div v-if="task.status === 'run' || task.status === 'block'" class="fx-dep-actions">
+        <button v-if="task.status === 'run'" type="button" class="fx-btn fx-btn-primary" @click="advanceTasks(task.id)">Avanzar</button>
+        <button v-if="task.status === 'run'" type="button" class="fx-btn fx-btn-line" @click="blockTask(task.id)">Bloquear</button>
+        <button v-if="task.status === 'block'" type="button" class="fx-btn fx-btn-line" @click="resumeTask(task.id)">Reanudar</button>
+      </div>
+      <ul class="fx-tags" aria-label="Equipos"><li v-for="tag in task.tags" :key="tag">#{{ tag }}</li></ul>
     </article>
   </div>
   <p class="fx-sr" aria-live="polite">{{ taskLive }}</p>
