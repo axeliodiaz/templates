@@ -1,7 +1,7 @@
 <script setup>
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 
-const statusLabel = { done: 'Completado', run: 'En curso', wait: 'Pendiente' }
+const statusLabel = { done: 'Completado', run: 'En curso', wait: 'Pendiente', error: 'Con error', idle: 'Inactivo', unknown: 'Desconocido' }
 
 const taskSeed = [
   { id: 'identity', name: 'Verificar identidad', detail: 'María · INE', depends: 'Sin dependencias', status: 'done', col: 1, row: 1, wide: false },
@@ -17,17 +17,23 @@ const taskLinks = [
   ['confirm', 'deliver']
 ]
 const procSeed = [
-  { id: 'quote', name: 'Cotización', depends: 'Sin dependencias', status: 'done', col: 1, row: 1 },
-  { id: 'kyc', name: 'KYC', depends: 'Sin dependencias', status: 'done', col: 3, row: 1 },
-  { id: 'ledger', name: 'Ledger', depends: 'Cotización y KYC', status: 'run', col: 2, row: 2 },
-  { id: 'payout', name: 'Payout', depends: 'Ledger', status: 'wait', col: 2, row: 3 },
-  { id: 'receipt', name: 'Recibo', depends: 'Payout', status: 'wait', col: 2, row: 4 }
+  { id: 'quote', name: 'Cotización', label: 'felix.quote', depends: 'Sin dependencias', status: 'done', pid: '4121', cwd: '/srv/quote', exit: '0' },
+  { id: 'kyc', name: 'KYC', label: 'felix.kyc', depends: 'Sin dependencias', status: 'done', pid: '4122', cwd: '/srv/kyc', exit: '0' },
+  { id: 'ledger', name: 'Ledger', label: 'felix.ledger', depends: 'Cotización y KYC', status: 'run', pid: '4180', cwd: '/srv/ledger', exit: '-' },
+  { id: 'payout', name: 'Payout', label: 'felix.payout', depends: 'Ledger', status: 'wait', pid: '-', cwd: '/srv/payout', exit: '-' },
+  { id: 'notify', name: 'Notificar', label: 'felix.notify', depends: 'Ledger', status: 'error', pid: '-', cwd: '/srv/notify', exit: '78' },
+  { id: 'audit', name: 'Auditoría', label: 'felix.audit', depends: 'Ledger', status: 'idle', pid: '-', cwd: '/srv/audit', exit: '-' },
+  { id: 'receipt', name: 'Recibo', label: 'felix.receipt', depends: 'Payout', status: 'wait', pid: '-', cwd: '/srv/receipt', exit: '-' },
+  { id: 'archive', name: 'Archivo', label: 'felix.archive', depends: 'Recibo', status: 'unknown', pid: '-', cwd: '/srv/archive', exit: '-' }
 ]
 const procLinks = [
   ['quote', 'ledger'],
   ['kyc', 'ledger'],
   ['ledger', 'payout'],
-  ['payout', 'receipt']
+  ['ledger', 'notify'],
+  ['ledger', 'audit'],
+  ['payout', 'receipt'],
+  ['receipt', 'archive']
 ]
 const diagrams = [
   {
@@ -110,7 +116,6 @@ const wantMotion = ref(true)
 const reduced = ref(false)
 const showParticles = computed(() => wantMotion.value && !reduced.value)
 const tasksDone = computed(() => tasks.value.every((item) => item.status === 'done'))
-const procsDone = computed(() => procs.value.every((item) => item.status === 'done'))
 
 const taskBoard = ref(null)
 const procBoard = ref(null)
@@ -168,13 +173,63 @@ function advance(items, links, id, live) {
   live.value = describeAfter(items.value, current.name)
 }
 
+function autoLayers(items, links) {
+  const depth = {}
+  const visit = (id) => {
+    if (depth[id] !== undefined) return depth[id]
+    depth[id] = 0
+    const parents = links.filter((link) => link[1] === id).map((link) => link[0])
+    depth[id] = parents.length ? 1 + Math.max(...parents.map(visit)) : 0
+    return depth[id]
+  }
+  items.forEach((item) => visit(item.id))
+  const rows = []
+  items.forEach((item) => { (rows[depth[item.id]] ||= []).push(item) })
+  for (let pass = 1; pass < rows.length; pass++) {
+    const prev = rows[pass - 1].map((item) => item.id)
+    const center = (item) => {
+      const idx = links.filter((link) => link[1] === item.id).map((link) => prev.indexOf(link[0])).filter((i) => i >= 0)
+      return idx.length ? idx.reduce((a, b) => a + b, 0) / idx.length : 0
+    }
+    rows[pass] = [...rows[pass]].sort((a, b) => center(a) - center(b))
+  }
+  return rows.filter(Boolean)
+}
+
+const procView = ref('graph')
+const procSel = ref(null)
+const procLayers = computed(() => autoLayers(procs.value, procLinks))
+const procSelected = computed(() => procs.value.find((item) => item.id === procSel.value) || null)
+const procNames = computed(() => Object.fromEntries(procs.value.map((item) => [item.id, item.name])))
+const procUnlocks = computed(() => procSel.value ? procLinks.filter((link) => link[0] === procSel.value).map((link) => procNames.value[link[1]]).join(', ') || 'Nada' : '')
+
+function selectProc(id) {
+  procSel.value = procSel.value === id ? null : id
+  const item = procs.value.find((entry) => entry.id === id)
+  if (procSel.value && item) procLive.value = `${item.name}: ${statusLabel[item.status]}.`
+}
+
+function completeProc(id) {
+  advance(procs, procLinks, id, procLive)
+}
+
+function retryProc(id) {
+  const item = procs.value.find((entry) => entry.id === id)
+  if (!item || item.status !== 'error') return
+  item.status = 'run'
+  item.exit = '-'
+  procLive.value = `${item.name} se reintentó y está en curso.`
+}
+
+function setProcView(view) {
+  procView.value = view
+  if (view === 'graph') nextTick(() => layoutProcs())
+}
+
 function advanceTasks(id) {
   advance(tasks, taskLinks, id, taskLive)
 }
 
-function advanceProcs(id) {
-  advance(procs, procLinks, id, procLive)
-}
 
 function resetTasks() {
   tasks.value = copy(taskSeed)
@@ -182,6 +237,7 @@ function resetTasks() {
 }
 
 function resetProcs() {
+  procSel.value = null
   procs.value = copy(procSeed)
   procLive.value = 'Cotización y KYC están completados. Ledger está en curso.'
 }
@@ -331,14 +387,17 @@ Identity and destination can finish on their own. Creating the transfer waits fo
 
 ## Process graph
 
-The same kind of dependency, drawn as objects. Use it when the label is a system or a step. Press the object marked **En curso**.
+The same kind of dependency, drawn as objects. Use it when the label is a system or a step, such as a background job. Six states: **Completado**, **En curso**, **Pendiente**, **Con error**, **Inactivo** and **Desconocido**. Objects place themselves in rows from their links, so a graph needs no coordinates. Select an object to see its detail table. **Completar** and **Reintentar** are demo actions on the selected object.
 
-<div class="fx-graph">
+<div class="fx-graph fx-pg">
   <div class="fx-graph-bar">
-    <p v-if="procsDone" class="fx-graph-note">Todos los procesos quedaron listos.</p>
+    <div class="fx-pg-views" role="group" aria-label="Vista">
+      <button type="button" class="fx-btn fx-btn-line" :aria-pressed="procView === 'graph'" @click="setProcView('graph')">Grafo</button>
+      <button type="button" class="fx-btn fx-btn-line" :aria-pressed="procView === 'list'" @click="setProcView('list')">Lista</button>
+    </div>
     <button type="button" class="fx-btn fx-btn-line" @click="resetProcs">Reiniciar</button>
   </div>
-  <div class="fx-obj-board" ref="procBoard">
+  <div v-show="procView === 'graph'" class="fx-obj-board fx-pg-board" ref="procBoard">
     <svg class="fx-edges" aria-hidden="true">
       <defs>
         <marker id="fx-arrow-proc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
@@ -350,15 +409,48 @@ The same kind of dependency, drawn as objects. Use it when the label is a system
         <animateMotion dur="1.5s" repeatCount="indefinite" :path="edge.d" />
       </circle>
     </svg>
-    <button v-for="node in procs" :key="node.id" type="button" :ref="(el) => bind(procEls, node.id, el)" class="fx-obj" :class="node.status" :style="{ '--col': node.col, '--row': node.row }" :aria-disabled="node.status !== 'run'" @click="advanceProcs(node.id)">
-      <i data-anchor></i>
-      <span class="fx-obj-name">{{ node.name }}</span>
-      <small>{{ node.status === 'run' ? 'En curso · Avanzar' : statusLabel[node.status] }}</small>
-      <small>{{ dependsText(node) }}</small>
-    </button>
+    <div v-for="(layer, row) in procLayers" :key="row" class="fx-pg-layer">
+      <button v-for="node in layer" :key="node.id" type="button" :ref="(el) => bind(procEls, node.id, el)" class="fx-obj" :class="[node.status, { sel: procSel === node.id }]" :aria-pressed="procSel === node.id" @click="selectProc(node.id)">
+        <i data-anchor></i>
+        <span class="fx-obj-name">{{ node.name }}</span>
+        <small>{{ statusLabel[node.status] }}</small>
+      </button>
+    </div>
+  </div>
+  <table v-if="procView === 'list'" class="fx-pg-list">
+    <thead><tr><th>Proceso</th><th>Estado</th><th>PID</th><th>Depende de</th></tr></thead>
+    <tbody>
+      <tr v-for="node in procs" :key="node.id" :class="{ sel: procSel === node.id }">
+        <td><button type="button" class="fx-pg-link" :aria-pressed="procSel === node.id" @click="selectProc(node.id)">{{ node.name }}</button></td>
+        <td><span class="fx-pg-pill" :class="node.status">{{ statusLabel[node.status] }}</span></td>
+        <td>{{ node.pid }}</td>
+        <td>{{ node.depends }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div v-if="procSelected" class="fx-pg-detail">
+    <div class="fx-pg-detail-head">
+      <strong>{{ procSelected.name }}</strong>
+      <span class="fx-pg-pill" :class="procSelected.status">{{ statusLabel[procSelected.status] }}</span>
+      <button v-if="procSelected.status === 'run'" type="button" class="fx-btn fx-btn-line" @click="completeProc(procSelected.id)">Completar</button>
+      <button v-if="procSelected.status === 'error'" type="button" class="fx-btn fx-btn-line" @click="retryProc(procSelected.id)">Reintentar</button>
+    </div>
+    <table class="fx-pg-table">
+      <tbody>
+        <tr><th scope="row">Etiqueta</th><td>{{ procSelected.label }}</td></tr>
+        <tr><th scope="row">Estado</th><td>{{ statusLabel[procSelected.status] }}</td></tr>
+        <tr><th scope="row">PID</th><td>{{ procSelected.pid }}</td></tr>
+        <tr><th scope="row">Directorio</th><td>{{ procSelected.cwd }}</td></tr>
+        <tr><th scope="row">Código de salida</th><td>{{ procSelected.exit }}</td></tr>
+        <tr><th scope="row">Depende de</th><td>{{ procSelected.depends }}</td></tr>
+        <tr><th scope="row">Desbloquea</th><td>{{ procUnlocks }}</td></tr>
+      </tbody>
+    </table>
   </div>
   <p class="fx-sr" aria-live="polite">{{ procLive }}</p>
 </div>
+
+Layout rules: a node sits one row below its deepest dependency, and nodes in a row are ordered by where their dependencies sit. Edges follow the target state: solid and animated into a running node, solid into a completed one, dotted into a pending, idle or unknown one, and papaya into a failed one. Color is never the only signal; every object carries its state in text. A real list view is the same data in a table, for screen readers and long graphs.
 
 ## Animated Mermaid
 
