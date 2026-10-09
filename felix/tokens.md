@@ -69,10 +69,10 @@ Slate-tinted. Never pure black.
 
 ## Use the tokens in another project
 
-The tokens ship as one file of CSS variables, light and dark, at `tokens/felix-tokens.css` in this repo. A project links it and keeps no copy of the values.
+The tokens ship as one file of CSS variables, light and dark, at `felix-tokens.css` in the repo root. A project links it and keeps no copy of the values.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/axeliodiaz/templates@felix-tokens-v1.0.0/tokens/felix-tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/axeliodiaz/templates@felix-tokens-v1.0.0/felix-tokens.css">
 ```
 
 - Pin a release tag, as above. A tag never changes, so a token edit here cannot restyle an app until the app moves to the next tag. Do not link `@main` or `@develop` from production.
