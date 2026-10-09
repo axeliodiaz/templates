@@ -23,6 +23,27 @@ hero:
       link: /lumen
 
 features:
+  - title: Reference collection
+    details: Five standalone interactive templates, two reusable graph components. Original UI patterns with sample data.
+    link: /reference-templates
+  - title: Margin
+    details: Job economics, estimate versus actual costs, profit bridge and work timeline.
+    link: /margin
+  - title: Sentinel
+    details: Agent security dashboard, request charts, local review and credential states.
+    link: /agent-security
+  - title: Brief
+    details: Agent onboarding with brief, rules, limits and sample replay gates.
+    link: /agent-onboarding
+  - title: Pace
+    details: Fitness goals, workout discovery, a local timer and progress views.
+    link: /fitness
+  - title: Cargo
+    details: Trade finance, shipment details, repayment drafts and demo verification.
+    link: /trade-finance
+  - title: Reusable graphs
+    details: Topology and workflow components with editable nodes, events, slots and theme tokens.
+    link: /graph-components
   - title: Folio
     details: Charcoal finance system, mint actions, component states and cash-flow patterns.
     link: /folio

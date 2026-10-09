@@ -1,0 +1,38 @@
+/* Dependent task cards: Bloqueado state, tags, description and focus highlight. */
+html.felix .fx-focus-note { margin: 0; flex: 1; min-width: 16ch; color: #35605f; font-size: 14px; }
+html.felix .fx-focus-note.is-active { color: #082422; font-weight: 600; }
+html.felix .fx-dep.block { border-color: #f26629; background: #fff5ef; }
+html.felix .fx-dep.block header span, html.felix .fx-dep.block small { color: #a03808; }
+html.felix .fx-edge[data-status="block"] { stroke: #f26629; stroke-dasharray: 5 4; }
+html.felix .fx-dep { transition: box-shadow .2s, border-color .2s, background .16s; }
+html.felix .fx-dep:focus { outline: none; }
+html.felix .fx-dep:focus-visible { outline: 2px solid #0f8c8b; outline-offset: 3px; }
+html.felix .fx-dep-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+html.felix .fx-dep-actions .fx-btn { margin: 0; }
+html.felix .fx-tags { display: flex; flex-wrap: wrap; gap: 4px 10px; width: 100%; margin: 8px 0 0; padding: 8px 0 0; border-top: 1px solid #0824221a; list-style: none; }
+html.felix .fx-tags li { margin: 0; font-size: 12px; font-weight: 700; color: #082422; }
+html.felix .fx-link { transition: opacity .16s ease; }
+html.felix .fx-edge { transition: stroke .16s ease, stroke-width .16s ease; }
+html.felix .fx-dep-board.is-focusing .fx-link { opacity: .14; }
+html.felix .fx-dep-board.is-focusing .fx-link.is-hot { opacity: 1; }
+html.felix .fx-dep-board.is-focusing .fx-link.is-hot .fx-edge, html.felix .fx-dep-board.is-focusing .fx-edge.is-hot { stroke: #087b74; stroke-width: 2.5; stroke-dasharray: none; }
+html.felix .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) { background: #f4f1ea; border-color: #e3ddd2; box-shadow: none; }
+html.felix .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) strong, html.felix .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) small, html.felix .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) header span, html.felix .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) .fx-tags li { color: #a39e93; }
+html.felix .fx-dep.is-focus { z-index: 3; border-color: #087b74; box-shadow: 0 12px 28px #0824221a, 0 0 0 2px #fff, 0 0 0 5px #2bf2f1; }
+html.felix .fx-dep.is-dep { z-index: 2; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #087b74; }
+html.felix .fx-dep.is-next { z-index: 2; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #c4a15a; }
+html.felix .fx-dep.is-focus .fx-depends { color: #087b74; font-weight: 700; }
+html.felix.felix-dark .fx-focus-note { color: #97cbc9; }
+html.felix.felix-dark .fx-focus-note.is-active { color: #fefcf9; }
+html.felix.felix-dark .fx-dep.block { background: #f2662926; border-color: #f26629; }
+html.felix.felix-dark .fx-dep.block header span, html.felix.felix-dark .fx-dep.block small { color: #ff9f66; }
+html.felix.felix-dark .fx-edge[data-status="block"] { stroke: #ff9f66; }
+html.felix.felix-dark .fx-tags { border-top-color: #35605f; }
+html.felix.felix-dark .fx-tags li { color: #fefcf9; }
+html.felix.felix-dark .fx-dep-board.is-focusing .fx-link.is-hot .fx-edge, html.felix.felix-dark .fx-dep-board.is-focusing .fx-edge.is-hot { stroke: #2bf2f1; }
+html.felix.felix-dark .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) { background: #152b2a; border-color: #35605f; }
+html.felix.felix-dark .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) strong, html.felix.felix-dark .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) small, html.felix.felix-dark .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) header span, html.felix.felix-dark .fx-dep-board.is-focusing .fx-dep:not(.is-focus):not(.is-dep):not(.is-next) .fx-tags li { color: #4d9290; }
+html.felix.felix-dark .fx-dep.is-focus { border-color: #2bf2f1; box-shadow: 0 12px 28px #0008, 0 0 0 2px #082422, 0 0 0 5px #2bf2f1; }
+html.felix.felix-dark .fx-dep.is-dep { box-shadow: 0 0 0 2px #082422, 0 0 0 4px #2bf2f1; }
+html.felix.felix-dark .fx-dep.is-next { box-shadow: 0 0 0 2px #082422, 0 0 0 4px #ffd200; }
+html.felix.felix-dark .fx-dep.is-focus .fx-depends { color: #2bf2f1; }

@@ -435,6 +435,8 @@ export default defineConfig({
         { text: 'Projects', link: '/projects' },
         { text: 'Dependencies', link: '/dependencies' },
         { text: 'Node flow', link: '/node-flow' },
+        { text: 'Reference collection', link: '/reference-templates' },
+        { text: 'Reusable graphs', link: '/graph-components' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Orange analytics', link: '/spark-analytics' },
