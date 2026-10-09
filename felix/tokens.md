@@ -67,6 +67,19 @@ Slate-tinted. Never pure black.
 | `--shadow-turquoise` | Primary button glow: `0 4px 14px #2bf2f140` |
 | `--shadow-selection` | Turquoise focus, 6px: `0 0 0 6px #2bf2f11a` |
 
+## Use the tokens in another project
+
+The tokens ship as one file of CSS variables, light and dark, at `tokens/felix-tokens.css` in this repo. A project links it and keeps no copy of the values.
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/axeliodiaz/templates@felix-tokens-v1.0.0/tokens/felix-tokens.css">
+```
+
+- Pin a release tag, as above. A tag never changes, so a token edit here cannot restyle an app until the app moves to the next tag. Do not link `@main` or `@develop` from production.
+- Dark mode turns on when `.felix-dark`, `.dark` or `[data-theme="dark"]` sits on an ancestor, usually `<html>`.
+- The file has variables only: color, radius, spacing, shadow and type names. Fonts (Plain and Saans) are licensed and load separately.
+- To change a token, edit the file here, merge, and publish a new tag. Apps then bump the tag.
+
 ## CSS variables
 
 ```css
