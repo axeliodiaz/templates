@@ -1,8 +1,8 @@
 # Contributing: git-flow
 
-- `main` is production. Vercel deploys only `main`.
+- `main` is production. Production releases still require owner approval.
 - `develop` is the default branch and the integration branch.
 - Work on a feature branch (`feat/...`, `fix/...`) cut from `develop`.
 - Open every PR against `develop`. Squash-merge once checks pass.
 - Release by opening a PR from `develop` to `main`. Do not merge feature branches into `main`.
-- Preview deployments are off for all branches except `main` (see `vercel.json`, `git.deploymentEnabled`) to stay inside the free-plan daily deploy cap.
+- Vercel previews are enabled for `develop` and `fix/*` only. Keep deploys bounded inside the free-plan daily cap; verify each preview before merge. Feature branches outside `fix/*` need a scoped preview rule.
