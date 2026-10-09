@@ -58,7 +58,7 @@ A standalone original agent security template. Responsive, local interactive sta
 .lab main{padding:22px 20px}
 .lab-title{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:22px}
 .lab-title p{color:var(--muted)}
-.lab-grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(240px,1fr);gap:18px;align-items:start}
+.lab-grid>div{min-width:0}.lab-grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(240px,1fr);gap:18px;align-items:start}
 .lab-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px;min-width:0}
 .lab-card footer{display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);margin-top:20px;padding-top:15px;font-size:11px}
 .lab-legend{font-size:10px;color:var(--muted);margin:15px 0!important}
@@ -89,7 +89,7 @@ A standalone original agent security template. Responsive, local interactive sta
 .lab-ticks i{width:4px;border-radius:2px;background:#6389ea}
 .lab-ticks .faint{opacity:.2}
 .lab-chart{display:flex;gap:10px;align-items:end;height:230px}
-.lab-chart>div{flex:1;display:flex;flex-direction:column;gap:3px;text-align:center}
+.lab-chart>div{min-width:0;flex:1;display:flex;flex-direction:column;gap:3px;text-align:center}
 .lab-chart b{font-size:10px}
 .lab-chart i{display:block;border-radius:5px;min-height:4px}
 .lab-chart .allowed{background:linear-gradient(#9acbff,#277ee7)}
@@ -115,7 +115,7 @@ A standalone original agent security template. Responsive, local interactive sta
 .lab-topology .node-small{font-size:10px;font-weight:400;fill:var(--muted)}
 .lab-note{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 20px;margin:0 20px 20px;border:1px solid #6389ea;border-radius:9px;background:var(--surface)}
 .lab-placeholder{text-align:center;padding:50px 25px}
-@media(max-width:900px){.lab-grid{grid-template-columns:1fr}
+@media(max-width:900px){.lab-grid{grid-template-columns:minmax(0,1fr)}
 .lab-kpis{grid-template-columns:1fr}
 .lab-timeline{grid-template-columns:1fr}
 .lab-title{align-items:start}
