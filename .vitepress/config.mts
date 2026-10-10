@@ -306,6 +306,39 @@ export default defineConfig({
             { text: 'Activity', link: '/scopecraft/activity' }
         ] }
       ],
+      '/pawprint': [
+        {
+          text: 'Pawprint',
+          items: [
+            { text: 'Foundations', link: '/pawprint' },
+            { text: 'Color psychology', link: '/pawprint#color-psychology-research' },
+            { text: 'Palette', link: '/pawprint#palette' },
+            { text: 'Typography', link: '/pawprint#typography' },
+            { text: 'Rules', link: '/pawprint#rules' },
+          ]
+        },
+        { text: 'Components', collapsed: false, items: [
+          { text: 'Pet components', link: '/pawprint/components' },
+          { text: 'Pet profile and cards', link: '/pawprint/components#pet-profile-and-cards' },
+          { text: 'Buttons and badges', link: '/pawprint/components#buttons-and-badges' },
+          { text: 'Forms', link: '/pawprint/components#forms' },
+          { text: 'Alerts', link: '/pawprint/components#alerts' },
+          { text: 'Navbar', link: '/pawprint/components#navbar' },
+          { text: 'Care timeline', link: '/pawprint/components#care-timeline' },
+          { text: 'UI-kit catalog (43 families)', link: '/pawprint/components#ui-kit-catalog' },
+        ] },
+        { text: 'Charts', collapsed: false, items: [
+          { text: 'Pet charts', link: '/pawprint/charts' },
+          { text: 'Chart catalog (38 types)', link: '/pawprint/charts#chart-catalog' },
+        ] },
+        { text: 'Examples', collapsed: false, items: [
+          { text: 'Pricing (plans)', link: '/pawprint/pricing' },
+          { text: 'Pet dashboard', link: '/pawprint/dashboard' },
+        ] },
+        { text: 'Motion', collapsed: false, items: [
+          { text: 'Motion notes', link: '/pawprint/motion' },
+        ] },
+      ],
       '/pulsefit': [
         {
           text: 'PulseFit',
