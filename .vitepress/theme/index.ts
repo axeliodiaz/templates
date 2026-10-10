@@ -30,6 +30,7 @@ import './pulse-dashboard.css'
 import './crestway-dashboard.css'
 import './studio-systems.css'
 import './ejemplos.css'
+import './pawprint.css'
 import { mountFelixDemos } from './felix-demos'
 import { mountCartMotion } from './cartmotion'
 import { mountLumenMotion } from './lumenmotion'
@@ -151,6 +152,32 @@ function syncPulsefitTheme() {
   applyPulsefitTheme(localStorage.getItem(PF_KEY) === 'dark')
 }
 
+const PW_KEY = 'pawprint-theme'
+
+function applyPawprintTheme(dark: boolean) {
+  document.documentElement.classList.toggle('pp-dark', dark)
+  const btn = document.querySelector<HTMLButtonElement>('.pp-theme-toggle')
+  if (btn) {
+    paintThemeBtn(btn, dark)
+  }
+}
+
+function syncPawprintTheme() {
+  let btn = document.querySelector<HTMLButtonElement>('.pp-theme-toggle')
+  if (!btn) {
+    btn = document.createElement('button')
+    btn.type = 'button'
+    btn.className = 'pp-theme-toggle'
+    btn.addEventListener('click', () => {
+      const dark = !document.documentElement.classList.contains('pp-dark')
+      localStorage.setItem(PW_KEY, dark ? 'dark' : 'light')
+      applyPawprintTheme(dark)
+    })
+    document.body.appendChild(btn)
+  }
+  applyPawprintTheme(localStorage.getItem(PW_KEY) === 'dark')
+}
+
 const LU_KEY = 'lustro-theme'
 
 function applyLustroTheme(light: boolean) {
@@ -190,18 +217,21 @@ export default {
         document.documentElement.classList.toggle('tpl-pf', m('/pulsefit'))
         document.documentElement.classList.toggle('tpl-sc', m('/scopecraft'))
         document.documentElement.classList.toggle('tpl-lmn', m('/lumen'))
+        document.documentElement.classList.toggle('tpl-pp', m('/pawprint'))
         nextTick(() => setTimeout(mountBsxLive, 80))
         nextTick(() => setTimeout(() => mountTplLive(route.path), 80))
         if (route.path.endsWith('/cart-summary') || route.path.endsWith('/lustro')) nextTick(() => setTimeout(mountCartMotion, 50))
         if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
         if (m('/lumen') || p === '/lumen') syncLumenTheme()
         else document.documentElement.classList.remove('lmn-dark')
-        const onLustro = !(m('/felix') || m('/pulsefit') || m('/scopecraft') || m('/lumen'))
+        const onLustro = !(m('/felix') || m('/pulsefit') || m('/scopecraft') || m('/lumen') || m('/pawprint'))
         document.documentElement.classList.toggle('tpl-lu', onLustro)
         if (onLustro) syncLustroTheme()
         else document.documentElement.classList.remove('lu-light')
         if (m('/pulsefit')) syncPulsefitTheme()
         else document.documentElement.classList.remove('pf-dark')
+        if (m('/pawprint')) syncPawprintTheme()
+        else document.documentElement.classList.remove('pp-dark')
         if (m('/scopecraft')) syncScopecraftTheme()
         else document.documentElement.classList.remove('sc-dark')
         if (onFelix) syncFelixTheme()
