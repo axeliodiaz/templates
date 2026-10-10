@@ -65,4 +65,7 @@ features:
   - title: Lumen
     details: Warm off-white app in a cool gray frame, quiet borders, one color per model.
     link: /lumen
+  - title: Pawprint
+    details: Pet-care language from color psychology research - cream, harbor blue, biscuit yellow and sage, rounded and playful.
+    link: /pawprint
 ---
