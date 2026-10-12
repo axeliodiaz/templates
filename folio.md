@@ -1,6 +1,10 @@
 ---
 aside: false
 ---
+
+<script setup>
+import TradingPanel from './.vitepress/theme/TradingPanel.vue'
+</script>
 # Folio
 
 Charcoal finance workspace with mint actions, calm balance typography and thin cash-flow lines. A reusable design system, separate from the dashboard example.
@@ -26,3 +30,9 @@ Charcoal finance workspace with mint actions, calm balance typography and thin c
 Load `studio-systems.css`, wrap content in `studio-kit studio-folio` and use the `sk-*` component classes. `StudioCatalog.vue` renders the live component examples with `theme="folio"`. The dashboard has its own domain layout and is available at /folio/overview.
 
 [Implementation tokens](/folio/tokens) · [Full live catalog](/folio/components)
+
+## Trading panel
+
+Big balance, an open position with entry, take-profit and liquidation levels, a leverage multiplier and an equity curve. Switch market, side and range, pause the live ticks, close or reopen the position. It reads this template's theme tokens, and motion stops with reduced motion. Fictitious paper account.
+
+<TradingPanel />
