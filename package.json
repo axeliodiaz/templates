@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "@newrelic/browser-agent": "^1.323.0",
-    "motion": "^14.0.0"
+    "motion": "^14.1.0"
   }
 }
