@@ -3,6 +3,16 @@ layout: page
 aside: false
 title: Developer profile
 ---
+<script setup>
+import SankeyFunnel from '.vitepress/theme/SankeyFunnel.vue'
+</script>
+
+
+## Conversion funnel (Sankey)
+
+Multi-stage conversion flow with drop-offs, date ranges, play/pause and keyboard focus. It inherits this template's colors and works with synthetic data. Replace the stage counts with your own source of truth.
+
+<SankeyFunnel title="Conversion funnel" />
 
 <style>
 .dp{--bg:#0b1620;--surf:#152736;--ink:#e8eef3;--mut:#9fb0bf;--pri:#2aa8a0;--pri-d:#0f766e;--acc:#e8a13c;--line:rgba(255,255,255,.1);--on:#04201e;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);max-width:1040px;margin:0 auto;padding:0 20px 40px;line-height:1.6;transition:background .3s,color .3s}
