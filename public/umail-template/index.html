@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umail template</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="./umail-theme.css">
+<style>
+  body { min-height: 100vh; }
+  .um-list .list-group-item { cursor: pointer; border-left: 3px solid transparent; }
+  .um-list .list-group-item.unread { font-weight: 600; }
+  .um-list .list-group-item.active-msg { border-left-color: var(--um-primary); background: var(--bs-primary-bg-subtle); }
+  .um-scroll { max-height: 62vh; overflow-y: auto; }
+  .um-folder .badge { min-width: 1.6rem; }
+  .um-detail { min-height: 320px; }
+  @media (max-width: 991.98px) { .um-scroll { max-height: none; } }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md umail-navbar" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#"><span class="umail-mark" aria-hidden="true">U</span>Umail</a>
+    <button id="theme" class="btn btn-sm btn-outline-light ms-auto me-2 order-md-last" type="button" aria-pressed="false">Modo oscuro</button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Mensajes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Noticias</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Sedes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Reportes</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container-fluid py-3">
+  <div class="alert alert-info d-flex align-items-center justify-content-between gap-2 mb-3" role="note">
+    <span>Plantilla original con Bootstrap 5.3 y la paleta de Umail. Datos ficticios, las acciones son locales.</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+  </div>
+  <div class="row g-3">
+    <aside class="col-12 col-lg-2">
+      <button class="btn btn-primary w-100 mb-3" type="button" data-bs-toggle="modal" data-bs-target="#compose">Redactar</button>
+      <div class="list-group um-folder" id="folders" role="tablist" aria-label="Carpetas"></div>
+    </aside>
+    <section class="col-12 col-md-5 col-lg-4" aria-label="Lista de mensajes">
+      <div class="card">
+        <div class="card-header">
+          <div class="input-group mb-2">
+            <input id="q" class="form-control" type="search" placeholder="Buscar mensajes" aria-label="Buscar mensajes">
+            <button id="reload" class="btn btn-outline-primary" type="button">Actualizar</button>
+          </div>
+          <ul class="nav nav-pills nav-fill small" id="filters">
+            <li class="nav-item"><button class="nav-link active" data-f="all" type="button">Todos</button></li>
+            <li class="nav-item"><button class="nav-link" data-f="unread" type="button">No leídos</button></li>
+            <li class="nav-item"><button class="nav-link" data-f="file" type="button">Adjuntos</button></li>
+          </ul>
+        </div>
+        <div id="list" class="list-group list-group-flush um-list um-scroll" aria-live="polite"></div>
+      </div>
+    </section>
+    <section class="col-12 col-md-7 col-lg-6" aria-label="Detalle del mensaje">
+      <article id="detail" class="card um-detail"></article>
+    </section>
+  </div>
+</main>
+
+<div class="modal fade" id="compose" tabindex="-1" aria-labelledby="composeTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <form class="modal-content" id="composeForm">
+      <div class="modal-header"><h2 class="modal-title fs-5" id="composeTitle">Mensaje nuevo</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
+      <div class="modal-body">
+        <div class="mb-3"><label class="form-label" for="to">Para</label><input id="to" class="form-control" type="text" required placeholder="nombre.apellido@ejemplo.edu"></div>
+        <div class="mb-3"><label class="form-label" for="subject">Asunto</label><input id="subject" class="form-control" type="text" required></div>
+        <div class="mb-1"><label class="form-label" for="body">Mensaje</label><textarea id="body" class="form-control" rows="5" required></textarea></div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button><button type="submit" class="btn btn-primary">Enviar</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"><div class="d-flex"><div class="toast-body" id="toastText"></div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script type="module">
+import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@14.1.0/+esm";
+
+const people = ["Camila Rojas", "Diego Fuentes", "Secretaria Académica", "Biblioteca Central", "Sede Norte", "Valentina Soto", "Soporte TI", "Matias Herrera"];
+let mails = [
+  { id: 1, folder: "inbox", from: people[0], subject: "Acta de la reunión de coordinacion", body: "Adjunto el acta firmada. Revisen los puntos 3 y 4 antes del viernes.", day: "Hoy", unread: true, file: true },
+  { id: 2, folder: "inbox", from: people[2], subject: "Calendario de evaluaciones, segundo periodo", body: "Se publico el calendario preliminar. Cualquier cambio de sala se avisara con 48 horas.", day: "Hoy", unread: true, file: false },
+  { id: 3, folder: "news", from: people[3], subject: "Nuevo horario de la biblioteca", body: "Desde el lunes la sala de lectura abre a las 7:30 y cierra a las 22:00.", day: "Ayer", unread: true, file: false },
+  { id: 4, folder: "inbox", from: people[1], subject: "Re: Informe de asistencia", body: "Gracias, ya cargué los datos de la sede. Falta confirmar dos secciones.", day: "Ayer", unread: false, file: true },
+  { id: 5, folder: "sites", from: people[4], subject: "Mantenimiento de laboratorios", body: "Los laboratorios 2 y 3 estaran cerrados el sábado por mantenimiento eléctrico.", day: "Lun", unread: false, file: false },
+  { id: 6, folder: "inbox", from: people[6], subject: "Cambio de clave programado", body: "El cambio de clave institucional se hara el jueves. No necesitas hacer nada hasta entonces.", day: "Lun", unread: false, file: false },
+  { id: 7, folder: "inbox", from: people[5], subject: "Propuesta de reporte mensual", body: "Te comparto un borrador del reporte con tres graficos. Dime si agregamos matricula por sede.", day: "Dom", unread: false, file: true },
+  { id: 8, folder: "news", from: people[7], subject: "Encuentro de docentes, inscripción abierta", body: "Quedan 12 cupos. La inscripción cierra el miercoles.", day: "Dom", unread: false, file: false },
+];
+const folders = [["inbox", "Recibidos"], ["news", "Noticias"], ["sites", "Sedes"], ["sent", "Enviados"], ["archive", "Archivados"]];
+const state = { folder: "inbox", filter: "all", q: "", sel: 1, loading: false };
+const $ = (s) => document.querySelector(s);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+let running = [];
+const stopAll = () => { running.forEach((a) => a.stop()); running = []; };
+reduce.addEventListener("change", stopAll);
+const move = (targets, keyframes, opts) => { if (!reduce.matches && targets.length !== 0) running.push(animate(targets, keyframes, opts)); };
+const toast = bootstrap.Toast.getOrCreateInstance($("#toast"), { delay: 2600 });
+const say = (t) => { $("#toastText").textContent = t; toast.show(); };
+
+const visible = () => mails.filter((m) => m.folder === state.folder
+  && (state.filter === "all" || (state.filter === "unread" && m.unread) || (state.filter === "file" && m.file))
+  && (m.subject + m.from + m.body).toLowerCase().includes(state.q.toLowerCase()));
+const count = (f) => mails.filter((m) => m.folder === f && (f === "inbox" || f === "news" || f === "sites" ? m.unread : false)).length;
+
+function renderFolders(pulse) {
+  const box = $("#folders"); box.replaceChildren();
+  for (const [id, name] of folders) {
+    const b = document.createElement("button"); b.type = "button";
+    b.className = "list-group-item list-group-item-action d-flex justify-content-between align-items-center" + (state.folder === id ? " active" : "");
+    b.setAttribute("aria-current", state.folder === id ? "true" : "false");
+    const s = document.createElement("span"); s.textContent = name; b.append(s);
+    const n = count(id);
+    if (n) { const c = document.createElement("span"); c.className = "badge text-bg-primary rounded-pill"; c.textContent = n; c.dataset.id = id; b.append(c); }
+    b.addEventListener("click", () => { state.folder = id; const f = visible(); state.sel = f.length ? f[0].id : null; render(); });
+    box.append(b);
+  }
+  if (pulse) move([...box.querySelectorAll(".badge")], { scale: [1, 1.25, 1] }, { duration: .3 });
+}
+function renderList() {
+  const list = $("#list"); list.replaceChildren();
+  if (state.loading) {
+    for (let i = 0; i < 5; i++) { const p = document.createElement("div"); p.className = "list-group-item placeholder-glow"; p.innerHTML = '<span class="placeholder col-7"></span><br><span class="placeholder col-10"></span>'; list.append(p); }
+    return;
+  }
+  const items = visible();
+  if (!items.length) { const e = document.createElement("div"); e.className = "p-4 text-center text-body-secondary"; e.textContent = "No hay mensajes con este filtro."; list.append(e); return; }
+  for (const m of items) {
+    const row = document.createElement("button"); row.type = "button";
+    row.className = "list-group-item list-group-item-action" + (m.unread ? " unread" : "") + (m.id === state.sel ? " active-msg" : "");
+    const top = document.createElement("div"); top.className = "d-flex justify-content-between gap-2";
+    const from = document.createElement("span"); from.textContent = m.from;
+    const day = document.createElement("small"); day.className = "text-body-secondary"; day.textContent = m.day + (m.file ? " · adjunto" : "");
+    top.append(from, day);
+    const sub = document.createElement("div"); sub.className = "small text-truncate"; sub.textContent = m.subject;
+    row.append(top, sub);
+    row.addEventListener("click", () => { m.unread = false; state.sel = m.id; render(true); });
+    list.append(row);
+  }
+}
+function renderDetail() {
+  const box = $("#detail"); box.replaceChildren();
+  const m = mails.find((x) => x.id === state.sel && visible().includes(x));
+  if (!m) { const e = document.createElement("div"); e.className = "card-body d-flex align-items-center justify-content-center text-center text-body-secondary"; e.textContent = "Selecciona un mensaje para leerlo."; box.append(e); return; }
+  const head = document.createElement("div"); head.className = "card-header d-flex flex-wrap justify-content-between align-items-center gap-2";
+  const h = document.createElement("h2"); h.className = "fs-5 m-0"; h.textContent = m.subject;
+  const tag = document.createElement("span"); tag.className = "badge text-bg-" + (m.folder === "news" ? "info" : m.folder === "sites" ? "warning" : "primary"); tag.textContent = folders.find((f) => f[0] === m.folder)[1];
+  head.append(h, tag);
+  const body = document.createElement("div"); body.className = "card-body";
+  const meta = document.createElement("p"); meta.className = "text-body-secondary small"; meta.textContent = "De " + m.from + " · " + m.day;
+  const p = document.createElement("p"); p.textContent = m.body;
+  body.append(meta, p);
+  if (m.file) { const a = document.createElement("div"); a.className = "alert alert-secondary py-2 small"; a.textContent = "1 adjunto de ejemplo (no se descarga)"; body.append(a); }
+  const foot = document.createElement("div"); foot.className = "card-footer d-flex flex-wrap gap-2";
+  const reply = btn("Responder", "btn-primary", () => { $("#to").value = m.from; $("#subject").value = "Re: " + m.subject; bootstrap.Modal.getOrCreateInstance($("#compose")).show(); });
+  const arch = btn("Archivar", "btn-outline-primary", () => { m.folder = "archive"; const f = visible(); state.sel = f.length ? f[0].id : null; render(); say("Mensaje archivado (solo local)."); });
+  const unread = btn("Marcar no leído", "btn-outline-secondary", () => { m.unread = true; render(); say("Marcado como no leído."); });
+  foot.append(reply, arch, unread);
+  box.append(head, body, foot);
+  move([head, body, foot], { opacity: [0, 1], y: [8, 0] }, { duration: .24, delay: stagger(.05) });
+}
+function btn(label, cls, fn) { const b = document.createElement("button"); b.type = "button"; b.className = "btn btn-sm " + cls; b.textContent = label; b.addEventListener("click", fn); return b; }
+function render(detailOnly) {
+  stopAll(); renderFolders(!detailOnly); renderList(); renderDetail();
+  if (!detailOnly) move([...document.querySelectorAll("#list .list-group-item")], { opacity: [0, 1], x: [-8, 0] }, { duration: .22, delay: stagger(.03) });
+}
+$("#filters").addEventListener("click", (e) => { const b = e.target.closest("button[data-f]"); if (!b) return; state.filter = b.dataset.f; document.querySelectorAll("#filters .nav-link").forEach((n) => n.classList.toggle("active", n === b)); render(); });
+$("#q").addEventListener("input", (e) => { state.q = e.target.value; const f = visible(); if (!f.some((m) => m.id === state.sel)) state.sel = f.length ? f[0].id : null; render(true); renderFolders(false); });
+$("#reload").addEventListener("click", () => { state.loading = true; renderList(); setTimeout(() => { state.loading = false; render(); say("Lista actualizada (datos de ejemplo)."); }, 700); });
+$("#theme").addEventListener("click", (e) => { const dark = document.documentElement.dataset.bsTheme !== "dark"; document.documentElement.dataset.bsTheme = dark ? "dark" : "light"; e.currentTarget.setAttribute("aria-pressed", dark); e.currentTarget.textContent = dark ? "Modo claro" : "Modo oscuro"; });
+$("#composeForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  mails.unshift({ id: Date.now(), folder: "sent", from: "Para " + $("#to").value, subject: $("#subject").value, body: $("#body").value, day: "Ahora", unread: false, file: false });
+  bootstrap.Modal.getInstance($("#compose")).hide(); e.target.reset(); say("Mensaje guardado en Enviados (solo local, no se envía).");
+  renderFolders(false);
+});
+render();
+</script>
+</body>
+</html>
