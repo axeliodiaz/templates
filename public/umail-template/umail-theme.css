@@ -1,0 +1,116 @@
+/* Umail theme for Bootstrap 5.3.
+   Keeps the original Umail palette (Bootstrap 2 era): primary #0093D0, link #2274BA,
+   deep blue #00517F, ink #333, muted #6D6D6D, line #E5E5E5, surface #F9F9F9, navbar #1B1B1B.
+   Load after bootstrap.min.css. Light and dark follow Bootstrap color modes ([data-bs-theme]). */
+:root,
+[data-bs-theme="light"] {
+  --um-primary: #0093d0;
+  --um-primary-hover: #04b5ff;
+  --um-link: #2274ba;
+  --um-deep: #00517f;
+  --um-navbar: #1b1b1b;
+  --um-warning: #f89406;
+  --um-danger: #bd362f;
+  --um-success: #51a351;
+  --um-info: #2f96b4;
+
+  --bs-primary: #0093d0;
+  --bs-primary-rgb: 0, 147, 208;
+  --bs-primary-text-emphasis: #00517f;
+  --bs-primary-bg-subtle: #d9edf7;
+  --bs-primary-border-subtle: #bce8f1;
+  --bs-secondary: #6d6d6d;
+  --bs-secondary-rgb: 109, 109, 109;
+  --bs-success: #51a351;
+  --bs-success-rgb: 81, 163, 81;
+  --bs-info: #2f96b4;
+  --bs-info-rgb: 47, 150, 180;
+  --bs-warning: #f89406;
+  --bs-warning-rgb: 248, 148, 6;
+  --bs-danger: #bd362f;
+  --bs-danger-rgb: 189, 54, 47;
+  --bs-body-color: #333333;
+  --bs-body-color-rgb: 51, 51, 51;
+  --bs-body-bg: #ffffff;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-secondary-bg: #f9f9f9;
+  --bs-secondary-bg-rgb: 249, 249, 249;
+  --bs-tertiary-bg: #f9f9f9;
+  --bs-tertiary-bg-rgb: 249, 249, 249;
+  --bs-secondary-color: #6d6d6d;
+  --bs-border-color: #e5e5e5;
+  --bs-link-color: #2274ba;
+  --bs-link-color-rgb: 34, 116, 186;
+  --bs-link-hover-color: #00517f;
+  --bs-link-hover-color-rgb: 0, 81, 127;
+  --bs-font-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bs-border-radius: 4px;
+  --bs-border-radius-lg: 6px;
+}
+[data-bs-theme="dark"] {
+  --bs-primary-text-emphasis: #6ec6ee;
+  --bs-primary-bg-subtle: #072a3a;
+  --bs-primary-border-subtle: #0a4560;
+  --bs-body-color: #e5e5e5;
+  --bs-body-color-rgb: 229, 229, 229;
+  --bs-body-bg: #15191d;
+  --bs-body-bg-rgb: 21, 25, 29;
+  --bs-secondary-bg: #1d2329;
+  --bs-secondary-bg-rgb: 29, 35, 41;
+  --bs-tertiary-bg: #1a2025;
+  --bs-tertiary-bg-rgb: 26, 32, 37;
+  --bs-secondary-color: #a9b0b6;
+  --bs-border-color: #2d353d;
+  --bs-link-color: #5aaee6;
+  --bs-link-color-rgb: 90, 174, 230;
+  --bs-link-hover-color: #8fcdf3;
+  --bs-link-hover-color-rgb: 143, 205, 243;
+}
+
+.btn-primary {
+  --bs-btn-bg: #0093d0;
+  --bs-btn-border-color: #0093d0;
+  --bs-btn-hover-bg: #04b5ff;
+  --bs-btn-hover-border-color: #04b5ff;
+  --bs-btn-active-bg: #00517f;
+  --bs-btn-active-border-color: #00517f;
+  --bs-btn-disabled-bg: #0093d0;
+  --bs-btn-disabled-border-color: #0093d0;
+  --bs-btn-focus-shadow-rgb: 0, 147, 208;
+}
+.btn-outline-primary {
+  --bs-btn-color: #2274ba;
+  --bs-btn-border-color: #0093d0;
+  --bs-btn-hover-bg: #0093d0;
+  --bs-btn-hover-border-color: #0093d0;
+  --bs-btn-active-bg: #00517f;
+  --bs-btn-active-border-color: #00517f;
+}
+[data-bs-theme="dark"] .btn-outline-primary { --bs-btn-color: #5aaee6; }
+.nav-pills {
+  --bs-nav-pills-link-active-bg: #0093d0;
+}
+.list-group {
+  --bs-list-group-active-bg: #0093d0;
+  --bs-list-group-active-border-color: #0093d0;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #0093d0;
+  box-shadow: 0 0 0 .25rem rgba(0, 147, 208, .25);
+}
+.form-check-input:checked {
+  background-color: #0093d0;
+  border-color: #0093d0;
+}
+.umail-navbar {
+  background-color: var(--um-navbar);
+  border-bottom: 1px solid #000;
+}
+.umail-navbar .navbar-brand { font-weight: 700; letter-spacing: .2px; }
+.umail-navbar .nav-link { color: #bdbdbd; }
+.umail-navbar .nav-link:hover, .umail-navbar .nav-link.active { color: #fff; }
+.umail-mark {
+  display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 4px;
+  background: var(--um-primary); color: #fff; font-weight: 700; margin-right: .5rem;
+}
