@@ -2,6 +2,7 @@
 aside: false
 ---
 <script setup>
+import SankeyFunnel from '.vitepress/theme/SankeyFunnel.vue'
 import { computed, ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { animate, stagger } from 'motion'
 // Original code; source posts credit visual patterns only. No code or assets copied.
@@ -36,6 +37,12 @@ A standalone original agent onboarding template. Responsive, local interactive s
 - Light/dark, narrow layouts and Loading/Empty/Ready can be tested from the header.
 - Actions update this example session only. Add your own persistence, source validation and authorization before production use. No API, secret handling, telemetry or financial execution is bundled.
 - Original code and fictitious data. Pattern credit: [Ilias](https://x.com/iliasconfidency/status/2108422208955519306). No source images, brands or code copied.
+
+## Conversion funnel (Sankey)
+
+Multi-stage conversion flow with drop-offs, date ranges, play/pause and keyboard focus. It inherits this template's colors and works with synthetic data. Replace the stage counts with your own source of truth.
+
+<SankeyFunnel title="Conversion funnel" />
 
 <style scoped>
 .lab{--bg:#f5f5f7;--surface:#fff;--ink:#22252b;--muted:#676e7b;--line:#e0e3e9;--soft:#eceef5;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:16px;overflow:hidden;font:13px/1.5 system-ui,sans-serif;margin:25px 0}

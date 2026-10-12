@@ -1,4 +1,5 @@
 <script setup>
+import SankeyFunnel from '../.vitepress/theme/SankeyFunnel.vue'
 import ChartGallery from '../.vitepress/theme/ChartGallery.vue'
 import ReportsDashboard from '../.vitepress/theme/ReportsDashboard.vue'
 </script>
@@ -46,3 +47,9 @@ Offer jobs, response and rating sorts. Keep column labels readable; narrow scree
 ```
 
 Import the shared ReportsDashboard.vue source and replace the synthetic data. Preserve labels, keyboard focus and the readout; add loading, empty and error states before connecting a backend.
+
+## Conversion funnel (Sankey)
+
+Multi-stage conversion flow with drop-offs, date ranges, play/pause and keyboard focus. It inherits this template's colors and works with synthetic data. Replace the stage counts with your own source of truth.
+
+<SankeyFunnel title="Conversion funnel" />

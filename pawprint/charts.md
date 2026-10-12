@@ -2,6 +2,7 @@
 outline: [2, 3]
 ---
 <script setup>
+import SankeyFunnel from '../.vitepress/theme/SankeyFunnel.vue'
 import ChartGallery from '../.vitepress/theme/ChartGallery.vue'
 </script>
 
@@ -20,3 +21,9 @@ Rules: one unit per axis, a title that says what and for whom, and tooltips (the
 38 chart patterns in the Pawprint palette: lines, areas, bars, rings, heatmaps, Gantt, cohorts, box plot, dual axis and more, each with loading, empty and ready states.
 
 <ChartGallery language="pawprint" />
+
+## Conversion funnel (Sankey)
+
+Multi-stage conversion flow with drop-offs, date ranges, play/pause and keyboard focus. It inherits this template's colors and works with synthetic data. Replace the stage counts with your own source of truth.
+
+<SankeyFunnel title="Conversion funnel" />
