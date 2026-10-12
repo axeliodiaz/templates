@@ -2,7 +2,6 @@
 aside: false
 ---
 <script setup>
-import SankeyFunnel from '.vitepress/theme/SankeyFunnel.vue'
 import CrestwayDashboard from './.vitepress/theme/CrestwayDashboard.vue'
 </script>
 
@@ -19,9 +18,3 @@ Source-inspired recreation from [the reference post](https://x.com/nizamdesign/s
 Select companies and metrics, inspect monthly EBITDA, expand variance drivers and create local issues. The Issues tab lists demo-created entries. Other sections, favorites and company/team controls are illustrative. No real financial, payroll, company, tracker or messaging action occurs.
 
 Charts and controls include motion; reduced-motion disables animation. Native dialogs support Escape. Layout stacks on narrow screens.
-
-## Conversion funnel (Sankey)
-
-Multi-stage conversion flow with drop-offs, date ranges, play/pause and keyboard focus. It inherits this template's colors and works with synthetic data. Replace the stage counts with your own source of truth.
-
-<SankeyFunnel title="Conversion funnel" />
