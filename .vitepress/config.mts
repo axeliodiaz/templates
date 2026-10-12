@@ -472,7 +472,7 @@ export default defineConfig({
         { text: 'Reusable graphs', link: '/graph-components' },
         { text: 'Trial journey (Sankey funnel)', link: '/trial-journey' },
         { text: 'Trading panel', link: '/trading-panel' },
-        { text: 'Umail (Bootstrap 5.3)', link: '/umail' },
+        { text: 'Umail (Bootstrap 6 alpha)', link: '/umail' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Orange analytics', link: '/spark-analytics' },
