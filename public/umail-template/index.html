@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Umail template</title>
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link rel="stylesheet" href="./umail-theme.css">
 <style>
@@ -22,7 +23,8 @@
 <nav class="navbar navbar-expand-md umail-navbar" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="#"><span class="umail-mark" aria-hidden="true">U</span>Umail</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Abrir menu"><span class="navbar-toggler-icon"></span></button>
+    <button id="theme" class="btn btn-sm btn-outline-light ms-auto me-2 order-md-last" type="button" aria-pressed="false">Modo oscuro</button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link active" href="#">Mensajes</a></li>
@@ -30,7 +32,6 @@
         <li class="nav-item"><a class="nav-link" href="#">Sedes</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Reportes</a></li>
       </ul>
-      <button id="theme" class="btn btn-sm btn-outline-light" type="button" aria-pressed="false">Modo oscuro</button>
     </div>
   </div>
 </nav>
@@ -54,7 +55,7 @@
           </div>
           <ul class="nav nav-pills nav-fill small" id="filters">
             <li class="nav-item"><button class="nav-link active" data-f="all" type="button">Todos</button></li>
-            <li class="nav-item"><button class="nav-link" data-f="unread" type="button">No leidos</button></li>
+            <li class="nav-item"><button class="nav-link" data-f="unread" type="button">No leídos</button></li>
             <li class="nav-item"><button class="nav-link" data-f="file" type="button">Adjuntos</button></li>
           </ul>
         </div>
@@ -87,16 +88,16 @@
 <script type="module">
 import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@14.1.0/+esm";
 
-const people = ["Camila Rojas", "Diego Fuentes", "Secretaria Academica", "Biblioteca Central", "Sede Norte", "Valentina Soto", "Soporte TI", "Matias Herrera"];
+const people = ["Camila Rojas", "Diego Fuentes", "Secretaria Académica", "Biblioteca Central", "Sede Norte", "Valentina Soto", "Soporte TI", "Matias Herrera"];
 let mails = [
-  { id: 1, folder: "inbox", from: people[0], subject: "Acta de la reunion de coordinacion", body: "Adjunto el acta firmada. Revisen los puntos 3 y 4 antes del viernes.", day: "Hoy", unread: true, file: true },
+  { id: 1, folder: "inbox", from: people[0], subject: "Acta de la reunión de coordinacion", body: "Adjunto el acta firmada. Revisen los puntos 3 y 4 antes del viernes.", day: "Hoy", unread: true, file: true },
   { id: 2, folder: "inbox", from: people[2], subject: "Calendario de evaluaciones, segundo periodo", body: "Se publico el calendario preliminar. Cualquier cambio de sala se avisara con 48 horas.", day: "Hoy", unread: true, file: false },
   { id: 3, folder: "news", from: people[3], subject: "Nuevo horario de la biblioteca", body: "Desde el lunes la sala de lectura abre a las 7:30 y cierra a las 22:00.", day: "Ayer", unread: true, file: false },
-  { id: 4, folder: "inbox", from: people[1], subject: "Re: Informe de asistencia", body: "Gracias, ya cargue los datos de la sede. Falta confirmar dos secciones.", day: "Ayer", unread: false, file: true },
-  { id: 5, folder: "sites", from: people[4], subject: "Mantenimiento de laboratorios", body: "Los laboratorios 2 y 3 estaran cerrados el sabado por mantenimiento electrico.", day: "Lun", unread: false, file: false },
+  { id: 4, folder: "inbox", from: people[1], subject: "Re: Informe de asistencia", body: "Gracias, ya cargué los datos de la sede. Falta confirmar dos secciones.", day: "Ayer", unread: false, file: true },
+  { id: 5, folder: "sites", from: people[4], subject: "Mantenimiento de laboratorios", body: "Los laboratorios 2 y 3 estaran cerrados el sábado por mantenimiento eléctrico.", day: "Lun", unread: false, file: false },
   { id: 6, folder: "inbox", from: people[6], subject: "Cambio de clave programado", body: "El cambio de clave institucional se hara el jueves. No necesitas hacer nada hasta entonces.", day: "Lun", unread: false, file: false },
   { id: 7, folder: "inbox", from: people[5], subject: "Propuesta de reporte mensual", body: "Te comparto un borrador del reporte con tres graficos. Dime si agregamos matricula por sede.", day: "Dom", unread: false, file: true },
-  { id: 8, folder: "news", from: people[7], subject: "Encuentro de docentes, inscripcion abierta", body: "Quedan 12 cupos. La inscripcion cierra el miercoles.", day: "Dom", unread: false, file: false },
+  { id: 8, folder: "news", from: people[7], subject: "Encuentro de docentes, inscripción abierta", body: "Quedan 12 cupos. La inscripción cierra el miercoles.", day: "Dom", unread: false, file: false },
 ];
 const folders = [["inbox", "Recibidos"], ["news", "Noticias"], ["sites", "Sedes"], ["sent", "Enviados"], ["archive", "Archivados"]];
 const state = { folder: "inbox", filter: "all", q: "", sel: 1, loading: false };
@@ -165,7 +166,7 @@ function renderDetail() {
   const foot = document.createElement("div"); foot.className = "card-footer d-flex flex-wrap gap-2";
   const reply = btn("Responder", "btn-primary", () => { $("#to").value = m.from; $("#subject").value = "Re: " + m.subject; bootstrap.Modal.getOrCreateInstance($("#compose")).show(); });
   const arch = btn("Archivar", "btn-outline-primary", () => { m.folder = "archive"; const f = visible(); state.sel = f.length ? f[0].id : null; render(); say("Mensaje archivado (solo local)."); });
-  const unread = btn("Marcar no leido", "btn-outline-secondary", () => { m.unread = true; render(); say("Marcado como no leido."); });
+  const unread = btn("Marcar no leído", "btn-outline-secondary", () => { m.unread = true; render(); say("Marcado como no leído."); });
   foot.append(reply, arch, unread);
   box.append(head, body, foot);
   move([head, body, foot], { opacity: [0, 1], y: [8, 0] }, { duration: .24, delay: stagger(.05) });
@@ -182,7 +183,7 @@ $("#theme").addEventListener("click", (e) => { const dark = document.documentEle
 $("#composeForm").addEventListener("submit", (e) => {
   e.preventDefault();
   mails.unshift({ id: Date.now(), folder: "sent", from: "Para " + $("#to").value, subject: $("#subject").value, body: $("#body").value, day: "Ahora", unread: false, file: false });
-  bootstrap.Modal.getInstance($("#compose")).hide(); e.target.reset(); say("Mensaje guardado en Enviados (solo local, no se envia).");
+  bootstrap.Modal.getInstance($("#compose")).hide(); e.target.reset(); say("Mensaje guardado en Enviados (solo local, no se envía).");
   renderFolders(false);
 });
 render();
