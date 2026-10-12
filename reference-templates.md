@@ -27,3 +27,7 @@ Use the graph components through their documented public inputs, events and slot
 - Cargo: credit overview, activity views, shipment/timeline/document states, repayment draft and fixed-code verification UI. No shipping, banking or authentication service is connected.
 
 This collection preserves the core patterns without pretending to reproduce every source screen or backend feature. Production data, authentication, persistent storage, financial execution, device integration and authorization require your application's own implementation.
+
+## Added later
+
+- [Trial journey](./trial-journey): original Sankey conversion funnel from a pattern posted October 11 (@shuxer, ReUI). Stage counts are fictitious, interactions are local, no analytics service is connected.

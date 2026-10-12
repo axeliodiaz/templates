@@ -470,6 +470,7 @@ export default defineConfig({
         { text: 'Node flow', link: '/node-flow' },
         { text: 'Reference collection', link: '/reference-templates' },
         { text: 'Reusable graphs', link: '/graph-components' },
+        { text: 'Trial journey (Sankey funnel)', link: '/trial-journey' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Orange analytics', link: '/spark-analytics' },

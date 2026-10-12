@@ -3,6 +3,7 @@ aside: false
 ---
 
 <script setup>
+import SankeyFunnel from '../.vitepress/theme/SankeyFunnel.vue'
 import ShadcnBlocks from '../.vitepress/theme/ShadcnBlocks.vue'
 </script>
 
@@ -22,3 +23,9 @@ Six compact dashboard cards based on the shadcnuikit.com blocks post (https://x.
 | Activation funnel | Total or step conversion; hover a stage for its details |
 | Monthly recurring revenue | Plan split, upcoming renewals and a past due alert |
 | Energy generated | Value with a sparkline and a daily average |
+
+## Conversion funnel (Sankey)
+
+Multi-stage conversion flow with drop-offs, date ranges, play/pause and keyboard focus. It inherits this template's colors and works with synthetic data. Replace the stage counts with your own source of truth.
+
+<SankeyFunnel title="Conversion funnel" />

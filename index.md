@@ -41,6 +41,9 @@ features:
   - title: Cargo
     details: Trade finance, shipment details, repayment drafts and demo verification.
     link: /trade-finance
+  - title: Trial journey
+    details: Sankey conversion funnel with drop-offs, date ranges, animated flow and keyboard focus.
+    link: /trial-journey
   - title: Reusable graphs
     details: Topology and workflow components with editable nodes, events, slots and theme tokens.
     link: /graph-components
