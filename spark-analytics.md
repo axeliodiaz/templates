@@ -2,6 +2,7 @@
 aside: false
 ---
 <script setup>
+import TradingPanel from './.vitepress/theme/TradingPanel.vue'
 import SparkAnalytics from './.vitepress/theme/SparkAnalytics.vue'
 </script>
 
@@ -20,3 +21,9 @@ Cards enter with short fades; chart lines and bars reveal on load; controls tran
 ## Spark design system
 
 [Foundations](/spark) · [Live component catalog](/spark/components) · [Charts](/spark/charts)
+
+## Trading panel
+
+Big balance, an open position with entry, take-profit and liquidation levels, a leverage multiplier and an equity curve. Switch market, side and range, pause the live ticks, close or reopen the position. It reads this template's theme tokens, and motion stops with reduced motion. Fictitious paper account.
+
+<TradingPanel />
