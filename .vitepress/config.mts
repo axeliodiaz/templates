@@ -1,7 +1,10 @@
 import { defineConfig } from 'vitepress'
+import { pageThemeForFile } from './theme/page-themes'
 
 export default defineConfig({
   transformHtml(code, _id, ctx) {
+    const pt = pageThemeForFile(ctx.page)
+    if (pt) return code.replace('<html ', `<html data-tpl="${pt.id}" `).replace(/(<html[^>]*?class=")/, pt.defaultDark ? '$1tpl-dark ' : '$1')
     if (!ctx.page.startsWith('felix/') && ctx.page !== 'felix.md') return
     return code.replace('<html ', '<html class="felix" ')
   },

@@ -1,0 +1,84 @@
+/* Per-template page theme for the docs shell (navbar, sidebar, title, text, background).
+   One generic mapping: a theme only sets --tpl-* tokens on html[data-tpl="<id>"] (and .tpl-dark for dark).
+   Themes live in tpl-themes.css; routes are registered in page-themes.ts. Pages without data-tpl keep the site theme.
+   Tokens: --tpl-bg --tpl-bg-alt --tpl-bg-mute --tpl-text --tpl-text-2 --tpl-text-3 --tpl-line
+           --tpl-link --tpl-accent --tpl-link-hover --tpl-nav-bg --tpl-nav-text --tpl-nav-muted --tpl-side-bg
+           --tpl-code-bg --tpl-code-text --tpl-font --tpl-head-font --tpl-rule --tpl-on-accent */
+html[data-tpl] {
+  --vp-c-bg: var(--tpl-bg);
+  --vp-c-bg-alt: var(--tpl-bg-alt);
+  --vp-c-bg-elv: var(--tpl-bg);
+  --vp-c-bg-soft: var(--tpl-bg-alt);
+  --vp-c-bg-mute: var(--tpl-bg-mute);
+  --vp-c-text-1: var(--tpl-text);
+  --vp-c-text-2: var(--tpl-text-2);
+  --vp-c-text-3: var(--tpl-text-3);
+  --vp-c-divider: var(--tpl-line);
+  --vp-c-gutter: var(--tpl-line);
+  --vp-c-border: var(--tpl-line);
+  --vp-c-default-1: var(--tpl-line);
+  --vp-c-default-2: var(--tpl-bg-mute);
+  --vp-c-default-3: var(--tpl-bg-alt);
+  --vp-c-default-soft: var(--tpl-bg-mute);
+  --vp-c-brand-1: var(--tpl-link);
+  --vp-c-brand-2: var(--tpl-accent);
+  --vp-c-brand-3: var(--tpl-link-hover);
+  --vp-c-brand-soft: color-mix(in srgb, var(--tpl-accent) 16%, transparent);
+  --vp-sidebar-bg-color: var(--tpl-side-bg);
+  --vp-nav-bg-color: var(--tpl-nav-bg);
+  --vp-code-color: var(--tpl-text);
+  --vp-code-bg: var(--tpl-code-bg);
+  --vp-code-block-bg: var(--tpl-bg-alt);
+  --vp-c-text-code: var(--tpl-code-text);
+  --vp-font-family-base: var(--tpl-font);
+}
+html[data-tpl] body { background: var(--tpl-bg); background-image: none; color: var(--tpl-text); font-family: var(--tpl-font); }
+html[data-tpl] .VPNav,
+html[data-tpl] .VPNavBar,
+html[data-tpl] .VPNavBar .content,
+html[data-tpl] .VPNavBar .content-body,
+html[data-tpl] .VPNavBar .title,
+html[data-tpl] .VPLocalNav { background: var(--tpl-nav-bg); color: var(--tpl-nav-text); border-color: var(--tpl-line); }
+html[data-tpl] .VPNavBar .divider-line { background: var(--tpl-line); }
+html[data-tpl] .VPNavBarMenuLink,
+html[data-tpl] .VPNavBarTitle .title,
+html[data-tpl] .VPSocialLink,
+html[data-tpl] .VPNavBarSearch .DocSearch-Button,
+html[data-tpl] .VPLocalNav .menu,
+html[data-tpl] .VPLocalNav .menu-icon { color: var(--tpl-nav-muted); }
+html[data-tpl] .VPNavBarMenuLink:hover,
+html[data-tpl] .VPNavBarMenuLink.active,
+html[data-tpl] .VPNavBarTitle .title { color: var(--tpl-nav-text); }
+html[data-tpl] .VPSidebar { background: var(--tpl-side-bg); border-right: 1px solid var(--tpl-line); }
+html[data-tpl] .VPSidebarItem .text { color: var(--tpl-text-2); }
+html[data-tpl] .VPSidebarItem .link:hover .text { color: var(--tpl-accent); }
+html[data-tpl] .VPSidebarItem.is-active > .item > .link > .text { color: var(--tpl-accent); font-weight: 600; }
+html[data-tpl] .VPSidebarItem.is-active > .item .indicator { background-color: var(--tpl-accent); }
+html[data-tpl] .VPContent,
+html[data-tpl] .VPDoc,
+html[data-tpl] .VPDocAside,
+html[data-tpl] .VPDocFooter { background: var(--tpl-bg); }
+html[data-tpl] h1, html[data-tpl] h2, html[data-tpl] h3,
+html[data-tpl] .vp-doc h1, html[data-tpl] .vp-doc h2, html[data-tpl] .vp-doc h3 {
+  color: var(--tpl-text); -webkit-text-fill-color: var(--tpl-text); background: none; font-family: var(--tpl-head-font, var(--tpl-font)); font-weight: 700; letter-spacing: 0;
+}
+html[data-tpl] .vp-doc h1 { border-bottom: 3px solid var(--tpl-rule, var(--tpl-accent)); padding-bottom: .35em; }
+html[data-tpl] .vp-doc h2 { border-top-color: var(--tpl-line); }
+html[data-tpl] .vp-doc p, html[data-tpl] .vp-doc li { color: var(--tpl-text); }
+html[data-tpl] .vp-doc a { color: var(--tpl-link); }
+html[data-tpl] .vp-doc a:hover { color: var(--tpl-link-hover); }
+html[data-tpl] .vp-doc th, html[data-tpl] .vp-doc td { border-color: var(--tpl-line); }
+html[data-tpl] .vp-doc tr { background: var(--tpl-bg); }
+html[data-tpl] .vp-doc tr:nth-child(2n) { background: var(--tpl-bg-alt); }
+html[data-tpl] .vp-doc th { background: var(--tpl-bg-alt); color: var(--tpl-text); }
+html[data-tpl] .vp-doc :not(pre) > code { background: var(--tpl-code-bg); color: var(--tpl-code-text); }
+html[data-tpl] .vp-doc iframe { border-color: var(--tpl-line) !important; }
+
+.tpl-theme-toggle { display: none; }
+html[data-tpl] .tpl-theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center; position: fixed; right: 18px; bottom: 18px; z-index: 60;
+  width: 44px; height: 44px; padding: 0; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--tpl-line); background: var(--tpl-bg); color: var(--tpl-text);
+  box-shadow: 0 2px 10px rgb(0 0 0 / .15);
+}
+html[data-tpl] .tpl-theme-toggle:hover { border-color: var(--tpl-accent); color: var(--tpl-accent); }
