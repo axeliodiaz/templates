@@ -471,6 +471,7 @@ export default defineConfig({
         { text: 'Reference collection', link: '/reference-templates' },
         { text: 'Reusable graphs', link: '/graph-components' },
         { text: 'Trial journey (Sankey funnel)', link: '/trial-journey' },
+        { text: 'Trading panel', link: '/trading-panel' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Orange analytics', link: '/spark-analytics' },

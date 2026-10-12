@@ -2,6 +2,7 @@
 ---
 
 <script setup>
+import TradingPanel from '../.vitepress/theme/TradingPanel.vue'
 import GaugeLab from '../.vitepress/theme/GaugeLab.vue'
 </script>
 
@@ -25,3 +26,9 @@ Composable SVG gauges based on Gauge UI (https://gauge-ui.dev, shown at https://
 | width, cap | Track thickness and round or butt ends |
 | unit, label, decimals | Text under the value and the caption |
 | Accessibility | role img with the value and range as its label; controls are native inputs |
+
+## Trading panel
+
+Big balance, an open position with entry, take-profit and liquidation levels, a leverage multiplier and an equity curve. Switch market, side and range, pause the live ticks, close or reopen the position. It reads this template's theme tokens, and motion stops with reduced motion. Fictitious paper account.
+
+<TradingPanel />
