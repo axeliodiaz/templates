@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
-    "preview": "vitepress preview"
+    "preview": "vitepress preview",
+    "test:newrelic": "node --test tests/newrelic-browser.cjs"
   },
   "devDependencies": {
     "mermaid": "^11.17.2",
@@ -16,6 +17,7 @@
     "esbuild@0.21.5": true
   },
   "dependencies": {
+    "@newrelic/browser-agent": "^1.323.0",
     "motion": "^14.0.0"
   }
 }

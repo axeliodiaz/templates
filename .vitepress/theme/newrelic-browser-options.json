@@ -1,0 +1,43 @@
+{
+  "info": {
+    "applicationID": "1103549827",
+    "beacon": "bam.nr-data.net",
+    "errorBeacon": "bam.nr-data.net",
+    "licenseKey": "NRJS-65ad867e27a54d79214",
+    "sa": 1
+  },
+  "init": {
+    "ajax": {
+      "deny_list": [
+        "bam.nr-data.net"
+      ]
+    },
+    "browser_consent_mode": {
+      "enabled": false
+    },
+    "distributed_tracing": {
+      "enabled": false
+    },
+    "performance": {
+      "capture_detail": false,
+      "capture_marks": false,
+      "capture_measures": true
+    },
+    "privacy": {
+      "cookies_enabled": false
+    },
+    "session_replay": {
+      "enabled": false
+    },
+    "session_trace": {
+      "enabled": false
+    }
+  },
+  "loader_config": {
+    "accountID": "8612973",
+    "agentID": "1103549827",
+    "applicationID": "1103549827",
+    "licenseKey": "NRJS-65ad867e27a54d79214",
+    "trustKey": "8612973"
+  }
+}
