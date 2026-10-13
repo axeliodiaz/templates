@@ -1,9 +1,45 @@
 <script setup>
-import { computed, ref, useId } from 'vue'
+import { computed, ref, useId, onMounted, onBeforeUnmount, nextTick, watch } from 'vue'
+import { animate, stagger } from 'motion'
 const props = defineProps({ language: { type: String, default: 'lustro' } })
 const sort = ref('Jobs')
 const point = ref(5)
 const chartId = useId()
+const root = ref(null)
+const reveal = ref(1)
+const reduced = ref(false)
+let controls = [], io, media, disposed = false
+function stopAll() { controls.forEach(c => { try { c.stop() } catch (e) {} }); controls = [] }
+function play() {
+  if (disposed || !root.value) return
+  stopAll()
+  if (reduced.value) { reveal.value = 1; return }
+  reveal.value = 0
+  const el = root.value
+  controls.push(animate(0, 1, { duration: 1.2, ease: [0.22, 1, 0.36, 1], onUpdate: v => { reveal.value = v } }))
+  const kpis = el.querySelectorAll('.rp-kpis section')
+  if (kpis.length) controls.push(animate(kpis, { opacity: [0, 1], y: [12, 0] }, { duration: 0.45, delay: stagger(0.07) }))
+  const cats = el.querySelectorAll('.rp-cat')
+  if (cats.length) controls.push(animate(cats, { opacity: [0, 1], x: [-10, 0] }, { duration: 0.4, delay: stagger(0.08) }))
+  const rowsEl = el.querySelectorAll('tbody tr')
+  if (rowsEl.length) controls.push(animate(rowsEl, { opacity: [0, 1], y: [8, 0] }, { duration: 0.35, delay: stagger(0.06, { startDelay: 0.5 }) }))
+}
+watch(sort, async () => {
+  await nextTick()
+  if (reduced.value || !root.value) return
+  controls.push(animate(root.value.querySelectorAll('tbody tr'), { opacity: [0, 1], y: [6, 0] }, { duration: 0.3, delay: stagger(0.05) }))
+})
+onMounted(() => {
+  media = matchMedia('(prefers-reduced-motion: reduce)')
+  reduced.value = media.matches
+  media.addEventListener('change', onMedia)
+  if (reduced.value || !('IntersectionObserver' in window)) return
+  reveal.value = 0
+  io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); play() } }, { threshold: 0.2 })
+  io.observe(root.value)
+})
+function onMedia() { reduced.value = media.matches; if (reduced.value) { stopAll(); reveal.value = 1 } }
+onBeforeUnmount(() => { disposed = true; stopAll(); io?.disconnect(); media?.removeEventListener('change', onMedia) })
 const kpis = [
   { label: 'Avg first response', value: '42', unit: 'min', delta: '31% faster', good: true, note: 'target 60 min' },
   { label: 'Avg time to close', value: '1.8', unit: 'days', delta: '0.4 faster', good: true, note: 'target 2 days' },
@@ -32,8 +68,8 @@ const smooth = arr => arr.map((v, i) => `${i ? 'L' : 'M'}${x(i)},${y(v)}`).join(
 </script>
 
 <template>
-<div class="rp" :class="`rp-${props.language}`">
-  <header class="rp-head"><div><h3>Reports</h3><p>1 July to 18 September 2026 · all properties</p></div><span class="rp-chip">Fictitious data</span></header>
+<div ref="root" class="rp" :class="`rp-${props.language}`">
+  <header class="rp-head"><div><h3>Reports</h3><p>1 July to 18 September 2026 · all properties</p></div><span class="rp-chip">Fictitious data</span><button type="button" class="rp-replay" @click="play">Replay motion</button></header>
   <div class="rp-kpis">
     <section v-for="k in kpis" :key="k.label"><span class="rp-label">{{ k.label }}</span><strong>{{ k.value }}<small v-if="k.unit"> {{ k.unit }}</small></strong><div><span class="rp-badge" :class="k.good ? 'good' : 'bad'">{{ k.delta }}</span><small>{{ k.note }}</small></div></section>
   </div>
@@ -41,15 +77,17 @@ const smooth = arr => arr.map((v, i) => `${i ? 'L' : 'M'}${x(i)},${y(v)}`).join(
     <section class="rp-panel"><h4>Response and close time · last 6 months</h4>
       <div class="rp-readout" aria-live="polite"><strong>{{ months[point] }}</strong><span>First response {{ response[point] }} min · Time to close {{ close[point] }} h</span></div>
       <svg viewBox="0 0 560 230" role="img" aria-label="Line chart: first response in minutes and time to close in hours, April to September, both falling. Focus a month to read its values.">
+        <defs><clipPath :id="`${chartId}-c`"><rect x="0" y="0" :width="560 * reveal" height="230"/></clipPath></defs>
         <g v-for="v in [30, 50, 70, 90]" :key="v"><line x1="40" x2="540" :y1="y(v)" :y2="y(v)" class="rp-grid-line"/><text x="6" :y="y(v) + 4">{{ v }}</text></g>
-        <path :d="smooth(response)" fill="none" stroke="var(--rp-a)" stroke-width="2.5"/>
-        <path :d="smooth(close)" fill="none" stroke="var(--rp-b)" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <g :clip-path="`url(#${chartId}-c)`"><path :d="smooth(response)" fill="none" stroke="var(--rp-a)" stroke-width="2.5"/>
+        <path :d="smooth(close)" fill="none" stroke="var(--rp-b)" stroke-width="2.5" stroke-dasharray="6 4"/></g>
+        <circle class="rp-dot" :cx="x(point)" :cy="y(response[point])" r="5" fill="var(--rp-a)" :opacity="reveal"/><circle class="rp-dot" :cx="x(point)" :cy="y(close[point])" r="5" fill="var(--rp-b)" :opacity="reveal"/>
         <g v-for="(m, i) in months" :key="m"><text :x="x(i)" y="218" text-anchor="middle">{{ m }}</text><circle :cx="x(i)" :cy="y(response[i])" r="12" class="rp-hit" tabindex="0" :aria-label="`${m}: first response ${response[i]} minutes, time to close ${close[i]} hours`" @mouseenter="point = i" @focus="point = i"/><circle :cx="x(i)" :cy="y(response[i])" :r="point === i ? 5 : 3" fill="var(--rp-a)" pointer-events="none"/><circle :cx="x(i)" :cy="y(close[i])" :r="point === i ? 5 : 3" fill="var(--rp-b)" pointer-events="none"/></g>
       </svg>
       <div class="rp-legend"><span><i></i>First response (min)</span><span><i class="b"></i>Time to close (hours, dashed)</span></div>
     </section>
     <section class="rp-panel"><h4>Requests by category</h4>
-      <div v-for="(c, i) in categories" :key="c.name" class="rp-cat"><div><span>{{ c.name }}</span><b>{{ c.n }} <small>{{ c.pct }}%</small></b></div><progress :value="c.pct" max="50" :aria-label="`${c.name}: ${c.n} requests, ${c.pct} percent`"></progress></div>
+      <div v-for="(c, i) in categories" :key="c.name" class="rp-cat"><div><span>{{ c.name }}</span><b>{{ c.n }} <small>{{ c.pct }}%</small></b></div><progress :value="c.pct * Math.min(1, Math.max(0, reveal * 1.4 - i * 0.1))" max="50" :aria-label="`${c.name}: ${c.n} requests, ${c.pct} percent`"></progress></div>
       <p class="rp-note">1,284 requests in total. Bars are scaled to the largest share.</p>
     </section>
   </div>
@@ -92,6 +130,10 @@ html.felix-dark .rp-felix{--rp-bg:#082422;--rp-panel:#152f2e;--rp-line:#35605f;-
 </style>
 <style>
 .vp-doc .rp table{display:table!important;width:100%!important;table-layout:fixed!important}.vp-doc .rp th,.vp-doc .rp td{padding:8px 4px!important;white-space:normal!important}.vp-doc .rp th:first-child{width:23%}.vp-doc .rp th:not(:first-child){width:12.833%}.vp-doc .rp tr{border-top:0!important}
+</style>
+
+<style>
+.rp-replay{margin-left:auto;padding:4px 10px;border:1px solid var(--rp-line);border-radius:99px;background:var(--rp-panel);color:var(--rp-text);font:inherit;font-size:11px;cursor:pointer}.rp-replay:hover{border-color:var(--rp-a);color:var(--rp-a)}.rp-replay:focus-visible{outline:2px solid var(--rp-a);outline-offset:2px}.rp-dot{transition:cx .3s,cy .3s}@media(prefers-reduced-motion:reduce){.rp-dot{transition:none}}
 </style>
 
 <style>
