@@ -1,10 +1,16 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick, watch } from 'vue'
+import { mountChartMotion } from './chart-motion'
 const props = defineProps({ language: { type: String, default: 'lustro' } })
 const sample = ref('A')
+const rootEl = ref(null)
+let motion
+onMounted(() => { motion = mountChartMotion(rootEl.value, '.cg-card') })
+onBeforeUnmount(() => { motion?.destroy() })
 const focus = ref({})
 const mode = ref({})
 const displayState = ref('ready')
+watch([sample, displayState], async () => { await nextTick(); motion?.refresh() })
 const cards = [
  ['heat-green','Activity heatmap · Emerald','heat'],['heat-blue','Activity heatmap · Sky','heat'],['heat-purple','Activity heatmap · Violet','heat'],
  ['line','Spline line · single / dual','line'],['bars','Pill bars · column / row','bars'],['area','Gradient spline area','area'],['donut','Rounded donut','donut'],['hybrid','Pill bars + spline','hybrid'],['scatter','Scatter matrix','scatter'],['candle','Financial candlesticks','candle'],['kpi','KPI with sparkline','kpi'],['pyramid','Tier pyramid','pyramid'],['radial','Grouped radial arcs','radial'],['speed','Speedometer','speed'],['bullet','Bullet targets','bullet'],['sankey','Sankey flow','sankey'],['step','Step progression','step'],['stacked','Stacked tones','stacked'],['radar','Radar web','radar'],['rings','Concentric progress rings','rings'],['funnel','Stage funnel','funnel'],['matrix','Dot-matrix heatmap','matrix'],['telemetry','Telemetry sparklines','telemetry'],['bubble','Bubble clusters','bubble'],['treemap','Tile treemap','treemap'],['stream','Stream wave','stream'],['arc','Arc meter','arc'],['waterfall','Waterfall steps','waterfall'],['polar','Polar radial pillars','polar'],['range','Min/max range band','range']
@@ -80,8 +86,8 @@ const chartNotes={histogram:'Classes grouped into equal 10-attendee bins. Bar he
 const ticks=[0,25,50,75,100]
 </script>
 <template>
-<div class="cg" :class="`cg-${props.language}`">
- <div class="cg-toolbar"><p>38 live chart patterns · synthetic data</p><label>Dataset <select v-model="sample"><option>A</option><option>B</option></select></label><label>Chart state <select v-model="displayState"><option value="ready">Ready</option><option value="loading">Loading</option><option value="empty">Empty</option></select></label></div>
+<div ref="rootEl" class="cg" :class="`cg-${props.language}`">
+ <div class="cg-toolbar"><p>38 live chart patterns · synthetic data</p><button type="button" class="cg-replay" @click="motion?.replay()">Replay motion</button><label>Dataset <select v-model="sample"><option>A</option><option>B</option></select></label><label>Chart state <select v-model="displayState"><option value="ready">Ready</option><option value="loading">Loading</option><option value="empty">Empty</option></select></label></div>
  <p class="cg-note">Hover or focus a mark to read its value. Use the readout buttons for a keyboard and touch readout. Motion follows your reduced-motion setting. These are Vue/SVG demos, not the reference's React package.</p>
  <div class="cg-grid">
   <section v-for="c in cards" :key="c.id" class="cg-card" :id="`mono-${c.id}`">
@@ -217,5 +223,6 @@ const ticks=[0,25,50,75,100]
 </style>
 
 <style>
-.cg-note{color:var(--vp-c-text-2)}.cg-card svg{animation:cg-reveal .65s ease-out both}.cg-card .cg-stroke:not(.cg-secondary){animation:cg-line-in .8s ease-out}.cg-card:nth-child(2n) svg{animation-delay:.08s}@keyframes cg-reveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}@keyframes cg-line-in{from{stroke-dasharray:400;stroke-dashoffset:400}to{stroke-dashoffset:0}}@media(prefers-reduced-motion:reduce){.cg-card svg,.cg-card .cg-stroke{animation:none!important}}
+.cg-note{color:var(--vp-c-text-2)}@keyframes cg-reveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}@keyframes cg-line-in{from{stroke-dasharray:400;stroke-dashoffset:400}to{stroke-dashoffset:0}}
+.cg-replay{padding:4px 12px;border:1px solid var(--vp-c-divider);border-radius:99px;background:transparent;color:inherit;font:inherit;font-size:12px;cursor:pointer}.cg-replay:hover{border-color:var(--cg-accent,currentColor)}.cg-replay:focus-visible{outline:2px solid var(--cg-accent,currentColor);outline-offset:2px}.cm-playing *{transition:none!important}
 </style>
