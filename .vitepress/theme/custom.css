@@ -594,3 +594,9 @@ html.felix .fx-flag img { height: 64px; padding: 12px; box-sizing: border-box; }
 html.felix .fx-live-controls { display: flex; align-items: center; gap: 12px; flex-basis: 100%; margin-top: 12px; }
 html.felix .fx-live-status { font-size: 12px; overflow-wrap: anywhere; }
 html.felix .fx-preview:focus-within { outline-offset: 4px; }
+
+/* Chart entrance motion (see chart-motion.ts) */
+.fx-replay { margin: 4px 0 10px; padding: 4px 12px; border: 1px solid var(--vp-c-divider); border-radius: 99px; background: transparent; color: inherit; font: inherit; font-size: 12px; cursor: pointer; }
+.fx-replay:hover { border-color: var(--vp-c-brand-1); }
+.fx-replay:focus-visible { outline: 2px solid var(--vp-c-brand-1); outline-offset: 2px; }
+.cm-playing, .cm-playing * { transition: none !important; }
