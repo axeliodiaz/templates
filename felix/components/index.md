@@ -57,7 +57,76 @@ Same catalog as the Felix design system: atoms, molecules, organisms. Import fro
 
 ## Charts
 
-[Line, bar, pie, donut, and the rest](/felix/components/charts)
+#### In the catalog (38)
+
+- [Activity heatmap · Emerald](/felix/components/charts#mono-heat-green)
+- [Activity heatmap · Sky](/felix/components/charts#mono-heat-blue)
+- [Activity heatmap · Violet](/felix/components/charts#mono-heat-purple)
+- [Spline line · single / dual](/felix/components/charts#mono-line)
+- [Pill bars · column / row](/felix/components/charts#mono-bars)
+- [Gradient spline area](/felix/components/charts#mono-area)
+- [Rounded donut](/felix/components/charts#mono-donut)
+- [Pill bars + spline](/felix/components/charts#mono-hybrid)
+- [Scatter matrix](/felix/components/charts#mono-scatter)
+- [Financial candlesticks](/felix/components/charts#mono-candle)
+- [KPI with sparkline](/felix/components/charts#mono-kpi)
+- [Tier pyramid](/felix/components/charts#mono-pyramid)
+- [Grouped radial arcs](/felix/components/charts#mono-radial)
+- [Speedometer](/felix/components/charts#mono-speed)
+- [Bullet targets](/felix/components/charts#mono-bullet)
+- [Sankey flow](/felix/components/charts#mono-sankey)
+- [Step progression](/felix/components/charts#mono-step)
+- [Stacked tones](/felix/components/charts#mono-stacked)
+- [Radar web](/felix/components/charts#mono-radar)
+- [Concentric progress rings](/felix/components/charts#mono-rings)
+- [Stage funnel](/felix/components/charts#mono-funnel)
+- [Dot-matrix heatmap](/felix/components/charts#mono-matrix)
+- [Telemetry sparklines](/felix/components/charts#mono-telemetry)
+- [Bubble clusters](/felix/components/charts#mono-bubble)
+- [Tile treemap](/felix/components/charts#mono-treemap)
+- [Stream wave](/felix/components/charts#mono-stream)
+- [Arc meter](/felix/components/charts#mono-arc)
+- [Waterfall steps](/felix/components/charts#mono-waterfall)
+- [Polar radial pillars](/felix/components/charts#mono-polar)
+- [Min/max range band](/felix/components/charts#mono-range)
+- [Histogram · attendance distribution](/felix/components/charts#mono-histogram)
+- [Gantt · studio timeline](/felix/components/charts#mono-gantt)
+- [Day × hour · studio occupancy](/felix/components/charts#mono-hourmap)
+- [Cohort · member retention](/felix/components/charts#mono-cohort)
+- [Box plot · revenue spread](/felix/components/charts#mono-boxplot)
+- [Dual-axis · revenue / occupancy](/felix/components/charts#mono-combo)
+- [Dumbbell · plan / actual](/felix/components/charts#mono-dumbbell)
+- [Sunburst · expense hierarchy](/felix/components/charts#mono-sunburst)
+- [rings](/felix/components/charts#mono-radial)
+
+#### Basic types (17)
+
+- [Line](/felix/components/charts#basic-line)
+- [Area](/felix/components/charts#basic-area)
+- [Column bar](/felix/components/charts#basic-column-bar)
+- [Horizontal bar](/felix/components/charts#basic-horizontal-bar)
+- [Grouped bar](/felix/components/charts#basic-grouped-bar)
+- [Stacked bar](/felix/components/charts#basic-stacked-bar)
+- [Pie](/felix/components/charts#basic-pie)
+- [Donut](/felix/components/charts#basic-donut)
+- [Scatter](/felix/components/charts#basic-scatter)
+- [Bubble](/felix/components/charts#basic-bubble)
+- [Sparkline](/felix/components/charts#basic-sparkline)
+- [Radar](/felix/components/charts#basic-radar)
+- [Heatmap](/felix/components/charts#basic-heatmap)
+- [Gauge](/felix/components/charts#basic-gauge)
+- [Histogram](/felix/components/charts#basic-histogram)
+- [Funnel](/felix/components/charts#basic-funnel)
+- [Waterfall](/felix/components/charts#basic-waterfall)
+
+#### Graphs and diagrams
+
+- [Dependent task cards](/felix/components/charts#dependent-task-cards)
+- [Process graph](/felix/components/charts#process-graph)
+- [Animated Mermaid](/felix/components/charts#animated-mermaid)
+- [Conversion funnel (Sankey)](/felix/components/charts#conversion-funnel-sankey)
+
+Looking for dashboards built from these charts? See the [Reports example](/felix/reports).
 
 ## Organisms
 
