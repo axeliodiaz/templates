@@ -88,7 +88,7 @@ const descs = {"heat-green": "Calendar-style grid of daily activity. Darker cell
 </script>
 <template>
 <div ref="rootEl" class="cg" :class="`cg-${props.language}`">
- <div class="cg-toolbar"><p>38 live chart patterns · synthetic data</p><button type="button" class="cg-replay" @click="motion?.replay()">Replay motion</button><label>Dataset <select v-model="sample"><option>A</option><option>B</option></select></label><label>Chart state <select v-model="displayState"><option value="ready">Ready</option><option value="loading">Loading</option><option value="empty">Empty</option></select></label></div>
+ <div class="cg-toolbar"><p>Live charts · synthetic data</p><button type="button" class="cg-replay" @click="motion?.replay()">Replay motion</button><label>Dataset <select v-model="sample"><option>A</option><option>B</option></select></label><label>Chart state <select v-model="displayState"><option value="ready">Ready</option><option value="loading">Loading</option><option value="empty">Empty</option></select></label></div>
  <p class="cg-note">Hover or focus a mark to read its value. Use the readout buttons for a keyboard and touch readout. Motion follows your reduced-motion setting. These are Vue/SVG demos, not the reference's React package.</p>
  <div class="cg-grid">
   <section v-for="c in cards" :key="c.id" class="cg-card" :id="`mono-${c.id}`">
