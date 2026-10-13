@@ -6,7 +6,7 @@ import DependencyGraph from '../.vitepress/theme/DependencyGraph.vue'
 
 A task dependency graph in the Felix design language: linen surfaces, turquoise for the active chain, and the existing light and dark toggle. Inspired by the module graph in [this post](https://x.com/_overment/status/2106102411051888770): a top-down layout, many colored links grouped by type, hover to trace a chain, and a side panel with details. Reinterpreted for task dependencies, not a copy. All names and data are fictitious.
 
-It complements the dependency flowchart in [Graphs](/felix/graphs), which animates a short run. This one is for a real project: many tasks, typed links, and questions about what is blocked.
+It complements the dependency flowchart in [Graphs](/felix/components/charts#graphs-and-flows), which animates a short run. This one is for a real project: many tasks, typed links, and questions about what is blocked.
 
 ## Product launch
 
