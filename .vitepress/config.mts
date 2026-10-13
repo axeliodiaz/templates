@@ -140,7 +140,7 @@ export default defineConfig({
             { text: 'Markdown', link: '/felix/markdown' }
           ]
         },
-        { text: 'Charts', link: '/felix/components/charts', items: [{ text: 'All charts', link: '/felix/components/charts#all-charts' }, { text: '38 animated charts', link: '/felix/components/charts#animated-chart-catalog' }, { text: 'Basic chart types', link: '/felix/components/charts#basic-chart-types' }, { text: 'Graphs and flows', link: '/felix/components/charts#graphs-and-flows' }, { text: 'Conversion funnel (Sankey)', link: '/felix/components/charts#conversion-funnel-sankey' }] },
+        { text: 'Charts', link: '/felix/components/charts', items: [{ text: 'All charts', link: '/felix/components/charts', collapsed: false, items: [{ text: '38 animated charts', link: '/felix/components/charts#animated-chart-catalog' }, { text: 'Basic chart types', link: '/felix/components/charts#basic-chart-types' }, { text: 'Graphs and flows', link: '/felix/components/charts#graphs-and-flows' }, { text: 'Conversion funnel (Sankey)', link: '/felix/components/charts#conversion-funnel-sankey' }] }] },
         { text: 'Examples', collapsed: false, items: [
             { text: 'Gauges', link: '/felix/gauges' },
             { text: 'Operations dashboard', link: '/felix/ops-dashboard' },
