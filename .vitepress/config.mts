@@ -140,7 +140,7 @@ export default defineConfig({
             { text: 'Markdown', link: '/felix/markdown' }
           ]
         },
-        { text: 'Charts', link: '/felix/components/charts', items: [{ text: 'All charts', link: '/felix/components/charts', collapsed: false, items: [{ text: '38 animated charts', link: '/felix/components/charts#animated-chart-catalog' }, { text: 'Basic chart types', link: '/felix/components/charts#basic-chart-types' }, { text: 'Graphs and flows', link: '/felix/components/charts#graphs-and-flows' }, { text: 'Conversion funnel (Sankey)', link: '/felix/components/charts#conversion-funnel-sankey' }] }] },
+        { text: 'Charts', link: '/felix/components/charts', items: [{ text: 'All charts', link: '/felix/components/charts', collapsed: false, items: [{ text: 'Trends over time', link: '/felix/components/charts#trends-over-time' }, { text: 'Comparison', link: '/felix/components/charts#comparison' }, { text: 'Parts of a whole', link: '/felix/components/charts#parts-of-a-whole' }, { text: 'Distribution and relationships', link: '/felix/components/charts#distribution-and-relationships' }, { text: 'Activity and time grids', link: '/felix/components/charts#activity-and-time-grids' }, { text: 'KPIs and progress', link: '/felix/components/charts#kpis-and-progress' }, { text: 'Flows and funnels', link: '/felix/components/charts#flows-and-funnels' }, { text: 'Graphs and flows', link: '/felix/components/charts#graphs-and-flows' }] }] },
         { text: 'Examples', collapsed: false, items: [
             { text: 'Gauges', link: '/felix/gauges' },
             { text: 'Operations dashboard', link: '/felix/ops-dashboard' },
