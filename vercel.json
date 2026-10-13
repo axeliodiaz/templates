@@ -3,6 +3,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".vitepress/dist",
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/felix/graphs", "destination": "/felix/components/charts#graphs-and-flows", "permanent": true }
+  ],
   "git": {
     "deploymentEnabled": {
       "*": false,
