@@ -688,6 +688,8 @@ A dependency is a line between two pieces of work. Status uses the Felix semanti
   <button type="button" class="fx-btn fx-btn-line" :disabled="reduced" :aria-pressed="!showParticles" @click="wantMotion = !wantMotion">{{ reduced ? 'Sin movimiento' : (wantMotion ? 'Pausar' : 'Reanudar') }}</button>
 </div>
 
+<div class="fx-gcard">
+
 ### Dependent task cards
 
 The card is the task. The line is the dependency, and the same dependency is written on the card. Hover or focus a card to light up what it waits on and what it unblocks. Press **Avanzar** on the task in progress, or **Bloquear** to stop it; a blocked task keeps everything after it waiting until you press **Reanudar**. Tags name the teams involved. The next task starts once every card that points to it is complete.
@@ -730,6 +732,10 @@ Identity and destination can finish on their own. Creating the transfer waits fo
   </div>
   <p class="fx-sr" aria-live="polite">{{ taskLive }}</p>
 </div>
+
+</div>
+
+<div class="fx-gcard">
 
 ### Process graph
 
@@ -798,6 +804,10 @@ The same kind of dependency, drawn as objects. Use it when the label is a system
 
 Layout rules: a node sits one row below its deepest dependency, and nodes in a row are ordered by where their dependencies sit. Edges follow the target state: solid and animated into a running node, solid into a completed one, dotted into a pending, idle or unknown one, and papaya into a failed one. Color is never the only signal; every object carries its state in text. A real list view is the same data in a table, for screen readers and long graphs.
 
+</div>
+
+<div class="fx-gcard">
+
 ### Animated Mermaid
 
 Mermaid stays the source of the diagram. Theme variables apply the Felix palette, and a dash runs along each edge. **Pausar** holds the labels in place. The flowchart matches the transfer above. The state diagram adds Bloqueado, in papaya, and that state stays still.
@@ -814,6 +824,8 @@ Mermaid stays the source of the diagram. Theme variables apply the Felix palette
 </div>
 
 A short diagram can live in Mermaid. A board of real tasks keeps each label in HTML, as the cards and objects above do, and draws only the edges in SVG so every step can take focus.
+
+</div>
 
 ## Conversion funnel (Sankey)
 
