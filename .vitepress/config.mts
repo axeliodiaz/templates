@@ -273,7 +273,7 @@ export default defineConfig({
           { text: 'Cart summary', link: '/scopecraft/cart-summary' },
           { text: 'Price timeline', link: '/scopecraft/price-timeline' }
         ] },
-        { text: 'Charts', link: '/scopecraft/charts' },
+        { text: 'Charts', link: '/scopecraft/charts', items: [{ text: 'All charts', link: '/scopecraft/charts', collapsed: false, items: [{ text: 'Trends over time', link: '/scopecraft/charts#trends-over-time' }, { text: 'Comparison', link: '/scopecraft/charts#comparison' }, { text: 'Parts of a whole', link: '/scopecraft/charts#parts-of-a-whole' }, { text: 'Distribution and relationships', link: '/scopecraft/charts#distribution-and-relationships' }, { text: 'Activity and time grids', link: '/scopecraft/charts#activity-and-time-grids' }, { text: 'KPIs and progress', link: '/scopecraft/charts#kpis-and-progress' }, { text: 'Flows and funnels', link: '/scopecraft/charts#flows-and-funnels' }] }] },
         { text: 'Examples', collapsed: false, items: [
             { text: 'Gauges', link: '/scopecraft/gauges' },
             { text: 'Operations dashboard', link: '/scopecraft/ops-dashboard' },
