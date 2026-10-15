@@ -1,5 +1,6 @@
 <script setup>
 import ChartGallery from './.vitepress/theme/ChartGallery.vue'
+import SeriesTrend from './.vitepress/theme/SeriesTrend.vue'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 const canvas = ref(null)
 const playing = ref(true)
@@ -84,6 +85,7 @@ const trendPath = computed(() => path(overlay.value.fitted))
 - [Dual-axis · revenue / occupancy](/graphs#mono-combo)
 - [Financial candlesticks](/graphs#mono-candle)
 - [Telemetry sparklines](/graphs#mono-telemetry)
+- [Series filter + bars + trend](/graphs#series-filter-bars-trend)
 
 ### Comparison
 
@@ -145,6 +147,12 @@ Import ChartGallery.vue for a demo or extract a single card into your applicatio
 
 
 Data visualization examples and a dependency graph for Lustro. All numbers below are **synthetic samples**, not live metrics. Switch between the sample series to see how the charts respond. [Motion patterns](/motion) explain when movement helps.
+
+## Series filter + bars + trend
+
+Bars per month with a segmented filter ("All" sums the series). The trend is a least-squares line over complete months only, so the current month is left out, and it needs 3 or more months with data. A missing month shows a dash and no bar. Fictitious data. Motion replays when the filter changes and stops with reduced motion.
+
+<SeriesTrend language="lustro" />
 
 ## Data charts
 

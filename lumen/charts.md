@@ -6,6 +6,7 @@ pageClass: lmn-page
 <script setup>
 import SankeyFunnel from '../.vitepress/theme/SankeyFunnel.vue'
 import ChartGallery from '../.vitepress/theme/ChartGallery.vue'
+import SeriesTrend from '../.vitepress/theme/SeriesTrend.vue'
 </script>
 
 # Charts
@@ -25,6 +26,7 @@ Animated chart patterns in the Lumen palette (violet, amber, cyan on white). Syn
 - [Dual-axis · revenue / occupancy](/lumen/charts#mono-combo)
 - [Financial candlesticks](/lumen/charts#mono-candle)
 - [Telemetry sparklines](/lumen/charts#mono-telemetry)
+- [Series filter + bars + trend](/lumen/charts#series-filter-bars-trend)
 
 ### Comparison
 
@@ -76,6 +78,12 @@ Animated chart patterns in the Lumen palette (violet, amber, cyan on white). Syn
 ## Chart gallery
 
 <ChartGallery language="lumen" />
+
+## Series filter + bars + trend
+
+Bars per month with a segmented filter ("All" sums the series). The trend is a least-squares line over complete months only, so the current month is left out, and it needs 3 or more months with data. A missing month shows a dash and no bar. Fictitious data. Motion replays when the filter changes and stops with reduced motion.
+
+<SeriesTrend language="lumen" />
 
 ## Conversion funnel (Sankey)
 

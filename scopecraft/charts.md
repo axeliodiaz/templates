@@ -5,6 +5,7 @@ pageClass: sc-page
 <script setup>
 import SankeyFunnel from '../.vitepress/theme/SankeyFunnel.vue'
 import ChartGallery from '../.vitepress/theme/ChartGallery.vue'
+import SeriesTrend from '../.vitepress/theme/SeriesTrend.vue'
 </script>
 
 
@@ -25,6 +26,7 @@ import ChartGallery from '../.vitepress/theme/ChartGallery.vue'
 - [Dual-axis · revenue / occupancy](/scopecraft/charts#mono-combo)
 - [Financial candlesticks](/scopecraft/charts#mono-candle)
 - [Telemetry sparklines](/scopecraft/charts#mono-telemetry)
+- [Series filter + bars + trend](/scopecraft/charts#series-filter-bars-trend)
 
 ### Comparison
 
@@ -78,6 +80,12 @@ import ChartGallery from '../.vitepress/theme/ChartGallery.vue'
 Animated chart patterns in the Scopecraft palette, with synthetic data, hover and keyboard readouts, reduced-motion support and Ready/Loading/Empty states.
 
 <ChartGallery language="scopecraft" />
+
+## Series filter + bars + trend
+
+Bars per month with a segmented filter ("All" sums the series). The trend is a least-squares line over complete months only, so the current month is left out, and it needs 3 or more months with data. A missing month shows a dash and no bar. Fictitious data. Motion replays when the filter changes and stops with reduced motion.
+
+<SeriesTrend language="scopecraft" />
 
 ## Chart types
 
