@@ -601,17 +601,21 @@ html.felix .fx-preview:focus-within { outline-offset: 4px; }
 .fx-replay:focus-visible { outline: 2px solid var(--vp-c-brand-1); outline-offset: 2px; }
 .cm-playing, .cm-playing * { transition: none !important; }
 
-/* Felix charts page: graph blocks share the catalog card look (.cg-card) */
-html.felix .fx-graph, html.felix .fx-mermaid-block { background: #fffefa; border: 1px solid #ded9d1; border-radius: 18px; padding: 18px; transition: border-color .25s; }
-html.felix .fx-mermaid-block { margin: 0 0 18px; }
-html.felix .fx-graph:hover, html.felix .fx-mermaid-block:hover { border-color: #087b76; }
-html.felix .fx-mermaid-block h4 { margin: 0 0 8px; font-size: 14px; line-height: 1.4; color: #172d2c; border: 0; }
-html.felix .fx-mermaid { border: 0; background: transparent; padding: 0; }
+/* Felix charts page: every chart and graph block is one card, same as the catalog (.cg-card) */
+html.felix .fx-gcard, html.felix .fx-chart { background: #fffefa; border: 1px solid #ded9d1; border-radius: 18px; padding: 18px; margin: 0 0 18px; scroll-margin-top: 80px; transition: border-color .25s; }
+html.felix .fx-chart { padding: 18px 18px 10px; margin: 0; }
+html.felix .fx-gcard:hover, html.felix .fx-chart:hover { border-color: #087b76; }
+html.felix .fx-gcard h3, html.felix .fx-chart h3 { margin: 0 0 4px !important; font-size: 14px !important; line-height: 1.4; letter-spacing: 0; border: 0 !important; padding: 0 !important; color: #172d2c; }
+html.felix .fx-gcard > p { margin: 0 0 10px; color: #526460; font-size: 12px; line-height: 1.5; }
+html.felix .fx-gcard .fx-graph, html.felix .fx-gcard .fx-mermaid-block { background: transparent; border: 0; padding: 0; margin: 12px 0 0; border-radius: 0; }
+html.felix .fx-gcard .fx-mermaid-list { margin-top: 8px; }
+html.felix .fx-mermaid-block h4 { margin: 0 0 8px; font-size: 13px; line-height: 1.4; color: #172d2c; border: 0; }
+html.felix .fx-mermaid { border: 1px solid #ded9d1; background: #fffefa; }
 html.felix .fx-chart-desc { margin: 0 0 10px; color: #526460; font-size: 12px; line-height: 1.5; }
-html.felix .fx-chart { background: #fffefa; border-color: #ded9d1; border-radius: 18px; padding: 18px 18px 10px; scroll-margin-top: 80px; }
-html.felix .fx-chart h3 { font-size: 14px; line-height: 1.4; margin: 0 0 2px; border: 0; }
 html.felix .fx-charts { gap: 18px; }
-html.felix.felix-dark .fx-graph, html.felix.felix-dark .fx-mermaid-block, html.felix.felix-dark .fx-chart { background: #152f2e; border-color: #35605f; }
-html.felix.felix-dark .fx-mermaid-block h4 { color: #fefcf9; }
-html.felix.felix-dark .fx-chart-desc { color: #c3e2e1; }
-html.felix.felix-dark .fx-mermaid { background: transparent; }
+html.felix.felix-dark .fx-gcard, html.felix.felix-dark .fx-chart { background: #152f2e; border-color: #35605f; }
+html.felix.felix-dark .fx-gcard:hover, html.felix.felix-dark .fx-chart:hover { border-color: #69d7d2; }
+html.felix.felix-dark .fx-gcard h3, html.felix.felix-dark .fx-chart h3, html.felix.felix-dark .fx-mermaid-block h4 { color: #fefcf9; }
+html.felix.felix-dark .fx-gcard > p, html.felix.felix-dark .fx-chart-desc { color: #c3e2e1; }
+html.felix.felix-dark .fx-gcard .fx-graph, html.felix.felix-dark .fx-gcard .fx-mermaid-block { background: transparent; border: 0; }
+html.felix.felix-dark .fx-mermaid { background: #234343; border-color: #35605f; }
