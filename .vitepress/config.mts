@@ -206,7 +206,7 @@ export default defineConfig({
           { text: 'Cart summary', link: '/lumen/cart-summary' },
           { text: 'Price timeline', link: '/lumen/price-timeline' }
         ] },
-        { text: 'Charts', link: '/lumen/charts' },
+        { text: 'Charts', link: '/lumen/charts', items: [{ text: 'All charts', link: '/lumen/charts', collapsed: false, items: [{ text: 'Trends over time', link: '/lumen/charts#trends-over-time' }, { text: 'Comparison', link: '/lumen/charts#comparison' }, { text: 'Parts of a whole', link: '/lumen/charts#parts-of-a-whole' }, { text: 'Distribution and relationships', link: '/lumen/charts#distribution-and-relationships' }, { text: 'Activity and time grids', link: '/lumen/charts#activity-and-time-grids' }, { text: 'KPIs and progress', link: '/lumen/charts#kpis-and-progress' }, { text: 'Flows and funnels', link: '/lumen/charts#flows-and-funnels' }] }] },
         { text: 'Examples', collapsed: false, items: [
             { text: 'Gauges', link: '/lumen/gauges' },
             { text: 'Operations dashboard', link: '/lumen/ops-dashboard' },
@@ -330,7 +330,7 @@ export default defineConfig({
         ] },
         { text: 'Charts', collapsed: false, items: [
           { text: 'Pet charts', link: '/pawprint/charts' },
-          { text: 'Chart catalog (38 types)', link: '/pawprint/charts#chart-catalog' },
+          { text: 'All charts', link: '/pawprint/charts#all-charts', collapsed: false, items: [{ text: 'Trends over time', link: '/pawprint/charts#trends-over-time' }, { text: 'Comparison', link: '/pawprint/charts#comparison' }, { text: 'Parts of a whole', link: '/pawprint/charts#parts-of-a-whole' }, { text: 'Distribution and relationships', link: '/pawprint/charts#distribution-and-relationships' }, { text: 'Activity and time grids', link: '/pawprint/charts#activity-and-time-grids' }, { text: 'KPIs and progress', link: '/pawprint/charts#kpis-and-progress' }, { text: 'Flows and funnels', link: '/pawprint/charts#flows-and-funnels' }] },
         ] },
         { text: 'Examples', collapsed: false, items: [
           { text: 'Pricing (plans)', link: '/pawprint/pricing' },
@@ -385,7 +385,7 @@ export default defineConfig({
           { text: 'Price timeline', link: '/pulsefit/price-timeline' },
           { text: 'KPI cards', link: '/pulsefit/kpi-cards' }
         ] },
-        { text: 'Charts', link: '/pulsefit/charts', items: [{ text: '38 animated charts', link: '/pulsefit/charts#animated-chart-catalog' }, { text: 'Reporting patterns', link: '/pulsefit/charts#reporting-patterns' }] },
+        { text: 'Charts', link: '/pulsefit/charts', items: [{ text: 'All charts', link: '/pulsefit/charts', collapsed: false, items: [{ text: 'Trends over time', link: '/pulsefit/charts#trends-over-time' }, { text: 'Comparison', link: '/pulsefit/charts#comparison' }, { text: 'Parts of a whole', link: '/pulsefit/charts#parts-of-a-whole' }, { text: 'Distribution and relationships', link: '/pulsefit/charts#distribution-and-relationships' }, { text: 'Activity and time grids', link: '/pulsefit/charts#activity-and-time-grids' }, { text: 'KPIs and progress', link: '/pulsefit/charts#kpis-and-progress' }, { text: 'Flows and funnels', link: '/pulsefit/charts#flows-and-funnels' }] }] },
         { text: 'Examples', collapsed: false, items: [
             { text: 'Gauges', link: '/pulsefit/gauges' },
             { text: 'Operations dashboard', link: '/pulsefit/ops-dashboard' },
@@ -491,15 +491,14 @@ export default defineConfig({
         ] }
       ] },
           { text: 'Charts', link: '/graphs', collapsed: true, items: [
-            { text: '38 animated charts', link: '/graphs#animated-chart-catalog' },
+            { text: 'All charts', link: '/graphs#all-charts', collapsed: false, items: [{ text: 'Trends over time', link: '/graphs#trends-over-time' }, { text: 'Comparison', link: '/graphs#comparison' }, { text: 'Parts of a whole', link: '/graphs#parts-of-a-whole' }, { text: 'Distribution and relationships', link: '/graphs#distribution-and-relationships' }, { text: 'Activity and time grids', link: '/graphs#activity-and-time-grids' }, { text: 'KPIs and progress', link: '/graphs#kpis-and-progress' }, { text: 'Flows and funnels', link: '/graphs#flows-and-funnels' }] },
             { text: 'Introducción', link: '/graphs#data-charts' },
             { text: 'Line & Area', link: '/graphs#charts-line-area' },
             { text: 'Bar', link: '/graphs#charts-bar' },
             { text: 'Pie & Doughnut', link: '/graphs#charts-pie-doughnut' },
             { text: 'Radar & Polar', link: '/graphs#charts-radar-polar' },
             { text: 'Scatter & Bubble', link: '/graphs#charts-scatter-bubble' },
-            { text: 'Mixed', link: '/graphs#charts-mixed' },
-            { text: 'Reporting patterns', link: '/graphs#reporting-patterns' }
+            { text: 'Mixed', link: '/graphs#charts-mixed' }
           ] },
           
     ]
