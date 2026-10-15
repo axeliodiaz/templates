@@ -16,9 +16,70 @@ Charts for pet apps. They draw in on load, stay readable in dark mode, label eve
 
 Rules: one unit per axis, a title that says what and for whom, and tooltips (the hover title) for exact values. Yellow highlights the thing to look at, blue is the neutral series.
 
-## Chart catalog
+## All charts
 
-38 chart patterns in the Pawprint palette: lines, areas, bars, rings, heatmaps, Gantt, cohorts, box plot, dual axis and more, each with loading, empty and ready states.
+### Trends over time
+
+- [Spline line · single / dual](/pawprint/charts#mono-line)
+- [Gradient spline area](/pawprint/charts#mono-area)
+- [Step progression](/pawprint/charts#mono-step)
+- [Stream wave](/pawprint/charts#mono-stream)
+- [Min/max range band](/pawprint/charts#mono-range)
+- [Pill bars + spline](/pawprint/charts#mono-hybrid)
+- [Dual-axis · revenue / occupancy](/pawprint/charts#mono-combo)
+- [Financial candlesticks](/pawprint/charts#mono-candle)
+- [Telemetry sparklines](/pawprint/charts#mono-telemetry)
+
+### Comparison
+
+- [Pill bars · column / row](/pawprint/charts#mono-bars)
+- [Stacked tones](/pawprint/charts#mono-stacked)
+- [Dumbbell · plan / actual](/pawprint/charts#mono-dumbbell)
+- [Bullet targets](/pawprint/charts#mono-bullet)
+- [Waterfall steps](/pawprint/charts#mono-waterfall)
+- [Polar radial pillars](/pawprint/charts#mono-polar)
+- [Radar web](/pawprint/charts#mono-radar)
+- [Grouped radial arcs](/pawprint/charts#mono-radial)
+
+### Parts of a whole
+
+- [Rounded donut](/pawprint/charts#mono-donut)
+- [Tile treemap](/pawprint/charts#mono-treemap)
+- [Sunburst · expense hierarchy](/pawprint/charts#mono-sunburst)
+- [Tier pyramid](/pawprint/charts#mono-pyramid)
+
+### Distribution and relationships
+
+- [Scatter matrix](/pawprint/charts#mono-scatter)
+- [Bubble clusters](/pawprint/charts#mono-bubble)
+- [Histogram · attendance distribution](/pawprint/charts#mono-histogram)
+- [Box plot · revenue spread](/pawprint/charts#mono-boxplot)
+
+### Activity and time grids
+
+- [Activity heatmap · Emerald](/pawprint/charts#mono-heat-green)
+- [Activity heatmap · Sky](/pawprint/charts#mono-heat-blue)
+- [Activity heatmap · Violet](/pawprint/charts#mono-heat-purple)
+- [Dot-matrix heatmap](/pawprint/charts#mono-matrix)
+- [Day × hour · studio occupancy](/pawprint/charts#mono-hourmap)
+- [Cohort · member retention](/pawprint/charts#mono-cohort)
+- [Gantt · studio timeline](/pawprint/charts#mono-gantt)
+
+### KPIs and progress
+
+- [KPI with sparkline](/pawprint/charts#mono-kpi)
+- [Speedometer](/pawprint/charts#mono-speed)
+- [Arc meter](/pawprint/charts#mono-arc)
+- [Concentric progress rings](/pawprint/charts#mono-rings)
+
+### Flows and funnels
+
+- [Sankey flow](/pawprint/charts#mono-sankey)
+- [Stage funnel](/pawprint/charts#mono-funnel)
+
+## Chart gallery
+
+Chart patterns in the Pawprint palette: lines, areas, bars, rings, heatmaps, Gantt, cohorts, box plot, dual axis and more, each with loading, empty and ready states.
 
 <ChartGallery language="pawprint" />
 
