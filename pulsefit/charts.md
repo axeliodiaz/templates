@@ -1,6 +1,7 @@
 <script setup>
 import SankeyFunnel from '../.vitepress/theme/SankeyFunnel.vue'
 import ChartGallery from '../.vitepress/theme/ChartGallery.vue'
+import SeriesTrend from '../.vitepress/theme/SeriesTrend.vue'
 </script>
 
 
@@ -20,6 +21,7 @@ import ChartGallery from '../.vitepress/theme/ChartGallery.vue'
 - [Dual-axis · revenue / occupancy](/pulsefit/charts#mono-combo)
 - [Financial candlesticks](/pulsefit/charts#mono-candle)
 - [Telemetry sparklines](/pulsefit/charts#mono-telemetry)
+- [Series filter + bars + trend](/pulsefit/charts#series-filter-bars-trend)
 
 ### Comparison
 
@@ -83,6 +85,12 @@ Import ChartGallery.vue for a demo or extract a single card into your applicatio
 Reusable chart patterns in the PulseFit design language. Data is fictitious.
 
 Looking for dashboards built from these charts? See the [Reports example](/pulsefit/reports).
+
+## Series filter + bars + trend
+
+Bars per month with a segmented filter ("All" sums the series). The trend is a least-squares line over complete months only, so the current month is left out, and it needs 3 or more months with data. A missing month shows a dash and no bar. Fictitious data. Motion replays when the filter changes and stops with reduced motion.
+
+<SeriesTrend language="pulsefit" />
 
 ## Conversion funnel (Sankey)
 

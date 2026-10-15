@@ -1,6 +1,7 @@
 <script setup>
 import SankeyFunnel from '../../.vitepress/theme/SankeyFunnel.vue'
 import ChartGallery from '../../.vitepress/theme/ChartGallery.vue'
+import SeriesTrend from '../../.vitepress/theme/SeriesTrend.vue'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 
 const statusLabel = { done: 'Completado', run: 'En curso', wait: 'Pendiente', block: 'Bloqueado', error: 'Con error', idle: 'Inactivo', unknown: 'Desconocido' }
@@ -398,6 +399,7 @@ Every chart and graph in the Felix palette, on one page. Each one has a live pre
 - [Line](/felix/components/charts#basic-line)
 - [Area](/felix/components/charts#basic-area)
 - [Sparkline](/felix/components/charts#basic-sparkline)
+- [Series filter + bars + trend](/felix/components/charts#series-filter-bars-trend)
 
 ### Comparison
 
@@ -475,6 +477,12 @@ Includes 30 patterns adapted from the [Amicro reference](https://amicro.vercel.a
 ### Integration notes
 
 Import ChartGallery.vue for a demo or extract a single card into your application. Replace the synthetic arrays, label units, handle missing data, and use the Ready/Loading/Empty selector to preview chart states, and add error handling before live use. Sankey band width encodes flow; treemap tile area encodes share; waterfall bars encode signed deltas; candlesticks expose open/high/low/close in the readout. Charts should supplement, not replace, accessible data tables. The three colored activity grids are variants of one chart family.
+
+## Series filter + bars + trend
+
+Bars per month with a segmented filter ("All" sums the series). The trend is a least-squares line over complete months only, so the current month is left out, and it needs 3 or more months with data. A missing month shows a dash and no bar. Fictitious data. Motion replays when the filter changes and stops with reduced motion.
+
+<SeriesTrend language="felix" />
 
 ## Chart types
 

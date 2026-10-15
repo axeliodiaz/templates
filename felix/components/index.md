@@ -71,6 +71,7 @@ Same catalog as the Felix design system: atoms, molecules, organisms. Import fro
 - [Line](/felix/components/charts#basic-line)
 - [Area](/felix/components/charts#basic-area)
 - [Sparkline](/felix/components/charts#basic-sparkline)
+- [Series filter + bars + trend](/felix/components/charts#series-filter-bars-trend)
 
 ### Comparison
 
