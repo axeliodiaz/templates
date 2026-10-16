@@ -7,7 +7,8 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "test:newrelic": "node --test tests/newrelic-browser.cjs"
+    "test:newrelic": "node --test tests/newrelic-browser.cjs",
+    "test:pulsefit-bs6": "node tests/pulsefit-bs6.cjs"
   },
   "devDependencies": {
     "mermaid": "^11.17.2",
