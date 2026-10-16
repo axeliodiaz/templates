@@ -7,7 +7,8 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "test:newrelic": "node --test tests/newrelic-browser.cjs"
+    "test:newrelic": "node --test tests/newrelic-browser.cjs",
+    "test:felix-bootstrap": "node tests/felix-bootstrap.cjs"
   },
   "devDependencies": {
     "mermaid": "^11.17.2",
