@@ -168,6 +168,7 @@ export default defineConfig({
       '/lumen': [
         { text: 'Lumen', items: [
             { text: 'Foundations', link: '/lumen' },
+            { text: 'Bootstrap 6 template', link: '/lumen-bootstrap' },
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/lumen/components' },
@@ -474,6 +475,7 @@ export default defineConfig({
         { text: 'Trial journey (Sankey funnel)', link: '/trial-journey' },
         { text: 'Trading panel', link: '/trading-panel' },
         { text: 'Umail (Bootstrap 6 alpha)', link: '/umail' },
+        { text: 'Lumen (Bootstrap 6 alpha)', link: '/lumen-bootstrap' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Orange analytics', link: '/spark-analytics' },

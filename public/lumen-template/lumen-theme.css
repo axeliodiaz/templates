@@ -1,0 +1,104 @@
+/* Lumen theme for Bootstrap 6 (6.0.0-alpha.1).
+   Palette from the Lumen design language (ink #17171a, purple #7c6cf0, model colors, amber up / green down).
+   Bootstrap 6 tokens use light-dark(); load after bootstrap.min.css. Scope with data-bs-theme on <html>.
+   Unlayered so it overrides Bootstrap @layer rules. App chrome lives in lumen-app.css (.lmn-bs6). */
+:root,
+:host {
+  --lm-ink: #17171a;
+  --lm-purple: #7c6cf0;
+  --lm-yellow: #f5b800;
+  --lm-cyan: #0fb0ea;
+  --lm-amber: #e08a1e;
+  --lm-ok: #1b9a4b;
+  --lm-bad: #d23b3b;
+
+  --bs-primary-base: #17171a;
+  --bs-primary-bg: #17171a;
+  --bs-primary-contrast: #ffffff;
+  --bs-primary-fg: light-dark(#5446c9, #a99cf6);
+  --bs-primary-fg-emphasis: light-dark(#17171a, #f4f4f5);
+  --bs-primary-bg-subtle: light-dark(#efecfd, #2a2640);
+  --bs-primary-bg-muted: light-dark(#e7e3fc, #3d3560);
+  --bs-primary-border: light-dark(#e7e7e9, #2e3036);
+  --bs-primary-focus-ring: light-dark(rgb(124 108 240 / .45), rgb(143 128 243 / .5));
+
+  --bs-secondary-base: #74767d;
+  --bs-secondary-bg: light-dark(#f3f3f2, #26282d);
+  --bs-secondary-contrast: light-dark(#25262b, #d6d7db);
+  --bs-secondary-fg: light-dark(#74767d, #9a9ca4);
+  --bs-secondary-fg-emphasis: light-dark(#45464c, #c8c9ce);
+  --bs-secondary-bg-subtle: light-dark(#fbfbfa, #1f2024);
+  --bs-secondary-bg-muted: light-dark(#eceef1, #2e3036);
+  --bs-secondary-border: light-dark(#e7e7e9, #2e3036);
+
+  --bs-success-base: #1b9a4b;
+  --bs-success-bg: #1b9a4b;
+  --bs-success-contrast: #ffffff;
+  --bs-success-fg: light-dark(#1b9a4b, #3ccf75);
+  --bs-success-fg-emphasis: light-dark(#145c32, #5ee09a);
+  --bs-success-bg-subtle: light-dark(#e5f6ec, #142a1c);
+  --bs-success-bg-muted: light-dark(#d4f0df, #1c3d28);
+  --bs-success-border: light-dark(#c8e8d4, #1c3d28);
+
+  --bs-info-base: #0fb0ea;
+  --bs-info-bg: #0fb0ea;
+  --bs-info-contrast: #ffffff;
+  --bs-info-fg: light-dark(#0a8ab8, #2cbcf0);
+  --bs-info-fg-emphasis: light-dark(#066a8f, #6dd4f5);
+  --bs-info-bg-subtle: light-dark(#e3f6fd, #0c2a36);
+  --bs-info-bg-muted: light-dark(#c8ecfa, #123848);
+  --bs-info-border: light-dark(#b8e4f6, #123848);
+
+  --bs-warning-base: #e08a1e;
+  --bs-warning-bg: #e08a1e;
+  --bs-warning-contrast: #1b1306;
+  --bs-warning-fg: light-dark(#b86e12, #f09a35);
+  --bs-warning-fg-emphasis: light-dark(#8a5200, #f5b04a);
+  --bs-warning-bg-subtle: light-dark(#fdf0dd, #33240a);
+  --bs-warning-bg-muted: light-dark(#fbe5c8, #4a340f);
+  --bs-warning-border: light-dark(#f5d9a8, #4a340f);
+
+  --bs-danger-base: #d23b3b;
+  --bs-danger-bg: #d23b3b;
+  --bs-danger-contrast: #ffffff;
+  --bs-danger-fg: light-dark(#b82f2f, #ef6b6b);
+  --bs-danger-fg-emphasis: light-dark(#8f2222, #f59a9a);
+  --bs-danger-bg-subtle: light-dark(#fdeaea, #35171a);
+  --bs-danger-bg-muted: light-dark(#f5d0d0, #4a2024);
+  --bs-danger-border: light-dark(#efc2c2, #4a2024);
+
+  --bs-bg-body: light-dark(#eceef1, #0e0e10);
+  --bs-bg-1: light-dark(#fbfbfa, #17171a);
+  --bs-bg-2: light-dark(#ffffff, #1f2024);
+  --bs-bg-3: light-dark(#f3f3f2, #26282d);
+  --bs-fg-body: light-dark(#25262b, #d6d7db);
+  --bs-fg-1: light-dark(#17171a, #f4f4f5);
+  --bs-fg-2: light-dark(#45464c, #c8c9ce);
+  --bs-fg-3: light-dark(#74767d, #9a9ca4);
+  --bs-border-color: light-dark(#e7e7e9, #2e3036);
+  --bs-border-body: light-dark(#e7e7e9, #2e3036);
+  --bs-border-subtle: light-dark(#f0f0f1, #26282d);
+  --bs-link-color: light-dark(#5446c9, #a99cf6);
+  --bs-link-hover-color: light-dark(#7c6cf0, #c4b8fa);
+  --bs-body-font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --bs-radius-5: 9px;
+  --bs-radius-7: 12px;
+}
+
+.btn-solid.theme-primary {
+  --bs-btn-hover-bg: light-dark(#2a2a2e, #e8e8ea);
+  --bs-btn-hover-border-color: light-dark(#2a2a2e, #e8e8ea);
+  --bs-btn-active-bg: light-dark(#0e0e10, #c8c9ce);
+  --bs-btn-active-border-color: light-dark(#0e0e10, #c8c9ce);
+}
+html[data-bs-theme="dark"] .btn-solid.theme-primary {
+  --bs-btn-hover-color: #17171a;
+  --bs-btn-active-color: #17171a;
+}
+
+.nav-pills { --bs-nav-pills-link-active-bg: var(--lm-ink); }
+html[data-bs-theme="dark"] .nav-pills { --bs-nav-pills-link-active-bg: #f4f4f5; --bs-nav-pills-link-active-color: #17171a; }
+
+.badge.theme-purple { background: var(--lm-purple); color: #fff; }
+.badge.theme-yellow { background: var(--lm-yellow); color: #241a00; }
+.badge.theme-cyan { background: var(--lm-cyan); color: #fff; }

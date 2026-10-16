@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen template (Bootstrap 6)</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<link rel="stylesheet" href="/lumen-template/lumen-theme.css">
+<link rel="stylesheet" href="/lumen-template/lumen-app.css">
+</head>
+<body class="lmn-bs6">
+<div class="lmn-shell" id="shell">
+  <aside class="lmn-side" aria-label="Sidebar">
+    <div class="lmn-brand"><span class="lmn-mark" aria-hidden="true"></span>Lumen</div>
+    <div class="lmn-lab">General</div>
+    <button type="button" class="lmn-nav-link on" data-nav="overview"><u aria-hidden="true"></u>Overview</button>
+    <button type="button" class="lmn-nav-link" data-nav="traces"><u aria-hidden="true"></u>Traces</button>
+    <button type="button" class="lmn-nav-link" data-nav="agents"><u aria-hidden="true"></u>Agents</button>
+    <div class="lmn-lab">Tools</div>
+    <button type="button" class="lmn-nav-link" data-nav="cost"><u aria-hidden="true"></u>Cost &amp; Budget</button>
+    <div class="lmn-user"><i aria-hidden="true"></i><div><b>Alex Lee</b><small>alex@acme.ai</small></div></div>
+  </aside>
+  <div class="lmn-main">
+    <header class="lmn-top">
+      <div class="lmn-bc">Dashboard &rsaquo; <b id="pageTitle">Overview</b></div>
+      <div class="d-flex flex-wrap gap-2 align-items-center">
+        <button id="theme" class="btn-outline btn-sm theme-secondary" type="button" aria-pressed="false">Dark mode</button>
+        <button type="button" class="btn-outline btn-sm theme-secondary" data-bs-toggle="dialog" data-bs-target="#keysDialog">API keys</button>
+        <button type="button" class="btn-solid btn-sm theme-primary" id="toastBtn">Show alert</button>
+      </div>
+    </header>
+    <main class="lmn-body">
+      <div class="alert theme-info py-2 small mb-0" role="note">
+        Bootstrap 6.0.0-alpha.1 with Lumen tokens. Fictitious data; actions stay in the page.
+      </div>
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+        <div>
+          <h1 class="h4 fw-semibold mb-1" style="color:var(--ink)">Welcome back, Alex</h1>
+          <p class="small fg-3 mb-0">Acme workspace / All projects</p>
+        </div>
+        <ul class="nav nav-pills nav-fill small" id="envPills" role="tablist">
+          <li class="nav-item"><button class="nav-link active" type="button" data-env="prod">Production</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-env="stg">Staging</button></li>
+        </ul>
+      </div>
+      <div class="card lmn-hero-card border">
+        <div class="card-body">
+          <div class="d-flex gap-2 align-items-center flex-wrap mb-3">
+            <span class="lmn-hero-icon" aria-hidden="true"></span>
+            <div class="flex-grow-1">
+              <b>Your AI usage, fully under control</b>
+              <span class="fg-3 small"> &bull; Trace every request. Understand every dollar.</span>
+            </div>
+            <button type="button" class="btn-outline btn-sm theme-secondary">See details &rarr;</button>
+          </div>
+          <div class="row g-2" id="kpis">
+            <div class="col-6 lg:col-3">
+              <div class="card lmn-kpi h-100 border">
+                <div class="card-body py-2 d-flex justify-content-between small fg-3"><span>Total Requests</span><span aria-hidden="true">&#9633;</span></div>
+                <div class="card-body pt-0 pb-2"><div class="display-6" data-kpi="req">124.8k</div></div>
+                <div class="card-footer"><span>Since last week</span><span class="lmn-up">&#9650; 12.4%</span></div>
+              </div>
+            </div>
+            <div class="col-6 lg:col-3">
+              <div class="card lmn-kpi h-100 border">
+                <div class="card-body py-2 d-flex justify-content-between small fg-3"><span>Total Tokens</span><span aria-hidden="true">&#9633;</span></div>
+                <div class="card-body pt-0 pb-2"><div class="display-6" data-kpi="tok">86.4M</div></div>
+                <div class="card-footer"><span>Since last week</span><span class="lmn-up">&#9650; 18.2%</span></div>
+              </div>
+            </div>
+            <div class="col-6 lg:col-3">
+              <div class="card lmn-kpi h-100 border">
+                <div class="card-body py-2 d-flex justify-content-between small fg-3"><span>Total Cost</span><span aria-hidden="true">&#9633;</span></div>
+                <div class="card-body pt-0 pb-2"><div class="display-6" data-kpi="cost">$2,484</div></div>
+                <div class="card-footer"><span>Since last week</span><span class="lmn-up">&#9650; 38.0%</span></div>
+              </div>
+            </div>
+            <div class="col-6 lg:col-3">
+              <div class="card lmn-kpi h-100 border">
+                <div class="card-body py-2 d-flex justify-content-between small fg-3"><span>Avg Latency p95</span><span aria-hidden="true">&#9633;</span></div>
+                <div class="card-body pt-0 pb-2"><div class="display-6" data-kpi="lat">1.24s</div></div>
+                <div class="card-footer"><span>Since last week</span><span class="lmn-dn">&#9660; 8.1%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="col-12 lg:col-8">
+          <div class="card border shadow-sm h-100">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <span class="fw-semibold">Cost over time</span>
+              <ul class="nav nav-pills nav-fill small" id="metricPills">
+                <li class="nav-item"><button class="nav-link active" type="button">Cost</button></li>
+                <li class="nav-item"><button class="nav-link" type="button">Tokens</button></li>
+                <li class="nav-item"><button class="nav-link" type="button">Requests</button></li>
+              </ul>
+            </div>
+            <div class="card-body lmn-chart position-relative" id="chartBox">
+              <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-2 mb-2">
+                <div><span class="display-6 fs-3 fw-semibold">$2,484.00</span> <span class="lmn-up small">&#9650; 38.0%</span></div>
+                <div class="d-flex gap-3 small fg-3 flex-wrap">
+                  <span><span class="badge theme-purple">&#9632;</span> gpt-4o</span>
+                  <span><span class="badge theme-yellow">&#9632;</span> claude</span>
+                  <span><span class="badge theme-cyan">&#9632;</span> gemini</span>
+                </div>
+              </div>
+              <svg viewBox="0 0 560 205" role="img" aria-label="Cost over time chart">
+                <g class="fg-3" font-size="10">
+                  <line x1="40" x2="540" y1="170" y2="170" stroke="currentColor" stroke-dasharray="4 4" opacity=".35"/>
+                  <polyline id="lineGpt" fill="none" stroke="var(--purple)" stroke-width="2" points="40,95 123,95 207,108 290,108 373,44 457,86 540,77"/>
+                  <polyline id="lineClaude" fill="none" stroke="var(--yellow)" stroke-width="2" points="40,134 123,122 207,88 290,77 373,71 457,94 540,41"/>
+                  <polyline id="lineGemini" fill="none" stroke="var(--cyan)" stroke-width="2" points="40,142 123,142 207,128 290,125 373,102 457,122 540,118"/>
+                  <line id="cross" x1="207" x2="207" y1="10" y2="170" stroke="var(--line)" opacity="0"/>
+                </g>
+              </svg>
+              <div class="lmn-tip" id="chartTip" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 lg:col-4">
+          <div class="card border shadow-sm h-100">
+            <div class="card-header fw-semibold">Usage by model</div>
+            <div class="card-body">
+              <div class="lmn-row-bar"><i style="background:var(--purple)"></i><span>gpt-4o</span><span class="fg-3">62,400</span><b>50%</b></div>
+              <div class="lmn-row-bar"><i style="background:var(--yellow)"></i><span>claude-sonnet</span><span class="fg-3">37,440</span><b>30%</b></div>
+              <div class="lmn-row-bar"><i style="background:var(--cyan)"></i><span>gemini-pro</span><span class="fg-3">24,960</span><b>20%</b></div>
+              <p class="small fw-semibold mt-3 mb-1">Token histogram (demo)</p>
+              <div class="lmn-hist" id="hist" aria-hidden="true"></div>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between small mb-1"><span>Budget used</span><span>72%</span></div>
+                <div class="lmn-bar-track"><i class="lmn-bar-fill" style="--w:72%"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="col-12 md:col-6">
+          <div class="card border h-100">
+            <div class="card-header fw-semibold">Quick launch agents</div>
+            <div class="list-group list-group-flush" id="agentList"></div>
+          </div>
+        </div>
+        <div class="col-12 md:col-6">
+          <div class="card border h-100">
+            <div class="card-header fw-semibold">Recent activity</div>
+            <div class="list-group list-group-flush" id="activityList"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<dialog class="dialog" id="keysDialog" aria-labelledby="keysTitle">
+  <form method="dialog">
+    <div class="dialog-header">
+      <h2 class="dialog-title h5" id="keysTitle">API keys</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <label class="form-label" for="keyVal">Live key</label>
+      <input id="keyVal" class="form-control font-monospace" type="text" readonly value="sk-live-4f2a••••••••••••">
+      <p class="small fg-3 mt-2 mb-0">Keys are fictitious; nothing is sent.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary" id="copyKey">Copy</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex"><div class="toast-body" id="toastText"></div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+<script type="module">
+import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@14.1.0/+esm";
+import { Toast, Dialog } from "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js";
+
+const $ = (s, r = document) => r.querySelector(s);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+let running = [];
+const stopAll = () => { running.forEach((a) => a.stop()); running = []; };
+reduce.addEventListener("change", stopAll);
+const move = (targets, keyframes, opts) => {
+  if (!reduce.matches && targets.length) running.push(animate(targets, keyframes, opts));
+};
+
+const toast = Toast.getOrCreateInstance($("#toast"), { delay: 2800 });
+const say = (t) => { $("#toastText").textContent = t; toast.show(); };
+
+const agents = [
+  { name: "Support triage", status: "Active", detail: "4.1M tokens · $117.88", tone: "success" },
+  { name: "Knowledge retrieval", status: "Active", detail: "8.6M tokens · $247.25", tone: "success" },
+  { name: "Code reviewer", status: "Paused", detail: "2.2M tokens · $64.10", tone: "secondary" },
+];
+const activity = [
+  { title: "Support reply generated", sub: "Help me update the billing email.", meta: "1,842 tokens · $0.053" },
+  { title: "Document summary complete", sub: "Summarize the release notes.", meta: "3,210 tokens · $0.092" },
+  { title: "Eval run finished", sub: "Regression suite v12", meta: "91% passed" },
+];
+
+const envData = {
+  prod: { req: "124.8k", tok: "86.4M", cost: "$2,484", lat: "1.24s" },
+  stg: { req: "18.2k", tok: "9.1M", cost: "$312", lat: "0.98s" },
+};
+
+function renderLists() {
+  const al = $("#agentList"); al.replaceChildren();
+  for (const a of agents) {
+    const row = document.createElement("div");
+    row.className = "list-group-item d-flex justify-content-between align-items-start gap-2";
+    row.innerHTML = `<div><b>${a.name}</b> <span class="badge theme-${a.tone === "success" ? "success" : "secondary"}">${a.status}</span><div class="small fg-3">${a.detail}</div></div>`;
+    al.append(row);
+  }
+  const ac = $("#activityList"); ac.replaceChildren();
+  for (const a of activity) {
+    const row = document.createElement("div");
+    row.className = "list-group-item";
+    row.innerHTML = `<b>${a.title}</b><div class="small fg-3">${a.sub}</div><div class="small fg-3">${a.meta}</div>`;
+    ac.append(row);
+  }
+}
+
+function renderHist() {
+  const box = $("#hist"); box.replaceChildren();
+  const heights = [28, 42, 35, 48, 30, 44, 38, 46, 32, 40, 36, 45];
+  heights.forEach((h, i) => {
+    const bar = document.createElement("i");
+    bar.style.height = `${h}px`;
+    bar.style.animationDelay = `${i * 0.04}s`;
+    if (i % 3 === 1) bar.style.background = "var(--yellow)";
+    if (i % 3 === 2) bar.style.background = "var(--cyan)";
+    box.append(bar);
+  });
+}
+
+function wireChart() {
+  const tip = $("#chartTip");
+  const cross = $("#cross");
+  const days = [
+    { x: 40, label: "Sun", gpt: 95, claude: 134, gemini: 142 },
+    { x: 123, label: "Mon", gpt: 95, claude: 122, gemini: 142 },
+    { x: 207, label: "Tue", gpt: 108, claude: 88, gemini: 128 },
+    { x: 290, label: "Wed", gpt: 108, claude: 77, gemini: 125 },
+    { x: 373, label: "Thu", gpt: 44, claude: 71, gemini: 102 },
+    { x: 457, label: "Fri", gpt: 86, claude: 94, gemini: 122 },
+    { x: 540, label: "Sat", gpt: 77, claude: 41, gemini: 118 },
+  ];
+  const box = $("#chartBox");
+  box.addEventListener("mousemove", (e) => {
+    const rect = box.querySelector("svg").getBoundingClientRect();
+    const rel = ((e.clientX - rect.left) / rect.width) * 560;
+    let best = days[0];
+    for (const d of days) if (Math.abs(d.x - rel) < Math.abs(best.x - rel)) best = d;
+    cross.setAttribute("x1", best.x);
+    cross.setAttribute("x2", best.x);
+    cross.setAttribute("opacity", "1");
+    tip.classList.add("show");
+    tip.style.left = `${((best.x / 560) * 100)}%`;
+    tip.style.top = "12px";
+    tip.innerHTML = `<b>${best.label} · $624.00</b><br><span style="color:var(--yellow)">&#9632;</span> claude <b>$274.50</b><br><span style="color:var(--purple)">&#9632;</span> gpt-4o <b>$207.70</b>`;
+  });
+  box.addEventListener("mouseleave", () => {
+    cross.setAttribute("opacity", "0");
+    tip.classList.remove("show");
+  });
+}
+
+function wirePress() {
+  document.querySelectorAll(".btn, .lmn-nav-link, .nav-link").forEach((el) => {
+    el.addEventListener("pointerdown", () => el.classList.add("pressed"));
+    el.addEventListener("pointerup", () => el.classList.remove("pressed"));
+    el.addEventListener("pointerleave", () => el.classList.remove("pressed"));
+  });
+}
+
+function entryMotion() {
+  const kpis = [...$("#kpis").querySelectorAll(".card")];
+  move(kpis, { opacity: [0, 1], y: [10, 0] }, { duration: 0.35, delay: stagger(0.06) });
+  document.querySelectorAll(".lmn-bar-fill").forEach((bar) => {
+    const w = bar.style.getPropertyValue("--w") || bar.dataset.w || "72%";
+    bar.style.width = w;
+  });
+}
+
+$("#envPills").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-env]");
+  if (!b) return;
+  $("#envPills").querySelectorAll(".nav-link").forEach((n) => n.classList.toggle("active", n === b));
+  const d = envData[b.dataset.env];
+  for (const [k, v] of Object.entries(d)) {
+    const el = document.querySelector(`[data-kpi="${k}"]`);
+    if (el) el.textContent = v;
+  }
+  move([...$("#kpis").querySelectorAll(".display-6")], { scale: [1, 1.04, 1] }, { duration: 0.25 });
+  say(b.dataset.env === "prod" ? "Production workspace" : "Staging workspace (demo)");
+});
+
+document.querySelectorAll(".lmn-nav-link[data-nav]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".lmn-nav-link").forEach((n) => n.classList.toggle("on", n === btn));
+    $("#pageTitle").textContent = btn.textContent.trim();
+  });
+});
+
+$("#theme").addEventListener("click", (e) => {
+  const dark = document.documentElement.dataset.bsTheme !== "dark";
+  document.documentElement.dataset.bsTheme = dark ? "dark" : "light";
+  e.currentTarget.setAttribute("aria-pressed", dark);
+  e.currentTarget.textContent = dark ? "Light mode" : "Dark mode";
+});
+
+$("#toastBtn").addEventListener("click", () => say("Budget alert: 72% of monthly cap (local demo)."));
+$("#copyKey").addEventListener("click", () => say("Key copied (fictitious)."));
+
+renderLists();
+renderHist();
+wireChart();
+wirePress();
+entryMotion();
+</script>
+</body>
+</html>
