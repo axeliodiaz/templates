@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PulseFit Bootstrap 6 component gallery</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<link rel="stylesheet" href="/pulsefit-template/pulsefit-theme.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600;700&family=Rubik:wght@400;500;600;700&display=swap">
+<style>
+  body { background: var(--pf-page); min-height: 100vh; }
+  .pf-bs6-block { border-color: var(--bs-border-color) !important; }
+  .pf-bs6-block h5 { font-family: Montserrat, Rubik, sans-serif; }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body class="p-3 p-md-4">
+<header class="mb-4">
+  <h1 class="pf-display fs-1 mb-1">PulseFit · Bootstrap 6 gallery</h1>
+  <p class="fg-3 mb-0">Bootstrap 6.0.0-alpha.1 with PulseFit tokens. Fictitious data; actions stay local.</p>
+</header>
+<main>
+
+<section class="mb-5" id="buttons-variants">
+<h2 class="pf-section-title h4 mb-3">Buttons: variants</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-solid theme-primary">Primary</button><button type="button" class="btn-solid theme-secondary">Secondary</button><button type="button" class="btn-solid theme-success">Success</button><button type="button" class="btn-solid theme-warning">Warning</button><button type="button" class="btn-solid theme-danger">Danger</button><button type="button" class="btn-solid theme-info">Info</button><button type="button" class="btn-solid theme-light">Light</button><button type="button" class="btn-link">Link</button></div></div>
+</section>
+<section class="mb-5" id="buttons-outline">
+<h2 class="pf-section-title h4 mb-3">Buttons: outline</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-outline theme-primary">Primary</button><button type="button" class="btn-outline theme-success">Success</button><button type="button" class="btn-outline theme-warning">Warning</button><button type="button" class="btn-outline theme-danger">Danger</button><button type="button" class="btn-outline theme-info">Info</button></div></div>
+</section>
+<section class="mb-5" id="buttons-sizes">
+<h2 class="pf-section-title h4 mb-3">Buttons: sizes</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-solid theme-primary btn-sm">Small</button><button type="button" class="btn-solid theme-primary">Default</button><button type="button" class="btn-solid theme-primary btn-lg">Large</button></div><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-outline theme-primary btn-sm">Small</button><button type="button" class="btn-outline theme-primary">Default</button><button type="button" class="btn-outline theme-primary btn-lg">Large</button></div></div>
+</section>
+<section class="mb-5" id="buttons-disabled">
+<h2 class="pf-section-title h4 mb-3">Buttons: disabled</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-solid theme-primary disabled">Primary</button><button type="button" class="btn-solid theme-light disabled">Default</button><button type="button" class="btn-outline theme-primary disabled">Outline</button><button type="button" class="btn-link disabled">Link</button></div></div>
+</section>
+<section class="mb-5" id="buttons-block-and-full-width">
+<h2 class="pf-section-title h4 mb-3">Buttons: block and full width</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2" style="max-width:360px"><button type="button" class="btn-solid theme-primary w-100">Full width primary</button><button type="button" class="btn-outline theme-primary w-100">Full width outline</button></div><div class="row" style="margin-top:10px;max-width:360px"><button type="button" class="btn-solid theme-primary" style="flex:1">Left half</button><span class="btn" style="flex:1">Right half</span></div></div>
+</section>
+<section class="mb-5" id="buttons-shapes">
+<h2 class="pf-section-title h4 mb-3">Buttons: shapes</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-solid theme-primary rounded-pill">Pill</button><button type="button" class="btn-solid theme-primary">Default</button><button type="button" class="btn-solid theme-primary">Square</button></div></div>
+</section>
+<section class="mb-5" id="buttons-active-and-toggle">
+<h2 class="pf-section-title h4 mb-3">Buttons: active and toggle</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-solid theme-primary active">Active</button><button type="button" class="btn-solid theme-light active">Toggled on</button><button type="button" class="btn-solid theme-light">Toggled off</button></div><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="grp"><button type="button" class="btn-solid theme-light active">Left</button><button type="button" class="btn-solid theme-light">Middle</button><button type="button" class="btn-solid theme-light">Right</button></span></div></div>
+</section>
+<section class="mb-5" id="buttons-with-icons-and-counters">
+<h2 class="pf-section-title h4 mb-3">Buttons: with icons and counters</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-solid theme-primary">&#43; New</button><button type="button" class="btn-solid theme-light">&#8681; Download</button><button type="button" class="btn-outline theme-primary">&#9998; Edit</button><button type="button" class="btn-solid theme-light">Inbox <span class="badge theme-pri">4</button></span><button type="button" class="btn-solid theme-light">&#10003;</button></div></div>
+</section>
+<section class="mb-5" id="buttons-loading">
+<h2 class="pf-section-title h4 mb-3">Buttons: loading</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-solid theme-primary"><span class="spin sm"></button> Saving</span><button type="button" class="btn-solid theme-light disabled"><span class="grow sm"></button> Loading</span><button type="button" class="btn-outline theme-primary"><span class="spin sm"></button> Please wait</span></div></div>
+</section>
+<section class="mb-5" id="button-groups-basic-and-sizes">
+<h2 class="pf-section-title h4 mb-3">Button groups: basic and sizes</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="grp"><button type="button" class="btn-solid theme-light">Left</button><button type="button" class="btn-solid theme-light">Middle</button><button type="button" class="btn-solid theme-light">Right</button></span><span class="grp"><button type="button" class="btn-solid theme-primary btn-sm">1</button><button type="button" class="btn-solid theme-light btn-sm">2</button><button type="button" class="btn-solid theme-light btn-sm">3</button></span><span class="grp"><button type="button" class="btn-solid theme-light btn-lg">A</button><button type="button" class="btn-solid theme-light btn-lg">B</button></span></div></div>
+</section>
+<section class="mb-5" id="button-groups-toolbar-and-vertical">
+<h2 class="pf-section-title h4 mb-3">Button groups: toolbar and vertical</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="grp"><button type="button" class="btn-solid theme-light">1</button><button type="button" class="btn-solid theme-light">2</button><button type="button" class="btn-solid theme-light">3</button><button type="button" class="btn-solid theme-light">4</button></span><span class="grp"><button type="button" class="btn-solid theme-light">5</button><button type="button" class="btn-solid theme-light">6</button><button type="button" class="btn-solid theme-light">7</button></span><span class="grp v"><button type="button" class="btn-solid theme-light">Top</button><button type="button" class="btn-solid theme-light">Mid</button><button type="button" class="btn-solid theme-light">Bottom</button></span></div></div>
+</section>
+<section class="mb-5" id="button-groups-checkbox-and-radio-style">
+<h2 class="pf-section-title h4 mb-3">Button groups: checkbox and radio style</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="grp"><button type="button" class="btn-solid theme-light active">Checkbox 1</button><button type="button" class="btn-solid theme-light active">Checkbox 2</button><button type="button" class="btn-solid theme-light">Checkbox 3</button></span><span class="grp"><button type="button" class="btn-solid theme-light">Radio 1</button><button type="button" class="btn-solid theme-light active">Radio 2</button><button type="button" class="btn-solid theme-light">Radio 3</button></span></div></div>
+</section>
+<section class="mb-5" id="button-groups-with-dropdown">
+<h2 class="pf-section-title h4 mb-3">Button groups: with dropdown</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="grp"><button type="button" class="btn-solid theme-primary">Action</button><button type="button" class="btn-solid theme-primary">&#9662;</button></span><span class="grp"><button type="button" class="btn-solid theme-light">Left</button><button type="button" class="btn-solid theme-light">Right</button><button type="button" class="btn-solid theme-light">More &#9662;</button></span></div></div>
+</section>
+<section class="mb-5" id="badges-variants">
+<h2 class="pf-section-title h4 mb-3">Badges: variants</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="badge theme-pri">Primary</span><span class="badge ">Neutral</span><span class="badge theme-ok">Success</span><span class="badge theme-warn">Warning</span><span class="badge theme-bad">Danger</span><span class="badge theme-info">Info</span><span class="badge theme-secondary">Outline</span></div></div>
+</section>
+<section class="mb-5" id="badges-pill-square-dot-and-in-buttons">
+<h2 class="pf-section-title h4 mb-3">Badges: pill, square, dot and in buttons</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="badge theme-pri">Pill</span><span class="badge pri sq">Square</span><span class="badge theme-secondary"><span class="dot"></span> Online</span><button type="button" class="btn-solid theme-light">Notifications <span class="badge theme-bad">9</button></span><button type="button" class="btn-solid theme-primary">Profile <span class="badge">new</button></span></div></div>
+</section>
+<section class="mb-5" id="badges-positioned-on-a-button">
+<h2 class="pf-section-title h4 mb-3">Badges: positioned on a button</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="btn" style="position:relative">Inbox <span class="badge bad pos" style="position:absolute;top:-8px;right:-8px;left:auto">99+</span></span><span class="btn" style="position:relative">&#9993;<span class="dot" style="position:absolute;top:-3px;right:-3px;background:var(--b-bad)"></span></span></div></div>
+</section>
+<section class="mb-5" id="alerts-variants">
+<h2 class="pf-section-title h4 mb-3">Alerts: variants</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div class="alert theme-primary"><span><b>Primary</b> A simple alert with a link.</span></div><div class="alert theme-success"><span><b>Success</b> Saved. Changes are live.</span></div><div class="alert theme-warning"><span><b>Warning</b> Needs review.</span></div><div class="alert theme-danger"><span><b>Danger</b> Something went wrong.</span></div><div class="alert theme-info"><span><b>Info</b> Tip: drag rows to reorder.</span></div><div class="alert theme-secondary"><span><b>Neutral</b> Low emphasis note.</span></div></div>
+</section>
+<section class="mb-5" id="alerts-with-heading-and-actions">
+<h2 class="pf-section-title h4 mb-3">Alerts: with heading and actions</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div class="alert theme-success"><span><b>Well done</b><br>You completed the setup. Next, invite your team.<br><br><button type="button" class="btn-solid theme-success btn-sm">Invite</button> <button type="button" class="btn-solid theme-light btn-sm">Later</button></span></div><div class="alert theme-danger"><span><b>Payment failed</b><br>Your card was declined.</span></div></div>
+</section>
+<section class="mb-5" id="alerts-dismissible-and-with-icon">
+<h2 class="pf-section-title h4 mb-3">Alerts: dismissible and with icon</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div class="alert theme-warning"><span>&#9888;</span><span>Your trial ends in 3 days.</span><span class="x">&#10005;</span></div><div class="alert theme-info"><span>&#9432;</span><span>New version available.</span><span class="x">&#10005;</span></div></div>
+</section>
+<section class="mb-5" id="cards-basic-header-and-footer">
+<h2 class="pf-section-title h4 mb-3">Cards: basic, header and footer</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row g-3"><div class="card h-100"><div class="card-body"><h5>Card title</h5><p>Some quick example text to build on the title.</p><button type="button" class="btn-solid theme-primary btn-sm">Go</button></div></div>
+</section>
+<section class="mb-5" id="cards-with-image-horizontal-and-highlighted">
+<h2 class="pf-section-title h4 mb-3">Cards: with image, horizontal and highlighted</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row g-3"><div class="card h-100"><div class="img"></div><div class="card-body"><h5>With image</h5><p>Cover image on top.</p></div></div>
+</section>
+<section class="mb-5" id="cards-list-and-grid-groups">
+<h2 class="pf-section-title h4 mb-3">Cards: list and grid groups</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row g-3"><div class="card h-100"><div class="card-header">Includes</div><div class="lg-list" style="border:0;border-radius:0;max-width:none"><div class="it">Item one</div><div class="it">Item two</div><div class="it">Item three</div></div>
+</section>
+<section class="mb-5" id="forms-text-inputs">
+<h2 class="pf-section-title h4 mb-3">Forms: text inputs</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row g-3"><div><label class="form-label">Email</label><input class="form-control" placeholder="name@example.com"></div><div><label class="form-label">Password</label><input class="form-control" type="password" value="secret"><div class="hint">At least 8 characters.</div></div>
+</section>
+<section class="mb-5" id="forms-sizes-textarea-and-file">
+<h2 class="pf-section-title h4 mb-3">Forms: sizes, textarea and file</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><input class="form-control sm" placeholder="Small"><input class="form-control" placeholder="Default"><input class="form-control lg" placeholder="Large"><textarea class="form-control" rows="3" placeholder="Textarea"></textarea><span class="btn">&#8679; Choose file</span></div></div>
+</section>
+<section class="mb-5" id="forms-validation">
+<h2 class="pf-section-title h4 mb-3">Forms: validation</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row g-3"><div><label class="form-label">Valid</label><input class="form-control ok" value="looks good"><div class="hint" style="color:var(--b-ok)">Looks good.</div></div>
+</section>
+<section class="mb-5" id="forms-input-groups">
+<h2 class="pf-section-title h4 mb-3">Forms: input groups</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2" style="max-width:420px"><div class="ig"><span class="pre">@</span><input class="form-control" placeholder="Username"></div><div class="ig post"><input class="form-control" placeholder="Amount"><span class="pre">.00</span></div><div class="ig"><span class="pre">$</span><input class="form-control" placeholder="Price"></div><div class="ig post"><input class="form-control" placeholder="Search"><button type="button" class="btn-solid theme-primary" style="border-radius:0 var(--b-r) var(--b-r) 0">Go</button></div></div>
+</section>
+<section class="mb-5" id="forms-floating-labels-and-layout">
+<h2 class="pf-section-title h4 mb-3">Forms: floating labels and layout</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row g-3"><div style="position:relative"><input class="form-control" style="padding-top:20px" value="Axel"><span style="position:absolute;top:4px;left:12px;font-size:10px;color:var(--b-mut)">First name</span></div><div style="position:relative"><input class="form-control" style="padding-top:20px" value="Diaz"><span style="position:absolute;top:4px;left:12px;font-size:10px;color:var(--b-mut)">Last name</span></div></div>
+</section>
+<section class="mb-5" id="select-variants">
+<h2 class="pf-section-title h4 mb-3">Select: variants</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row g-3"><div><label class="form-label">Default</label><select class="form-select sel"><option>Choose...</option><option>One</option></select></div><div><label class="form-label">Small</label><select class="form-select sm sel"><option>Small</option></select></div><div><label class="form-label">Large</label><select class="form-select lg sel"><option>Large</option></select></div><div><label class="form-label">Disabled</label><select class="form-select sel ro" disabled><option>Disabled</option></select></div></div>
+</section>
+<section class="mb-5" id="checks-and-radios">
+<h2 class="pf-section-title h4 mb-3">Checks and radios</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="ck on"><i>&#10003;</i> Checked</span><span class="ck"><i></i> Unchecked</span><span class="ck ind"><i>&#8211;</i> Indeterminate</span><span class="ck dis"><i></i> Disabled</span></div><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="ck rd on"><i></i> Selected</span><span class="ck rd"><i></i> Option</span><span class="ck rd dis"><i></i> Disabled</span></div><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="ck on"><i>&#10003;</i> Inline A</span><span class="ck on"><i>&#10003;</i> Inline B</span><span class="ck"><i></i> Inline C</span></div></div>
+</section>
+<section class="mb-5" id="switches">
+<h2 class="pf-section-title h4 mb-3">Switches</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="sw on"><i></i> On</span><span class="sw"><i></i> Off</span><span class="sw on dis"><i></i> Disabled on</span><span class="sw dis"><i></i> Disabled off</span></div></div>
+</section>
+<section class="mb-5" id="range">
+<h2 class="pf-section-title h4 mb-3">Range</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div><label class="form-label">Example range</label><div class="rng"><b style="width:50%"></b><s style="left:50%"></s></div></div>
+</section>
+<section class="mb-5" id="nav-and-tabs">
+<h2 class="pf-section-title h4 mb-3">Nav and tabs</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="nav"><a class="act">Active</a><a>Link</a><a>Link</a><a class="dis">Disabled</a></div><div class="nav pills"><a class="act">Pill</a><a>Pill</a><a>Pill</a></div><div class="nav fill"><a class="act">Fill</a><a>Fill</a><a>Fill</a></div><div class="nav card"><a class="act">Day</a><a>Week</a><a>Month</a></div></div>
+</section>
+<section class="mb-5" id="nav-vertical-and-tab-panes">
+<h2 class="pf-section-title h4 mb-3">Nav: vertical and tab panes</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row" style="align-items:flex-start;gap:24px"><div class="nav pills v"><a class="act">Profile</a><a>Billing</a><a>Team</a></div><div style="flex:1;min-width:200px"><div class="nav"><a class="act">Overview</a><a>Details</a></div><p>Tab pane content sits here.</p></div></div>
+</section>
+<section class="mb-5" id="pagination">
+<h2 class="pf-section-title h4 mb-3">Pagination</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><span class="pg"><a class="dis">&laquo;</a><a class="act">1</a><a>2</a><a>3</a><a>&raquo;</a></span><span class="pg sm"><a>&laquo;</a><a>1</a><a class="act">2</a><a>3</a><a>&raquo;</a></span><span class="pg lg"><a>1</a><a class="act">2</a><a>3</a></span><span class="pg rnd"><a>1</a><a class="act">2</a><a>3</a></span></div></div>
+</section>
+<section class="mb-5" id="breadcrumbs">
+<h2 class="pf-section-title h4 mb-3">Breadcrumbs</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div class="bc"><span>Home</span></div><div class="bc"><a>Home</a><span>Library</span></div><div class="bc chev"><a>Home</a><a>Library</a><span>Data</span></div><div class="bc dot"><a>Home</a><a>Projects</a><span>Atlas</span></div></div>
+</section>
+<section class="mb-5" id="dropdowns">
+<h2 class="pf-section-title h4 mb-3">Dropdowns</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row" style="align-items:flex-start"><div class="dd"><button type="button" class="btn-solid theme-primary">Actions &#9662;</button><div class="menu"><a class="act">Active</a><a>Another action</a><a>Something else</a><hr><a class="dis">Disabled</a></div></div>
+</section>
+<section class="mb-5" id="modals">
+<h2 class="pf-section-title h4 mb-3">Modals</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="back"><div class="modal"><div class="card-header"><span>Modal title</span><span>&#10005;</span></div><div class="card-body">Modal body text goes here.</div><div class="card-footer fg-3 small"><button type="button" class="btn-solid theme-light">Close</button><button type="button" class="btn-solid theme-primary">Save changes</button></div></div>
+</section>
+<section class="mb-5" id="tooltips">
+<h2 class="pf-section-title h4 mb-3">Tooltips</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row" style="gap:28px;padding:14px 0"><span class="tip t">Tooltip on top</span><span class="tip b">Tooltip on bottom</span><span class="tip l">Tooltip left</span><span class="tip r" style="margin-left:10px">Tooltip right</span></div></div>
+</section>
+<section class="mb-5" id="popovers">
+<h2 class="pf-section-title h4 mb-3">Popovers</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row" style="align-items:flex-start"><div class="pop"><div class="card-header">Popover title</div><div class="card-body">And here is some amazing content.</div></div>
+</section>
+<section class="mb-5" id="progress">
+<h2 class="pf-section-title h4 mb-3">Progress</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div class="pr"><i style="width:25%"></i></div><div class="pr t"><i style="width:50%"></i></div><div class="pr w"><i style="width:75%"></i></div><div class="pr d"><i style="width:100%"></i></div><div class="pr tall"><i style="width:60%">60%</i></div><div class="pr str i"><i style="width:70%"></i></div><div class="pr thin"><i style="width:40%"></i></div><div class="pr stk"><i style="width:30%"></i><i style="width:20%;background:var(--b-ok)"></i><i style="width:15%;background:var(--b-warn)"></i></div></div>
+</section>
+<section class="mb-5" id="spinners">
+<h2 class="pf-section-title h4 mb-3">Spinners</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="spin"></span><span class="spin ok"></span><span class="spin bad"></span><span class="spin sm"></span><span class="spin lg"></span><span class="grow"></span><span class="grow ok"></span><span class="grow sm"></span></div></div>
+</section>
+<section class="mb-5" id="list-groups">
+<h2 class="pf-section-title h4 mb-3">List groups</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="row" style="align-items:flex-start"><div class="lg-list"><div class="it act">Active item</div><div class="it">Second item</div><div class="it dis">Disabled item</div></div>
+</section>
+<section class="mb-5" id="tables-basic-striped-and-hover">
+<h2 class="pf-section-title h4 mb-3">Tables: basic, striped and hover</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div class="tw"><table class="tb"><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th></tr></thead><tbody><tr><td>1</td><td>Mark</td><td>Otto</td><td>@mdo</td></tr><tr class="hv"><td>2</td><td>Jacob</td><td>Thornton</td><td>@fat</td></tr><tr><td>3</td><td>Larry</td><td>Bird</td><td>@twitter</td></tr></tbody></table></div><div class="tw"><table class="tb str"><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th></tr></thead><tbody><tr><td>1</td><td>Mark</td><td>Otto</td><td>@mdo</td></tr><tr class="hv"><td>2</td><td>Jacob</td><td>Thornton</td><td>@fat</td></tr><tr><td>3</td><td>Larry</td><td>Bird</td><td>@twitter</td></tr></tbody></table></div><div class="tw"><table class="tb hov"><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th></tr></thead><tbody><tr><td>1</td><td>Mark</td><td>Otto</td><td>@mdo</td></tr><tr class="hv"><td>2</td><td>Jacob</td><td>Thornton</td><td>@fat</td></tr><tr><td>3</td><td>Larry</td><td>Bird</td><td>@twitter</td></tr></tbody></table></div></div>
+</section>
+<section class="mb-5" id="tables-bordered-small-dark-header-and-states">
+<h2 class="pf-section-title h4 mb-3">Tables: bordered, small, dark header and states</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div class="tw"><table class="tb bor sm"><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th></tr></thead><tbody><tr><td>1</td><td>Mark</td><td>Otto</td><td>@mdo</td></tr><tr class="hv"><td>2</td><td>Jacob</td><td>Thornton</td><td>@fat</td></tr><tr><td>3</td><td>Larry</td><td>Bird</td><td>@twitter</td></tr></tbody></table></div><div class="tw"><table class="tb dk"><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th></tr></thead><tbody><tr><td>1</td><td>Mark</td><td>Otto</td><td>@mdo</td></tr><tr class="hv"><td>2</td><td>Jacob</td><td>Thornton</td><td>@fat</td></tr><tr><td>3</td><td>Larry</td><td>Bird</td><td>@twitter</td></tr></tbody></table></div><div class="tw"><table class="tb"><caption>With status rows</caption><thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th></tr></thead><tbody><tr class="ok"><td>1</td><td>Passed</td><td>-</td><td>ok</td></tr><tr class="bad"><td>2</td><td>Failed</td><td>-</td><td>err</td></tr></tbody></table></div></div>
+</section>
+<section class="mb-5" id="accordion">
+<h2 class="pf-section-title h4 mb-3">Accordion</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="ac-wrap"><details class="ac" open><summary>Accordion item #1</summary><div class="card-body">This is the first item body. Open by default.</div></details><details class="ac"><summary>Accordion item #2</summary><div class="card-body">Second item body.</div></details><details class="ac"><summary>Accordion item #3</summary><div class="card-body">Third item body.</div></details></div><div class="ac-wrap fl" style="margin-top:12px"><details class="ac"><summary>Flush item</summary><div class="card-body">Flush variant without outer borders.</div></details><details class="ac"><summary>Another flush item</summary><div class="card-body">Content.</div></details></div></div>
+</section>
+<section class="mb-5" id="collapse">
+<h2 class="pf-section-title h4 mb-3">Collapse</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><button type="button" class="btn-solid theme-primary">Toggle content</button><button type="button" class="btn-solid theme-light">Toggle both</button></div><div class="cl">Collapsed content that is shown when toggled. Works with any block.</div><details class="ac" style="border-radius:var(--b-r)"><summary>Click to expand</summary><div class="card-body">Native collapse using details, no script needed.</div></details></div></div>
+</section>
+<section class="mb-5" id="toasts">
+<h2 class="pf-section-title h4 mb-3">Toasts</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2"><div class="toast"><div class="card-header"><span class="dot"></span>Notice<small>just now</small><span>&#10005;</span></div><div class="card-body">Hello, this is a toast message.</div></div>
+</section>
+<section class="mb-5" id="offcanvas">
+<h2 class="pf-section-title h4 mb-3">Offcanvas</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="back" style="padding:0;display:flex;justify-content:flex-end"><div class="oc end"><div class="card-header"><span>Offcanvas</span><span>&#10005;</span></div><div class="card-body">Content for the end panel.</div></div>
+</section>
+<section class="mb-5" id="carousel">
+<h2 class="pf-section-title h4 mb-3">Carousel</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><div class="car"><div class="sl">Slide one</div><span class="ar l">&#8249;</span><span class="ar r">&#8250;</span><div class="ind"><i class="a"></i><i></i><i></i></div></div>
+</section>
+<section class="mb-5" id="avatars-and-stacks">
+<h2 class="pf-section-title h4 mb-3">Avatars and stacks</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="avatar sm">AD</span><span class="avatar">AD</span><span class="avatar lg">AD</span><span class="stack"><span class="avatar">AB</span><span class="avatar" style="background:var(--b-info)">CD</span><span class="avatar" style="background:var(--b-ok)">EF</span><span class="avatar" style="background:var(--b-warn)">+4</span></span></div></div>
+</section>
+<section class="mb-5" id="placeholders-and-skeletons">
+<h2 class="pf-section-title h4 mb-3">Placeholders and skeletons</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="d-flex flex-column gap-2" style="max-width:360px"><div class="ph" style="width:70%"></div><div class="ph"></div><div class="ph" style="width:45%"></div><div class="ph" style="height:80px"></div></div>
+</section>
+<section class="mb-5" id="steps-and-keyboard-keys">
+<h2 class="pf-section-title h4 mb-3">Steps and keyboard keys</h2>
+<div class="pf-bs6-block mb-4 p-3 border rounded-4 bg-1"><div class="step"><span class="s done"><i>&#10003;</i> Account</span><span class="ln"></span><span class="s cur"><i>2</i> Details</span><span class="ln"></span><span class="s"><i>3</i> Review</span></div><div class="row" style="margin-top:12px">Press <span class="kbd">Ctrl</span> + <span class="kbd">K</span> to search</div></div>
+</section>
+
+</main>
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+</body>
+</html>

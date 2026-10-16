@@ -8,7 +8,7 @@ import NavbarDemo from '../.vitepress/theme/NavbarDemo.vue'
 
 # Pulsefit component catalog
 
-A Bootstrap-style UI-kit reference in the Pulsefit visual language. Every family has usage, a live preview, copyable markup and keyboard notes. All data and actions are fictitious and local; no backend is called. The existing component pages remain available.
+A UI-kit reference in the Pulsefit visual language (custom `.pf` / `.kit-pulsefit` markup). The Bootstrap-depth set uses real Bootstrap 6 on the [Bootstrap set](./components-more) gallery. Every family has usage, a live preview, copyable markup and keyboard notes. All data and actions are fictitious and local; no backend is called. The existing component pages remain available.
 
 <ComponentCatalog language="pulsefit" />
 

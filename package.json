@@ -7,10 +7,13 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "test:newrelic": "node --test tests/newrelic-browser.cjs"
+    "test:newrelic": "node --test tests/newrelic-browser.cjs",
+    "test:pulsefit-bs6": "node tests/pulsefit-bs6.cjs",
+    "gen:pulsefit-bs6-components": "python3 tools/bsx-to-bs6-pulsefit.py"
   },
   "devDependencies": {
     "mermaid": "^11.17.2",
+    "playwright": "^1.49.1",
     "vitepress": "^1.6.3"
   },
   "allowScripts": {

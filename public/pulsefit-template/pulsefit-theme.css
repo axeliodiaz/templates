@@ -1,0 +1,127 @@
+/* PulseFit theme for Bootstrap 6 (6.0.0-alpha.1).
+   Gold #C9A66B, ink text #7a5a1f, charcoal nav #212529, page #F5F5F5, body #212121.
+   Load after bootstrap.min.css. Force light/dark with data-bs-theme on the root element.
+   Unlayered so overrides win over Bootstrap @layer defaults. */
+:root,
+:host {
+  --pf-gold: #c9a66b;
+  --pf-gold-hover: #b8955c;
+  --pf-gold-ink: #7a5a1f;
+  --pf-nav: #212529;
+  --pf-page: #f5f5f5;
+
+  --bs-primary-base: #c9a66b;
+  --bs-primary-bg: #c9a66b;
+  --bs-primary-contrast: #212121;
+  --bs-primary-fg: light-dark(#7a5a1f, #d9bc86);
+  --bs-primary-fg-emphasis: light-dark(#5c4520, #e8d4b0);
+  --bs-primary-bg-subtle: light-dark(#f5e6d3, #3a3123);
+  --bs-primary-bg-muted: light-dark(#e6d2b0, #4a3f2c);
+  --bs-primary-border: light-dark(#e6d2b0, #4a3f2c);
+  --bs-primary-focus-ring: light-dark(rgb(201 166 107 / 0.45), rgb(217 188 134 / 0.55));
+
+  --bs-secondary-base: #5f666d;
+  --bs-secondary-bg: light-dark(#e0e0e0, #383b40);
+  --bs-secondary-contrast: light-dark(#212121, #ececee);
+  --bs-secondary-fg: light-dark(#5f666d, #a3a7ad);
+  --bs-secondary-fg-emphasis: light-dark(#333333, #ececee);
+  --bs-secondary-bg-subtle: light-dark(#fafafa, #1d1e21);
+  --bs-secondary-bg-muted: light-dark(#e9ecef, #2e3034);
+  --bs-secondary-border: light-dark(#e0e0e0, #383b40);
+
+  --bs-success-base: #198754;
+  --bs-success-bg: #198754;
+  --bs-success-fg: light-dark(#11643b, #4cc38a);
+  --bs-success-fg-emphasis: light-dark(#0d4d2e, #6fd69a);
+  --bs-success-bg-subtle: light-dark(#e3f4ea, #16301f);
+  --bs-success-bg-muted: light-dark(#d1eadc, #1f3d2a);
+  --bs-success-border: light-dark(#d1eadc, #1f3d2a);
+
+  --bs-warning-base: #b77900;
+  --bs-warning-bg: #b77900;
+  --bs-warning-contrast: #212121;
+  --bs-warning-fg: light-dark(#7a5200, #e0a02a);
+  --bs-warning-fg-emphasis: light-dark(#5c3d00, #f0c060);
+  --bs-warning-bg-subtle: light-dark(#fff3d6, #3a2f10);
+  --bs-warning-bg-muted: light-dark(#fbeed5, #4a360f);
+  --bs-warning-border: light-dark(#fbeed5, #4a360f);
+
+  --bs-danger-base: #dc3545;
+  --bs-danger-bg: #dc3545;
+  --bs-danger-fg: light-dark(#a52432, #f0707c);
+  --bs-danger-fg-emphasis: light-dark(#8b1f2a, #f3a0a8);
+  --bs-danger-bg-subtle: light-dark(#fde8ea, #3a1a1e);
+  --bs-danger-bg-muted: light-dark(#f5d0d4, #4a2024);
+  --bs-danger-border: light-dark(#f5d0d4, #4a2024);
+
+  --bs-info-base: #0a7e96;
+  --bs-info-bg: #0a7e96;
+  --bs-info-contrast: #ffffff;
+  --bs-info-fg: light-dark(#075f70, #4cc2d8);
+  --bs-info-fg-emphasis: light-dark(#054a58, #6cc7da);
+  --bs-info-bg-subtle: light-dark(#def4f8, #10303a);
+  --bs-info-bg-muted: light-dark(#cceef5, #163d4b);
+  --bs-info-border: light-dark(#cceef5, #163d4b);
+
+  --bs-bg-body: light-dark(#ffffff, #17181a);
+  --bs-bg-1: light-dark(#f5f5f5, #1d1e21);
+  --bs-bg-2: light-dark(#fafafa, #222427);
+  --bs-bg-3: light-dark(#e0e0e0, #383b40);
+  --bs-fg-body: light-dark(#212121, #ececee);
+  --bs-fg-1: light-dark(#212121, #ececee);
+  --bs-fg-2: light-dark(#333333, #c8c9ce);
+  --bs-fg-3: light-dark(#5f666d, #a3a7ad);
+  --bs-border-color: light-dark(#e0e0e0, #383b40);
+  --bs-border-body: light-dark(#e0e0e0, #383b40);
+  --bs-border-subtle: light-dark(#e9ecef, #2e3034);
+  --bs-link-color: light-dark(#7a5a1f, #d9bc86);
+  --bs-link-hover-color: light-dark(#5c4520, #e8d4b0);
+  --bs-body-font-family: "Rubik", "Helvetica Neue", Arial, sans-serif;
+  --bs-radius-5: 8px;
+  --bs-radius-7: 12px;
+}
+
+.btn-solid.theme-primary {
+  --bs-btn-hover-bg: var(--pf-gold-hover);
+  --bs-btn-hover-border-color: var(--pf-gold-hover);
+  --bs-btn-active-bg: #9a7a45;
+  --bs-btn-active-border-color: #9a7a45;
+}
+.btn-outline.theme-primary {
+  --bs-btn-color: var(--bs-primary-fg);
+}
+
+.pf-navbar {
+  --bs-navbar-color: rgba(255, 255, 255, 0.82);
+  --bs-navbar-hover-color: #ffffff;
+  --bs-navbar-active-color: var(--pf-gold);
+  --bs-navbar-brand-color: #ffffff;
+  background-color: var(--pf-nav);
+  border-bottom: 1px solid #111214;
+}
+.pf-navbar .navbar-brand {
+  font-family: "Bebas Neue", "Rubik", sans-serif;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  font-size: 1.35rem;
+}
+.pf-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--pf-gold);
+  color: #212121;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+.pf-display {
+  font-family: "Bebas Neue", "Rubik", sans-serif;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+.pf-section-title {
+  font-family: Montserrat, Rubik, sans-serif;
+  font-weight: 700;
+}

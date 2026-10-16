@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PulseFit template</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<link rel="stylesheet" href="/pulsefit-template/pulsefit-theme.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600;700&family=Rubik:wght@400;500;600;700&display=swap">
+<style>
+  body { background: var(--pf-page); min-height: 100vh; }
+  .pf-plan-price { font-family: "Bebas Neue", Rubik, sans-serif; font-size: 2.5rem; letter-spacing: 0.04em; color: var(--pf-gold); }
+  .pf-kpi strong { font-family: Montserrat, Rubik, sans-serif; color: var(--pf-gold); font-size: 1.35rem; }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<nav class="navbar md:navbar-expand pf-navbar mb-3" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#"><span class="pf-mark" aria-hidden="true">P</span>PULSEFIT</a>
+    <button id="theme" class="btn-outline btn-sm theme-secondary ms-auto me-2 md:order-last" type="button" aria-pressed="false">Dark mode</button>
+    <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navDrawer" aria-controls="navDrawer" aria-expanded="false" aria-label="Open menu"><span class="navbar-toggler-icon" aria-hidden="true"></span></button>
+    <dialog class="drawer drawer-end" tabindex="-1" id="navDrawer" aria-labelledby="navDrawerLabel">
+      <div class="drawer-header">
+        <h2 class="drawer-title pf-section-title h5" id="navDrawerLabel">Menu</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+      </div>
+      <div class="drawer-body">
+        <ul class="nav navbar-nav">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Schedule</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Coaches</a></li>
+        </ul>
+      </div>
+    </dialog>
+  </div>
+</nav>
+
+<main class="container-fluid pb-4">
+  <div class="alert theme-info d-flex align-items-center justify-content-between gap-2 mb-3" role="note">
+    <span>PulseFit on Bootstrap 6.0.0-alpha.1 (pinned). Fictitious studio data; actions stay on this page.</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <div class="col-12 md:col-3">
+      <div class="card pf-kpi h-100"><div class="card-body"><div class="fg-3 small text-uppercase">Active members</div><strong>1,284</strong><div class="badge theme-success mt-2">+12%</div></div></div>
+    </div>
+    <div class="col-12 md:col-3">
+      <div class="card pf-kpi h-100"><div class="card-body"><div class="fg-3 small text-uppercase">Classes today</div><strong>18</strong><div class="fg-3 small mt-2">6 at capacity</div></div></div>
+    </div>
+    <div class="col-12 md:col-3">
+      <div class="card pf-kpi h-100"><div class="card-body"><div class="fg-3 small text-uppercase">Renewals due</div><strong>42</strong><div class="badge theme-warning mt-2">This week</div></div></div>
+    </div>
+    <div class="col-12 md:col-3">
+      <div class="card pf-kpi h-100"><div class="card-body"><div class="fg-3 small text-uppercase">No-shows</div><strong>7</strong><div class="badge theme-danger mt-2">-3 vs last week</div></div></div>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12 lg:col-7">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span class="pf-section-title">Today's schedule</span>
+          <button type="button" class="btn-solid theme-primary btn-sm" id="book">Book class</button>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Time</th><th>Class</th><th>Coach</th><th>Spots</th><th></th></tr></thead>
+            <tbody id="schedule"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 lg:col-5">
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="card border-2" style="border-color: var(--pf-gold) !important;">
+            <div class="card-body">
+              <span class="badge theme-primary">Featured</span>
+              <div class="pf-display pf-plan-price mt-1">Unlimited</div>
+              <p class="fg-3 small mb-2">All classes · freeze 2 weeks / year</p>
+              <div class="pf-display">$89</div>
+              <button type="button" class="btn-solid theme-primary w-100 mt-2">Choose plan</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card h-100">
+            <div class="card-header">Member check-in</div>
+            <div class="card-body">
+              <label class="form-label" for="member">Member ID</label>
+              <div class="input-group mb-2">
+                <input id="member" class="form-control" placeholder="PF-2048" value="PF-2048">
+                <button class="btn-solid theme-primary" type="button" id="checkin">Check in</button>
+              </div>
+              <p class="fg-3 small mb-0" id="checkinMsg">Ready to scan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"><div class="d-flex"><div class="toast-body" id="toastText"></div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div></div></div>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+<script type="module">
+import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@14.1.0/+esm";
+import { Toast } from "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js";
+
+const rows = [
+  ["06:30", "Ride 45", "Maya Torres", "4 left"],
+  ["08:00", "Strength", "Leo Park", "Full"],
+  ["12:15", "Yoga flow", "Ana Ruiz", "9 left"],
+  ["17:30", "HIIT", "Maya Torres", "2 left"],
+  ["19:00", "Pilates", "Leo Park", "6 left"],
+];
+const $ = (s) => document.querySelector(s);
+const toast = Toast.getOrCreateInstance($("#toast"), { delay: 2400 });
+const say = (t) => { $("#toastText").textContent = t; toast.show(); };
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+const body = $("#schedule");
+for (const [time, cls, coach, spots] of rows) {
+  const tr = document.createElement("tr");
+  const full = spots === "Full";
+  tr.innerHTML = `<td>${time}</td><td>${cls}</td><td>${coach}</td><td><span class="badge theme-${full ? "danger" : "success"}">${spots}</span></td><td class="text-end"><button type="button" class="btn-outline theme-primary btn-sm" ${full ? "disabled" : ""}>Reserve</button></td>`;
+  tr.querySelector("button")?.addEventListener("click", () => say(`Reserved ${cls} at ${time} (local demo).`));
+  body.append(tr);
+}
+if (!reduce.matches) animate([...body.querySelectorAll("tr")], { opacity: [0, 1], y: [6, 0] }, { duration: 0.22, delay: stagger(0.04) });
+$("#book").addEventListener("click", () => say("Class picker opens here in a real app."));
+$("#checkin").addEventListener("click", () => { $("#checkinMsg").textContent = `Checked in ${$("#member").value} at ${new Date().toLocaleTimeString()}.`; say("Check-in recorded (local)."); });
+$("#theme").addEventListener("click", (e) => {
+  const dark = document.documentElement.dataset.bsTheme !== "dark";
+  document.documentElement.dataset.bsTheme = dark ? "dark" : "light";
+  e.currentTarget.setAttribute("aria-pressed", dark);
+  e.currentTarget.textContent = dark ? "Light mode" : "Dark mode";
+});
+</script>
+</body>
+</html>
