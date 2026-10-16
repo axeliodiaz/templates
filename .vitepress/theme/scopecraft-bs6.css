@@ -1,0 +1,57 @@
+@import './scopecraft-bs6.bootstrap.css';
+@import url('/scopecraft-bs6/scopecraft-bs6-theme.css');
+
+/* Catalog layout on top of Bootstrap primitives inside the isolated root. */
+.sc-bs6-root.kit-scopecraft {
+  --k-bg: var(--sc-surf, #fff);
+  --k-alt: var(--sc-bg, #f4f4f5);
+  --k-text: var(--sc-text, #1b1c1f);
+  --k-muted: var(--sc-muted, #6b6f76);
+  --k-border: var(--sc-bd, #e6e6e8);
+  --k-brand: var(--sc-ink, #111113);
+  --k-ink: #fff;
+  --k-radius: 8px;
+}
+
+.sc-bs6-root .l-toast-stack {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: min(360px, 92vw);
+}
+
+.sc-bs6-root .l-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--sc-bd);
+  background: var(--sc-surf);
+  box-shadow: 0 10px 30px rgba(16, 16, 20, 0.12);
+  color: var(--sc-text);
+}
+
+.sc-bs6-root .l-toast-success { border-left: 4px solid var(--sc-ok); }
+.sc-bs6-root .l-toast-warn { border-left: 4px solid var(--sc-warn); }
+.sc-bs6-root .l-toast-error { border-left: 4px solid var(--sc-bad); }
+.sc-bs6-root .l-toast-info { border-left: 4px solid var(--sc-blue); }
+
+.sc-bs6-root .kit-native {
+  border: 1px solid var(--sc-bd);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  max-width: min(500px, 90vw);
+}
+
+.sc-bs6-root .kit-sheet {
+  margin: 0 0 0 auto;
+  width: min(400px, 90vw);
+  height: 100dvh;
+  max-height: 100dvh;
+  border-radius: 0;
+}

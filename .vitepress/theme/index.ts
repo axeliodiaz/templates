@@ -286,8 +286,10 @@ export default {
         else document.documentElement.classList.remove('pf-dark')
         if (m('/pawprint')) syncPawprintTheme()
         else document.documentElement.classList.remove('pp-dark')
-        if (m('/scopecraft')) syncScopecraftTheme()
-        else document.documentElement.classList.remove('sc-dark')
+        if (m('/scopecraft')) {
+          syncScopecraftTheme()
+          void import('./scopecraft-bs6.css')
+        } else document.documentElement.classList.remove('sc-dark')
         if (onFelix) syncFelixTheme()
         if (onFelix) nextTick(() => mountFelixDemos())
         nextTick(() => setTimeout(mountTemplateMotion, 120))

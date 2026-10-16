@@ -125,11 +125,11 @@ Every piece used in the Scopecraft examples. Fictitious data.
 
 
 <script setup>
-import ComponentCatalog from '../.vitepress/theme/ComponentCatalog.vue'
+import ScopecraftBs6Catalog from '../.vitepress/theme/ScopecraftBs6Catalog.vue'
 </script>
 
 ## Full interactive component catalog
 
-All 43 families have local previews, usage, markup and keyboard notes. [Extended variants](/scopecraft/components-more).
+All 43 families render with **Bootstrap 6.0.0-alpha.1** (pinned) inside a scoped `.sc-bs6-root` shell with Scopecraft tokens. Local previews, usage, markup and keyboard notes are unchanged. [Extended variants](/scopecraft/components-more).
 
-<ComponentCatalog language="scopecraft" />
+<ScopecraftBs6Catalog />
