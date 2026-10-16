@@ -117,6 +117,6 @@ Reference overlays stay on that same scale and off the brand gradient: a **dashe
 
 ## More components
 
-The full Bootstrap-depth set (52 sections) is on [Components: Bootstrap set](/lustro/components-more).
+The full Bootstrap-depth set (52 sections) is on [Components: Bootstrap set](/lustro/components-more). Real Bootstrap 6.0.0-alpha.1 rendering (scoped template, Umail-style) lives on [Lustro on Bootstrap 6](/lustro/bs6).
 
 See also the [Cart summary](/lustro/cart-summary) receipt component and the [Price timeline](/lustro/price-timeline) chart card the [Gauges](/lustro/gauges) the [Operations dashboard](/lustro/ops-dashboard) the [Waste dashboard](/lustro/waste-dashboard) the [Project dashboard](/lustro/project-dashboard) the [Forecast](/lustro/forecast) the [Order view](/lustro/order-view) the [Dashboard blocks](/lustro/blocks) the [Sales dashboard](/lustro/sales-dashboard) the [AP dashboard](/lustro/ap-dashboard) the [Log entry](/lustro/log-entry) and the [Workflow operations](/lustro/workflow-ops).

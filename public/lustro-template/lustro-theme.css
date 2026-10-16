@@ -1,0 +1,210 @@
+/* Lustro theme for Bootstrap 6 (6.0.0-alpha.1).
+   Dark-first glass language: indigo #6366f1, pink #ec4899, cyan #22d3ee, canvas #07070f.
+   Bootstrap 6 tokens use light-dark() for optional light mode via data-bs-theme on <html>.
+   Load after bootstrap.min.css. This file is unlayered so it wins over Bootstrap @layer rules. */
+:root,
+:host {
+  --lu-indigo: #6366f1;
+  --lu-indigo-soft: #818cf8;
+  --lu-pink: #ec4899;
+  --lu-cyan: #22d3ee;
+  --lu-bg: #07070f;
+  --lu-glass: rgba(148, 140, 255, 0.07);
+  --lu-glass-border: rgba(148, 140, 255, 0.16);
+  --lu-success: #00d992;
+  --lu-error: #ef4444;
+  --lu-warning: #fbbf24;
+
+  --bs-primary-base: #6366f1;
+  --bs-primary-bg: #6366f1;
+  --bs-primary-contrast: #ffffff;
+  --bs-primary-fg: light-dark(#4f46e5, #a5b4fc);
+  --bs-primary-fg-emphasis: light-dark(#4338ca, #c4b5fd);
+  --bs-primary-bg-subtle: light-dark(#ebebf7, rgba(99, 102, 241, 0.14));
+  --bs-primary-bg-muted: light-dark(#e4e4f3, rgba(99, 102, 241, 0.22));
+  --bs-primary-border: light-dark(#c9c9e2, rgba(148, 140, 255, 0.28));
+  --bs-primary-focus-ring: light-dark(rgb(99 102 241 / 0.45), rgb(129 140 248 / 0.55));
+
+  --bs-secondary-base: light-dark(#6b6b8a, #a5b4fc);
+  --bs-secondary-bg: light-dark(#ebebf7, rgba(148, 140, 255, 0.12));
+  --bs-secondary-contrast: light-dark(#17172b, #f4f2fc);
+  --bs-secondary-fg: light-dark(#4a4a68, #c9c7dc);
+  --bs-secondary-fg-emphasis: light-dark(#252339, #e5e7ff);
+  --bs-secondary-bg-subtle: light-dark(#f5f5f9, rgba(148, 140, 255, 0.08));
+  --bs-secondary-bg-muted: light-dark(#f2f2fb, rgba(148, 140, 255, 0.14));
+  --bs-secondary-border: light-dark(#bebfd0, rgba(148, 140, 255, 0.22));
+
+  --bs-success-base: #00d992;
+  --bs-success-bg: #00d992;
+  --bs-success-contrast: #042f23;
+  --bs-success-fg: light-dark(#047857, #6ee7b7);
+  --bs-success-fg-emphasis: light-dark(#065f46, #a7f3d0);
+  --bs-success-bg-subtle: light-dark(#d1fae5, rgba(0, 217, 146, 0.12));
+  --bs-success-bg-muted: light-dark(#a7f3d0, rgba(0, 217, 146, 0.2));
+  --bs-success-border: light-dark(#6ee7b7, rgba(0, 217, 146, 0.35));
+
+  --bs-info-base: #22d3ee;
+  --bs-info-bg: #22d3ee;
+  --bs-info-contrast: #042f35;
+  --bs-info-fg: light-dark(#0891b2, #67e8f9);
+  --bs-info-fg-emphasis: light-dark(#0e7490, #a5f3fc);
+  --bs-info-bg-subtle: light-dark(#cffafe, rgba(34, 211, 238, 0.12));
+  --bs-info-bg-muted: light-dark(#a5f3fc, rgba(34, 211, 238, 0.22));
+  --bs-info-border: light-dark(#67e8f9, rgba(34, 211, 238, 0.35));
+
+  --bs-warning-base: #fbbf24;
+  --bs-warning-bg: #fbbf24;
+  --bs-warning-contrast: #1a1200;
+  --bs-warning-fg: light-dark(#b45309, #fcd34d);
+  --bs-warning-fg-emphasis: light-dark(#92400e, #fde68a);
+  --bs-warning-bg-subtle: light-dark(#fef3c7, rgba(251, 191, 36, 0.14));
+  --bs-warning-bg-muted: light-dark(#fde68a, rgba(251, 191, 36, 0.22));
+  --bs-warning-border: light-dark(#fcd34d, rgba(251, 191, 36, 0.35));
+
+  --bs-danger-base: #ef4444;
+  --bs-danger-bg: #ef4444;
+  --bs-danger-contrast: #ffffff;
+  --bs-danger-fg: light-dark(#b91c1c, #f87171);
+  --bs-danger-fg-emphasis: light-dark(#991b1b, #fecaca);
+  --bs-danger-bg-subtle: light-dark(#fee2e2, rgba(239, 68, 68, 0.14));
+  --bs-danger-bg-muted: light-dark(#fecaca, rgba(239, 68, 68, 0.22));
+  --bs-danger-border: light-dark(#fca5a5, rgba(239, 68, 68, 0.35));
+
+  --bs-bg-body: light-dark(#fafaff, #07070f);
+  --bs-bg-1: light-dark(#f2f2fb, #0b0b18);
+  --bs-bg-2: light-dark(#ebebf7, #131322);
+  --bs-bg-3: light-dark(#e4e4f3, #1a1a30);
+  --bs-fg-body: light-dark(#17172b, #ffffff);
+  --bs-fg-1: light-dark(#17172b, #ffffff);
+  --bs-fg-2: light-dark(#4a4a68, #b8b3b0);
+  --bs-fg-3: light-dark(#6b6b8a, #a5b4fc);
+  --bs-border-color: light-dark(#c9c9e2, rgba(148, 140, 255, 0.22));
+  --bs-border-body: light-dark(#c9c9e2, rgba(148, 140, 255, 0.22));
+  --bs-border-subtle: light-dark(#e4e4f3, rgba(148, 140, 255, 0.14));
+  --bs-link-color: light-dark(#4f46e5, #818cf8);
+  --bs-link-hover-color: light-dark(#4338ca, #ec4899);
+  --bs-body-font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --bs-radius-5: 10px;
+  --bs-radius-7: 14px;
+}
+
+html {
+  color-scheme: dark;
+  background-color: var(--lu-bg);
+  background-image:
+    radial-gradient(60rem 30rem at 85% -10%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(50rem 25rem at -10% 110%, rgba(236, 72, 153, 0.12), transparent 60%);
+  background-attachment: fixed;
+}
+html[data-bs-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--bs-body-font-family);
+}
+
+.lu-display {
+  font-family: "Space Grotesk", var(--bs-body-font-family);
+  letter-spacing: -0.01em;
+}
+.lu-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.lu-glass {
+  background: var(--lu-glass);
+  border: 1px solid var(--lu-glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+.lu-navbar {
+  --bs-navbar-color: #a5b4fc;
+  --bs-navbar-hover-color: #ffffff;
+  --bs-navbar-active-color: #ffffff;
+  --bs-navbar-brand-color: #ffffff;
+  background: rgba(7, 7, 15, 0.72);
+  border-bottom: 1px solid var(--lu-glass-border);
+  backdrop-filter: blur(14px);
+}
+.lu-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background-image: linear-gradient(90deg, var(--lu-indigo), var(--lu-pink));
+  color: #fff;
+  font: 700 14px "Space Grotesk", sans-serif;
+  margin-right: 0.5rem;
+}
+
+/* Gradient primary must use background-image, not --bs-btn-bg alone */
+.btn-solid.theme-primary {
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  background-color: transparent;
+  background-image: linear-gradient(90deg, var(--lu-indigo), var(--lu-pink));
+  color: #fff;
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-hover-color: #fff;
+  filter: brightness(1.05);
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+.btn-solid.theme-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+}
+.btn-solid.theme-primary:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+.btn-outline.theme-primary {
+  --bs-btn-color: var(--bs-primary-fg);
+  --bs-btn-border-color: var(--lu-indigo-soft);
+}
+.nav-pills {
+  --bs-nav-pills-link-active-bg: var(--lu-indigo);
+  --bs-nav-pills-link-active-color: #fff;
+}
+.nav-pills .nav-link.active {
+  background-image: linear-gradient(90deg, var(--lu-indigo), var(--lu-pink));
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.45);
+}
+.list-group {
+  --bs-list-group-active-bg: var(--lu-indigo);
+  --bs-list-group-active-border-color: var(--lu-indigo);
+  --bs-list-group-active-color: #fff;
+}
+.card.lu-glass .card-header {
+  border-bottom-color: var(--lu-glass-border);
+  background: transparent;
+}
+.lu-kpi strong {
+  font: 700 1.75rem "Space Grotesk", sans-serif;
+  background-image: linear-gradient(90deg, var(--lu-indigo-soft), var(--lu-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lu-chart {
+  width: 100%;
+  height: 200px;
+  display: block;
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 40%, rgba(51, 55, 101, 0.5), rgba(19, 21, 38, 0.9) 72%);
+}
+.lu-chart-bar {
+  transition: height 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-solid.theme-primary {
+    transition: none;
+  }
+  .lu-chart-bar {
+    transition: none;
+  }
+}

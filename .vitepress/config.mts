@@ -420,7 +420,7 @@ export default defineConfig({
       ] },
       { text: 'Full UI catalog', link: '/ui-kit' },
       { text: 'Lustro full live catalog', link: '/lustro/components' },
-          
+      { text: 'Lustro (Bootstrap 6 alpha)', link: '/lustro/bs6' },
       { text: 'Lustro expanded set (52 sections)', link: '/lustro/components-more' },
       { text: 'Componentes', link: '/components', collapsed: true, items: [
         { text: 'Accordion', link: '/components#accordion' },
