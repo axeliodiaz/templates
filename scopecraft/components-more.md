@@ -4,7 +4,7 @@ pageClass: sc-page
 
 # Components: Bootstrap set
 
-Every component Bootstrap 5.3 documents, rebuilt in the Scopecraft style. 52 component sections, static renders, fictitious data.
+Every component Bootstrap documents, rebuilt in the Scopecraft style. Screen-level actions across Scopecraft use real Bootstrap 6.0.0-alpha.1 inside scoped `.sc` wrappers; the 52 static `.bsx` sections below remain on the shared bootstrap-depth renderer until the next migration slice. Fictitious data.
 
 ## Buttons: variants
 

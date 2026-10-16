@@ -9,7 +9,7 @@ Every piece used in the Scopecraft examples. Fictitious data.
 
 ## Buttons
 
-<div class="sc"><div class="sc-wrap"><span class="sc-btn pri">Send to client</span><span class="sc-btn">Preview as client</span><span class="sc-btn dis">Build scope</span><span class="sc-btn pri">+ New opportunity</span></div></div>
+<div class="sc"><div class="sc-wrap"><button type="button" class="btn-solid theme-primary">Send to client</button><button type="button" class="btn-outline theme-secondary">Preview as client</button><button type="button" class="btn-solid theme-primary disabled" disabled>Build scope</button><button type="button" class="btn-solid theme-primary">+ New opportunity</button></div></div>
 
 ## Status chips and delta chips
 
@@ -37,7 +37,7 @@ Every piece used in the Scopecraft examples. Fictitious data.
 
 ## Action list row
 
-<div class="sc"><div class="sc-wrap"><div class="sc-card" style="width:100%"><div class="sc-row"><span class="sc-av">H</span><div><b>Hazelgrove Clinics</b><small>3 questions need your answer</small></div><span class="sc-chip wn">Clarify</span><span><b>$31,000</b> &nbsp;<span class="sc-btn">Answer 3</span></span></div></div></div></div>
+<div class="sc"><div class="sc-wrap"><div class="sc-card" style="width:100%"><div class="sc-row"><span class="sc-av">H</span><div><b>Hazelgrove Clinics</b><small>3 questions need your answer</small></div><span class="sc-chip wn">Clarify</span><span><b>$31,000</b> &nbsp;<button type="button" class="btn-outline theme-secondary">Answer 3</button></span></div></div></div></div>
 
 ## Question card
 
@@ -57,7 +57,7 @@ Every piece used in the Scopecraft examples. Fictitious data.
 
 ## Badges and counters
 
-<div class="sc"><div class="sc-wrap"><span class="sc-btn">Inbox <span class="scx-n">12</span></span><span class="sc-btn pri">Review <span class="scx-n inv">3</span></span><span class="sc-chip gr">Draft</span><span class="sc-chip up">Approved</span><span class="sc-chip wn">Pending</span><span class="sc-chip dn">Overdue</span><span class="scx-dot ok"></span> Online <span class="scx-dot dn"></span> Offline</div></div>
+<div class="sc"><div class="sc-wrap"><button type="button" class="btn-outline theme-secondary">Inbox <span class="scx-n">12</span></button><button type="button" class="btn-solid theme-primary">Review <span class="scx-n inv">3</span></button><span class="sc-chip gr">Draft</span><span class="sc-chip up">Approved</span><span class="sc-chip wn">Pending</span><span class="sc-chip dn">Overdue</span><span class="scx-dot ok"></span> Online <span class="scx-dot dn"></span> Offline</div></div>
 
 ## Checkboxes, radios and switches
 
@@ -85,7 +85,7 @@ Every piece used in the Scopecraft examples. Fictitious data.
 
 ## Modal and confirmation
 
-<div class="sc"><div class="scx-md"><b>Send proposal?</b><p>Odalys Brandt will get a link to the scope and price. You can still edit afterwards.</p><div class="sc-wrap" style="justify-content:flex-end"><span class="sc-btn">Cancel</span><span class="sc-btn pri">Send</span></div></div></div>
+<div class="sc"><div class="scx-md"><b>Send proposal?</b><p>Odalys Brandt will get a link to the scope and price. You can still edit afterwards.</p><div class="sc-wrap" style="justify-content:flex-end"><button type="button" class="btn-outline theme-secondary">Cancel</button><button type="button" class="btn-solid theme-primary">Send</button></div></div></div>
 
 ## Tooltip and popover
 
@@ -101,7 +101,7 @@ Every piece used in the Scopecraft examples. Fictitious data.
 
 ## Empty state and skeleton
 
-<div class="sc"><div class="sc-wrap" style="align-items:stretch"><div class="sc-card scx-empty"><b>No proposals yet</b><small>Create your first one from an opportunity.</small><span class="sc-btn pri">+ New proposal</span></div><div class="sc-card" style="width:240px"><div class="scx-sk" style="width:60%"></div><div class="scx-sk"></div><div class="scx-sk" style="width:80%"></div></div></div></div>
+<div class="sc"><div class="sc-wrap" style="align-items:stretch"><div class="sc-card scx-empty"><b>No proposals yet</b><small>Create your first one from an opportunity.</small><button type="button" class="btn-solid theme-primary">+ New proposal</button></div><div class="sc-card" style="width:240px"><div class="scx-sk" style="width:60%"></div><div class="scx-sk"></div><div class="scx-sk" style="width:80%"></div></div></div></div>
 
 <style>
 .sc .scx-col{display:flex;flex-direction:column;gap:8px;width:100%}.sc .scx-al{border-radius:10px;padding:10px 14px;border:1px solid;font-size:13px}.sc .scx-al a{font-weight:600;text-decoration:underline;margin-left:6px}

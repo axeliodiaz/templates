@@ -1,4 +1,5 @@
 node_modules
 .vitepress/dist
 .vitepress/cache
+.vitepress/theme/sc-bs6-core.css
 .DS_Store

@@ -1,0 +1,135 @@
+/* Scopecraft tokens on Bootstrap 6 (6.0.0-alpha.1). Load after sc-bs6-core.css. */
+.sc {
+  --sc-ink: #111113;
+  --sc-text: #1b1c1f;
+  --sc-muted: #6b6f76;
+  --sc-bg: #f4f4f5;
+  --sc-surf: #fff;
+  --sc-bd: #e6e6e8;
+  --sc-blue: #2f6fdc;
+  --sc-ok: #17803d;
+  --sc-bad: #c62828;
+  --sc-warn: #a05a00;
+
+  --bs-primary-base: var(--sc-ink);
+  --bs-primary-bg: var(--sc-ink);
+  --bs-primary-contrast: #ffffff;
+  --bs-primary-fg: light-dark(var(--sc-blue), #6ea0f5);
+  --bs-primary-fg-emphasis: light-dark(#111113, #f4f4f5);
+  --bs-primary-bg-subtle: light-dark(#e8f0fd, #1a2740);
+  --bs-primary-bg-muted: light-dark(#d9e6fb, #243352);
+  --bs-primary-border: light-dark(#c8daf8, #2f6fdc55);
+  --bs-primary-focus-ring: light-dark(rgb(47 111 220 / 0.45), rgb(110 160 245 / 0.5));
+
+  --bs-secondary-base: var(--sc-muted);
+  --bs-secondary-bg: light-dark(var(--sc-bg), #26282d);
+  --bs-secondary-contrast: light-dark(var(--sc-text), #f4f4f5);
+  --bs-secondary-fg: var(--sc-muted);
+  --bs-secondary-fg-emphasis: light-dark(var(--sc-ink), #f4f4f5);
+  --bs-secondary-bg-subtle: light-dark(#f4f4f5, #1f2024);
+  --bs-secondary-bg-muted: light-dark(#ececee, #2e3036);
+  --bs-secondary-border: var(--sc-bd);
+
+  --bs-success-base: var(--sc-ok);
+  --bs-success-bg: var(--sc-ok);
+  --bs-success-contrast: #fff;
+  --bs-success-fg: light-dark(var(--sc-ok), #3ccf75);
+  --bs-success-fg-emphasis: light-dark(#0f5a2c, #a8e8c4);
+  --bs-success-bg-subtle: light-dark(#e6f5ec, #152a1e);
+  --bs-success-bg-muted: light-dark(#d4eddf, #1f3d2a);
+  --bs-success-border: light-dark(#c8e6d4, #2a5c3d);
+
+  --bs-warning-base: var(--sc-warn);
+  --bs-warning-bg: var(--sc-warn);
+  --bs-warning-contrast: #fff;
+  --bs-warning-fg: light-dark(var(--sc-warn), #f0b050);
+  --bs-warning-fg-emphasis: light-dark(#7a4500, #fcd9a0);
+  --bs-warning-bg-subtle: light-dark(#fdf1dc, #33260a);
+  --bs-warning-bg-muted: light-dark(#f5e2b8, #4a360f);
+  --bs-warning-border: light-dark(#ecd49a, #5c4518);
+
+  --bs-danger-base: var(--sc-bad);
+  --bs-danger-bg: var(--sc-bad);
+  --bs-danger-contrast: #fff;
+  --bs-danger-fg: light-dark(var(--sc-bad), #f06a6a);
+  --bs-danger-fg-emphasis: light-dark(#8b1f1f, #f8b4b4);
+  --bs-danger-bg-subtle: light-dark(#fdeaea, #2a1212);
+  --bs-danger-bg-muted: light-dark(#f5d0d0, #3d1a1a);
+  --bs-danger-border: light-dark(#efc2c2, #5c2828);
+
+  --bs-info-base: var(--sc-blue);
+  --bs-info-bg: var(--sc-blue);
+  --bs-info-contrast: #fff;
+  --bs-info-fg: light-dark(var(--sc-blue), #6ea0f5);
+  --bs-info-fg-emphasis: light-dark(#1a4a9e, #b8d4ff);
+  --bs-info-bg-subtle: light-dark(#e8f0fd, #152238);
+  --bs-info-bg-muted: light-dark(#d9e6fb, #1f3050);
+  --bs-info-border: light-dark(#c8daf8, #2f6fdc55);
+
+  --bs-body-bg: var(--sc-bg);
+  --bs-body-color: var(--sc-text);
+  --bs-body-font-family: 'Inter', system-ui, sans-serif;
+  --bs-border-color: var(--sc-bd);
+  --bs-link-color: var(--sc-blue);
+  --bs-link-hover-color: light-dark(#1a5fc0, #8fb8f8);
+  --bs-radius-5: 8px;
+  --bs-radius-7: 10px;
+}
+
+html.tpl-sc.sc-dark .sc {
+  --sc-ink: #f4f4f5;
+  --sc-text: #d6d7db;
+  --sc-muted: #9a9ca4;
+  --sc-bg: #0e0e10;
+  --sc-surf: #1f2024;
+  --sc-bd: #2e3036;
+  --sc-blue: #6ea0f5;
+  --sc-ok: #3ccf75;
+  --sc-bad: #f06a6a;
+  --sc-warn: #f0b050;
+}
+
+.sc .btn-solid.theme-primary {
+  --bs-btn-hover-bg: #2a2a2e;
+  --bs-btn-hover-border-color: #2a2a2e;
+  --bs-btn-active-bg: #000;
+  --bs-btn-active-border-color: #000;
+}
+html.tpl-sc.sc-dark .sc .btn-solid.theme-primary {
+  --bs-btn-hover-bg: #d6d7db;
+  --bs-btn-hover-border-color: #d6d7db;
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: #fff;
+  --bs-btn-color: #17171a;
+}
+
+.sc .card {
+  --bs-card-bg: var(--sc-surf);
+  --bs-card-border-color: var(--sc-bd);
+  box-shadow: 0 1px 2px rgba(16, 16, 20, 0.05), 0 4px 14px rgba(16, 16, 20, 0.05);
+}
+
+.sc .list-group {
+  --bs-list-group-active-bg: var(--sc-ink);
+  --bs-list-group-active-border-color: var(--sc-ink);
+  --bs-list-group-active-color: #fff;
+}
+html.tpl-sc.sc-dark .sc .list-group {
+  --bs-list-group-active-color: #17171a;
+}
+
+.sc .nav-pills {
+  --bs-nav-pills-link-active-bg: var(--sc-ink);
+}
+html.tpl-sc.sc-dark .sc .nav-pills {
+  --bs-nav-pills-link-active-color: #17171a;
+}
+
+.sc .sc-card-img {
+  height: 90px;
+  background: linear-gradient(135deg, var(--sc-ink), var(--sc-blue));
+}
+.sc .sc-bs6-livebar {
+  border-color: var(--sc-bd) !important;
+  background: var(--sc-surf);
+}

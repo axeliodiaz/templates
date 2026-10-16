@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "description": "Design-language guides written in Markdown, published at templates.axeldiaz.com",
   "scripts": {
+    "postinstall": "node scripts/build-sc-bs6-css.mjs",
+    "prebuild": "node scripts/build-sc-bs6-css.mjs",
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
@@ -11,6 +13,8 @@
   },
   "devDependencies": {
     "mermaid": "^11.17.2",
+    "postcss": "^8.5.30",
+    "postcss-prefix-selector": "^2.2.1",
     "vitepress": "^1.6.3"
   },
   "allowScripts": {
@@ -18,6 +22,7 @@
   },
   "dependencies": {
     "@newrelic/browser-agent": "^1.323.0",
+    "bootstrap": "^6.0.0-alpha.1",
     "motion": "^14.1.0"
   }
 }
