@@ -1,0 +1,146 @@
+/* Felix theme for Bootstrap 6 (6.0.0-alpha.1).
+   Tokens from felix-tokens.css, mapped to BS6 theme variables.
+   Scoped to .felix-bs6 so VitePress shell and other templates are unaffected.
+   Load bootstrap.min.css before this file. Sync mode with data-bs-theme on each root. */
+
+.felix-bs6 {
+  --fx-turquoise: #2bf2f1;
+  --fx-slate: #082422;
+  --fx-linen: #fefcf9;
+  --fx-stone: #efebe7;
+  --fx-concrete: #cfcabf;
+  --fx-brand-text: #065958;
+  --fx-brand-hover: #0f8c8b;
+  --fx-destructive: #f26629;
+  --fx-success: #60d06f;
+  --fx-warning: #ffd200;
+
+  --bs-primary-base: var(--fx-brand-text);
+  --bs-primary-bg: var(--fx-brand-text);
+  --bs-primary-contrast: #ffffff;
+  --bs-primary-fg: light-dark(var(--fx-brand-text), var(--fx-turquoise));
+  --bs-primary-fg-emphasis: light-dark(#044543, #5af5f4);
+  --bs-primary-bg-subtle: light-dark(#d4fffe, #152b2a);
+  --bs-primary-bg-muted: light-dark(#a8f5f4, #234343);
+  --bs-primary-border: light-dark(#7ee8e7, #35605f);
+  --bs-primary-focus-ring: light-dark(rgb(6 89 88 / 0.45), rgb(43 242 241 / 0.5));
+
+  --bs-secondary-base: #636158;
+  --bs-secondary-bg: light-dark(var(--fx-stone), #234343);
+  --bs-secondary-contrast: light-dark(var(--fx-slate), var(--fx-linen));
+  --bs-secondary-fg: light-dark(#636158, #97cbc9);
+  --bs-secondary-fg-emphasis: light-dark(var(--fx-slate), var(--fx-linen));
+  --bs-secondary-bg-subtle: light-dark(var(--fx-linen), #152b2a);
+  --bs-secondary-bg-muted: light-dark(var(--fx-stone), #234343);
+  --bs-secondary-border: light-dark(var(--fx-concrete), #35605f);
+
+  --bs-success-base: #1b8a4b;
+  --bs-success-bg: var(--fx-success);
+  --bs-success-fg: light-dark(#1b7a29, #8ee79a);
+  --bs-success-fg-emphasis: light-dark(#1b7a29, #8ee79a);
+  --bs-success-bg-subtle: light-dark(#eefbf0, #172a17);
+  --bs-success-bg-muted: light-dark(#d6f5dc, #234023);
+  --bs-success-border: light-dark(#60d06f, #35605f);
+
+  --bs-warning-base: #b77900;
+  --bs-warning-bg: var(--fx-warning);
+  --bs-warning-contrast: var(--fx-slate);
+  --bs-warning-fg: light-dark(#665500, #ffe066);
+  --bs-warning-fg-emphasis: light-dark(#665500, #ffe066);
+  --bs-warning-bg-subtle: light-dark(#fffce0, #33260a);
+  --bs-warning-bg-muted: light-dark(#fff5c2, #4a360f);
+  --bs-warning-border: light-dark(#ffd200, #665500);
+
+  --bs-danger-base: var(--fx-destructive);
+  --bs-danger-bg: var(--fx-destructive);
+  --bs-danger-fg: light-dark(#a03808, #ff9f66);
+  --bs-danger-fg-emphasis: light-dark(#a03808, #ff9f66);
+  --bs-danger-bg-subtle: light-dark(#fff5ef, #35171a);
+  --bs-danger-bg-muted: light-dark(#ffe0d0, #4a2024);
+  --bs-danger-border: light-dark(#f26629, #a03808);
+
+  --bs-info-base: #0f8c8b;
+  --bs-info-bg: #0f8c8b;
+  --bs-info-contrast: #ffffff;
+  --bs-info-fg: light-dark(#087b76, #69d7d2);
+  --bs-info-fg-emphasis: light-dark(#065958, #9ef0ee);
+  --bs-info-bg-subtle: light-dark(#d4fffe, #0f2b35);
+  --bs-info-bg-muted: light-dark(#a8f5f4, #163d4b);
+  --bs-info-border: light-dark(#7ee8e7, #35605f);
+
+  --bs-bg-body: light-dark(var(--fx-linen), var(--fx-slate));
+  --bs-bg-1: light-dark(#ffffff, #152b2a);
+  --bs-bg-2: light-dark(var(--fx-stone), #234343);
+  --bs-bg-3: light-dark(var(--fx-concrete), #35605f);
+  --bs-fg-body: light-dark(var(--fx-slate), var(--fx-linen));
+  --bs-fg-1: light-dark(var(--fx-slate), var(--fx-linen));
+  --bs-fg-2: light-dark(#234343, #c3e2e1);
+  --bs-fg-3: light-dark(#636158, #97cbc9);
+  --bs-border-color: light-dark(var(--fx-concrete), #35605f);
+  --bs-border-body: light-dark(var(--fx-concrete), #35605f);
+  --bs-border-subtle: light-dark(var(--fx-stone), #234343);
+  --bs-link-color: light-dark(var(--fx-brand-text), var(--fx-turquoise));
+  --bs-link-hover-color: light-dark(var(--fx-brand-hover), #5af5f4);
+  --bs-body-font-family: "Saans", ui-sans-serif, system-ui, sans-serif;
+  --bs-radius-5: 8px;
+  --bs-radius-7: 12px;
+
+  font-family: var(--bs-body-font-family);
+  color: var(--bs-fg-body);
+  background: var(--bs-bg-body);
+  border: 1px solid var(--bs-border-color);
+  border-radius: calc(var(--bs-radius-7) + 4px);
+  padding: 18px;
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 1.45;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+html.felix-dark .felix-bs6[data-bs-theme="dark"],
+html.felix-dark .felix-bs6:not([data-bs-theme="light"]) {
+  color-scheme: dark;
+}
+
+.felix-bs6 .btn-solid.theme-primary {
+  --bs-btn-hover-bg: var(--fx-brand-hover);
+  --bs-btn-hover-border-color: var(--fx-brand-hover);
+  --bs-btn-active-bg: #044543;
+  --bs-btn-active-border-color: #044543;
+  border-radius: 999px;
+}
+
+.felix-bs6 .btn-outline.theme-primary,
+.felix-bs6 .btn-outline.theme-secondary {
+  border-radius: 999px;
+}
+
+.felix-bs6 .btn-solid.theme-success,
+.felix-bs6 .btn-solid.theme-warning,
+.felix-bs6 .btn-solid.theme-danger,
+.felix-bs6 .btn-solid.theme-info {
+  border-radius: 999px;
+}
+
+.felix-bs6 .nav-pills {
+  --bs-nav-pills-link-active-bg: var(--fx-brand-text);
+}
+
+.felix-bs6 .list-group {
+  --bs-list-group-active-bg: var(--fx-brand-text);
+  --bs-list-group-active-border-color: var(--fx-brand-text);
+  --bs-list-group-active-color: #fff;
+}
+
+.felix-bs6 .progress-bar {
+  transition: width 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .felix-bs6 .progress-bar,
+  .felix-bs6 .spinner-border {
+    transition: none;
+    animation-duration: 3s;
+  }
+}

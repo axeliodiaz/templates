@@ -19,6 +19,7 @@ function sectionTitle(block: El): string {
 }
 
 function themeOf(block: El): string {
+  if (block.classList.contains('felix-bs6')) return 'bsx-fx'
   return Array.from(block.classList).find((c) => c.startsWith('bsx-')) || 'bsx-fx'
 }
 
@@ -444,5 +445,5 @@ function bindBlock(block: El) {
 }
 
 export function mountBsxLive() {
-  qa(document, '.bsx:not(.bsx-live-layer)').forEach(bindBlock)
+  qa(document, '.bsx:not(.bsx-live-layer), .felix-bs6:not(.bsx-live-layer)').forEach(bindBlock)
 }

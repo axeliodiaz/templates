@@ -37,6 +37,7 @@ import { mountFelixDemos } from './felix-demos'
 import { mountCartMotion } from './cartmotion'
 import { mountLumenMotion } from './lumenmotion'
 import { mountBsxLive } from './bsx-live'
+import { mountFelixBs6, watchFelixBs6Theme } from './felix-bs6'
 import { mountTplLive } from './tpl-live'
 import { mountTemplateMotion } from './template-motion'
 import { initNewRelicBrowser } from './newrelic-browser'
@@ -57,6 +58,7 @@ const THEME_KEY = 'felix-theme'
 
 function applyFelixTheme(dark: boolean) {
   document.documentElement.classList.toggle('felix-dark', dark)
+  watchFelixBs6Theme()
   const btn = document.querySelector<HTMLButtonElement>('.fx-theme-toggle')
   if (btn) {
     paintThemeBtn(btn, dark)
@@ -270,7 +272,10 @@ export default {
         document.documentElement.classList.toggle('tpl-sc', m('/scopecraft'))
         document.documentElement.classList.toggle('tpl-lmn', m('/lumen'))
         document.documentElement.classList.toggle('tpl-pp', m('/pawprint'))
-        nextTick(() => setTimeout(mountBsxLive, 80))
+        nextTick(() => setTimeout(() => {
+          mountFelixBs6()
+          mountBsxLive()
+        }, 80))
         nextTick(() => setTimeout(() => mountTplLive(route.path), 80))
         if (route.path.endsWith('/cart-summary') || route.path.endsWith('/lustro')) nextTick(() => setTimeout(mountCartMotion, 50))
         if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
