@@ -8,7 +8,8 @@
     "build": "node scripts/build-lustro-bs6-components.mjs && vitepress build",
     "build:lustro-bs6": "node scripts/build-lustro-bs6-components.mjs",
     "preview": "vitepress preview",
-    "test:newrelic": "node --test tests/newrelic-browser.cjs"
+    "test:newrelic": "node --test tests/newrelic-browser.cjs",
+    "test:felix-bootstrap": "node tests/felix-bootstrap.cjs"
   },
   "devDependencies": {
     "mermaid": "^11.17.2",

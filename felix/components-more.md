@@ -3,7 +3,7 @@
 
 # Components: Bootstrap set
 
-Every component Bootstrap 5.3 documents, rebuilt in the Felix style. 52 component sections, static renders, fictitious data.
+Felix-styled Bootstrap-depth previews (custom `.bsx` CSS). For real Bootstrap 6.0.0-alpha.1 markup and tokens, use the [isolated catalog](/felix-template/catalog.html). This page keeps static `.bsx` sections for comparison; 52 component families, fictitious data.
 
 ## Buttons: variants
 
