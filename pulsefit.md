@@ -2,6 +2,12 @@
 
 PulseFit is the design language of the PulseFit Studio and Admin Studio apps: warm gold on a clean light surface, charcoal navigation, Montserrat headings, Rubik body text and Bebas Neue for big numbers and titles. This section rebuilds the reference sketch (https://pulsefit-sketch.vercel.app) with refined styles, then adds the same examples the other languages have: [Messaging](/pulsefit/messaging), [Calendar](/pulsefit/calendar) and [Projects](/pulsefit/projects). Demo data is fictitious.
 
+## Bootstrap 6 template (scoped)
+
+The [PulseFit Bootstrap 6.0.0-alpha.1 template](/pulsefit-template/index.html) follows the same pattern as [Umail](/umail): CDN Bootstrap pinned with SRI, PulseFit tokens in [`pulsefit-theme.css`](/pulsefit-template/pulsefit-theme.css), and no CSS bleed into the VitePress shell. The [component gallery](/pulsefit-template/components.html) renders real Bootstrap markup for the Bootstrap set page.
+
+<iframe src="/pulsefit-template/index.html" title="PulseFit Bootstrap 6 template preview" loading="lazy" style="width:100%;height:720px;border:1px solid var(--vp-c-divider);border-radius:12px;background:#f5f5f5"></iframe>
+
 ## What changed from the sketch
 
 | Area | Sketch | Refined |
