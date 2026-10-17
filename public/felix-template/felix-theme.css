@@ -1,0 +1,169 @@
+/* Felix theme for Bootstrap 6 (6.0.0-alpha.1).
+   Palette from felix-tokens.css: turquoise #2bf2f1, slate #082422, linen #fefcf9.
+   Load after bootstrap.min.css. Force a mode with data-bs-theme on <html>.
+   Unlayered so theme tokens win over Bootstrap @layer rules. */
+:root,
+:host {
+  --fx-turquoise: #2bf2f1;
+  --fx-turquoise-hover: #1abfbe;
+  --fx-slate: #082422;
+  --fx-linen: #fefcf9;
+  --fx-stone: #efebe7;
+  --fx-concrete: #cfcabf;
+  --fx-brand: #065958;
+  --fx-destructive: #f26629;
+
+  --bs-primary-base: #2bf2f1;
+  --bs-primary-bg: #2bf2f1;
+  --bs-primary-contrast: #082422;
+  --bs-primary-fg: light-dark(#065958, #2bf2f1);
+  --bs-primary-fg-emphasis: light-dark(#082422, #d4fffe);
+  --bs-primary-bg-subtle: light-dark(#d4fffe, #0f3d3c);
+  --bs-primary-bg-muted: light-dark(#a8f5f4, #134e4d);
+  --bs-primary-border: light-dark(#2bf2f1, #1abfbe);
+  --bs-primary-focus-ring: light-dark(rgb(43 242 241 / .45), rgb(43 242 241 / .55));
+
+  --bs-secondary-base: #636158;
+  --bs-secondary-bg: light-dark(#efebe7, #234343);
+  --bs-secondary-contrast: light-dark(#082422, #fefcf9);
+  --bs-secondary-fg: light-dark(#636158, #c3e2e1);
+  --bs-secondary-fg-emphasis: light-dark(#082422, #fefcf9);
+  --bs-secondary-bg-subtle: light-dark(#fefcf9, #152b2a);
+  --bs-secondary-bg-muted: light-dark(#efebe7, #1a3534);
+  --bs-secondary-border: light-dark(#cfcabf, #35605f);
+
+  --bs-success-base: #60d06f;
+  --bs-success-bg: #60d06f;
+  --bs-success-contrast: #082422;
+  --bs-success-fg: light-dark(#1b7a29, #8ee09a);
+  --bs-success-fg-emphasis: light-dark(#1b7a29, #b8f0c0);
+  --bs-success-bg-subtle: light-dark(#eefbf0, #12341a);
+  --bs-success-bg-muted: light-dark(#d8f5dc, #1a4a24);
+  --bs-success-border: light-dark(#60d06f, #3d9a4d);
+
+  --bs-info-base: #0f8c8b;
+  --bs-info-bg: #0f8c8b;
+  --bs-info-contrast: #fefcf9;
+  --bs-info-fg: light-dark(#065958, #7fb7b5);
+  --bs-info-fg-emphasis: light-dark(#082422, #a8d8d6);
+  --bs-info-bg-subtle: light-dark(#d4fffe, #0a2e2d);
+  --bs-info-bg-muted: light-dark(#b8f5f4, #0f3d3c);
+  --bs-info-border: light-dark(#0f8c8b, #1abfbe);
+
+  --bs-warning-base: #ffd200;
+  --bs-warning-bg: #ffd200;
+  --bs-warning-contrast: #082422;
+  --bs-warning-fg: light-dark(#665500, #ffe566);
+  --bs-warning-fg-emphasis: light-dark(#4a3d00, #fff0a0);
+  --bs-warning-bg-subtle: light-dark(#fffce0, #3d3200);
+  --bs-warning-bg-muted: light-dark(#fff5b8, #524400);
+  --bs-warning-border: light-dark(#ffd200, #e6bd00);
+
+  --bs-danger-base: #f26629;
+  --bs-danger-bg: #f26629;
+  --bs-danger-contrast: #082422;
+  --bs-danger-fg: light-dark(#a03808, #f59a6f);
+  --bs-danger-fg-emphasis: light-dark(#7a2a06, #f8b896);
+  --bs-danger-bg-subtle: light-dark(#fff5ef, #3d1a0a);
+  --bs-danger-bg-muted: light-dark(#ffe8db, #522310);
+  --bs-danger-border: light-dark(#f26629, #d9551f);
+
+  --bs-bg-body: light-dark(#fefcf9, #082422);
+  --bs-bg-1: light-dark(#ffffff, #0f3d3c);
+  --bs-bg-2: light-dark(#efebe7, #134e4d);
+  --bs-bg-3: light-dark(#cfcabf, #1a5a58);
+  --bs-fg-body: light-dark(#082422, #fefcf9);
+  --bs-fg-1: light-dark(#082422, #fefcf9);
+  --bs-fg-2: light-dark(#234343, #d4fffe);
+  --bs-fg-3: light-dark(#636158, #a8c4c3);
+  --bs-border-color: light-dark(#cfcabf, #35605f);
+  --bs-border-body: light-dark(#cfcabf, #35605f);
+  --bs-border-subtle: light-dark(#efebe7, #234343);
+  --bs-link-color: light-dark(#065958, #2bf2f1);
+  --bs-link-hover-color: light-dark(#0f8c8b, #d4fffe);
+  --bs-body-font-family: "Saans", system-ui, sans-serif;
+  --bs-radius-5: 12px;
+  --bs-radius-7: 16px;
+}
+
+.btn-solid.theme-primary,
+.btn-solid.theme-secondary,
+.btn-outline.theme-primary {
+  --bs-btn-border-radius: 999px;
+  font-weight: 600;
+}
+
+.btn-solid.theme-primary {
+  --bs-btn-hover-bg: #1abfbe;
+  --bs-btn-hover-border-color: #1abfbe;
+  --bs-btn-active-bg: #065958;
+  --bs-btn-active-border-color: #065958;
+  color: var(--fx-slate);
+}
+
+.btn-solid.theme-secondary {
+  --bs-btn-hover-bg: light-dark(#e3ded3, #2a5554);
+  --bs-btn-hover-border-color: light-dark(#cfcabf, #35605f);
+}
+
+.btn-outline.theme-primary {
+  --bs-btn-color: var(--bs-primary-fg);
+  --bs-btn-border-color: var(--bs-primary-border);
+}
+
+.felix-navbar {
+  --bs-navbar-color: light-dark(#636158, #c3e2e1);
+  --bs-navbar-hover-color: light-dark(#082422, #fefcf9);
+  --bs-navbar-active-color: light-dark(#082422, #fefcf9);
+  --bs-navbar-brand-color: light-dark(#082422, #fefcf9);
+  background-color: light-dark(#fefcf9, #0a2e2d);
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.felix-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--fx-turquoise);
+  color: var(--fx-slate);
+  font-weight: 800;
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.fx-hero-amount {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--bs-fg-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.fx-pill-tabs .nav-link {
+  border-radius: 999px;
+}
+
+.list-group {
+  --bs-list-group-active-bg: #065958;
+  --bs-list-group-active-border-color: #065958;
+  --bs-list-group-active-color: #fefcf9;
+}
+
+.nav-pills {
+  --bs-nav-pills-link-active-bg: #2bf2f1;
+  --bs-nav-pills-link-active-color: #082422;
+}
+
+.card.fx-send-card {
+  border-radius: 24px;
+  border-color: var(--bs-border-color);
+  box-shadow: 0 4px 14px #0824220f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-motion-in {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lustro template (Bootstrap 6)</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<link rel="stylesheet" href="/lustro-template/lustro-theme.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" rel="stylesheet">
+<style>
+  html, body { min-height: 100%; margin: 0; }
+  body { background: #07070f; }
+  .lustro-hero h1 {
+    font-family: "Space Grotesk", sans-serif;
+    background-image: linear-gradient(90deg, #818cf8, #ec4899, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+</head>
+<body>
+<div class="lustro-bs6-root container py-4" data-bs-theme="dark">
+  <header class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+    <div class="d-flex align-items-center">
+      <span class="lustro-mark" aria-hidden="true">L</span>
+      <span class="fw-bold fs-5">Lustro</span>
+    </div>
+    <nav class="d-flex flex-wrap gap-2">
+      <a class="btn-outline theme-primary btn-sm" href="/lustro-template/components-more.html">52-section catalog</a>
+      <a class="btn-solid theme-primary btn-sm" href="/lustro/components">VitePress live catalog</a>
+    </nav>
+  </header>
+  <div class="lustro-hero lu-bs6-block mb-4">
+    <p class="text-secondary small mb-2">Bootstrap 6.0.0-alpha.1 · Lustro tokens · fictitious data</p>
+    <h1 class="display-6 mb-3">Glass dashboards on real Bootstrap</h1>
+    <p class="mb-3">This standalone shell is the BS6 reference for the Lustro language (same approach as Umail). Docs previews load it in an iframe so Bootstrap never bleeds into the VitePress chrome.</p>
+    <div class="d-flex flex-wrap gap-2">
+      <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#welcome">Try dialog</button>
+      <button type="button" class="btn-outline theme-primary" id="toastBtn">Try toast</button>
+    </div>
+  </div>
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="h6 card-title">Motion preserved</h2>
+          <p class="small text-secondary mb-0">WAAPI entry fades and chart animations stay on the Vue catalog pages; this shell uses Bootstrap transitions with reduced-motion respect.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="h6 card-title">Scoped CSS</h2>
+          <p class="small text-secondary mb-0">Theme tokens live in <code>lustro-theme.css</code> under <code>.lustro-bs6-root</code> only.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="h6 card-title">Pinned alpha</h2>
+          <p class="small text-secondary mb-0">CDN assets use SRI hashes matching the Umail migration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<dialog class="dialog" id="welcome" aria-labelledby="welcomeTitle">
+  <form method="dialog">
+    <div class="dialog-header">
+      <h2 class="dialog-title h6" id="welcomeTitle">Welcome</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body"><p class="mb-0">Lustro on Bootstrap 6 — local demo only.</p></div>
+    <div class="dialog-footer">
+      <button type="submit" class="btn-solid theme-primary">Got it</button>
+    </div>
+  </form>
+</dialog>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="t" class="toast" role="status"><div class="toast-body">Toast on BS6</div></div>
+</div>
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+<script type="module">
+import { Toast } from "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js";
+document.getElementById('toastBtn')?.addEventListener('click', () => Toast.getOrCreateInstance(document.getElementById('t')).show());
+</script>
+</body>
+</html>
