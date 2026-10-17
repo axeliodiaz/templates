@@ -30,6 +30,7 @@ export default defineConfig({
           text: 'Foundations',
           items: [
             { text: 'Overview', link: '/felix' },
+            { text: 'Bootstrap 6 app (alpha)', link: '/felix-bootstrap' },
             { text: 'Principles', link: '/felix/principles' },
             { text: 'Colors', link: '/felix/colors' },
             { text: 'Typography', link: '/felix/typography' },
@@ -458,6 +459,8 @@ export default defineConfig({
         { text: 'Trial journey (Sankey funnel)', link: '/trial-journey' },
         { text: 'Trading panel', link: '/trading-panel' },
         { text: 'Umail (Bootstrap 6 alpha)', link: '/umail' },
+        { text: 'Felix (Bootstrap 6 alpha)', link: '/felix-bootstrap' },
+        { text: 'Lustro (Bootstrap 6 alpha)', link: '/lustro-template/index.html' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Orange analytics', link: '/spark-analytics' },
