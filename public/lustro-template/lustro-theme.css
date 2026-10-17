@@ -1,0 +1,150 @@
+/* Lustro theme for Bootstrap 6 (6.0.0-alpha.1).
+   Dark-first glass palette: indigo #6366f1, pink #ec4899, cyan #22d3ee, canvas #07070f.
+   Bootstrap 6 tokens use light-dark(); load after bootstrap.min.css.
+   Scoped to .lustro-bs6-root — does not style the VitePress shell. */
+.lustro-bs6-root,
+:host(.lustro-bs6-root) {
+  --lu-indigo: #6366f1;
+  --lu-indigo-soft: #818cf8;
+  --lu-pink: #ec4899;
+  --lu-cyan: #22d3ee;
+  --lu-bg: #07070f;
+  --lu-glass: rgba(148, 140, 255, 0.07);
+  --lu-glass-border: rgba(148, 140, 255, 0.16);
+
+  --bs-primary-base: #6366f1;
+  --bs-primary-bg: #6366f1;
+  --bs-primary-contrast: #ffffff;
+  --bs-primary-fg: light-dark(#4f46e5, #a5b4fc);
+  --bs-primary-fg-emphasis: light-dark(#4338ca, #c7d2fe);
+  --bs-primary-bg-subtle: light-dark(rgba(99, 102, 241, 0.12), rgba(99, 102, 241, 0.18));
+  --bs-primary-bg-muted: light-dark(rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0.28));
+  --bs-primary-border: light-dark(rgba(99, 102, 241, 0.35), rgba(148, 140, 255, 0.35));
+  --bs-primary-focus-ring: light-dark(rgb(99 102 241 / 0.45), rgb(129 140 248 / 0.55));
+
+  --bs-secondary-base: #818cf8;
+  --bs-secondary-bg: light-dark(rgba(148, 140, 255, 0.12), rgba(148, 140, 255, 0.14));
+  --bs-secondary-contrast: light-dark(#17172b, #f4f2fc);
+  --bs-secondary-fg: light-dark(#6b6b8a, #bbb9d4);
+  --bs-secondary-fg-emphasis: light-dark(#17172b, #f4f2fc);
+  --bs-secondary-bg-subtle: light-dark(#ebebf7, rgba(148, 140, 255, 0.08));
+  --bs-secondary-bg-muted: light-dark(#c9c9e2, rgba(148, 140, 255, 0.12));
+  --bs-secondary-border: light-dark(#c9c9e2, rgba(148, 140, 255, 0.22));
+
+  --bs-success-base: #00d992;
+  --bs-success-bg: #34d399;
+  --bs-success-fg: light-dark(#047857, #6ee7b7);
+  --bs-success-fg-emphasis: light-dark(#065f46, #a7f3d0);
+  --bs-success-bg-subtle: light-dark(rgba(52, 211, 153, 0.12), rgba(52, 211, 153, 0.14));
+  --bs-success-bg-muted: light-dark(rgba(52, 211, 153, 0.2), rgba(52, 211, 153, 0.22));
+  --bs-success-border: light-dark(rgba(52, 211, 153, 0.35), rgba(52, 211, 153, 0.35));
+
+  --bs-warning-base: #fbbf24;
+  --bs-warning-bg: #fbbf24;
+  --bs-warning-contrast: #07070f;
+  --bs-warning-fg: light-dark(#b45309, #fcd34d);
+  --bs-warning-fg-emphasis: light-dark(#92400e, #fde68a);
+  --bs-warning-bg-subtle: light-dark(rgba(251, 191, 36, 0.14), rgba(251, 191, 36, 0.12));
+  --bs-warning-bg-muted: light-dark(rgba(251, 191, 36, 0.22), rgba(251, 191, 36, 0.2));
+  --bs-warning-border: light-dark(rgba(251, 191, 36, 0.35), rgba(251, 191, 36, 0.35));
+
+  --bs-danger-base: #ef4444;
+  --bs-danger-bg: #f472b6;
+  --bs-danger-fg: light-dark(#be185d, #f9a8d4);
+  --bs-danger-fg-emphasis: light-dark(#9d174d, #fbcfe8);
+  --bs-danger-bg-subtle: light-dark(rgba(244, 114, 182, 0.12), rgba(244, 114, 182, 0.14));
+  --bs-danger-bg-muted: light-dark(rgba(244, 114, 182, 0.2), rgba(244, 114, 182, 0.22));
+  --bs-danger-border: light-dark(rgba(244, 114, 182, 0.35), rgba(244, 114, 182, 0.35));
+
+  --bs-info-base: #22d3ee;
+  --bs-info-bg: #22d3ee;
+  --bs-info-contrast: #07070f;
+  --bs-info-fg: light-dark(#0891b2, #67e8f9);
+  --bs-info-fg-emphasis: light-dark(#0e7490, #a5f3fc);
+  --bs-info-bg-subtle: light-dark(rgba(34, 211, 238, 0.12), rgba(34, 211, 238, 0.14));
+  --bs-info-bg-muted: light-dark(rgba(34, 211, 238, 0.2), rgba(34, 211, 238, 0.22));
+  --bs-info-border: light-dark(rgba(34, 211, 238, 0.35), rgba(34, 211, 238, 0.35));
+
+  --bs-bg-body: light-dark(#f4f2fc, #07070f);
+  --bs-bg-1: light-dark(#ffffff, #0b0b18);
+  --bs-bg-2: light-dark(#ebebf7, rgba(148, 140, 255, 0.08));
+  --bs-bg-3: light-dark(#c9c9e2, rgba(148, 140, 255, 0.14));
+  --bs-fg-body: light-dark(#17172b, #ffffff);
+  --bs-fg-1: light-dark(#17172b, #e5e7ff);
+  --bs-fg-2: light-dark(#6b6b8a, #b8b3b0);
+  --bs-fg-3: light-dark(#6b6b8a, #a5b4fc);
+  --bs-border-color: light-dark(rgba(148, 140, 255, 0.35), rgba(148, 140, 255, 0.22));
+  --bs-border-body: var(--bs-border-color);
+  --bs-border-subtle: light-dark(rgba(148, 140, 255, 0.2), rgba(148, 140, 255, 0.12));
+  --bs-link-color: light-dark(#4f46e5, #a5b4fc);
+  --bs-link-hover-color: light-dark(#6366f1, #c7d2fe);
+  --bs-body-font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --bs-radius-5: 10px;
+  --bs-radius-7: 14px;
+}
+
+.lustro-bs6-root {
+  font-family: var(--bs-body-font-family);
+  color: var(--bs-fg-body);
+  background-color: var(--bs-bg-body);
+  background-image:
+    radial-gradient(60rem 30rem at 85% -10%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(50rem 25rem at -10% 110%, rgba(236, 72, 153, 0.12), transparent 60%);
+  background-attachment: fixed;
+  min-height: 100%;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--lu-glass-border);
+}
+
+.lustro-bs6-root .card {
+  background: var(--lu-glass);
+  backdrop-filter: blur(12px);
+  border-color: var(--lu-glass-border);
+}
+
+.lustro-bs6-root .btn-solid.theme-primary {
+  background-image: linear-gradient(90deg, var(--lu-indigo), var(--lu-pink));
+  border-color: transparent;
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-active-bg: transparent;
+}
+.lustro-bs6-root .btn-solid.theme-primary:hover {
+  filter: brightness(1.06);
+}
+
+.lustro-bs6-root .lustro-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 0.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  background-image: linear-gradient(135deg, var(--lu-indigo-soft), var(--lu-pink));
+}
+
+.lustro-bs6-root .lu-section-title {
+  font-family: "Space Grotesk", var(--bs-body-font-family);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.75rem;
+  color: var(--bs-fg-1);
+}
+
+.lustro-bs6-root .lu-bs6-block {
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--lu-glass);
+  border: 1px solid var(--lu-glass-border);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lustro-bs6-root * {
+    scroll-behavior: auto !important;
+  }
+}

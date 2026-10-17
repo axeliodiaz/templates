@@ -5,7 +5,8 @@
   "description": "Design-language guides written in Markdown, published at templates.axeldiaz.com",
   "scripts": {
     "dev": "vitepress dev",
-    "build": "vitepress build",
+    "build": "node scripts/build-lustro-bs6-components.mjs && vitepress build",
+    "build:lustro-bs6": "node scripts/build-lustro-bs6-components.mjs",
     "preview": "vitepress preview",
     "test:newrelic": "node --test tests/newrelic-browser.cjs"
   },
