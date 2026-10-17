@@ -476,6 +476,7 @@ export default defineConfig({
         { text: 'Trading panel', link: '/trading-panel' },
         { text: 'Umail (Bootstrap 6 alpha)', link: '/umail' },
         { text: 'Felix (Bootstrap 6 alpha)', link: '/felix-bootstrap' },
+        { text: 'Lustro (Bootstrap 6 alpha)', link: '/lustro-template/index.html' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Orange analytics', link: '/spark-analytics' },

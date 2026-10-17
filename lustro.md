@@ -115,6 +115,10 @@ Reference overlays stay on that same scale and off the brand gradient: a **dashe
 3. Text over glass sits at full opacity; only surfaces are translucent.
 4. Status stays semantic: success/error/warning never use brand gradients.
 
+## Bootstrap 6 (alpha)
+
+Lustro’s Bootstrap-depth catalog now renders on **Bootstrap 6.0.0-alpha.1** inside a scoped shell ([`/lustro-template/`](/lustro-template/index.html)), following the same pinned CDN + SRI approach as [Umail](/umail). Theme tokens live in [`lustro-theme.css`](/lustro-template/lustro-theme.css) under `.lustro-bs6-root` so nothing bleeds into the VitePress chrome. The interactive Vue catalog and chart pages keep their existing motion layer.
+
 ## More components
 
 The full Bootstrap-depth set (52 sections) is on [Components: Bootstrap set](/lustro/components-more).
