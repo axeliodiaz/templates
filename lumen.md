@@ -33,6 +33,10 @@ Rules: keep one color per model in both themes, never use pure black or pure whi
 4. Cards have a title row with a right-side control: tabs, a link or a menu.
 5. Lists use a bordered icon tile, a title, one line of context and a mono-style meta line.
 
+## Bootstrap 6 component set
+
+The extended Bootstrap gallery uses **Bootstrap 6.0.0-alpha.1** (pinned with integrity hashes) and Lumen tokens in [`lumen-theme.css`](/lumen-template/lumen-theme.css). Umail is the reference for standalone delivery; Lumen exposes the same stack at [`/lumen-template/`](/lumen-template/index.html) and embeds the gallery on [Components: Bootstrap set](/lumen/components-more). Chart and dashboard Vue demos keep their existing Motion animations; the BS6 surface respects `prefers-reduced-motion`.
+
 ## Pages
 
 [Components](/lumen/components), [Charts](/lumen/charts) (animated chart patterns) and the [Overview](/lumen/overview), [Traces](/lumen/traces), [Agents](/lumen/agents) and [Evals](/lumen/evals) examples. More pages are added as the template grows: Prompts, Playground, Gateway, Cost and Budget, API Keys, Team, Settings.
