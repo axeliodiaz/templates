@@ -1,0 +1,120 @@
+/* Lumen theme for Bootstrap 6 (6.0.0-alpha.1).
+   Palette from the Lumen guide: ink #17171a, text #25262b, muted #74767d,
+   page #eceef1, app #fbfbfa, surface #fff, border #e7e7e9, primary purple #7c6cf0,
+   model colors purple / yellow / cyan, amber up #e08a1e, green ok #1b9a4b.
+   Load after bootstrap.min.css. Force mode with data-bs-theme on <html> or a root. */
+:root,
+:host {
+  --lm-ink: #17171a;
+  --lm-primary: #7c6cf0;
+  --lm-primary-hover: #6b5be0;
+  --lm-primary-deep: #5a49d0;
+
+  --bs-primary-base: #7c6cf0;
+  --bs-primary-bg: #7c6cf0;
+  --bs-primary-contrast: #ffffff;
+  --bs-primary-fg: light-dark(#6b5be0, #a99cf6);
+  --bs-primary-fg-emphasis: light-dark(#5a49d0, #b6abf8);
+  --bs-primary-bg-subtle: light-dark(#efecfd, #2a2540);
+  --bs-primary-bg-muted: light-dark(#e4dff9, #3d3560);
+  --bs-primary-border: light-dark(#d8d0f5, #4a4080);
+  --bs-primary-focus-ring: light-dark(rgb(124 108 240 / 0.45), rgb(148 132 243 / 0.55));
+
+  --bs-secondary-base: #74767d;
+  --bs-secondary-bg: light-dark(#e7e7e9, #2e3036);
+  --bs-secondary-contrast: light-dark(#25262b, #f4f4f5);
+  --bs-secondary-fg: light-dark(#74767d, #9a9ca4);
+  --bs-secondary-fg-emphasis: light-dark(#45464c, #d6d7db);
+  --bs-secondary-bg-subtle: light-dark(#f3f3f1, #1f2024);
+  --bs-secondary-bg-muted: light-dark(#eceef1, #26282d);
+  --bs-secondary-border: light-dark(#e7e7e9, #2e3036);
+
+  --bs-success-base: #1b9a4b;
+  --bs-success-bg: #1b9a4b;
+  --bs-success-fg: light-dark(#17803d, #3ccf75);
+  --bs-success-fg-emphasis: light-dark(#145c2e, #6ee09a);
+  --bs-success-bg-subtle: light-dark(#e8f6ee, #142a1c);
+  --bs-success-bg-muted: light-dark(#d4eddf, #1b3d28);
+  --bs-success-border: light-dark(#c5e6d4, #245c38);
+
+  --bs-info-base: #0fb0ea;
+  --bs-info-bg: #0fb0ea;
+  --bs-info-contrast: #082422;
+  --bs-info-fg: light-dark(#0a8ab8, #2cbcf0);
+  --bs-info-fg-emphasis: light-dark(#066a8f, #6dd4f5);
+  --bs-info-bg-subtle: light-dark(#e4f6fc, #0a2a38);
+  --bs-info-bg-muted: light-dark(#c9edf8, #103848);
+  --bs-info-border: light-dark(#b5e4f4, #184858);
+
+  --bs-warning-base: #d9770a;
+  --bs-warning-bg: #e08a1e;
+  --bs-warning-contrast: #17171a;
+  --bs-warning-fg: light-dark(#b35f08, #f09a35);
+  --bs-warning-fg-emphasis: light-dark(#8a4b00, #f5b04a);
+  --bs-warning-bg-subtle: light-dark(#fdf4e8, #33260a);
+  --bs-warning-bg-muted: light-dark(#fae8cc, #4a360f);
+  --bs-warning-border: light-dark(#f5d9b0, #5c4212);
+
+  --bs-danger-base: #d23b3b;
+  --bs-danger-bg: #d23b3b;
+  --bs-danger-fg: light-dark(#b83232, #ef6b6b);
+  --bs-danger-fg-emphasis: light-dark(#8f2723, #f3a0a0);
+  --bs-danger-bg-subtle: light-dark(#fceaea, #35171a);
+  --bs-danger-bg-muted: light-dark(#f5d4d4, #4a2024);
+  --bs-danger-border: light-dark(#efc2c2, #5c282c);
+
+  --bs-bg-body: light-dark(#fbfbfa, #17171a);
+  --bs-bg-1: light-dark(#ffffff, #1f2024);
+  --bs-bg-2: light-dark(#f3f3f1, #1b1c20);
+  --bs-bg-3: light-dark(#eceef1, #26282d);
+  --bs-fg-body: light-dark(#25262b, #d6d7db);
+  --bs-fg-1: light-dark(#17171a, #f4f4f5);
+  --bs-fg-2: light-dark(#45464c, #c8c9ce);
+  --bs-fg-3: light-dark(#74767d, #9a9ca4);
+  --bs-border-color: light-dark(#e7e7e9, #2e3036);
+  --bs-border-body: light-dark(#e7e7e9, #2e3036);
+  --bs-border-subtle: light-dark(#f0f0f1, #26282d);
+  --bs-link-color: light-dark(#6b5be0, #a99cf6);
+  --bs-link-hover-color: light-dark(#5a49d0, #c4b8fa);
+  --bs-body-font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --bs-radius-5: 8px;
+  --bs-radius-7: 12px;
+}
+
+.btn-solid.theme-primary {
+  --bs-btn-hover-bg: var(--lm-primary-hover);
+  --bs-btn-hover-border-color: var(--lm-primary-hover);
+  --bs-btn-active-bg: var(--lm-primary-deep);
+  --bs-btn-active-border-color: var(--lm-primary-deep);
+}
+
+.lmn-bs6-surface {
+  background: var(--bs-bg-body);
+  color: var(--bs-fg-body);
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-radius-7);
+  padding: 1rem 1.1rem;
+  margin: 0.75rem 0;
+  font-family: var(--bs-body-font-family);
+}
+
+.lmn-bs6-surface .card-img-top {
+  height: 90px;
+  background: linear-gradient(135deg, var(--bs-primary-bg), var(--bs-info-bg));
+}
+
+.lmn-bs6-surface .lmn-card-highlight {
+  background: var(--bs-primary-bg);
+  color: var(--bs-primary-contrast);
+  border-color: var(--bs-primary-bg);
+}
+
+.lmn-bs6-surface .lmn-card-highlight .card-title {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lmn-bs6-surface * {
+    scroll-behavior: auto !important;
+  }
+}

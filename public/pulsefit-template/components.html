@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PulseFit Bootstrap 6 components</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<link rel="stylesheet" href="/pulsefit-template/pulsefit-theme.css">
+</head>
+<body class="pf-gallery">
+<header class="mb-4">
+  <p class="text-muted small mb-1"><a href="index.html">PulseFit template</a> / Components</p>
+  <h1 class="h3" style="font-family:Montserrat,sans-serif">Bootstrap 6 component gallery</h1>
+  <p class="text-muted">Bootstrap 6.0.0-alpha.1 (pinned) with PulseFit tokens. Fictitious data; dialogs and toasts are local.</p>
+</header>
+
+<section id="buttons-variants"><h2>Buttons: variants</h2><div class="demo d-flex flex-wrap gap-2">
+  <button type="button" class="btn-solid theme-primary">Primary</button>
+  <button type="button" class="btn-solid theme-secondary">Secondary</button>
+  <button type="button" class="btn-solid theme-success">Success</button>
+  <button type="button" class="btn-solid theme-warning">Warning</button>
+  <button type="button" class="btn-solid theme-danger">Danger</button>
+  <button type="button" class="btn-solid theme-info">Info</button>
+  <button type="button" class="btn-outline theme-secondary">Light</button>
+  <button type="button" class="btn-link">Link</button>
+</div></section>
+
+<section id="buttons-outline"><h2>Buttons: outline</h2><div class="demo d-flex flex-wrap gap-2">
+  <button type="button" class="btn-outline theme-primary">Primary</button>
+  <button type="button" class="btn-outline theme-success">Success</button>
+  <button type="button" class="btn-outline theme-warning">Warning</button>
+  <button type="button" class="btn-outline theme-danger">Danger</button>
+  <button type="button" class="btn-outline theme-info">Info</button>
+</div></section>
+
+<section id="buttons-sizes"><h2>Buttons: sizes</h2><div class="demo d-flex flex-wrap gap-2 align-items-center">
+  <button type="button" class="btn-solid theme-primary btn-sm">Small</button>
+  <button type="button" class="btn-solid theme-primary">Default</button>
+  <button type="button" class="btn-solid theme-primary btn-lg">Large</button>
+</div></section>
+
+<section id="badges"><h2>Badges</h2><div class="demo d-flex flex-wrap gap-2 align-items-center">
+  <span class="badge theme-primary">Primary</span>
+  <span class="badge theme-secondary">Neutral</span>
+  <span class="badge theme-success">Success</span>
+  <span class="badge theme-warning">Warning</span>
+  <span class="badge theme-danger">Danger</span>
+  <button type="button" class="btn-outline theme-secondary">Inbox <span class="badge theme-danger">9</span></button>
+</div></section>
+
+<section id="alerts"><h2>Alerts</h2><div class="demo d-flex flex-column gap-2">
+  <div class="alert theme-primary" role="alert"><strong>Primary</strong> Sample alert with PulseFit tokens.</div>
+  <div class="alert theme-success" role="alert"><strong>Success</strong> Saved. Changes are live.</div>
+  <div class="alert theme-warning" role="alert"><strong>Warning</strong> Needs review.</div>
+  <div class="alert theme-danger" role="alert"><strong>Danger</strong> Something went wrong.</div>
+</div></section>
+
+<section id="cards"><h2>Cards</h2><div class="demo row g-3">
+  <div class="col-12 md:col-6"><div class="card h-100"><div class="card-body"><h5 class="card-title">Unlimited</h5><p class="card-text">All classes included.</p><button type="button" class="btn-solid theme-primary btn-sm">Choose plan</button></div></div></div>
+  <div class="col-12 md:col-6"><div class="card h-100"><div class="card-header">Featured</div><div class="card-body"><h5 class="card-title">8 classes</h5><p class="card-text">Starter pack.</p></div><div class="card-footer text-muted">Renews monthly</div></div></div>
+</div></section>
+
+<section id="forms"><h2>Forms</h2><div class="demo row g-3">
+  <div class="col-12 md:col-6"><label class="form-label" for="email">Email</label><input id="email" class="form-control" placeholder="name@example.com"></div>
+  <div class="col-12 md:col-6"><label class="form-label" for="plan">Plan</label><select id="plan" class="form-select"><option>Unlimited</option><option>8 classes</option></select></div>
+  <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="sms" checked><label class="form-check-label" for="sms">SMS reminders</label></div></div>
+</div></section>
+
+<section id="tables"><h2>Tables</h2><div class="demo table-responsive"><table class="table table-hover align-middle">
+  <thead><tr><th>Member</th><th>Plan</th><th>Status</th><th>Renews</th></tr></thead>
+  <tbody>
+    <tr><td>Maya Torres</td><td>Unlimited</td><td><span class="badge theme-success">Active</span></td><td>Oct 21</td></tr>
+    <tr><td>Leo Park</td><td>8 classes</td><td><span class="badge theme-warning">Expiring</span></td><td>Oct 9</td></tr>
+    <tr><td>Ana Ruiz</td><td>Drop-in</td><td><span class="badge theme-danger">Overdue</span></td><td>Sep 28</td></tr>
+  </tbody>
+</table></div></section>
+
+<section id="nav-tabs"><h2>Nav and tabs</h2><div class="demo">
+  <ul class="nav nav-tabs mb-2"><li class="nav-item"><a class="nav-link active" href="#">Classes</a></li><li class="nav-item"><a class="nav-link" href="#">Members</a></li><li class="nav-item"><a class="nav-link disabled" href="#">Reports</a></li></ul>
+  <ul class="nav nav-pills"><li class="nav-item"><a class="nav-link active" href="#">Day</a></li><li class="nav-item"><a class="nav-link" href="#">Week</a></li><li class="nav-item"><a class="nav-link" href="#">Month</a></li></ul>
+</div></section>
+
+<section id="progress"><h2>Progress</h2><div class="demo d-flex flex-column gap-2">
+  <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:25%"></div></div>
+  <div class="progress"><div class="progress-bar theme-success" style="width:50%"></div></div>
+  <div class="progress"><div class="progress-bar theme-warning" style="width:75%"></div></div>
+</div></section>
+
+<section id="list-group"><h2>List group</h2><div class="demo row g-3">
+  <div class="col-12 md:col-6"><div class="list-group"><a href="#" class="list-group-item list-group-item-action active">Active item</a><a href="#" class="list-group-item list-group-item-action">Second item</a><a href="#" class="list-group-item list-group-item-action disabled">Disabled item</a></div></div>
+  <div class="col-12 md:col-6"><div class="list-group"><div class="list-group-item list-group-item-success">Success item</div><div class="list-group-item list-group-item-danger">Danger item</div></div></div>
+</div></section>
+
+<section id="accordion"><h2>Accordion</h2><div class="demo d-flex flex-column gap-2">
+  <details class="border rounded p-2" open><summary class="fw-semibold">Membership tiers</summary><p class="mb-0 mt-2 text-muted">Unlimited, class packs and drop-ins.</p></details>
+  <details class="border rounded p-2"><summary class="fw-semibold">Coach policies</summary><p class="mb-0 mt-2 text-muted">Substitution and late-cancel rules.</p></details>
+</div></section>
+
+<section id="modal-dialog"><h2>Modal / dialog</h2><div class="demo">
+  <button type="button" class="btn-solid theme-primary" id="openDialog">Open dialog</button>
+</div></section>
+
+<section id="toasts"><h2>Toasts</h2><div class="demo d-flex gap-2 flex-wrap">
+  <button type="button" class="btn-outline theme-primary" id="toastSuccess">Success toast</button>
+  <button type="button" class="btn-outline theme-danger" id="toastError">Error toast</button>
+</div></section>
+
+<section id="offcanvas"><h2>Offcanvas / drawer</h2><div class="demo">
+  <button class="btn-outline theme-primary" type="button" id="openDrawer">Open drawer</button>
+</div></section>
+
+<dialog class="dialog" id="pfDialog" aria-labelledby="pfDialogTitle">
+  <form method="dialog">
+    <div class="dialog-header"><h2 class="dialog-title h5" id="pfDialogTitle">Confirm booking</h2><button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button></div>
+    <div class="dialog-body"><p class="mb-0">Book Maya Torres for the 6:30 AM Power ride? This is a local demo.</p></div>
+    <div class="dialog-footer"><button type="button" class="btn-outline theme-secondary" data-bs-dismiss="dialog">Cancel</button><button type="submit" class="btn-solid theme-primary">Confirm</button></div>
+  </form>
+</dialog>
+
+<dialog class="drawer drawer-end" tabindex="-1" id="pfDrawer" aria-labelledby="pfDrawerLabel">
+  <div class="drawer-header"><h2 class="drawer-title h5" id="pfDrawerLabel">Filters</h2><button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button></div>
+  <div class="drawer-body"><label class="form-label">Coach</label><select class="form-select mb-3"><option>Any</option><option>Maya Torres</option></select><label class="form-label">Room</label><select class="form-select"><option>Studio A</option><option>Studio B</option></select></div>
+</dialog>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toastOk" class="toast text-bg-success" role="status"><div class="toast-body">Saved successfully.</div></div>
+  <div id="toastBad" class="toast text-bg-danger" role="alert"><div class="toast-body">Failed to save.</div></div>
+</div>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+<script type="module">
+import { Toast, Dialog } from "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js";
+const ok = new Toast(document.getElementById("toastOk"));
+const bad = new Toast(document.getElementById("toastBad"));
+document.getElementById("toastSuccess").addEventListener("click", () => ok.show());
+document.getElementById("toastError").addEventListener("click", () => bad.show());
+const dlg = document.getElementById("pfDialog");
+document.getElementById("openDialog").addEventListener("click", () => dlg.showModal());
+document.getElementById("openDrawer").addEventListener("click", () => document.getElementById("pfDrawer").showModal());
+if (location.hash.length > 1) {
+  const target = document.querySelector(location.hash);
+  if (target) target.scrollIntoView({ behavior: "instant" });
+}
+</script>
+</body>
+</html>

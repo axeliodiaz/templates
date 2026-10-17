@@ -3,7 +3,15 @@
 
 # Components: Bootstrap set
 
-Every component Bootstrap 5.3 documents, rebuilt in the Lustro style. 52 component sections, static renders, fictitious data.
+Every component Bootstrap documents, rebuilt in the Lustro style on **Bootstrap 6.0.0-alpha.1** (pinned with SRI, same as [Umail](/umail)). The 52 sections render inside a scoped iframe so Bootstrap never bleeds into the VitePress shell. Fictitious data; live toasts and dialogs use Bootstrap 6 ESM inside the preview.
+
+<iframe src="/lustro-template/components-more.html" title="Lustro Bootstrap 6 component set" loading="lazy" style="width:100%;height:min(92vh,2600px);border:1px solid var(--vp-c-divider);border-radius:12px;background:#07070f"></iframe>
+
+[Open the Bootstrap 6 catalog full screen](/lustro-template/components-more.html) · [Lustro BS6 shell](/lustro-template/index.html)
+
+The blocks below are the legacy in-page `.bsx` previews (Bootstrap 5.3-depth markup). They remain for diffing during migration; the iframe above is the canonical BS6 render.
+
+## Legacy in-page previews (BSX)
 
 ## Buttons: variants
 

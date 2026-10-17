@@ -13,6 +13,7 @@ import './scopecraft.css'
 import './scopecraft-dark.css'
 import './lumen.css'
 import './lumen-dark.css'
+import './lumen-bs6.css'
 import './lustro-light.css'
 import './chrome.css'
 import './bsx.css'
@@ -36,6 +37,7 @@ import './pawprint.css'
 import { mountFelixDemos } from './felix-demos'
 import { mountCartMotion } from './cartmotion'
 import { mountLumenMotion } from './lumenmotion'
+import { mountLumenBs6 } from './lumen-bs6'
 import { mountBsxLive } from './bsx-live'
 import { mountTplLive } from './tpl-live'
 import { mountTemplateMotion } from './template-motion'
@@ -87,6 +89,9 @@ function applyLumenTheme(dark: boolean) {
   if (btn) {
     paintThemeBtn(btn, dark)
   }
+  document.querySelectorAll<HTMLElement>('.lmn-bs6').forEach((root) => {
+    root.dataset.bsTheme = dark ? 'dark' : 'light'
+  })
 }
 
 function syncLumenTheme() {
@@ -274,6 +279,7 @@ export default {
         nextTick(() => setTimeout(() => mountTplLive(route.path), 80))
         if (route.path.endsWith('/cart-summary') || route.path.endsWith('/lustro')) nextTick(() => setTimeout(mountCartMotion, 50))
         if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
+        if (m('/lumen')) nextTick(() => setTimeout(mountLumenBs6, 60))
         if (m('/lumen') || p === '/lumen') syncLumenTheme()
         else document.documentElement.classList.remove('lmn-dark')
         const pageTheme = pageThemeFor(p)
@@ -286,8 +292,10 @@ export default {
         else document.documentElement.classList.remove('pf-dark')
         if (m('/pawprint')) syncPawprintTheme()
         else document.documentElement.classList.remove('pp-dark')
-        if (m('/scopecraft')) syncScopecraftTheme()
-        else document.documentElement.classList.remove('sc-dark')
+        if (m('/scopecraft')) {
+          syncScopecraftTheme()
+          void import('./scopecraft-bs6.css')
+        } else document.documentElement.classList.remove('sc-dark')
         if (onFelix) syncFelixTheme()
         if (onFelix) nextTick(() => mountFelixDemos())
         nextTick(() => setTimeout(mountTemplateMotion, 120))

@@ -4,7 +4,7 @@ pageClass: sc-page
 
 # Components: Bootstrap set
 
-Every component Bootstrap 5.3 documents, rebuilt in the Scopecraft style. 52 component sections, static renders, fictitious data.
+Extended Bootstrap reference (52 sections). The [live 43-family catalog](/scopecraft/components) now renders on **Bootstrap 6.0.0-alpha.1** inside a scoped `.sc-bs6-root` shell with Scopecraft tokens. The blocks below remain the hand-tuned `.bsx` previews until they are migrated to the same BS6 pattern.
 
 ## Buttons: variants
 

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PulseFit template</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600;700&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<link rel="stylesheet" href="/pulsefit-template/pulsefit-theme.css">
+<style>
+  body { min-height: 100vh; }
+  .pf-kpi { border: 2px solid var(--pf-gold); border-radius: 14px; }
+  .pf-kpi .display-6 { font-family: "Bebas Neue", Rubik, sans-serif; color: var(--pf-gold); }
+  .pf-kpi .label { font-family: Montserrat, sans-serif; font-size: 0.7rem; font-weight: 700; }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<nav class="navbar md:navbar-expand pulsefit-navbar" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">PULSEFIT</a>
+    <button id="theme" class="btn-outline btn-sm theme-secondary ms-auto me-2 md:order-last" type="button" aria-pressed="false">Dark mode</button>
+    <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#pfNav" aria-controls="pfNav" aria-expanded="false" aria-label="Open menu"><span class="navbar-toggler-icon" aria-hidden="true"></span></button>
+    <dialog class="drawer drawer-end" tabindex="-1" id="pfNav" aria-labelledby="pfNavLabel">
+      <div class="drawer-header">
+        <h2 class="drawer-title" id="pfNavLabel">Menu</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+      </div>
+      <div class="drawer-body">
+        <ul class="nav navbar-nav">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Members</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Schedule</a></li>
+          <li class="nav-item"><a class="nav-link" href="components.html">Components</a></li>
+        </ul>
+      </div>
+    </dialog>
+  </div>
+</nav>
+
+<main class="container-fluid py-4">
+  <div class="alert theme-info d-flex align-items-center justify-content-between gap-2 mb-3" role="note">
+    <span>PulseFit on Bootstrap 6.0.0-alpha.1 with scoped theme tokens. Fictitious studio data; actions stay in the page.</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <div class="row g-3 mb-4">
+    <div class="col-12 md:col-4">
+      <div class="card pf-kpi h-100">
+        <div class="card-body">
+          <div class="label text-muted">Active members</div>
+          <div class="display-6">1,284</div>
+          <span class="badge theme-success">+12%</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="card pf-kpi h-100">
+        <div class="card-body">
+          <div class="label text-muted">Classes today</div>
+          <div class="display-6">18</div>
+          <span class="badge theme-warning">3 waitlist</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="card pf-kpi h-100">
+        <div class="card-body">
+          <div class="label text-muted">Revenue (MTD)</div>
+          <div class="display-6">$42.8k</div>
+          <button class="btn-solid theme-primary btn-sm mt-2" type="button" data-bs-toggle="dialog" data-bs-target="#reportDialog">View report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2 class="h5 mb-0" style="font-family:Montserrat,sans-serif">Today's schedule</h2>
+      <button class="btn-outline theme-primary btn-sm" type="button" id="bookBtn">Book class</button>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead><tr><th>Time</th><th>Class</th><th>Coach</th><th>Status</th></tr></thead>
+        <tbody id="schedule"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<dialog class="dialog" id="reportDialog" aria-labelledby="reportTitle">
+  <form method="dialog">
+    <div class="dialog-header">
+      <h2 class="dialog-title h5" id="reportTitle">October summary</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p class="text-muted small">Sample metrics for the member dashboard. No payment or export is connected.</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between"><span>Unlimited plans</span><strong>612</strong></li>
+        <li class="list-group-item d-flex justify-content-between"><span>Class packs</span><strong>402</strong></li>
+        <li class="list-group-item d-flex justify-content-between"><span>Drop-ins</span><strong>270</strong></li>
+      </ul>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-outline theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="submit" class="btn-solid theme-primary">Download CSV (demo)</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex"><div class="toast-body" id="toastText"></div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>
+  </div>
+</div>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+<script type="module">
+import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@14.1.0/+esm";
+import { Toast, Dialog } from "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js";
+
+const rows = [
+  ["6:30 AM", "Power ride", "Maya Torres", "theme-success"],
+  ["8:00 AM", "Strength 45", "Leo Park", "theme-warning"],
+  ["12:15 PM", "Yoga flow", "Ana Ruiz", "theme-primary"],
+  ["6:00 PM", "HIIT circuit", "Maya Torres", "theme-success"],
+];
+const tbody = document.getElementById("schedule");
+tbody.innerHTML = rows.map(([t, c, coach, badge]) =>
+  `<tr><td>${t}</td><td>${c}</td><td>${coach}</td><td><span class="badge ${badge}">Open</span></td></tr>`
+).join("");
+
+const toastEl = document.getElementById("toast");
+const toast = new Toast(toastEl);
+function showToast(msg) {
+  document.getElementById("toastText").textContent = msg;
+  toast.show();
+}
+document.getElementById("bookBtn").addEventListener("click", () => showToast("Class booking saved locally (demo)."));
+
+const themeBtn = document.getElementById("theme");
+function applyTheme(dark) {
+  document.documentElement.setAttribute("data-bs-theme", dark ? "dark" : "light");
+  themeBtn.setAttribute("aria-pressed", String(dark));
+  themeBtn.textContent = dark ? "Light mode" : "Dark mode";
+}
+themeBtn.addEventListener("click", () => applyTheme(document.documentElement.getAttribute("data-bs-theme") !== "dark"));
+applyTheme(false);
+
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+function enter() {
+  if (reduce.matches) return;
+  animate(".pf-kpi", { opacity: [0, 1], y: [8, 0] }, { duration: 0.35, delay: stagger(0.06) });
+}
+enter();
+reduce.addEventListener("change", () => { if (reduce.matches) document.getAnimations().forEach((a) => a.cancel()); else enter(); });
+</script>
+</body>
+</html>
