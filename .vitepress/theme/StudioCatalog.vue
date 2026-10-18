@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed,ref} from 'vue'
+import {computed,ref,onBeforeUnmount} from 'vue'
 const props=defineProps<{theme:'folio'|'spark',section?:string}>()
 const drawerDialog=ref<HTMLDialogElement|null>(null)
 const brand=computed(()=>props.theme==='folio'?'Folio':'Spark')
@@ -7,7 +7,13 @@ const checked=ref(true),toggle=ref(true),radio=ref('Monthly'),range=ref(55),tab=
 const filtered=computed(()=>rows.value.filter(r=>r.name.toLowerCase().includes(query.value.toLowerCase())))
 const show=(s:string)=>!props.section||props.section===s
 function toast(t:string){notice.value=t}
-function loading(){busy.value=true;setTimeout(()=>{busy.value=false;notice.value='Local action complete.'},650)}
+let loadingTimer: ReturnType<typeof setTimeout> | undefined
+function loading(){
+  if (busy.value) return
+  busy.value=true
+  loadingTimer=setTimeout(()=>{loadingTimer=undefined;busy.value=false;notice.value='Local action complete.'},650)
+}
+onBeforeUnmount(()=>clearTimeout(loadingTimer))
 </script>
 <template><div :class="['studio-kit','b2-bs6',`b2-${theme}`,`studio-${theme}`]">
  <section v-if="show('atoms')" class="studio-section"><h2>Atoms</h2><div class="studio-grid">
