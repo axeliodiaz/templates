@@ -6,3 +6,8 @@
 .studio-lustro{--sk-bg:#131322;--sk-surface:#202039;--sk-border:#44445e;--sk-ink:#f4f2ff;--sk-muted:#b8b5cd;--sk-accent:#a799ff;--sk-on:#171332;--sk-soft:#a799ff20;--sk-radius:14px}.studio-felix{--sk-bg:#f7f5ed;--sk-surface:#fff;--sk-border:#c5d4ce;--sk-ink:#193e35;--sk-muted:#536f64;--sk-accent:#087b68;--sk-on:#fff;--sk-soft:#087b6814;--sk-radius:16px}.studio-pulsefit{--sk-bg:#faf8f1;--sk-surface:#fff;--sk-border:#d9d4c3;--sk-ink:#272721;--sk-muted:#68665b;--sk-accent:#aa7300;--sk-on:#fff;--sk-soft:#c28c181a;--sk-radius:12px}.studio-scopecraft{--sk-bg:#fafafa;--sk-surface:#fff;--sk-border:#ddd;--sk-ink:#202020;--sk-muted:#626262;--sk-accent:#252525;--sk-on:#fff;--sk-soft:#25252512;--sk-radius:8px}.studio-lumen{--sk-bg:#f8f8f5;--sk-surface:#fff;--sk-border:#d9dbe3;--sk-ink:#252b38;--sk-muted:#606675;--sk-accent:#6653c4;--sk-on:#fff;--sk-soft:#6653c418;--sk-radius:9px}
 
 .sk-spy-scroll{max-height:220px;overflow:auto;scroll-behavior:smooth}.sk-spy-scroll [data-spy]{min-height:180px}.sk-shell a[aria-current="location"]{font-weight:700;color:var(--sk-accent)}
+
+/* Pace: own green palette, light by default, follows the site dark toggle. */
+.studio-pace{--sk-bg:#f5f8f4;--sk-surface:#fff;--sk-border:#cfdcd3;--sk-ink:#173528;--sk-muted:#52665a;--sk-accent:#23724e;--sk-on:#fff;--sk-soft:#23724e14;--sk-danger:#b3261e;--sk-success:#1a6e44;--sk-warning:#8a5a00;--sk-info:#255f9e;--sk-radius:12px}
+html.tpl-dark .studio-pace{--sk-bg:#111a15;--sk-surface:#18241d;--sk-border:#2b3d32;--sk-ink:#e6f1ea;--sk-muted:#a2b7a9;--sk-accent:#83d4a1;--sk-on:#0b2417;--sk-soft:#83d4a122;--sk-danger:#f29b94;--sk-success:#7fd69b;--sk-warning:#f0c36d;--sk-info:#8fbfee}
+.studio-pace h2,.studio-pace h3,.studio-pace .pace-num{font-family:'Space Grotesk','DM Sans',sans-serif}

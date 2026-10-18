@@ -140,11 +140,11 @@ onUnmounted(() => { dispose = true; clearInterval(timer); ctl?.stop(); media?.re
 </script>
 
 <template>
-  <section ref="root" class="tp" :aria-label="title">
+  <section ref="root" class="tp b2-bs6 b2-folio" :aria-label="title">
     <header class="tp-head">
       <div class="tp-title"><strong>{{ title }}</strong><span class="tp-live" :class="{ off: !playing || !open }"><i></i>{{ playing && open ? 'LIVE' : 'PAUSED' }} <time>{{ clock }}</time></span></div>
       <div class="tp-pairs" role="group" aria-label="Market">
-        <button v-for="(c, s) in pairs" :key="s" type="button" :class="{ on: symbol === s }" :aria-pressed="symbol === s" @click="setPair(s)">{{ s }}</button>
+        <button class="btn btn-outline theme-primary" v-for="(c, s) in pairs" :key="s" type="button" :class="{ on: symbol === s }" :aria-pressed="symbol === s" @click="setPair(s)">{{ s }}</button>
       </div>
     </header>
 
@@ -174,18 +174,18 @@ onUnmounted(() => { dispose = true; clearInterval(timer); ctl?.stop(); media?.re
         </div>
         <div class="tp-controls">
           <div class="tp-seg" role="group" aria-label="Direction">
-            <button type="button" :class="{ on: side === 'long' }" :aria-pressed="side === 'long'" @click="side = 'long'">Long</button>
-            <button type="button" :class="{ on: side === 'short' }" :aria-pressed="side === 'short'" @click="side = 'short'">Short</button>
+            <button class="btn btn-outline theme-primary" type="button" :class="{ on: side === 'long' }" :aria-pressed="side === 'long'" @click="side = 'long'">Long</button>
+            <button class="btn btn-outline theme-primary" type="button" :class="{ on: side === 'short' }" :aria-pressed="side === 'short'" @click="side = 'short'">Short</button>
           </div>
           <label class="tp-lev">Multiplier <input type="range" min="2" max="20" step="1" v-model.number="lev" aria-label="Leverage multiplier" /> <b>{{ lev }}x</b></label>
-          <button type="button" class="tp-btn" @click="playing = !playing">{{ playing ? 'Pause' : 'Resume' }}</button>
-          <button type="button" class="tp-btn danger" @click="closeTrade">Close</button>
+          <button type="button" class="tp-btn btn btn-outline theme-primary" @click="playing = !playing">{{ playing ? 'Pause' : 'Resume' }}</button>
+          <button type="button" class="tp-btn danger btn btn-outline theme-primary" @click="closeTrade">Close</button>
         </div>
       </div>
       <div class="tp-pos tp-empty" v-else>
         <b>No open position</b>
         <p>Pick a market and open a paper position. Nothing is sent anywhere.</p>
-        <button type="button" class="tp-btn primary" @click="openTrade">Open {{ symbol }} {{ side }} {{ lev }}x</button>
+        <button type="button" class="tp-btn primary btn btn-outline theme-primary" @click="openTrade">Open {{ symbol }} {{ side }} {{ lev }}x</button>
       </div>
     </div>
 
@@ -193,7 +193,7 @@ onUnmounted(() => { dispose = true; clearInterval(timer); ctl?.stop(); media?.re
       <div class="tp-chart-head">
         <b>Equity curve</b>
         <div class="tp-seg" role="group" aria-label="Range">
-          <button v-for="r in ['1H', '6H', '22H']" :key="r" type="button" :class="{ on: range === r }" :aria-pressed="range === r" @click="range = r">{{ r }}</button>
+          <button class="btn btn-outline theme-primary" v-for="r in ['1H', '6H', '22H']" :key="r" type="button" :class="{ on: range === r }" :aria-pressed="range === r" @click="range = r">{{ r }}</button>
         </div>
       </div>
       <svg :viewBox="`0 0 ${W} ${H}`" role="img" :aria-label="`Equity curve from ${money(slice[0].v, 0)} to ${money(slice.at(-1).v, 0)}`" @mousemove="onMove" @mouseleave="hover = -1" @touchmove.passive="e => onMove({ currentTarget: e.currentTarget, clientX: e.touches[0].clientX })">

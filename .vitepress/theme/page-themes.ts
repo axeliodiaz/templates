@@ -11,6 +11,7 @@ export const PAGE_THEMES: PageTheme[] = [
   { id: 'crestway', base: '/crestway-financials' },
   { id: 'margin', base: '/margin' },
   { id: 'pace', base: '/fitness' },
+  { id: 'pace', base: '/pace' },
   { id: 'cargo', base: '/trade-finance' },
 ]
 const matches = (path: string, base: string) => path === base || path.startsWith(base + '/')
