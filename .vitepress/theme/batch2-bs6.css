@@ -1,0 +1,52 @@
+/* Brand adapters: Bootstrap owns controls and state tokens; host layouts and charts stay intact.
+   The full pinned Bootstrap stylesheet lives in native @scope, never on the VitePress shell. */
+.b2-bs6 {
+  --b2-accent: #6389ea; --b2-on: #fff;
+  --b2-bg: var(--bg, #f5f5f7); --b2-surface: var(--surface, #fff);
+  --b2-ink: var(--ink, #22252b); --b2-muted: var(--muted, #676e7b); --b2-line: var(--line, #e0e3e9);
+  --bs-body-font-family: inherit; --bs-body-font-size: inherit;
+  --bs-bg-body: var(--b2-bg); --bs-bg-1: var(--b2-surface); --bs-bg-2: var(--b2-surface);
+  --bs-bg-3: color-mix(in srgb, var(--b2-accent) 12%, var(--b2-surface));
+  --bs-fg-body: var(--b2-ink); --bs-fg-2: var(--b2-muted); --bs-fg-3: var(--b2-muted);
+  --bs-border-color: var(--b2-line); --bs-primary-base: var(--b2-accent);
+  --bs-primary-bg: var(--b2-accent); --bs-primary-fg: var(--b2-accent);
+  --bs-primary-border: var(--b2-accent); --bs-primary-contrast: var(--b2-on);
+  --bs-btn-input-font-size: inherit; --bs-btn-input-min-height: 0;
+  --bs-btn-input-fg: var(--b2-ink); --bs-btn-input-bg: var(--b2-surface);
+  --bs-focus-ring: 2px solid var(--b2-accent); --bs-focus-ring-offset: 3px;
+}
+.b2-bs6.studio-kit {--b2-accent:var(--sk-accent);--b2-on:var(--sk-on);--b2-bg:var(--sk-bg);--b2-surface:var(--sk-surface);--b2-ink:var(--sk-ink);--b2-muted:var(--sk-muted);--b2-line:var(--sk-border)}
+.b2-bs6.reference-dashboard {--b2-accent:var(--rd-accent);--b2-bg:var(--rd-bg);--b2-surface:var(--rd-panel);--b2-ink:var(--rd-text);--b2-muted:var(--rd-muted);--b2-line:var(--rd-border)}
+.b2-bs6.b2-folio:not(.studio-kit) {--b2-on:#163f35;color-scheme:dark}
+.b2-bs6.b2-spark:not(.studio-kit) {--b2-on:#2b1506;color-scheme:dark}
+.b2-bs6.studio-kit {color-scheme:dark}
+.b2-bs6.b2-pace {--b2-accent:var(--accent);--b2-bg:var(--bg);--b2-surface:var(--surface);--b2-ink:var(--ink);--b2-line:var(--line)}
+.b2-bs6.b2-cargo {--b2-accent:var(--accent);--b2-bg:var(--bg);--b2-surface:var(--surface);--b2-ink:var(--ink);--b2-line:var(--line)}
+.b2-bs6 .theme-primary {--bs-theme-bg:var(--b2-accent);--bs-theme-fg:var(--b2-accent);--bs-theme-contrast:var(--b2-on);--bs-theme-border:var(--b2-line);--bs-theme-focus-ring:var(--b2-accent)}
+/* Use the v6 component variables while retaining each template's type and density. */
+.b2-bs6 button.btn {--bs-btn-bg:var(--b2-surface);--bs-btn-color:var(--b2-ink);--bs-btn-border-color:var(--b2-line);--bs-btn-disabled-opacity:.45;min-height:0;white-space:inherit}
+.b2-bs6 button.btn-solid {--bs-btn-bg:var(--b2-accent);--bs-btn-color:var(--b2-on);--bs-btn-border-color:var(--b2-accent)}
+/* Existing selectors provide brand layout. BS6 supplies the shared state contract. */
+.b2-bs6 button.btn:focus-visible {outline:var(--bs-focus-ring);outline-offset:var(--bs-focus-ring-offset)}
+.b2-bs6 .form-control {min-height:0;width:auto;display:inline-block;font:inherit;box-shadow:none;line-height:inherit}
+.b2-bs6 :is(form,label) .form-control {width:100%}
+.b2-bs6 select.form-control {padding-right:24px}
+.b2-bs6 .table {--bs-table-bg:transparent;--bs-table-color:var(--b2-ink);--bs-table-border-color:var(--b2-line);margin-bottom:0}
+.b2-bs6 :is(.sk-bars,.spark-chart,.fit-bars,.cargo-bars) button.btn {display:block;min-height:0;line-height:inherit}
+.b2-bs6 .sk-bars button.btn {background:var(--sk-accent);border:0}
+.b2-bs6.lab-dark,.b2-bs6.dark {color-scheme:dark}
+@media(prefers-reduced-motion:reduce){.b2-bs6 *,.b2-bs6 *::before,.b2-bs6 *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.b2-bs6 button.btn {text-align:inherit}
+.b2-bs6 .btn.btn-solid {background-color:var(--bs-btn-bg);color:var(--bs-btn-color)}
+
+.b2-bs6.studio-kit {background:transparent}
+/* Structural button cards are not inline button rows. */
+.b2-bs6 .crest-kpis>button.btn {display:block;white-space:normal}
+.b2-bs6 button.fit-workout.btn,.b2-bs6 button.cargo-row.btn {display:flex}
+.b2-bs6 progress {accent-color:var(--b2-accent)}
+/* Reboot headings must follow local dark-mode tokens, not the host page palette. */
+.b2-bs6:is(.b2-pace,.b2-cargo) :is(h1,h2,h3,h4,strong) {color:var(--ink)!important}
+.b2-bs6:is(.b2-pace,.b2-cargo) progress::-webkit-progress-bar {background:var(--line);border-radius:8px}
+.b2-bs6:is(.b2-pace,.b2-cargo) progress::-webkit-progress-value {background:var(--accent);border-radius:8px}
+.b2-bs6:is(.b2-pace,.b2-cargo) :is(h1,h2,h3,h4,strong) {-webkit-text-fill-color:var(--ink)!important;background-image:none}
