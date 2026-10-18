@@ -6,7 +6,7 @@ const css = postcss.parse(fs.readFileSync(source, 'utf8'))
 css.walkAtRules('charset', rule => rule.remove())
 css.walkRules(rule => {
   if (rule.parent?.type === 'atrule' && /keyframes$/.test(rule.parent.name)) return
-  rule.selectors = rule.selectors.map(selector => selector.replace(/:root|:host|\bhtml\b|\bbody\b/g, ':scope'))
+  rule.selectors = rule.selectors.map(selector => selector.replace(/:root|:host|(?<![\w-])(?:html|body)(?![\w-])/g, ':scope'))
 })
 const scope = postcss.atRule({name:'scope',params:'(.b2-bs6)'})
 scope.append(css.nodes)
