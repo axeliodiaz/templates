@@ -1,0 +1,35 @@
+/* Pace design system layouts. Tokens come from studio-systems.css (.studio-pace). */
+.pace-lay{padding:18px;border:1px solid var(--sk-border);border-radius:var(--sk-radius);background:var(--sk-bg);margin:18px 0}
+.pace-admin{display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px}
+.pace-side{display:grid;gap:6px;align-content:start}.pace-side button{text-align:left}
+.pace-brand{font:700 22px 'Space Grotesk',sans-serif;color:var(--sk-accent);margin-bottom:10px}
+.pace-top{display:flex;justify-content:space-between;align-items:end;gap:12px}.pace-search{flex:1;max-width:340px}
+.pace-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0}
+.pace-kpis .sk-card{display:grid;gap:2px}.pace-num{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.pace-two{display:grid;grid-template-columns:1.5fr 1fr;gap:14px}
+.pace-lay .sk-card{padding:16px;background:var(--sk-surface);border:1px solid var(--sk-border);border-radius:var(--sk-radius)}
+.pace-phone-wrap{display:flex;justify-content:center}.pace-phone{width:100%;max-width:390px;border:1px solid var(--sk-border);border-radius:28px;padding:20px 16px 12px;background:var(--sk-bg);display:grid;gap:12px;box-shadow:0 10px 30px #0000001a}
+.pace-credit{display:flex;justify-content:space-between;align-items:center}.pace-days{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}.pace-days button{flex:0 0 auto;min-width:46px}
+.pace-class{display:flex;justify-content:space-between;align-items:center;gap:10px}.pace-class button{min-width:84px;min-height:40px}
+.pace-tabbar{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;border-top:1px solid var(--sk-border);padding-top:10px}
+.pace-lay button.active,.pace-icons button.active{border-color:var(--sk-accent);background:var(--sk-soft)}
+.pace-note{margin-top:12px}
+.pace-icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;margin:12px 0}.pace-icon-grid button{display:grid;place-items:center;gap:6px;padding:12px 6px}
+.pace-code{overflow:auto;padding:12px;border:1px solid var(--sk-border);border-radius:8px;background:var(--sk-surface);font-size:11px}
+.pace-emails{display:grid;grid-template-columns:200px minmax(0,1fr);gap:18px}.pace-mail-list{display:grid;gap:6px;align-content:start}
+.pace-mail-frame{border:1px solid var(--sk-border);border-radius:var(--sk-radius);padding:18px;display:grid;justify-items:center}
+.pace-mail-frame table{border-collapse:separate}
+.pace-specimen{display:grid;gap:10px}.pace-swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.pace-sw{border:1px solid var(--sk-border);border-radius:10px;overflow:hidden;background:var(--sk-surface)}.pace-sw i{display:block;height:54px}.pace-sw div{padding:8px 10px}.pace-sw code{font-size:11px}
+@media(max-width:820px){.pace-admin,.pace-emails,.pace-two{grid-template-columns:minmax(0,1fr)}.pace-admin>*,.pace-emails>*,.pace-two>*{min-width:0}.pace-kpis{grid-template-columns:1fr 1fr}.pace-side{grid-auto-flow:column;grid-auto-columns:max-content;overflow-x:auto}.pace-brand{align-self:center;margin:0 8px 0 0}}
+@media(max-width:440px){.pace-kpis{grid-template-columns:1fr}.pace-lay{padding:10px}}
+@media(prefers-reduced-motion:reduce){.pace-lay *{animation:none!important;transition:none!important}}
+/* Complete family reference (ComponentCatalog language="pace") */
+.kit-pace{--k-bg:#f5f8f4;--k-alt:#fff;--k-text:#173528;--k-muted:#52665a;--k-border:#cfdcd3;--k-brand:#23724e;--k-ink:#fff;--k-radius:12px;font-family:'DM Sans',sans-serif}
+html.tpl-dark .kit-pace{--k-bg:#111a15;--k-alt:#18241d;--k-text:#e6f1ea;--k-muted:#a2b7a9;--k-border:#2b3d32;--k-brand:#83d4a1;--k-ink:#0b2417}
+.kit-pace .l-primary{background-image:none;background:var(--k-brand);color:var(--k-ink)}
+.kit-pace>section>p{color:var(--k-muted)}
+.kit-pace .l-alert{background:var(--k-alt);border-color:var(--k-border);color:var(--k-text)}
+.kit-pace .l-alert-warn{border-left:4px solid #8a5a00}.kit-pace .l-alert-success{border-left:4px solid #1a6e44}
+html.tpl-dark .kit-pace .l-alert-warn{border-left-color:#f0c36d}html.tpl-dark .kit-pace .l-alert-success{border-left-color:#7fd69b}
+@media(max-width:820px){.pace-mail-list{grid-auto-flow:column;grid-auto-columns:max-content;overflow-x:auto}.pace-mail-frame{overflow-x:auto;padding:10px}.pace-mail-frame table{min-width:0}}

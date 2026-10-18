@@ -23,6 +23,7 @@ export default defineConfig({
     ],
     sidebar: {
       '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
+      '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
       '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Charts', link: '/spark/charts' },  { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
 
       '/felix': [
@@ -463,6 +464,7 @@ export default defineConfig({
         { text: 'Lustro (Bootstrap 6 alpha)', link: '/lustro-template/index.html' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Folio finance', link: '/folio' },
+        { text: 'Pace fitness', link: '/pace' },
         { text: 'Orange analytics', link: '/spark-analytics' },
         { text: 'Pulse projects', link: '/pulse-projects' },
         { text: 'Crestway financials', link: '/crestway-financials' },
