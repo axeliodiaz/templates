@@ -6,7 +6,13 @@ onMounted(()=>{spy=new IntersectionObserver(es=>{const top=es.filter(e=>e.isInte
 const notice=ref(''),toggle=ref(false),segment=ref('Monthly'),checks=ref(['Email']),language=ref('English'),search=ref(''),tab=ref('Overview'),alertOpen=ref(true),slide=ref(0),collapse=ref(false),menu=ref(false),modal=ref<HTMLDialogElement|null>(null),drawer=ref<HTMLDialogElement|null>(null),busy=ref(false),count=ref(3),fileName=ref('No file selected'),email=ref(''),sort=ref(false)
 const slides=['Quarterly overview','Team activity','Revenue report'];const rows=computed(()=>{const r=[{name:'Northstar',amount:4200,status:'Success'},{name:'Atlas',amount:1800,status:'Warning'},{name:'Pine',amount:750,status:'Danger'}].filter(r=>r.name.toLowerCase().includes(search.value.toLowerCase()));return sort.value?r.reverse():r})
 function toast(s:string){notice.value=s}
-function run(){busy.value=true;setTimeout(()=>{busy.value=false;toast('Local task finished')},600)}
+let runTimer: ReturnType<typeof setTimeout> | undefined
+function run(){
+  if (busy.value) return
+  busy.value=true
+  runTimer=setTimeout(()=>{runTimer=undefined;busy.value=false;toast('Local task finished')},600)
+}
+onBeforeUnmount(()=>clearTimeout(runTimer))
 </script>
 <template><div :class="['studio-kit','b2-bs6',`b2-${theme}`,`studio-${theme}`]"><h2>Extended variants</h2><p>Local, keyboard-focusable examples. File selection stays in this page; nothing is uploaded.</p><div class="studio-grid sk-extended">
 <article><h3>Buttons: variants and outline</h3><div class="studio-row"><button class="btn btn-outline theme-primary" v-for="v in ['primary','success','warning','danger','info','ghost','link']" :key="v" :class="'sk-'+v" @click="toast(v)">{{v}}</button></div><div class="studio-row"><button class="btn btn-outline theme-primary" v-for="v in ['primary','success','warning','danger']" :key="v" :class="['sk-outline-button','sk-'+v]" @click="toast(v+' outline')">{{v}} outline</button></div></article>
