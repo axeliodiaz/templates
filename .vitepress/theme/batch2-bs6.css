@@ -45,3 +45,8 @@
 .b2-bs6 .crest-kpis>button.btn {display:block;white-space:normal}
 .b2-bs6 button.fit-workout.btn,.b2-bs6 button.cargo-row.btn {display:flex}
 .b2-bs6 progress {accent-color:var(--b2-accent)}
+/* Reboot headings must follow local dark-mode tokens, not the host page palette. */
+.b2-bs6:is(.b2-pace,.b2-cargo) :is(h1,h2,h3,h4,strong) {color:var(--ink)!important}
+.b2-bs6:is(.b2-pace,.b2-cargo) progress::-webkit-progress-bar {background:var(--line);border-radius:8px}
+.b2-bs6:is(.b2-pace,.b2-cargo) progress::-webkit-progress-value {background:var(--accent);border-radius:8px}
+.b2-bs6:is(.b2-pace,.b2-cargo) :is(h1,h2,h3,h4,strong) {-webkit-text-fill-color:var(--ink)!important;background-image:none}
