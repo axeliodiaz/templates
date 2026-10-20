@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { animate, stagger } from 'motion'
 const props = defineProps({ theme: { type: String, default: 'pulsefit' } })
 const T = {
@@ -24,9 +24,11 @@ const ticks = Array.from({ length: 41 }, (_, i) => 60 + i * .1)
 const logs = ref([['Water', '2 glasses (500 ml)', '11:30 AM'], ['Mood', 'Good% 80', '10:40 AM'], ['Weight', '61.6 Kg', '10:30 AM'], ['Meal photo', 'Breakfast logged', '10:20 AM']])
 const summary = computed(() => tab.value === 'Water' ? `${glasses.value} glass${glasses.value === 1 ? '' : 'es'} (${glasses.value * 250} ml)` : tab.value === 'Mood' ? `Good% ${mood.value}` : tab.value === 'Weight' ? `${shown.value} ${unit.value === 'Kg' ? 'Kg' : 'lb'}` : `${meal.value} logged`)
 const saved = ref(false)
+let savedTimer
+onBeforeUnmount(() => clearTimeout(savedTimer))
 const save = async () => {
   logs.value.unshift([tab.value, summary.value, new Date(2026, 9, 5, 12, 5).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })])
-  saved.value = true; setTimeout(() => saved.value = false, 1800)
+  saved.value = true; clearTimeout(savedTimer); savedTimer = setTimeout(() => saved.value = false, 1800)
   await nextTick()
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && root.value) animate(root.value.querySelector('.qn-lg'), { opacity: [0, 1], y: [-8, 0] }, { duration: 0.3 })
 }

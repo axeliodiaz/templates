@@ -36,3 +36,5 @@ html.felix.felix-dark .fx-dep.is-focus { border-color: #2bf2f1; box-shadow: 0 12
 html.felix.felix-dark .fx-dep.is-dep { box-shadow: 0 0 0 2px #082422, 0 0 0 4px #2bf2f1; }
 html.felix.felix-dark .fx-dep.is-next { box-shadow: 0 0 0 2px #082422, 0 0 0 4px #ffd200; }
 html.felix.felix-dark .fx-dep.is-focus .fx-depends { color: #2bf2f1; }
+
+@media (prefers-reduced-motion: reduce) { html.felix .fx-dep, html.felix .fx-link, html.felix .fx-edge { transition: none; } }
