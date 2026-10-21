@@ -17,5 +17,7 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Validate sidebar links and anchors
+        run: node tests/sidebar-anchors.cjs
       - name: Build all template pages
         run: npm run build
