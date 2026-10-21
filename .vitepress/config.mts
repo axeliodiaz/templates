@@ -481,13 +481,6 @@ export default defineConfig({
       ] },
           { text: 'Charts', link: '/graphs', collapsed: true, items: [
             { text: 'All charts', link: '/graphs#all-charts', collapsed: false, items: [{ text: 'Trends over time', link: '/graphs#trends-over-time' }, { text: 'Comparison', link: '/graphs#comparison' }, { text: 'Parts of a whole', link: '/graphs#parts-of-a-whole' }, { text: 'Distribution and relationships', link: '/graphs#distribution-and-relationships' }, { text: 'Activity and time grids', link: '/graphs#activity-and-time-grids' }, { text: 'KPIs and progress', link: '/graphs#kpis-and-progress' }, { text: 'Flows and funnels', link: '/graphs#flows-and-funnels' }] },
-            { text: 'Introducción', link: '/graphs#data-charts' },
-            { text: 'Line & Area', link: '/graphs#charts-line-area' },
-            { text: 'Bar', link: '/graphs#charts-bar' },
-            { text: 'Pie & Doughnut', link: '/graphs#charts-pie-doughnut' },
-            { text: 'Radar & Polar', link: '/graphs#charts-radar-polar' },
-            { text: 'Scatter & Bubble', link: '/graphs#charts-scatter-bubble' },
-            { text: 'Mixed', link: '/graphs#charts-mixed' }
           ] },
           
     ]
