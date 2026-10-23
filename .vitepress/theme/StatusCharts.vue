@@ -1,5 +1,6 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
+import { mountChartMotion } from './chart-motion'
 
 const props = defineProps({
   counts: { type: Object, default: () => ({ blocked: 6, ready: 1, progress: 1, review: 1, done: 0 }) }
@@ -40,6 +41,9 @@ const segments = computed(() => {
 
 const wrap = ref(null)
 const tip = ref(null)
+let motion
+onMounted(() => { if (wrap.value) motion = mountChartMotion(wrap.value, '.sc-card') })
+onBeforeUnmount(() => { motion?.destroy() })
 function show(e, html) {
   const box = wrap.value.getBoundingClientRect()
   tip.value = { html, x: clampX(e.clientX - box.left, box.width), y: e.clientY - box.top }
@@ -56,14 +60,15 @@ const barTip = r => ({ title: r.label, body: `${r.count} of ${total.value} cards
 
 <template>
 <div class="sc" ref="wrap" @mouseleave="hide">
+<div class="sc-toolbar"><button type="button" class="sc-replay" @click="motion?.replay()">Replay motion</button></div>
 <div class="sc-grid">
 <section class="sc-card">
 <p class="sc-k">Gauge</p><h3 class="sc-t">Progress</h3>
 <p class="sc-l">Weighted by status: completed 100%, in review 75%, in progress 25%, ready and blocked 0%. Hover a color to see what it is.</p>
 <div class="sc-gauge" role="img" :aria-label="`${percent}% weighted progress, ${progress} of ${total} cards`">
 <svg viewBox="0 0 220 128" aria-hidden="true">
-<path class="sc-track" :d="ARC" pathLength="100" />
-<path v-for="s in segments" :key="s.key" class="sc-seg" :class="['t-' + s.key, { round: s.round }]" :d="ARC" pathLength="100" :stroke-dasharray="`${s.length.toFixed(2)} 100`" :stroke-dashoffset="(-s.offset).toFixed(2)" tabindex="0" :aria-label="`${gaugeTip(s).title}: ${gaugeTip(s).body}`" @mousemove="show($event, gaugeTip(s))" @focus="showFocus($event, gaugeTip(s))" @blur="hide" @mouseleave="hide" />
+<path class="sc-track" :d="ARC" pathLength="100" data-cm="draw" />
+<path v-for="s in segments" :key="s.key" class="sc-seg" :class="['t-' + s.key, { round: s.round }]" :d="ARC" pathLength="100" data-cm="seg" :stroke-dasharray="`${s.length.toFixed(2)} 100`" :stroke-dashoffset="(-s.offset).toFixed(2)" tabindex="0" :aria-label="`${gaugeTip(s).title}: ${gaugeTip(s).body}`" @mousemove="show($event, gaugeTip(s))" @focus="showFocus($event, gaugeTip(s))" @blur="hide" @mouseleave="hide" />
 </svg>
 <p class="sc-read"><strong>{{ percent }}%</strong><span>{{ progress }} of {{ total }} cards</span></p>
 </div>
@@ -72,7 +77,7 @@ const barTip = r => ({ title: r.label, body: `${r.count} of ${total.value} cards
 <p class="sc-k">Funnel</p><h3 class="sc-t">By status</h3>
 <p class="sc-l">Each bar width is the share of cards in that status. Hover a bar to see what it means.</p>
 <ol class="sc-funnel">
-<li v-for="r in rows" :key="r.key"><span class="sc-bar" :class="['t-' + r.key, { empty: !r.count }]" :style="{ width: `calc(36% + ${r.percent * 0.64}%)` }" tabindex="0" :aria-label="`${barTip(r).title}: ${barTip(r).body}`" @mousemove="show($event, barTip(r))" @focus="showFocus($event, barTip(r))" @blur="hide" @mouseleave="hide"><span>{{ r.label }}</span><strong>{{ r.count }} · {{ r.percent }}%</strong></span></li>
+<li v-for="r in rows" :key="r.key"><span class="sc-bar" data-cm="barX" :class="['t-' + r.key, { empty: !r.count }]" :style="{ width: `calc(36% + ${r.percent * 0.64}%)` }" tabindex="0" :aria-label="`${barTip(r).title}: ${barTip(r).body}`" @mousemove="show($event, barTip(r))" @focus="showFocus($event, barTip(r))" @blur="hide" @mouseleave="hide"><span>{{ r.label }}</span><strong>{{ r.count }} · {{ r.percent }}%</strong></span></li>
 </ol>
 </section>
 </div>
@@ -82,6 +87,11 @@ const barTip = r => ({ title: r.label, body: `${r.count} of ${total.value} cards
 
 <style>
 .sc{position:relative;margin:24px 0}
+.sc-toolbar{display:flex;justify-content:flex-end;margin-bottom:10px}
+.sc-replay{padding:4px 12px;border:1px solid var(--vp-c-divider);border-radius:99px;background:transparent;color:inherit;font:inherit;font-size:12px;cursor:pointer}
+.sc-replay:hover{border-color:var(--vp-c-brand-1)}
+.sc-replay:focus-visible{outline:2px solid var(--vp-c-brand-1);outline-offset:2px}
+.cm-playing *{transition:none!important}
 .sc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .sc-card{background:var(--vp-c-bg);border:1px solid var(--vp-c-divider);border-radius:14px;padding:18px}
 .sc p{margin:0}
