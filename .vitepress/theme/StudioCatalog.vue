@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import {computed,ref,onBeforeUnmount} from 'vue'
-const props=defineProps<{theme:'folio'|'spark'|'pace',section?:string}>()
+const props=defineProps<{theme:'folio'|'spark'|'pace'|'relay',section?:string}>()
 const drawerDialog=ref<HTMLDialogElement|null>(null)
-const brand=computed(()=>({folio:'Folio',spark:'Spark',pace:'Pace'} as Record<string,string>)[props.theme])
+const brand=computed(()=>({folio:'Folio',spark:'Spark',pace:'Pace',relay:'Relay'} as Record<string,string>)[props.theme])
 const checked=ref(true),toggle=ref(true),radio=ref('Monthly'),range=ref(55),tab=ref('Overview'),notice=ref(''),busy=ref(false),query=ref(''),page=ref(1),dialog=ref<HTMLDialogElement|null>(null),menu=ref(false),count=ref(1),selected=ref('Northstar'),invalid=ref('')
 const copy=computed(()=>{
   const base={kpiTitle:'Available balance',kpiAmount:'$128,450',kpiCents:'.80',kpiDelta:'↗ 12.8% vs. last month',kpiFoot:'3 sample accounts',kpiToast:'Balance detail',kpiCta:'Account demo',tabs:['Overview','Transactions','Payments'],cmpA:'Received',cmpAv:'$86,250',cmpB:'Spent',cmpBv:'$64,820',col1:'Company',col3:'Amount',money:true,searchPlaceholder:'Search sample companies…',listItem:'Approved a sample payment',chartLabel:'Sample balance trend',stacked:'Payroll 74% · Operations 18% · Growth 8%',rows:[{name:'Northstar',status:'Completed',tone:'success',amount:4200},{name:'Atlas',status:'Pending',tone:'warning',amount:1800},{name:'Pine',status:'Failed',tone:'danger',amount:750},{name:'Field',status:'Completed',tone:'success',amount:3100}]}
   if(props.theme==='pace')return{...base,kpiTitle:'Bookings this week',kpiAmount:'248',kpiCents:'',kpiDelta:'↗ 12.8% vs. last week',kpiFoot:'3 sample studios',kpiToast:'Booking detail',kpiCta:'Studio demo',tabs:['Overview','Classes','Members'],cmpA:'Booked',cmpAv:'86%',cmpB:'Attended',cmpBv:'65%',col1:'Class',col3:'Spots',money:false,searchPlaceholder:'Search sample classes…',listItem:'Confirmed a sample booking',chartLabel:'Sample attendance trend',stacked:'Rides 74% · Yoga 18% · HIIT 8%',rows:[{name:'Sunrise Ride',status:'Completed',tone:'success',amount:24},{name:'Power Yoga',status:'Pending',tone:'warning',amount:18},{name:'HIIT Express',status:'Canceled',tone:'danger',amount:12},{name:'Core Pilates',status:'Completed',tone:'success',amount:20}]}
+  if(props.theme==='relay')return{...base,kpiTitle:'Tool calls today',kpiAmount:'1,284',kpiCents:'',kpiDelta:'↗ 18% vs. yesterday',kpiFoot:'Sample workspace',kpiToast:'Tool-call detail',kpiCta:'Runs demo',tabs:['Agents','Servers','Runs'],cmpA:'Online',cmpAv:'12',cmpB:'Connected',cmpBv:'4',col1:'Agent',col3:'Calls',money:false,searchPlaceholder:'Search sample agents…',listItem:'Approved a sample migration',chartLabel:'Sample tool-call trend',stacked:'Research 46% · Code 34% · Ops 20%',rows:[{name:'Research Agent',status:'Online',tone:'success',amount:420},{name:'Code Agent',status:'Pending',tone:'warning',amount:310},{name:'Ops Agent',status:'Online',tone:'success',amount:188},{name:'Inbox Agent',status:'Paused',tone:'danger',amount:12}]}
   return base
 })
 const rows=computed(()=>copy.value.rows)

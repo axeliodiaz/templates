@@ -27,7 +27,7 @@
   }
 }
 
-@media(prefers-reduced-motion:reduce){.kit-folio *,.kit-spark *,.studio-kit *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){.kit-folio *,.kit-spark *,.kit-relay *,.studio-kit *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 /* Motion is a normal component default, not an opt-in demo. */
 @media(prefers-reduced-motion:no-preference){
 .vp-doc :where(button,a,input,select,textarea,summary,[role=button],[role=tab],[role=switch]):focus-visible{transition:outline-offset 160ms ease-out,box-shadow 160ms ease-out;outline-offset:4px}

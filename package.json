@@ -15,7 +15,8 @@
     "build:batch2-bs6": "node scripts/build-batch2-bs6.mjs",
     "build:bastion-bs6": "node scripts/build-bastion-bs6.mjs",
     "test:bastion": "node tests/bastion.cjs",
-    "test:batch2-bs6": "node tests/batch2-bs6.cjs"
+    "test:batch2-bs6": "node tests/batch2-bs6.cjs",
+    "test:relay": "node tests/relay-dashboard.cjs"
   },
   "devDependencies": {
     "mermaid": "^11.17.2",
