@@ -21,6 +21,10 @@
   --bs-body-font-size: 12px;
   --bs-body-color: var(--bst-ink);
   --bs-body-bg: var(--bst-bg);
+  /* Bootstrap 6 alpha defaults --bs-fg-body to a light-scheme gray; pin table/body
+     foregrounds to Bastion ink so status text and replica counts stay readable. */
+  --bs-fg-body: var(--bst-ink);
+  --bs-table-color: var(--bst-ink);
   --bs-heading-color: var(--bst-green);
   --bs-border-color: var(--bst-line);
   --bs-primary-base: var(--bst-green);
@@ -269,7 +273,7 @@
 .bst-table td { padding: 8px 8px 8px 0; vertical-align: middle; border-bottom: 1px solid rgba(28, 90, 50, 0.35); }
 .bst-table th:last-child, .bst-table td:last-child { padding-right: 0; text-align: right; }
 .bst-svc { color: var(--bst-green); font-weight: 600; }
-.bst-status { display: inline-flex; align-items: center; gap: 6px; letter-spacing: 0.06em; font-size: 11px; }
+.bst-status { display: inline-flex; align-items: center; gap: 6px; letter-spacing: 0.06em; font-size: 11px; color: var(--bst-green); }
 .bst-meter-wrap { display: flex; align-items: center; gap: 8px; min-width: 88px; }
 .bst .progress.bst-meter {
   flex: 1;
