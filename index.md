@@ -56,6 +56,9 @@ features:
   - title: Spark
     details: Dark orange analytics system, pixel histograms, reporting components and live variants.
     link: /spark
+  - title: Bastion
+    details: Retro-terminal ops dashboard. Phosphor green and amber on a green-black grid, square panels, a live tail, and an ops agent.
+    link: /bastion
   - title: Lustro
     details: Dark glassmorphism, indigo-to-pink/cyan gradients, Space Grotesk / DM Sans / JetBrains Mono.
     link: /lustro

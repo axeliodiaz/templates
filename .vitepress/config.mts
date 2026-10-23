@@ -26,6 +26,7 @@ export default defineConfig({
       '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
       '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
       '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Charts', link: '/spark/charts' },  { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
+      '/bastion': [{ text: 'Bastion foundations', items: [{ text: 'Overview', link: '/bastion' }, { text: 'Color', link: '/bastion/color' }, { text: 'Typography', link: '/bastion/typography' }, { text: 'Tokens', link: '/bastion/tokens' }, { text: 'Usage', link: '/bastion/usage' }, { text: 'Motion', link: '/bastion/motion' }] }, { text: 'Bastion components', items: [{ text: 'Catalog', link: '/bastion/components' }, { text: 'Charts and meters', link: '/bastion/charts' }, { text: 'Ops dashboard', link: '/bastion/dashboard' }] }],
 
       '/felix': [
         {
@@ -468,6 +469,7 @@ export default defineConfig({
         { text: 'Evertrue pages', link: '/evertrue' },
         { text: 'Relay control room', link: '/relay' },
         { text: 'Folio finance', link: '/folio' },
+        { text: 'Bastion ops', link: '/bastion' },
         { text: 'Pace fitness', link: '/pace' },
         { text: 'Orange analytics', link: '/spark-analytics' },
         { text: 'Pulse projects', link: '/pulse-projects' },
