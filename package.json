@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "description": "Design-language guides written in Markdown, published at templates.axeldiaz.com",
   "scripts": {
-    "dev": "npm run build:batch2-bs6 && vitepress dev",
-    "build": "npm run build:batch2-bs6 && node scripts/build-lustro-bs6-components.mjs && npm run build:scopecraft-bs6 && vitepress build",
+    "dev": "npm run build:batch2-bs6 && npm run build:bastion-bs6 && vitepress dev",
+    "build": "npm run build:batch2-bs6 && node scripts/build-lustro-bs6-components.mjs && npm run build:scopecraft-bs6 && npm run build:bastion-bs6 && vitepress build",
     "build:lustro-bs6": "node scripts/build-lustro-bs6-components.mjs",
     "build:scopecraft-bs6": "node scripts/build-scopecraft-bs6-css.mjs",
     "preview": "vitepress preview",
@@ -13,6 +13,8 @@
     "test:pulsefit-bs6": "node tests/pulsefit-bs6.cjs",
     "test:felix-bootstrap": "node tests/felix-bootstrap.cjs",
     "build:batch2-bs6": "node scripts/build-batch2-bs6.mjs",
+    "build:bastion-bs6": "node scripts/build-bastion-bs6.mjs",
+    "test:bastion": "node tests/bastion.cjs",
     "test:batch2-bs6": "node tests/batch2-bs6.cjs"
   },
   "devDependencies": {

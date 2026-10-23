@@ -151,3 +151,25 @@ html[data-tpl="cargo"].tpl-dark {
   --tpl-nav-bg: #1d3043; --tpl-nav-text: #ffffff; --tpl-nav-muted: #a8bdd1; --tpl-side-bg: #16212c;
   --tpl-code-bg: #16212c; --tpl-code-text: #6bb7ff;
 }
+
+/* bastion: terminal phosphor, dark by default. Light is the docs toggle only; the product frame stays dark. */
+html[data-tpl="bastion"] {
+  color-scheme: light;
+  --tpl-bg: #f4f7f1; --tpl-bg-alt: #e7f0e6; --tpl-bg-mute: #dce8dc;
+  --tpl-text: #102216; --tpl-text-2: #24382c; --tpl-text-3: #3d5c48; --tpl-line: #c5d7c8;
+  --tpl-link: #0e6a34; --tpl-accent: #8a5a00; --tpl-link-hover: #084822;
+  --tpl-nav-bg: #102216; --tpl-nav-text: #e7f6e4; --tpl-nav-muted: #b7d4b4; --tpl-side-bg: #e7f0e6;
+  --tpl-code-bg: #e7f0e6; --tpl-code-text: #8a5a00;
+  --tpl-font: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --tpl-head-font: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --tpl-rule: #0e6a34;
+}
+html[data-tpl="bastion"].tpl-dark {
+  color-scheme: dark;
+  --tpl-bg: #061108; --tpl-bg-alt: #0a1810; --tpl-bg-mute: #102216;
+  --tpl-text: #c8f7c2; --tpl-text-2: #b7e4b0; --tpl-text-3: #8fbf8a; --tpl-line: #1c5a32;
+  --tpl-link: #62f56a; --tpl-accent: #ffb000; --tpl-link-hover: #c8ffbf;
+  --tpl-nav-bg: #050c07; --tpl-nav-text: #c8f7c2; --tpl-nav-muted: #8fbf8a; --tpl-side-bg: #0a1810;
+  --tpl-code-bg: #102216; --tpl-code-text: #ffb000;
+  --tpl-rule: #62f56a;
+}
