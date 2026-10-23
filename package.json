@@ -13,7 +13,8 @@
     "test:pulsefit-bs6": "node tests/pulsefit-bs6.cjs",
     "test:felix-bootstrap": "node tests/felix-bootstrap.cjs",
     "build:batch2-bs6": "node scripts/build-batch2-bs6.mjs",
-    "test:batch2-bs6": "node tests/batch2-bs6.cjs"
+    "test:batch2-bs6": "node tests/batch2-bs6.cjs",
+    "test:relay": "node tests/relay-dashboard.cjs"
   },
   "devDependencies": {
     "mermaid": "^11.17.2",

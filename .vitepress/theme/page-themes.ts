@@ -13,6 +13,7 @@ export const PAGE_THEMES: PageTheme[] = [
   { id: 'pace', base: '/fitness' },
   { id: 'pace', base: '/pace' },
   { id: 'cargo', base: '/trade-finance' },
+  { id: 'relay', base: '/relay', defaultDark: true },
 ]
 const matches = (path: string, base: string) => path === base || path.startsWith(base + '/')
 export function pageThemeFor(path: string): PageTheme | undefined {

@@ -15,13 +15,14 @@ export default defineConfig({
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap' }]
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap' }]
   ],
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' }
     ],
     sidebar: {
+      '/relay': [{ text: 'Relay foundations', items: [{ text: 'Overview', link: '/relay' }, { text: 'Color, type, and tokens', link: '/relay/foundations' }, { text: 'CSS implementation', link: '/relay/tokens' }, { text: 'Motion', link: '/relay/motion' }] }, { text: 'Relay components', items: [{ text: 'Full live catalog', link: '/relay/components' }, { text: 'Charts', link: '/relay/charts' }, { text: 'Layouts', link: '/relay/layouts' }, { text: 'Control room', link: '/relay/overview' }] }],
       '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
       '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
       '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Charts', link: '/spark/charts' },  { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
@@ -465,6 +466,7 @@ export default defineConfig({
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Margin analytics', link: '/margin-analytics' },
         { text: 'Evertrue pages', link: '/evertrue' },
+        { text: 'Relay control room', link: '/relay' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Pace fitness', link: '/pace' },
         { text: 'Orange analytics', link: '/spark-analytics' },

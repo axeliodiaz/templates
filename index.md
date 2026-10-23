@@ -47,6 +47,9 @@ features:
   - title: Reusable graphs
     details: Topology and workflow components with editable nodes, events, slots and theme tokens.
     link: /graph-components
+  - title: Relay
+    details: Dark graphite control room for agents and MCP servers, Bootstrap 6, live graph and sample approvals.
+    link: /relay
   - title: Folio
     details: Charcoal finance system, mint actions, component states and cash-flow patterns.
     link: /folio

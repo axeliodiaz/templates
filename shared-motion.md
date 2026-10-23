@@ -1,7 +1,10 @@
 # Motion coverage
 
-All five languages use a shared motion layer. Existing language-specific chart,
-receipt, loader and demo animations stay in place.
+The language guides use a shared motion layer. Existing language-specific chart,
+receipt, loader and demo animations stay in place. Relay's control room adds
+graph-edge flow, sparkline draws, feed arrivals, and approval exits on top of
+this layer. Those loops and transitions stop when `prefers-reduced-motion` is
+`reduce`, and the tool-call count appears at its final value.
 
 - Visible headings, content blocks, component previews, cards, tables and charts
   receive a short entry fade. Content is never hidden while waiting for JavaScript.
