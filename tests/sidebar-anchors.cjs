@@ -1,7 +1,7 @@
 // Static guard: every internal sidebar/nav link in .vitepress/config.mts must
 // resolve to a real page, and its #anchor must exist on that page.
 // Anchors come from markdown headings (default slug or explicit {#id}),
-// inline id="..." attributes, literal id:'...' in page scripts (Vue-rendered
+// inline <span id="...">, literal id:'...' in page scripts (Vue-rendered
 // headings) and id="..." attributes in public/*.html. Pure Node, no deps.
 const fs = require('fs')
 const path = require('path')
@@ -36,7 +36,7 @@ function anchorsOf(md) {
       if (ex) heads.add(ex[1].toLowerCase())
       heads.add(slug(t.replace(/\{[^}]*\}\s*$/, '')))
     }
-    for (const m of line.matchAll(/\bid="([^"]+)"/g)) heads.add(m[1].toLowerCase())
+    for (const m of line.matchAll(/<span\s+id="([^"]+)"/g)) heads.add(m[1].toLowerCase())
     for (const m of line.matchAll(/\bid:\s*'([^']+)'/g)) heads.add(m[1].toLowerCase())
     for (const m of line.matchAll(/\bid:\s*"([^"]+)"/g)) heads.add(m[1].toLowerCase())
   }

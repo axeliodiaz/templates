@@ -60,6 +60,15 @@
   background: var(--bst-bg);
 }
 
+/* The generated Bootstrap 6 @scope sheet defines --bs-fg-body on :scope; its
+   scoped rule wins ties over single-class .bst-root overrides (scoping
+   proximity), leaving table text (status labels, replica counts) on the
+   light-scheme gray. Doubling the class wins the tie so Bastion ink applies. */
+.bst-root.bst-root {
+  --bs-fg-body: var(--bst-ink);
+  --bs-table-color: var(--bst-ink);
+}
+
 .bst {
   position: relative;
   isolation: isolate;
@@ -269,7 +278,7 @@
 .bst-table td { padding: 8px 8px 8px 0; vertical-align: middle; border-bottom: 1px solid rgba(28, 90, 50, 0.35); }
 .bst-table th:last-child, .bst-table td:last-child { padding-right: 0; text-align: right; }
 .bst-svc { color: var(--bst-green); font-weight: 600; }
-.bst-status { display: inline-flex; align-items: center; gap: 6px; letter-spacing: 0.06em; font-size: 11px; }
+.bst-status { display: inline-flex; align-items: center; gap: 6px; letter-spacing: 0.06em; font-size: 11px; color: var(--bst-green); }
 .bst-meter-wrap { display: flex; align-items: center; gap: 8px; min-width: 88px; }
 .bst .progress.bst-meter {
   flex: 1;
