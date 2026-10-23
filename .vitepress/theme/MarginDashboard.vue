@@ -142,7 +142,7 @@ const rangePath = computed(() => {
   const upper = [36.3, 36.6, 37.0]
   const lower = [34.1, 33.4, 32.6]
   return upper.map((v, i) => (i ? 'L' : 'M') + chartX(i + 6) + ' ' + chartY(v)).join(' ')
-    + ' ' + lower.map((v, i) => 'L' + chartX(2 - i + 6) + ' ' + chartY(v)).join(' ') + ' Z'
+    + ' ' + lower.slice().reverse().map((v, i) => 'L' + chartX(2 - i + 6) + ' ' + chartY(v)).join(' ') + ' Z'
 })
 const changesPts = computed(() => [35.2 + gainedPts.value, 35.4 + gainedPts.value * 1.1, 36.0 + gainedPts.value * 1.2])
 
