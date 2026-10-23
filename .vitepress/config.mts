@@ -464,6 +464,7 @@ export default defineConfig({
         { text: 'Lustro (Bootstrap 6 alpha)', link: '/lustro-template/index.html' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
         { text: 'Margin analytics', link: '/margin-analytics' },
+        { text: 'Evertrue pages', link: '/evertrue' },
         { text: 'Folio finance', link: '/folio' },
         { text: 'Pace fitness', link: '/pace' },
         { text: 'Orange analytics', link: '/spark-analytics' },
