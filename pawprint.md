@@ -38,7 +38,7 @@ Chart series, in order: blue `#2F6DB5`, yellow `#F2B84B`, sage `#6FA287`, deep h
 3. Never use red/green alone. Pair color with a label, icon or position.
 4. Radius scale: 12px inputs, 16px cards, 999px for buttons and chips. Rounded shapes read as soft and safe.
 5. Coral is for affection and urgent owner actions, always with text. Overdue vaccine: coral dot plus the word "Overdue".
-6. Motion is built in: gentle lift on cards, a paw wag on hover, charts that draw in. All of it stops under reduced motion.
+6. Motion is built in: a 10px rise, a gentle card lift, a paw wag on hover, and charts that draw in. Buttons scale to 104% on hover and 97% on press. All of it stops under reduced motion. See [Motion](/pawprint/motion).
 7. Dark mode is navy, not black, with the same hues lightened. Toggle in the bottom-right corner.
 
 Next: [components](/pawprint/components), [charts](/pawprint/charts), [pricing example](/pawprint/pricing), [pet dashboard](/pawprint/dashboard), [motion](/pawprint/motion).

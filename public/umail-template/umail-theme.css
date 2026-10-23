@@ -112,3 +112,22 @@
 }
 .nav-pills .nav-link.active { background-image: none; }
 .um-detail .card-header { flex-direction: row; align-items: center; justify-content: space-between; text-align: start; }
+@media (prefers-reduced-motion: no-preference) {
+  body:has(.umail-navbar) :is(.btn, .btn-solid, .btn-outline, summary) {
+    transition: translate 180ms ease-out, background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+  body:has(.umail-navbar) :is(.btn, .btn-solid, .btn-outline, summary):not(:disabled):hover { translate: 0 -1px; }
+  body:has(.umail-navbar) :is(.btn, .btn-solid, .btn-outline, summary):not(:disabled):active { translate: 0 1px; }
+  body:has(.umail-navbar) .card { animation: um-rise 280ms ease-out backwards; }
+}
+@keyframes um-rise { from { opacity: .55; translate: 0 6px; } to { opacity: 1; translate: none; } }
+@media (prefers-reduced-motion: reduce) {
+  body:has(.umail-navbar) *,
+  body:has(.umail-navbar) *::before,
+  body:has(.umail-navbar) *::after {
+    animation: none !important;
+    transition: none !important;
+    translate: none !important;
+    scroll-behavior: auto !important;
+  }
+}

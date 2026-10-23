@@ -15,10 +15,14 @@ const css = fs.readFileSync(src, 'utf8')
 const result = await postcss([
   prefixSelector({
     prefix: '.sc-bs6-root',
-    exclude: [/^html/, /^:root/, /^@/],
+    exclude: [/^@/],
     transform(prefix, selector, prefixed) {
       if (selector.startsWith('@')) return selector
-      if (selector === ':root' || selector === 'html') return `${prefix}`
+      // Bootstrap sets tokens on :root and :host. Keep them inside the catalog root
+      // so they do not inherit onto the VitePress shell (.VPNav).
+      if (selector === ':root' || selector === 'html') return prefix
+      if (selector.startsWith(':root')) return selector.replace(':root', prefix)
+      if (selector.startsWith('html')) return selector.replace(/^html/, prefix)
       return prefixed
     },
   }),
