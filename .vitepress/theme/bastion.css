@@ -21,10 +21,6 @@
   --bs-body-font-size: 12px;
   --bs-body-color: var(--bst-ink);
   --bs-body-bg: var(--bst-bg);
-  /* Bootstrap 6 alpha defaults --bs-fg-body to a light-scheme gray; pin table/body
-     foregrounds to Bastion ink so status text and replica counts stay readable. */
-  --bs-fg-body: var(--bst-ink);
-  --bs-table-color: var(--bst-ink);
   --bs-heading-color: var(--bst-green);
   --bs-border-color: var(--bst-line);
   --bs-primary-base: var(--bst-green);
@@ -62,6 +58,15 @@
   font-family: var(--bst-font);
   color: var(--bst-ink);
   background: var(--bst-bg);
+}
+
+/* The generated Bootstrap 6 @scope sheet defines --bs-fg-body on :scope; its
+   scoped rule wins ties over single-class .bst-root overrides (scoping
+   proximity), leaving table text (status labels, replica counts) on the
+   light-scheme gray. Doubling the class wins the tie so Bastion ink applies. */
+.bst-root.bst-root {
+  --bs-fg-body: var(--bst-ink);
+  --bs-table-color: var(--bst-ink);
 }
 
 .bst {
