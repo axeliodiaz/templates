@@ -81,6 +81,7 @@ function nudge(e: KeyboardEvent, n: N) {
   const k: Record<string, [number, number]> = { ArrowLeft: [-10, 0], ArrowRight: [10, 0], ArrowUp: [0, -10], ArrowDown: [0, 10] }
   if (k[e.key]) { e.preventDefault(); const b = snap(); n.x = Math.max(0, Math.min(W - NW, n.x + k[e.key][0])); n.y = Math.max(0, Math.min(H - height(n), n.y + k[e.key][1])); commit(b, 'Auto-saved draft') }
   else if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); remove(n.id) }
+  else if (e.key === 'Escape') { sel.value = null }
 }
 const library: { group: string; items: { kind: Kind; title: string; sub: string; key: string }[] }[] = [
   { group: 'Logic', items: [{ kind: 'branch', title: 'Branch', sub: 'Route by a condition', key: 'B' }, { kind: 'action', title: 'Wait', sub: 'Pause for a set time', key: 'W' }] },
@@ -110,7 +111,7 @@ const out = (id: string) => edges.value.filter(e => e.from === id).length
     <div ref="wrap" class="nf-canvas" :style="{ height: H * scale + 'px' }" @click.self="sel = null">
       <div class="nf-stage" :style="{ width: W + 'px', height: H + 'px', transform: `scale(${scale})` }" @click.self="sel = null">
         <svg :width="W" :height="H" class="nf-edges" aria-hidden="true"><path v-for="p in paths" :key="p.key" :d="p.d" :class="{ on: p.on, running: p.running }" /></svg>
-        <div v-for="n in nodes" :key="n.id" class="nf-node" :class="[`k-${n.kind}`, { sel: sel === n.id, executing: current === n.id, completed: completed.includes(n.id) }]" :style="{ left: n.x + 'px', top: n.y + 'px', width: NW + 'px' }" tabindex="0" role="button" :aria-pressed="sel === n.id" :aria-label="`${label[n.kind]}: ${n.title}. Arrow keys move it, Delete removes it.`" @pointerdown="down($event, n)" @pointermove="move" @pointerup="up" @pointercancel="up" @keydown="nudge($event, n)">
+        <div v-for="n in nodes" :key="n.id" class="nf-node" :class="[`k-${n.kind}`, { sel: sel === n.id, executing: current === n.id, completed: completed.includes(n.id) }]" :style="{ left: n.x + 'px', top: n.y + 'px', width: NW + 'px' }" tabindex="0" role="button" :aria-pressed="sel === n.id" :aria-label="`${label[n.kind]}: ${n.title}. Arrow keys move it, Delete removes it, Escape clears selection.`" @pointerdown="down($event, n)" @pointermove="move" @pointerup="up" @pointercancel="up" @keydown="nudge($event, n)">
           <span class="nf-kind">{{ label[n.kind] }}</span><b>{{ n.title }}</b><small>{{ n.sub }}</small>
           <div v-if="n.rows" class="nf-rows"><span v-for="r in n.rows" :key="r">{{ r }}<i></i></span></div>
           <span v-else class="nf-out">{{ out(n.id) }} output{{ out(n.id) === 1 ? '' : 's' }}</span>
