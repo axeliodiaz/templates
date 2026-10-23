@@ -22,6 +22,10 @@ DM Sans for text and headings, system monospace for technical identifiers. Title
 
 4px base grid. Gaps 8/12/16/24px; card padding 18–24px. 8px default card radius, 6px controls, 999px avatar and switches. Borders are 1px; shadows are reserved for overlays. Avoid glow and decorative gradients.
 
+## Motion
+
+Spark enters from the side: 14px on the horizontal axis, 280ms. Hover does not lift. It shifts the card 2px and turns the border orange. Tab and carousel changes slide sideways instead of rising. Reduced motion shows the final frame immediately. Tokens are set on `html[data-tpl="spark"]` (`--m-axis: x`).
+
 ## Accessibility
 
 Primary button text uses dark ink on the light brand accent. Keyboard focus has a 2px accent outline plus 3px offset. Inputs have associated labels; errors have visible text. Charts have readable captions and SVG labels. Disabled controls do not become invisible. All movement stops with `prefers-reduced-motion`.

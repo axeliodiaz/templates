@@ -108,6 +108,10 @@ Series order for charts and sparklines: indigo `#6366f1`, pink `#ec4899`, cyan `
 
 Reference overlays stay on that same scale and off the brand gradient: a **dashed cyan** `#22d3ee` line for the arithmetic mean, and a **solid indigo-soft** `#818cf8` stroke for an ordinary-least-squares linear trend. Name both in the legend. Average is a horizontal reference; trend is a fitted line across ordered categories, not a smoothed path through every point. See [Graphs](/graphs#charts-overlay).
 
+## Motion {#motion}
+
+Motion is part of the glass, not a separate demo. Surfaces rise 12px as they enter (280ms, ease-out). Buttons lift 2px, press down 1px, and the primary action picks up a soft indigo glow. Dialogs, menus, toasts and disclosures fade and move a few pixels. Charts keep their own draw-in. With `prefers-reduced-motion: reduce`, nothing moves and every state stays visible. Tokens live on `html.tpl-lu` as `--m-rise`, `--m-ease`, `--m-hover`, `--m-press` and `--m-glow`.
+
 ## Rules of thumb
 
 1. Dark canvas always; Lustro has no light mode.

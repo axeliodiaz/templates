@@ -25,6 +25,10 @@ Rules: keep one color per model in both themes, never use pure black or pure whi
 
 <div class="lmn"><div class="lmn-card"><div style="font-size:26px;font-weight:600;color:#17171a">Welcome back, Alex</div><div class="lmn-sub">Page title - Plus Jakarta Sans 600, 22 to 26 px</div><hr style="border:0;border-top:1px solid #f0f0f1;margin:10px 0"><div style="font-size:28px;font-weight:600">$2,484.00</div><div class="lmn-sub">Big number - 600, 26 to 28 px, tabular digits</div><hr style="border:0;border-top:1px solid #f0f0f1;margin:10px 0"><b style="font-size:15px">Cost over time</b><div class="lmn-sub">Card title - 600, 15 px. Body 13 px, secondary text muted.</div></div></div>
 
+## Motion
+
+Lumen stays quiet. Entrances rise 6px in 280ms. Hover is a 1px lift and press is 1px, with no glow. Model colors do not animate on their own; only the surface and the control do. Spinners are the only loop. Reduced motion leaves every figure in its final state. Tokens sit on `html.tpl-lmn`.
+
 ## Rules
 
 1. One color per model, the same in charts, legends, rows and tooltips.

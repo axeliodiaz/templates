@@ -24,3 +24,7 @@ Version 1.0.0 Alpha. This guide is the Markdown build reference for the live sys
 3. One electric accent per view. If the primary button is turquoise, nearby emphasis is lime or flat slate, not a second glow.
 4. Status stays semantic: success, warning, error, and info never borrow turquoise or lime.
 5. Selection and focus use turquoise at low opacity (`#2bf2f14d` selection, 6px focus ring), not a border color change alone.
+
+## Motion
+
+Felix motion is short and warm. Surfaces rise 6px over 280ms with a linen shadow and no bounce. Hover lifts 2px; press settles 1px. Disabled controls stay put. Loaders may loop; everything else runs once. Reduced motion cancels the movement and leaves the final state on screen. The tokens are `--m-rise`, `--m-ease`, `--m-hover` and `--m-glow` on `html.felix`.
