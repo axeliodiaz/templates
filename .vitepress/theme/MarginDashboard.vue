@@ -129,14 +129,20 @@ const gapAfter = computed(() => Math.max(0, 51 - gainedMoney.value).toFixed(1))
 
 const months = ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 const actualSeries = [32.8, 34.2, 34.9, 34.3, 33.9, 33.6]
-const currentPath = [34.8, 35.4, 36.0]
+const currentPath = [35.2, 35.6, 36.0]
 const chartX = (i: number) => 46 + i * 52
 const chartY = (v: number) => 170 - (v - 29) * 14
 const actualPath = computed(() => actualSeries.map((v, i) => (i ? 'L' : 'M') + chartX(i) + ' ' + chartY(v)).join(' '))
-const currentPathD = computed(() => currentPath.map((v, i) => (i ? 'L' : 'M') + chartX(i + 5) + ' ' + chartY(v)).join(' '))
+const currentPathD = computed(() => 'M' + chartX(5) + ' ' + chartY(actualSeries[5]) + ' ' + currentPath.map((v, i) => 'L' + chartX(i + 6) + ' ' + chartY(v)).join(' '))
 const changesPath = computed(() => {
   const vals = [35.2 + gainedPts.value, 35.4 + gainedPts.value * 1.1, 36.0 + gainedPts.value * 1.2]
-  return vals.map((v, i) => (i ? 'L' : 'M') + chartX(i + 5) + ' ' + chartY(v)).join(' ')
+  return 'M' + chartX(5) + ' ' + chartY(actualSeries[5]) + ' ' + vals.map((v, i) => 'L' + chartX(i + 6) + ' ' + chartY(v)).join(' ')
+})
+const rangePath = computed(() => {
+  const upper = [36.3, 36.6, 37.0]
+  const lower = [34.1, 33.4, 32.6]
+  return upper.map((v, i) => (i ? 'L' : 'M') + chartX(i + 6) + ' ' + chartY(v)).join(' ')
+    + ' ' + lower.map((v, i) => 'L' + chartX(2 - i + 6) + ' ' + chartY(v)).join(' ') + ' Z'
 })
 const changesPts = computed(() => [35.2 + gainedPts.value, 35.4 + gainedPts.value * 1.1, 36.0 + gainedPts.value * 1.2])
 
@@ -425,16 +431,16 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
         </div>
         <svg class="mg-fc-chart" viewBox="0 0 520 200" role="img" :aria-label="`Margin actual through September at 33.6%, current path to 36% in December, with your changes to ${changesPts[2].toFixed(1)}%`">
           <g class="grid"><path d="M40 30 H505 M40 72 H505 M40 114 H505 M40 156 H505"/></g>
-          <g class="ylabels"><text x="8" y="34">40%</text><text x="8" y="76">38%</text><text x="8" y="118">34%</text><text x="8" y="160">30%</text></g>
-          <path class="range" d="M306 60 L358 52 L410 46 L410 100 L358 108 L306 116 Z"/>
+          <g class="ylabels"><text x="8" y="34">39%</text><text x="8" y="76">36%</text><text x="8" y="118">33%</text><text x="8" y="160">30%</text></g>
+          <path class="range" :d="rangePath"/>
           <path class="line-b" :d="actualPath"/>
           <path class="line-b dash" :d="currentPathD"/>
           <path class="line-g" :d="changesPath"/>
           <g class="pts-b"><circle v-for="(v,i) in actualSeries" :key="'a'+i" :cx="chartX(i)" :cy="chartY(v)" r="3.5"/></g>
-          <g class="pts-open"><circle v-for="(v,i) in currentPath" :key="'c'+i" :cx="chartX(i+5)" :cy="chartY(v)" r="3.5"/></g>
-          <g class="pts-g"><circle v-for="(v,i) in changesPts" :key="'g'+i" :cx="chartX(i+5)" :cy="chartY(v)" r="3.5"/></g>
+          <g class="pts-open"><circle v-for="(v,i) in currentPath" :key="'c'+i" :cx="chartX(i+6)" :cy="chartY(v)" r="3.5"/></g>
+          <g class="pts-g"><circle v-for="(v,i) in changesPts" :key="'g'+i" :cx="chartX(i+6)" :cy="chartY(v)" r="3.5"/></g>
           <g class="xlabels"><text v-for="(m,i) in months" :key="m" :x="chartX(i)" y="190">{{ m }}</text></g>
-          <g class="mg-fc-tip"><rect x="270" y="26" width="180" height="30" rx="6"/><text x="282" y="45">October <tspan class="tb">35.2%</tspan> on the current path · <tspan class="tg">{{ withChanges }}%</tspan> with changes</text></g>
+          <g class="mg-fc-tip"><rect x="50" y="26" width="206" height="26" rx="6"/><text x="60" y="43">Oct <tspan class="tb">35.2%</tspan> current path · <tspan class="tg">{{ withChanges }}%</tspan> with changes</text></g>
         </svg>
       </article>
       <div class="mg-scenarios">
