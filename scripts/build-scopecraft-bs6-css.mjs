@@ -18,11 +18,11 @@ const result = await postcss([
     exclude: [/^@/],
     transform(prefix, selector, prefixed) {
       if (selector.startsWith('@')) return selector
-      // Bootstrap sets tokens on :root and :host. Keep them inside the catalog root
-      // so they do not inherit onto the VitePress shell (.VPNav).
+      // Token blocks use a bare :root / html. Those must live on .sc-bs6-root or
+      // they inherit onto the VitePress shell. :root.dialog-open and :root:dir()
+      // stay on the document element, which is where Bootstrap toggles them.
       if (selector === ':root' || selector === 'html') return prefix
-      if (selector.startsWith(':root')) return selector.replace(':root', prefix)
-      if (selector.startsWith('html')) return selector.replace(/^html/, prefix)
+      if (selector.startsWith(':root') || selector.startsWith('html')) return selector
       return prefixed
     },
   }),
