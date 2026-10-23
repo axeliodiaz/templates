@@ -2,6 +2,9 @@ import { h, nextTick, watchEffect } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { inBrowser, useRoute } from 'vitepress'
 import './batch2-bs6.bootstrap.css'
+import './bastion-bs6.bootstrap.css'
+import './relay-bs6.bootstrap.css'
+import './bastion.css'
 import './custom.css'
 import './mail-buttons.css'
 import './felix-dark.css'
@@ -39,6 +42,7 @@ import './tpl-themes.css'
 import './pawprint.css'
 import './pace-system.css'
 import './batch2-bs6.css'
+import './relay.css'
 import { mountFelixDemos } from './felix-demos'
 import { mountCartMotion } from './cartmotion'
 import { mountLumenMotion } from './lumenmotion'
@@ -280,6 +284,7 @@ export default {
         document.documentElement.classList.toggle('tpl-sc', m('/scopecraft'))
         document.documentElement.classList.toggle('tpl-lmn', m('/lumen'))
         document.documentElement.classList.toggle('tpl-pp', m('/pawprint'))
+        document.documentElement.classList.toggle('relay-dash', p === '/relay/overview' || p === '/relay/overview.html')
         nextTick(() => setTimeout(mountBsxLive, 80))
         nextTick(() => setTimeout(() => mountTplLive(route.path), 80))
         if (route.path.endsWith('/cart-summary') || route.path.endsWith('/lustro')) nextTick(() => setTimeout(mountCartMotion, 50))

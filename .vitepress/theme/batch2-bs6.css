@@ -51,5 +51,6 @@
 .b2-bs6:is(.b2-pace,.b2-cargo) progress::-webkit-progress-value {background:var(--accent);border-radius:8px}
 .b2-bs6:is(.b2-pace,.b2-cargo) :is(h1,h2,h3,h4,strong) {-webkit-text-fill-color:var(--ink)!important;background-image:none}
 
+.b2-bs6.studio-relay{color-scheme:dark}
 .b2-bs6.studio-pace{color-scheme:light}
 html.tpl-dark .b2-bs6.studio-pace{color-scheme:dark}
