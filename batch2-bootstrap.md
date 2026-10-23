@@ -16,3 +16,7 @@ Folio, Spark, Fixtrack, Crestway, Margin, Sentinel, Brief, Pace and Cargo now re
 ## Browser requirement
 
 Native CSS scope is required for this integration. Check your target browser's support before adopting the alpha. Bootstrap is bundled locally, so runtime previews do not depend on a CDN. Bootstrap's MIT license remains in the generated file and package.
+
+## Bastion
+
+Bastion does not use `.b2-bs6`. It generates a separate `@scope (.bst-root)` from the same pinned `bootstrap@6.0.0-alpha.1`, so the terminal skin cannot restyle this batch or the VitePress shell. See [Bastion usage](/bastion/usage).

@@ -6,4 +6,5 @@ node_modules
 
 # Generated from pinned Bootstrap at build/dev time
 .vitepress/theme/batch2-bs6.bootstrap.css
+.vitepress/theme/bastion-bs6.bootstrap.css
 test-results/
