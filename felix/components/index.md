@@ -136,6 +136,7 @@ Same catalog as the Felix design system: atoms, molecules, organisms. Import fro
 - [Dependent task cards](/felix/components/charts#dependent-task-cards)
 - [Process graph](/felix/components/charts#process-graph)
 - [Animated Mermaid](/felix/components/charts#animated-mermaid)
+- [Decision tree](/felix/decision-tree) — queued agent choices, curved links, keyboard commit
 - [Conversion funnel (Sankey)](/felix/components/charts#conversion-funnel-sankey)
 
 ## Organisms

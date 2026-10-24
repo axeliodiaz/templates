@@ -12,6 +12,7 @@
     "test:newrelic": "node --test tests/newrelic-browser.cjs",
     "test:pulsefit-bs6": "node tests/pulsefit-bs6.cjs",
     "test:felix-bootstrap": "node tests/felix-bootstrap.cjs",
+    "test:decision-tree": "node tests/decision-tree.cjs",
     "build:batch2-bs6": "node scripts/build-batch2-bs6.mjs",
     "build:bastion-bs6": "node scripts/build-bastion-bs6.mjs",
     "test:bastion": "node tests/bastion.cjs",

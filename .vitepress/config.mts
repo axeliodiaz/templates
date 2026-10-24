@@ -162,6 +162,7 @@ export default defineConfig({
             { text: 'Projects', link: '/felix/projects' },
             { text: 'Dependencies', link: '/felix/dependencies' },
             { text: 'Node flow', link: '/felix/node-flow' },
+            { text: 'Decision tree', link: '/felix/decision-tree' },
             { text: 'Finance', link: '/felix/finance' },
             { text: 'Reports', link: '/felix/reports' },
             { text: 'Shipping', link: '/felix/shipping' },
