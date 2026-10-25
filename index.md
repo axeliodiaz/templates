@@ -29,6 +29,9 @@ features:
   - title: Margin
     details: Job economics, estimate versus actual costs, profit bridge and work timeline.
     link: /margin
+  - title: Evertrue
+    details: Self-updating pages terminal - ticking counters, refreshing page cards and KPI panels with struck-through was-lines.
+    link: /evertrue
   - title: Sentinel
     details: Agent security dashboard, request charts, local review and credential states.
     link: /agent-security
