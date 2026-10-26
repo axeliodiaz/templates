@@ -183,7 +183,15 @@ Use a modal for a decision that cannot be made inline. In a production app, use 
 
 Tooltips add brief context, never required instructions.
 
-<div class="l-demo l-actions"><button class="l-btn l-secondary" title="Contexto de esta acción">Pasa el cursor para ver ayuda</button></div>
+<div class="l-demo l-actions"><span class="lu-tip-wrap"><button class="l-btn l-secondary" aria-describedby="lu-tip-demo">Pasa el cursor para ver ayuda</button><span id="lu-tip-demo" role="tooltip" class="lu-tip">Contexto de esta acción</span></span></div>
+
+<style>
+.lu-tip-wrap{position:relative;display:inline-flex}
+.lu-tip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translate(-50%,4px);background:#1b1b26;color:#f2f2f8;border:1px solid rgba(255,255,255,.14);padding:6px 10px;border-radius:8px;font-size:12px;line-height:1.3;white-space:nowrap;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility .18s}
+.lu-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1b1b26}
+.lu-tip-wrap:hover .lu-tip,.lu-tip-wrap:focus-within .lu-tip{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media (prefers-reduced-motion: reduce){.lu-tip{transition:none;transform:translate(-50%,0)}}
+</style>
 
 ### Popovers {#popovers}
 
