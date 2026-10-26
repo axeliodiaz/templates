@@ -2,7 +2,7 @@
 // Template gallery for the home page: one card per template with a real
 // thumbnail. Cards rise in with the motion library (skipped under
 // prefers-reduced-motion); hover/focus zoom is CSS-only and also motion-safe.
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { animate, stagger } from 'motion'
 
 const cards = [
@@ -28,12 +28,14 @@ const cards = [
 ]
 
 const root = ref(null)
+let entrance
+onUnmounted(() => entrance?.stop())
 
 onMounted(() => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
   const els = root.value?.querySelectorAll('.tg-card')
   if (els && els.length) {
-    animate(els, { opacity: [0, 1], y: [14, 0] }, { delay: stagger(0.045), duration: 0.45, easing: 'ease-out' })
+    entrance = animate(els, { opacity: [0, 1], y: [14, 0] }, { delay: stagger(0.045), duration: 0.45, easing: 'ease-out' })
   }
 })
 </script>
