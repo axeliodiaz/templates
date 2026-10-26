@@ -38,7 +38,7 @@ A standalone original agent security template. Responsive, local interactive sta
 - Original code and fictitious data. Pattern credit: [Jubayer](https://x.com/jubayer6910/status/2108095623698473205). No source images, brands or code copied.
 
 <style scoped>
-.lab{--bg:#f5f5f7;--surface:#fff;--ink:#22252b;--muted:#676e7b;--line:#e0e3e9;--soft:#eceef5;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:16px;overflow:hidden;font:13px/1.5 system-ui,sans-serif;margin:25px 0}
+.lab{--bg:#f5f5f7;--surface:#fff;--ink:#22252b;--muted:#545b68;--line:#e0e3e9;--soft:#eceef5;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:16px;overflow:hidden;font:13px/1.5 system-ui,sans-serif;margin:25px 0}
 .lab-dark{--bg:#181b22;--surface:#242833;--ink:#f1f3f8;--muted:#aab3c3;--line:#404757;--soft:#303747}
 .lab *{box-sizing:border-box}
 .lab :is(h2,h3,p){color:inherit;border:0;padding:0;margin:0 0 12px}
@@ -62,7 +62,7 @@ A standalone original agent security template. Responsive, local interactive sta
 .lab-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px;min-width:0}
 .lab-card footer{display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);margin-top:20px;padding-top:15px;font-size:11px}
 .lab-legend{font-size:10px;color:var(--muted);margin:15px 0!important}
-.lab-legend span{color:#367cde;margin-left:10px}
+.lab-legend span{color:#1e4eaa;margin-left:10px}
 .lab-legend b{color:#c44186;margin-left:10px}
 .lab-cost{display:grid;grid-template-columns:1fr 1.1fr;gap:8px 12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}
 .lab-cost>small{grid-column:2}

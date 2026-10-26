@@ -1,5 +1,5 @@
 /* Evertrue: source-inspired "self-updating pages" terminal demo (cream + ink, mono micro-labels). No external assets. */
-.evertrue{--et-cream:#f4f3ee;--et-panel:#fff;--et-ink:#141412;--et-mut:#6f6e68;--et-faint:#a3a29a;--et-line:#e3e2dc;--et-tile:#e9e8e2;--et-bar:#d9d8d1;--et-radius:14px;font:12px/1.5 'DM Sans',Arial,sans-serif;background:radial-gradient(circle,#d8d7d0 1.1px,transparent 1.2px) 0 0/14px 14px,var(--et-cream);color:var(--et-ink);border:1px solid var(--et-line);border-radius:22px;margin:24px 0;padding:22px;box-shadow:0 18px 50px #1414120f;text-align:left}
+.evertrue{--et-cream:#f4f3ee;--et-panel:#fff;--et-ink:#141412;--et-mut:#6f6e68;--et-faint:#706f68;--et-line:#e3e2dc;--et-tile:#e9e8e2;--et-bar:#d9d8d1;--et-radius:14px;font:12px/1.5 'DM Sans',Arial,sans-serif;background:radial-gradient(circle,#d8d7d0 1.1px,transparent 1.2px) 0 0/14px 14px,var(--et-cream);color:var(--et-ink);border:1px solid var(--et-line);border-radius:22px;margin:24px 0;padding:22px;box-shadow:0 18px 50px #1414120f;text-align:left}
 .evertrue *{box-sizing:border-box}.evertrue h2,.evertrue h3,.evertrue p{margin:0;border:0;padding:0;color:inherit}.evertrue button{font:inherit;color:inherit;cursor:pointer}.evertrue :focus-visible{outline:3px solid var(--et-ink);outline-offset:2px;border-radius:6px}
 .et-window{background:var(--et-panel);border:1px solid var(--et-line);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px #1414120a;container-type:inline-size}
 /* Chrome */
@@ -88,7 +88,7 @@
 .et-bar-empty{background:transparent}
 .et-bar-labels{display:flex;gap:6px;padding:6px 2px 0}
 .et-bar-labels span{flex:1;text-align:center;font:400 8.5px 'JetBrains Mono',monospace;color:var(--et-mut)}
-.et-bar-labels .et-bar-empty{color:var(--et-faint);opacity:.55}
+.et-bar-labels .et-bar-empty{color:var(--et-faint)}
 /* List visual */
 .et-list{margin-top:14px;display:flex;flex-direction:column}
 .et-list-row{display:grid;grid-template-columns:150px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--et-line)}

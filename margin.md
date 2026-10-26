@@ -62,7 +62,7 @@ A standalone original job economics template. Responsive, local interactive stat
 .lab-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px;min-width:0}
 .lab-card footer{display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);margin-top:20px;padding-top:15px;font-size:11px}
 .lab-legend{font-size:10px;color:var(--muted);margin:15px 0!important}
-.lab-legend span{color:#367cde;margin-left:10px}
+.lab-legend span{color:#1e4eaa;margin-left:10px}
 .lab-legend b{color:#c44186;margin-left:10px}
 .lab-cost{display:grid;grid-template-columns:1fr 1.1fr;gap:8px 12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}
 .lab-cost>small{grid-column:2}

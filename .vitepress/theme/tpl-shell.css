@@ -82,3 +82,17 @@ html[data-tpl] .tpl-theme-toggle {
   box-shadow: 0 2px 10px rgb(0 0 0 / .15);
 }
 html[data-tpl] .tpl-theme-toggle:hover { border-color: var(--tpl-accent); color: var(--tpl-accent); }
+
+/* "On this page" sits on the dark navbar. VitePress paints it with body text (--vp-c-text-2), which is the light-page ink. */
+html[data-tpl] .VPLocalNavOutlineDropdown button {
+  color: var(--tpl-nav-muted);
+}
+html[data-tpl] .VPLocalNavOutlineDropdown button:hover,
+html[data-tpl] .VPLocalNavOutlineDropdown button.open {
+  color: var(--tpl-nav-text);
+}
+
+/* The site is force-dark, so Shiki emits --shiki-dark (light ink). Light template pages use a light code surface. */
+html.dark[data-tpl]:not(.tpl-dark) .vp-code span {
+  color: var(--shiki-light, inherit);
+}
