@@ -17,7 +17,7 @@ Use an avatar ring in the pet's own accent, one status badge, and a lift on hove
 
 ## Buttons and badges
 
-<div class="pp"><div class="pp-card"><div class="pp-row"><span class="pp-btn"><span class="pp-paw">🐾</span> Book a visit</span><span class="pp-btn blue">Add pet</span><span class="pp-btn sage">Mark as done</span><span class="pp-btn out">Details</span><span class="pp-btn ghost">Cancel</span><span class="pp-btn" disabled>Disabled</span><span class="pp-btn sm">Small</span></div><div class="pp-row" style="margin-top:14px"><span class="pp-badge ok">✓ Vaccinated</span><span class="pp-badge info">ℹ Microchipped</span><span class="pp-badge warn">⏰ Due in 6 days</span><span class="pp-badge bad">! Overdue</span></div></div></div>
+<div class="pp"><div class="pp-card"><div class="pp-row"><span class="pp-btn"><span class="pp-paw">🐾</span> Book a visit</span><span class="pp-btn blue">Add pet</span><span class="pp-btn sage">Mark as done</span><span class="pp-btn out">Details</span><span class="pp-btn ghost">Cancel</span><span class="pp-btn" disabled>Disabled</span><span class="pp-btn sm">Small</span></div><div class="pp-row" style="margin-top:14px"><span class="pp-badge ok"><i class="fa-solid fa-check" aria-hidden="true"></i> Vaccinated</span><span class="pp-badge info"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Microchipped</span><span class="pp-badge warn"><i class="fa-solid fa-clock" aria-hidden="true"></i> Due in 6 days</span><span class="pp-badge bad"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Overdue</span></div></div></div>
 
 Primary is biscuit yellow with dark ink. Blue is for the main data action. Every status badge carries an icon or word, never color alone.
 
@@ -27,7 +27,7 @@ Primary is biscuit yellow with dark ink. Blue is for the main data action. Every
 
 ## Alerts
 
-<div class="pp"><div style="display:grid;gap:10px"><div class="pp-alert ok"><b>✓</b><div><b>Booster recorded.</b><br><small>Rabies, valid until 10 Oct 2027.</small></div></div><div class="pp-alert info"><b>ℹ</b><div><b>Weight is 8% above target.</b><br><small>Ask about portions at the next visit.</small></div></div><div class="pp-alert warn"><b>⏰</b><div><b>Flea treatment due in 6 days.</b></div></div><div class="pp-alert bad"><b>!</b><div><b>Checkup overdue by 3 weeks.</b><br><small>Book a visit to keep the care plan active.</small></div></div></div></div>
+<div class="pp"><div style="display:grid;gap:10px"><div class="pp-alert ok"><b><i class="fa-solid fa-check" aria-hidden="true"></i></b><div><b>Booster recorded.</b><br><small>Rabies, valid until 10 Oct 2027.</small></div></div><div class="pp-alert info"><b><i class="fa-solid fa-circle-info" aria-hidden="true"></i></b><div><b>Weight is 8% above target.</b><br><small>Ask about portions at the next visit.</small></div></div><div class="pp-alert warn"><b><i class="fa-solid fa-clock" aria-hidden="true"></i></b><div><b>Flea treatment due in 6 days.</b></div></div><div class="pp-alert bad"><b><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></b><div><b>Checkup overdue by 3 weeks.</b><br><small>Book a visit to keep the care plan active.</small></div></div></div></div>
 
 ## Navbar
 
