@@ -6,6 +6,7 @@ const route=useRoute(), panel=ref(null), trigger=ref(null), feedback=ref('')
 let animation,media,closing=false
 async function open(){feedback.value='';panel.value.showModal();await nextTick();if(!media?.matches)animation=animate(panel.value,{x:['100%','0%'],opacity:[.6,1]},{duration:.28,ease:'easeOut'})}
 async function close(){if(closing||!panel.value?.open)return;closing=true;animation?.stop();if(!media?.matches){animation=animate(panel.value,{x:['0%','100%'],opacity:[1,.6]},{duration:.18,ease:'easeIn'});await animation.finished}panel.value?.close();closing=false;trigger.value?.focus()}
+function trapFocus(e){if(e.key!=='Tab')return;const items=[...panel.value.querySelectorAll('button:not(:disabled),textarea:not(:disabled),input:not(:disabled),a[href],[tabindex="0"]')];const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}}
 function backdrop(e){if(e.target!==panel.value)return;const r=panel.value.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)close()}
 onMounted(()=>{media=matchMedia('(prefers-reduced-motion: reduce)')})
 onUnmounted(()=>{animation?.stop();panel.value?.close()})
@@ -15,7 +16,7 @@ onUnmounted(()=>{animation?.stop();panel.value?.close()})
 <h2 id="drawer-pattern-title">Lateral detail drawer</h2>
 <p>Open a detail panel without losing the page behind it. This shared pattern follows the current template's colors. Fictitious data; actions stay local.</p>
 <button ref="trigger" class="td-open" @click="open">Open detail drawer</button>
-<Teleport to="body"><dialog ref="panel" class="template-side-drawer" aria-labelledby="td-heading" @cancel.prevent="close" @click="backdrop">
+<Teleport to="body"><dialog ref="panel" class="template-side-drawer" aria-labelledby="td-heading" @cancel.prevent="close" @click="backdrop" @keydown="trapFocus">
 <header><span class="td-eyebrow">DETAIL PANEL · DEMO</span><button class="td-close" aria-label="Close detail drawer" @click="close">×</button></header>
 <h2 id="td-heading">Sample project review</h2><p class="td-subtitle">Keep your context while reviewing the details.</p>
 <div class="td-summary"><span class="td-status">Ready for review</span><dl><div><dt>Template route</dt><dd>{{route.path}}</dd></div><div><dt>Project</dt><dd>Riverside workspace (fictitious)</dd></div><div><dt>Owner</dt><dd>Morgan Lee (fictitious)</dd></div></dl></div>
