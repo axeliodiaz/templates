@@ -20,6 +20,7 @@
     "test:relay": "node tests/relay-dashboard.cjs"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.1",
     "mermaid": "^12.2.0",
     "playwright": "^1.64.1",
     "postcss": "^8.5.31",
