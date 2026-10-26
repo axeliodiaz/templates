@@ -307,6 +307,8 @@ async function drawMermaid() {
       startOnLoad: false,
       securityLevel: 'strict',
       suppressErrorRendering: true,
+      layout: 'dagre',
+      look: 'classic',
       theme: 'base',
       fontFamily: 'Saans, ui-sans-serif, system-ui, sans-serif',
       flowchart: { curve: 'basis', htmlLabels: false, padding: 12, nodeSpacing: 24, rankSpacing: 40 },
