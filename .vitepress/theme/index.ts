@@ -1,5 +1,6 @@
 import { h, nextTick, watchEffect } from 'vue'
 import DefaultTheme from 'vitepress/theme'
+import TemplateSideDrawer from './TemplateSideDrawer.vue'
 import { inBrowser, useRoute } from 'vitepress'
 import './batch2-bs6.bootstrap.css'
 import './bastion-bs6.bootstrap.css'
@@ -312,6 +313,6 @@ export default {
         nextTick(() => setTimeout(mountFxCharts, 150))
       })
     }
-    return h(DefaultTheme.Layout)
+    return h(DefaultTheme.Layout, null, { 'doc-after': () => h(TemplateSideDrawer, { key: route.path }) })
   }
 }
