@@ -17,7 +17,7 @@ onUnmounted(()=>{animation?.stop();panel.value?.close()})
 <p>Open a detail panel without losing the page behind it. This shared pattern follows the current template's colors. Fictitious data; actions stay local.</p>
 <button ref="trigger" class="td-open" @click="open">Open detail drawer</button>
 <Teleport to="body"><dialog ref="panel" class="template-side-drawer" aria-labelledby="td-heading" @cancel.prevent="close" @click="backdrop" @keydown="trapFocus">
-<header><span class="td-eyebrow">DETAIL PANEL · DEMO</span><button class="td-close" aria-label="Close detail drawer" @click="close">×</button></header>
+<header><span class="td-eyebrow">DETAIL PANEL · DEMO</span><button class="td-close" aria-label="Close detail drawer" @click="close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></header>
 <h2 id="td-heading">Sample project review</h2><p class="td-subtitle">Keep your context while reviewing the details.</p>
 <div class="td-summary"><span class="td-status">Ready for review</span><dl><div><dt>Template route</dt><dd>{{route.path}}</dd></div><div><dt>Project</dt><dd>Riverside workspace (fictitious)</dd></div><div><dt>Owner</dt><dd>Morgan Lee (fictitious)</dd></div></dl></div>
 <section><h3>Summary</h3><p>This is an original example. The underlying page stays visible while the panel holds the details. No account, payment or external service is connected.</p></section>
