@@ -29,6 +29,9 @@ features:
   - title: Margin
     details: Job economics, estimate versus actual costs, profit bridge and work timeline.
     link: /margin
+  - title: Evertrue
+    details: Self-updating pages terminal - ticking counters, refreshing page cards and KPI panels with struck-through was-lines.
+    link: /evertrue
   - title: Sentinel
     details: Agent security dashboard, request charts, local review and credential states.
     link: /agent-security
@@ -47,12 +50,18 @@ features:
   - title: Reusable graphs
     details: Topology and workflow components with editable nodes, events, slots and theme tokens.
     link: /graph-components
+  - title: Relay
+    details: Dark graphite control room for agents and MCP servers, Bootstrap 6, live graph and sample approvals.
+    link: /relay
   - title: Folio
     details: Charcoal finance system, mint actions, component states and cash-flow patterns.
     link: /folio
   - title: Spark
     details: Dark orange analytics system, pixel histograms, reporting components and live variants.
     link: /spark
+  - title: Bastion
+    details: Retro-terminal ops dashboard. Phosphor green and amber on a green-black grid, square panels, a live tail, and an ops agent.
+    link: /bastion
   - title: Lustro
     details: Dark glassmorphism, indigo-to-pink/cyan gradients, Space Grotesk / DM Sans / JetBrains Mono.
     link: /lustro

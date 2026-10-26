@@ -1,6 +1,6 @@
 # Template coverage
 
-Seven design systems: Lustro, Felix, PulseFit, Scopecraft, Lumen, Folio and Spark. Other dashboard examples remain examples, not separate design systems.
+Nine design systems: Lustro, Felix, PulseFit, Scopecraft, Lumen, Folio, Spark, Bastion, and Relay. Other dashboard examples remain examples, not separate design systems.
 
 | System | Core families | Extended variants | Default motion |
 | --- | --- | --- | --- |
@@ -11,6 +11,8 @@ Seven design systems: Lustro, Felix, PulseFit, Scopecraft, Lumen, Folio and Spar
 | Lumen | [43 live families](/lumen/components) | [Extended](/lumen/components-more) | Built in by default |
 | Folio | [Live core and extended catalog](/folio/components) | Same catalog | Built in by default |
 | Spark | [Live core and extended catalog](/spark/components) | Same catalog | Built in by default |
+| Bastion | [Terminal catalog](/bastion/components) | [Charts](/bastion/charts) and the [ops dashboard](/bastion/dashboard) | Built in by default. Bootstrap 6.0.0-alpha.1, scoped to `.bst-root` |
+| Relay | [Live core and extended catalog](/relay/components) | Same catalog | Built in by default. Bootstrap 6.0.0-alpha.1, scoped to `.relay-bs6` |
 
 Core coverage: buttons/groups, dropdowns, pagination, alerts, toasts, badges, progress, spinners, placeholders, cards, accordion, breadcrumb, tabs, lists, tables, forms, modal, tooltip, popover, carousel, close, collapse, navbar/footer, offcanvas, scrollspy, notifications, attachment/file, date picker, choice card, stepper, navigation menu, sidebar/footer, hover card, message, range, input group, validation, error/retry, empty state, select, checks/radio/switch, avatars.
 

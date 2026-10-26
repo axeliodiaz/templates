@@ -3,7 +3,7 @@ aside: false
 ---
 # Batch 2: Bootstrap 6
 
-Folio, Spark, Fixtrack, Crestway, Margin, Sentinel, Brief, Pace and Cargo now render their controls with pinned Bootstrap 6.0.0-alpha.1. This is an alpha API. All figures are fictitious and all actions stay local.
+Folio, Spark, Fixtrack, Crestway, Margin, Sentinel, Brief, Pace, Cargo, and the Relay catalog now render their controls with pinned Bootstrap 6.0.0-alpha.1 inside `@scope (.b2-bs6)`. The Relay control room uses a second generated file, `@scope (.relay-bs6)`, so its layout does not inherit catalog button density and does not style the VitePress shell or Scopecraft's Bootstrap 5 sheets. This is an alpha API. All figures are fictitious and all actions stay local.
 
 ## Integration
 
@@ -16,3 +16,7 @@ Folio, Spark, Fixtrack, Crestway, Margin, Sentinel, Brief, Pace and Cargo now re
 ## Browser requirement
 
 Native CSS scope is required for this integration. Check your target browser's support before adopting the alpha. Bootstrap is bundled locally, so runtime previews do not depend on a CDN. Bootstrap's MIT license remains in the generated file and package.
+
+## Bastion
+
+Bastion does not use `.b2-bs6`. It generates a separate `@scope (.bst-root)` from the same pinned `bootstrap@6.0.0-alpha.1`, so the terminal skin cannot restyle this batch or the VitePress shell. See [Bastion usage](/bastion/usage).
