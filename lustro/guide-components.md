@@ -79,14 +79,14 @@ A compact language switcher: a globe, the current language code and a chevron. C
 
 Alerts occupy the page and stay until dismissed. Notifications need a clear source, severity and next action. Do not use color alone to explain the state.
 
-<div class="l-demo"><div v-if="alertOpen" class="l-alert l-alert-warn" role="alert"><div><strong>Needs attention</strong><p>Two checks are waiting for a review.</p></div><button class="l-icon-btn" aria-label="Dismiss notification" @click="alertOpen=false">×</button></div><button v-else class="l-btn l-secondary" @click="alertOpen=true">Show notification again</button><div class="l-alert l-alert-success"><div><strong>Saved</strong><p>Your changes are up to date.</p></div></div></div>
+<div class="l-demo"><div v-if="alertOpen" class="l-alert l-alert-warn" role="alert"><div><strong>Needs attention</strong><p>Two checks are waiting for a review.</p></div><button class="l-icon-btn" aria-label="Dismiss notification" @click="alertOpen=false"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div><button v-else class="l-btn l-secondary" @click="alertOpen=true">Show notification again</button><div class="l-alert l-alert-success"><div><strong>Saved</strong><p>Your changes are up to date.</p></div></div></div>
 
 ### Toasts {#toasts}
 
 A toast confirms a short-lived result; it must never be the only place for an error that needs fixing. Trigger several in quick succession: each one stays visible independently until dismissed or its six-second timer ends. Color, a label and a message communicate the variant together.
 
 <div class="l-demo l-actions"><button class="l-btn l-primary" @click="showToast('Changes saved', 'success')">Show toast</button><button class="l-btn l-secondary" @click="showToast('Secondary action queued', 'info')">Show secondary toast</button><button class="l-btn l-secondary" @click="showToast('Review before continuing', 'warn')">Show warning</button><button class="l-btn l-secondary" @click="showToast('Could not save changes', 'error')">Show error</button></div>
-<div class="l-toast-stack" aria-label="Toast notifications"><div v-for="item in toasts" :key="item.id" class="l-toast" :class="'l-toast-' + item.type" :role="item.type === 'error' ? 'alert' : 'status'"><span class="l-dot" :class="'l-dot-' + item.type" aria-hidden="true"></span><span class="l-toast-copy"><strong>{{ { success: 'Success', info: 'Info', warn: 'Warning', error: 'Error' }[item.type] }}</strong><span>{{ item.message }}</span></span><button class="l-icon-btn" :aria-label="'Dismiss ' + item.type + ' toast: ' + item.message" @click="dismissToast(item.id)">×</button></div></div>
+<div class="l-toast-stack" aria-label="Toast notifications"><div v-for="item in toasts" :key="item.id" class="l-toast" :class="'l-toast-' + item.type" :role="item.type === 'error' ? 'alert' : 'status'"><span class="l-dot" :class="'l-dot-' + item.type" aria-hidden="true"></span><span class="l-toast-copy"><strong>{{ { success: 'Success', info: 'Info', warn: 'Warning', error: 'Error' }[item.type] }}</strong><span>{{ item.message }}</span></span><button class="l-icon-btn" :aria-label="'Dismiss ' + item.type + ' toast: ' + item.message" @click="dismissToast(item.id)"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div></div>
 
 For production, keep independent IDs and timers so a new arrival never overwrites an earlier one. Render the stack in a portal above app content, cap its height and let it scroll on small screens. Keep errors that need user action inline too; the toast is only a short announcement. Respect reduced-motion when animating entry and exit.
 
@@ -224,7 +224,7 @@ A short series of related previews; arrows and dots remain keyboard-operable.
 
 Use an accessible name and a hit area large enough to tap. The toast is an illustration, not a destructive action.
 
-<div class="l-demo l-actions"><button class="l-close" aria-label="Close sample panel" @click="showToast('Sample panel closed')">×</button><span>Close a dismissible panel</span></div>
+<div class="l-demo l-actions"><button class="l-close" aria-label="Close sample panel" @click="showToast('Sample panel closed')"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button><span>Close a dismissible panel</span></div>
 
 ### Collapse {#collapse}
 
@@ -242,7 +242,7 @@ A small responsive navigation preview. The menu button expands the links on narr
 
 A side panel keeps the main context visible. This demo closes from its button or backdrop. A production drawer must also trap focus, close on Escape and return focus to its opener.
 
-<div class="l-demo"><button class="l-btn l-secondary" @click="drawerOpen=true">Abrir panel lateral</button><div v-if="drawerOpen" class="l-drawer-backdrop" @click="drawerOpen=false"></div><aside v-if="drawerOpen" class="l-drawer" aria-label="Panel lateral de ejemplo" @keydown.esc="drawerOpen=false"><button class="l-close" aria-label="Cerrar panel" @click="drawerOpen=false">×</button><h3>Detalles</h3><p>Un panel para información secundaria sin salir de la página.</p><button class="l-btn l-primary" @click="drawerOpen=false">Listo</button></aside></div>
+<div class="l-demo"><button class="l-btn l-secondary" @click="drawerOpen=true">Abrir panel lateral</button><div v-if="drawerOpen" class="l-drawer-backdrop" @click="drawerOpen=false"></div><aside v-if="drawerOpen" class="l-drawer" aria-label="Panel lateral de ejemplo" @keydown.esc="drawerOpen=false"><button class="l-close" aria-label="Cerrar panel" @click="drawerOpen=false"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button><h3>Detalles</h3><p>Un panel para información secundaria sin salir de la página.</p><button class="l-btn l-primary" @click="drawerOpen=false">Listo</button></aside></div>
 
 ### Scrollspy {#scrollspy}
 

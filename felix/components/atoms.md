@@ -104,11 +104,11 @@ Icon-only button. Same variants as Button. aria-label required.
 
 ### Variantes
 
-<div class="fx-preview fx-row"><button class="fx-icon fx-btn-primary" type="button" aria-label="Editar">✎</button><button class="fx-icon fx-btn-secondary" type="button" aria-label="Secundario">✎</button><button class="fx-icon fx-btn-ghost" type="button" aria-label="Ghost">✎</button><button class="fx-icon fx-btn-line" type="button" aria-label="Line">✎</button><button class="fx-icon fx-btn-danger" type="button" aria-label="Eliminar">×</button></div>
+<div class="fx-preview fx-row"><button class="fx-icon fx-btn-primary" type="button" aria-label="Editar"><i class="fa-solid fa-pen" aria-hidden="true"></i></button><button class="fx-icon fx-btn-secondary" type="button" aria-label="Secundario"><i class="fa-solid fa-pen" aria-hidden="true"></i></button><button class="fx-icon fx-btn-ghost" type="button" aria-label="Ghost"><i class="fa-solid fa-pen" aria-hidden="true"></i></button><button class="fx-icon fx-btn-line" type="button" aria-label="Line"><i class="fa-solid fa-pen" aria-hidden="true"></i></button><button class="fx-icon fx-btn-danger" type="button" aria-label="Eliminar"><i class="fa-solid fa-trash-can" aria-hidden="true"></i></button></div>
 
 ### Tamaños
 
-<div class="fx-preview fx-row"><button class="fx-icon fx-btn-primary fx-btn-sm" type="button" aria-label="Editar">✎</button><button class="fx-icon fx-btn-primary fx-btn-md" type="button" aria-label="Editar">✎</button><button class="fx-icon fx-btn-primary fx-btn-lg" type="button" aria-label="Editar">✎</button></div>
+<div class="fx-preview fx-row"><button class="fx-icon fx-btn-primary fx-btn-sm" type="button" aria-label="Editar"><i class="fa-solid fa-pen" aria-hidden="true"></i></button><button class="fx-icon fx-btn-primary fx-btn-md" type="button" aria-label="Editar"><i class="fa-solid fa-pen" aria-hidden="true"></i></button><button class="fx-icon fx-btn-primary fx-btn-lg" type="button" aria-label="Editar"><i class="fa-solid fa-pen" aria-hidden="true"></i></button></div>
 
 Icon-only button for compact actions like edit, delete, or add. Import it from @felix/ui, pass the icon through the icon prop, and choose variant (primary, secondary, ghost, line, or danger) and size (sm, md, or lg), same as Button. The aria-label is required because there's no visible text.
 
