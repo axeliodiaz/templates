@@ -22,6 +22,15 @@ export default defineConfig({
       { text: 'Home', link: '/' }
     ],
     sidebar: {
+      '/margin': [{"text": "Margin", "items": [{"text": "Overview", "link": "/margin"}, {"text": "Analytics", "link": "/margin/analytics"}, {"text": "Transactional emails", "link": "/margin/correos"}]}],
+      '/evertrue': [{"text": "Evertrue", "items": [{"text": "Overview", "link": "/evertrue"}]}],
+      '/agent-security': [{"text": "Agent Security", "items": [{"text": "Overview", "link": "/agent-security"}]}],
+      '/agent-onboarding': [{"text": "Agent Onboarding", "items": [{"text": "Overview", "link": "/agent-onboarding"}]}],
+      '/fitness': [{"text": "Fitness", "items": [{"text": "Overview", "link": "/fitness"}, {"text": "Pace guide", "link": "/pace"}]}],
+      '/trade-finance': [{"text": "Trade Finance", "items": [{"text": "Overview", "link": "/trade-finance"}]}],
+      '/trial-journey': [{"text": "Trial Journey", "items": [{"text": "Overview", "link": "/trial-journey"}]}],
+      '/graph-components': [{"text": "Graph Components", "items": [{"text": "Overview", "link": "/graph-components"}]}],
+
       '/relay': [{ text: 'Relay foundations', items: [{ text: 'Overview', link: '/relay' }, { text: 'Color, type, and tokens', link: '/relay/foundations' }, { text: 'CSS implementation', link: '/relay/tokens' }, { text: 'Motion', link: '/relay/motion' }] }, { text: 'Relay components', items: [{ text: 'Full live catalog', link: '/relay/components' }, { text: 'Charts', link: '/relay/charts' }, { text: 'Layouts', link: '/relay/layouts' }, { text: 'Control room', link: '/relay/overview' }] }],
       '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
       '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
@@ -176,7 +185,7 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/lumen/components' },
-          
+
           { text: 'Buttons', link: '/lumen/components-more#buttons-variants' },
           { text: 'Button groups', link: '/lumen/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/lumen/components-more#badges-variants' },
@@ -243,7 +252,7 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/scopecraft/components' },
-          
+
           { text: 'Buttons', link: '/scopecraft/components-more#buttons-variants' },
           { text: 'Button groups', link: '/scopecraft/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/scopecraft/components-more#badges-variants' },
@@ -400,6 +409,59 @@ export default defineConfig({
           ]
         }
       ],
+      '/lustro': [
+      { text: 'Getting started', items: [{ text: 'Introducción', link: '/lustro/introduccion' }] },
+      { text: 'Fundamentos', items: [
+        { text: 'Colores', link: '/lustro/fundamentos/colores' },
+        { text: 'Tipografía', link: '/lustro/fundamentos/tipografia' },
+        { text: 'Iconos', link: '/lustro/fundamentos/iconos' }
+      ] },
+      { text: 'Full UI catalog', link: '/lustro/ui-kit' },
+      { text: 'Lustro full live catalog', link: '/lustro/components' },
+
+      { text: 'Lustro expanded set (52 sections)', link: '/lustro/components-more' },
+      { text: 'Componentes', link: '/lustro/guide-components', collapsed: true, items: [
+        { text: 'Accordion', link: '/lustro/guide-components#accordion' },
+        { text: 'Alerts', link: '/lustro/guide-components#alerts' },
+        { text: 'Badge', link: '/lustro/guide-components#badge' },
+        { text: 'Breadcrumb', link: '/lustro/guide-components#breadcrumb' },
+        { text: 'Buttons', link: '/lustro/guide-components#buttons' },
+        { text: 'Button group', link: '/lustro/guide-components#button-group' },
+        { text: 'Card', link: '/lustro/guide-components#card' },
+        { text: 'Carousel', link: '/lustro/guide-components#carousel' },
+        { text: 'Close button', link: '/lustro/guide-components#close-button' },
+        { text: 'Collapse', link: '/lustro/guide-components#collapse' },
+        { text: 'Language select', link: '/lustro/guide-components#language-select' },
+        { text: 'Dropdowns', link: '/lustro/guide-components#dropdowns' },
+        { text: 'Forms', link: '/lustro/guide-components#forms' },
+        { text: 'List group', link: '/lustro/guide-components#list-group' },
+        { text: 'Modal', link: '/lustro/guide-components#modal' },
+        { text: 'Navbar & Footer', link: '/lustro/guide-components#navbar-and-footer' },
+        { text: 'Navs & tabs', link: '/lustro/guide-components#navs-tabs' },
+        { text: 'Offcanvas', link: '/lustro/guide-components#offcanvas' },
+        { text: 'Pagination', link: '/lustro/guide-components#pagination' },
+        { text: 'Placeholders', link: '/lustro/guide-components#placeholders' },
+        { text: 'Popovers', link: '/lustro/guide-components#popovers' },
+        { text: 'Progress', link: '/lustro/guide-components#progress' },
+        { text: 'Scrollspy', link: '/lustro/guide-components#scrollspy' },
+        { text: 'Spinners/Loaders', link: '/lustro/guide-components#spinners-loaders' },
+        { text: 'Tables', link: '/lustro/tables', collapsed: true, items: ['Basic','Striped','Hover rows','Compact','Bordered','Sticky header','Sortable','Search and column filters','Pagination','Selectable rows','Row actions','Expandable rows','Numeric columns with deltas','Footer totals','Empty state','Loading skeleton','Responsive card layout'].map(t=>({ text: t, link: '/lustro/tables#' + ({'Search and column filters':'filterable','Numeric columns with deltas':'deltas','Responsive card layout':'responsive','Hover rows':'hover'}[t]||t.toLowerCase().replace(/ /g,'-')) })) },
+        { text: 'Toasts', link: '/lustro/guide-components#toasts' },
+        { text: 'Tooltips', link: '/lustro/guide-components#tooltips' }
+      ] },
+      { text: 'Email templates', items: [
+        { text: 'Correos transaccionales', link: '/lustro/correos' },
+        { text: 'Bienvenida', link: '/lustro/correos#bienvenida' },
+        { text: 'Verificar correo', link: '/lustro/correos#verificar-correo' },
+        { text: 'Recuperar contraseña', link: '/lustro/correos#recuperar-contrasena' },
+        { text: 'Reserva confirmada', link: '/lustro/correos#reserva-confirmada' },
+        { text: 'Recordatorio de clase', link: '/lustro/correos#recordatorio-de-clase' },
+        { text: 'Cupo en lista de espera', link: '/lustro/correos#cupo-en-lista-de-espera' },
+        { text: 'Clase cancelada', link: '/lustro/correos#clase-cancelada' },
+        { text: 'Comprobante de compra', link: '/lustro/correos#comprobante-de-compra' },
+        { text: 'Membresía por vencer', link: '/lustro/correos#membresia-por-vencer' }
+      ] }
+      ],
       '/': [
       { text: 'Getting started', items: [{ text: 'Introducción', link: '/introduccion' }] },
       { text: 'Fundamentos', items: [
@@ -409,7 +471,7 @@ export default defineConfig({
       ] },
       { text: 'Full UI catalog', link: '/ui-kit' },
       { text: 'Lustro full live catalog', link: '/lustro/components' },
-          
+
       { text: 'Lustro expanded set (52 sections)', link: '/lustro/components-more' },
       { text: 'Componentes', link: '/components', collapsed: true, items: [
         { text: 'Accordion', link: '/components#accordion' },
@@ -489,7 +551,7 @@ export default defineConfig({
           { text: 'Charts', link: '/graphs', collapsed: true, items: [
             { text: 'All charts', link: '/graphs#all-charts', collapsed: false, items: [{ text: 'Trends over time', link: '/graphs#trends-over-time' }, { text: 'Comparison', link: '/graphs#comparison' }, { text: 'Parts of a whole', link: '/graphs#parts-of-a-whole' }, { text: 'Distribution and relationships', link: '/graphs#distribution-and-relationships' }, { text: 'Activity and time grids', link: '/graphs#activity-and-time-grids' }, { text: 'KPIs and progress', link: '/graphs#kpis-and-progress' }, { text: 'Flows and funnels', link: '/graphs#flows-and-funnels' }] },
           ] },
-          
+
     ]
     },
     socialLinks: [
