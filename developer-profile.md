@@ -40,7 +40,7 @@ title: Developer profile
 </style>
 
 <div class="dp" data-theme="dark" id="dp">
-<header class="dp-nav"><span class="dp-logo">AD</span><nav><a href="#impacto">Impacto</a><a href="#casos">Casos</a><a href="#stack">Stack</a><a href="#exp">Experiencia</a></nav><button class="dp-toggle" aria-label="Cambiar tema" onclick="var d=document.getElementById('dp');d.dataset.theme=d.dataset.theme==='dark'?'light':'dark'">◐</button></header>
+<header class="dp-nav"><span class="dp-logo">AD</span><nav><a href="#impacto">Impacto</a><a href="#casos">Casos</a><a href="#stack">Stack</a><a href="#exp">Experiencia</a></nav><button class="dp-toggle" aria-label="Cambiar tema" onclick="var d=document.getElementById('dp'),f=function(){d.dataset.theme=d.dataset.theme==='dark'?'light':'dark'};window.__themeReveal?window.__themeReveal(this,f):f()">◐</button></header>
 <section class="dp-hero"><p class="dp-mono dp-eyebrow">Senior Software Engineer · Santiago, Chile</p><h1>Axel Díaz</h1><p class="dp-lead">Backend engineer con más de 13 años creando sistemas escalables y de alto impacto. Python y Django; hoy en Félix mejorando la experiencia de remesas para millones de usuarios en Latinoamérica.</p><div class="dp-cta"><a class="dp-btn dp-btn-primary" href="#casos">Ver casos</a><a class="dp-btn" href="https://www.linkedin.com/">LinkedIn ↗</a></div></section>
 <section class="dp-strip" id="impacto"><div><b>13+</b><span>Años de experiencia</span></div><div><b>−60%</b><span>Tiempo de resolución de soporte</span></div><div><b>90%</b><span>KPIs de shoppers rediseñados</span></div><div><b>&lt;0,4 ms</b><span>Consultas de fraude</span></div></section>
 <section id="casos"><h2><span class="dp-mono">01</span> Casos</h2><div class="dp-grid">
