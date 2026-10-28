@@ -56,7 +56,7 @@ Suggested host data is `{ id, displayName, initials, imageUrl?, imageAlt?, statu
 | Source | Actual implementation and limits |
 |---|---|
 | [UI kit](/ui-kit#avatar), [Lustro guide](/lustro/guide-components#avatar) | Shared catalog has two named role=img initials and Available text, not an image-loading or stacked-group controller. |
-| Components inventory | The task lists Components#avatar, but the source page has an inline Avatar + identity specimen under Card anatomy, not a dedicated Avatar section. Do not rely on that missing anchor. |
+| Components inventory | The task lists Components#avatar, but the source page has an inline Avatar + identity specimen under Layout primitives, not a dedicated Avatar section. Do not rely on that missing anchor. |
 | [Lustro expanded](/lustro/components-more#avatars-and-stacks), [Felix expanded](/felix/components-more#avatars-and-stacks), [Scopecraft expanded](/scopecraft/components-more#avatars-and-stacks) | Static sm/default/lg initials and fixed stacked initials/+4. The count is illustrative, not computed from member data. |
 | [Lumen expanded](/lumen/components-more#avatars-and-stacks) | Separate linked gallery specimen, not this guide's state or image controller. |
 | [Felix atoms](/felix/components/atoms#avatar) | Five initials sizes and four status treatments. Package prose names Avatar/AvatarFallback and size/status, but these previews do not establish installed exports or actual image fallback handling. |
