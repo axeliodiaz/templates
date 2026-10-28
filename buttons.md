@@ -1,3 +1,6 @@
+---
+pageClass: buttons-guide
+---
 <script setup>
 import ButtonUsageDemo from './.vitepress/theme/ButtonUsageDemo.vue'
 </script>
@@ -147,3 +150,16 @@ The guide demo uses a 120ms press/opacity transition, without moving layout or c
 This page's interactive example imports `ButtonUsageDemo.vue`; Lustro styles are already loaded by the VitePress theme. Other templates keep their own scoped native or Bootstrap styles listed above. There is no universal `Button` export shared by all catalogs. Keep one namespace per implementation and do not include an unscoped Bootstrap sheet over the full documentation site.
 
 The original catalogs remain the source for each visual variant. This guide adds usage and state guidance without editing their in-flight files. All demo data is fictitious; examples never send requests, delete records or persist state. Production validation, error handling, authorization, confirmation and routing belong to the consuming application.
+
+<style>
+.buttons-guide .vp-doc table { width:100%; table-layout:fixed }
+.buttons-guide .vp-doc td, .buttons-guide .vp-doc th { overflow-wrap:anywhere }
+@media(max-width:640px) {
+  .buttons-guide .vp-doc table, .buttons-guide .vp-doc tbody, .buttons-guide .vp-doc tr, .buttons-guide .vp-doc td { display:block; width:100% }
+  .buttons-guide .vp-doc thead { display:none }
+  .buttons-guide .vp-doc tr { margin:12px 0; border:1px solid var(--vp-c-divider) }
+  .buttons-guide .vp-doc td { border:0 }
+  .buttons-guide .vp-doc td:first-child { font-weight:700; padding-bottom:4px }
+  .buttons-guide .vp-doc td + td { padding-top:4px }
+}
+</style>
