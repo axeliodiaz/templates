@@ -2,6 +2,7 @@
 aside: false
 ---
 <script setup>
+import { revealTheme } from './.vitepress/theme/theme-reveal'
 import {ref,computed,onMounted,onBeforeUnmount,nextTick,watch} from 'vue'
 import {animate,stagger} from 'motion'
 const tab=ref('Home'),category=ref('All'),search=ref(''),range=ref('Week'),dark=ref(false),notice=ref(''),session=ref(null),seconds=ref(0),running=ref(false),goal=ref(10000),goalDraft=ref(10000),done=ref([]),root=ref(null)
@@ -23,7 +24,7 @@ watch(tab,()=>{stop();enter()});onMounted(()=>{media=matchMedia('(prefers-reduce
 Original mobile-first fitness template with goals, workout discovery and progress. Sample metrics, no medical advice, no wearable connection.
 
 <div ref="root" class="fit b2-bs6 b2-pace" :class="{dark}">
-<header><strong>pace.</strong><button class="btn btn-outline theme-primary" @click="dark=!dark">{{dark?'Light':'Dark'}} mode</button></header>
+<header><strong>pace.</strong><button class="btn btn-outline theme-primary" @click="revealTheme($event,()=>dark=!dark)">{{dark?'Light':'Dark'}} mode</button></header>
 <nav aria-label="Fitness sections"><button class="btn btn-outline theme-primary" v-for="t in ['Home','Workouts','Progress','Profile']" :aria-pressed="tab===t" @click="tab=t">{{t}}</button></nav>
 <main>
 <section v-if="tab==='Home'"><h2>Hello, Morgan</h2><p>Small steps. A steady rhythm.</p><article class="fit-card goal"><small>TODAY'S GOAL</small><h2>Make room for movement.</h2><strong>{{Math.min(100,Math.round(8432/goal*100))}}% complete</strong><progress :value="8432" :max="goal" aria-label="Daily steps goal"/></article><div class="fit-grid"><article v-for="k in [['Steps','8,432','of '+goal],['Active time','42 min','sample activity'],['Workouts',done.length,'completed in demo'],['Rest','7h 20m','sample duration']]" class="fit-card"><small>{{k[0]}}</small><h3>{{k[1]}}</h3><small>{{k[2]}}</small></article></div><h3>Quick workout</h3><button class="fit-workout fit-card btn btn-outline theme-primary" @click="start(workouts[0])"><span class="fit-icon">↗</span><span><strong>Full-body mobility</strong><small>15 min · Beginner</small></span><b>▶</b></button></section>
