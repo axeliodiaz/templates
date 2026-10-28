@@ -1,0 +1,18 @@
+<script setup lang="ts">
+import {ref,computed,watch,onMounted,onBeforeUnmount} from 'vue'
+const slides=[{id:'overview',title:'Sample overview',body:'Start with one clear introduction.'},{id:'detail',title:'Sample detail',body:'Keep essential information outside rotating slides.'},{id:'next',title:'Sample next step',body:'Use a clear destination for the real action.'}]
+const index=ref(0),playing=ref(false),hovered=ref(false),reduced=ref(false),current=computed(()=>slides[index.value])
+let timer:ReturnType<typeof setInterval>|undefined,media:MediaQueryList|undefined
+function sync(){clearInterval(timer);timer=undefined;if(playing.value&&!hovered.value&&!reduced.value)timer=setInterval(()=>index.value=(index.value+1)%slides.length,5000)}
+function mediaChange(){reduced.value=!!media?.matches;if(reduced.value)playing.value=false}
+function move(delta:number){playing.value=false;index.value=(index.value+delta+slides.length)%slides.length}
+function go(i:number){playing.value=false;index.value=i}
+function key(event:KeyboardEvent){if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();move(event.key==='ArrowRight'?1:-1)}}
+watch([playing,hovered,reduced],sync)
+onMounted(()=>{media=window.matchMedia('(prefers-reduced-motion: reduce)');mediaChange();media.addEventListener('change',mediaChange)})
+onBeforeUnmount(()=>{clearInterval(timer);media?.removeEventListener('change',mediaChange)})
+</script>
+<template><section class="carousel-usage" role="region" aria-roledescription="carousel" aria-label="Sample guidance slides" @mouseenter="hovered=true" @mouseleave="hovered=false" @focusin="playing=false"><p>Fictitious local slides. No navigation or server changes.</p><button type="button" :disabled="reduced" @click="playing=!playing">{{playing?'Stop rotation':'Start rotation'}}</button><p>{{reduced?'Reduced motion: automatic rotation is disabled.':playing?(hovered?'Rotation paused while hovering.':'Rotates every 5 seconds.'): 'Manual rotation. Arrow keys work in the slide controls.'}}</p><div class="stage" :aria-live="playing?'off':'polite'" aria-atomic="true"><article :key="current.id" class="slide" role="group" aria-roledescription="slide" :aria-label="`${index+1} of ${slides.length}`"><small>{{index+1}} / {{slides.length}}</small><h3>{{current.title}}</h3><p>{{current.body}}</p></article></div><div class="controls" @keydown="key"><button type="button" @click="move(-1)">Previous slide</button><div class="indicators" role="group" aria-label="Choose sample slide"><button v-for="(slide,i) in slides" :key="slide.id" type="button" :aria-label="`Go to ${slide.title}`" :aria-current="index===i?'true':undefined" @click="go(i)">{{i+1}}</button></div><button type="button" @click="move(1)">Next slide</button></div></section></template>
+<style scoped>
+.carousel-usage{padding:20px;margin:20px 0;border:1px solid var(--vp-c-divider);border-radius:12px}button{min-height:44px;padding:8px 12px;border:1px solid var(--vp-c-divider);border-radius:8px;background:var(--vp-c-bg-soft)}button:disabled{opacity:.55}.stage{min-height:190px;margin:20px 0}.slide{padding:24px;border:1px solid var(--vp-c-divider);border-radius:12px;background:var(--vp-c-bg-soft);animation:slide-in 180ms ease-out}.slide h3{margin:12px 0}.controls,.indicators{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.controls{justify-content:space-between}.indicators button[aria-current=true]{background:var(--vp-c-brand-soft);border-color:var(--vp-c-brand-1)}:focus-visible{outline:3px solid var(--vp-c-brand-1);outline-offset:2px}@keyframes slide-in{from{opacity:.3;translate:8px 0}to{opacity:1;translate:0 0}}@media(prefers-reduced-motion:reduce){.slide{animation:none}}
+</style>
