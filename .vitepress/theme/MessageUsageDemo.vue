@@ -1,0 +1,19 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+type Entry = {id:number;kind:'incoming'|'outgoing'|'system';sender:string;text:string;time:string;fresh:boolean}
+let next=3
+const entries=ref<Entry[]>([
+{id:1,kind:'incoming',sender:'Example teammate',text:'The sample is ready to review.',time:'10:42',fresh:false},
+{id:2,kind:'system',sender:'Example system',text:'Fictitious conversation. No messages leave this page.',time:'10:43',fresh:false}])
+const draft=ref('')
+const feedback=ref('')
+function append() {const text=draft.value.trim();if(!text){feedback.value='Enter text for the local example.';return}entries.value.push({id:next++,kind:'outgoing',sender:'Example author',text,time:'Example time',fresh:true});draft.value='';feedback.value='Added to the local example only. Not sent.'}
+function incoming() {entries.value.push({id:next++,kind:'incoming',sender:'Example teammate',text:'This is another fictitious incoming entry.',time:'Example time',fresh:true});feedback.value='Fictitious incoming entry added locally.'}
+function clear() {entries.value=[];feedback.value='Local example cleared.'}
+</script>
+<template>
+<section class="message-demo" aria-label="Local message example"><p>Fictitious entries only. Adding text is not sending a message.</p><ol aria-label="Example conversation"><li v-for="entry in entries" :key="entry.id" :class="[entry.kind,{fresh:entry.fresh}]"><article><header><strong>{{ entry.sender }}</strong><small>{{ entry.time }}</small></header><p>{{ entry.text }}</p><small>{{ entry.kind==='outgoing'?'Local only · not sent':entry.kind==='incoming'?'Fictitious incoming':'System example' }}</small></article></li></ol><p v-if="!entries.length">No local entries.</p><form @submit.prevent="append"><label>Example message <textarea v-model="draft" maxlength="500" rows="3" @input="feedback=''" /></label><p>Up to 500 characters. Enter inserts a line break; use Add local entry to append.</p><div class="message-actions"><button type="submit">Add local entry</button><button type="button" @click="incoming">Add fictitious incoming</button><button type="button" @click="clear">Clear local entries</button></div></form><p role="status">{{ feedback }}</p></section>
+</template>
+<style scoped>
+.message-demo{border:1px solid var(--vp-c-divider);border-radius:14px;padding:20px;margin:20px 0}.message-demo ol{list-style:none;padding:0;display:grid;gap:14px}.message-demo li{max-width:85%;min-width:0}.message-demo li.outgoing{justify-self:end}.message-demo li.system{max-width:100%;justify-self:center}.message-demo article{padding:12px 16px;border:1px solid var(--vp-c-divider);border-radius:12px;background:var(--vp-c-bg-soft);overflow-wrap:anywhere}.message-demo .outgoing article{background:var(--vp-c-brand-soft)}.message-demo .system article{background:transparent;border-style:dashed}.message-demo header{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}.message-demo article p{white-space:pre-wrap;margin:8px 0}.message-demo small{display:block}.message-demo label{display:grid;gap:6px;font-weight:600}.message-demo textarea{font:inherit;color:inherit;background:var(--vp-c-bg-soft);border:1px solid var(--vp-c-divider);padding:10px;border-radius:8px;width:100%;box-sizing:border-box;resize:vertical;min-height:90px}.message-actions{display:flex;gap:8px;flex-wrap:wrap}.message-demo button{padding:8px 12px;border:1px solid var(--vp-c-divider);border-radius:8px;background:var(--vp-c-bg-soft)}.message-demo button:focus-visible,.message-demo textarea:focus-visible{outline:2px solid var(--vp-c-brand-1);outline-offset:3px}.message-demo [role=status]{min-height:1.5em}.message-demo li.fresh{animation:message-in .18s ease-out}@keyframes message-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.message-demo li.fresh{animation:none}}
+</style>
