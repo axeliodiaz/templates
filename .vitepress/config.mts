@@ -32,11 +32,11 @@ export default defineConfig({
       '/trial-journey': [{"text": "Trial Journey", "items": [{"text": "Overview", "link": "/trial-journey"}]}],
       '/graph-components': [{"text": "Graph Components", "items": [{"text": "Overview", "link": "/graph-components"}]}],
 
-      '/relay': [{ text: 'Relay foundations', items: [{ text: 'Overview', link: '/relay' }, { text: 'Color, type, and tokens', link: '/relay/foundations' }, { text: 'CSS implementation', link: '/relay/tokens' }, { text: 'Motion', link: '/relay/motion' }] }, { text: 'Relay components', items: [{ text: 'Full live catalog', link: '/relay/components' }, { text: 'Charts', link: '/relay/charts' }, { text: 'Layouts', link: '/relay/layouts' }, { text: 'Control room', link: '/relay/overview' }] }],
-      '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
-      '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
-      '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Charts', link: '/spark/charts' },  { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
-      '/bastion': [{ text: 'Bastion foundations', items: [{ text: 'Overview', link: '/bastion' }, { text: 'Color', link: '/bastion/color' }, { text: 'Typography', link: '/bastion/typography' }, { text: 'Tokens', link: '/bastion/tokens' }, { text: 'Usage', link: '/bastion/usage' }, { text: 'Motion', link: '/bastion/motion' }] }, { text: 'Bastion components', items: [{ text: 'Catalog', link: '/bastion/components' }, { text: 'Charts and meters', link: '/bastion/charts' }, { text: 'Ops dashboard', link: '/bastion/dashboard' }] }],
+      '/relay': [{ text: 'Relay foundations', items: [{ text: 'Overview', link: '/relay' }, { text: 'Color, type, and tokens', link: '/relay/foundations' }, { text: 'CSS implementation', link: '/relay/tokens' }, { text: 'Motion', link: '/relay/motion' }] }, { text: 'Relay components', items: [{ text: 'Full live catalog', link: '/relay/components' }, { text: 'Agent steps', link: '/relay/agent-steps' }, { text: 'Charts', link: '/relay/charts' }, { text: 'Layouts', link: '/relay/layouts' }, { text: 'Control room', link: '/relay/overview' }] }],
+      '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Agent steps', link: '/folio/agent-steps' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
+      '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Agent steps', link: '/pace/agent-steps' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
+      '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Agent steps', link: '/spark/agent-steps' }, { text: 'Charts', link: '/spark/charts' },  { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
+      '/bastion': [{ text: 'Bastion foundations', items: [{ text: 'Overview', link: '/bastion' }, { text: 'Color', link: '/bastion/color' }, { text: 'Typography', link: '/bastion/typography' }, { text: 'Tokens', link: '/bastion/tokens' }, { text: 'Usage', link: '/bastion/usage' }, { text: 'Motion', link: '/bastion/motion' }] }, { text: 'Bastion components', items: [{ text: 'Catalog', link: '/bastion/components' }, { text: 'Agent steps', link: '/bastion/agent-steps' }, { text: 'Charts and meters', link: '/bastion/charts' }, { text: 'Ops dashboard', link: '/bastion/dashboard' }] }],
 
       '/felix': [
         {
@@ -172,6 +172,7 @@ export default defineConfig({
             { text: 'Projects', link: '/felix/projects' },
             { text: 'Dependencies', link: '/felix/dependencies' },
             { text: 'Node flow', link: '/felix/node-flow' },
+            { text: 'Agent steps', link: '/felix/agent-steps' },
             { text: 'Decision tree', link: '/felix/decision-tree' },
             { text: 'Finance', link: '/felix/finance' },
             { text: 'Reports', link: '/felix/reports' },
@@ -186,6 +187,7 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/lumen/components' },
+          { text: 'Agent steps', link: '/lumen/agent-steps' },
 
           { text: 'Buttons', link: '/lumen/components-more#buttons-variants' },
           { text: 'Button groups', link: '/lumen/components-more#button-groups-basic-and-sizes' },
@@ -253,6 +255,7 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/scopecraft/components' },
+          { text: 'Agent steps', link: '/scopecraft/agent-steps' },
 
           { text: 'Buttons', link: '/scopecraft/components-more#buttons-variants' },
           { text: 'Button groups', link: '/scopecraft/components-more#button-groups-basic-and-sizes' },
@@ -341,6 +344,7 @@ export default defineConfig({
           { text: 'Alerts', link: '/pawprint/components#alerts' },
           { text: 'Navbar', link: '/pawprint/components#navbar' },
           { text: 'Care timeline', link: '/pawprint/components#care-timeline' },
+          { text: 'Agent steps', link: '/pawprint/agent-steps' },
           { text: 'UI-kit catalog (43 families)', link: '/pawprint/components#ui-kit-catalog' },
         ] },
         { text: 'Charts', collapsed: false, items: [
@@ -403,6 +407,7 @@ export default defineConfig({
             { text: 'Projects', link: '/pulsefit/projects' },
             { text: 'Dependencies', link: '/pulsefit/dependencies' },
             { text: 'Node flow', link: '/pulsefit/node-flow' },
+            { text: 'Agent steps', link: '/pulsefit/agent-steps' },
             { text: 'Finance', link: '/pulsefit/finance' },
             { text: 'Reports', link: '/pulsefit/reports' },
             { text: 'Shipping', link: '/pulsefit/shipping' },
@@ -521,6 +526,7 @@ export default defineConfig({
         { text: 'Projects', link: '/projects' },
         { text: 'Dependencies', link: '/dependencies' },
         { text: 'Node flow', link: '/node-flow' },
+          { text: 'Agent steps', link: '/agent-steps' },
         { text: 'Reference collection', link: '/reference-templates' },
         { text: 'Reusable graphs', link: '/graph-components' },
         { text: 'Trial journey (Sankey funnel)', link: '/trial-journey' },
