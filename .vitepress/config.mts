@@ -23,7 +23,8 @@ export default defineConfig({
       { text: 'Home', link: '/' }
     ],
     sidebar: {
-      '/buttons': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }] }],
+      '/button-group': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }] }],
+      '/buttons': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }] }],
       '/margin': [{"text": "Margin", "items": [{"text": "Overview", "link": "/margin"}, {"text": "Analytics", "link": "/margin/analytics"}, {"text": "Transactional emails", "link": "/margin/correos"}]}],
       '/evertrue': [{"text": "Evertrue", "items": [{"text": "Overview", "link": "/evertrue"}]}],
       '/agent-security': [{"text": "Agent Security", "items": [{"text": "Overview", "link": "/agent-security"}]}],
@@ -33,11 +34,11 @@ export default defineConfig({
       '/trial-journey': [{"text": "Trial Journey", "items": [{"text": "Overview", "link": "/trial-journey"}]}],
       '/graph-components': [{"text": "Graph Components", "items": [{"text": "Overview", "link": "/graph-components"}]}],
 
-      '/relay': [{ text: 'Relay foundations', items: [{ text: 'Overview', link: '/relay' }, { text: 'Color, type, and tokens', link: '/relay/foundations' }, { text: 'CSS implementation', link: '/relay/tokens' }, { text: 'Motion', link: '/relay/motion' }] }, { text: 'Relay components', items: [{ text: 'Full live catalog', link: '/relay/components' }, { text: 'Workflow progress', link: '/relay/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Charts', link: '/relay/charts' }, { text: 'Layouts', link: '/relay/layouts' }, { text: 'Control room', link: '/relay/overview' }] }],
-      '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Workflow progress', link: '/folio/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
-      '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Workflow progress', link: '/pace/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
-      '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Workflow progress', link: '/spark/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Charts', link: '/spark/charts' },  { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
-      '/bastion': [{ text: 'Bastion foundations', items: [{ text: 'Overview', link: '/bastion' }, { text: 'Color', link: '/bastion/color' }, { text: 'Typography', link: '/bastion/typography' }, { text: 'Tokens', link: '/bastion/tokens' }, { text: 'Usage', link: '/bastion/usage' }, { text: 'Motion', link: '/bastion/motion' }] }, { text: 'Bastion components', items: [{ text: 'Catalog', link: '/bastion/components' }, { text: 'Workflow progress', link: '/bastion/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Charts and meters', link: '/bastion/charts' }, { text: 'Ops dashboard', link: '/bastion/dashboard' }] }],
+      '/relay': [{ text: 'Relay foundations', items: [{ text: 'Overview', link: '/relay' }, { text: 'Color, type, and tokens', link: '/relay/foundations' }, { text: 'CSS implementation', link: '/relay/tokens' }, { text: 'Motion', link: '/relay/motion' }] }, { text: 'Relay components', items: [{ text: 'Full live catalog', link: '/relay/components' }, { text: 'Workflow progress', link: '/relay/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Charts', link: '/relay/charts' }, { text: 'Layouts', link: '/relay/layouts' }, { text: 'Control room', link: '/relay/overview' }] }],
+      '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Workflow progress', link: '/folio/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
+      '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Workflow progress', link: '/pace/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
+      '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Workflow progress', link: '/spark/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Charts', link: '/spark/charts' },  { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
+      '/bastion': [{ text: 'Bastion foundations', items: [{ text: 'Overview', link: '/bastion' }, { text: 'Color', link: '/bastion/color' }, { text: 'Typography', link: '/bastion/typography' }, { text: 'Tokens', link: '/bastion/tokens' }, { text: 'Usage', link: '/bastion/usage' }, { text: 'Motion', link: '/bastion/motion' }] }, { text: 'Bastion components', items: [{ text: 'Catalog', link: '/bastion/components' }, { text: 'Workflow progress', link: '/bastion/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Charts and meters', link: '/bastion/charts' }, { text: 'Ops dashboard', link: '/bastion/dashboard' }] }],
 
       '/felix': [
         {
@@ -62,7 +63,7 @@ export default defineConfig({
               { text: 'Badge', link: '/felix/components/atoms#badge' },
               { text: 'Bubble', link: '/felix/components/atoms#bubble' },
               { text: 'Button', link: '/felix/components/atoms#button' },
-          { text: 'Buttons usage guide', link: '/buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' },
               { text: 'Checkbox', link: '/felix/components/atoms#checkbox' },
               { text: 'CoinLoader', link: '/felix/components/atoms#coinloader' },
               { text: 'Dots', link: '/felix/components/atoms#dots' },
@@ -114,7 +115,7 @@ export default defineConfig({
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
-          { text: 'Buttons usage guide', link: '/buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' },
               { text: 'Button groups', link: '/felix/components-more#button-groups-basic-and-sizes' },
               { text: 'Badges', link: '/felix/components-more#badges-variants' },
               { text: 'Alerts', link: '/felix/components-more#alerts-variants' },
@@ -193,7 +194,7 @@ export default defineConfig({
           { text: 'Workflow progress', link: '/lumen/workflow-progress' },
 
           { text: 'Buttons', link: '/lumen/components-more#buttons-variants' },
-          { text: 'Buttons usage guide', link: '/buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' },
           { text: 'Button groups', link: '/lumen/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/lumen/components-more#badges-variants' },
           { text: 'Alerts', link: '/lumen/components-more#alerts-variants' },
@@ -262,7 +263,7 @@ export default defineConfig({
           { text: 'Workflow progress', link: '/scopecraft/workflow-progress' },
 
           { text: 'Buttons', link: '/scopecraft/components-more#buttons-variants' },
-          { text: 'Buttons usage guide', link: '/buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' },
           { text: 'Button groups', link: '/scopecraft/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/scopecraft/components-more#badges-variants' },
           { text: 'Alerts', link: '/scopecraft/components-more#alerts-variants' },
@@ -350,7 +351,7 @@ export default defineConfig({
           { text: 'Navbar', link: '/pawprint/components#navbar' },
           { text: 'Care timeline', link: '/pawprint/components#care-timeline' },
           { text: 'Workflow progress', link: '/pawprint/workflow-progress' },
-          { text: 'Buttons usage guide', link: '/buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' },
           { text: 'UI-kit catalog (43 families)', link: '/pawprint/components#ui-kit-catalog' },
         ] },
         { text: 'Charts', collapsed: false, items: [
@@ -376,7 +377,7 @@ export default defineConfig({
           { text: 'Overview', link: '/pulsefit/components' },
           { text: 'Bootstrap 6 gallery', link: '/pulsefit/components-more' },
           { text: 'Buttons', link: '/pulsefit-template/components.html#buttons-variants' },
-          { text: 'Buttons usage guide', link: '/buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' },
           { text: 'Badges', link: '/pulsefit-template/components.html#badges' },
           { text: 'Alerts', link: '/pulsefit-template/components.html#alerts' },
           { text: 'Cards', link: '/pulsefit-template/components.html#cards' },
@@ -439,7 +440,7 @@ export default defineConfig({
         { text: 'Badge', link: '/lustro/guide-components#badge' },
         { text: 'Breadcrumb', link: '/lustro/guide-components#breadcrumb' },
         { text: 'Buttons', link: '/lustro/guide-components#buttons' },
-          { text: 'Buttons usage guide', link: '/buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' },
         { text: 'Button group', link: '/lustro/guide-components#button-group' },
         { text: 'Card', link: '/lustro/guide-components#card' },
         { text: 'Carousel', link: '/lustro/guide-components#carousel' },
@@ -493,7 +494,7 @@ export default defineConfig({
         { text: 'Badge', link: '/components#badge' },
         { text: 'Breadcrumb', link: '/components#breadcrumb' },
         { text: 'Buttons', link: '/components#buttons' },
-          { text: 'Buttons usage guide', link: '/buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' },
         { text: 'Button group', link: '/components#button-group' },
         { text: 'Card', link: '/components#card' },
         { text: 'Carousel', link: '/components#carousel' },
