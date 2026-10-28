@@ -4,7 +4,7 @@ import Gauge from './Gauge.vue'
 const props = defineProps({ theme: { type: String, default: 'pulsefit' } })
 const T = {
   lustro: ['#0b0b18', 'rgba(148,140,255,.08)', '#fff', '#a5b4fc', 'rgba(148,140,255,.22)', '#6366f1', '#34d399', '#fbbf24', '#f472b6', "'DM Sans',sans-serif", '16px', '#fff'],
-  felix: ['#fefcf9', '#fff', '#082422', '#636158', '#e3ded3', '#065958', '#1b8a4b', '#b77900', '#c0392b', "'Saans',sans-serif", '12px', '#fff'],
+  felix: ['#fefcf9', '#fff', '#082422', '#636158', '#e3ded3', '#065958', '#146c3a', '#b77900', '#c0392b', "'Saans',sans-serif", '12px', '#fff'],
   pulsefit: ['#f5f5f5', '#fff', '#212121', '#5f666d', '#e0e0e0', '#C9A66B', '#198754', '#b77900', '#dc3545', "'Rubik',sans-serif", '16px', '#212121'],
   scopecraft: ['#f4f4f5', '#fff', '#111113', '#6b6f76', '#e6e6e8', '#111113', '#17803d', '#a05a00', '#c62828', 'ui-sans-serif,system-ui,sans-serif', '8px', '#fff'],
   lumen: ['#fbfbfa', '#fff', '#17171a', '#74767d', '#e7e7e9', '#7c6cf0', '#1b9a4b', '#d9770a', '#d23b3b', "'Plus Jakarta Sans',sans-serif", '14px', '#fff']

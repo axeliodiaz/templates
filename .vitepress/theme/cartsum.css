@@ -19,7 +19,7 @@
 .csx .paper hr{border:0;border-top:1px dashed currentColor;opacity:.3;margin:10px 0}
 .csx .paper .r{display:flex;justify-content:space-between;gap:10px;padding:2px 0}.csx .paper .r.t{font-weight:700;font-size:14px}
 .csx .paper .meta{opacity:.65;font-size:11px;display:grid;gap:2px}
-.csx .paper .disc{color:#1b8a4b}
+.csx .paper .disc{color:#146c3a}
 .csx .bar{display:flex;gap:2px;height:34px;margin:12px auto 4px;justify-content:center}.csx .bar i{display:block;width:2px;background:currentColor}.csx .bar i:nth-child(3n){width:4px}.csx .bar i:nth-child(5n){width:1px}
 .csx .paper .thx{text-align:center;margin-top:8px}
 .csx .lst{background:var(--b-surf);border:1px solid var(--b-bd);border-radius:var(--b-r);width:100%;max-width:340px;padding:6px 14px}

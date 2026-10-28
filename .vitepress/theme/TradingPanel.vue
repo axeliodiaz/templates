@@ -233,7 +233,7 @@ onUnmounted(() => { dispose = true; clearInterval(timer); ctl?.stop(); media?.re
 @keyframes tp-pulse{50%{opacity:.35;transform:scale(.7)}}
 .tp-pairs,.tp-seg{display:inline-flex;gap:2px;padding:2px;border-radius:9px;background:var(--vp-c-bg-alt,var(--vp-c-bg));border:1px solid var(--vp-c-divider)}
 .tp-pairs button,.tp-seg button{border:0;background:none;color:var(--vp-c-text-2);font:inherit;font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:7px;cursor:pointer;transition:background .2s,color .2s}
-.tp-pairs button.on,.tp-seg button.on{background:var(--vp-c-brand-1);color:var(--vp-c-white,#fff)}
+.tp-pairs button.on,.tp-seg button.on{background:var(--vp-c-brand-1);color:var(--vp-c-bg)}
 .tp button:focus-visible,.tp input:focus-visible{outline:2px solid var(--vp-c-brand-1);outline-offset:2px}
 .tp-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:14px}
 .tp-balance,.tp-pos,.tp-chart{background:var(--vp-c-bg);border:1px solid var(--vp-c-divider);border-radius:12px;padding:16px}
@@ -262,7 +262,7 @@ onUnmounted(() => { dispose = true; clearInterval(timer); ctl?.stop(); media?.re
 .tp-lev input{width:110px;accent-color:var(--vp-c-brand-1)}
 .tp-btn{font:inherit;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:8px;border:1px solid var(--vp-c-divider);background:var(--vp-c-bg-soft);color:var(--vp-c-text-1);cursor:pointer;transition:transform .15s,border-color .2s}
 .tp-btn:hover{border-color:var(--vp-c-brand-1)}.tp-btn:active{transform:scale(.97)}
-.tp-btn.danger{color:var(--r)}.tp-btn.primary{background:var(--vp-c-brand-1);color:var(--vp-c-white,#fff);border-color:transparent}
+.tp-btn.danger{color:var(--r)}.tp-btn.primary{background:var(--vp-c-brand-1);color:var(--vp-c-bg);border-color:transparent}
 .tp-empty{display:flex;flex-direction:column;gap:8px;align-items:flex-start;justify-content:center}.tp-empty p{margin:0;color:var(--vp-c-text-2);font-size:14px}
 .tp-chart{margin-top:14px}
 .tp-chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
