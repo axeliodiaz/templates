@@ -2,6 +2,7 @@
 aside: false
 ---
 <script setup>
+import { revealTheme } from './.vitepress/theme/theme-reveal'
 import { computed, ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { animate, stagger } from 'motion'
 // Original code; source posts credit visual patterns only. No code or assets copied.
@@ -26,7 +27,7 @@ onUnmounted(()=>{stop();media?.removeEventListener('change',stop)})
 Four original interactive examples based on the patterns Axel selected. Fictitious data, local actions only. No money, credential or infrastructure connection.
 
 <div ref="el" :class="['lab',{'lab-dark':dark}]">
-<header><strong>Interaction lab</strong><button :aria-pressed="dark" @click="dark=!dark">{{dark?'Light':'Dark'}} mode</button><label>State <select v-model="state"><option>Ready</option><option>Loading</option><option>Empty</option></select></label></header>
+<header><strong>Interaction lab</strong><button :aria-pressed="dark" @click="revealTheme($event,()=>dark=!dark)">{{dark?'Light':'Dark'}} mode</button><label>State <select v-model="state"><option>Ready</option><option>Loading</option><option>Empty</option></select></label></header>
 <nav aria-label="Example navigation"><button v-for="t in ['Job economics','Agent security','Agent onboarding','Topology']" :key="t" :aria-pressed="tab===t" :class="{active:tab===t}" @click="tab=t;note=''">{{t}}</button></nav>
 <div v-if="state!=='Ready'" class="lab-placeholder" role="status"><h2>{{state==='Loading'?'Loading sample data':'No sample records'}}</h2><p>{{state==='Loading'?'No external service is contacted.':'Restore the demo to try the interaction.'}}</p><button @click="state='Ready'">Restore sample</button></div>
 <main v-else>
