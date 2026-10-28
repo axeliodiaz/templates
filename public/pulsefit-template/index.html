@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600;700&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
 <link rel="stylesheet" href="/pulsefit-template/pulsefit-theme.css">
+<link rel="stylesheet" href="/theme-reveal.css">
+<script src="/theme-reveal.js"></script>
 <style>
   body { min-height: 100vh; }
   .pf-kpi { border: 2px solid var(--pf-gold); border-radius: 14px; }
@@ -17,6 +19,7 @@
   .pf-kpi .label { font-family: Montserrat, sans-serif; font-size: 0.7rem; font-weight: 700; }
   @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 </style>
+  <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
 </head>
 <body>
 <nav class="navbar md:navbar-expand pulsefit-navbar" data-bs-theme="dark">
@@ -146,7 +149,7 @@ function applyTheme(dark) {
   themeBtn.setAttribute("aria-pressed", String(dark));
   themeBtn.textContent = dark ? "Light mode" : "Dark mode";
 }
-themeBtn.addEventListener("click", () => applyTheme(document.documentElement.getAttribute("data-bs-theme") !== "dark"));
+themeBtn.addEventListener("click", () => { const dark = document.documentElement.getAttribute("data-bs-theme") !== "dark"; ThemeReveal.reveal(themeBtn, () => applyTheme(dark)); });
 applyTheme(false);
 
 const reduce = matchMedia("(prefers-reduced-motion: reduce)");

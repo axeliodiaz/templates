@@ -23,15 +23,15 @@ Status message that lives on the page without interrupting: transfer completed, 
 
 ### Archivos · sm / md / lg
 
-<div class="fx-preview fx-row"><div class="fx-file sm"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file lg"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div></div>
+<div class="fx-preview fx-row"><div class="fx-file sm"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div><div class="fx-file"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div><div class="fx-file lg"><b>recibo.pdf</b><small>PDF · 240 KB</small><button type="button" data-remove aria-label="Quitar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div></div>
 
 ### Imágenes · sm / md / lg
 
-<div class="fx-preview fx-row"><div class="fx-file img sm"><b>foto-ticket.jpg</b><small>JPG · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file img"><b>foto-ticket.jpg</b><small>JPG · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file img lg"><b>foto-ticket.jpg</b><small>JPG · 240 KB</small><button type="button" data-remove aria-label="Quitar">×</button></div></div>
+<div class="fx-preview fx-row"><div class="fx-file img sm"><b>foto-ticket.jpg</b><small>JPG · 240 KB</small><button type="button" data-remove aria-label="Quitar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div><div class="fx-file img"><b>foto-ticket.jpg</b><small>JPG · 240 KB</small><button type="button" data-remove aria-label="Quitar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div><div class="fx-file img lg"><b>foto-ticket.jpg</b><small>JPG · 240 KB</small><button type="button" data-remove aria-label="Quitar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div></div>
 
 ### Estados · error / loading
 
-<div class="fx-preview fx-row"><div class="fx-file err"><b>No se pudo adjuntar</b><button type="button" data-remove aria-label="Quitar">×</button></div><div class="fx-file loading"><b>recibo.pdf</b><small>PDF · 240 KB</small><div class="fx-progress"><span style="width:62%"></span></div></div></div>
+<div class="fx-preview fx-row"><div class="fx-file err"><b>No se pudo adjuntar</b><button type="button" data-remove aria-label="Quitar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div><div class="fx-file loading"><b>recibo.pdf</b><small>PDF · 240 KB</small><div class="fx-progress"><span style="width:62%"></span></div></div></div>
 
 Attached file or image chip. 3 sizes × 3 states × 2 types.
 

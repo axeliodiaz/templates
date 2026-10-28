@@ -40,7 +40,7 @@ const model=computed(()=>{
     const x0=a.x+nodeW,x1=b.x,m=(x0+x1)/2
     return {...l,h,d:`M${x0},${y0}C${m},${y0} ${m},${y1} ${x1},${y1}`,kind:kind(l.t),pct:l.v/signed*100}
   })
-  return {val,nodes,paths,signed,rate:up/signed*100,total}
+  return {val,nodes,paths,signed,rate:up/signed*100}
 })
 const fmt=n=>n.toLocaleString('en-US')
 const detail=computed(()=>{const n=model.value.nodes[picked.value]||model.value.nodes['Signed up'];const m=model.value;return {name:n.id,v:n.v,pct:n.v/m.signed*100,kind:n.kind}})
@@ -96,7 +96,7 @@ onUnmounted(()=>{disposed=true;cancelAnimationFrame(raf);settle();media?.removeE
 <template>
 <div class="tj" ref="root">
 <header class="tj-head">
-<div><h3 class="tj-title">{{props.title}} <span class="tj-pill">{{fmt(model.total)}} trials</span></h3><p>{{props.subtitle}}</p></div>
+<div><h3 class="tj-title">{{props.title}} <span class="tj-pill">{{fmt(model.signed)}} trials</span></h3><p>{{props.subtitle}}</p></div>
 <div class="tj-tools">
 <div role="group" aria-label="Date range"><button v-for="r in Object.keys(ranges)" :key="r" :class="{on:range===r}" :aria-pressed="range===r" @click="range=r">{{r}}</button></div>
 <button @click="replay" aria-label="Replay flow">Replay</button>

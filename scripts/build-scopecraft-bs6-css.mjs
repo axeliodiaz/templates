@@ -15,10 +15,14 @@ const css = fs.readFileSync(src, 'utf8')
 const result = await postcss([
   prefixSelector({
     prefix: '.sc-bs6-root',
-    exclude: [/^html/, /^:root/, /^@/],
+    exclude: [/^@/],
     transform(prefix, selector, prefixed) {
       if (selector.startsWith('@')) return selector
-      if (selector === ':root' || selector === 'html') return `${prefix}`
+      // Token blocks use a bare :root / html. Those must live on .sc-bs6-root or
+      // they inherit onto the VitePress shell. :root.dialog-open and :root:dir()
+      // stay on the document element, which is where Bootstrap toggles them.
+      if (selector === ':root' || selector === 'html') return prefix
+      if (selector.startsWith(':root') || selector.startsWith('html')) return selector
       return prefixed
     },
   }),
