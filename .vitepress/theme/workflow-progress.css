@@ -1,6 +1,6 @@
 /* Workflow progress: working-state trajectory (see WorkflowProgress.vue). All motion honors reduced-motion. */
-.as{background:var(--wp-bg);border:1px solid var(--wp-line);border-radius:var(--wp-r);color:var(--wp-ink);font:14px/1.5 var(--wp-font);padding:18px 18px 12px;max-width:520px;margin:18px 0}
-.as *{box-sizing:border-box}
+.wp{background:var(--wp-bg);border:1px solid var(--wp-line);border-radius:var(--wp-r);color:var(--wp-ink);font:14px/1.5 var(--wp-font);padding:18px 18px 12px;max-width:520px;margin:18px 0}
+.wp *{box-sizing:border-box}
 .wp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:16px}
 .wp-top>div{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .wp-top b{font-size:15px}
