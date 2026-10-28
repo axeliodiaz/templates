@@ -20,7 +20,7 @@ function mode(m){paymentMode.value=m;amount.value=m==='Full balance'?178833:3500
 
 # Cargo
 
-Original trade-finance template: credit overview, shipments, repayments and verification UI. All amounts, routes, accounts and statuses are samples. No lender, bank, shipping or authentication service is connected.
+Original trade-finance template: credit overview, shipments, repayments and verification UI. All amounts, routes, accounts and statuses are samples. No lender, bank, shipping or authentication service is connected. Motion enters 8px from the side (a route, not a bounce), lifts 1px on hover and settles 1px on press. Tokens are on `html[data-tpl="cargo"]`. Reduced motion keeps every figure still.
 
 <div ref="root" class="cargo b2-bs6 b2-cargo" :class="{dark}" @keydown.esc="drawer=false">
 <header><strong>cargo.</strong><span>WORKSPACE / SAMPLE COMPANY</span><button class="btn btn-outline theme-primary" @click="revealTheme($event,()=>dark=!dark)">{{dark?'Light':'Dark'}} mode</button></header>

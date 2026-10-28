@@ -24,6 +24,7 @@ Charcoal finance workspace with mint actions, calm balance typography and thin c
 3. Every control has focus, disabled, loading or feedback states where applicable.
 4. Dense reports keep horizontal table scrolling on small screens. Core forms and cards stack.
 5. All live previews are local. No payment, message or account connection occurs.
+6. Motion rises 4px and does not glow. See [Foundations](/folio/foundations#motion).
 
 ## Using the system
 

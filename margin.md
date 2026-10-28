@@ -33,7 +33,7 @@ A standalone original job economics template. Responsive, local interactive stat
 
 ## Template guide
 
-- Use the standalone page as a Vue3 layout or adapt its scoped `.lab` tokens to your app. Existing `motion` handles entrance states and reduced-motion cleanup.
+- Use the standalone page as a Vue3 layout or adapt its scoped `.lab` tokens to your app. Existing `motion` handles card entrances. The shared layer adds an 8px rise, a 1px hover and a 1px press on `html[data-tpl="margin"]`, and both stop with reduced motion.
 - Light/dark, narrow layouts and Loading/Empty/Ready can be tested from the header.
 - Actions update this example session only. Add your own persistence, source validation and authorization before production use. No API, secret handling, telemetry or financial execution is bundled.
 - Original code and fictitious data. Pattern credit: [Nizam](https://x.com/nizamdesign/status/2108076926825009563). No source images, brands or code copied.

@@ -143,8 +143,27 @@
   backdrop-filter: blur(12px);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .lustro-bs6-root :is(.btn, .btn-solid, .btn-outline, summary) {
+    transition: translate 180ms cubic-bezier(.22, 1, .36, 1), box-shadow 180ms cubic-bezier(.22, 1, .36, 1), background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+  .lustro-bs6-root :is(.btn, .btn-solid, .btn-outline, summary):not(:disabled):hover {
+    translate: 0 -2px;
+  }
+  .lustro-bs6-root :is(.btn-solid.theme-primary, .btn.theme-primary):not(:disabled):hover {
+    box-shadow: 0 10px 28px rgba(99, 102, 241, .38);
+  }
+  .lustro-bs6-root :is(.btn, .btn-solid, .btn-outline, summary):not(:disabled):active { translate: 0 1px; }
+  .lustro-bs6-root :is(.card, .lu-bs6-block) { animation: lu-rise 280ms cubic-bezier(.22, 1, .36, 1) backwards; }
+}
+@keyframes lu-rise { from { opacity: .45; translate: 0 12px; } to { opacity: 1; translate: none; } }
 @media (prefers-reduced-motion: reduce) {
-  .lustro-bs6-root * {
+  .lustro-bs6-root *,
+  .lustro-bs6-root *::before,
+  .lustro-bs6-root *::after {
+    animation: none !important;
+    transition: none !important;
+    translate: none !important;
     scroll-behavior: auto !important;
   }
 }

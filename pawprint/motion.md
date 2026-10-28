@@ -10,6 +10,7 @@ Motion is part of every component, not a separate showcase. It is gentle and pla
 | Chart draw | Lines draw in over 1.4 s, bars rise with a 70 ms stagger, rings sweep clockwise | All pet charts |
 | Press | Buttons scale to 97% on press | Buttons |
 | Focus | Ring fades in, 4px soft glow on inputs | Forms |
-| Page entrance | Sections fade from 45% opacity, 280 ms | Every page (shared motion) |
+| Page entrance | Sections rise 10px and fade from 45% opacity, 280 ms, soft ease | Every page (shared motion, `--m-rise` on `html.tpl-pp`) |
+| Button scale | Scales to 104% on hover and 97% on press, in addition to the paw wag | Catalog and Pawprint buttons |
 
 Reduced motion: all animations and transitions are removed and charts show in their final state. Theme toggle: bottom-right, remembers the choice, follows the light and dark palettes in [Foundations](/pawprint).

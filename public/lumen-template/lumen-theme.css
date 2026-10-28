@@ -113,8 +113,22 @@
   color: inherit;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  :is(.lmn-bs6, .lmn-bs6-surface, .lmn-hero) :is(.btn, .btn-solid, .btn-outline, summary) {
+    transition: translate 180ms ease-out, box-shadow 180ms ease-out, background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+  :is(.lmn-bs6, .lmn-bs6-surface, .lmn-hero) :is(.btn, .btn-solid, .btn-outline, summary):not(:disabled):hover { translate: 0 -1px; }
+  :is(.lmn-bs6, .lmn-bs6-surface, .lmn-hero) :is(.btn, .btn-solid, .btn-outline, summary):not(:disabled):active { translate: 0 1px; }
+  :is(.lmn-bs6, .lmn-bs6-surface) .card { animation: lmn-rise 280ms ease-out backwards; }
+}
+@keyframes lmn-rise { from { opacity: .55; translate: 0 6px; } to { opacity: 1; translate: none; } }
 @media (prefers-reduced-motion: reduce) {
-  .lmn-bs6-surface * {
+  :is(.lmn-bs6, .lmn-bs6-surface, .lmn-hero) *,
+  :is(.lmn-bs6, .lmn-bs6-surface, .lmn-hero) *::before,
+  :is(.lmn-bs6, .lmn-bs6-surface, .lmn-hero) *::after {
+    animation: none !important;
+    transition: none !important;
+    translate: none !important;
     scroll-behavior: auto !important;
   }
 }

@@ -134,8 +134,32 @@
   outline-offset: 2px;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  body:has(.pf-kpi) :is(.btn, .btn-solid, .btn-outline),
+  .pf-gallery :is(.btn, .btn-solid, .btn-outline) {
+    transition: translate 180ms cubic-bezier(.2, .85, .25, 1.05), scale 180ms cubic-bezier(.2, .85, .25, 1.05), box-shadow 180ms ease, background-color 160ms ease;
+  }
+  body:has(.pf-kpi) :is(.btn, .btn-solid, .btn-outline):not(:disabled):hover,
+  .pf-gallery :is(.btn, .btn-solid, .btn-outline):not(:disabled):hover {
+    translate: 0 -2px;
+    scale: 1.03;
+    box-shadow: 0 8px 18px rgba(201, 166, 107, .35);
+  }
+  body:has(.pf-kpi) :is(.btn, .btn-solid, .btn-outline):not(:disabled):active,
+  .pf-gallery :is(.btn, .btn-solid, .btn-outline):not(:disabled):active { scale: 0.97; translate: 0 1px; }
+  body:has(.pf-kpi) .card,
+  .pf-gallery .card { animation: pf-rise 280ms cubic-bezier(.2, .85, .25, 1.05) backwards; }
+}
+@keyframes pf-rise { from { opacity: .45; translate: 0 10px; } to { opacity: 1; translate: none; } }
 @media (prefers-reduced-motion: reduce) {
-  .pf-gallery * {
+  body:has(.pf-kpi) *,
+  .pf-gallery *,
+  .pf-gallery *::before,
+  .pf-gallery *::after {
+    animation: none !important;
+    transition: none !important;
+    translate: none !important;
+    scale: none !important;
     scroll-behavior: auto !important;
   }
 }
