@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Agent steps: vertical step list with a progressively drawn connector, a pulsing
+// Workflow progress: vertical step list with a progressively drawn connector, a pulsing
 // active marker, a shimmering working label and pending/completed/approval states.
 // Local simulation only; fictitious data. Reinterpreted from a public reference
 // video (see the demo pages for the link); no code or assets copied.
@@ -23,9 +23,9 @@ const T: Record<string, Tokens> = {
 }
 const v = computed(() => T[props.theme || 'lustro'] || T.lustro)
 const cssVars = computed(() => ({
-  '--as-bg': v.value.bg, '--as-surf': v.value.surf, '--as-ink': v.value.ink, '--as-mut': v.value.mut,
-  '--as-line': v.value.line, '--as-acc': v.value.acc, '--as-on': v.value.onAcc, '--as-warn': v.value.warn,
-  '--as-font': v.value.font, '--as-r': v.value.r,
+  '--wp-bg': v.value.bg, '--wp-surf': v.value.surf, '--wp-ink': v.value.ink, '--wp-mut': v.value.mut,
+  '--wp-line': v.value.line, '--wp-acc': v.value.acc, '--wp-on': v.value.onAcc, '--wp-warn': v.value.warn,
+  '--wp-font': v.value.font, '--wp-r': v.value.r,
 }))
 
 type Sub = { t: string; ms: number }
@@ -128,48 +128,48 @@ onBeforeUnmount(() => { token++; if (timer) clearTimeout(timer) })
 </script>
 
 <template>
-  <section class="as" :style="cssVars" aria-label="Agent run example">
-    <header class="as-top">
-      <div><span class="as-eyebrow">AGENT RUN</span><b>Fee review report</b><span class="as-chip">{{ done ? 'Complete' : running ? 'Running' : 'Draft' }}</span></div>
-      <div class="as-actions">
-        <button type="button" class="as-btn" @click="run">{{ running ? 'Stop simulation' : 'Run simulation' }}</button>
-        <button type="button" class="as-btn as-ghost" :disabled="!running && current === -1 && !completed.length && !done" @click="reset">Reset</button>
+  <section class="wp" :style="cssVars" aria-label="Agent run example">
+    <header class="wp-top">
+      <div><span class="wp-eyebrow">AGENT RUN</span><b>Fee review report</b><span class="wp-chip">{{ done ? 'Complete' : running ? 'Running' : 'Draft' }}</span></div>
+      <div class="wp-actions">
+        <button type="button" class="wp-btn" @click="run">{{ running ? 'Stop simulation' : 'Run simulation' }}</button>
+        <button type="button" class="wp-btn wp-ghost" :disabled="!running && current === -1 && !completed.length && !done" @click="reset">Reset</button>
       </div>
     </header>
 
-    <ol class="as-list">
-      <li v-for="(s, i) in STEPS" :key="s.t" class="as-step" :class="stepState(i)" :aria-current="i === current ? 'step' : undefined">
-        <span class="as-rail" aria-hidden="true">
-          <span class="as-node">
+    <ol class="wp-list">
+      <li v-for="(s, i) in STEPS" :key="s.t" class="wp-step" :class="stepState(i)" :aria-current="i === current ? 'step' : undefined">
+        <span class="wp-rail" aria-hidden="true">
+          <span class="wp-node">
             <svg v-if="stepState(i) === 'done'" viewBox="0 0 12 12"><path d="M2.2 6.4 4.8 9 9.8 3.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <svg v-else-if="s.approval" viewBox="0 0 12 12"><rect x="2.5" y="5.2" width="7" height="5" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 5.2V3.8a2 2 0 0 1 4 0v1.4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
             <i v-else></i>
           </span>
-          <span v-if="i < STEPS.length - 1" class="as-track">
-            <span class="as-fill" :class="{ on: fillOn(i) }" :style="{ transitionDuration: (fillMs[i] || 700) + 'ms' }"></span>
+          <span v-if="i < STEPS.length - 1" class="wp-track">
+            <span class="wp-fill" :class="{ on: fillOn(i) }" :style="{ transitionDuration: (fillMs[i] || 700) + 'ms' }"></span>
           </span>
         </span>
-        <div class="as-body">
-          <div class="as-row">
+        <div class="wp-body">
+          <div class="wp-row">
             <b>{{ s.t }}</b>
-            <span v-if="stepState(i) === 'done' && s.dur" class="as-dur">{{ s.dur }}</span>
-            <span v-else-if="i === current && !s.approval" class="as-status"><span class="as-shimmer">{{ s.subs ? (currentSub >= 0 && s.subs[currentSub] ? (currentSub >= s.subs.length - 1 ? 'Writing' : 'Working') : 'Working') : 'Working' }}</span></span>
-            <span v-else-if="s.approval" class="as-ask">{{ stepState(i) === 'done' ? 'Approved (simulated)' : 'Asks first' }}</span>
+            <span v-if="stepState(i) === 'done' && s.dur" class="wp-dur">{{ s.dur }}</span>
+            <span v-else-if="i === current && !s.approval" class="wp-status"><span class="wp-shimmer">{{ s.subs ? (currentSub >= 0 && s.subs[currentSub] ? (currentSub >= s.subs.length - 1 ? 'Writing' : 'Working') : 'Working') : 'Working' }}</span></span>
+            <span v-else-if="s.approval" class="wp-ask">{{ stepState(i) === 'done' ? 'Approved (simulated)' : 'Asks first' }}</span>
           </div>
-          <ol v-if="s.subs" class="as-subs" aria-label="Sub-steps of Draft the report">
-            <li v-for="(sub, j) in s.subs" :key="sub.t" class="as-sub" :class="subState(i, j)">
-              <span class="as-dot" aria-hidden="true"></span>
-              <span :class="{ 'as-shimmer': subState(i, j) === 'active' && j === s.subs.length - 1 }">{{ sub.t }}</span>
+          <ol v-if="s.subs" class="wp-subs" aria-label="Sub-steps of Draft the report">
+            <li v-for="(sub, j) in s.subs" :key="sub.t" class="wp-sub" :class="subState(i, j)">
+              <span class="wp-dot" aria-hidden="true"></span>
+              <span :class="{ 'wp-shimmer': subState(i, j) === 'active' && j === s.subs.length - 1 }">{{ sub.t }}</span>
             </li>
           </ol>
         </div>
       </li>
     </ol>
 
-    <footer class="as-foot">
-      <p class="as-note" role="status" aria-live="polite">{{ status }}</p>
-      <button v-if="awaiting" type="button" class="as-btn" @click="approve">Approve (simulated)</button>
-      <p class="as-fine">Demo only. The run is a local animation; no agent executes and nothing leaves this page.</p>
+    <footer class="wp-foot">
+      <p class="wp-note" role="status" aria-live="polite">{{ status }}</p>
+      <button v-if="awaiting" type="button" class="wp-btn" @click="approve">Approve (simulated)</button>
+      <p class="wp-fine">Demo only. The run is a local animation; no agent executes and nothing leaves this page.</p>
     </footer>
   </section>
 </template>
