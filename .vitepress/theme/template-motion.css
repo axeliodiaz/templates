@@ -276,4 +276,3 @@ html[data-tpl="cargo"] {
 @starting-style{.vp-doc dialog[open]{opacity:0;translate:0 8px}.vp-doc dialog[open]::backdrop{background:#0000}}
 }
 @media(prefers-reduced-motion:reduce){.vp-doc *,.vp-doc *::before,.vp-doc *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;translate:none!important}}
-
