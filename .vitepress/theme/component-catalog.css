@@ -39,3 +39,6 @@ html.tpl-sc .kit .l-menu button:hover{translate:none}
   .kit-index a:hover,.kit .l-menu button:hover{translate:none}
   .kit-tooltip [role=tooltip]{transition:none;translate:none}
 }
+
+.kit-relay{--k-bg:#070910;--k-alt:#141624;--k-text:#f4f6fb;--k-muted:#b7c0d6;--k-border:#3a3458;--k-brand:#6d4dff;--k-ink:#fff;--k-radius:16px;font-family:Inter,'DM Sans',system-ui,sans-serif}.kit-relay .l-primary{background-image:none;background:var(--k-brand);color:var(--k-ink)}.kit-relay>section>p{color:var(--k-muted)}.kit-relay .l-alert{background:var(--k-alt);border-color:var(--k-border);color:var(--k-text)}.kit-relay .l-alert-warn{border-left:4px solid #f0c36d}.kit-relay .l-alert-success{border-left:4px solid #3ddc97}
+

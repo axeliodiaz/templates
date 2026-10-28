@@ -7,12 +7,15 @@
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
 <link rel="stylesheet" href="/felix-template/felix-theme.css">
+<link rel="stylesheet" href="/theme-reveal.css">
+<script src="/theme-reveal.js"></script>
 <style>
   body { min-height: 100vh; }
   .fx-scroll { max-height: 52vh; overflow-y: auto; }
   .fx-recipient.active { border-left: 3px solid var(--fx-turquoise); background: var(--bs-primary-bg-subtle); }
   @media (max-width: 1023.98px) { .fx-scroll { max-height: none; } }
 </style>
+  <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
 </head>
 <body>
 <nav class="navbar md:navbar-expand felix-navbar" aria-label="Felix">
@@ -243,9 +246,12 @@ $("#speed").addEventListener("click", (e) => {
 });
 $("#theme").addEventListener("click", (e) => {
   const dark = document.documentElement.dataset.bsTheme !== "dark";
-  document.documentElement.dataset.bsTheme = dark ? "dark" : "light";
-  e.currentTarget.setAttribute("aria-pressed", dark);
-  e.currentTarget.textContent = dark ? "Light mode" : "Dark mode";
+  const btn = e.currentTarget;
+  ThemeReveal.reveal(btn, () => {
+    document.documentElement.dataset.bsTheme = dark ? "dark" : "light";
+    btn.setAttribute("aria-pressed", dark);
+    btn.textContent = dark ? "Light mode" : "Dark mode";
+  });
 });
 $("#saveBtn").addEventListener("click", () => say("Draft saved locally."));
 $("#confirmForm").addEventListener("submit", (e) => {

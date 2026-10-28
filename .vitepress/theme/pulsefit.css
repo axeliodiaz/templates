@@ -26,7 +26,7 @@
 .pf-in.on{border-color:var(--gold);box-shadow:var(--ring)} .pf-in.bad{border-color:var(--bad)}
 .pf-lab{font:500 12px 'Rubik',sans-serif;color:var(--muted);display:block;margin-bottom:4px}
 .pf-sw{border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--sh1)} .pf-sw i{display:block;height:56px} .pf-sw div{padding:8px 10px;font-size:12px} .pf-sw b{display:block;font-size:13px} .pf-sw code{background:none;padding:0;color:var(--muted);font-size:11px}
-.pf-nav{background:var(--nav);color:#fff;border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:18px;font-size:13px}
+.pf-nav{background:var(--nav);color:#fff;border-radius:12px;padding:10px 16px;display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;font-size:13px}
 .pf-nav .logo{font:400 22px 'Bebas Neue',sans-serif;letter-spacing:.08em;color:var(--gold)} .pf-nav .on{color:var(--gold)} .pf-nav span{opacity:.82}
 .pf-av{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:600 12px 'Montserrat',sans-serif;background:var(--gold);color:#000}
 .pf-av.d{background:var(--dark);color:#fff}.pf-av.m{background:var(--c3);color:#fff}.pf-av.l{background:var(--c4);color:#333}.pf-av.sm{width:24px;height:24px;font-size:10px}

@@ -2,6 +2,13 @@
 
 Every design language uses one shared motion layer (`template-motion.css` and `template-motion.ts`). Language-specific chart, receipt, loader and demo animations stay in place. Tokens on the page (`--m-rise`, `--m-ease`, `--m-axis`, `--m-hover`, `--m-press`, `--m-glow`) change the character. The scroll entrance is always 280ms.
 
+The language guides use a shared motion layer. Existing language-specific chart,
+receipt, loader and demo animations stay in place. Relay's control room adds
+graph-edge flow, sparkline draws, feed arrivals, and approval exits on top of
+this layer. Those loops and transitions stop when `prefers-reduced-motion` is
+`reduce`, and the tool-call count appears at its final value.
+
+
 | Language | Entrance | Hover and press | What it should feel like |
 | --- | --- | --- | --- |
 | Lustro | 12px rise | 2px lift, 1px press, indigo glow on the primary action | Glass settling into place |

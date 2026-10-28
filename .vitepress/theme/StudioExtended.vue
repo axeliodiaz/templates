@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref,computed,onMounted,onBeforeUnmount} from 'vue'
-const props=defineProps<{theme:'folio'|'spark'|'pace'}>()
+const props=defineProps<{theme:'folio'|'spark'|'pace'|'relay'}>()
 const activeSection=ref('Summary'),spyRoot=ref<HTMLElement|null>(null);let spy:IntersectionObserver|undefined
 onMounted(()=>{spy=new IntersectionObserver(es=>{const top=es.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(top)activeSection.value=top.target.getAttribute('data-spy')||'Summary'},{root:spyRoot.value,threshold:[0,.5,1]});spyRoot.value?.querySelectorAll('[data-spy]').forEach(e=>spy?.observe(e))});onBeforeUnmount(()=>spy?.disconnect())
 const notice=ref(''),toggle=ref(false),segment=ref('Monthly'),checks=ref(['Email']),language=ref('English'),search=ref(''),tab=ref('Overview'),alertOpen=ref(true),slide=ref(0),collapse=ref(false),menu=ref(false),modal=ref<HTMLDialogElement|null>(null),drawer=ref<HTMLDialogElement|null>(null),busy=ref(false),count=ref(3),fileName=ref('No file selected'),email=ref(''),sort=ref(false)

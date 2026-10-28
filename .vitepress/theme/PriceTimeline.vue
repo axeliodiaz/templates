@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 const props = defineProps({ theme: { type: String, default: 'pulsefit' }, asset: { type: String, default: 'ETH (SOL)' }, position: { type: Boolean, default: true } })
 const T = {
   lustro: ['#0b0b18', 'rgba(148,140,255,.08)', '#fff', '#a5b4fc', 'rgba(148,140,255,.22)', '#6366f1', '#fff', '#34d399', '#f472b6', "'DM Sans',sans-serif", '16px'],
-  felix: ['#fefcf9', '#fff', '#082422', '#636158', '#cfcabf', '#065958', '#fff', '#1b8a4b', '#c0392b', "'Saans',sans-serif", '12px'],
+  felix: ['#fefcf9', '#fff', '#082422', '#636158', '#cfcabf', '#065958', '#fff', '#146c3a', '#c0392b', "'Saans',sans-serif", '12px'],
   pulsefit: ['#f5f5f5', '#fff', '#212121', '#5f666d', '#e0e0e0', '#C9A66B', '#212121', '#198754', '#dc3545', "'Rubik',sans-serif", '16px'],
   scopecraft: ['#f4f4f5', '#fff', '#111113', '#6b6f76', '#e6e6e8', '#111113', '#fff', '#17803d', '#c62828', 'ui-sans-serif,system-ui,sans-serif', '8px'],
   lumen: ['#fbfbfa', '#fff', '#17171a', '#74767d', '#e7e7e9', '#7c6cf0', '#fff', '#1b9a4b', '#d23b3b', 'ui-sans-serif,system-ui,sans-serif', '14px']

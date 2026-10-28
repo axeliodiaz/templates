@@ -1,8 +1,8 @@
 /* Bootstrap-depth component set, themed per template via variables. */
 .bsx-lu{--b-bg:#0b0b18;--b-surf:rgba(148,140,255,.08);--b-ink:#fff;--b-text:#e5e7ff;--b-mut:#a5b4fc;--b-bd:rgba(148,140,255,.22);--b-pri:#6366f1;--b-prit:#fff;--b-ok:#34d399;--b-warn:#fbbf24;--b-bad:#f472b6;--b-info:#22d3ee;--b-r:14px;--b-font:'DM Sans',ui-sans-serif,system-ui,sans-serif}
-.bsx-fx{--b-bg:#fefcf9;--b-surf:#fff;--b-ink:#082422;--b-text:#234343;--b-mut:#636158;--b-bd:#cfcabf;--b-pri:#065958;--b-prit:#fff;--b-ok:#1b8a4b;--b-warn:#b77900;--b-bad:#c0392b;--b-info:#0f8c8b;--b-r:10px;--b-font:'Saans',ui-sans-serif,system-ui,sans-serif}
+.bsx-fx{--b-bg:#fefcf9;--b-surf:#fff;--b-ink:#082422;--b-text:#234343;--b-mut:#636158;--b-bd:#cfcabf;--b-pri:#065958;--b-prit:#fff;--b-ok:#146c3a;--b-warn:#b77900;--b-bad:#c0392b;--b-info:#0f8c8b;--b-r:10px;--b-font:'Saans',ui-sans-serif,system-ui,sans-serif}
 .bsx-pf{--b-bg:#f5f5f5;--b-surf:#fff;--b-ink:#212121;--b-text:#333;--b-mut:#5f666d;--b-bd:#e0e0e0;--b-pri:#C9A66B;--b-prit:#212121;--b-ok:#198754;--b-warn:#b77900;--b-bad:#dc3545;--b-info:#0a7e96;--b-r:8px;--b-font:'Rubik',ui-sans-serif,system-ui,sans-serif}
-.bsx-sc{--b-bg:#f4f4f5;--b-surf:#fff;--b-ink:#111113;--b-text:#1b1c1f;--b-mut:#6b6f76;--b-bd:#e6e6e8;--b-pri:#111113;--b-prit:#fff;--b-ok:#17803d;--b-warn:#a05a00;--b-bad:#c62828;--b-info:#2f6fdc;--b-r:8px;--b-font:ui-sans-serif,system-ui,sans-serif}
+.bsx-sc{--b-bg:#f4f4f5;--b-surf:#fff;--b-ink:#111113;--b-text:#1b1c1f;--b-mut:#6b6f76;--b-bd:#e6e6e8;--b-pri:#111113;--b-prit:#fff;--b-ok:#17803d;--b-warn:#a05a00;--b-bad:#c62828;--b-info:#1e4eaa;--b-r:8px;--b-font:ui-sans-serif,system-ui,sans-serif}
 .bsx-lmn{--b-bg:#fbfbfa;--b-surf:#fff;--b-ink:#17171a;--b-text:#25262b;--b-mut:#74767d;--b-bd:#e7e7e9;--b-pri:#7c6cf0;--b-prit:#fff;--b-ok:#1b9a4b;--b-warn:#d9770a;--b-bad:#d23b3b;--b-info:#0fb0ea;--b-r:12px;--b-font:ui-sans-serif,system-ui,sans-serif}
 
 .bsx{font-family:var(--b-font);color:var(--b-text);background:var(--b-bg);border:1px solid var(--b-bd);border-radius:calc(var(--b-r) + 4px);padding:18px;margin:12px 0;font-size:14px;line-height:1.45;overflow:hidden}

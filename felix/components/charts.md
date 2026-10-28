@@ -1,5 +1,6 @@
 <script setup>
 import SankeyFunnel from '../../.vitepress/theme/SankeyFunnel.vue'
+import StatusCharts from '../../.vitepress/theme/StatusCharts.vue'
 import ChartGallery from '../../.vitepress/theme/ChartGallery.vue'
 import SeriesTrend from '../../.vitepress/theme/SeriesTrend.vue'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
@@ -306,6 +307,8 @@ async function drawMermaid() {
       startOnLoad: false,
       securityLevel: 'strict',
       suppressErrorRendering: true,
+      layout: 'dagre',
+      look: 'classic',
       theme: 'base',
       fontFamily: 'Saans, ui-sans-serif, system-ui, sans-serif',
       flowchart: { curve: 'basis', htmlLabels: false, padding: 12, nodeSpacing: 24, rankSpacing: 40 },
@@ -851,3 +854,9 @@ A short diagram can live in Mermaid. A board of real tasks keeps each label in H
 Multi-stage conversion flow with drop-offs, date ranges, play/pause and keyboard focus. It inherits this template's colors and works with synthetic data. Replace the stage counts with your own source of truth.
 
 <SankeyFunnel title="Conversion funnel" />
+
+## Status gauge and funnel
+
+A weighted-progress gauge next to a by-status funnel. Hover or focus a gauge color or a funnel bar to see which status it is, how many cards it holds and what it counts for. The gap between gauge slices is drawn inside each slice, so the filled arc always ends exactly at the progress value.
+
+<StatusCharts />

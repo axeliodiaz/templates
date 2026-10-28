@@ -13,18 +13,46 @@ export default defineConfig({
   appearance: 'force-dark',
   cleanUrls: true,
   head: [
+    ['link', { rel: 'stylesheet', href: '/vendor/fontawesome/css/all.min.css' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap' }]
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap' }]
   ],
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' }
     ],
     sidebar: {
-      '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
-      '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
-      '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Charts', link: '/spark/charts' },  { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
+      '/dropdowns': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/language-select': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/breadcrumb': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/pagination': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/navs-tabs': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/range-slider': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/choices': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/select': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/validation': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/input-group': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/forms': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/cards': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/alerts': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/badges': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/button-group': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/buttons': [{ text: 'Component guides', items: [{ text: 'Buttons', link: '/buttons' }, { text: 'Button group', link: '/button-group' }, { text: 'Badge', link: '/badges' }, { text: 'Alerts', link: '/alerts' }, { text: 'Card', link: '/cards' }, { text: 'Forms', link: '/forms' }, { text: 'Input group', link: '/input-group' }, { text: 'Validation', link: '/validation' }, { text: 'Select', link: '/select' }, { text: 'Choice controls', link: '/choices' }, { text: 'Range slider', link: '/range-slider' }, { text: 'Navs and tabs', link: '/navs-tabs' }, { text: 'Pagination', link: '/pagination' }, { text: 'Breadcrumb', link: '/breadcrumb' }, { text: 'Language select', link: '/language-select' }, { text: 'Dropdowns', link: '/dropdowns' }] }],
+      '/margin': [{"text": "Margin", "items": [{"text": "Overview", "link": "/margin"}, {"text": "Analytics", "link": "/margin/analytics"}, {"text": "Transactional emails", "link": "/margin/correos"}]}],
+      '/evertrue': [{"text": "Evertrue", "items": [{"text": "Overview", "link": "/evertrue"}]}],
+      '/agent-security': [{"text": "Agent Security", "items": [{"text": "Overview", "link": "/agent-security"}]}],
+      '/agent-onboarding': [{"text": "Agent Onboarding", "items": [{"text": "Overview", "link": "/agent-onboarding"}]}],
+      '/fitness': [{"text": "Fitness", "items": [{"text": "Overview", "link": "/fitness"}, {"text": "Pace guide", "link": "/pace"}]}],
+      '/trade-finance': [{"text": "Trade Finance", "items": [{"text": "Overview", "link": "/trade-finance"}]}],
+      '/trial-journey': [{"text": "Trial Journey", "items": [{"text": "Overview", "link": "/trial-journey"}]}],
+      '/graph-components': [{"text": "Graph Components", "items": [{"text": "Overview", "link": "/graph-components"}]}],
+
+      '/relay': [{ text: 'Relay foundations', items: [{ text: 'Overview', link: '/relay' }, { text: 'Color, type, and tokens', link: '/relay/foundations' }, { text: 'CSS implementation', link: '/relay/tokens' }, { text: 'Motion', link: '/relay/motion' }] }, { text: 'Relay components', items: [{ text: 'Full live catalog', link: '/relay/components' }, { text: 'Workflow progress', link: '/relay/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' }, { text: 'Charts', link: '/relay/charts' }, { text: 'Layouts', link: '/relay/layouts' }, { text: 'Control room', link: '/relay/overview' }] }],
+      '/folio': [{ text: 'Folio foundations', items: [{ text: 'Overview', link: '/folio' }, { text: 'Principles and tokens', link: '/folio/foundations' }, { text: 'CSS implementation', link: '/folio/tokens' }] }, { text: 'Folio components', items: [{ text: 'Full live catalog', link: '/folio/components' }, { text: 'Workflow progress', link: '/folio/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' }, { text: 'Charts', link: '/folio/charts' },  { text: 'Layouts', link: '/folio/layouts' }, { text: 'Dashboard', link: '/folio/overview' }] }],
+      '/pace': [{ text: 'Pace foundations', items: [{ text: 'Overview', link: '/pace' }, { text: 'Principles and tokens', link: '/pace/foundations' }, { text: 'CSS implementation', link: '/pace/tokens' }, { text: 'Motion', link: '/pace/motion' }] }, { text: 'Pace components', items: [{ text: 'Full live catalog', link: '/pace/components' }, { text: 'Workflow progress', link: '/pace/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' }, { text: 'Charts', link: '/pace/charts' }, { text: 'Layouts', link: '/pace/layouts' }, { text: 'Emails', link: '/pace/emails' }, { text: 'Member app demo', link: '/fitness' }] }],
+      '/spark': [{ text: 'Spark foundations', items: [{ text: 'Overview', link: '/spark' }, { text: 'Principles and tokens', link: '/spark/foundations' }, { text: 'CSS implementation', link: '/spark/tokens' }] }, { text: 'Spark components', items: [{ text: 'Full live catalog', link: '/spark/components' }, { text: 'Workflow progress', link: '/spark/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' }, { text: 'Charts', link: '/spark/charts' },  { text: 'Layouts', link: '/spark/layouts' }, { text: 'Dashboard', link: '/spark/overview' }] }],
+      '/bastion': [{ text: 'Bastion foundations', items: [{ text: 'Overview', link: '/bastion' }, { text: 'Color', link: '/bastion/color' }, { text: 'Typography', link: '/bastion/typography' }, { text: 'Tokens', link: '/bastion/tokens' }, { text: 'Usage', link: '/bastion/usage' }, { text: 'Motion', link: '/bastion/motion' }] }, { text: 'Bastion components', items: [{ text: 'Catalog', link: '/bastion/components' }, { text: 'Workflow progress', link: '/bastion/workflow-progress' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' }, { text: 'Charts and meters', link: '/bastion/charts' }, { text: 'Ops dashboard', link: '/bastion/dashboard' }] }],
 
       '/felix': [
         {
@@ -49,6 +77,7 @@ export default defineConfig({
               { text: 'Badge', link: '/felix/components/atoms#badge' },
               { text: 'Bubble', link: '/felix/components/atoms#bubble' },
               { text: 'Button', link: '/felix/components/atoms#button' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' },
               { text: 'Checkbox', link: '/felix/components/atoms#checkbox' },
               { text: 'CoinLoader', link: '/felix/components/atoms#coinloader' },
               { text: 'Dots', link: '/felix/components/atoms#dots' },
@@ -100,6 +129,7 @@ export default defineConfig({
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' },
               { text: 'Button groups', link: '/felix/components-more#button-groups-basic-and-sizes' },
               { text: 'Badges', link: '/felix/components-more#badges-variants' },
               { text: 'Alerts', link: '/felix/components-more#alerts-variants' },
@@ -160,6 +190,8 @@ export default defineConfig({
             { text: 'Projects', link: '/felix/projects' },
             { text: 'Dependencies', link: '/felix/dependencies' },
             { text: 'Node flow', link: '/felix/node-flow' },
+            { text: 'Workflow progress', link: '/felix/workflow-progress' },
+            { text: 'Decision tree', link: '/felix/decision-tree' },
             { text: 'Finance', link: '/felix/finance' },
             { text: 'Reports', link: '/felix/reports' },
             { text: 'Shipping', link: '/felix/shipping' },
@@ -173,8 +205,10 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/lumen/components' },
-          
+          { text: 'Workflow progress', link: '/lumen/workflow-progress' },
+
           { text: 'Buttons', link: '/lumen/components-more#buttons-variants' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' },
           { text: 'Button groups', link: '/lumen/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/lumen/components-more#badges-variants' },
           { text: 'Alerts', link: '/lumen/components-more#alerts-variants' },
@@ -240,8 +274,10 @@ export default defineConfig({
         ] },
         { text: 'Components', collapsed: false, items: [
           { text: 'Overview', link: '/scopecraft/components' },
-          
+          { text: 'Workflow progress', link: '/scopecraft/workflow-progress' },
+
           { text: 'Buttons', link: '/scopecraft/components-more#buttons-variants' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' },
           { text: 'Button groups', link: '/scopecraft/components-more#button-groups-basic-and-sizes' },
           { text: 'Badges', link: '/scopecraft/components-more#badges-variants' },
           { text: 'Alerts', link: '/scopecraft/components-more#alerts-variants' },
@@ -328,6 +364,8 @@ export default defineConfig({
           { text: 'Alerts', link: '/pawprint/components#alerts' },
           { text: 'Navbar', link: '/pawprint/components#navbar' },
           { text: 'Care timeline', link: '/pawprint/components#care-timeline' },
+          { text: 'Workflow progress', link: '/pawprint/workflow-progress' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' },
           { text: 'UI-kit catalog (43 families)', link: '/pawprint/components#ui-kit-catalog' },
         ] },
         { text: 'Charts', collapsed: false, items: [
@@ -353,6 +391,7 @@ export default defineConfig({
           { text: 'Overview', link: '/pulsefit/components' },
           { text: 'Bootstrap 6 gallery', link: '/pulsefit/components-more' },
           { text: 'Buttons', link: '/pulsefit-template/components.html#buttons-variants' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' },
           { text: 'Badges', link: '/pulsefit-template/components.html#badges' },
           { text: 'Alerts', link: '/pulsefit-template/components.html#alerts' },
           { text: 'Cards', link: '/pulsefit-template/components.html#cards' },
@@ -390,12 +429,67 @@ export default defineConfig({
             { text: 'Projects', link: '/pulsefit/projects' },
             { text: 'Dependencies', link: '/pulsefit/dependencies' },
             { text: 'Node flow', link: '/pulsefit/node-flow' },
+            { text: 'Workflow progress', link: '/pulsefit/workflow-progress' },
             { text: 'Finance', link: '/pulsefit/finance' },
             { text: 'Reports', link: '/pulsefit/reports' },
             { text: 'Shipping', link: '/pulsefit/shipping' },
             { text: 'Pricing', link: '/pulsefit/pricing' }
           ]
         }
+      ],
+      '/lustro': [
+      { text: 'Getting started', items: [{ text: 'Introducción', link: '/lustro/introduccion' }] },
+      { text: 'Fundamentos', items: [
+        { text: 'Colores', link: '/lustro/fundamentos/colores' },
+        { text: 'Tipografía', link: '/lustro/fundamentos/tipografia' },
+        { text: 'Iconos', link: '/lustro/fundamentos/iconos' }
+      ] },
+      { text: 'Full UI catalog', link: '/lustro/ui-kit' },
+      { text: 'Lustro full live catalog', link: '/lustro/components' },
+
+      { text: 'Lustro expanded set (52 sections)', link: '/lustro/components-more' },
+      { text: 'Componentes', link: '/lustro/guide-components', collapsed: true, items: [
+        { text: 'Accordion', link: '/lustro/guide-components#accordion' },
+        { text: 'Alerts', link: '/lustro/guide-components#alerts' },
+        { text: 'Badge', link: '/lustro/guide-components#badge' },
+        { text: 'Breadcrumb', link: '/lustro/guide-components#breadcrumb' },
+        { text: 'Buttons', link: '/lustro/guide-components#buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' },
+        { text: 'Button group', link: '/lustro/guide-components#button-group' },
+        { text: 'Card', link: '/lustro/guide-components#card' },
+        { text: 'Carousel', link: '/lustro/guide-components#carousel' },
+        { text: 'Close button', link: '/lustro/guide-components#close-button' },
+        { text: 'Collapse', link: '/lustro/guide-components#collapse' },
+        { text: 'Language select', link: '/lustro/guide-components#language-select' },
+        { text: 'Dropdowns', link: '/lustro/guide-components#dropdowns' },
+        { text: 'Forms', link: '/lustro/guide-components#forms' },
+        { text: 'List group', link: '/lustro/guide-components#list-group' },
+        { text: 'Modal', link: '/lustro/guide-components#modal' },
+        { text: 'Navbar & Footer', link: '/lustro/guide-components#navbar-and-footer' },
+        { text: 'Navs & tabs', link: '/lustro/guide-components#navs-tabs' },
+        { text: 'Offcanvas', link: '/lustro/guide-components#offcanvas' },
+        { text: 'Pagination', link: '/lustro/guide-components#pagination' },
+        { text: 'Placeholders', link: '/lustro/guide-components#placeholders' },
+        { text: 'Popovers', link: '/lustro/guide-components#popovers' },
+        { text: 'Progress', link: '/lustro/guide-components#progress' },
+        { text: 'Scrollspy', link: '/lustro/guide-components#scrollspy' },
+        { text: 'Spinners/Loaders', link: '/lustro/guide-components#spinners-loaders' },
+        { text: 'Tables', link: '/lustro/tables', collapsed: true, items: ['Basic','Striped','Hover rows','Compact','Bordered','Sticky header','Sortable','Search and column filters','Pagination','Selectable rows','Row actions','Expandable rows','Numeric columns with deltas','Footer totals','Empty state','Loading skeleton','Responsive card layout'].map(t=>({ text: t, link: '/lustro/tables#' + ({'Search and column filters':'filterable','Numeric columns with deltas':'deltas','Responsive card layout':'responsive','Hover rows':'hover'}[t]||t.toLowerCase().replace(/ /g,'-')) })) },
+        { text: 'Toasts', link: '/lustro/guide-components#toasts' },
+        { text: 'Tooltips', link: '/lustro/guide-components#tooltips' }
+      ] },
+      { text: 'Email templates', items: [
+        { text: 'Correos transaccionales', link: '/lustro/correos' },
+        { text: 'Bienvenida', link: '/lustro/correos#bienvenida' },
+        { text: 'Verificar correo', link: '/lustro/correos#verificar-correo' },
+        { text: 'Recuperar contraseña', link: '/lustro/correos#recuperar-contrasena' },
+        { text: 'Reserva confirmada', link: '/lustro/correos#reserva-confirmada' },
+        { text: 'Recordatorio de clase', link: '/lustro/correos#recordatorio-de-clase' },
+        { text: 'Cupo en lista de espera', link: '/lustro/correos#cupo-en-lista-de-espera' },
+        { text: 'Clase cancelada', link: '/lustro/correos#clase-cancelada' },
+        { text: 'Comprobante de compra', link: '/lustro/correos#comprobante-de-compra' },
+        { text: 'Membresía por vencer', link: '/lustro/correos#membresia-por-vencer' }
+      ] }
       ],
       '/': [
       { text: 'Getting started', items: [{ text: 'Introducción', link: '/introduccion' }] },
@@ -406,7 +500,7 @@ export default defineConfig({
       ] },
       { text: 'Full UI catalog', link: '/ui-kit' },
       { text: 'Lustro full live catalog', link: '/lustro/components' },
-          
+
       { text: 'Lustro expanded set (52 sections)', link: '/lustro/components-more' },
       { text: 'Componentes', link: '/components', collapsed: true, items: [
         { text: 'Accordion', link: '/components#accordion' },
@@ -414,6 +508,7 @@ export default defineConfig({
         { text: 'Badge', link: '/components#badge' },
         { text: 'Breadcrumb', link: '/components#breadcrumb' },
         { text: 'Buttons', link: '/components#buttons' },
+          { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' },
         { text: 'Button group', link: '/components#button-group' },
         { text: 'Card', link: '/components#card' },
         { text: 'Carousel', link: '/components#carousel' },
@@ -455,6 +550,7 @@ export default defineConfig({
         { text: 'Projects', link: '/projects' },
         { text: 'Dependencies', link: '/dependencies' },
         { text: 'Node flow', link: '/node-flow' },
+          { text: 'Workflow progress', link: '/workflow-progress' },
         { text: 'Reference collection', link: '/reference-templates' },
         { text: 'Reusable graphs', link: '/graph-components' },
         { text: 'Trial journey (Sankey funnel)', link: '/trial-journey' },
@@ -463,7 +559,11 @@ export default defineConfig({
         { text: 'Felix (Bootstrap 6 alpha)', link: '/felix-bootstrap' },
         { text: 'Lustro (Bootstrap 6 alpha)', link: '/lustro-template/index.html' },
         { text: 'Fixtrack maintenance', link: '/fixtrack' },
+        { text: 'Margin analytics', link: '/margin-analytics' },
+        { text: 'Evertrue pages', link: '/evertrue' },
+        { text: 'Relay control room', link: '/relay' },
         { text: 'Folio finance', link: '/folio' },
+        { text: 'Bastion ops', link: '/bastion' },
         { text: 'Pace fitness', link: '/pace' },
         { text: 'Orange analytics', link: '/spark-analytics' },
         { text: 'Pulse projects', link: '/pulse-projects' },
@@ -482,7 +582,7 @@ export default defineConfig({
           { text: 'Charts', link: '/graphs', collapsed: true, items: [
             { text: 'All charts', link: '/graphs#all-charts', collapsed: false, items: [{ text: 'Trends over time', link: '/graphs#trends-over-time' }, { text: 'Comparison', link: '/graphs#comparison' }, { text: 'Parts of a whole', link: '/graphs#parts-of-a-whole' }, { text: 'Distribution and relationships', link: '/graphs#distribution-and-relationships' }, { text: 'Activity and time grids', link: '/graphs#activity-and-time-grids' }, { text: 'KPIs and progress', link: '/graphs#kpis-and-progress' }, { text: 'Flows and funnels', link: '/graphs#flows-and-funnels' }] },
           ] },
-          
+
     ]
     },
     socialLinks: [

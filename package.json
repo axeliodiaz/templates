@@ -4,21 +4,26 @@
   "version": "0.1.0",
   "description": "Design-language guides written in Markdown, published at templates.axeldiaz.com",
   "scripts": {
-    "dev": "npm run build:batch2-bs6 && vitepress dev",
-    "build": "npm run build:batch2-bs6 && node scripts/build-lustro-bs6-components.mjs && npm run build:scopecraft-bs6 && vitepress build",
+    "dev": "npm run build:batch2-bs6 && npm run build:bastion-bs6 && vitepress dev",
+    "build": "npm run build:batch2-bs6 && node scripts/build-lustro-bs6-components.mjs && npm run build:scopecraft-bs6 && npm run build:bastion-bs6 && vitepress build",
     "build:lustro-bs6": "node scripts/build-lustro-bs6-components.mjs",
     "build:scopecraft-bs6": "node scripts/build-scopecraft-bs6-css.mjs",
     "preview": "vitepress preview",
     "test:newrelic": "node --test tests/newrelic-browser.cjs",
     "test:pulsefit-bs6": "node tests/pulsefit-bs6.cjs",
     "test:felix-bootstrap": "node tests/felix-bootstrap.cjs",
+    "test:decision-tree": "node tests/decision-tree.cjs",
     "build:batch2-bs6": "node scripts/build-batch2-bs6.mjs",
-    "test:batch2-bs6": "node tests/batch2-bs6.cjs"
+    "build:bastion-bs6": "node scripts/build-bastion-bs6.mjs",
+    "test:bastion": "node tests/bastion.cjs",
+    "test:batch2-bs6": "node tests/batch2-bs6.cjs",
+    "test:relay": "node tests/relay-dashboard.cjs"
   },
   "devDependencies": {
-    "mermaid": "^11.17.2",
+    "@fortawesome/fontawesome-free": "^7.3.1",
+    "mermaid": "^12.2.0",
     "playwright": "^1.64.1",
-    "postcss": "^8.5.30",
+    "postcss": "^8.5.31",
     "postcss-prefix-selector": "^2.2.1",
     "vitepress": "^1.6.3"
   },
@@ -26,8 +31,11 @@
     "esbuild@0.21.5": true
   },
   "dependencies": {
-    "@newrelic/browser-agent": "^1.323.0",
+    "@newrelic/browser-agent": "^1.324.0",
     "bootstrap": "6.0.0-alpha.1",
-    "motion": "^14.1.0"
+    "motion": "^14.6.0"
+  },
+  "overrides": {
+    "fflate": "0.8.3"
   }
 }

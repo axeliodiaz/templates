@@ -3,6 +3,7 @@ aside: false
 ---
 <script setup>
 import {ref,computed} from 'vue'
+import { revealTheme } from './.vitepress/theme/theme-reveal'
 import TopologyGraph from './.vitepress/theme/graph/TopologyGraph.vue'
 import WorkflowBuilder from './.vitepress/theme/graph/WorkflowBuilder.vue'
 const dark=ref(false),incident=ref(false),selected=ref('api'),notice=ref('')
@@ -20,7 +21,7 @@ const flow=ref({nodes:[{id:'trigger',label:'Document uploaded',kind:'trigger',x:
 
 Original components for service topology and workflow editing. The host supplies all data and owns persistence, permissions and execution. These examples use fictitious data. They do not connect to infrastructure or run agents.
 
-<button @click="dark=!dark">{{dark?'Light':'Dark'}} graph theme</button>
+<button @click="revealTheme($event,()=>dark=!dark)">{{dark?'Light':'Dark'}} graph theme</button>
 
 ## Service topology
 
