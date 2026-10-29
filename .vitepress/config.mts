@@ -194,7 +194,8 @@ export default defineConfig({
           { text: 'Sunburst chart usage', link: '/sunburst-chart' },
           { text: 'Pyramid chart usage', link: '/pyramid-chart' },
           { text: 'Scatter plot usage', link: '/scatter-plot' },
-          { text: 'Bubble chart usage', link: '/bubble-chart' }
+          { text: 'Bubble chart usage', link: '/bubble-chart' },
+          { text: 'Histogram usage', link: '/histogram' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
