@@ -178,7 +178,8 @@ export default defineConfig({
           { text: 'Line chart usage', link: '/line-chart' },
           { text: 'Area chart usage', link: '/area-chart' },
           { text: 'Step line chart usage', link: '/step-line-chart' },
-          { text: 'Stream chart usage', link: '/stream-chart' }
+          { text: 'Stream chart usage', link: '/stream-chart' },
+          { text: 'Range band chart usage', link: '/range-band-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
