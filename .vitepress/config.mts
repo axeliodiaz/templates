@@ -192,7 +192,8 @@ export default defineConfig({
           { text: 'Donut chart usage', link: '/donut-chart' },
           { text: 'Treemap usage', link: '/treemap' },
           { text: 'Sunburst chart usage', link: '/sunburst-chart' },
-          { text: 'Pyramid chart usage', link: '/pyramid-chart' }
+          { text: 'Pyramid chart usage', link: '/pyramid-chart' },
+          { text: 'Scatter plot usage', link: '/scatter-plot' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
