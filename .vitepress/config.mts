@@ -123,6 +123,7 @@ export default defineConfig({
               { text: 'Logo', link: '/felix/components/atoms#logo' },
           { text: 'Logo usage', link: '/logo' },
               { text: 'Marker', link: '/felix/components/atoms#marker' },
+          { text: 'Marker usage', link: '/marker' },
               { text: 'Progress', link: '/felix/components/atoms#progress' },
               { text: 'RadioGroup', link: '/felix/components/atoms#radiogroup' },
               { text: 'Separator', link: '/felix/components/atoms#separator' },
