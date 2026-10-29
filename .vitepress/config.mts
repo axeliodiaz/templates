@@ -183,7 +183,8 @@ export default defineConfig({
           { text: 'Candlestick chart usage', link: '/candlestick-chart' },
           { text: 'Sparkline usage', link: '/sparkline' },
           { text: 'Bar chart usage', link: '/bar-chart' },
-          { text: 'Dumbbell chart usage', link: '/dumbbell-chart' }
+          { text: 'Dumbbell chart usage', link: '/dumbbell-chart' },
+          { text: 'Bullet chart usage', link: '/bullet-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
