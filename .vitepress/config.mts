@@ -119,6 +119,7 @@ export default defineConfig({
           { text: 'IconButton usage', link: '/icon-button' },
               { text: 'Input', link: '/felix/components/atoms#input' },
               { text: 'Label', link: '/felix/components/atoms#label' },
+          { text: 'Label usage', link: '/label' },
               { text: 'Logo', link: '/felix/components/atoms#logo' },
               { text: 'Marker', link: '/felix/components/atoms#marker' },
               { text: 'Progress', link: '/felix/components/atoms#progress' },
