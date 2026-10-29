@@ -168,7 +168,8 @@ export default defineConfig({
               { text: 'MessageScroller', link: '/felix/components/organisms#messagescroller' },
           { text: 'MessageScroller usage', link: '/message-scroller' },
               { text: 'Sidebar', link: '/felix/components/organisms#sidebar' },
-          { text: 'Sidebar usage', link: '/sidebar' }
+          { text: 'Sidebar usage', link: '/sidebar' },
+          { text: 'Cart summary usage', link: '/cart-summary' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
