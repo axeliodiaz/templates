@@ -55,7 +55,7 @@ Native class buttons select on focus or activation and expose pressed state. Dat
 |---|---|
 | [Lustro gallery](/graphs), [Felix charts](/felix/components/charts) | ChartGallery Dumbbell plan/actual card with four synthetic classes. |
 | [Lumen](/lumen/charts), [Scopecraft](/scopecraft/charts), [PulseFit](/pulsefit/charts), [Pawprint](/pawprint/charts) | Theme wrappers of the same gallery, not separate paired-data APIs. |
-| [Bar chart](/bar-chart), [Range chart](/range-chart) | Magnitude and min/max encodings, not interchangeable endpoint meanings. |
+| [Bar chart](/bar-chart), [Range chart](/range-band-chart) | Magnitude and min/max encodings, not interchangeable endpoint meanings. |
 
 ChartGallery declares only `language` String default lustro and renders its whole collection. It has no dumbbell-only, pairs, domain or selected-class prop and no selection emit. A/B and Ready/Loading/Empty are gallery-global. There is no sorting or endpoint toggle on this card.
 
