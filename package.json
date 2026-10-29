@@ -17,7 +17,8 @@
     "build:bastion-bs6": "node scripts/build-bastion-bs6.mjs",
     "test:bastion": "node tests/bastion.cjs",
     "test:batch2-bs6": "node tests/batch2-bs6.cjs",
-    "test:relay": "node tests/relay-dashboard.cjs"
+    "test:relay": "node tests/relay-dashboard.cjs",
+    "test:home-care": "node tests/home-care.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",

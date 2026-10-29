@@ -6,6 +6,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { animate, stagger } from 'motion'
 
 const cards = [
+  { title: 'Meadow', details: 'Home-care operations: cover visits, review exceptions, coordinate caregivers and inspect the reusable kit.', link: '/home-care', thumb: 'home-care' },
   { title: 'Reference collection', details: 'Five standalone interactive templates, two reusable graph components. Original UI patterns with sample data.', link: '/reference-templates', thumb: 'reference-templates' },
   { title: 'Margin', details: 'Job economics, estimate versus actual costs, profit bridge and work timeline.', link: '/margin', thumb: 'margin' },
   { title: 'Evertrue', details: 'Self-updating pages terminal - ticking counters, refreshing page cards and KPI panels with struck-through was-lines.', link: '/evertrue', thumb: 'evertrue' },
