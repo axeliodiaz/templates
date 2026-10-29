@@ -53,7 +53,7 @@ Native buttons set the selected index on focus or activation and expose pressed 
 | Source | Actual implementation and limits |
 |---|---|
 | [Felix spline line](/felix/components/charts#mono-line) | ChartGallery uses the same six fixture arrays, cubic paths and a single/dual toggle. Shared language prop selects theme, not data props. |
-| [Lumen charts](/lumen/charts), [Scopecraft charts](/scopecraft/charts), [Lustro charts](/lustro/charts), [Pulsefit charts](/pulsefit/charts) | Shared ChartGallery theme variants. They are not separate installed chart APIs or live data providers. |
+| [Lumen charts](/lumen/charts), [Scopecraft charts](/scopecraft/charts), [Lustro chart gallery](/graphs), [Pulsefit charts](/pulsefit/charts) | Shared ChartGallery theme variants. They are not separate installed chart APIs or live data providers. |
 | [Price timeline](/price-timeline) | Different asset-card model with generated points and projected segment. It does not supply dated observations to this chart. |
 
 ChartGallery's actual API is `language` String default lustro. It renders the entire gallery; there is no public line-only prop or series-data prop. Global Dataset A/B and chart-state controls affect all applicable cards. Per-card focus/mode objects hold month and single/dual state. The line starts dual because its secondary path renders when mode is false. Its button text describes the alternative action: Single when dual, Dual when single; aria-pressed tracks the underlying mode boolean, not a universal show-secondary flag.
