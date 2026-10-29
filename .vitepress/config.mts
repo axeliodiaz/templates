@@ -127,6 +127,7 @@ export default defineConfig({
               { text: 'Progress', link: '/felix/components/atoms#progress' },
               { text: 'RadioGroup', link: '/felix/components/atoms#radiogroup' },
               { text: 'Separator', link: '/felix/components/atoms#separator' },
+          { text: 'Separator usage', link: '/separator' },
               { text: 'Skeleton', link: '/felix/components/atoms#skeleton' },
               { text: 'Slider', link: '/felix/components/atoms#slider' },
               { text: 'Spinner', link: '/felix/components/atoms#spinner' },
