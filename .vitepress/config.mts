@@ -112,6 +112,7 @@ export default defineConfig({
           { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' }, { text: 'Modal guide', link: '/modals' }, { text: 'Offcanvas guide', link: '/offcanvas' }, { text: 'Drawer guide', link: '/drawer' }, { text: 'Sheet guide', link: '/sheet' },
               { text: 'Checkbox', link: '/felix/components/atoms#checkbox' },
               { text: 'CoinLoader', link: '/felix/components/atoms#coinloader' },
+          { text: 'CoinLoader usage', link: '/coin-loader' },
               { text: 'Dots', link: '/felix/components/atoms#dots' },
               { text: 'IconButton', link: '/felix/components/atoms#iconbutton' },
               { text: 'Input', link: '/felix/components/atoms#input' },
