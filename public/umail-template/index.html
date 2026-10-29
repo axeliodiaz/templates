@@ -7,6 +7,8 @@
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
 <link rel="stylesheet" href="/umail-template/umail-theme.css">
+<link rel="stylesheet" href="/theme-reveal.css">
+<script src="/theme-reveal.js"></script>
 <style>
   body { min-height: 100vh; }
   .um-list .list-group-item { cursor: pointer; border-left: 3px solid transparent; }
@@ -189,7 +191,7 @@ function render(detailOnly) {
 $("#filters").addEventListener("click", (e) => { const b = e.target.closest("button[data-f]"); if (!b) return; state.filter = b.dataset.f; document.querySelectorAll("#filters .nav-link").forEach((n) => n.classList.toggle("active", n === b)); render(); });
 $("#q").addEventListener("input", (e) => { state.q = e.target.value; const f = visible(); if (!f.some((m) => m.id === state.sel)) state.sel = f.length ? f[0].id : null; render(true); renderFolders(false); });
 $("#reload").addEventListener("click", () => { state.loading = true; renderList(); setTimeout(() => { state.loading = false; render(); say("Lista actualizada (datos de ejemplo)."); }, 700); });
-$("#theme").addEventListener("click", (e) => { const dark = document.documentElement.dataset.bsTheme !== "dark"; document.documentElement.dataset.bsTheme = dark ? "dark" : "light"; e.currentTarget.setAttribute("aria-pressed", dark); e.currentTarget.textContent = dark ? "Modo claro" : "Modo oscuro"; });
+$("#theme").addEventListener("click", (e) => { const dark = document.documentElement.dataset.bsTheme !== "dark"; const btn = e.currentTarget; ThemeReveal.reveal(btn, () => { document.documentElement.dataset.bsTheme = dark ? "dark" : "light"; btn.setAttribute("aria-pressed", dark); btn.textContent = dark ? "Modo claro" : "Modo oscuro"; }); });
 $("#composeForm").addEventListener("submit", (e) => {
   e.preventDefault();
   mails.unshift({ id: Date.now(), folder: "sent", from: "Para " + $("#to").value, subject: $("#subject").value, body: $("#body").value, day: "Ahora", unread: false, file: false });

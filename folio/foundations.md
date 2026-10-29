@@ -22,6 +22,10 @@ DM Sans for text and headings, system monospace for technical identifiers. Title
 
 4px base grid. Gaps 8/12/16/24px; card padding 18–24px. 10px default card radius, 6px controls, 999px avatar and switches. Borders are 1px; shadows are reserved for overlays. Avoid glow and decorative gradients.
 
+## Motion
+
+Folio motion is precise. Surfaces rise 4px over 280ms. Hover lifts 1px. There is no glow and no scale. Focus stays the mint outline. Spark's sideways entrance does not apply here. Reduced motion stops the rise and leaves amounts in their final figures. Tokens are set on `html[data-tpl="folio"]`.
+
 ## Accessibility
 
 Primary button text uses dark ink on the light brand accent. Keyboard focus has a 2px accent outline plus 3px offset. Inputs have associated labels; errors have visible text. Charts have readable captions and SVG labels. Disabled controls do not become invisible. All movement stops with `prefers-reduced-motion`.

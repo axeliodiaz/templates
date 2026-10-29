@@ -1,0 +1,14 @@
+<script setup lang="ts">
+import { ref, useId, nextTick } from 'vue'
+const id=useId()
+const expanded=ref(true)
+const heading=ref<HTMLElement>()
+const help=ref<HTMLElement>()
+async function focus(target:'content'|'help') { await nextTick(); (target==='content'?heading:help).value?.focus() }
+</script>
+<template>
+<section class="sidebar-demo" aria-label="Sidebar layout example"><div class="sidebar-shell"><aside aria-label="Example workspace sidebar"><strong>Example workspace</strong><button type="button" :aria-expanded="expanded" :aria-controls="`${id}-nav`" @click="expanded=!expanded">{{ expanded?'Hide sections':'Show sections' }}</button><nav :id="`${id}-nav`" v-show="expanded" aria-label="Example workspace sections"><a :href="`#${id}-content`" @click="focus('content')">Workspace content</a><a :href="`#${id}-help`" @click="focus('help')">Example help</a></nav><footer><span class="sidebar-avatar" aria-hidden="true">EX</span><div><strong>Example account</strong><small>Fictitious local identity</small><a :href="`#${id}-help`" @click="focus('help')">Help and support</a></div></footer></aside><div class="sidebar-content"><h3 :id="`${id}-content`" ref="heading" tabindex="-1">Workspace content</h3><p>Real local anchor target. No account is connected.</p><h3 :id="`${id}-help`" ref="help" tabindex="-1">Example help</h3><p>The footer stays visible when section navigation is hidden. No sign-out or account switch is simulated.</p></div></div></section>
+</template>
+<style scoped>
+.sidebar-demo{border:1px solid var(--vp-c-divider);border-radius:14px;padding:18px;margin:20px 0}.sidebar-shell{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(0,1.2fr);gap:20px}.sidebar-demo aside{display:flex;flex-direction:column;gap:16px;padding:16px;background:var(--vp-c-bg-soft);border:1px solid var(--vp-c-divider);border-radius:10px;min-width:0}.sidebar-demo nav{display:flex;flex-direction:column;gap:10px;animation:sidebar-enter .16s ease-out}.sidebar-demo button{border:1px solid var(--vp-c-divider);border-radius:7px;padding:8px;background:var(--vp-c-bg)}.sidebar-demo footer{display:flex;gap:10px;align-items:flex-start;margin-top:auto;border-top:1px solid var(--vp-c-divider);padding-top:16px}.sidebar-avatar{display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:50%;background:var(--vp-c-brand-soft);font-size:12px}.sidebar-demo small,.sidebar-demo footer a{display:block;overflow-wrap:anywhere}.sidebar-content{min-width:0;overflow-wrap:anywhere}.sidebar-content h3{scroll-margin-top:120px}.sidebar-demo a:focus-visible,.sidebar-demo button:focus-visible,.sidebar-content h3:focus{outline:2px solid var(--vp-c-brand-1);outline-offset:3px}@keyframes sidebar-enter{from{opacity:0;transform:translateX(-3px)}to{opacity:1;transform:none}}@media(max-width:700px){.sidebar-shell{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){.sidebar-demo nav{animation:none}}
+</style>

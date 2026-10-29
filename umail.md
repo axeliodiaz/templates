@@ -11,6 +11,10 @@ A standalone original template for a university messaging app. It uses Bootstrap
 
 [Open the template full screen](/umail-template/index.html)
 
+## Motion
+
+Umail uses the shared layer with a short product feel: 6px rise, 1px hover, 1px press, 280ms. Bootstrap components inside the template pick up the same hover, press and focus transitions. Reduced motion disables them. Tokens are on `html[data-tpl="umail"]`.
+
 ## Palette
 
 The colors come from the live Umail stylesheet and Bootstrap 2 build, mapped to Bootstrap 6 theme tokens in one file: [`umail-theme.css`](/umail-template/umail-theme.css). Bootstrap 6 resolves each token with `light-dark()`, so the same variables serve light and dark.

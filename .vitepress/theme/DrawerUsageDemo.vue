@@ -1,0 +1,14 @@
+<script setup lang="ts">
+import {onBeforeUnmount,ref} from 'vue'
+const drawer=ref<HTMLDialogElement|null>(null),opener=ref<HTMLButtonElement|null>(null),selected=ref('Sample request A'),notice=ref('Fictitious local details. No request changes.')
+function show(){drawer.value?.showModal()}
+function close(){drawer.value?.close()}
+function restore(){opener.value?.focus()}
+function tab(e:KeyboardEvent){if(e.key!=='Tab')return;const a=[...drawer.value!.querySelectorAll<HTMLButtonElement>('button:not(:disabled)')];if(e.shiftKey&&document.activeElement===a[0]){e.preventDefault();a[a.length-1].focus()}else if(!e.shiftKey&&document.activeElement===a[a.length-1]){e.preventDefault();a[0].focus()}}
+function inspect(){notice.value=selected.value+' marked viewed locally. Nothing saved.';close()}
+onBeforeUnmount(close)
+</script>
+<template><section class="drawer-usage" aria-label="Drawer usage demonstration"><label>Sample record<select v-model="selected"><option>Sample request A</option><option>Sample request B</option></select></label><button ref="opener" type="button" @click="show">Open selected details</button><p role="status">{{notice}}</p><dialog ref="drawer" aria-labelledby="drawer-guide-title" aria-describedby="drawer-guide-copy" @keydown="tab" @close="restore"><header><h2 id="drawer-guide-title">{{selected}}</h2><button autofocus type="button" @click="close">Close drawer</button></header><p id="drawer-guide-copy">Fictitious record details. Opening this modal drawer does not update a request, grant access or send a message.</p><dl><dt>Status</dt><dd>Sample only</dd><dt>Owner</dt><dd>Example workspace</dd></dl><footer><button type="button" @click="inspect">Mark viewed locally</button></footer></dialog></section></template>
+<style scoped>
+.drawer-usage{padding:20px;border:1px solid var(--vp-c-divider);border-radius:12px;margin:20px 0}.drawer-usage>label{display:flex;align-items:center;gap:10px;margin-bottom:12px}button,select{min-height:44px;padding:8px;border:1px solid var(--vp-c-divider);border-radius:8px;background:var(--vp-c-bg-soft)}dialog{position:fixed;inset:0 0 0 auto;margin:0;width:min(440px,100vw);height:100dvh;max-height:100dvh;max-width:100vw;padding:24px;border:1px solid var(--vp-c-divider);overflow:auto;background:var(--vp-c-bg);color:var(--vp-c-text-1)}dialog[open]{animation:drawer-in 180ms ease-out}dialog::backdrop{background:#0009}header{display:flex;gap:12px;align-items:start;justify-content:space-between}h2{margin:0!important;border:0!important;font-size:22px!important}header button{flex-shrink:0}dt{font-weight:600}dd{margin:0 0 16px}footer{border-top:1px solid var(--vp-c-divider);padding-top:16px;margin-top:24px}:focus-visible{outline:3px solid var(--vp-c-brand-1);outline-offset:3px}@keyframes drawer-in{from{opacity:.5;translate:8px 0}to{opacity:1;translate:0 0}}@media(prefers-reduced-motion:reduce){dialog[open]{animation:none;translate:none}}
+</style>

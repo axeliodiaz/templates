@@ -17,6 +17,10 @@ Chart series: blue `#2f6fdc` for actual or delivered, gray `#9a9ea5` dashed for 
 
 <div class="sc"><div class="sc-card"><div style="font-size:26px;font-weight:600;letter-spacing:-.02em">Good afternoon, Nizam</div><div class="sc-sub">Page title - Inter 600, 19 to 26 px</div><hr style="border:0;border-top:1px solid #efeff1;margin:10px 0"><div style="font-size:24px;font-weight:600">$147,800 <small style="font-size:12px;color:#6b6f76;font-weight:400">6 open</small></div><div class="sc-sub">KPI number - Inter 600 24 px, tabular digits, unit in muted 12 px</div><hr style="border:0;border-top:1px solid #efeff1;margin:10px 0"><div class="sc-cl">Open pipeline</div><div class="sc-sub">Section label - 10 px, uppercase, 0.08em tracking, muted, 600</div><hr style="border:0;border-top:1px solid #efeff1;margin:10px 0">Body 13 px / 1.4. Secondary text is 12 px muted.</div></div>
 
+## Motion
+
+Scopecraft does not bounce. Entrances move 4px. Hover does not lift cards or buttons; the border and the label color change instead. Press does not travel. Menus and dialogs still fade in so a state change is visible. Reduced motion removes even that. Tokens sit on `html.tpl-sc` with `--m-hover: 0px`.
+
 ## Rules
 
 1. One near-black primary button per view. Everything else is outlined.

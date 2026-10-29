@@ -4,7 +4,7 @@ import { animate, stagger } from 'motion'
 const props = defineProps({ theme: { type: String, default: 'pulsefit' }, name: { type: String, default: 'NexaFlow' } })
 const T = {
   lustro: ['#0b0b18', 'rgba(148,140,255,.08)', '#fff', '#a5b4fc', 'rgba(148,140,255,.22)', '#6366f1', '#fff', '#34d399', '#f472b6', '#fbbf24', "'DM Sans',sans-serif", '14px', 'rgba(99,102,241,.2)'],
-  felix: ['#fefcf9', '#fff', '#082422', '#636158', '#e3ded3', '#065958', '#fff', '#1b8a4b', '#c0392b', '#b77900', "'Saans',sans-serif", '10px', '#e3efee'],
+  felix: ['#fefcf9', '#fff', '#082422', '#636158', '#e3ded3', '#065958', '#fff', '#146c3a', '#c0392b', '#b77900', "'Saans',sans-serif", '10px', '#e3efee'],
   pulsefit: ['#f5f5f5', '#fff', '#212121', '#5f666d', '#e0e0e0', '#C9A66B', '#212121', '#198754', '#dc3545', '#b77900', "'Rubik',sans-serif", '14px', '#f5e6d3'],
   scopecraft: ['#f4f4f5', '#fff', '#111113', '#6b6f76', '#e6e6e8', '#111113', '#fff', '#17803d', '#c62828', '#a05a00', 'ui-sans-serif,system-ui,sans-serif', '8px', '#ececee'],
   lumen: ['#fbfbfa', '#fff', '#17171a', '#74767d', '#e7e7e9', '#7c6cf0', '#fff', '#1b9a4b', '#d23b3b', '#d9770a', "'Plus Jakarta Sans',sans-serif", '12px', '#ece9fd']

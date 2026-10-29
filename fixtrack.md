@@ -15,4 +15,4 @@ Source-inspired implementation from [the reference post](https://x.com/nizamdesi
 
 ## Motion and accessibility
 
-Cards enter with short fades; chart lines and bars reveal on load; controls transition on focus, hover and press. Local updates receive shared state feedback. Reduced-motion preferences stop animations and keep all information visible. Native dialogs support Escape. Tables scroll on narrow screens.
+Cards rise 8px and fade in over 280ms. Chart lines and bars still reveal on load. Controls lift 2px on hover, settle 1px on press, and show a focus ring. Local updates receive the shared state fade. Reduced motion stops animations and keeps all information visible. Native dialogs support Escape. Tables scroll on narrow screens. Tokens are `--m-rise` and `--m-hover` on `html[data-tpl="fixtrack"]`.

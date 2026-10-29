@@ -1,0 +1,40 @@
+/* Feathered theme reveal: soft-edged sweep from the theme toggle across the
+   page. The new snapshot is masked by an expanding radial gradient; the 120px
+   band between the solid and transparent stops is the blurred boundary. */
+@property --theme-reveal-p {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: theme-reveal-sweep 0.8s ease-out both;
+  mix-blend-mode: normal;
+  mask-image: radial-gradient(
+    circle at var(--theme-reveal-x, 50vw) var(--theme-reveal-y, 50vh),
+    #000 calc(var(--theme-reveal-p) - 120px),
+    transparent var(--theme-reveal-p)
+  );
+}
+
+@keyframes theme-reveal-sweep {
+  from {
+    --theme-reveal-p: 0px;
+  }
+  to {
+    --theme-reveal-p: var(--theme-reveal-r, 1800px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+    mask-image: none !important;
+  }
+}

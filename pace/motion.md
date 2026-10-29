@@ -7,7 +7,7 @@ Motion explains change, it does not decorate.
 
 | Moment | Motion | Duration |
 | --- | --- | --- |
-| Screen arrival | Fade and rise 10px, staggered 50ms | 400ms |
+| Screen arrival | Fade from 45% opacity and rise 12px (`--m-rise` on `html[data-tpl="pace"]`) | 280ms |
 | Counters (bookings, credits) | Count up once | 900ms |
 | Booking feedback | Toast slides in, auto-dismisses | 3.2s |
 | Buttons | 1px press, border color change | 160ms |
