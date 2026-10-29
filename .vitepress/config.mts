@@ -187,7 +187,8 @@ export default defineConfig({
           { text: 'Bullet chart usage', link: '/bullet-chart' },
           { text: 'Waterfall chart usage', link: '/waterfall-chart' },
           { text: 'Polar chart usage', link: '/polar-chart' },
-          { text: 'Radar chart usage', link: '/radar-chart' }
+          { text: 'Radar chart usage', link: '/radar-chart' },
+          { text: 'Radial bar chart usage', link: '/radial-bar-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
