@@ -191,7 +191,8 @@ export default defineConfig({
           { text: 'Radial bar chart usage', link: '/radial-bar-chart' },
           { text: 'Donut chart usage', link: '/donut-chart' },
           { text: 'Treemap usage', link: '/treemap' },
-          { text: 'Sunburst chart usage', link: '/sunburst-chart' }
+          { text: 'Sunburst chart usage', link: '/sunburst-chart' },
+          { text: 'Pyramid chart usage', link: '/pyramid-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
