@@ -173,7 +173,8 @@ export default defineConfig({
           { text: 'Price timeline usage', link: '/price-timeline' },
           { text: 'KPI cards usage', link: '/kpi-cards' },
           { text: 'Care timeline usage', link: '/care-timeline' },
-          { text: 'Pet profile usage', link: '/pet-profile' }
+          { text: 'Pet profile usage', link: '/pet-profile' },
+          { text: 'Meters and gauges usage', link: '/meters-gauges' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
