@@ -186,7 +186,8 @@ export default defineConfig({
           { text: 'Dumbbell chart usage', link: '/dumbbell-chart' },
           { text: 'Bullet chart usage', link: '/bullet-chart' },
           { text: 'Waterfall chart usage', link: '/waterfall-chart' },
-          { text: 'Polar chart usage', link: '/polar-chart' }
+          { text: 'Polar chart usage', link: '/polar-chart' },
+          { text: 'Radar chart usage', link: '/radar-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
