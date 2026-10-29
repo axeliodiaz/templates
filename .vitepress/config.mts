@@ -114,6 +114,7 @@ export default defineConfig({
               { text: 'CoinLoader', link: '/felix/components/atoms#coinloader' },
           { text: 'CoinLoader usage', link: '/coin-loader' },
               { text: 'Dots', link: '/felix/components/atoms#dots' },
+          { text: 'Dots usage', link: '/dots' },
               { text: 'IconButton', link: '/felix/components/atoms#iconbutton' },
               { text: 'Input', link: '/felix/components/atoms#input' },
               { text: 'Label', link: '/felix/components/atoms#label' },
