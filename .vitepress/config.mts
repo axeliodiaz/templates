@@ -116,6 +116,7 @@ export default defineConfig({
               { text: 'Dots', link: '/felix/components/atoms#dots' },
           { text: 'Dots usage', link: '/dots' },
               { text: 'IconButton', link: '/felix/components/atoms#iconbutton' },
+          { text: 'IconButton usage', link: '/icon-button' },
               { text: 'Input', link: '/felix/components/atoms#input' },
               { text: 'Label', link: '/felix/components/atoms#label' },
               { text: 'Logo', link: '/felix/components/atoms#logo' },
