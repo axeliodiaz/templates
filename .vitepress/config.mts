@@ -166,6 +166,7 @@ export default defineConfig({
             ] },
             { text: 'Organisms', collapsed: true, link: '/felix/components/organisms', items: [
               { text: 'MessageScroller', link: '/felix/components/organisms#messagescroller' },
+          { text: 'MessageScroller usage', link: '/message-scroller' },
               { text: 'Sidebar', link: '/felix/components/organisms#sidebar' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
