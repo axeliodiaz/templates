@@ -133,6 +133,7 @@ export default defineConfig({
               { text: 'Spinner', link: '/felix/components/atoms#spinner' },
               { text: 'Switch', link: '/felix/components/atoms#switch' },
               { text: 'Text', link: '/felix/components/atoms#text' },
+          { text: 'Text usage', link: '/text' },
               { text: 'Textarea', link: '/felix/components/atoms#textarea' }
             ] },
             { text: 'Molecules', collapsed: true, link: '/felix/components/molecules', items: [
