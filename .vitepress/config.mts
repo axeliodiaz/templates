@@ -182,7 +182,8 @@ export default defineConfig({
           { text: 'Range band chart usage', link: '/range-band-chart' },
           { text: 'Candlestick chart usage', link: '/candlestick-chart' },
           { text: 'Sparkline usage', link: '/sparkline' },
-          { text: 'Bar chart usage', link: '/bar-chart' }
+          { text: 'Bar chart usage', link: '/bar-chart' },
+          { text: 'Dumbbell chart usage', link: '/dumbbell-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
