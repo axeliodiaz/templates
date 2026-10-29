@@ -197,7 +197,8 @@ export default defineConfig({
           { text: 'Bubble chart usage', link: '/bubble-chart' },
           { text: 'Histogram usage', link: '/histogram' },
           { text: 'Box plot usage', link: '/box-plot' },
-          { text: 'Heatmap usage', link: '/heatmap' }
+          { text: 'Heatmap usage', link: '/heatmap' },
+          { text: 'Cohort retention usage', link: '/cohort-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
