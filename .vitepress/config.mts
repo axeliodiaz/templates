@@ -199,7 +199,8 @@ export default defineConfig({
           { text: 'Box plot usage', link: '/box-plot' },
           { text: 'Heatmap usage', link: '/heatmap' },
           { text: 'Cohort retention usage', link: '/cohort-chart' },
-          { text: 'Gantt chart usage', link: '/gantt-chart' }
+          { text: 'Gantt chart usage', link: '/gantt-chart' },
+          { text: 'Sankey chart usage', link: '/sankey-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
