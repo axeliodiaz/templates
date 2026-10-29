@@ -195,7 +195,8 @@ export default defineConfig({
           { text: 'Pyramid chart usage', link: '/pyramid-chart' },
           { text: 'Scatter plot usage', link: '/scatter-plot' },
           { text: 'Bubble chart usage', link: '/bubble-chart' },
-          { text: 'Histogram usage', link: '/histogram' }
+          { text: 'Histogram usage', link: '/histogram' },
+          { text: 'Box plot usage', link: '/box-plot' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
