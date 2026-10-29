@@ -177,7 +177,8 @@ export default defineConfig({
           { text: 'Meters and gauges usage', link: '/meters-gauges' },
           { text: 'Line chart usage', link: '/line-chart' },
           { text: 'Area chart usage', link: '/area-chart' },
-          { text: 'Step line chart usage', link: '/step-line-chart' }
+          { text: 'Step line chart usage', link: '/step-line-chart' },
+          { text: 'Stream chart usage', link: '/stream-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
