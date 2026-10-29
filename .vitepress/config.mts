@@ -175,7 +175,8 @@ export default defineConfig({
           { text: 'Care timeline usage', link: '/care-timeline' },
           { text: 'Pet profile usage', link: '/pet-profile' },
           { text: 'Meters and gauges usage', link: '/meters-gauges' },
-          { text: 'Line chart usage', link: '/line-chart' }
+          { text: 'Line chart usage', link: '/line-chart' },
+          { text: 'Area chart usage', link: '/area-chart' }
             ] },
             { text: 'Bootstrap set', collapsed: true, link: '/felix/components-more', items: [
               { text: 'Buttons', link: '/felix/components-more#buttons-variants' },
