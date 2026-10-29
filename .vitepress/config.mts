@@ -142,6 +142,7 @@ export default defineConfig({
               { text: 'Attachment', link: '/felix/components/molecules#attachment' },
               { text: 'Breadcrumb', link: '/felix/components/molecules#breadcrumb' },
               { text: 'Calendar', link: '/felix/components/molecules#calendar' },
+          { text: 'Calendar usage', link: '/calendar-picker' },
               { text: 'Card', link: '/felix/components/molecules#card' },
               { text: 'ChoiceCard', link: '/felix/components/molecules#choicecard' },
               { text: 'Collapse', link: '/felix/components/molecules#collapse' },

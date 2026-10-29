@@ -1,0 +1,22 @@
+<script setup lang="ts">
+import { computed, nextTick, ref, useId } from 'vue'
+const id=useId()
+const month=ref(8)
+const focusDay=ref(10)
+const selected=ref('')
+const year=2026
+const days=computed(()=>new Date(Date.UTC(year,month.value+1,0)).getUTCDate())
+const offset=computed(()=>(new Date(Date.UTC(year,month.value,1)).getUTCDay()+6)%7)
+const title=computed(()=>new Intl.DateTimeFormat('en',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(year,month.value,1))))
+const code=(d:number)=>`${year}-${String(month.value+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`
+const label=(d:number)=>new Intl.DateTimeFormat('en',{dateStyle:'full',timeZone:'UTC'}).format(new Date(Date.UTC(year,month.value,d)))
+async function move(delta:number,focus=false){const n=month.value+delta;if(n<0||n>11)return;month.value=n;focusDay.value=Math.min(focusDay.value,days.value);if(focus){await nextTick();document.getElementById(id+'-day-'+focusDay.value)?.focus()}}
+async function key(e:KeyboardEvent,d:number){let n=d;if(e.key==='PageUp'||e.key==='PageDown'){e.preventDefault();await move(e.key==='PageUp'?-1:1,true);return}if(e.key==='ArrowRight')n++;else if(e.key==='ArrowLeft')n--;else if(e.key==='ArrowDown')n+=7;else if(e.key==='ArrowUp')n-=7;else if(e.key==='Home')n-=((offset.value+d-1)%7);else if(e.key==='End')n+=6-((offset.value+d-1)%7);else return;e.preventDefault();n=Math.max(1,Math.min(days.value,n));focusDay.value=n;await nextTick();document.getElementById(id+'-day-'+n)?.focus()}
+function reset(){month.value=8;focusDay.value=10;selected.value=''}
+</script>
+<template>
+<section class="calendar-demo" aria-label="Local date selection example"><p>Fictitious 2026 dates only. Selecting a date does not schedule a transfer, appointment or reminder.</p><div class="calendar-head"><button type="button" aria-label="Previous month" :disabled="month===0" @click="move(-1)"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button><p :id="id+'-month'">{{ title }}</p><button type="button" aria-label="Next month" :disabled="month===11" @click="move(1)"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></div><p class="calendar-help">Arrow keys move within the month. Home/End reach the week edge; Page Up/Down change month. Enter or Space selects.</p><div :key="month" class="calendar-month"><div class="calendar-week" aria-hidden="true"><span v-for="v in ['Mo','Tu','We','Th','Fr','Sa','Su']" :key="v">{{ v }}</span></div><div class="calendar-days" role="group" :aria-labelledby="id+'-month'"><span v-for="v in offset" :key="'blank'+v" aria-hidden="true"></span><button v-for="d in days" :id="id+'-day-'+d" :key="d" type="button" :tabindex="focusDay===d?0:-1" :aria-label="label(d)" :aria-pressed="selected===code(d)" @focus="focusDay=d" @keydown="key($event,d)" @click="selected=code(d)">{{ d }}</button></div></div><p role="status" aria-atomic="true">{{ selected?'Selected local date: '+selected:'No local date selected.' }}</p><div class="calendar-actions"><button type="button" @click="selected=''">Clear date</button><button type="button" @click="reset">Reset example</button></div></section>
+</template>
+<style scoped>
+.calendar-demo{border:1px solid var(--vp-c-divider);border-radius:14px;padding:20px;margin:20px 0;max-width:520px}.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.calendar-head p{font-weight:650;margin:0}.calendar-head button{width:40px;height:40px;border:1px solid var(--vp-c-divider);border-radius:8px;background:var(--vp-c-bg-soft)}.calendar-help{font-size:14px;color:var(--vp-c-text-2)}.calendar-week,.calendar-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}.calendar-week span{text-align:center;font-size:12px;padding:8px 0}.calendar-days button{min-width:0;height:40px;border:1px solid transparent;border-radius:8px;background:var(--vp-c-bg-soft);font-size:14px}.calendar-days button[aria-pressed=true]{border-color:var(--vp-c-brand-1);background:var(--vp-c-brand-soft)}.calendar-demo button:disabled{opacity:.4;cursor:not-allowed}.calendar-demo button:focus-visible{outline:2px solid var(--vp-c-brand-1);outline-offset:1px}.calendar-actions{display:flex;flex-wrap:wrap;gap:8px}.calendar-actions button{padding:8px 12px;border:1px solid var(--vp-c-divider);border-radius:8px;background:var(--vp-c-bg-soft)}.calendar-month{animation:calendar-in .15s ease-out}@keyframes calendar-in{from{opacity:.5}to{opacity:1}}@media(prefers-reduced-motion:reduce){.calendar-month{animation:none}}
+</style>
