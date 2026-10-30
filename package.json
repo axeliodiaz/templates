@@ -19,7 +19,8 @@
     "test:batch2-bs6": "node tests/batch2-bs6.cjs",
     "test:relay": "node tests/relay-dashboard.cjs",
     "test:home-care": "node tests/home-care.cjs",
-    "test:lustro-parity": "node tests/lustro-generator-parity.cjs"
+    "test:lustro-parity": "node tests/lustro-generator-parity.cjs",
+    "test:lumen-gauge": "node tests/lumen-gauge.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",
