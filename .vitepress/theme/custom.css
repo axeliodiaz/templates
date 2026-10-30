@@ -619,3 +619,11 @@ html.felix.felix-dark .fx-gcard h3, html.felix.felix-dark .fx-chart h3, html.fel
 html.felix.felix-dark .fx-gcard > p, html.felix.felix-dark .fx-chart-desc { color: #c3e2e1; }
 html.felix.felix-dark .fx-gcard .fx-graph, html.felix.felix-dark .fx-gcard .fx-mermaid-block { background: transparent; border: 0; }
 html.felix.felix-dark .fx-mermaid { background: #234343; border-color: #35605f; }
+
+/* VitePress 2 alpha dropped the v1 global `select{-webkit-appearance:none}`
+   reset. Restore it so custom-styled selects (Meadow, dashboards, demos)
+   keep their v1 look; class-scoped appearance:auto rules still win. */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
