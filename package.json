@@ -24,7 +24,7 @@
     "@fortawesome/fontawesome-free": "^7.3.1",
     "mermaid": "^12.2.0",
     "playwright": "^1.64.1",
-    "postcss": "^8.5.31",
+    "postcss": "^8.5.32",
     "postcss-prefix-selector": "^2.2.1",
     "vitepress": "^1.6.3"
   },
@@ -32,9 +32,9 @@
     "esbuild@0.21.5": true
   },
   "dependencies": {
-    "@newrelic/browser-agent": "^1.324.0",
+    "@newrelic/browser-agent": "^1.324.1",
     "bootstrap": "6.0.0-alpha.1",
-    "motion": "^14.6.0"
+    "motion": "^14.9.0"
   },
   "overrides": {
     "fflate": "0.8.3"
