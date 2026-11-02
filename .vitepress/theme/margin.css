@@ -79,6 +79,38 @@
 .mg-bar{transform-origin:bottom;animation:mg-grow .6s ease-out both}.mg-dot{animation:mg-pop .35s ease-out both}.mg-wf-bar{transform-origin:left;animation:mg-growx .7s ease-out both}.mg-fc-chart .line-b,.mg-fc-chart .line-g{stroke-dasharray:900;stroke-dashoffset:0;animation:mg-draw 1.4s ease-out}.mg-bridge-bar{transform-origin:bottom;animation:mg-grow .6s ease-out both}.mg-progress i{transform-origin:left;animation:mg-growx .8s ease-out both}.mg-switch span,.mg-switch span:before{transition:background .2s,translate .2s}.mg-nav{transition:background .15s,color .15s}.mg-need-tx strong{transition:color .15s}
 @keyframes mg-enter{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}@keyframes mg-grow{from{scale:1 .05}to{scale:1 1}}@keyframes mg-growx{from{scale:.05 1}to{scale:1 1}}@keyframes mg-pop{from{scale:.2;opacity:.2}to{scale:1;opacity:1}}@keyframes mg-draw{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
 }
-/* Responsive */
-@container(max-width:980px){.mg-grid-overview{grid-template-columns:1fr 1fr}.mg-pattern{grid-column:1/-1}.mg-grid-overview .mg-weeks{grid-column:auto}.mg-grid-overview .mg-needs{grid-column:auto;grid-row:auto}.mg-fc-kpis,.mg-scenarios,.mg-causes{grid-template-columns:1fr 1fr}.mg-grid-leak{grid-template-columns:1fr}.mg-actions{grid-template-columns:1fr 1fr}.mg-branches{grid-template-columns:1fr}}
-@container(max-width:700px){.margin{display:block}.mg-sidebar{display:none}.mg-mobile-nav{display:block;margin-bottom:14px}.mg-mobile-nav label{display:flex;gap:10px;align-items:center;font-size:11px}.mg-grid-overview{grid-template-columns:1fr}.mg-fc-kpis,.mg-scenarios,.mg-causes,.mg-actions{grid-template-columns:1fr}.mg-bridge{gap:10px}.mg-bridge-bar{width:44px}.mg-topbar{flex-direction:column;align-items:flex-start}.mg-tools input{width:130px}}
+/* Responsive: the shell is a query container, so its own layout needs media queries.
+   Inner grids also respond to the actual embedded dashboard width. */
+.margin > *, .margin .mg-card, .margin .mg-card > *{min-width:0}
+.mg-swarm-scroll,.margin .ref-table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.mg-swarm-scroll .mg-swarm,.mg-swarm-scroll .mg-axis{min-width:560px}
+.margin .mg-heat{min-width:620px}
+.mg-card-head{flex-wrap:wrap}.mg-tools{flex-wrap:wrap;max-width:100%}
+.mg-tools input{max-width:100%}.mg-card-head h3,.mg-need-tx,.mg-callout{overflow-wrap:anywhere}
+@container(max-width:1050px){
+ .mg-grid-overview,.mg-grid-leak{grid-template-columns:minmax(0,1fr)}
+ .mg-grid-overview .mg-weeks,.mg-grid-overview .mg-needs{grid-column:auto;grid-row:auto}
+ .mg-fc-kpis,.mg-scenarios,.mg-causes,.mg-actions,.mg-branches{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:1050px){.margin{grid-template-columns:148px minmax(0,1fr)}.mg-sidebar{padding:14px 8px}.mg-main{padding:16px}}
+@media(max-width:700px){
+ .margin{display:block;overflow:visible}
+ .mg-mobile-nav{display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid var(--mg-border);background:var(--mg-card);border-radius:20px 20px 0 0}
+ .mg-mobile-nav button{min-height:40px}.mg-sidebar{display:none;border-right:0;border-bottom:1px solid var(--mg-border)}
+ .mg-menu-open .mg-sidebar{display:flex}.mg-sidebar .mg-nav{min-height:40px}.mg-profile{margin-top:14px}
+ .mg-main{padding:12px}.mg-topbar{flex-direction:column;align-items:flex-start}.mg-top-actions{max-width:100%}
+ .mg-grid-overview,.mg-grid-leak,.mg-scenarios,.mg-causes,.mg-actions,.mg-branches{grid-template-columns:minmax(0,1fr)}
+ .mg-fc-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .mg-card{padding:12px}.mg-wf-row,.mg-stack-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px 8px}
+ .mg-wf-label,.mg-stack-label{text-align:left;grid-column:1/-1;overflow-wrap:anywhere}
+ .mg-wf-val{white-space:normal}.mg-wf-track,.mg-stack-track{min-width:0}
+ .mg-bridge{gap:8px;padding-inline:0}.mg-bridge-bar{width:36px;max-width:100%}.mg-bridge-val{font-size:12px}.mg-bridge-tip{position:static;margin-bottom:12px}
+ .mg-pagination{flex-wrap:wrap;gap:10px}.mg-pagination nav{flex-wrap:wrap}.mg-note{overflow-wrap:anywhere}
+}
+/* Keep inherited dashboard button padding from inflating plotted points. */
+.margin .mg-dot{padding:0;width:8px;height:8px;border:0}
+/* The shared dashboard's heading reset must not darken the insight card. */
+.margin .mg-pattern{color:#fff}.margin .mg-pattern h3,.margin .mg-pattern .mg-pattern-big{color:#fff}.margin .mg-pattern p,.margin .mg-pattern small{color:#c9c5e2}
+/* VitePress prose heading/body rules otherwise override this dark card. */
+.margin .mg-pattern h3,.margin .mg-pattern .mg-pattern-big{color:#fff!important}.margin .mg-pattern p:not(.mg-pattern-big),.margin .mg-pattern small{color:#c9c5e2!important}
+.margin .mg-pattern h3{-webkit-text-fill-color:#fff!important}
