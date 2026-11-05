@@ -10,9 +10,9 @@ layout: page
 import { ref, onMounted } from 'vue'
 import FlowGraph from '../../.vitepress/theme/flow-graph/FlowGraph.vue'
 import { sample } from '../../.vitepress/theme/flow-graph/flow-graph.sample'
-const config=ref(structuredClone(sample));const clicks=ref(0);const show=ref(true);onMounted(()=>{window.fgFixture={config,clicks,show}})
+const config=ref(structuredClone(sample));const clicks=ref(0);const show=ref(true),graph=ref();onMounted(()=>{window.fgFixture={config,clicks,show,graph}})
 </script>
-<div class="relay-frame"><div class="relay relay-bs6" data-bs-theme="dark"><div class="rl-canvas" style="padding:16px"><FlowGraph v-if="show" :config="config" :on-node-click="() => clicks++" /></div></div></div>`);
+<div class="relay-frame"><div class="relay relay-bs6" data-bs-theme="dark"><div class="rl-canvas" style="padding:16px"><FlowGraph ref="graph" v-if="show" :config="config" :on-node-click="() => clicks++" /></div></div></div>`);
 require('child_process').execFileSync(path.join(ROOT,'node_modules/.bin/vitepress'),['build',fixture],{stdio:'inherit'});
 const html=fs.readFileSync(path.join(fixture,'.vitepress/dist/index.html'),'utf8');for(const text of ['GitHub','Terminal','Stripe','Figma','Database','Web search','Notion','Slack','HubSpot','Coder usa:'])if(!html.includes(text))throw Error('SSR missing '+text);
 
