@@ -154,3 +154,5 @@
 .relay.relay-bs6 .rl-fg-detail-actions .btn-solid { background:#6d4dff;border-color:#6d4dff;color:#fff }
 .relay.relay-bs6 .rl-fg-detail-actions button:disabled { cursor:default;opacity:.6 }
 .relay.relay-bs6 .rl-fg-detail :is(button,h2):focus-visible { outline:2px solid #c4b5fd;outline-offset:3px }
+/* Keep the agent's model line independent of documentation paragraph rhythm. */
+.relay.relay-bs6 .rl-fg-model { line-height:normal }

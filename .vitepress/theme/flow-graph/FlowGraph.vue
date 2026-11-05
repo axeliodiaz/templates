@@ -3,7 +3,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } fro
 import RelayIcon from '../RelayIcon.vue'
 import FlowGraphDetail from './FlowGraphDetail.vue'
 import { animate } from 'motion'
-import { SPRING_LAYOUT, EASE_OUT, openDetail as animateOpenDetail, closeDetail as animateCloseDetail, completeAll, keep, playEntrance, reducedNow, runParticle, stopAll, switchGroup as flipGroup, tweenNumber } from './flow-graph.motion'
+import { SPRING_LAYOUT, EASE_OUT, openDetail as animateOpenDetail, closeDetail as animateCloseDetail, completeAll, keep, playEntrance, reducedNow, runParticle, stopAll, trackEdgesWhile, switchGroup as flipGroup, tweenNumber } from './flow-graph.motion'
 import type { Controls, Particle } from './flow-graph.motion'
 import { DEFAULT_LABELS } from './flow-graph.types'
 import type { CallRecord, FlowGraphConfig, FlowNode, NodeKind } from './flow-graph.types'
@@ -124,7 +124,7 @@ function numbers(from?: { access: number; calls: number }) {
 async function changeData(apply: () => void, focus = false) {
   const token = ++switchToken
   switching = true
-  completeAll(enterAnims); stopTracking?.()
+  completeAll(enterAnims); measure(); stopTracking?.()
   const first = new Map<string, DOMRect>()
   stage.value?.querySelectorAll<HTMLElement>('[data-fg-node]').forEach(el => first.set(el.dataset.fgNode!, el.getBoundingClientRect()))
   const shown = { access: Number(headerAccess.value?.textContent?.match(/\d+/)?.[0] ?? stats.value.access), calls: Number(headerCalls.value?.textContent?.match(/\d+/)?.[0] ?? stats.value.calls) }
@@ -175,6 +175,7 @@ function replayEntrance() {
   entered = true; entranceReady.value = true
   if (reduced.value) { measure(); numbers(); return }
   playEntrance(stage.value, enterAnims, delays => { particleDelays = delays; void nextTick().then(() => { measure(); syncParticles() }) })
+  stopTracking?.(); stopTracking = trackEdgesWhile(Promise.all([...enterAnims].map(a => a.finished)), measure)
   numbers({ access: 0, calls: 0 })
 }
 function resize() {
@@ -303,7 +304,7 @@ defineExpose({ refresh, replayEntrance })
         <p :id="`${uid}-relations`" class="rl-fg-rel-fallback">{{ relation }}</p>
         <svg v-if="hydrated && edges.length" class="rl-fg-wires" aria-hidden="true" focusable="false" :viewBox="`0 0 ${dimensions.w} ${dimensions.h}`" :style="{ '--agent-color': `var(--rl-state-${agent?.status ?? 'idle'})` }">
           <TransitionGroup tag="g" :css="false" move-class="rl-fg-no-css-move" @enter="edgeEnter" @leave="edgeLeave">
-          <g v-for="edge in edges" :key="`${edge.from}->${edge.to}`" class="rl-fg-edge" :data-edge="`${edge.from}->${edge.to}`" :data-status="edge.status" :data-tool="group?.nodes.find(n => n.kind !== 'agent' && (n.id === edge.from || n.id === edge.to))?.status" :style="{ '--edge-color': `var(--rl-state-${edge.status})` }">
+          <g v-for="edge in edges" :key="`${edge.from === agent?.id ? '@agent' : edge.from}->${edge.to === agent?.id ? '@agent' : edge.to}`" class="rl-fg-edge" :data-edge="`${edge.from}->${edge.to}`" :data-status="edge.status" :data-tool="group?.nodes.find(n => n.kind !== 'agent' && (n.id === edge.from || n.id === edge.to))?.status" :style="{ '--edge-color': `var(--rl-state-${edge.status})` }">
             <path class="rl-fg-edge-glow" /><path class="rl-fg-edge-line" pathLength="1" />
             <Transition :css="false" @leave="particleLeave"><path v-if="!reduced && entranceReady && animatedKeys.has(`${edge.from}->${edge.to}`)" class="rl-fg-particle" /></Transition>
           </g>
