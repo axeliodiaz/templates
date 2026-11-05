@@ -96,3 +96,16 @@
  .relay.relay-bs6 .rl-fg-title { font-size:14px }
  .relay.relay-bs6 .rl-fg-agent-row { flex-wrap:wrap }
 }
+.relay.relay-bs6 .rl-fg-tab { position:relative;z-index:1 }
+.relay.relay-bs6 .rl-fg-tab[aria-selected=true] { background:transparent;border-color:transparent;box-shadow:none }
+.relay.relay-bs6 .rl-fg-tab-indicator { position:absolute;left:0;top:4px;height:32px;border-radius:999px;background:var(--bs-primary-bg-subtle);border:1px solid var(--bs-primary-border);box-shadow:0 8px 20px rgba(109,77,255,.28);pointer-events:none }
+.relay.relay-bs6 .rl-fg-particle { stroke:#f4f6fb!important;stroke-width:3.5px;filter:drop-shadow(0 0 4px var(--edge-color)) drop-shadow(0 0 8px var(--edge-color)) }
+.relay.relay-bs6 .rl-fg-spinner { width:12px;height:12px;border:2px solid rgba(255,255,255,.35);border-top-color:currentColor;border-radius:50%;display:inline-block;flex:none }
+.relay.relay-bs6 .rl-fg-awaiting [data-fg-node] { opacity:0 }
+.relay.relay-bs6 .rl-fg-no-anim,.relay.relay-bs6 .rl-fg-no-anim * { transition:none!important }
+@media (prefers-reduced-motion:no-preference) {
+ .relay.relay-bs6 .rl-fg-spinner { animation:rl-fg-spin .8s linear infinite }
+ .relay.relay-bs6 .rl-fg-edge[data-status=needs-you] .rl-fg-edge-glow { animation:rl-fg-wait 2.2s ease-in-out infinite }
+}
+@keyframes rl-fg-spin { to { transform:rotate(360deg) } }
+@keyframes rl-fg-wait { 50% { opacity:.5 } }
