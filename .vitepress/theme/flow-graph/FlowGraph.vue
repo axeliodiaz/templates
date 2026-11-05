@@ -56,11 +56,12 @@ function measure() {
   const origin = stage.value.getBoundingClientRect(), rects = new Map<string, DOMRect>()
   stage.value.querySelectorAll<HTMLElement>('[data-fg-node]').forEach(el => rects.set(el.dataset.fgNode!, el.getBoundingClientRect()))
   // Finish every layout read before writing any SVG geometry.
-  const paths = edges.value.map(edge => {
-    const a = rects.get(edge.from), b = rects.get(edge.to)
+  const paths = [...stage.value.querySelectorAll<SVGElement>('[data-edge]')].map(el => {
+    const [from, to] = el.dataset.edge!.split('->')
+    const a = rects.get(from), b = rects.get(to)
     if (!a || !b) return null
     const local = (r: DOMRect) => ({ left: r.left - origin.left, right: r.right - origin.left, top: r.top - origin.top, height: r.height })
-    return { key: `${edge.from}->${edge.to}`, d: bezier(anchorOut(local(a)), anchorIn(local(b))) }
+    return { key: `${from}->${to}`, d: bezier(anchorOut(local(a)), anchorIn(local(b))) }
   })
   const ar = agent.value ? rects.get(agent.value.id) : undefined
   const w = Math.max(1, origin.width), h = Math.max(1, origin.height)
@@ -122,12 +123,10 @@ async function changeData(apply: () => void, focus = false) {
   stage.value?.querySelectorAll<HTMLElement>('[data-fg-node]').forEach(el => { el.style.transform = ''; el.style.willChange = '' })
   apply(); await nextTick()
   if (!mounted || token !== switchToken) return
-  await nextFrame()
-  if (!mounted || token !== switchToken) return
   observeColumns(); particleDelays = new Map()
   if (stage.value && !reduced.value && !props.detailNodeId) stopTracking = flipGroup(stage.value, first, layoutAnims, measure)
   if (stage.value && reduced.value) keep(layoutAnims, animate(stage.value, { opacity: [0, 1] }, { duration: .075 }))
-  moveIndicator(true); numbers(shown);
+  measure(); moveIndicator(true); numbers(shown);
   await nextFrame()
   if (!mounted || token !== switchToken) return
   measure(); syncParticles(); switching = false
@@ -150,6 +149,12 @@ function particleLeave(el: Element, done: () => void) {
   if (reduced.value || !mounted) { particle?.control.stop(); particles.delete(path); done(); return }
   keep(fades, animate(el, { opacity: [1, 0] }, { duration: .2, ease: 'linear' }), () => { particle?.control.stop(); particles.delete(path); done() })
 }
+function nodeLeave(el: Element, done: () => void) {
+  const node = el as HTMLElement
+  const width = node.offsetWidth, top = node.offsetTop, left = node.offsetLeft
+  node.style.position = 'absolute'; node.style.width = `${width}px`; node.style.top = `${top}px`; node.style.left = `${left}px`
+  edgeLeave(el, done)
+}
 function nodeEnter(el: Element, done: () => void) { done() } // shared node FLIP is handled in one batch
 function replayEntrance() {
   if (!stage.value) return
@@ -160,6 +165,8 @@ function replayEntrance() {
   numbers({ access: 0, calls: 0 })
 }
 function resize() {
+  const width = stage.value?.getBoundingClientRect().width
+  if (switching || width === dimensions.value.w) { refresh(); return }
   if (layoutAnims.size) { completeAll(layoutAnims); stopTracking?.(); stage.value?.querySelectorAll<HTMLElement>('[data-fg-node]').forEach(el => { el.style.transform = ''; el.style.willChange = '' }) }
   refresh(); moveIndicator()
 }
@@ -250,7 +257,7 @@ defineExpose({ refresh, replayEntrance })
         </svg>
         <div v-for="column in columns" :key="column.id" class="rl-fg-col" :class="`rl-fg-col-${column.id}`" :role="column.id === 1 ? undefined : 'group'" :aria-labelledby="column.id === 1 ? undefined : `${uid}-col-${column.id}`">
           <h3 v-if="column.id !== 1" class="rl-fg-col-title" :id="`${uid}-col-${column.id}`">{{ column.id === 0 ? labels.sources : labels.targets }}</h3>
-          <TransitionGroup tag="ul" class="rl-fg-list" :css="false" move-class="rl-fg-no-css-move" @enter="nodeEnter" @leave="edgeLeave">
+          <TransitionGroup tag="ul" class="rl-fg-list" :css="false" move-class="rl-fg-no-css-move" @enter="nodeEnter" @leave="nodeLeave">
             <li v-for="node in column.nodes" :key="node.id">
               <article v-if="node.kind === 'agent'" class="rl-fg-agent" :data-fg-node="node.id" :data-status="node.status" :aria-label="`Agente ${node.label}, ${statusLabel(node.status)}`">
                 <div class="rl-fg-agent-row"><span class="rl-fg-icon" aria-hidden="true"><RelayIcon :name="node.icon && knownIcons.has(node.icon) ? node.icon : 'agent'" /></span><span class="rl-fg-agent-name">{{ node.label }}</span><span class="rl-fg-badge rl-fg-badge-sm" :data-status="node.status"><span v-if="node.status === 'running' && !reduced" class="rl-fg-spinner" aria-hidden="true"></span><RelayIcon v-else :name="node.status === 'needs-you' || node.status === 'failed' ? 'alert' : 'clock'" />{{ statusLabel(node.status) }}</span></div>
