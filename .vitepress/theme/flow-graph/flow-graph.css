@@ -109,3 +109,48 @@
 }
 @keyframes rl-fg-spin { to { transform:rotate(360deg) } }
 @keyframes rl-fg-wait { 50% { opacity:.5 } }
+
+.relay.relay-bs6 .rl-fg-layers { display:grid;position:relative;min-width:0 }
+.relay.relay-bs6 .rl-fg-graph-layer,.relay.relay-bs6 .rl-fg-detail { grid-area:1/1;min-width:0;transform-origin:50% 50% }
+.relay.relay-bs6 .rl-fg-detail { min-height:364px;z-index:1 }
+.relay.relay-bs6 .rl-fg-tabs--inert { opacity:.6 }
+.relay.relay-bs6 .rl-fg-detail-head { display:flex;align-items:center;gap:12px;min-height:40px }
+.relay.relay-bs6 .rl-fg-back { width:32px;height:32px;border-radius:10px;display:grid;place-items:center;padding:0 }
+.relay.relay-bs6 .rl-fg-back svg { width:16px;height:16px }
+.relay.relay-bs6 .rl-fg-detail-title { margin:0;font-size:15px;font-weight:600;transform-origin:0 0 }
+.relay.relay-bs6 .rl-fg-detail-sub,.relay.relay-bs6 .rl-fg-detail-count { margin:0;font-size:12px;color:var(--rl-muted);font-variant-numeric:tabular-nums }
+.relay.relay-bs6 .rl-fg-detail-body { margin-top:16px;display:grid;grid-template-columns:320px minmax(0,1fr);gap:16px }
+.relay.relay-bs6 .rl-fg-calls { list-style:none;padding:0;margin:0;max-height:296px;overflow:auto }
+.relay.relay-bs6 .rl-fg-call { height:52px;margin:0;padding:0 }
+.relay.relay-bs6 .rl-fg-call-button { display:flex;align-items:center;gap:10px;width:100%;height:52px;padding:8px 12px;border:1px solid transparent;border-radius:10px;color:var(--rl-ink);background:transparent;text-align:left;font:inherit }
+.relay.relay-bs6 .rl-fg-call-button:hover { background:rgba(176,160,230,.08) }
+.relay.relay-bs6 .rl-fg-call-button[aria-current=true] { background:var(--bs-primary-bg-subtle);border-color:var(--bs-primary-border) }
+.relay.relay-bs6 .rl-fg-call-state { color:#3ddc97;display:flex;flex-shrink:0 }
+.relay.relay-bs6 .rl-fg-call-state[data-status=failed] { color:#ff8da3 }
+.relay.relay-bs6 .rl-fg-call-state[data-status=running] { color:var(--rl-muted) }
+.relay.relay-bs6 .rl-fg-call-state svg { width:16px;height:16px }
+.relay.relay-bs6 .rl-fg-call-copy { display:flex;flex-direction:column;min-width:0;flex:1 }
+.relay.relay-bs6 .rl-fg-call-copy code { color:var(--rl-ink);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis }
+.relay.relay-bs6 .rl-fg-call-copy>span,.relay.relay-bs6 .rl-fg-call-duration { color:var(--rl-muted);font-size:12px;font-variant-numeric:tabular-nums }
+.relay.relay-bs6 .rl-fg-io { display:flex;flex-direction:column;gap:12px;min-width:0 }
+.relay.relay-bs6 .rl-fg-io-label { display:flex;justify-content:space-between;color:var(--rl-muted);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase }
+.relay.relay-bs6 .rl-fg-io pre,.relay.relay-bs6 .rl-fg-dialog pre { max-height:200px;overflow:auto;white-space:pre;font:12.5px/1.5 ui-monospace,'JetBrains Mono',monospace;background:#0b0d16;color:var(--rl-ink);border:1px solid rgba(176,160,230,.16);border-radius:12px;padding:12px;margin:6px 0 0 }
+.relay.relay-bs6 .rl-fg-detail-actions { display:flex;justify-content:flex-end;gap:8px;margin-top:12px }
+.relay.relay-bs6 .rl-fg-detail-actions button { height:32px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;gap:6px }
+.relay.relay-bs6 .rl-fg-detail-actions svg { width:14px;height:14px }
+.relay.relay-bs6 .rl-fg-output { animation:rl-fg-output .16s linear }
+.relay.relay-bs6 .rl-fg-dialog { max-width:min(620px,calc(100vw - 32px));color:var(--rl-ink);background:#161827 }
+.relay.relay-bs6 .rl-fg-dialog::backdrop { background:rgba(0,0,0,.55) }
+@keyframes rl-fg-output { from { opacity:0 } to { opacity:1 } }
+@container rl-fg (width < 640px) {
+  .relay.relay-bs6 .rl-fg-detail-body { grid-template-columns:minmax(0,1fr) }
+  .relay.relay-bs6 .rl-fg-calls { max-height:200px }
+  .relay.relay-bs6 .rl-fg-detail-actions button { flex:1 }
+}
+@media(prefers-reduced-motion:reduce) { .relay.relay-bs6 .rl-fg-output { animation:none } }
+
+.relay.relay-bs6 .rl-fg-back,.relay.relay-bs6 .rl-fg-detail-actions button { border:1px solid rgba(176,160,230,.3);background:rgba(176,160,230,.08);color:var(--rl-ink);padding-inline:12px;cursor:pointer }
+.relay.relay-bs6 .rl-fg-back { padding:0 }
+.relay.relay-bs6 .rl-fg-detail-actions .btn-solid { background:#6d4dff;border-color:#6d4dff;color:#fff }
+.relay.relay-bs6 .rl-fg-detail-actions button:disabled { cursor:default;opacity:.6 }
+.relay.relay-bs6 .rl-fg-detail :is(button,h2):focus-visible { outline:2px solid #c4b5fd;outline-offset:3px }

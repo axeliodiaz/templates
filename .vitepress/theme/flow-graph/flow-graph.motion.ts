@@ -67,3 +67,27 @@ export function tweenNumber(el: HTMLElement, from: number, to: number, format: (
   if (reducedNow() || from === to) { el.textContent = format(to); return }
   return animate(from, to, { duration, ease: [...EASE_OUT_CUBIC], onUpdate: value => { el.textContent = format(Math.round(value)) } })
 }
+
+export function insertRowAnimated(row: HTMLElement, reduced = reducedNow()) {
+  if(reduced)return
+  row.style.overflow='hidden'
+  const control=animate(row,{height:[0,52],opacity:[0,1]},{duration:.3,ease:[...EASE_OUT]})
+  control.finished.finally(()=>{row.style.height='';row.style.overflow=''})
+  return control
+}
+export function openDetail(graph: HTMLElement, detail: HTMLElement, title: HTMLElement, from: DOMRect, set: Set<Controls>, reduced = reducedNow()) {
+  const to=title.getBoundingClientRect()
+  if(reduced){keep(set,animate(detail,{opacity:[0,1]},{duration:.075}));return keep(set,animate(graph,{opacity:[1,0]},{duration:.075}))}
+  const dx=from.left-to.left,dy=from.top-to.top,s=from.height/to.height
+  title.style.transformOrigin='0 0'
+  keep(set,animate(title,{x:[dx,0],y:[dy,0],scale:[s,1]},SPRING_ENTER))
+  keep(set,animate(detail,{opacity:[0,1],scale:[.96,1],y:[12,0]},{...SPRING_ENTER,delay:.06}))
+  return keep(set,animate(graph,{scale:[1,.95],opacity:[1,0],filter:['blur(0px)','blur(4px)']},{duration:.3,ease:[...EASE_OUT]}))
+}
+export function closeDetail(graph: HTMLElement, detail: HTMLElement, title: HTMLElement, to: DOMRect, set: Set<Controls>, reduced = reducedNow()) {
+  const from=title.getBoundingClientRect()
+  if(reduced){keep(set,animate(detail,{opacity:0},{duration:.075}));return keep(set,animate(graph,{opacity:[0,1]},{duration:.075,delay:.075}))}
+  keep(set,animate(title,{x:to.left-from.left,y:to.top-from.top,scale:to.height/from.height},SPRING_ENTER))
+  keep(set,animate(detail,{opacity:0,scale:.96},{duration:.2,ease:[...EASE_OUT]}))
+  return keep(set,animate(graph,{scale:[.95,1],opacity:[0,1],filter:['blur(4px)','blur(0px)']},{duration:.3,ease:[...EASE_OUT]}))
+}
