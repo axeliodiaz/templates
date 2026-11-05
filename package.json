@@ -21,7 +21,8 @@
     "test:home-care": "node tests/home-care.cjs",
     "test:lustro-parity": "node tests/lustro-generator-parity.cjs",
     "test:lumen-gauge": "node tests/lumen-gauge.cjs",
-    "test:flow-graph-geometry": "node --test tests/flow-graph-geometry.cjs"
+    "test:flow-graph-geometry": "node --test tests/flow-graph-geometry.cjs",
+    "test:flow-graph": "node tests/flow-graph.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",
