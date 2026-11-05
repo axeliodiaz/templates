@@ -76,9 +76,10 @@ export function insertRowAnimated(row: HTMLElement, reduced = reducedNow()) {
   return control
 }
 export function openDetail(graph: HTMLElement, detail: HTMLElement, title: HTMLElement, from: DOMRect, set: Set<Controls>, reduced = reducedNow()) {
+  if(!reduced)detail.style.transform='translateY(12px) scale(0.96)'
   const to=title.getBoundingClientRect()
   if(reduced){keep(set,animate(detail,{opacity:[0,1]},{duration:.075}));return keep(set,animate(graph,{opacity:[1,0]},{duration:.075}))}
-  const dx=from.left-to.left,dy=from.top-to.top,s=from.height/to.height
+  const dx=(from.left-to.left)/.96,dy=(from.top-to.top)/.96,s=from.height/to.height
   title.style.transformOrigin='0 0'
   keep(set,animate(title,{x:[dx,0],y:[dy,0],scale:[s,1]},SPRING_ENTER))
   keep(set,animate(detail,{opacity:[0,1],scale:[.96,1],y:[12,0]},{...SPRING_ENTER,delay:.06}))

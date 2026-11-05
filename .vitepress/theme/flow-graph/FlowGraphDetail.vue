@@ -18,6 +18,7 @@ function json(value: unknown) {
   } catch { return 'No se puede mostrar este valor.' }
 }
 const input = computed(() => json(current.value?.input)), output = computed(() => json(current.value?.output))
+watch(() => props.reduced, () => { if(props.reduced) { anims.forEach(c=>c.complete());stopAll(anims) } })
 watch(() => props.count, (n, old) => { stopAll(anims); if (countEl.value) { const c = tweenNumber(countEl.value, old, n, props.labels.calls, .3); if(c)keep(anims,c) } })
 watch(() => props.detail.calls, value => { if (!busy.value) { calls.value = [...value]; if (!calls.value.some(c => c.id === selected.value)) selected.value = calls.value[0]?.id } }, { deep: true })
 function chooseKey(event: KeyboardEvent, index: number) { const next = event.key === 'ArrowDown' ? (index+1)%shown.value.length : event.key === 'ArrowUp' ? (index-1+shown.value.length)%shown.value.length : -1; if(next<0)return;event.preventDefault();selected.value=shown.value[next].id;root.value?.querySelectorAll<HTMLButtonElement>('.rl-fg-call-button')[next]?.focus() }
@@ -61,11 +62,11 @@ defineExpose({ root, title })
         <li v-if="calls.length>limit"><button type="button" class="rl-fg-more" @click="limit+=50">Ver {{ Math.min(50,calls.length-limit) }} más</button></li>
       </ol>
       <div class="rl-fg-io">
-        <template v-if="current"><div><div class="rl-fg-io-label"><span>{{ labels.input }}</span><span>{{ current.startedAt }}</span></div><pre>{{ input }}</pre></div><div :key="`${current.id}-${current.status}`" class="rl-fg-output"><div class="rl-fg-io-label"><span>{{ labels.output }}</span><span>{{ current.durationMs === undefined ? '—' : formatMs(current.durationMs) }}</span></div><pre>{{ output }}</pre></div></template>
+        <template v-if="current"><div><div class="rl-fg-io-label"><span>{{ labels.input }}</span><span>{{ current.startedAt }}</span></div><pre tabindex="0">{{ input }}</pre></div><div :key="`${current.id}-${current.status}`" class="rl-fg-output"><div class="rl-fg-io-label"><span>{{ labels.output }}</span><span>{{ current.durationMs === undefined ? '—' : formatMs(current.durationMs) }}</span></div><pre tabindex="0">{{ output }}</pre></div></template>
         <p v-else class="rl-fg-empty">Sin llamadas registradas.</p>
         <div class="rl-fg-detail-actions"><button ref="edit" type="button" class="btn-outline theme-primary" :disabled="!current" @click="showInput">{{ labels.editInput }}</button><button ref="replayButton" type="button" class="btn-solid theme-primary" :disabled="busy || !current" :aria-busy="busy" @click="replay"><RelayIcon name="replay" />{{ labels.replay }}</button></div>
       </div>
     </div>
-    <dialog ref="dialog" class="dialog rl-fg-dialog" @close="edit?.focus()"><h2>{{ labels.input }}</h2><p>En esta plantilla la entrada no se puede editar.</p><pre>{{ input }}</pre><form method="dialog"><button class="btn-outline theme-primary">Cerrar</button></form></dialog>
+    <dialog ref="dialog" class="dialog rl-fg-dialog" @close="edit?.focus()"><h2>{{ labels.input }}</h2><p>En esta plantilla la entrada no se puede editar.</p><pre tabindex="0">{{ input }}</pre><form method="dialog"><button class="btn-outline theme-primary">Cerrar</button></form></dialog>
   </div>
 </template>

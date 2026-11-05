@@ -32,6 +32,8 @@ const stats = computed(() => { const base=group.value ? headerStats(group.value)
 const detailId = ref<string | null>(null), layer = ref<HTMLElement>(), graphLayer=ref<HTMLElement>(), tabs=ref<HTMLElement>(), detailView=ref<InstanceType<typeof FlowGraphDetail>>()
 const detailNode = computed(()=>group.value?.nodes.find(n=>n.id===detailId.value))
 const detailData = computed(()=>detailId.value ? group.value?.details?.[detailId.value] : undefined)
+const visibleDetail = computed(()=>detailId.value&&detailData.value?{...detailData.value,calls:[...extraCalls(detailId.value),...detailData.value.calls]}:undefined)
+const replayTimers=new Map<ReturnType<typeof setTimeout>,()=>void>()
 const detailAnims=new Set<Controls>(); let detailToken=0,recentTimer:ReturnType<typeof setTimeout>|undefined
 const nodeCount=(node:FlowNode)=>(node.calls??0)+extraCalls(node.id).length
 const relation = computed(() => group.value ? relationSentence(group.value, labels.value) : '')
@@ -213,6 +215,12 @@ function nodeKey(event: KeyboardEvent, node: FlowNode, column: number) {
 function toggle(column: number) { void changeData(() => { expanded.value = { ...expanded.value, [column]: !expanded.value[column] } }) }
 // The pre-flush watcher captures the old visual boxes before Vue patches prop updates.
 watch([group, expanded], () => { if (mounted && !switching) void changeData(() => {}) }, { deep: true, flush: 'pre' })
+watch([activeId, detailData], ([, data]) => {
+  if(!detailId.value||data)return
+  ++detailToken;completeAll(detailAnims);detailId.value=null
+  if(graphLayer.value){graphLayer.value.inert=false;graphLayer.value.style.visibility='';graphLayer.value.style.transform='';graphLayer.value.style.opacity='';graphLayer.value.style.filter=''}
+  stage.value?.querySelectorAll<HTMLElement>('.rl-fg-label').forEach(el=>el.style.visibility='');emit('update:detailNodeId',null);pauseParticles()
+})
 watch(() => props.detailNodeId, id => { if(mounted) { if(id)void showDetail(id);else if(detailId.value)void hideDetail() } })
 watch(animatedKeys, async () => { await nextTick(); if (mounted) { measure(); syncParticles() } })
 watch([activeId, stats, () => agent.value?.status], () => {
@@ -234,7 +242,7 @@ onMounted(() => {
 })
 onBeforeUnmount(() => {
   mounted = false; ++switchToken; ro?.disconnect(); io?.disconnect(); themeObserver?.disconnect(); media?.removeEventListener('change', mediaChange); document.removeEventListener('visibilitychange', pauseParticles)
-  ++detailToken;stopAll(detailAnims);clearTimeout(recentTimer)
+  ++detailToken;stopAll(detailAnims);clearTimeout(recentTimer);replayTimers.forEach((cancel,t)=>{clearTimeout(t);cancel()});replayTimers.clear()
   stopAll(enterAnims); stopAll(layoutAnims); stopAll(fades); stopAll(numberAnims); stopTracking?.(); particles.forEach(p => p.control.stop()); particles.clear()
   pendingFrames.forEach(cancelAnimationFrame); pendingFrames.clear()
   if (raf) cancelAnimationFrame(raf); themeFrames.forEach(cancelAnimationFrame); clearTimeout(announceTimer)
@@ -263,7 +271,14 @@ async function hideDetail() {
   if(!mounted||token!==detailToken)return
   detailId.value=null;graphLayer.value.inert=false;graphLayer.value.style.transform='';graphLayer.value.style.opacity='';graphLayer.value.style.filter='';label.style.visibility='';emit('update:detailNodeId',null);props.onBack?.({groupId:activeId.value,nodeId:id});pauseParticles();button?.focus();button?.classList.add('is-recent');recentTimer=setTimeout(()=>button?.classList.remove('is-recent'),600)
 }
-function replayed(call:CallRecord) { if(!detailId.value)return;const before=stats.value.calls,key=replayKey(detailId.value);replayCalls.value={...replayCalls.value,[key]:[call,...(replayCalls.value[key]??[])]};numbers({access:stats.value.access,calls:before}) }
+async function replayCall(call:CallRecord):Promise<CallRecord> {
+  const groupId=activeId.value,nodeId=detailId.value!,key=`${groupId}:${nodeId}`
+  let result:CallRecord
+  try { result=props.onReplay?await props.onReplay({groupId,nodeId,call}):await new Promise<CallRecord>(resolve=>{const timer=setTimeout(()=>{replayTimers.delete(timer);resolve({...call,status:'ok',durationMs:2000})},2000);replayTimers.set(timer,()=>resolve({...call,status:'failed'}))}) }
+  catch { result={...call,status:'failed',durationMs:undefined} }
+  if(mounted) { const before=stats.value.calls;replayCalls.value={...replayCalls.value,[key]:[{...result,id:`replay-${Date.now()}-${replayCalls.value[key]?.length??0}`},...(replayCalls.value[key]??[])]};numbers({access:stats.value.access,calls:before}) }
+  return result
+}
 function detailKey(event:KeyboardEvent) { if(event.key==='Escape'&&detailId.value&&!(event.target as HTMLElement).closest('dialog')){event.preventDefault();void hideDetail()} }
 defineExpose({ refresh, replayEntrance })
 </script>
@@ -317,7 +332,7 @@ defineExpose({ refresh, replayEntrance })
         <p v-if="stats.total === 0" class="rl-fg-empty">Este agente no tiene herramientas configuradas.</p>
       </div>
       </div>
-      <FlowGraphDetail v-if="detailId && detailNode && detailData" ref="detailView" :key="`${activeId}:${detailId}`" :node="detailNode" :detail="{...detailData,calls:[...extraCalls(detailId),...detailData.calls]}" :count="nodeCount(detailNode)" :labels="labels" :reduced="reduced" :on-replay="onReplay ? call => onReplay!({groupId:activeId,nodeId:detailId!,call}) : undefined" @back="hideDetail" @replayed="replayed" @live="liveMessage=$event" />
+      <FlowGraphDetail v-if="detailId && detailNode && detailData" ref="detailView" :key="`${activeId}:${detailId}`" :node="detailNode" :detail="visibleDetail!" :count="nodeCount(detailNode)" :labels="labels" :reduced="reduced" :on-replay="replayCall" @back="hideDetail" @live="liveMessage=$event" />
     </div>
     <div v-if="config.legend" class="rl-fg-legend" aria-hidden="true"><span v-for="status in ['running', 'needs-you', 'failed', 'no-access']" :key="status"><i :style="{ borderColor: `var(--rl-state-${status === 'no-access' ? 'idle' : status})`, borderStyle: status === 'no-access' ? 'dashed' : 'solid' }"></i>{{ status === 'no-access' ? `${labels.noAccess} (sin arista)` : statusLabel(status) }}</span></div>
     <p class="rl-fg-sr" aria-live="polite" aria-atomic="true">{{ liveMessage }}</p>
