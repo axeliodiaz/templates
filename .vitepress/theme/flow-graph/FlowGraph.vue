@@ -151,7 +151,9 @@ function particleLeave(el: Element, done: () => void) {
 }
 function nodeLeave(el: Element, done: () => void) {
   const node = el as HTMLElement
-  const width = node.offsetWidth, top = node.offsetTop, left = node.offsetLeft
+  node.dataset.fgLeaving = 'true'
+  const rect = node.getBoundingClientRect(), parent = node.offsetParent?.getBoundingClientRect()
+  const width = node.offsetWidth, top = parent ? rect.top-parent.top : node.offsetTop, left = parent ? rect.left-parent.left : node.offsetLeft
   node.style.position = 'absolute'; node.style.width = `${width}px`; node.style.top = `${top}px`; node.style.left = `${left}px`
   edgeLeave(el, done)
 }
