@@ -8,6 +8,7 @@ export const reducedNow = () => typeof matchMedia === 'function' && matchMedia('
 export type Controls = ReturnType<typeof animate>
 export const stopAll = (set: Set<Controls>) => { set.forEach(control => control.stop()); set.clear() }
 export const completeAll = (set: Set<Controls>) => { set.forEach(control => control.complete()); set.clear() }
+const owners = new WeakMap<Element, Controls>()
 export function keep(set: Set<Controls>, control: Controls, cleanup?: () => void) {
   set.add(control)
   control.finished.finally(() => { set.delete(control); cleanup?.() })
@@ -51,7 +52,8 @@ export function switchGroup(stage: HTMLElement, first: Map<string, DOMRect>, set
     el.style.willChange = 'transform, opacity'
     const control = a ? animate(el, { x: [a.left - b.left, 0], y: [a.top - b.top, 0] }, SPRING_LAYOUT) :
       animate(el, { opacity: [0, 1], scale: [.96, 1] }, SPRING_LAYOUT)
-    moving.push(keep(set, control, () => { el.style.willChange = ''; el.style.transform = ''; el.style.opacity = '' }))
+    owners.set(el, control)
+    moving.push(keep(set, control, () => { if (owners.get(el) !== control) return; owners.delete(el); el.style.willChange = ''; el.style.transform = ''; el.style.opacity = '' }))
   })
   return trackEdgesWhile(Promise.all(moving.map(c => c.finished)), measure)
 }

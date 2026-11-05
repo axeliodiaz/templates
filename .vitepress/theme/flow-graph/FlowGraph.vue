@@ -47,6 +47,8 @@ let visible = true, entered = false, switching = false, switchToken = 0, stopTra
 const enterAnims = new Set<Controls>(), layoutAnims = new Set<Controls>(), fades = new Set<Controls>(), numberAnims = new Set<Controls>()
 const particles = new Map<SVGPathElement, Particle>()
 let particleDelays = new Map<string, number>(), themeFrames: number[] = []
+const pendingFrames = new Set<number>()
+function nextFrame() { return new Promise<void>(resolve => { const id = requestAnimationFrame(() => { pendingFrames.delete(id); resolve() }); pendingFrames.add(id) }) }
 let mounted = false, raf = 0, announceTimer: ReturnType<typeof setTimeout> | undefined, ro: ResizeObserver | undefined
 function measure() {
   raf = 0
@@ -120,13 +122,13 @@ async function changeData(apply: () => void, focus = false) {
   stage.value?.querySelectorAll<HTMLElement>('[data-fg-node]').forEach(el => { el.style.transform = ''; el.style.willChange = '' })
   apply(); await nextTick()
   if (!mounted || token !== switchToken) return
-  await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
+  await nextFrame()
   if (!mounted || token !== switchToken) return
   observeColumns(); particleDelays = new Map()
   if (stage.value && !reduced.value && !props.detailNodeId) stopTracking = flipGroup(stage.value, first, layoutAnims, measure)
   if (stage.value && reduced.value) keep(layoutAnims, animate(stage.value, { opacity: [0, 1] }, { duration: .075 }))
   moveIndicator(true); numbers(shown);
-  await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
+  await nextFrame()
   if (!mounted || token !== switchToken) return
   measure(); syncParticles(); switching = false
   if (focus) root.value?.querySelectorAll<HTMLButtonElement>('[role="tab"]').forEach(tab => { if (tab.dataset.group === activeId.value) tab.focus() })
@@ -190,7 +192,8 @@ function nodeKey(event: KeyboardEvent, node: FlowNode, column: number) {
   if (target) { event.preventDefault(); stage.value?.querySelectorAll<HTMLButtonElement>('button[data-fg-node]').forEach(el => { if (el.dataset.fgNode === target!.id) el.focus() }) }
 }
 function toggle(column: number) { void changeData(() => { expanded.value = { ...expanded.value, [column]: !expanded.value[column] } }) }
-watch([group, expanded], async () => { if (!mounted || switching) return; await nextTick(); observeColumns(); measure(); moveIndicator(); numbers(); syncParticles() }, { deep: true })
+// The pre-flush watcher captures the old visual boxes before Vue patches prop updates.
+watch([group, expanded], () => { if (mounted && !switching) void changeData(() => {}) }, { deep: true, flush: 'pre' })
 watch(() => props.detailNodeId, () => { if (mounted) pauseParticles() })
 watch(animatedKeys, async () => { await nextTick(); if (mounted) { measure(); syncParticles() } })
 watch([activeId, stats, () => agent.value?.status], () => {
@@ -213,6 +216,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   mounted = false; ++switchToken; ro?.disconnect(); io?.disconnect(); themeObserver?.disconnect(); media?.removeEventListener('change', mediaChange); document.removeEventListener('visibilitychange', pauseParticles)
   stopAll(enterAnims); stopAll(layoutAnims); stopAll(fades); stopAll(numberAnims); stopTracking?.(); particles.forEach(p => p.control.stop()); particles.clear()
+  pendingFrames.forEach(cancelAnimationFrame); pendingFrames.clear()
   if (raf) cancelAnimationFrame(raf); themeFrames.forEach(cancelAnimationFrame); clearTimeout(announceTimer)
 })
 defineExpose({ refresh, replayEntrance })
