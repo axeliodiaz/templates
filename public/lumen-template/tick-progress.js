@@ -15,7 +15,7 @@ export function createTickProgress(host, options = {}) {
     strip.setAttribute('aria-label',next.label || 'Capacity used');
     if(model.percent!==null){strip.setAttribute('role','progressbar');strip.setAttribute('aria-valuemin','0');strip.setAttribute('aria-valuemax','100');strip.setAttribute('aria-valuenow',String(model.percent));}
     else strip.setAttribute('role','img');
-    if(next.valueText)strip.setAttribute('aria-valuetext',next.valueText);
+    if(model.percent!==null && next.valueText)strip.setAttribute('aria-valuetext',next.valueText);
     if(next.color)strip.style.setProperty('--tick-progress-color',next.color);
     for(const fill of model.fills){const tick=document.createElement('i');tick.setAttribute('aria-hidden','true');tick.style.setProperty('--tick-fill',`${fill*100}%`);strip.append(tick);}
     host.replaceChildren(strip);
