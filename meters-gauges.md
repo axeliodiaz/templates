@@ -9,6 +9,8 @@ import MetersUsageDemo from './.vitepress/theme/MetersUsageDemo.vue'
 
 A meter shows a measurement within a known range, such as load, temperature or fuel. A gauge is a visual encoding of that range using an arc or needle. Neither implies a process is completing. For task completion and unknown work, use the separate [Progress guide](/progress). Choose a plain number or bar when a dial would make precise comparison harder.
 
+For the segmented visual used by Workflow-OPS and limits panels, see [Tick progress](/tick-progress).
+
 ## Try a bounded measurement
 
 <MetersUsageDemo />

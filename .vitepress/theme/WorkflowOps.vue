@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { animate, stagger } from 'motion'
+import TickProgress from './TickProgress.vue'
 const props = defineProps({ theme: { type: String, default: 'pulsefit' } })
 const T = {
   lustro: ['#0b0b18', 'rgba(148,140,255,.08)', '#fff', '#a5b4fc', 'rgba(148,140,255,.22)', '#6366f1', '#fff', '#34d399', '#f472b6', 'rgba(99,102,241,.2)', "'DM Sans',sans-serif", '14px', '#6366f1', '#fbbf24', '#22d3ee', '#f472b6', '#64648c'],
@@ -40,7 +41,7 @@ onMounted(() => {
         <div v-if="menu" ref="pop" class="wf-pop" role="menu"><div class="wf-id"><i class="wf-av sm">CL</i><span><b>Chara Lee</b><small>chara@acme.com</small></span><em>Admin</em></div>
           <small class="wf-sh">Workspaces</small><button v-for="(s, i) in spaces" :key="s[0]" type="button" role="menuitemradio" :aria-checked="ws === i" class="wf-ws" :class="{ on: ws === i }" @click="ws = i; menu = false"><i :style="{ color: `var(--w-${s[3]})`, background: `color-mix(in srgb,var(--w-${s[3]}) 14%,var(--w-surf))` }">{{ s[0] }}</i><span><b>{{ s[1] }}</b><small>{{ s[2] }}</small></span><u v-if="ws === i">&#10003;</u></button>
           <button type="button" role="menuitem" class="wf-mi">+ Create workspace</button><hr><button type="button" role="menuitem" class="wf-mi">Profile</button><button type="button" role="menuitem" class="wf-mi">Preferences <small>&#8984;,</small></button><button type="button" role="menuitem" class="wf-mi">Theme <small>&#8250;</small></button><hr><button type="button" role="menuitem" class="wf-mi" @click="menu = false">Log out</button></div></div></div>
-    <div class="wf-k3"><div v-for="k in kpi" :key="k[0]" class="wf-c wf-k"><b class="wf-kt" :style="{ borderColor: `var(--w-${k[4]})` }">{{ k[0] }}</b><div class="wf-kv">{{ k[1] }} <b :class="k[2][0] === '+' ? 'ok' : 'bad'">{{ k[2][0] === '+' ? '&#8599;' : '&#8600;' }} {{ k[2] }}</b></div><small>This week</small><div class="wf-tk" role="img" :aria-label="k[3] + ' percent of target'"><i v-for="n in 60" :key="n" :style="n <= k[3] * .6 ? { background: `var(--w-${k[4]})` } : null"></i></div></div></div>
+    <div class="wf-k3"><div v-for="k in kpi" :key="k[0]" class="wf-c wf-k"><b class="wf-kt" :style="{ borderColor: `var(--w-${k[4]})` }">{{ k[0] }}</b><div class="wf-kv">{{ k[1] }} <b :class="k[2][0] === '+' ? 'ok' : 'bad'">{{ k[2][0] === '+' ? '&#8599;' : '&#8600;' }} {{ k[2] }}</b></div><small>This week</small><TickProgress class="wf-tk" :value="k[3]" :label="k[3] + ' percent of target'" :color="`var(--w-${k[4]})`" style="--tick-progress-track:var(--w-bd)" /></div></div>
     <div class="wf-g"><div class="wf-c"><div class="wf-ch"><b>Runs and failures</b><span class="wf-seg"><button v-for="r in ['Week', 'Month', 'Year']" :key="r" type="button" :class="{ on: range === r }" @click="range = r">{{ r }}</button></span></div>
         <svg viewBox="0 0 380 160" role="img" aria-label="Runs trending up with failures staying lower"><defs><pattern id="wfh" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="var(--w-c2)" stroke-opacity=".25" stroke-width="2" /></pattern></defs>
           <path :d="lp(a) + ` L${X(a.length - 1)} 132 L10 132 Z`" fill="url(#wfh)" /><path :d="lp(a)" fill="none" stroke="var(--w-c2)" stroke-width="2" stroke-linejoin="round" /><path :d="lp(b)" fill="none" stroke="var(--w-c4)" stroke-width="2" stroke-linejoin="round" />
@@ -63,7 +64,7 @@ onMounted(() => {
 .wf-ws i{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font:700 11px var(--w-font);font-style:normal}.wf-ws span{display:flex;flex-direction:column;flex:1}.wf-ws u{text-decoration:none;color:var(--w-pri)}.wf-pop hr{border:0;border-top:1px solid var(--w-bd);margin:6px 0}
 .wf-c{background:var(--w-surf);border:1px solid var(--w-bd);border-radius:calc(var(--w-r) + 4px);padding:14px;min-width:0}
 .wf-k3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.wf-kt{display:block;border-left:2px solid;padding-left:8px;font:500 15px var(--w-font);color:var(--w-mut);margin-bottom:6px}.wf-kv{font:500 22px var(--w-font)}.wf-kv b{font-size:12px;margin-left:6px}
-.wf-tk{display:flex;gap:2px;height:20px;margin-top:10px}.wf-tk i{flex:1;background:var(--w-bd);border-radius:1px}
+.wf-tk{display:flex;gap:2px;height:20px;margin-top:10px}.wf-tk>.tpl-tick-progress{flex:1}
 .wf-g{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:10px}.wf-ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .wf-seg{display:inline-flex;border:1px solid var(--w-bd);border-radius:999px;padding:2px}.wf-seg button{border:0;background:transparent;color:var(--w-mut);padding:4px 12px;border-radius:999px;font:600 12px var(--w-font);cursor:pointer}.wf-seg button.on{background:var(--w-soft);color:var(--w-ink)}
 .wf svg{display:block;width:100%;height:auto}.wf svg text{fill:var(--w-mut);font:10px var(--w-font)}
