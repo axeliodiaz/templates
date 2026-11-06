@@ -1,0 +1,102 @@
+/* Felix design tokens, light and dark. One file of CSS variables, no selectors for components.
+   Source of truth: https://templates.axeldiaz.com/felix/tokens
+   Dark mode applies under .felix-dark, .dark or [data-theme="dark"] on any ancestor (usually <html>). */
+:root {
+  color-scheme: light;
+
+  /* Brand palette */
+  --turquoise: #2bf2f1;
+  --lime: #dcff00;
+  --slate: #082422;
+  --linen: #fefcf9;
+  --stone: #efebe7;
+  --concrete: #cfcabf;
+  --light-sky: #d4fffe;
+  --fg-muted: #636158;
+
+  /* Semantic color */
+  --background: var(--linen);
+  --foreground: var(--slate);
+  --card: #ffffff;
+  --card-foreground: var(--slate);
+  --primary: var(--turquoise);
+  --primary-foreground: var(--slate);
+  --interactive-primary-hover: #1abfbe;
+  --accent: var(--lime);
+  --border: var(--concrete);
+  --muted: var(--stone);
+  --muted-foreground: var(--fg-muted);
+  --brand-text: #065958;
+  --brand-hover: #0f8c8b;
+  --destructive: #f26629;
+  --status-success: #60d06f;
+  --status-warning: #ffd200;
+  --status-error: #f26629;
+  --status-success-soft: #eefbf0;
+  --status-warning-soft: #fffce0;
+  --status-error-soft: #fff5ef;
+  --status-success-ink: #1b7a29;
+  --status-warning-ink: #665500;
+  --status-error-ink: #a03808;
+
+  /* Radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-full: 9999px;
+  --radius-button: calc(1rem + 999px);
+
+  /* Spacing, 4px grid */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+
+  /* Shadows, slate-tinted */
+  --shadow-sm: 0 1px 3px #0824220f, 0 1px 2px #0824220a;
+  --shadow-md: 0 4px 6px #0824220f, 0 2px 4px #0824220a;
+  --shadow-lg: 0 10px 15px #0824220f, 0 4px 6px #08242208;
+  --shadow-xl: 0 20px 25px #0824220f, 0 8px 10px #08242208;
+  --shadow-turquoise: 0 4px 14px #2bf2f140;
+  --shadow-selection: 0 0 0 6px #2bf2f11a;
+
+  /* Type */
+  --font-heading: "Plain", "Saans", system-ui, sans-serif;
+  --font-sans: "Saans", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.felix-dark,
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #082422;
+  --foreground: #fefcf9;
+  --card: #234343;
+  --card-foreground: #fefcf9;
+  --muted: #152b2a;
+  --muted-foreground: #97cbc9;
+  --accent: #b2d000;
+  --border: #35605f;
+  --brand-text: #2bf2f1;
+  --brand-hover: #5af5f4;
+  --status-success-soft: #60d06f26;
+  --status-warning-soft: #ffd20026;
+  --status-error-soft: #f2662926;
+  --status-success-ink: #8ee79a;
+  --status-warning-ink: #ffe066;
+  --status-error-ink: #ff9f66;
+  --shadow-sm: 0 1px 3px #00000040, 0 1px 2px #00000030;
+  --shadow-md: 0 4px 6px #00000040, 0 2px 4px #00000030;
+  --shadow-lg: 0 10px 15px #00000040, 0 4px 6px #00000030;
+  --shadow-xl: 0 20px 25px #00000040, 0 8px 10px #00000030;
+}

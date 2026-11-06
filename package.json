@@ -5,7 +5,7 @@
   "description": "Design-language guides written in Markdown, published at templates.axeldiaz.com",
   "scripts": {
     "dev": "npm run build:batch2-bs6 && npm run build:bastion-bs6 && vitepress dev",
-    "build": "node scripts/build-lustro-bs6-components.mjs --check && npm run build:batch2-bs6 && node scripts/build-lustro-bs6-components.mjs && npm run build:scopecraft-bs6 && npm run build:bastion-bs6 && vitepress build",
+    "build": "node tests/css-cdn.cjs && node scripts/build-lustro-bs6-components.mjs --check && npm run build:batch2-bs6 && node scripts/build-lustro-bs6-components.mjs && npm run build:scopecraft-bs6 && npm run build:bastion-bs6 && vitepress build",
     "build:lustro-bs6": "node scripts/build-lustro-bs6-components.mjs",
     "build:scopecraft-bs6": "node scripts/build-scopecraft-bs6-css.mjs",
     "preview": "vitepress preview",
@@ -22,7 +22,8 @@
     "test:lustro-parity": "node tests/lustro-generator-parity.cjs",
     "test:lumen-gauge": "node tests/lumen-gauge.cjs",
     "test:flow-graph-geometry": "node --test tests/flow-graph-geometry.cjs",
-    "test:flow-graph": "node tests/flow-graph.cjs"
+    "test:flow-graph": "node tests/flow-graph.cjs",
+    "test:css-cdn": "node tests/css-cdn.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",

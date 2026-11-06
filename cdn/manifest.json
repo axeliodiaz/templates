@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "release": "1.0.0",
+  "source_commit": "eae0b023a4af1e2a3a4dafcc4f1023c5215f70d7",
+  "assets": [
+    {
+      "name": "lumen",
+      "path": "/v1/lumen-15ead49049b02fa68b10b2cf4b33cf68f0cb24700c45ccf52cd0f2cdd27723e6.css",
+      "sha256": "15ead49049b02fa68b10b2cf4b33cf68f0cb24700c45ccf52cd0f2cdd27723e6",
+      "bytes": 10928,
+      "source_path": ".vitepress/theme/lumen.css",
+      "source_ref": "origin/main",
+      "source_commit": "eae0b023a4af1e2a3a4dafcc4f1023c5215f70d7"
+    },
+    {
+      "name": "lumen-dark",
+      "path": "/v1/lumen-dark-2c9ed39fb87c78fbe2836c564ad4cebb9c8783be027d8d0b0154b0befaddc2e5.css",
+      "sha256": "2c9ed39fb87c78fbe2836c564ad4cebb9c8783be027d8d0b0154b0befaddc2e5",
+      "bytes": 7898,
+      "source_path": ".vitepress/theme/lumen-dark.css",
+      "source_ref": "origin/main",
+      "source_commit": "eae0b023a4af1e2a3a4dafcc4f1023c5215f70d7"
+    },
+    {
+      "name": "felix-tokens",
+      "path": "/v1/felix-tokens-a3f8a5723ffb09bb18d2e456cff0c6c5288ebe2ca413a13636657ed31934b8bc.css",
+      "sha256": "a3f8a5723ffb09bb18d2e456cff0c6c5288ebe2ca413a13636657ed31934b8bc",
+      "bytes": 2926,
+      "source_path": "felix-tokens.css",
+      "source_ref": "felix-tokens-v1.0.0",
+      "source_commit": "cce326decebc521855bcedb18409ea1e96d65567"
+    }
+  ],
+  "dependencies": {
+    "lumen": [
+      "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    ],
+    "lumen-dark": [],
+    "felix-tokens": []
+  },
+  "notes": [
+    "Only previously public design CSS is distributed. No confidential templates or files.",
+    "Lumen retains its existing Google Fonts import to preserve exact consumer bytes. Font provider remains external; system-ui fallback applies.",
+    "No mutable latest route. Future CSS changes require new content-hash URLs."
+  ]
+}
