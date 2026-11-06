@@ -121,7 +121,7 @@ C1 is mandatory: an opaque 1 px edge must reach 3:1 against the board and every 
 | suppressed | Escape dismissal until an intentional new input |
 | graceTimer | 120 ms bridge from prism to hoverable tooltip |
 
-Priority is pinned, then focus, then hover. The SVG is hidden from assistive technology inside one named wrapper tabstop. Focus starts at the last dated day. Left/Right move 7 days, Up/Down 1, Page Up/Down 28, Home/End first/last. Edges clamp. Enter/Space pins or returns to a visible focus tooltip; Escape dismisses without moving focus or selectedDate. Blur closes focus and keyboard pins but leaves pointer pins. The Grid uses one roving native-button tabstop and the same day text.
+Priority is pinned, then focus, then hover. The SVG is hidden from assistive technology inside one named wrapper tabstop. Focus starts at the last dated day. Left/Right move 7 days, Up/Down 1, Page Up/Down 28, Home/End first/last. A navigation step that would cross a boundary does not move. Enter/Space pins or returns to a visible focus tooltip; Escape dismisses without moving focus or selectedDate. Blur closes focus and keyboard pins but leaves pointer pins. The Grid uses one roving native-button tabstop and the same day text.
 
 A fine-pointer entry cancels the grace timer. Leaving starts 120 ms only for hover. Entering the tooltip cancels it; its text is selectable and has no links or buttons. Focus tooltips survive pointer exit. Escape suppresses reopening from movement inside the same prism; entering a different prism or using navigation/click explicitly clears suppression. Tap/click pins; same prism, outside pointerdown or Escape closes. Base-plane taps use `unproject`. The mode radiogroup uses roving Left/Right keys and has 44 px touch targets.
 

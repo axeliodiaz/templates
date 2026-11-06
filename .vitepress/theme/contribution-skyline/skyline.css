@@ -9,3 +9,4 @@
 
 /* The catalogue shell keeps a dark canvas even without .dark. Keep this isolated light specimen readable. */
 .skyusage-demo{color:#111827;background:#fff;--sky-label:#4b5563;--sky-control:#fff;--sky-text:#111827}.dark .skyusage-demo{color:#e5e7eb;background:#161618;--sky-label:#b6bac4;--sky-control:#161618;--sky-text:#e5e7eb}.skyusage-demo :is(select,button){background:var(--sky-control);color:var(--sky-text)}.skyusage-demo .skyusage-tooltip{background:var(--sky-text);color:var(--sky-control)}
+.skyusage-controls>*{min-width:0;max-width:100%}.skyusage-controls select{min-width:0;max-width:100%;width:100%}.skyusage-mode{flex-wrap:wrap}.skyusage-demo{overflow-wrap:anywhere}
