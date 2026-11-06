@@ -3,6 +3,8 @@ const NS='http://www.w3.org/2000/svg';let motion;
 const palette=['#3b82f6','#22a06b','#d97706','#9b6be8','#dc4a62'];
 function normalize(input){
  const p={size:240,label:'Usage limits',series:[],...input};
+ p.messages={unavailable:'Unavailable',range:'Range',above:'above range',below:'below range',...p.messages};
+ if(typeof p.label!=='string'||Object.values(p.messages).some(v=>typeof v!=='string'))throw new TypeError('label and messages must be strings');
  if(!Number.isFinite(p.size)||p.size<120||p.size>800)throw new RangeError('size must be120-800');
  if(!Array.isArray(p.series)||p.series.length<1||p.series.length>5)throw new RangeError('one to five series required');
  const ids=new Set();p.series=p.series.map((s,i)=>{
@@ -26,7 +28,7 @@ export function createMultiGauge(host,input){
    if(s.value!==null&&shown.get(s.id)>0)dial.append(svg('path',{...common,stroke:s.color,'stroke-dasharray':`${shown.get(s.id)*100} 100`,'data-series-id':s.id}));
   });
   const caption=document.createElement('figcaption');caption.textContent=p.label;const list=document.createElement('ul');list.className='lg-series';
-  for(const s of p.series){const row=document.createElement('li'),dot=document.createElement('span'),text=document.createElement('span'),value=document.createElement('strong');dot.className='lg-series-dot';dot.style.background=s.color;dot.setAttribute('aria-hidden','true');text.textContent=s.label;value.textContent=s.value===null?'Unavailable':`${s.value} ${s.unit}${s.value>s.max?' (above range)':s.value<s.min?' (below range)':''}`;row.append(dot,text,value);const range=document.createElement('small');range.textContent=`Range ${s.min}-${s.max} ${s.unit}${s.detail?' · '+s.detail:''}`;row.append(range);list.append(row);}
+  for(const s of p.series){const row=document.createElement('li'),dot=document.createElement('span'),text=document.createElement('span'),value=document.createElement('strong');dot.className='lg-series-dot';dot.style.background=s.color;dot.setAttribute('aria-hidden','true');text.textContent=s.label;value.textContent=s.value===null?p.messages.unavailable:`${s.value} ${s.unit}${s.value>s.max?` (${p.messages.above})`:s.value<s.min?` (${p.messages.below})`:''}`;row.append(dot,text,value);const range=document.createElement('small');range.textContent=`${p.messages.range} ${s.min}-${s.max} ${s.unit}${s.detail?' · '+s.detail:''}`;row.append(range);list.append(row);}
   figure.replaceChildren(dial,caption,list);
  }
  function stop(){animations.forEach(a=>a.stop());animations=[];settle?.();settle=null;}
