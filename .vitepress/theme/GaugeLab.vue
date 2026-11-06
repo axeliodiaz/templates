@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import Gauge from './Gauge.vue'
+import MultiGauge from './MultiGauge.vue'
 const props = defineProps({ theme: { type: String, default: 'pulsefit' } })
 const T = {
   lustro: ['#0b0b18', 'rgba(148,140,255,.08)', '#fff', '#a5b4fc', 'rgba(148,140,255,.22)', '#6366f1', '#34d399', '#fbbf24', '#f472b6', "'DM Sans',sans-serif", '16px', '#fff'],
@@ -29,6 +30,7 @@ const rnd = () => { val.value = Math.round(min.value + Math.random() * (max.valu
 
 <template>
   <div class="gl" :style="v">
+    <section class="gl-card" style="margin-bottom:16px;padding:16px;display:grid;justify-items:center"><MultiGauge label="Independent usage limits" :series="[{id:'short',label:'Five-hour window',value:0,detail:'Resets in 5h'},{id:'week',label:'Weekly allowance',value:29,detail:'71% remaining'},{id:'month',label:'Monthly spend',value:null,detail:'Source unavailable'}]" /></section>
     <div class="gl-grid">
       <div class="gl-card" v-for="(g, i) in presets" :key="g.n"><Gauge :value="g.value" :min="g.min ?? 0" :max="g.max ?? 100" :start="g.start ?? -135" :end="g.end ?? 135" :mode="g.mode" :ticks="g.ticks ?? 0" :labels="g.labels ?? []" :zones="g.zones ?? []" :unit="g.unit ?? ''" :label="g.n" :cap="g.cap ?? 'round'" :decimals="g.decimals ?? 0" :size="150" /></div>
     </div>
