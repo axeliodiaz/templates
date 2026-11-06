@@ -1,0 +1,5 @@
+/* Local tokens: color, track, gap, height and radius. Defaults follow Workflow-OPS. */
+.tpl-tick-progress{--tick-progress-color:var(--vp-c-brand-1,#065958);--tick-progress-track:var(--vp-c-divider,#e3ded3);display:flex;gap:var(--tick-progress-gap,2px);height:var(--tick-progress-height,20px);width:100%;min-width:0;overflow:hidden}
+.tpl-tick-progress>i{display:block;flex:1 1 0;min-width:0;height:100%;border-radius:var(--tick-progress-radius,1px);background:linear-gradient(to right,var(--tick-progress-color) var(--tick-fill,0%),var(--tick-progress-track) var(--tick-fill,0%))}
+.tpl-tick-progress[data-state=unavailable]>i{background:var(--tick-progress-track)}
+@media(forced-colors:active){.tpl-tick-progress>i{forced-color-adjust:none;--tick-progress-color:Highlight;--tick-progress-track:Canvas;border:1px solid CanvasText}}
