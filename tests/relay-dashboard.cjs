@@ -6,7 +6,7 @@ const http = require('http')
 
 const root = path.resolve(__dirname, '..')
 const out = path.join(root, '.artifacts/relay')
-const artifacts = '/opt/cursor/artifacts'
+const artifacts = process.env.RELAY_ARTIFACTS || path.join(out, 'captures')
 fs.mkdirSync(out, { recursive: true })
 fs.mkdirSync(artifacts, { recursive: true })
 

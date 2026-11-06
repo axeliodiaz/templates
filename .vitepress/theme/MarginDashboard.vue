@@ -3,6 +3,9 @@ import { computed, ref } from 'vue'
 
 type Page = 'Overview'|'Jobs'|'Leakage'|'Forecast'|'JobDetail'|'Customers'|'JobTypes'|'Technicians'|'Branches'|'Trends'|'Notifications'|'Settings'|'Help'
 const page = ref<Page>('Overview')
+const menuOpen = ref(false)
+const menuButton = ref<HTMLButtonElement|null>(null)
+function closeMenu(restoreFocus = false) { menuOpen.value = false; if (restoreFocus) menuButton.value?.focus() }
 const branch = ref('All branches')
 const period = ref('Sep 21 to 27')
 const notice = ref('')
@@ -17,7 +20,7 @@ const dialog = ref<HTMLDialogElement|null>(null)
 const dialogJob = ref<Job|null>(null)
 
 function say(msg: string) { notice.value = msg }
-function go(p: Page, msg = '') { page.value = p; jobPage.value = 1; selectedDot.value = null; if (msg) say(msg) }
+function go(p: Page, msg = '') { closeMenu(); page.value = p; jobPage.value = 1; selectedDot.value = null; if (msg) say(msg) }
 
 interface Job { id: string; customer: string; type: string; city: string; done: string; revenue: number; profit: number; margin: number; issue: string; status: 'Critical'|'At risk'|'Below target'|'On target' }
 const firstJobs: Job[] = [
@@ -208,8 +211,9 @@ function onSearch() { if (query.value) { go('Jobs'); say(`Filtering jobs by “$
 const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Leakage: 'Leakage', Forecast: 'Forecast', JobDetail: 'Job detail', Customers: 'Customers', JobTypes: 'Job types', Technicians: 'Technicians', Branches: 'Branches', Trends: 'Trends', Notifications: 'Notifications', Settings: 'Settings', Help: 'Help' }
 </script>
 <template>
-<section class="reference-dashboard margin" aria-label="Margin profitability analytics demo">
-  <aside class="mg-sidebar">
+<section class="reference-dashboard margin" :class="{'mg-menu-open':menuOpen}" aria-label="Margin profitability analytics demo" @keydown.esc="closeMenu(true)">
+  <div class="mg-mobile-nav"><button ref="menuButton" class="mg-chip" type="button" aria-controls="margin-navigation" :aria-expanded="menuOpen" @click="menuOpen=!menuOpen">{{ menuOpen ? 'Close menu' : 'Menu' }}</button><span>{{ pageTitle[page] }}</span></div>
+  <aside id="margin-navigation" class="mg-sidebar">
     <div class="mg-brand"><span class="mg-logo" aria-hidden="true">◺</span> margin <span class="mg-collapse" aria-hidden="true">⇤</span></div>
     <div class="mg-search">
       <input class="form-control" v-model="query" type="search" aria-label="Search jobs or customers" placeholder="Search" @keydown.enter="onSearch">
@@ -258,7 +262,7 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
       </div>
     </header>
 
-    <div class="mg-mobile-nav"><label>Section <select class="form-control" :value="page" aria-label="Section" @change="go(($event.target as HTMLSelectElement).value as Page)"><option v-for="(t,k) in pageTitle" :key="k" :value="k">{{ t }}</option></select></label></div>
+
 
     <!-- ================= OVERVIEW ================= -->
     <template v-if="page==='Overview'">
@@ -323,7 +327,7 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
         <div class="mg-card-head"><div><h3>{{ filteredJobs.length }} jobs by margin</h3><small>One dot per job completed this week</small></div>
           <div class="mg-legend"><span><i class="dot" style="background:#e5488c"></i>Critical {{ jobs.filter(j=>j.status==='Critical').length }}</span><span><i class="dot" style="background:#f79009"></i>At risk {{ jobs.filter(j=>j.status==='At risk').length }}</span><span><i class="dot" style="background:#4f7cff"></i>Below target {{ jobs.filter(j=>j.status==='Below target').length }}</span><span><i class="dot" style="background:#3aa981"></i>On target {{ jobs.filter(j=>j.status==='On target').length }}</span></div>
         </div>
-        <div class="mg-swarm" role="img" :aria-label="`Dot plot of ${filteredJobs.length} jobs by margin, most between 30 and 45 percent`">
+        <div class="mg-swarm-scroll" role="region" aria-label="Job margin chart, scroll horizontally" tabindex="0"><div class="mg-swarm" role="img" :aria-label="`Dot plot of ${filteredJobs.length} jobs by margin, most between 30 and 45 percent`">
           <button v-for="(d,i) in dots" :key="d.job.id" class="mg-dot" :class="{sel:selectedDot===i}" :style="{left:'calc('+(d.x/60*100)+'% - 4px)',bottom:'calc('+(d.y*9)+'px)'}" :title="d.job.id+' '+d.job.margin+'%'" :aria-label="`Job ${d.job.id}, margin ${d.job.margin} percent, ${d.job.customer}`" :tabindex="d.job.margin<23?0:-1" @click="selectedDot=i" @keydown.enter="selectedDot=i" :data-c="dotColor(d.job.status)"></button>
           <div v-if="selectedDot!==null" class="mg-swarm-tip" :style="{left:'min(70%, calc('+(dots[selectedDot].x/60*100)+'% - 30px))'}">
             <strong>{{ dots[selectedDot].job.id }} · {{ dots[selectedDot].job.margin }}%</strong>
@@ -331,7 +335,7 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
             <button class="mg-link" @click="reviewJob(dots[selectedDot].job)">Open profit bridge →</button>
           </div>
         </div>
-        <div class="mg-axis"><span v-for="v in [0,10,20,30,40,50,60]" :key="v">{{ v }}%</span></div>
+        <div class="mg-axis"><span v-for="v in [0,10,20,30,40,50,60]" :key="v">{{ v }}%</span></div></div>
       </article>
 
       <article class="mg-card mg-table-card">
@@ -388,7 +392,7 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
           <div class="mg-card-head"><div><h3>Where it leaks</h3><small>By branch and cause, September to date</small></div>
             <div class="mg-legend"><span><i class="dot h1"></i>Under $4K</span><span><i class="dot h2"></i>$4K to 7K</span><span><i class="dot h3"></i>$7K to 13K</span><span><i class="dot h4"></i>$13K and up</span></div>
           </div>
-          <div class="ref-table-scroll"><table class="mg-heat">
+          <div class="ref-table-scroll" role="region" aria-label="Leakage heatmap, scroll horizontally" tabindex="0"><table class="mg-heat">
             <thead><tr><th></th><th v-for="c in heatCols" :key="c.name">{{ c.name }}<small>${{ c.total }}K</small></th><th>Total</th></tr></thead>
             <tbody>
               <tr v-for="r in visibleHeatRows" :key="r.name">

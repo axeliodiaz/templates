@@ -44,6 +44,51 @@ defineProps<{ name: string }>()
     <template v-else-if="name==='help'">
       <circle cx="12" cy="12" r="8" /><path d="M9.6 9.6a2.4 2.4 0 1 1 3.1 2.3c-.7.3-1.2.8-1.2 1.6" /><path d="M12 16.8h.01" />
     </template>
+    <template v-else-if="name==='agent'">
+      <path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9z"/>
+    </template>
+    <template v-else-if="name==='terminal'">
+      <path d="M4 6l5 5-5 5"/><path d="M12 18h8"/>
+    </template>
+    <template v-else-if="name==='stripe'">
+      <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h3"/>
+    </template>
+    <template v-else-if="name==='figma'">
+      <path d="M12 3H9a3 3 0 0 0 0 6h3zM12 9H9a3 3 0 0 0 0 6h3zM12 3h3a3 3 0 0 1 0 6h-3zM12 15H9a3 3 0 1 0 3 3z"/><circle cx="15" cy="12" r="3"/>
+    </template>
+    <template v-else-if="name==='database'">
+      <ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>
+    </template>
+    <template v-else-if="name==='web'">
+      <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>
+    </template>
+    <template v-else-if="name==='notion'">
+      <rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7v10M8 7l8 10M16 7v10"/>
+    </template>
+    <template v-else-if="name==='slack'">
+      <path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>
+    </template>
+    <template v-else-if="name==='hubspot'">
+      <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/>
+    </template>
+    <template v-else-if="name==='alert'">
+      <circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/>
+    </template>
+    <template v-else-if="name==='lock'">
+      <rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+    </template>
+    <template v-else-if="name==='hand'">
+      <path d="M12 8v5M12 16v.5"/><path d="M10.3 3.9L2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
+    </template>
+    <template v-else-if="name==='clock'">
+      <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+    </template>
+    <template v-else-if="name==='replay'">
+      <path d="M3 11a9 9 0 1 1 3 7M3 4v7h7"/>
+    </template>
+    <template v-else-if="name==='chevron-left'">
+      <path d="m15 5-7 7 7 7"/>
+    </template>
     <template v-else-if="name==='fit'">
       <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" />
     </template>
