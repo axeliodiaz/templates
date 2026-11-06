@@ -29,19 +29,38 @@ export function createMultiGauge(host,input){
    ring.classList.toggle('lg-ring-muted',id!==null&&ring.dataset.ringId!==id);
    ring.setAttribute('aria-pressed',String(ring.dataset.ringId===id));
   }
+  for(const label of figure.querySelectorAll('[data-value-ring-id]'))label.classList.toggle('lg-value-active',label.dataset.valueRingId===id);
   const tip=figure.querySelector('.lg-ring-tooltip'),s=p.series.find(s=>s.id===id);
   if(tip){tip.textContent=s?`${s.label}: ${valueText(s)}`:'';tip.hidden=!s;}
  }
  function render(){
   const focused=figure.contains(document.activeElement)?document.activeElement?.dataset?.ringId:null;
   figure.style.width=p.size+'px';figure.setAttribute('aria-label',p.label);const dial=svg('svg',{viewBox:'0 0 200 200',width:p.size,height:p.size,role:'group','aria-label':p.label});
+  const placed=[],annotations=[];
   p.series.forEach((s,i)=>{const r=84-i*16,y=100+r/Math.sqrt(2),x=100-r/Math.sqrt(2),xx=100+r/Math.sqrt(2),d=`M${x} ${y} A${r} ${r} 0 1 1 ${xx} ${y}`;
    const ring=svg('g',{'data-ring-id':s.id,tabindex:0,role:'button','aria-label':`${s.label}: ${valueText(s)}`,'aria-pressed':'false',class:'lg-ring'});
    const common={d,fill:'none','stroke-width':11,'stroke-linecap':'round',pathLength:100};ring.append(svg('path',{...common,stroke:'var(--lg-track)'}));
    if(s.value!==null&&shown.get(s.id)>0)ring.append(svg('path',{...common,stroke:s.color,'stroke-dasharray':`${shown.get(s.id)*100} 100`,'data-series-id':s.id}));
    const hit=svg('path',{...common,stroke:'transparent','stroke-width':16,class:'lg-ring-hit'});ring.append(hit);
-   const label=svg('text',{x:100,y:100-r+3,'text-anchor':'middle',class:'lg-ring-value','aria-hidden':'true'});label.textContent=s.value===null?'--':`${s.value}${s.unit==='%'?'':' '}${s.unit}`;ring.append(label);dial.append(ring);
+   // Keep each value beside its own endpoint, not in an unrelated top stack.
+   // Collision checks include a small halo so equal/tiny values remain distinct.
+   const text=s.value===null?'--':`${s.value}${s.unit==='%'?'':' '}${s.unit}`;
+   const angle=(135+270*ratio(s))*Math.PI/180,ex=100+r*Math.cos(angle),ey=100+r*Math.sin(angle);
+   const width=Math.min(100,Math.max(12,text.length*6)),left=ex<100;
+   const lx=left?Math.min(190-width,ex+10):Math.max(width+10,ex-10);
+   const box={left:left?lx:lx-width,right:left?lx+width:lx,y:Math.max(12,Math.min(190,ey+3))};
+   const collides=y=>placed.some(b=>Math.abs(b.y-y)<14&&box.left<b.right+4&&box.right>b.left-4);
+   const initial=box.y;
+   for(let step=1;collides(box.y)&&step<=24;step++){
+    const candidate=initial+(step%2?-1:1)*Math.ceil(step/2)*14;
+    if(candidate>=12&&candidate<=190)box.y=candidate;
+   }
+   placed.push(box);
+   const annotation=svg('g',{'data-value-ring-id':s.id,'aria-hidden':'true','pointer-events':'none'});
+   annotation.append(svg('path',{d:`M${ex} ${ey} L${left?lx-3:lx+3} ${box.y-3}`,fill:'none',stroke:s.color,'stroke-width':1.3,'pointer-events':'none',class:'lg-value-connector'}));
+   const label=svg('text',{x:lx,y:box.y,'text-anchor':left?'start':'end',class:'lg-ring-value','aria-hidden':'true'});label.textContent=text;annotation.append(label);annotations.push(annotation);dial.append(ring);
   });
+  dial.append(...annotations);
   const caption=document.createElement('figcaption');caption.textContent=p.label;
   const tip=document.createElement('div');tip.className='lg-ring-tooltip';tip.setAttribute('role','status');tip.hidden=true;
   const list=document.createElement('ul');list.className='lg-series';list.hidden=!p.showLegend;
