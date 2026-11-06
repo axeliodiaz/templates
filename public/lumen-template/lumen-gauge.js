@@ -1,3 +1,4 @@
+export { createMultiGauge } from './multi-gauge.js';
 // Framework-free Lumen Gauge. Motion is loaded only when animation is allowed.
 const defaults = { value:50, min:0, max:100, start:-135, end:135, mode:'arc', ticks:0, labels:[], zones:[], unit:'', label:'', width:12, cap:'round', size:180, decimals:0 };
 const NS='http://www.w3.org/2000/svg';
