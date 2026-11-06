@@ -23,7 +23,8 @@
     "test:lumen-gauge": "node tests/lumen-gauge.cjs",
     "test:flow-graph-geometry": "node --test tests/flow-graph-geometry.cjs",
     "test:flow-graph": "node tests/flow-graph.cjs",
-    "test:css-cdn": "node tests/css-cdn.cjs"
+    "test:css-cdn": "node tests/css-cdn.cjs",
+    "test:contribution-skyline-geometry": "node --test tests/contribution-skyline-geometry.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",

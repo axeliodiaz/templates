@@ -100,3 +100,25 @@ Check0/50/59/60/84/85/100 values, needle endpoints/midpoint, arc fill, mode chan
 <style>
 @media(max-width:700px){.meters-gauges-guide .vp-doc table,.meters-gauges-guide .vp-doc tbody,.meters-gauges-guide .vp-doc tr,.meters-gauges-guide .vp-doc td{display:block;width:100%;box-sizing:border-box}.meters-gauges-guide .vp-doc thead{display:none}.meters-gauges-guide .vp-doc td:first-child{font-weight:650;background:var(--vp-c-bg-soft)}.meters-gauges-guide .vp-doc td{overflow-wrap:anywhere}.meters-gauges-guide .vp-doc tr{margin-bottom:12px}}
 </style>
+
+## Multiple independent measurements in one gauge
+
+`MultiGauge.vue` and its framework-free `createMultiGauge` export render one dial with one ring per series plus a readable value/range legend. There is no total, average or hidden choice of a dominant limit. [Open the native multi-series demo](/lumen-template/multi-gauge-demo.html). Every existing GaugeLab template preview includes the three-series example.
+
+```js
+import {createMultiGauge} from './lumen-template/multi-gauge.js';
+const gauge=createMultiGauge(host,{label:'Usage limits',series:[
+  {id:'short',label:'Five-hour window',value:0,detail:'100% remaining'},
+  {id:'week',label:'Weekly allowance',value:29,detail:'71% remaining'},
+  {id:'month',label:'Monthly spend',value:null,unit:'USD',max:15000}
+]});
+await gauge.ready;
+await gauge.update({series:nextSeries});
+gauge.destroy();
+```
+
+Each series requires a stable unique `id`, a plain-text `label` and finite `value` or `null`. Optional `min=0`, `max=100`, `unit='%'`, `color` and plain-text `detail` belong to that series, not the whole chart. Supply one to five series, ordered outermost first. Ranges must be finite and increasing. Values outside the range remain exact in text with an above/below-range label; only decorative arc geometry clamps. `null` explicitly says Unavailable and has no filled arc. Zero is a real zero, not missing. Do not pass remaining percentages as used percentages: convert only when your source defines that relationship and name the measure accurately.
+
+Props are `series`, `label` and `size` (120–800px, default 240). `update` accepts partial options, replaces the full series array, cancels earlier animation and returns a settled promise. `destroy` is idempotent and removes only its own figure. Semantic text updates immediately; the decorative dial animates 450ms. Reduced motion skips the Motion import; unavailable Motion falls back to final geometry. Theme tokens are the same `--g-*` overrides as the existing native gauge. This adds no provider integration or polling. The original single-value Gauge API and export remain unchanged. For CDN adoption, pin the JS, its sibling module and CSS to the same reviewed full commit SHA, never a mutable branch.
+
+Native hosts can localize the fixed labels with `messages: {unavailable, range, above, below}`. Values are plain strings; series labels and details are supplied by the caller. Defaults are English.

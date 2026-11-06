@@ -57,6 +57,8 @@ Calendar to pick a date directly on the page, for example when scheduling a tran
 
 ## Card {#card}
 
+[Open the Felix Card guide and interactive example](/felix/components/card).
+
 ### Composición
 
 <div class="fx-preview"><div class="fx-card"><div class="fx-card-title">Recibe María</div><p class="fx-amount">1,020<span>.00</span> <small>MXN</small></p><p>Banco · ****1234</p><button class="fx-btn fx-btn-primary" type="button">Confirmar</button></div></div>
