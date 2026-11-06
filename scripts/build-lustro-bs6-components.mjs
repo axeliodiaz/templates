@@ -162,11 +162,17 @@ const html = `<!doctype html>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="${BS6_CSS}" integrity="${BS6_CSS_SRI}" crossorigin="anonymous">
 <link rel="stylesheet" href="/lustro-template/lustro-theme.css">
+<link rel="stylesheet" href="/theme-reveal.css">
+<script src="/theme-reveal.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
   html, body { height: 100%; margin: 0; }
   body { background: #07070f; }
 </style>
+<style>
+.detail-drawer{position:fixed;inset:0 0 0 auto;margin:0;width:min(480px,100vw);max-width:100vw;height:100dvh;max-height:100dvh;border:0;border-left:1px solid var(--bs-border-color);padding:1.5rem;background:var(--bs-bg-1,var(--bs-body-bg));color:var(--bs-fg-1,var(--bs-body-color));box-shadow:-1rem 0 3rem rgb(0 0 0/.22);overflow-y:auto}.detail-drawer::backdrop{background:rgb(12 15 25/.42)}.detail-drawer .dd-header{display:flex;align-items:start;justify-content:space-between;gap:1rem;margin-bottom:1rem}.detail-drawer .dd-title{margin:0;font-size:1.35rem}.detail-drawer .dd-panel{border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1rem;margin:1rem 0;background:var(--bs-bg-2,var(--bs-body-bg))}.detail-drawer dl{display:grid;grid-template-columns:8rem 1fr;gap:.5rem 1rem;margin:1rem 0 0}.detail-drawer dt{color:var(--bs-fg-3,var(--bs-secondary-color));font-size:.8rem}.detail-drawer dd{margin:0;overflow-wrap:anywhere}@media(max-width:600px){.detail-drawer{padding:1rem}.detail-drawer dl{grid-template-columns:6rem 1fr}}
+</style>
+  <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
 </head>
 <body>
 <div class="lustro-bs6-root container-fluid py-3" data-bs-theme="dark">
@@ -187,6 +193,7 @@ const html = `<!doctype html>
   </div>
   ${sectionHtml}
 </div>
+<section class="mb-4" id="lateral-detail-drawer"><h2 class="lu-section-title h6">Lateral detail drawer</h2><div class="lu-bs6-block"><button type="button" class="btn-outline theme-primary btn-sm" data-detail-drawer>Open detail drawer</button></div></section>
 <dialog class="dialog" id="demoDialog" aria-labelledby="demoDialogTitle">
   <form method="dialog">
     <div class="dialog-header">
@@ -220,7 +227,7 @@ const applyTheme = (dark) => {
   themeBtn.setAttribute('aria-pressed', String(dark));
 };
 let dark = true;
-themeBtn?.addEventListener('click', () => { dark = !dark; applyTheme(dark); });
+themeBtn?.addEventListener('click', () => { dark = !dark; ThemeReveal.reveal(themeBtn, () => applyTheme(dark)); });
 document.getElementById('demoToast')?.addEventListener('click', () => {
   Toast.getOrCreateInstance(document.getElementById('liveToast')).show();
 });
@@ -228,10 +235,38 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('.lustro-bs6-root *').forEach((el) => { el.style.animationDuration = '0.01ms'; });
 }
 </script>
+<dialog class="detail-drawer" id="detailDrawer" aria-labelledby="detailDrawerTitle">
+  <div class="dd-header"><div><span class="badge theme-primary">DETAIL PANEL · DEMO</span><h2 class="dd-title" id="detailDrawerTitle">Component review</h2></div><button type="button" class="btn-close" data-drawer-close aria-label="Close"></button></div>
+  <p class="text-secondary">Review details without losing the component set behind this panel. Fictitious data; actions stay local.</p>
+  <div class="dd-panel"><span class="badge theme-success">Ready for review</span><dl><div><dt>Component</dt><dd>Detail drawer (original)</dd></div><div><dt>Owner</dt><dd>Design systems (fictitious)</dd></div><div><dt>Scope</dt><dd>Local demo only</dd></div></dl></div>
+  <div class="dd-panel"><h3 class="h6">Review note</h3><label class="form-label" for="drawerNote">Local note</label><textarea class="form-control" id="drawerNote" rows="4" placeholder="Add a note for this preview"></textarea></div>
+  <p id="drawerStatus" role="status" class="small text-secondary"></p><div class="d-flex justify-content-end gap-2"><button type="button" class="btn-solid theme-secondary btn-sm" data-drawer-close>Close</button><button type="button" class="btn-solid theme-primary btn-sm" id="drawerAction">Mark reviewed</button></div>
+</dialog>
+<script type="module">
+const drawer=document.getElementById("detailDrawer"),status=document.getElementById("drawerStatus");
+let lastTrigger=null,closing=false;
+const reduced=matchMedia("(prefers-reduced-motion: reduce)");
+function focusables(){return [...drawer.querySelectorAll("button:not(:disabled),textarea:not(:disabled),input:not(:disabled),select:not(:disabled),a[href],[tabindex='0']")]}
+async function openDrawer(e){lastTrigger=e.currentTarget;drawer.showModal();if(!reduced.matches){const{animate}=await import("https://cdn.jsdelivr.net/npm/motion@14.1.0/+esm");animate(drawer,{x:["100%","0%"],opacity:[.65,1]},{duration:.25,ease:"easeOut"})}}
+async function closeDrawer(){if(closing||!drawer.open)return;closing=true;if(!reduced.matches){const{animate}=await import("https://cdn.jsdelivr.net/npm/motion@14.1.0/+esm");await animate(drawer,{x:["0%","100%"],opacity:[1,.65]},{duration:.16,ease:"easeIn"}).finished}drawer.close();closing=false;lastTrigger?.focus()}
+drawer.addEventListener("cancel",(e)=>{e.preventDefault();closeDrawer()});
+drawer.addEventListener("click",(e)=>{const r=drawer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDrawer()});
+drawer.addEventListener("keydown",(e)=>{if(e.key!=="Tab")return;const f=focusables();if(!f.length)return;const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}});
+document.querySelectorAll("[data-detail-drawer]").forEach(b=>b.addEventListener("click",openDrawer));
+drawer.querySelectorAll("[data-drawer-close]").forEach(b=>b.addEventListener("click",closeDrawer));
+document.getElementById("drawerAction").addEventListener("click",()=>{status.textContent="Demo only: marked reviewed locally. Nothing was saved or sent."});
+</script>
 </body>
 </html>
 `
 
-fs.mkdirSync(path.dirname(outPath), { recursive: true })
-fs.writeFileSync(outPath, html)
-console.log('Wrote', outPath, `(${sections.length} sections)`)
+if (process.argv.includes('--check')) {
+  if (!fs.existsSync(outPath) || fs.readFileSync(outPath, 'utf8') !== html) {
+    console.error('Lustro component export drift: run npm run build:lustro-bs6 and commit the output.')
+    process.exitCode = 1
+  } else console.log('PASS Lustro generated export matches committed content')
+} else {
+  fs.mkdirSync(path.dirname(outPath), { recursive: true })
+  fs.writeFileSync(outPath, html)
+  console.log('Wrote', outPath, `(${sections.length} sections)`)
+}
