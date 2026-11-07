@@ -199,6 +199,7 @@ export default defineConfig({
           { text: 'Histogram usage', link: '/histogram' },
           { text: 'Box plot usage', link: '/box-plot' },
           { text: 'Heatmap usage', link: '/heatmap' },
+          { text: 'Contribution skyline usage', link: '/contribution-skyline' },
           { text: 'Cohort retention usage', link: '/cohort-chart' },
           { text: 'Gantt chart usage', link: '/gantt-chart' },
           { text: 'Sankey chart usage', link: '/sankey-chart' },
