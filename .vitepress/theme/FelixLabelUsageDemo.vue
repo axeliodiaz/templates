@@ -15,4 +15,7 @@ function reset(){value.value='';required.value=true;disabled.value=false;attempt
 </template>
 <style scoped>
 .label-demo{border:1px solid var(--vp-c-divider);border-radius:14px;padding:20px;margin:20px 0}.label-controls{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:24px}.label-controls label{display:flex;align-items:center;gap:8px}.label-controls input{accent-color:var(--vp-c-brand-1)}.example-label{display:block;font-weight:650;margin-bottom:8px}.example-label span{font-weight:400}.example-input{display:block;width:100%;box-sizing:border-box;font:inherit;color:inherit;background:var(--vp-c-bg-soft);border:1px solid var(--vp-c-divider);border-radius:8px;padding:10px;transition:border-color .15s ease,background-color .15s ease}.example-input[aria-invalid=true]{border-color:var(--vp-c-danger-1);background:var(--vp-c-danger-soft)}.example-input:disabled{opacity:.5;cursor:not-allowed}.label-help{font-size:14px;color:var(--vp-c-text-2)}.label-error{color:var(--vp-c-danger-1)}.label-actions{display:flex;flex-wrap:wrap;gap:8px}.label-actions button{border:1px solid var(--vp-c-divider);border-radius:8px;padding:8px 12px;background:var(--vp-c-bg-soft)}.label-demo input:focus-visible,.label-demo button:focus-visible{outline:2px solid var(--vp-c-brand-1);outline-offset:3px}@media(prefers-reduced-motion:reduce){.example-input{transition:none}}
+
+/* Felix-only native control accent. */
+:is(input[type=range],input[type=checkbox],input[type=radio]){accent-color:var(--vp-c-brand-1)}
 </style>

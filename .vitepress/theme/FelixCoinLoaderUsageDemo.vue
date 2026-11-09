@@ -21,4 +21,7 @@ function reset(){state.value='idle';size.value='md';runs.value=0}
 </template>
 <style scoped>
 .coin-demo{border:1px solid var(--vp-c-divider);border-radius:14px;padding:20px;margin:20px 0}.coin-demo label{display:grid;gap:6px;font-weight:600;max-width:250px}.coin-demo select{font:inherit;color:inherit;background:var(--vp-c-bg-soft);border:1px solid var(--vp-c-divider);padding:8px;border-radius:8px;width:100%}.coin-result{display:flex;align-items:center;gap:16px;min-height:92px;padding:16px;background:var(--vp-c-bg-soft);border-radius:12px}.coin-symbol{flex:none;display:block;width:36px;height:36px;box-sizing:border-box;border-radius:50%;border:3px double var(--vp-c-brand-1);background:radial-gradient(circle at 30% 30%,var(--vp-c-bg),var(--vp-c-brand-soft));animation:coin-turn 1.2s linear infinite}.coin-symbol.sm{width:24px;height:24px}.coin-symbol.lg{width:56px;height:56px}.coin-actions{display:flex;flex-wrap:wrap;gap:8px}.coin-demo button{border:1px solid var(--vp-c-divider);border-radius:8px;padding:8px 12px;background:var(--vp-c-bg-soft)}.coin-demo button:disabled{opacity:.5;cursor:not-allowed}.coin-demo button:focus-visible,.coin-demo select:focus-visible{outline:2px solid var(--vp-c-brand-1);outline-offset:3px}@keyframes coin-turn{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.coin-symbol{animation:none}}
+
+/* Felix-only native control accent. */
+:is(input[type=range],input[type=checkbox],input[type=radio]){accent-color:var(--vp-c-brand-1)}
 </style>
