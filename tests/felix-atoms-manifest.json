@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "coin-loader",
+    "route": "/felix/components/coin-loader",
+    "demo": "FelixCoinLoaderUsageDemo",
+    "title": "CoinLoader",
+    "source": "/coin-loader"
+  },
+  {
+    "slug": "dots",
+    "route": "/felix/components/dots",
+    "demo": "FelixDotsUsageDemo",
+    "title": "Dots",
+    "source": "/dots"
+  },
+  {
+    "slug": "icon-button",
+    "route": "/felix/components/icon-button",
+    "demo": "FelixIconButtonUsageDemo",
+    "title": "IconButton",
+    "source": "/icon-button"
+  },
+  {
+    "slug": "label",
+    "route": "/felix/components/label",
+    "demo": "FelixLabelUsageDemo",
+    "title": "Label",
+    "source": "/label"
+  },
+  {
+    "slug": "logo",
+    "route": "/felix/components/logo",
+    "demo": "FelixLogoUsageDemo",
+    "title": "Logo",
+    "source": "/logo"
+  },
+  {
+    "slug": "marker",
+    "route": "/felix/components/marker",
+    "demo": "FelixMarkerUsageDemo",
+    "title": "Marker",
+    "source": "/marker"
+  },
+  {
+    "slug": "separator",
+    "route": "/felix/components/separator",
+    "demo": "FelixSeparatorUsageDemo",
+    "title": "Separator",
+    "source": "/separator"
+  },
+  {
+    "slug": "text",
+    "route": "/felix/components/text",
+    "demo": "FelixTextUsageDemo",
+    "title": "Text",
+    "source": "/text"
+  }
+]

@@ -1,0 +1,21 @@
+const {chromium}=require('playwright'),{spawn,execFileSync}=require('child_process'),fs=require('fs'),assert=require('assert/strict'),path=require('path');
+const manifest=require('./felix-organisms-manifest.json');
+const config=fs.readFileSync('.vitepress/config.mts','utf8'),base=execFileSync('git',['show','origin/develop:.vitepress/config.mts'],{encoding:'utf8'});
+const withoutFelix=s=>{const a=s.indexOf("'/felix': ["),b=s.indexOf("'/pulsefit': [",a);return s.slice(0,a)+s.slice(b)};assert.equal(withoutFelix(config),withoutFelix(base),'other themes unchanged');
+for(const item of manifest){assert(config.includes("link: '"+item.route+"'"));assert(fs.existsSync('felix/components/'+item.slug+'.md'));if(item.slug!=='price-timeline')assert.equal(fs.readFileSync('.vitepress/theme/'+item.demo+'.vue','utf8').replace(/\n\/\* Felix-only native control accent\. \*\/\n:is\(input\[type=range\],input\[type=checkbox\],input\[type=radio\]\)\{accent-color:var\(--vp-c-brand-1\)\}\n/,''),fs.readFileSync('.vitepress/theme/'+item.demo.replace(/^Felix/,'')+'.vue','utf8'),'retain proven behavior without rewriting a shared demo');}
+(async()=>{const server=spawn('node',['node_modules/vitepress/bin/vitepress.js','dev','--host','127.0.0.1','--port','5184'],{stdio:['ignore',fs.openSync('/tmp/felix-organisms-dev.log','w'),'inherit']});const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
+try{
+ for(let n=0;n<120;n++){try{if((await fetch('http://127.0.0.1:5184/')).ok)break}catch{}await new Promise(r=>setTimeout(r,500));}
+ fs.mkdirSync('/tmp/felix-organisms-proof',{recursive:true});
+ for(const width of [390,1440])for(const theme of ['light','dark'])for(const item of manifest){
+  const p=await browser.newPage({viewport:{width,height:1000},reducedMotion:'reduce'}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.addInitScript(t=>localStorage.setItem('felix-theme',t),theme);
+  await p.goto('http://127.0.0.1:5184'+item.route);await p.waitForFunction(()=>document.documentElement.classList.contains('felix'));const demo=p.locator('.vp-doc section,.price-guide-demo').first();await demo.waitFor();
+  assert.equal(await p.locator('html').evaluate(e=>e.classList.contains('felix-dark')),theme==='dark');assert.equal((await p.locator('h1').innerText()).replace(/\u200b/g,'').trim(),item.title);assert(await p.locator('.VPSidebar a[href="'+item.route+'"]').count());assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),item.slug+' overflow');
+  const dropdown=demo.locator('select').first();if(await dropdown.count()){const opts=await dropdown.locator('option').evaluateAll(es=>es.map(e=>e.value));if(opts.length>1){await dropdown.selectOption(opts[1]);assert.equal(await dropdown.inputValue(),opts[1]);}}
+  if(item.slug==='cart-summary'){await demo.getByLabel('Promo code (try WELCOME10)').fill('WELCOME10');await demo.getByRole('button',{name:'Apply',exact:true}).click();assert.match(await demo.getByRole('status').innerText(),/applied/);}
+  if(item.slug==='care-timeline'){await demo.getByRole('button',{name:/Mark done:/}).first().click();assert.match(await demo.getByRole('status').innerText(),/local sample/);}
+  if(item.slug==='price-timeline'){await demo.getByRole('button',{name:'1W',exact:true}).click();const slider=demo.getByRole('slider');await slider.focus();await slider.press('ArrowRight');assert.equal(await demo.getByRole('button',{name:'1W',exact:true}).getAttribute('aria-pressed'),'true');assert.equal(await demo.getByRole('button',{name:'Open position',exact:true}).count(),0);const bg=await demo.locator('.ptl-card').evaluate(e=>getComputedStyle(e).backgroundColor);assert.notEqual(bg,theme==='dark'?'rgb(255, 255, 255)':'rgb(8, 36, 34)');}
+  await demo.scrollIntoViewIfNeeded();await p.screenshot({path:'/tmp/felix-organisms-proof/'+item.slug+'-'+width+'-'+theme+'.png'});assert.deepEqual(errors,[],item.slug+' JavaScript errors');await p.close();
+ }
+ console.log('PASS TEM371:8real routes,32viewport/theme cases,8interactivecontrollers,keyboard,localtextstate,Felixscope/sidebar,nohorizontaloverflow,noJSerrors,other10themeconfigandgenericcomponentsunchanged');
+}finally{await browser.close();server.kill();await new Promise(r=>server.once('exit',r));}})().catch(e=>{console.error(e);process.exitCode=1});
