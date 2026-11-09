@@ -592,49 +592,149 @@
     "sample.series-trend": {
       "headers": [
         "Period",
-        "Primary",
-        "Secondary"
+        "Service",
+        "Amount"
       ],
       "rows": [
         [
-          "Jan",
-          35,
-          20
-        ],
-        [
-          "Feb",
-          48,
-          28
+          "Mar",
+          "Power",
+          96
         ],
         [
           "Mar",
-          41,
-          25
+          "Water",
+          24
         ],
         [
-          "Apr",
-          61,
-          39
-        ],
-        [
-          "May",
-          56,
-          33
-        ],
-        [
-          "Jun",
-          74,
-          46
-        ],
-        [
-          "Jul",
-          68,
+          "Mar",
+          "Internet",
           38
         ],
         [
+          "Mar",
+          "Gym",
+          null
+        ],
+        [
+          "Apr",
+          "Power",
+          88
+        ],
+        [
+          "Apr",
+          "Water",
+          26
+        ],
+        [
+          "Apr",
+          "Internet",
+          38
+        ],
+        [
+          "Apr",
+          "Gym",
+          null
+        ],
+        [
+          "May",
+          "Power",
+          81
+        ],
+        [
+          "May",
+          "Water",
+          null
+        ],
+        [
+          "May",
+          "Internet",
+          38
+        ],
+        [
+          "May",
+          "Gym",
+          45
+        ],
+        [
+          "Jun",
+          "Power",
+          79
+        ],
+        [
+          "Jun",
+          "Water",
+          25
+        ],
+        [
+          "Jun",
+          "Internet",
+          41
+        ],
+        [
+          "Jun",
+          "Gym",
+          45
+        ],
+        [
+          "Jul",
+          "Power",
+          70
+        ],
+        [
+          "Jul",
+          "Water",
+          29
+        ],
+        [
+          "Jul",
+          "Internet",
+          41
+        ],
+        [
+          "Jul",
+          "Gym",
+          52
+        ],
+        [
           "Aug",
-          82,
-          49
+          "Power",
+          64
+        ],
+        [
+          "Aug",
+          "Water",
+          31
+        ],
+        [
+          "Aug",
+          "Internet",
+          41
+        ],
+        [
+          "Aug",
+          "Gym",
+          52
+        ],
+        [
+          "Sep",
+          "Power",
+          31
+        ],
+        [
+          "Sep",
+          "Water",
+          12
+        ],
+        [
+          "Sep",
+          "Internet",
+          41
+        ],
+        [
+          "Sep",
+          "Gym",
+          52
         ]
       ]
     },
@@ -2773,10 +2873,12 @@
       },
       "encoding": {
         "x": "Period",
-        "y": "Primary"
+        "y": "Amount",
+        "series": "Service"
       },
       "options": {
-        "currentPeriod": "Aug"
+        "currentPeriod": "Sep",
+        "selectedSeries": "All"
       }
     },
     "range": {
@@ -3228,7 +3330,9 @@
         "depends": "Depends",
         "status": "Status"
       },
-      "options": {}
+      "options": {
+        "interactive": true
+      }
     },
     "process": {
       "component": "felix-process",
@@ -3243,7 +3347,9 @@
         "depends": "Depends",
         "status": "Status"
       },
-      "options": {}
+      "options": {
+        "interactive": true
+      }
     },
     "flowchart": {
       "component": "felix-flowchart",

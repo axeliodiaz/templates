@@ -1,6 +1,11 @@
 <script setup>
 import { computed, ref, useId, watch } from "vue";
-import { resolveSpec, chartGeometry, COMPONENTS } from "./felix-chart-spec.mjs";
+import {
+  resolveSpec,
+  chartGeometry,
+  COMPONENTS,
+  advanceNode,
+} from "./felix-chart-spec.mjs";
 const props = defineProps({
   spec: { type: Object, required: true },
   sources: { type: Object, required: true },
@@ -111,6 +116,50 @@ function activate(m) {
   selected.value = m.index;
   markReadout.value = describe(m);
 }
+const seriesOptions = computed(() =>
+  applied.value.component === "felix-series-trend" &&
+  applied.value.encoding.series
+    ? [
+        "All",
+        ...new Set(
+          model.value.originalRows.map((r) =>
+            String(r[applied.value.encoding.series]),
+          ),
+        ),
+      ]
+    : [],
+);
+const nodeActions = computed(() =>
+  model.value &&
+  ["dependency", "process"].includes(model.value.component) &&
+  applied.value.options?.interactive
+    ? model.value.originalRows.filter(
+        (r) => r[applied.value.encoding.status] === "In progress",
+      )
+    : [],
+);
+function chooseSeries(value) {
+  applied.value = {
+    ...applied.value,
+    options: { ...applied.value.options, selectedSeries: value },
+  };
+  draft.value = JSON.stringify(applied.value, null, 2);
+  selected.value = -1;
+  markReadout.value = "";
+  revision.value++;
+}
+function completeNode(row) {
+  localSources.value = advanceNode(
+    applied.value,
+    localSources.value,
+    row[applied.value.encoding.id],
+  );
+  sourceDraft.value = JSON.stringify(localSources.value, null, 2);
+  selected.value = -1;
+  markReadout.value =
+    "Local node completed. Newly unblocked nodes are now in progress. Nothing was sent or saved.";
+  revision.value++;
+}
 function markAttrs(mark) {
   const {
     type,
@@ -186,6 +235,34 @@ function markAttrs(mark) {
                 <option value="empty">Empty</option>
               </select></label
             >
+          </div>
+          <div
+            v-if="seriesOptions.length"
+            class="fj-toolbar fj-series"
+            role="group"
+            aria-label="Series filter"
+          >
+            <button
+              v-for="series in seriesOptions"
+              :key="series"
+              type="button"
+              :aria-pressed="
+                (applied.options.selectedSeries || 'All') === series
+              "
+              @click="chooseSeries(series)"
+            >
+              {{ series }}
+            </button>
+          </div>
+          <div v-if="nodeActions.length" class="fj-toolbar fj-node-actions">
+            <button
+              v-for="row in nodeActions"
+              :key="row[applied.encoding.id]"
+              type="button"
+              @click="completeNode(row)"
+            >
+              Complete {{ row[applied.encoding.category] }} locally</button
+            ><button type="button" @click="reset">Reset local graph</button>
           </div>
           <p v-if="state !== 'ready'" role="status" class="fj-state">
             {{
@@ -398,6 +475,15 @@ function markAttrs(mark) {
   gap: 8px;
   align-items: center;
   flex-wrap: wrap;
+}
+.fj-series,
+.fj-node-actions {
+  margin-top: 12px;
+}
+.fj-series button[aria-pressed="true"] {
+  background: var(--fj-c1);
+  color: #082422;
+  font-weight: 700;
 }
 .fj-toolbar label {
   display: flex;

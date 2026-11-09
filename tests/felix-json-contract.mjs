@@ -4,6 +4,7 @@ import fs from "node:fs";
 import {
   resolveSpec,
   chartGeometry,
+  advanceNode,
   validate,
 } from "../.vitepress/theme/felix-chart-spec.mjs";
 const db = JSON.parse(
@@ -18,7 +19,10 @@ for (const [id, spec] of Object.entries(db.examples))
       g = chartGeometry(m);
     assert(g.marks.length + g.texts.length > 0);
     assert(!JSON.stringify(g).match(/NaN|Infinity/));
-    assert.equal(m.rows.length, db.sources[spec.data.source].rows.length);
+    assert.equal(
+      m.originalRows.length,
+      db.sources[spec.data.source].rows.length,
+    );
   });
 test("bar example format has no required wrapper or inline values", () => {
   const s = {
@@ -177,4 +181,26 @@ test("all original catalog anchors are present; unrelated sources unchanged by w
   );
   assert.equal((s.match(/id="mono-/g) || []).length, 38);
   assert.equal((s.match(/id="basic-/g) || []).length, 17);
+});
+
+test("series selection aggregates correct source values and preserves missing months", () => {
+  const spec = clone(db.examples["series-trend"]);
+  spec.options.selectedSeries = "Water";
+  const m = resolveSpec(spec, db.sources);
+  assert.equal(m.rows[0].__aggregate, 24);
+  assert.equal(m.rows[2].__aggregate, null);
+  assert.equal(m.rows.length, 7);
+});
+test("node completion unlocks dependents without mutating source", () => {
+  const spec = db.examples.dependency,
+    before = clone(db.sources),
+    next = advanceNode(spec, db.sources, "check"),
+    rows = next[spec.data.source].rows;
+  assert.equal(rows[1][3], "Done");
+  assert.equal(rows[2][3], "In progress");
+  assert.deepEqual(db.sources, before);
+  assert.throws(
+    () => advanceNode(spec, db.sources, "finish"),
+    /only in-progress/,
+  );
 });

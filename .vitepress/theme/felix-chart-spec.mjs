@@ -221,6 +221,8 @@ function extensionContract(id) {
           unit: { type: "string" },
           currentPeriod: { type: "string" },
           weights: { type: "object" },
+          interactive: { type: "boolean" },
+          selectedSeries: { type: "string" },
           polarEncoding: { enum: ["radius", "area"] },
         },
       },
@@ -405,6 +407,8 @@ export function resolveSpec(input, sources) {
             "currentPeriod",
             "weights",
             "polarEncoding",
+            "interactive",
+            "selectedSeries",
           ]
         : renderedOptions[input.component] || []
       ).includes(key),
@@ -519,6 +523,33 @@ export function resolveSpec(input, sources) {
     norm = norm.map((r, i) => ({ ...r, __position: String(i + 1) }));
     enc.category = "__position";
   }
+  if (input.component === "felix-series-trend" && e.series) {
+    const periods = [...new Set(rows.map((r) => r[e.x]))],
+      chosen = opts.selectedSeries ?? "All";
+    need(
+      chosen === "All" || rows.some((r) => String(r[e.series]) === chosen),
+      "options.selectedSeries",
+      "unknown series",
+    );
+    norm = periods.map((period) => {
+      const group = rows.filter(
+        (r) =>
+          r[e.x] === period &&
+          (chosen === "All" || String(r[e.series]) === chosen),
+      );
+      const values = group.map((r) => r[e.y]).filter((v) => v !== null);
+      need(
+        values.every((v) => typeof v === "number" && Number.isFinite(v)),
+        "data",
+        "series values must be numeric or missing",
+      );
+      return {
+        [e.x]: period,
+        __aggregate: values.length ? values.reduce((a, b) => a + b, 0) : null,
+      };
+    });
+    enc = { category: e.x, value: "__aggregate" };
+  }
   enc = Object.fromEntries(
     Object.entries(enc).filter(([, v]) => v !== undefined),
   );
@@ -570,7 +601,9 @@ export function resolveSpec(input, sources) {
       if (numeric.includes(ch) && !(kind === "sankey" && ch === "target")) {
         if (
           val === null &&
-          ["line", "sparkline", "step", "telemetry"].includes(kind) &&
+          ["line", "sparkline", "step", "telemetry", "series-trend"].includes(
+            kind,
+          ) &&
           ["value", "secondary"].includes(ch)
         )
           continue;
@@ -920,17 +953,19 @@ export function chartGeometry(m) {
         });
       if (["hybrid", "combo", "series-trend"].includes(c))
         a.forEach((z, i) =>
-          add(
-            "rect",
-            {
-              x: X(i) - step * 0.25,
-              y: Math.min(Y(z), Y(0)),
-              width: step * 0.5,
-              height: Math.abs(Y(z) - Y(0)),
-              opacity: 0.45,
-            },
-            i,
-          ),
+          z === null
+            ? null
+            : add(
+                "rect",
+                {
+                  x: X(i) - step * 0.25,
+                  y: Math.min(Y(z), Y(0)),
+                  width: step * 0.5,
+                  height: Math.abs(Y(z) - Y(0)),
+                  opacity: 0.45,
+                },
+                i,
+              ),
         );
       add(
         "path",
@@ -1610,4 +1645,43 @@ export function chartGeometry(m) {
     text(cx, cy, `${label(r[0])}: ${v(r[0], "value")} ${o.unit ?? ""}`);
   }
   return { marks, texts, lines, width: W, height: H, domain: [lo, hi] };
+}
+
+export function advanceNode(spec, sources, id) {
+  const model = resolveSpec(spec, sources);
+  need(
+    ["dependency", "process"].includes(model.component),
+    "component",
+    "node actions require a dependency/process chart",
+  );
+  need(
+    spec.options?.interactive,
+    "options.interactive",
+    "actions are not enabled",
+  );
+  const registry = JSON.parse(JSON.stringify(sources)),
+    source = registry[spec.data.source],
+    enc = spec.encoding,
+    idx = source.headers.indexOf(enc.id),
+    deps = source.headers.indexOf(enc.depends),
+    status = source.headers.indexOf(enc.status);
+  need(status >= 0, "encoding.status", "actions require a status field");
+  const row = source.rows.find((r) => r[idx] === id);
+  need(row, "node", "unknown node ID");
+  need(
+    row[status] === "In progress",
+    "node",
+    "only in-progress nodes may complete",
+  );
+  row[status] = "Done";
+  for (const candidate of source.rows) {
+    if (candidate[status] !== "Waiting") continue;
+    if (
+      candidate[deps].every(
+        (d) => source.rows.find((r) => r[idx] === d)?.[status] === "Done",
+      )
+    )
+      candidate[status] = "In progress";
+  }
+  return registry;
 }
