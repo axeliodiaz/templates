@@ -17,7 +17,7 @@ function submit() { result.value = `Local choice: ${selected.value}. Suggestion 
 .select-usage { padding:20px; border:1px solid var(--vp-c-divider); border-radius:12px; margin:20px 0 } form { display:grid; gap:10px } label { font-weight:600; margin-top:10px } select,input { min-width:0; width:100%; min-height:44px; padding:10px; background:var(--vp-c-bg-soft); color:inherit; font:inherit; border:1px solid var(--vp-c-divider); border-radius:8px; transition:border-color 120ms ease } select.small { font-size:14px; padding:8px } select.large { font-size:18px; padding:14px } select:disabled { opacity:.55; cursor:not-allowed } button { min-height:44px } :focus-visible { outline:3px solid var(--vp-c-brand-1); outline-offset:3px } @media(prefers-reduced-motion:reduce) { select,input { transition:none } }
 
 /* Local Felix guide classes, not an installed component API. */
-:global(.felix-dark) .fg-demo{--fg-danger:#fda4af}
+:global(html.felix-dark .fg-demo){--fg-danger:#fda4af}
 .fg-demo{--fg-danger:#a91c38;background:var(--vp-c-bg);color:var(--vp-c-text-1)}
 .fg-btn,.fg-icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;min-height:44px;border:1px solid var(--vp-c-divider);border-radius:10px;font:inherit;color:var(--vp-c-text-1);background:var(--vp-c-bg-soft);cursor:pointer}
 .fg-primary{background:var(--vp-c-brand-1);border-color:var(--vp-c-brand-1);color:var(--vp-c-bg)}

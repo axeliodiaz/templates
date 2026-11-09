@@ -22,7 +22,7 @@ async function key(e: KeyboardEvent) {
 .tabs-usage { padding:20px; border:1px solid var(--vp-c-divider); border-radius:12px; margin:20px 0 } .orientation { display:flex; align-items:center; gap:10px; min-height:44px; margin-bottom:14px } [role=tablist] { display:flex; flex-wrap:wrap; gap:6px } [role=tab] { padding:10px; min-height:44px; border:1px solid var(--vp-c-divider); border-radius:8px; transition:background-color 120ms ease } [aria-selected=true] { background:var(--vp-c-brand-soft); color:var(--vp-c-brand-1); font-weight:600 } [role=tabpanel] { padding:16px; border:1px solid var(--vp-c-divider); border-radius:8px; margin-top:10px; min-width:0 } .vertical { display:grid; grid-template-columns:110px minmax(0,1fr); gap:10px } .vertical [role=tablist] { flex-direction:column; align-self:start } .vertical [role=tabpanel] { margin-top:0 } h3 { margin:0 } :focus-visible { outline:3px solid var(--vp-c-brand-1); outline-offset:3px } @media(max-width:420px) { .vertical { grid-template-columns:90px minmax(0,1fr) } .vertical [role=tabpanel] { padding:10px } } @media(prefers-reduced-motion:reduce) { [role=tab] { transition:none } }
 
 /* Local Felix guide classes, not an installed component API. */
-:global(.felix-dark) .fg-demo{--fg-danger:#fda4af}
+:global(html.felix-dark .fg-demo){--fg-danger:#fda4af}
 .fg-demo{--fg-danger:#a91c38;background:var(--vp-c-bg);color:var(--vp-c-text-1)}
 .fg-btn,.fg-icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;min-height:44px;border:1px solid var(--vp-c-divider);border-radius:10px;font:inherit;color:var(--vp-c-text-1);background:var(--vp-c-bg-soft);cursor:pointer}
 .fg-primary{background:var(--vp-c-brand-1);border-color:var(--vp-c-brand-1);color:var(--vp-c-bg)}

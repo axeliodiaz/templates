@@ -48,7 +48,7 @@ onMounted(()=>{media=matchMedia('(prefers-reduced-motion: reduce)');preference()
 onBeforeUnmount(()=>{stop();cancelGrace();cancelAnimationFrame(positionRaf);observer?.disconnect();media?.removeEventListener('change',preference);document.removeEventListener('pointerdown',pointerOutside);document.removeEventListener('keydown',escape);window.removeEventListener('scroll',moved,true);window.removeEventListener('resize',moved)})
 </script>
 <template>
-<section ref="root" class="skyusage-demo" aria-label="Synthetic contribution skyline demonstration">
+<section ref="root" class="skyusage-demo felix-skyline-demo" aria-label="Synthetic contribution skyline demonstration">
 <p>Fictional contributions on consecutive calendar dates. No account data, network request or saved preference.</p>
 <div class="skyusage-controls"><label>Dataset<select v-model="dataset"><option v-for="d in DATASETS" :key="d">{{ d }}</option></select></label><label>Data state<select v-model="state"><option value="ready">Ready</option><option value="loading">Loading</option><option value="empty">Empty</option><option value="error">Error</option></select></label><div v-if="state==='ready'" class="skyusage-mode" role="radiogroup" aria-label="View" @keydown="modeKey"><button v-for="v in ['grid','skyline']" :key="v" role="radio" :aria-checked="mode===v" :tabindex="mode===v?0:-1" @click="changeMode(v)">{{ v==='grid'?'Grid':'Skyline' }}</button></div><button @click="reset">Reset example</button></div>
 <div ref="board" class="skyusage-board" @scroll="moved">
@@ -67,5 +67,5 @@ onBeforeUnmount(()=>{stop();cancelGrace();cancelAnimationFrame(positionRaf);obse
 :is(input[type=range],input[type=checkbox],input[type=radio]){accent-color:var(--vp-c-brand-1)}
 
 .skyusage-demo{--sky-top-0:var(--vp-c-divider);--sky-top-1:#99f6e4;--sky-top-2:#2dd4bf;--sky-top-3:#0f766e;--sky-top-4:#134e4a;--sky-edge:var(--vp-c-text-1);--sky-focus:var(--vp-c-text-1);--sky-hover:var(--vp-c-text-1);--sky-halo:var(--vp-c-bg);--sky-unknown:var(--vp-c-text-2);--sky-label:var(--vp-c-text-2);--sky-control:var(--vp-c-bg);--sky-text:var(--vp-c-text-1);color:var(--vp-c-text-1);background:var(--vp-c-bg)}
-:global(.felix-dark) .skyusage-demo{--sky-top-1:#134e4a;--sky-top-2:#0f766e;--sky-top-3:#2dd4bf;--sky-top-4:#99f6e4}
+:global(html.felix-dark .felix-skyline-demo){--sky-top-1:#134e4a;--sky-top-2:#0f766e;--sky-top-3:#2dd4bf;--sky-top-4:#99f6e4}
 </style>

@@ -11,7 +11,7 @@ onMounted(()=>document.addEventListener('pointerdown',outside));onBeforeUnmount(
 .dropdown-usage{padding:20px;border:1px solid var(--vp-c-divider);border-radius:12px;margin:20px 0;min-height:330px}.action-panel{display:grid;gap:6px;margin-top:8px;padding:12px;max-width:280px;border:1px solid var(--vp-c-divider);border-radius:8px;background:var(--vp-c-bg-soft)}button{min-height:44px}.action-panel button{text-align:left;padding:8px;border-radius:6px;transition:background-color 120ms ease}.action-panel button:hover{background:var(--vp-c-brand-soft)}button:disabled{opacity:.5;cursor:not-allowed}hr{margin:3px 0}:focus-visible{outline:3px solid var(--vp-c-brand-1);outline-offset:3px}@media(prefers-reduced-motion:reduce){.action-panel button{transition:none}}
 
 /* Local Felix guide classes, not an installed component API. */
-:global(.felix-dark) .fg-demo{--fg-danger:#fda4af}
+:global(html.felix-dark .fg-demo){--fg-danger:#fda4af}
 .fg-demo{--fg-danger:#a91c38;background:var(--vp-c-bg);color:var(--vp-c-text-1)}
 .fg-btn,.fg-icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;min-height:44px;border:1px solid var(--vp-c-divider);border-radius:10px;font:inherit;color:var(--vp-c-text-1);background:var(--vp-c-bg-soft);cursor:pointer}
 .fg-primary{background:var(--vp-c-brand-1);border-color:var(--vp-c-brand-1);color:var(--vp-c-bg)}

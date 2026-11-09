@@ -10,7 +10,7 @@ const value = ref(40), disabled = ref(false)
 .range-usage { padding:20px; border:1px solid var(--vp-c-divider); border-radius:12px; margin:20px 0; display:grid; gap:14px } label { font-weight:600 } input[type=range] { width:100%; min-width:0; min-height:44px; accent-color:var(--vp-c-brand-1); transition:opacity 120ms ease } input:disabled { opacity:.5 } .choice { display:flex; align-items:center; gap:10px; min-height:44px } button { min-height:44px; justify-self:start } :focus-visible { outline:3px solid var(--vp-c-brand-1); outline-offset:3px } @media(prefers-reduced-motion:reduce) { input[type=range] { transition:none } }
 
 /* Local Felix guide classes, not an installed component API. */
-:global(.felix-dark) .fg-demo{--fg-danger:#fda4af}
+:global(html.felix-dark .fg-demo){--fg-danger:#fda4af}
 .fg-demo{--fg-danger:#a91c38;background:var(--vp-c-bg);color:var(--vp-c-text-1)}
 .fg-btn,.fg-icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;min-height:44px;border:1px solid var(--vp-c-divider);border-radius:10px;font:inherit;color:var(--vp-c-text-1);background:var(--vp-c-bg-soft);cursor:pointer}
 .fg-primary{background:var(--vp-c-brand-1);border-color:var(--vp-c-brand-1);color:var(--vp-c-bg)}

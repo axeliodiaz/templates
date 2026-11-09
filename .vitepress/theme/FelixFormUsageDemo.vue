@@ -36,7 +36,7 @@ function reset() { name.value = 'Sample workspace'; notes.value = ''; filename.v
 @media(prefers-reduced-motion:reduce) { .form-usage input,.form-usage textarea { transition:none } }
 
 /* Local Felix guide classes, not an installed component API. */
-:global(.felix-dark) .fg-demo{--fg-danger:#fda4af}
+:global(html.felix-dark .fg-demo){--fg-danger:#fda4af}
 .fg-demo{--fg-danger:#a91c38;background:var(--vp-c-bg);color:var(--vp-c-text-1)}
 .fg-btn,.fg-icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;min-height:44px;border:1px solid var(--vp-c-divider);border-radius:10px;font:inherit;color:var(--vp-c-text-1);background:var(--vp-c-bg-soft);cursor:pointer}
 .fg-primary{background:var(--vp-c-brand-1);border-color:var(--vp-c-brand-1);color:var(--vp-c-bg)}

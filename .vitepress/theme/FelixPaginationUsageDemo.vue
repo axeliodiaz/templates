@@ -14,7 +14,7 @@ function go(n:number){page.value=Math.max(1,Math.min(pages,n))}
 .pagination-usage { padding:20px; border:1px solid var(--vp-c-divider); border-radius:12px; margin:20px 0 } ul { min-height:100px } nav { display:flex; flex-wrap:wrap; gap:8px } button { min-height:44px; min-width:44px; padding:10px; border:1px solid var(--vp-c-divider); border-radius:8px; transition:background-color 120ms ease } [aria-current=page] { color:var(--vp-c-brand-1); background:var(--vp-c-brand-soft); font-weight:600 } button:disabled { opacity:.5; cursor:not-allowed } :focus-visible { outline:3px solid var(--vp-c-brand-1); outline-offset:3px } @media(prefers-reduced-motion:reduce) { button { transition:none } }
 
 /* Local Felix guide classes, not an installed component API. */
-:global(.felix-dark) .fg-demo{--fg-danger:#fda4af}
+:global(html.felix-dark .fg-demo){--fg-danger:#fda4af}
 .fg-demo{--fg-danger:#a91c38;background:var(--vp-c-bg);color:var(--vp-c-text-1)}
 .fg-btn,.fg-icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;min-height:44px;border:1px solid var(--vp-c-divider);border-radius:10px;font:inherit;color:var(--vp-c-text-1);background:var(--vp-c-bg-soft);cursor:pointer}
 .fg-primary{background:var(--vp-c-brand-1);border-color:var(--vp-c-brand-1);color:var(--vp-c-bg)}
