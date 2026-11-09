@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "message-scroller",
+    "route": "/felix/components/message-scroller",
+    "demo": "FelixMessageScrollerUsageDemo",
+    "title": "MessageScroller",
+    "source": "/message-scroller"
+  },
+  {
+    "slug": "sidebar",
+    "route": "/felix/components/sidebar",
+    "demo": "FelixSidebarUsageDemo",
+    "title": "Sidebar",
+    "source": "/sidebar"
+  },
+  {
+    "slug": "cart-summary",
+    "route": "/felix/components/cart-summary",
+    "demo": "FelixCartSummaryUsageDemo",
+    "title": "Cart summary",
+    "source": "/cart-summary"
+  },
+  {
+    "slug": "price-timeline",
+    "route": "/felix/components/price-timeline",
+    "demo": "FelixPriceTimeline",
+    "title": "Price timeline",
+    "source": "/price-timeline"
+  },
+  {
+    "slug": "kpi-cards",
+    "route": "/felix/components/kpi-cards",
+    "demo": "FelixKpiCardsUsageDemo",
+    "title": "KPI cards",
+    "source": "/kpi-cards"
+  },
+  {
+    "slug": "care-timeline",
+    "route": "/felix/components/care-timeline",
+    "demo": "FelixCareTimelineUsageDemo",
+    "title": "Care timeline",
+    "source": "/care-timeline"
+  },
+  {
+    "slug": "pet-profile",
+    "route": "/felix/components/pet-profile",
+    "demo": "FelixPetProfileUsageDemo",
+    "title": "Pet profile and cards",
+    "source": "/pet-profile"
+  },
+  {
+    "slug": "meters-gauges",
+    "route": "/felix/components/meters-gauges",
+    "demo": "FelixMetersUsageDemo",
+    "title": "Meters and gauges",
+    "source": "/meters-gauges"
+  }
+]
