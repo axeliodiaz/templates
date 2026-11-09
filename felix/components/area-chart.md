@@ -1,92 +1,74 @@
 ---
-pageClass: area-chart-guide felix-scoped-guide
+pageClass: felix-scoped-guide
 ---
 <script setup>
-import FelixAreaChartUsageDemo from '../../.vitepress/theme/FelixAreaChartUsageDemo.vue'
+import FelixJsonChart from '../../.vitepress/theme/FelixJsonChart.vue'
+import chartExamples from '../../.vitepress/theme/felix-chart-examples.json'
 </script>
 
 # Area chart
 
-[Back to Felix components](/felix/components/) · [Felix chart reference](/felix/components/charts)
-
-This Felix guide uses linen, slate and turquoise surfaces in light and dark appearance. Category charts add slate and amber distinctions; labels, exact values and selection outlines remain available without relying on color. All data is synthetic and local.
+[Back to Felix charts](/felix/components/charts) · [JSON chart contract](/felix/components/chart-json)
 
 An area chart fills the space between an ordered series and a baseline. Use it when magnitude above that baseline matters, such as volume over time. Keep zero visible: a cropped baseline can exaggerate the filled magnitude. A filled region is not a cumulative sum, uncertainty interval or part-of-whole breakdown. Use a range band for limits, a stream chart for layered flows or a line chart when only the trend matters.
 
-## Try the baseline, fill and exact values
+## Preview, spec and editable example
 
-<FelixAreaChartUsageDemo />
+<FelixJsonChart :spec="chartExamples.examples['area']" :sources="chartExamples.sources" />
 
-Switch A/B, select a month, hide the fill or choose All zero. The outline, selected mark, live readout and captioned table use the same array. All zero is valid data and still shows the baseline and six zero rows. Loading and Empty withhold the graph/table instead of drawing zero. Ready restores the retained dataset, month and fill choice. Reset returns A, January, fill shown and ready. No request runs and no record changes.
+The preview is rendered from the JSON in **Spec**. Open **Example** to edit the component, source, encoding and options, then choose **Render JSON**. The source registry is separately editable so you can try your own labels and values without embedding numbers in the chart spec. Nothing is sent, saved or fetched. Invalid input reports a field path and keeps the last valid preview.
 
-## How to use it
+## Wire contract
 
-1. Order observations by a meaningful axis. Jan–Jun here are six equally spaced labels, not parsed dates or unequal intervals.
-2. Name the unit and baseline. Synthetic units use a fixed 0–100 vertical scale for every dataset, including zero.
-3. Close the area to the baseline at both ends. Do not close directly between first and last values; that would encode a different region.
-4. Keep an outline and exact values. Fill opacity is decoration; table cells and readout are the values.
-5. Make interpolation explicit. Straight segments here connect observations without claiming intermediate measurements. Smooth curves in the catalogue are a separate choice.
-6. Do not overlap many opaque fills. For independent series prefer lines; stacked areas need a shared total, aligned observations and a clear stacking rule.
-7. Treat missing as missing. A production feed needs gaps, stale/error states and validation. This fixed nonnegative example does not infer zeros or request data.
+This example selects `area`. The spec uses `component`, optional `title`, `subtitle` and `insight`, a named `data.source`, `encoding` and component-specific `options`. Data filters, stable sorting and limits are applied before rendering. The source holds `headers` and `rows`; every encoding names a real source column.
 
-## Anatomy and actual API
+```json
+{
+  "component": "area",
+  "title": "Area",
+  "subtitle": "Fictitious local data",
+  "data": {
+    "source": "sample.area"
+  },
+  "encoding": {
+    "x": "Period",
+    "value": "Primary"
+  },
+  "options": {
+    "values": "per-period"
+  }
+}
+```
 
-`FelixAreaChartUsageDemo.vue` is an isolated local controller with no props or emits. `dataset`, `filled`, `selected` and `state` are refs. `primary` selects A35/48/41/61/56/74, B42/36/55/48/72/64 or six zeros. Labels are Jan–Jun. The zero fixture is separate from Empty. This is not an arbitrary-data adapter.
+### Encoding
 
-`x(i)=40+48i` and `y(v)=170−1.4v` put 0 at170 and100 at30 in a320×210 SVG. The area starts at40,170, visits all six observations and returns through280,170 to the start. The independent polyline uses the same observations. Toggling fill removes only the area path; the outline, mark, readout and values remain. No integration, automatic aggregation, cumulative calculation or date parsing occurs.
+| Channel | Source column |
+| --- | --- |
+| `x` | `Period` |
+| `value` | `Primary` |
+
+### Options
+
+Supported contract options: `values`, `planAs`, `annotate`. These are validated by component; unknown fields are rejected. This renderer supports a conservative subset and rejects options that are not implemented rather than ignoring them. See [current renderer scope](/felix/components/chart-json#current-renderer-scope).
+
+## Data, interaction and accessibility
+
+Hover, focus, click, Enter or Space on a mark to read its exact source row. **Data view** shows the same filtered and sorted source rows in a scrollable table. **Replay motion** replays the entrance; reduced motion removes it. Ready/Loading/Empty are local demonstration states only and never invent a network result. The controls and spec tabs support keyboard use, including Left/Right, Home and End in the tab list.
+
+Felix chart colors adapt to light and dark appearance. Turquoise leads; slate supports the comparison. Highlight names, labels, a focus outline and the exact data remain available without relying only on color. Sources are local and bounded to 2,000 rows. Unknown components, sources, fields and options fail visibly. There is no HTML, JavaScript or remote URL execution in a spec.
+
+## Integration
 
 ```vue
 <script setup>
-import FelixAreaChartUsageDemo from '../../.vitepress/theme/FelixAreaChartUsageDemo.vue'
+import FelixJsonChart from './FelixJsonChart.vue'
+const spec = /* validated chart spec from your application */ {}
+const sources = /* named local source registry */ {}
 </script>
-<template><FelixAreaChartUsageDemo /></template>
+
+<template>
+  <FelixJsonChart :spec="spec" :sources="sources" />
+</template>
 ```
 
-A production host might define this contract; the example does not implement it:
-
-```ts
-type AreaPoint = {
-  timestamp: string
-  value: number | null
-}
-type AreaSeries = {
-  unit: string
-  source: string
-  baseline: number
-  observations: AreaPoint[]
-}
-```
-
-Validate finite numbers, units, ordered/duplicate timestamps and gap semantics before mapping. Negative values require a signed baseline and scale policy, not clamping silently. These fixture arrays need none of that input processing. Month buttons update selection on focus or activation and expose pressed state. No custom arrow-key widget is claimed. State/dataset changes retain selection. No listeners, timers or animation handles need manual cleanup.
-
-## Source coverage and actual gallery behavior
-
-| Source | Actual behavior and limits |
-|---|---|
-| [Lustro gallery](/graphs), [Felix gallery](/felix/components/charts) | Shared ChartGallery gradient spline area card, not a standalone area package. |
-| [Lumen](/lumen/charts), [Scopecraft](/scopecraft/charts), [PulseFit](/pulsefit/charts), [Pawprint gallery](/pawprint/charts) | Theme wrappers for the same gallery implementation. Pawprint also has a separate static weight-area specimen. |
-| [Line chart guide](/felix/components/line-chart) | Separate unfilled trend family. This guide's new controller is single-series with a zero baseline, not a dual-line toggle. |
-
-ChartGallery's only declared prop is `language` String default lustro. It renders the whole gallery. There is no area-only, data, baseline, selection or error prop and no selection emit. Dataset A/B and Ready/Loading/Empty controls affect the whole gallery. Each card keeps its own selected index; six month readout buttons and focus/mouseenter on primary dots update it. There is no area mode button or legend control in the source.
-
-The source's `area` is its primary cubic spline plus `L274,166 L34,166 Z`. Coordinates are X34+48i and Y166−1.5v. Cubic controls are halfway horizontally between neighbors. The area has a theme/card-specific gradient from opacity.5 to.04 and a primary outline. No secondary line is drawn in the area card, yet its default readout includes secondary fixture values. This guide intentionally shows only its plotted primary series in readout/table. It uses straight segments and uniform fill rather than claiming the source's smoothing or gradient as data semantics.
-
-Global loading/empty are manual presentation states, not requests; Show sample data restores ready. Source selections persist until another item is picked, with no mouseleave reset. Shared Motion mounts on cards, refreshes after dataset/state changes and destroys on unmount; path CSS transitions are separate. Related static SVGs do not acquire this controller API just by looking similar.
-
-## States, motion and accessibility
-
-| State/part | New example behavior |
-|---|---|
-| A/B | Same fixed scale; all six values update together. |
-| All zero | Valid series at baseline, exact zero rows and selected mark retained. |
-| Fill off | Area absent; outline/table/readout unchanged. |
-| Loading/empty | Graph/table withheld, descriptive local status, controls still available. |
-| Reset | A, January, fill shown and ready. |
-
-SVG entrance fades over200ms on dataset/fill remount; reduced motion removes it. Numbers do not count through invented values. The chart description names the baseline and points to the exact table. Native buttons, checkbox and selects remain keyboard controls; the decorative SVG dots are not extra tab stops. Live readout uses text, not color alone. The two-column data table fits narrow widths, while prose source maps stack. This is not screen-reader certification.
-
-Check A/B/zero values against every table row and selected readout, path closure at both baseline endpoints, fill-off consistency, focus/Enter/Space, selection retention, missing-state recovery/reset, reduced motion, axis/table/source-map readability, overflow and console errors. A real feed also needs nonfinite values, gaps, negatives, duplicates, mixed units and stale/error tests.
-
-<style>
-@media(max-width:700px){.area-chart-guide .vp-doc table:not(.area-data),.area-chart-guide .vp-doc table:not(.area-data) tbody,.area-chart-guide .vp-doc table:not(.area-data) tr,.area-chart-guide .vp-doc table:not(.area-data) td{display:block;width:100%;box-sizing:border-box}.area-chart-guide .vp-doc table:not(.area-data) thead{display:none}.area-chart-guide .vp-doc table:not(.area-data) td:first-child{font-weight:650;background:var(--vp-c-bg-soft)}.area-chart-guide .vp-doc table:not(.area-data) td{overflow-wrap:anywhere}.area-chart-guide .vp-doc table:not(.area-data) tr{margin-bottom:12px}}
-</style>
+`resolveSpec(spec, sources)` validates and resolves a chart model; `chartGeometry(model)` derives marks from that model. The documentation wrapper owns editor drafts and the last valid preview. Your application owns data fetching, authorization, refresh/error state and persistence. This local example is not a live data service. See the [contract and supported renderers](/felix/components/chart-json) before adapting production data.
