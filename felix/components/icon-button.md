@@ -11,7 +11,7 @@ import FelixIconButtonUsageDemo from '../../.vitepress/theme/FelixIconButtonUsag
 
 This is the Felix IconButton guide. The page, navigation and interactive example stay in the Felix linen, slate and turquoise theme. All example actions are local; they do not change accounts or send requests.
 
-An icon button is a native button with a compact visual symbol and a clear accessible action name. Use it for familiar, repeated actions in a toolbar or card. Prefer a [text button](/buttons) when the action is unfamiliar, risky or hard to recognize. An icon alone is not a label; a tooltip is not a substitute for an accessible name.
+An icon button is a native button with a compact visual symbol and a clear accessible action name. Use it for familiar, repeated actions in a toolbar or card. Prefer a [text button](/felix/components/buttons) when the action is unfamiliar, risky or hard to recognize. An icon alone is not a label; a tooltip is not a substitute for an accessible name.
 
 ## Try a named toggle action
 
@@ -74,7 +74,7 @@ A production action owns permission checks, request state and errors separately.
 |---|---|
 | [Felix IconButton](/felix/components/atoms#iconbutton) | Native type=button specimens with aria-label and aria-hidden Font Awesome pen/trash icons. Five visual variants and sm/md/lg classes are shown. These specimens have no edit/delete handler, toggle state or disabled example; their labels do not establish working account actions. |
 | [Felix Button](/felix/components/atoms#button) | Related visual button classes. Shared styling does not prove a shared installed API or action controller. |
-| [Buttons guide](/buttons) | General action, disabled and local interaction guidance. This guide focuses on icon-only naming, target size and toggle semantics. |
+| [Buttons guide](/felix/components/buttons) | General action, disabled and local interaction guidance. This guide focuses on icon-only naming, target size and toggle semantics. |
 
 Felix prose names @felix/ui, icon, variant and size props. Those are design-source usage claims, not verified installed exports in this repository. This demo is an isolated original Vue teaching implementation. It does not silently add handlers to source specimens or reproduce their exact CSS size/brand tokens.
 

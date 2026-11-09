@@ -11,7 +11,7 @@ import FelixMarkerUsageDemo from '../../.vitepress/theme/FelixMarkerUsageDemo.vu
 
 This is the Felix Marker guide. The page, navigation and interactive example stay in the Felix linen, slate and turquoise theme. All example actions are local; they do not change accounts or send requests.
 
-A conversation marker is a low-emphasis annotation between messages: a dated boundary or a system event. It is not a participant's [message](/message), a [badge](/badges) or a map pin. Keep it in the chronological reading order and ground any actual event or date in the conversation data rather than inventing it from presentation.
+A conversation marker is a low-emphasis annotation between messages: a dated boundary or a system event. It is not a participant's [message](/message), a [badge](/felix/components/badges) or a map pin. Keep it in the chronological reading order and ground any actual event or date in the conversation data rather than inventing it from presentation.
 
 ## Try an annotation in context
 

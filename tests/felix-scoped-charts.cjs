@@ -12,5 +12,5 @@ for(const width of [Number(process.env.WIDTH||390)])for(const theme of ['light',
  const reset=demo.getByRole('button',{name:/Reset/});if(await reset.count())await reset.first().click();
  if(item.slug==='contribution-skyline'){await demo.getByRole('radio',{name:/skyline/i}).click();assert(await demo.locator('svg').count());}
  await demo.scrollIntoViewIfNeeded();await p.screenshot({path:'/tmp/felix-charts-proof/'+item.slug+'-'+width+'-'+theme+'.png'});assert.deepEqual(errors,[],item.slug+' JavaScript errors');await p.close();console.log('PASS',item.slug,width,theme);
-}console.log('PASS TEM372:28routes,112viewport/theme cases,local states/reset/keyboard,scope/overflow/JS checks');
+}console.log('PASS TEM372:28routes,56viewport/theme cases for this width,local states/reset/keyboard,scope/overflow/JS checks');
 }finally{await browser.close();server.kill();await new Promise(r=>server.once('exit',r));}})().catch(e=>{console.error(e);process.exitCode=1});
