@@ -204,3 +204,31 @@ test("node completion unlocks dependents without mutating source", () => {
     /only in-progress/,
   );
 });
+
+test("aggregated series marks read the selected aggregate, not an unrelated source row", () => {
+  const spec = clone(db.examples["series-trend"]);
+  spec.options.selectedSeries = "Water";
+  const m = resolveSpec(spec, db.sources),
+    g = chartGeometry(m);
+  assert.match(
+    g.marks.find((x) => x.type === "rect").readout,
+    /Series: Water · Amount: 24/,
+  );
+  assert.match(m.rowReadouts[2], /Missing/);
+  assert.equal(m.originalRows.length, 28);
+});
+test("extension options and channels must match their component", () => {
+  for (const [id, option, value] of [
+    ["step", "interactive", true],
+    ["polar", "selectedSeries", "Water"],
+    ["stream", "weights", {}],
+    ["pie", "max", 100],
+  ]) {
+    const s = clone(db.examples[id]);
+    s.options[option] = value;
+    assert.throws(() => resolveSpec(s, db.sources), /not supported/);
+  }
+  const s = clone(db.examples.dependency);
+  delete s.encoding.status;
+  assert.throws(() => resolveSpec(s, db.sources), /status/);
+});

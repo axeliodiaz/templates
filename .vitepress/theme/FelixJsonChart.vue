@@ -57,7 +57,7 @@ const status = computed(() => {
           (h) => `${h}: ${Array.isArray(row[h]) ? row[h].join(", ") : row[h]}`,
         )
         .join(" · ")
-    : `${m.rows.length} rows from ${m.source}. Focus a mark or a data row to read exact values.`;
+    : `${m.originalRows.length} source rows from ${m.source}. Focus a mark or a data row to read exact values.`;
 });
 function render() {
   try {
@@ -113,7 +113,7 @@ function describe(m) {
   );
 }
 function activate(m) {
-  selected.value = m.index;
+  selected.value = m.readout ? -1 : m.index;
   markReadout.value = describe(m);
 }
 const seriesOptions = computed(() =>
@@ -254,7 +254,13 @@ function markAttrs(mark) {
               {{ series }}
             </button>
           </div>
-          <div v-if="nodeActions.length" class="fj-toolbar fj-node-actions">
+          <div
+            v-if="
+              applied.options?.interactive &&
+              ['dependency', 'process'].includes(model.component)
+            "
+            class="fj-toolbar fj-node-actions"
+          >
             <button
               v-for="row in nodeActions"
               :key="row[applied.encoding.id]"

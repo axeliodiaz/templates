@@ -207,9 +207,21 @@ function extensionContract(id) {
         additionalProperties: false,
         required: ext.channels,
         properties: Object.fromEntries(
-          [...new Set([...ext.channels, "secondary", "status", "series"])].map(
-            (k) => [k, { type: "string" }],
-          ),
+          [
+            ...new Set([
+              ...ext.channels,
+              ...([
+                "dependency",
+                "process",
+                "flowchart",
+                "state-diagram",
+              ].includes(ext.type)
+                ? ["status"]
+                : ext.type === "series-trend"
+                  ? ["series"]
+                  : []),
+            ]),
+          ].map((k) => [k, { type: "string" }]),
         ),
       },
       options: {
@@ -402,18 +414,36 @@ export function resolveSpec(input, sources) {
       (extensions[input.component]
         ? [
             "highlight",
-            "max",
-            "unit",
-            "currentPeriod",
-            "weights",
-            "polarEncoding",
-            "interactive",
-            "selectedSeries",
+            ...(["polar", "radial", "rings", "speed", "arc"].includes(
+              extensions[input.component].type,
+            )
+              ? ["max"]
+              : []),
+            ...(input.component === "felix-series-trend"
+              ? ["currentPeriod", "selectedSeries"]
+              : []),
+            ...(input.component === "felix-status-gauge" ? ["weights"] : []),
+            ...(input.component === "felix-polar" ? ["polarEncoding"] : []),
+            ...(["felix-dependency", "felix-process"].includes(input.component)
+              ? ["interactive"]
+              : []),
           ]
         : renderedOptions[input.component] || []
       ).includes(key),
       `options.${key}`,
       "valid base option but not supported by this Felix renderer yet",
+    );
+  if (opts.selectedSeries !== undefined)
+    need(
+      e.series,
+      "encoding.series",
+      "series selection requires a series channel",
+    );
+  if (opts.interactive)
+    need(
+      e.status,
+      "encoding.status",
+      "interactive nodes require a status channel",
     );
   const kind =
     extensions[input.component]?.type ||
@@ -748,6 +778,13 @@ export function resolveSpec(input, sources) {
     source: d.source,
     headers: source.headers,
     originalRows: rows,
+    rowReadouts:
+      input.component === "felix-series-trend" && e.series
+        ? norm.map(
+            (r) =>
+              `${e.x}: ${r[e.x]} · Series: ${opts.selectedSeries ?? "All"} · ${e.y}: ${r.__aggregate === null ? "Missing" : r.__aggregate}`,
+          )
+        : undefined,
   };
 }
 export const colorTokens = [
@@ -811,6 +848,7 @@ export function chartGeometry(m) {
       categorical && identity.includes(entity) ? identity.indexOf(entity) : i;
     marks.push({
       type,
+      readout: m.rowReadouts?.[i],
       ...attrs,
       color:
         attrs.semanticColor ??
@@ -1008,6 +1046,8 @@ export function chartGeometry(m) {
               d: `M${X(pts[0][0])},${Y(intercept + slope * pts[0][0])} L${X(pts.at(-1)[0])},${Y(intercept + slope * pts.at(-1)[0])}`,
               fill: false,
               dash: "3 3",
+              readout:
+                "Linear trend fitted to complete periods; current period and missing values excluded.",
             },
             2,
           );

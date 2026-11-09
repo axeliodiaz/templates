@@ -66,6 +66,24 @@ const { chromium } = require("playwright"),
       await c
         .getByRole("button", { name: "Complete Check locally", exact: true })
         .waitFor();
+      for (const name of ["Check", "Build", "Finish"]) {
+        await c
+          .getByRole("button", {
+            name: `Complete ${name} locally`,
+            exact: true,
+          })
+          .click();
+      }
+      assert.equal(
+        await c.getByRole("button", { name: /Complete .* locally/ }).count(),
+        0,
+      );
+      await c
+        .getByRole("button", { name: "Reset local graph", exact: true })
+        .click();
+      await c
+        .getByRole("button", { name: "Complete Check locally", exact: true })
+        .waitFor();
       c = p.locator(".fj-chart").nth(55);
       await c.getByRole("button", { name: "Water", exact: true }).click();
       assert.equal(
@@ -73,6 +91,15 @@ const { chromium } = require("playwright"),
           .getByRole("button", { name: "Water", exact: true })
           .getAttribute("aria-pressed"),
         "true",
+      );
+      assert.match(
+        await c.locator(".fj-readout").innerText(),
+        /28 source rows/,
+      );
+      await c.locator(".fj-plot rect[tabindex]").first().focus();
+      assert.match(
+        await c.locator(".fj-readout").innerText(),
+        /Series: Water · Amount: 24/,
       );
       await c.getByRole("tab", { name: "Spec", exact: true }).click();
       assert.match(await c.locator(".fj-spec").innerText(), /Water/);

@@ -1,6 +1,7 @@
 ---
 pageClass: felix-scoped-guide
 ---
+
 # JSON charts
 
 A chart spec names a component, a local source, source columns and component-specific options. The renderer owns the Felix visual system, keyboard reading, exact data view and motion. The spec does not contain chart numbers.
@@ -30,7 +31,11 @@ The corresponding source registry is separate:
 {
   "sample.groups": {
     "headers": ["Group", "Value"],
-    "rows": [["North", 35], ["South", 25], ["East", 20]]
+    "rows": [
+      ["North", 35],
+      ["South", 25],
+      ["East", 20]
+    ]
   }
 }
 ```
@@ -63,6 +68,8 @@ Data comes from the selected source. There are no implicit remote fetches, inlin
 - Gantt intervals preserve start/end; chart samples use numeric elapsed units rather than parsing locale-dependent dates.
 - Sankey link width scales with source flow. Nodes and dependency links use explicit IDs and a cycle-checked dependency list.
 - Status progress uses explicit per-status weights. It is not the fraction of cards merely started.
+- Series trend accepts optional `encoding.series`, `options.selectedSeries` (default `All`) and `options.currentPeriod`. The selector sums the selected series by period, keeps wholly missing periods as gaps and excludes the named current period from the regression. Mark readouts report these aggregates; Data view retains the original source rows.
+- Dependency/process charts accept `options.interactive: true` with `encoding.status`. Complete actions change local source rows from `In progress` to `Done`; waiting nodes unlock when all dependencies are done. Reset restores the sample even after all nodes complete. Nothing is sent or persisted. These are local completion controls, not external workflow updates.
 
 The examples are local demonstrations, not a production data connector. Applications remain responsible for access control, retrieval, refresh cadence, complete/missing periods and source provenance. Do not label synthetic data as real.
 
