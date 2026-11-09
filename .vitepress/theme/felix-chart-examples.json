@@ -1,0 +1,3413 @@
+{
+  "contractVersion": 1,
+  "sources": {
+    "sample.line": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.area": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.step": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.stream": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.sparkline": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.bar": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.column": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.grouped": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.stacked": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.hybrid": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.combo": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.telemetry": {
+      "headers": [
+        "Period",
+        "Primary",
+        "Secondary"
+      ],
+      "rows": [
+        [
+          "Jan",
+          35,
+          20
+        ],
+        [
+          "Feb",
+          48,
+          28
+        ],
+        [
+          "Mar",
+          41,
+          25
+        ],
+        [
+          "Apr",
+          61,
+          39
+        ],
+        [
+          "May",
+          56,
+          33
+        ],
+        [
+          "Jun",
+          74,
+          46
+        ],
+        [
+          "Jul",
+          68,
+          38
+        ],
+        [
+          "Aug",
+          82,
+          49
+        ]
+      ]
+    },
+    "sample.series-trend": {
+      "headers": [
+        "Period",
+        "Service",
+        "Amount"
+      ],
+      "rows": [
+        [
+          "Mar",
+          "Power",
+          96
+        ],
+        [
+          "Mar",
+          "Water",
+          24
+        ],
+        [
+          "Mar",
+          "Internet",
+          38
+        ],
+        [
+          "Mar",
+          "Gym",
+          null
+        ],
+        [
+          "Apr",
+          "Power",
+          88
+        ],
+        [
+          "Apr",
+          "Water",
+          26
+        ],
+        [
+          "Apr",
+          "Internet",
+          38
+        ],
+        [
+          "Apr",
+          "Gym",
+          null
+        ],
+        [
+          "May",
+          "Power",
+          81
+        ],
+        [
+          "May",
+          "Water",
+          null
+        ],
+        [
+          "May",
+          "Internet",
+          38
+        ],
+        [
+          "May",
+          "Gym",
+          45
+        ],
+        [
+          "Jun",
+          "Power",
+          79
+        ],
+        [
+          "Jun",
+          "Water",
+          25
+        ],
+        [
+          "Jun",
+          "Internet",
+          41
+        ],
+        [
+          "Jun",
+          "Gym",
+          45
+        ],
+        [
+          "Jul",
+          "Power",
+          70
+        ],
+        [
+          "Jul",
+          "Water",
+          29
+        ],
+        [
+          "Jul",
+          "Internet",
+          41
+        ],
+        [
+          "Jul",
+          "Gym",
+          52
+        ],
+        [
+          "Aug",
+          "Power",
+          64
+        ],
+        [
+          "Aug",
+          "Water",
+          31
+        ],
+        [
+          "Aug",
+          "Internet",
+          41
+        ],
+        [
+          "Aug",
+          "Gym",
+          52
+        ],
+        [
+          "Sep",
+          "Power",
+          31
+        ],
+        [
+          "Sep",
+          "Water",
+          12
+        ],
+        [
+          "Sep",
+          "Internet",
+          41
+        ],
+        [
+          "Sep",
+          "Gym",
+          52
+        ]
+      ]
+    },
+    "sample.range": {
+      "headers": [
+        "Group",
+        "Low",
+        "High"
+      ],
+      "rows": [
+        [
+          "North",
+          20,
+          45
+        ],
+        [
+          "South",
+          35,
+          70
+        ],
+        [
+          "East",
+          10,
+          32
+        ],
+        [
+          "West",
+          50,
+          85
+        ]
+      ]
+    },
+    "sample.candlestick": {
+      "headers": [
+        "Day",
+        "Open",
+        "High",
+        "Low",
+        "Close"
+      ],
+      "rows": [
+        [
+          "Mon",
+          40,
+          60,
+          30,
+          55
+        ],
+        [
+          "Tue",
+          55,
+          65,
+          40,
+          44
+        ],
+        [
+          "Wed",
+          44,
+          75,
+          40,
+          68
+        ],
+        [
+          "Thu",
+          68,
+          82,
+          60,
+          75
+        ]
+      ]
+    },
+    "sample.dumbbell": {
+      "headers": [
+        "Group",
+        "Before",
+        "After"
+      ],
+      "rows": [
+        [
+          "North",
+          30,
+          45
+        ],
+        [
+          "South",
+          70,
+          62
+        ],
+        [
+          "East",
+          42,
+          58
+        ],
+        [
+          "West",
+          55,
+          80
+        ]
+      ]
+    },
+    "sample.bullet": {
+      "headers": [
+        "Group",
+        "Actual",
+        "Target"
+      ],
+      "rows": [
+        [
+          "North",
+          65,
+          80
+        ],
+        [
+          "South",
+          90,
+          85
+        ],
+        [
+          "East",
+          42,
+          60
+        ]
+      ]
+    },
+    "sample.waterfall": {
+      "headers": [
+        "Step",
+        "Change"
+      ],
+      "rows": [
+        [
+          "Opening",
+          60
+        ],
+        [
+          "Sales",
+          25
+        ],
+        [
+          "Costs",
+          -18
+        ],
+        [
+          "Refunds",
+          -8
+        ],
+        [
+          "Other",
+          12
+        ]
+      ]
+    },
+    "sample.donut": {
+      "headers": [
+        "Category",
+        "Value"
+      ],
+      "rows": [
+        [
+          "North",
+          35
+        ],
+        [
+          "South",
+          25
+        ],
+        [
+          "East",
+          20
+        ],
+        [
+          "West",
+          10
+        ]
+      ]
+    },
+    "sample.pie": {
+      "headers": [
+        "Category",
+        "Value"
+      ],
+      "rows": [
+        [
+          "North",
+          35
+        ],
+        [
+          "South",
+          25
+        ],
+        [
+          "East",
+          20
+        ],
+        [
+          "West",
+          10
+        ]
+      ]
+    },
+    "sample.pyramid": {
+      "headers": [
+        "Category",
+        "Value"
+      ],
+      "rows": [
+        [
+          "North",
+          35
+        ],
+        [
+          "South",
+          25
+        ],
+        [
+          "East",
+          20
+        ],
+        [
+          "West",
+          10
+        ]
+      ]
+    },
+    "sample.polar": {
+      "headers": [
+        "Category",
+        "Value"
+      ],
+      "rows": [
+        [
+          "North",
+          35
+        ],
+        [
+          "South",
+          25
+        ],
+        [
+          "East",
+          20
+        ],
+        [
+          "West",
+          10
+        ]
+      ]
+    },
+    "sample.radial": {
+      "headers": [
+        "Category",
+        "Value"
+      ],
+      "rows": [
+        [
+          "North",
+          35
+        ],
+        [
+          "South",
+          25
+        ],
+        [
+          "East",
+          20
+        ],
+        [
+          "West",
+          10
+        ]
+      ]
+    },
+    "sample.rings": {
+      "headers": [
+        "Category",
+        "Value"
+      ],
+      "rows": [
+        [
+          "North",
+          35
+        ],
+        [
+          "South",
+          25
+        ],
+        [
+          "East",
+          20
+        ],
+        [
+          "West",
+          10
+        ]
+      ]
+    },
+    "sample.speed": {
+      "headers": [
+        "Category",
+        "Value"
+      ],
+      "rows": [
+        [
+          "North",
+          35
+        ],
+        [
+          "South",
+          25
+        ],
+        [
+          "East",
+          20
+        ],
+        [
+          "West",
+          10
+        ]
+      ]
+    },
+    "sample.arc": {
+      "headers": [
+        "Category",
+        "Value"
+      ],
+      "rows": [
+        [
+          "North",
+          35
+        ],
+        [
+          "South",
+          25
+        ],
+        [
+          "East",
+          20
+        ],
+        [
+          "West",
+          10
+        ]
+      ]
+    },
+    "sample.radar": {
+      "headers": [
+        "Axis",
+        "Score"
+      ],
+      "rows": [
+        [
+          "Speed",
+          70
+        ],
+        [
+          "Clarity",
+          85
+        ],
+        [
+          "Support",
+          60
+        ],
+        [
+          "Reach",
+          75
+        ],
+        [
+          "Value",
+          90
+        ]
+      ]
+    },
+    "sample.treemap": {
+      "headers": [
+        "Group",
+        "Item",
+        "Amount"
+      ],
+      "rows": [
+        [
+          "Services",
+          "Hosting",
+          30
+        ],
+        [
+          "Services",
+          "Support",
+          20
+        ],
+        [
+          "Tools",
+          "Editor",
+          15
+        ],
+        [
+          "Tools",
+          "Analytics",
+          10
+        ],
+        [
+          "People",
+          "Training",
+          25
+        ]
+      ]
+    },
+    "sample.sunburst": {
+      "headers": [
+        "Group",
+        "Item",
+        "Amount"
+      ],
+      "rows": [
+        [
+          "Services",
+          "Hosting",
+          30
+        ],
+        [
+          "Services",
+          "Support",
+          20
+        ],
+        [
+          "Tools",
+          "Editor",
+          15
+        ],
+        [
+          "Tools",
+          "Analytics",
+          10
+        ],
+        [
+          "People",
+          "Training",
+          25
+        ]
+      ]
+    },
+    "sample.scatter": {
+      "headers": [
+        "Label",
+        "Hours",
+        "Score",
+        "Count"
+      ],
+      "rows": [
+        [
+          "A",
+          2,
+          30,
+          10
+        ],
+        [
+          "B",
+          4,
+          50,
+          25
+        ],
+        [
+          "C",
+          6,
+          45,
+          18
+        ],
+        [
+          "D",
+          8,
+          80,
+          40
+        ],
+        [
+          "E",
+          5,
+          62,
+          14
+        ]
+      ]
+    },
+    "sample.bubble": {
+      "headers": [
+        "Label",
+        "Hours",
+        "Score",
+        "Count"
+      ],
+      "rows": [
+        [
+          "A",
+          2,
+          30,
+          10
+        ],
+        [
+          "B",
+          4,
+          50,
+          25
+        ],
+        [
+          "C",
+          6,
+          45,
+          18
+        ],
+        [
+          "D",
+          8,
+          80,
+          40
+        ],
+        [
+          "E",
+          5,
+          62,
+          14
+        ]
+      ]
+    },
+    "sample.histogram": {
+      "headers": [
+        "Observation"
+      ],
+      "rows": [
+        [
+          12
+        ],
+        [
+          15
+        ],
+        [
+          15
+        ],
+        [
+          21
+        ],
+        [
+          22
+        ],
+        [
+          25
+        ],
+        [
+          28
+        ],
+        [
+          29
+        ],
+        [
+          30
+        ],
+        [
+          31
+        ],
+        [
+          35
+        ],
+        [
+          38
+        ],
+        [
+          40
+        ],
+        [
+          44
+        ],
+        [
+          45
+        ],
+        [
+          52
+        ],
+        [
+          60
+        ]
+      ]
+    },
+    "sample.boxplot": {
+      "headers": [
+        "Group",
+        "Min",
+        "Q1",
+        "Median",
+        "Q3",
+        "Max"
+      ],
+      "rows": [
+        [
+          "North",
+          5,
+          20,
+          35,
+          50,
+          70
+        ],
+        [
+          "South",
+          12,
+          30,
+          45,
+          65,
+          88
+        ],
+        [
+          "East",
+          8,
+          18,
+          28,
+          40,
+          61
+        ]
+      ]
+    },
+    "sample.heatmap": {
+      "headers": [
+        "Day",
+        "Hour",
+        "Count"
+      ],
+      "rows": [
+        [
+          "Mon",
+          "08",
+          0
+        ],
+        [
+          "Mon",
+          "10",
+          11
+        ],
+        [
+          "Mon",
+          "12",
+          22
+        ],
+        [
+          "Mon",
+          "14",
+          33
+        ],
+        [
+          "Mon",
+          "16",
+          44
+        ],
+        [
+          "Mon",
+          "18",
+          5
+        ],
+        [
+          "Tue",
+          "08",
+          7
+        ],
+        [
+          "Tue",
+          "10",
+          18
+        ],
+        [
+          "Tue",
+          "12",
+          29
+        ],
+        [
+          "Tue",
+          "14",
+          40
+        ],
+        [
+          "Tue",
+          "16",
+          1
+        ],
+        [
+          "Tue",
+          "18",
+          12
+        ],
+        [
+          "Wed",
+          "08",
+          14
+        ],
+        [
+          "Wed",
+          "10",
+          25
+        ],
+        [
+          "Wed",
+          "12",
+          36
+        ],
+        [
+          "Wed",
+          "14",
+          47
+        ],
+        [
+          "Wed",
+          "16",
+          8
+        ],
+        [
+          "Wed",
+          "18",
+          19
+        ],
+        [
+          "Thu",
+          "08",
+          21
+        ],
+        [
+          "Thu",
+          "10",
+          32
+        ],
+        [
+          "Thu",
+          "12",
+          43
+        ],
+        [
+          "Thu",
+          "14",
+          4
+        ],
+        [
+          "Thu",
+          "16",
+          15
+        ],
+        [
+          "Thu",
+          "18",
+          26
+        ],
+        [
+          "Fri",
+          "08",
+          28
+        ],
+        [
+          "Fri",
+          "10",
+          39
+        ],
+        [
+          "Fri",
+          "12",
+          0
+        ],
+        [
+          "Fri",
+          "14",
+          11
+        ],
+        [
+          "Fri",
+          "16",
+          22
+        ],
+        [
+          "Fri",
+          "18",
+          33
+        ]
+      ]
+    },
+    "sample.hourmap": {
+      "headers": [
+        "Day",
+        "Hour",
+        "Count"
+      ],
+      "rows": [
+        [
+          "Mon",
+          "08",
+          0
+        ],
+        [
+          "Mon",
+          "10",
+          11
+        ],
+        [
+          "Mon",
+          "12",
+          22
+        ],
+        [
+          "Mon",
+          "14",
+          33
+        ],
+        [
+          "Mon",
+          "16",
+          44
+        ],
+        [
+          "Mon",
+          "18",
+          5
+        ],
+        [
+          "Tue",
+          "08",
+          7
+        ],
+        [
+          "Tue",
+          "10",
+          18
+        ],
+        [
+          "Tue",
+          "12",
+          29
+        ],
+        [
+          "Tue",
+          "14",
+          40
+        ],
+        [
+          "Tue",
+          "16",
+          1
+        ],
+        [
+          "Tue",
+          "18",
+          12
+        ],
+        [
+          "Wed",
+          "08",
+          14
+        ],
+        [
+          "Wed",
+          "10",
+          25
+        ],
+        [
+          "Wed",
+          "12",
+          36
+        ],
+        [
+          "Wed",
+          "14",
+          47
+        ],
+        [
+          "Wed",
+          "16",
+          8
+        ],
+        [
+          "Wed",
+          "18",
+          19
+        ],
+        [
+          "Thu",
+          "08",
+          21
+        ],
+        [
+          "Thu",
+          "10",
+          32
+        ],
+        [
+          "Thu",
+          "12",
+          43
+        ],
+        [
+          "Thu",
+          "14",
+          4
+        ],
+        [
+          "Thu",
+          "16",
+          15
+        ],
+        [
+          "Thu",
+          "18",
+          26
+        ],
+        [
+          "Fri",
+          "08",
+          28
+        ],
+        [
+          "Fri",
+          "10",
+          39
+        ],
+        [
+          "Fri",
+          "12",
+          0
+        ],
+        [
+          "Fri",
+          "14",
+          11
+        ],
+        [
+          "Fri",
+          "16",
+          22
+        ],
+        [
+          "Fri",
+          "18",
+          33
+        ]
+      ]
+    },
+    "sample.matrix": {
+      "headers": [
+        "Day",
+        "Hour",
+        "Count"
+      ],
+      "rows": [
+        [
+          "Mon",
+          "08",
+          0
+        ],
+        [
+          "Mon",
+          "10",
+          11
+        ],
+        [
+          "Mon",
+          "12",
+          22
+        ],
+        [
+          "Mon",
+          "14",
+          33
+        ],
+        [
+          "Mon",
+          "16",
+          44
+        ],
+        [
+          "Mon",
+          "18",
+          5
+        ],
+        [
+          "Tue",
+          "08",
+          7
+        ],
+        [
+          "Tue",
+          "10",
+          18
+        ],
+        [
+          "Tue",
+          "12",
+          29
+        ],
+        [
+          "Tue",
+          "14",
+          40
+        ],
+        [
+          "Tue",
+          "16",
+          1
+        ],
+        [
+          "Tue",
+          "18",
+          12
+        ],
+        [
+          "Wed",
+          "08",
+          14
+        ],
+        [
+          "Wed",
+          "10",
+          25
+        ],
+        [
+          "Wed",
+          "12",
+          36
+        ],
+        [
+          "Wed",
+          "14",
+          47
+        ],
+        [
+          "Wed",
+          "16",
+          8
+        ],
+        [
+          "Wed",
+          "18",
+          19
+        ],
+        [
+          "Thu",
+          "08",
+          21
+        ],
+        [
+          "Thu",
+          "10",
+          32
+        ],
+        [
+          "Thu",
+          "12",
+          43
+        ],
+        [
+          "Thu",
+          "14",
+          4
+        ],
+        [
+          "Thu",
+          "16",
+          15
+        ],
+        [
+          "Thu",
+          "18",
+          26
+        ],
+        [
+          "Fri",
+          "08",
+          28
+        ],
+        [
+          "Fri",
+          "10",
+          39
+        ],
+        [
+          "Fri",
+          "12",
+          0
+        ],
+        [
+          "Fri",
+          "14",
+          11
+        ],
+        [
+          "Fri",
+          "16",
+          22
+        ],
+        [
+          "Fri",
+          "18",
+          33
+        ]
+      ]
+    },
+    "sample.contribution-skyline": {
+      "headers": [
+        "Day",
+        "Hour",
+        "Count"
+      ],
+      "rows": [
+        [
+          "Mon",
+          "08",
+          0
+        ],
+        [
+          "Mon",
+          "10",
+          11
+        ],
+        [
+          "Mon",
+          "12",
+          22
+        ],
+        [
+          "Mon",
+          "14",
+          33
+        ],
+        [
+          "Mon",
+          "16",
+          44
+        ],
+        [
+          "Mon",
+          "18",
+          5
+        ],
+        [
+          "Tue",
+          "08",
+          7
+        ],
+        [
+          "Tue",
+          "10",
+          18
+        ],
+        [
+          "Tue",
+          "12",
+          29
+        ],
+        [
+          "Tue",
+          "14",
+          40
+        ],
+        [
+          "Tue",
+          "16",
+          1
+        ],
+        [
+          "Tue",
+          "18",
+          12
+        ],
+        [
+          "Wed",
+          "08",
+          14
+        ],
+        [
+          "Wed",
+          "10",
+          25
+        ],
+        [
+          "Wed",
+          "12",
+          36
+        ],
+        [
+          "Wed",
+          "14",
+          47
+        ],
+        [
+          "Wed",
+          "16",
+          8
+        ],
+        [
+          "Wed",
+          "18",
+          19
+        ],
+        [
+          "Thu",
+          "08",
+          21
+        ],
+        [
+          "Thu",
+          "10",
+          32
+        ],
+        [
+          "Thu",
+          "12",
+          43
+        ],
+        [
+          "Thu",
+          "14",
+          4
+        ],
+        [
+          "Thu",
+          "16",
+          15
+        ],
+        [
+          "Thu",
+          "18",
+          26
+        ],
+        [
+          "Fri",
+          "08",
+          28
+        ],
+        [
+          "Fri",
+          "10",
+          39
+        ],
+        [
+          "Fri",
+          "12",
+          0
+        ],
+        [
+          "Fri",
+          "14",
+          11
+        ],
+        [
+          "Fri",
+          "16",
+          22
+        ],
+        [
+          "Fri",
+          "18",
+          33
+        ]
+      ]
+    },
+    "sample.cohort": {
+      "headers": [
+        "Cohort",
+        "Period",
+        "Retained"
+      ],
+      "rows": [
+        [
+          "Jan",
+          "0",
+          100
+        ],
+        [
+          "Jan",
+          "1",
+          85
+        ],
+        [
+          "Jan",
+          "2",
+          70
+        ],
+        [
+          "Jan",
+          "3",
+          55
+        ],
+        [
+          "Jan",
+          "4",
+          40
+        ],
+        [
+          "Feb",
+          "0",
+          97
+        ],
+        [
+          "Feb",
+          "1",
+          82
+        ],
+        [
+          "Feb",
+          "2",
+          67
+        ],
+        [
+          "Feb",
+          "3",
+          52
+        ],
+        [
+          "Mar",
+          "0",
+          94
+        ],
+        [
+          "Mar",
+          "1",
+          79
+        ],
+        [
+          "Mar",
+          "2",
+          64
+        ]
+      ]
+    },
+    "sample.gantt": {
+      "headers": [
+        "Task",
+        "Start",
+        "End"
+      ],
+      "rows": [
+        [
+          "Research",
+          0,
+          3
+        ],
+        [
+          "Design",
+          2,
+          6
+        ],
+        [
+          "Build",
+          5,
+          11
+        ],
+        [
+          "Review",
+          9,
+          13
+        ]
+      ]
+    },
+    "sample.sankey": {
+      "headers": [
+        "From",
+        "To",
+        "Count"
+      ],
+      "rows": [
+        [
+          "Browse",
+          "Trial",
+          50
+        ],
+        [
+          "Browse",
+          "Exit",
+          30
+        ],
+        [
+          "Refer",
+          "Trial",
+          20
+        ],
+        [
+          "Trial",
+          "Buy",
+          45
+        ],
+        [
+          "Trial",
+          "Exit",
+          25
+        ]
+      ]
+    },
+    "sample.funnel": {
+      "headers": [
+        "Stage",
+        "Count"
+      ],
+      "rows": [
+        [
+          "View",
+          100
+        ],
+        [
+          "Start",
+          78
+        ],
+        [
+          "Submit",
+          55
+        ],
+        [
+          "Complete",
+          40
+        ]
+      ]
+    },
+    "sample.kpi": {
+      "headers": [
+        "Period",
+        "Total"
+      ],
+      "rows": [
+        [
+          "Current",
+          82
+        ],
+        [
+          "Previous",
+          68
+        ]
+      ]
+    },
+    "sample.status-gauge": {
+      "headers": [
+        "Status",
+        "Count"
+      ],
+      "rows": [
+        [
+          "Blocked",
+          2
+        ],
+        [
+          "Ready",
+          3
+        ],
+        [
+          "In progress",
+          4
+        ],
+        [
+          "In review",
+          2
+        ],
+        [
+          "Done",
+          5
+        ]
+      ]
+    },
+    "sample.status-funnel": {
+      "headers": [
+        "Status",
+        "Count"
+      ],
+      "rows": [
+        [
+          "Blocked",
+          2
+        ],
+        [
+          "Ready",
+          3
+        ],
+        [
+          "In progress",
+          4
+        ],
+        [
+          "In review",
+          2
+        ],
+        [
+          "Done",
+          5
+        ]
+      ]
+    },
+    "sample.dependency": {
+      "headers": [
+        "ID",
+        "Label",
+        "Depends",
+        "Status"
+      ],
+      "rows": [
+        [
+          "start",
+          "Start",
+          [],
+          "Done"
+        ],
+        [
+          "check",
+          "Check",
+          [
+            "start"
+          ],
+          "In progress"
+        ],
+        [
+          "build",
+          "Build",
+          [
+            "check"
+          ],
+          "Waiting"
+        ],
+        [
+          "finish",
+          "Finish",
+          [
+            "build"
+          ],
+          "Waiting"
+        ]
+      ]
+    },
+    "sample.process": {
+      "headers": [
+        "ID",
+        "Label",
+        "Depends",
+        "Status"
+      ],
+      "rows": [
+        [
+          "start",
+          "Start",
+          [],
+          "Done"
+        ],
+        [
+          "check",
+          "Check",
+          [
+            "start"
+          ],
+          "In progress"
+        ],
+        [
+          "build",
+          "Build",
+          [
+            "check"
+          ],
+          "Waiting"
+        ],
+        [
+          "finish",
+          "Finish",
+          [
+            "build"
+          ],
+          "Waiting"
+        ]
+      ]
+    },
+    "sample.flowchart": {
+      "headers": [
+        "ID",
+        "Label",
+        "Depends",
+        "Status"
+      ],
+      "rows": [
+        [
+          "start",
+          "Start",
+          [],
+          "Done"
+        ],
+        [
+          "check",
+          "Check",
+          [
+            "start"
+          ],
+          "In progress"
+        ],
+        [
+          "build",
+          "Build",
+          [
+            "check"
+          ],
+          "Waiting"
+        ],
+        [
+          "finish",
+          "Finish",
+          [
+            "build"
+          ],
+          "Waiting"
+        ]
+      ]
+    },
+    "sample.state-diagram": {
+      "headers": [
+        "ID",
+        "Label",
+        "Depends",
+        "Status"
+      ],
+      "rows": [
+        [
+          "start",
+          "Start",
+          [],
+          "Done"
+        ],
+        [
+          "check",
+          "Check",
+          [
+            "start"
+          ],
+          "In progress"
+        ],
+        [
+          "build",
+          "Build",
+          [
+            "check"
+          ],
+          "Waiting"
+        ],
+        [
+          "finish",
+          "Finish",
+          [
+            "build"
+          ],
+          "Waiting"
+        ]
+      ]
+    },
+    "sample.heatmap-b": {
+      "headers": [
+        "Day",
+        "Hour",
+        "Count"
+      ],
+      "rows": [
+        [
+          "Mon",
+          "08",
+          7
+        ],
+        [
+          "Mon",
+          "10",
+          18
+        ],
+        [
+          "Mon",
+          "12",
+          29
+        ],
+        [
+          "Mon",
+          "14",
+          40
+        ],
+        [
+          "Mon",
+          "16",
+          1
+        ],
+        [
+          "Mon",
+          "18",
+          12
+        ],
+        [
+          "Tue",
+          "08",
+          14
+        ],
+        [
+          "Tue",
+          "10",
+          25
+        ],
+        [
+          "Tue",
+          "12",
+          36
+        ],
+        [
+          "Tue",
+          "14",
+          47
+        ],
+        [
+          "Tue",
+          "16",
+          8
+        ],
+        [
+          "Tue",
+          "18",
+          19
+        ],
+        [
+          "Wed",
+          "08",
+          21
+        ],
+        [
+          "Wed",
+          "10",
+          32
+        ],
+        [
+          "Wed",
+          "12",
+          43
+        ],
+        [
+          "Wed",
+          "14",
+          4
+        ],
+        [
+          "Wed",
+          "16",
+          15
+        ],
+        [
+          "Wed",
+          "18",
+          26
+        ],
+        [
+          "Thu",
+          "08",
+          28
+        ],
+        [
+          "Thu",
+          "10",
+          39
+        ],
+        [
+          "Thu",
+          "12",
+          0
+        ],
+        [
+          "Thu",
+          "14",
+          11
+        ],
+        [
+          "Thu",
+          "16",
+          22
+        ],
+        [
+          "Thu",
+          "18",
+          33
+        ],
+        [
+          "Fri",
+          "08",
+          35
+        ],
+        [
+          "Fri",
+          "10",
+          46
+        ],
+        [
+          "Fri",
+          "12",
+          7
+        ],
+        [
+          "Fri",
+          "14",
+          18
+        ],
+        [
+          "Fri",
+          "16",
+          29
+        ],
+        [
+          "Fri",
+          "18",
+          40
+        ]
+      ]
+    },
+    "sample.heatmap-c": {
+      "headers": [
+        "Day",
+        "Hour",
+        "Count"
+      ],
+      "rows": [
+        [
+          "Mon",
+          "08",
+          19
+        ],
+        [
+          "Mon",
+          "10",
+          30
+        ],
+        [
+          "Mon",
+          "12",
+          41
+        ],
+        [
+          "Mon",
+          "14",
+          2
+        ],
+        [
+          "Mon",
+          "16",
+          13
+        ],
+        [
+          "Mon",
+          "18",
+          24
+        ],
+        [
+          "Tue",
+          "08",
+          26
+        ],
+        [
+          "Tue",
+          "10",
+          37
+        ],
+        [
+          "Tue",
+          "12",
+          48
+        ],
+        [
+          "Tue",
+          "14",
+          9
+        ],
+        [
+          "Tue",
+          "16",
+          20
+        ],
+        [
+          "Tue",
+          "18",
+          31
+        ],
+        [
+          "Wed",
+          "08",
+          33
+        ],
+        [
+          "Wed",
+          "10",
+          44
+        ],
+        [
+          "Wed",
+          "12",
+          5
+        ],
+        [
+          "Wed",
+          "14",
+          16
+        ],
+        [
+          "Wed",
+          "16",
+          27
+        ],
+        [
+          "Wed",
+          "18",
+          38
+        ],
+        [
+          "Thu",
+          "08",
+          40
+        ],
+        [
+          "Thu",
+          "10",
+          1
+        ],
+        [
+          "Thu",
+          "12",
+          12
+        ],
+        [
+          "Thu",
+          "14",
+          23
+        ],
+        [
+          "Thu",
+          "16",
+          34
+        ],
+        [
+          "Thu",
+          "18",
+          45
+        ],
+        [
+          "Fri",
+          "08",
+          47
+        ],
+        [
+          "Fri",
+          "10",
+          8
+        ],
+        [
+          "Fri",
+          "12",
+          19
+        ],
+        [
+          "Fri",
+          "14",
+          30
+        ],
+        [
+          "Fri",
+          "16",
+          41
+        ],
+        [
+          "Fri",
+          "18",
+          2
+        ]
+      ]
+    }
+  },
+  "examples": {
+    "line": {
+      "component": "line",
+      "title": "Line",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.line"
+      },
+      "encoding": {
+        "x": "Period",
+        "y": "Primary",
+        "comparison": "Secondary"
+      },
+      "options": {}
+    },
+    "area": {
+      "component": "area",
+      "title": "Area",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.area"
+      },
+      "encoding": {
+        "x": "Period",
+        "value": "Primary"
+      },
+      "options": {
+        "values": "per-period"
+      }
+    },
+    "step": {
+      "component": "felix-step",
+      "title": "Step",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.step"
+      },
+      "encoding": {
+        "x": "Period",
+        "y": "Primary"
+      },
+      "options": {}
+    },
+    "stream": {
+      "component": "felix-stream",
+      "title": "Stream",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.stream"
+      },
+      "encoding": {
+        "x": "Period",
+        "value": "Primary",
+        "secondary": "Secondary"
+      },
+      "options": {}
+    },
+    "sparkline": {
+      "component": "sparkline",
+      "title": "Sparkline",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.sparkline"
+      },
+      "encoding": {
+        "x": "Period",
+        "y": "Primary"
+      },
+      "options": {}
+    },
+    "bar": {
+      "component": "bar",
+      "title": "Bar",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.bar"
+      },
+      "encoding": {
+        "category": "Period",
+        "value": "Primary"
+      },
+      "options": {
+        "highlight": "Apr"
+      }
+    },
+    "column": {
+      "component": "column",
+      "title": "Column",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.column"
+      },
+      "encoding": {
+        "x": "Period",
+        "value": "Primary"
+      },
+      "options": {}
+    },
+    "grouped": {
+      "component": "grouped",
+      "title": "Grouped",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.grouped"
+      },
+      "encoding": {
+        "category": "Period",
+        "value": [
+          "Primary",
+          "Secondary"
+        ]
+      },
+      "options": {}
+    },
+    "stacked": {
+      "component": "stackedbar",
+      "title": "Stacked",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.stacked"
+      },
+      "encoding": {
+        "category": "Period",
+        "value": [
+          "Primary",
+          "Secondary"
+        ]
+      },
+      "options": {}
+    },
+    "hybrid": {
+      "component": "felix-hybrid",
+      "title": "Hybrid",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.hybrid"
+      },
+      "encoding": {
+        "x": "Period",
+        "y": "Primary",
+        "comparison": "Secondary"
+      },
+      "options": {}
+    },
+    "combo": {
+      "component": "combo",
+      "title": "Combo",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.combo"
+      },
+      "encoding": {
+        "x": "Period",
+        "actual": "Primary",
+        "plan": "Secondary"
+      },
+      "options": {}
+    },
+    "telemetry": {
+      "component": "felix-telemetry",
+      "title": "Telemetry",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.telemetry"
+      },
+      "encoding": {
+        "x": "Period",
+        "y": "Primary",
+        "comparison": "Secondary"
+      },
+      "options": {}
+    },
+    "series-trend": {
+      "component": "felix-series-trend",
+      "title": "Series trend",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.series-trend"
+      },
+      "encoding": {
+        "x": "Period",
+        "y": "Amount",
+        "series": "Service"
+      },
+      "options": {
+        "currentPeriod": "Sep",
+        "selectedSeries": "All"
+      }
+    },
+    "range": {
+      "component": "range",
+      "title": "Range",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.range"
+      },
+      "encoding": {
+        "category": "Group",
+        "low": "Low",
+        "high": "High"
+      },
+      "options": {}
+    },
+    "candlestick": {
+      "component": "felix-candlestick",
+      "title": "Candlestick",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.candlestick"
+      },
+      "encoding": {
+        "category": "Day",
+        "open": "Open",
+        "high": "High",
+        "low": "Low",
+        "close": "Close"
+      },
+      "options": {}
+    },
+    "dumbbell": {
+      "component": "dumbbell",
+      "title": "Dumbbell",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.dumbbell"
+      },
+      "encoding": {
+        "category": "Group",
+        "before": "Before",
+        "after": "After"
+      },
+      "options": {}
+    },
+    "bullet": {
+      "component": "bullet",
+      "title": "Bullet",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.bullet"
+      },
+      "encoding": {
+        "category": "Group",
+        "actual": "Actual",
+        "target": "Target"
+      },
+      "options": {}
+    },
+    "waterfall": {
+      "component": "waterfall",
+      "title": "Waterfall",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.waterfall"
+      },
+      "encoding": {
+        "step": "Step",
+        "value": "Change"
+      },
+      "options": {}
+    },
+    "donut": {
+      "component": "donut",
+      "title": "Donut",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.donut"
+      },
+      "encoding": {
+        "category": "Category",
+        "value": "Value"
+      },
+      "options": {}
+    },
+    "pie": {
+      "component": "felix-pie",
+      "title": "Pie",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.pie"
+      },
+      "encoding": {
+        "category": "Category",
+        "value": "Value"
+      },
+      "options": {}
+    },
+    "pyramid": {
+      "component": "pyramid",
+      "title": "Pyramid",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.pyramid"
+      },
+      "encoding": {
+        "category": "Category",
+        "value": "Value"
+      },
+      "options": {}
+    },
+    "polar": {
+      "component": "felix-polar",
+      "title": "Polar",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.polar"
+      },
+      "encoding": {
+        "category": "Category",
+        "value": "Value"
+      },
+      "options": {}
+    },
+    "radial": {
+      "component": "felix-radial",
+      "title": "Radial",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.radial"
+      },
+      "encoding": {
+        "category": "Category",
+        "value": "Value"
+      },
+      "options": {}
+    },
+    "rings": {
+      "component": "felix-rings",
+      "title": "Rings",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.rings"
+      },
+      "encoding": {
+        "category": "Category",
+        "value": "Value"
+      },
+      "options": {}
+    },
+    "speed": {
+      "component": "felix-speed",
+      "title": "Speed",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.speed"
+      },
+      "encoding": {
+        "category": "Category",
+        "value": "Value"
+      },
+      "options": {}
+    },
+    "arc": {
+      "component": "felix-arc",
+      "title": "Arc",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.arc"
+      },
+      "encoding": {
+        "category": "Category",
+        "value": "Value"
+      },
+      "options": {}
+    },
+    "radar": {
+      "component": "radar",
+      "title": "Radar",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.radar"
+      },
+      "encoding": {
+        "axis": "Axis",
+        "value": "Score"
+      },
+      "options": {
+        "max": 100
+      }
+    },
+    "treemap": {
+      "component": "treemap",
+      "title": "Treemap",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.treemap"
+      },
+      "encoding": {
+        "group": "Group",
+        "subgroup": "Item",
+        "value": "Amount"
+      },
+      "options": {}
+    },
+    "sunburst": {
+      "component": "sunburst",
+      "title": "Sunburst",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.sunburst"
+      },
+      "encoding": {
+        "group": "Group",
+        "subgroup": "Item",
+        "value": "Amount"
+      },
+      "options": {}
+    },
+    "scatter": {
+      "component": "scatter",
+      "title": "Scatter",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.scatter"
+      },
+      "encoding": {
+        "label": "Label",
+        "x": "Hours",
+        "y": "Score"
+      },
+      "options": {}
+    },
+    "bubble": {
+      "component": "bubble",
+      "title": "Bubble",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.bubble"
+      },
+      "encoding": {
+        "label": "Label",
+        "x": "Hours",
+        "y": "Score",
+        "size": "Count"
+      },
+      "options": {}
+    },
+    "histogram": {
+      "component": "histogram",
+      "title": "Histogram",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.histogram"
+      },
+      "encoding": {
+        "value": "Observation"
+      },
+      "options": {
+        "bins": 6
+      }
+    },
+    "boxplot": {
+      "component": "box",
+      "title": "Boxplot",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.boxplot"
+      },
+      "encoding": {
+        "group": "Group",
+        "min": "Min",
+        "q1": "Q1",
+        "median": "Median",
+        "q3": "Q3",
+        "max": "Max"
+      },
+      "options": {}
+    },
+    "heatmap": {
+      "component": "heatmap",
+      "title": "Heatmap",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.heatmap"
+      },
+      "encoding": {
+        "row": "Day",
+        "column": "Hour",
+        "value": "Count"
+      },
+      "options": {}
+    },
+    "hourmap": {
+      "component": "felix-hourmap",
+      "title": "Hourmap",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.hourmap"
+      },
+      "encoding": {
+        "row": "Day",
+        "column": "Hour",
+        "value": "Count"
+      },
+      "options": {}
+    },
+    "matrix": {
+      "component": "felix-matrix",
+      "title": "Matrix",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.matrix"
+      },
+      "encoding": {
+        "row": "Day",
+        "column": "Hour",
+        "value": "Count"
+      },
+      "options": {}
+    },
+    "contribution-skyline": {
+      "component": "felix-contribution-skyline",
+      "title": "Contribution skyline",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.contribution-skyline"
+      },
+      "encoding": {
+        "row": "Day",
+        "column": "Hour",
+        "value": "Count"
+      },
+      "options": {}
+    },
+    "cohort": {
+      "component": "cohort",
+      "title": "Cohort",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.cohort"
+      },
+      "encoding": {
+        "cohort": "Cohort",
+        "period": "Period",
+        "value": "Retained"
+      },
+      "options": {}
+    },
+    "gantt": {
+      "component": "timeline",
+      "title": "Gantt",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.gantt"
+      },
+      "encoding": {
+        "stage": "Task",
+        "start": "Start",
+        "end": "End"
+      },
+      "options": {}
+    },
+    "sankey": {
+      "component": "sankey",
+      "title": "Sankey",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.sankey"
+      },
+      "encoding": {
+        "source": "From",
+        "target": "To",
+        "value": "Count"
+      },
+      "options": {}
+    },
+    "funnel": {
+      "component": "funnel",
+      "title": "Funnel",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.funnel"
+      },
+      "encoding": {
+        "step": "Stage",
+        "count": "Count"
+      },
+      "options": {}
+    },
+    "kpi": {
+      "component": "kpi",
+      "title": "Kpi",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.kpi"
+      },
+      "encoding": {
+        "period": "Period",
+        "value": "Total"
+      },
+      "options": {}
+    },
+    "status-gauge": {
+      "component": "felix-status-gauge",
+      "title": "Status gauge",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.status-gauge"
+      },
+      "encoding": {
+        "category": "Status",
+        "value": "Count"
+      },
+      "options": {
+        "weights": {
+          "Blocked": 0,
+          "Ready": 0,
+          "In progress": 0.25,
+          "In review": 0.75,
+          "Done": 1
+        }
+      }
+    },
+    "status-funnel": {
+      "component": "felix-status-funnel",
+      "title": "Status funnel",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.status-funnel"
+      },
+      "encoding": {
+        "category": "Status",
+        "value": "Count"
+      },
+      "options": {}
+    },
+    "dependency": {
+      "component": "felix-dependency",
+      "title": "Dependency",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.dependency"
+      },
+      "encoding": {
+        "id": "ID",
+        "category": "Label",
+        "depends": "Depends",
+        "status": "Status"
+      },
+      "options": {
+        "interactive": true
+      }
+    },
+    "process": {
+      "component": "felix-process",
+      "title": "Process",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.process"
+      },
+      "encoding": {
+        "id": "ID",
+        "category": "Label",
+        "depends": "Depends",
+        "status": "Status"
+      },
+      "options": {
+        "interactive": true
+      }
+    },
+    "flowchart": {
+      "component": "felix-flowchart",
+      "title": "Flowchart",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.flowchart"
+      },
+      "encoding": {
+        "id": "ID",
+        "category": "Label",
+        "depends": "Depends",
+        "status": "Status"
+      },
+      "options": {}
+    },
+    "state-diagram": {
+      "component": "felix-state-diagram",
+      "title": "State diagram",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.state-diagram"
+      },
+      "encoding": {
+        "id": "ID",
+        "category": "Label",
+        "depends": "Depends",
+        "status": "Status"
+      },
+      "options": {}
+    },
+    "heatmap-b": {
+      "component": "heatmap",
+      "title": "Activity heatmap B",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.heatmap-b"
+      },
+      "encoding": {
+        "row": "Day",
+        "column": "Hour",
+        "value": "Count"
+      },
+      "options": {}
+    },
+    "heatmap-c": {
+      "component": "heatmap",
+      "title": "Activity heatmap C",
+      "subtitle": "Fictitious local data",
+      "data": {
+        "source": "sample.heatmap-c"
+      },
+      "encoding": {
+        "row": "Day",
+        "column": "Hour",
+        "value": "Count"
+      },
+      "options": {}
+    }
+  }
+}
