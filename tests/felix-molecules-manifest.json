@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "buttons",
+    "route": "/felix/components/buttons",
+    "demo": "FelixButtonUsageDemo",
+    "title": "Buttons",
+    "source": "/buttons"
+  },
+  {
+    "slug": "button-group",
+    "route": "/felix/components/button-group",
+    "demo": "FelixButtonGroupUsageDemo",
+    "title": "Button group",
+    "source": "/button-group"
+  },
+  {
+    "slug": "badges",
+    "route": "/felix/components/badges",
+    "demo": "FelixBadgeUsageDemo",
+    "title": "Badge",
+    "source": "/badges"
+  },
+  {
+    "slug": "alerts",
+    "route": "/felix/components/alerts",
+    "demo": "FelixAlertUsageDemo",
+    "title": "Alerts",
+    "source": "/alerts"
+  },
+  {
+    "slug": "forms",
+    "route": "/felix/components/forms",
+    "demo": "FelixFormUsageDemo",
+    "title": "Forms",
+    "source": "/forms"
+  },
+  {
+    "slug": "input-group",
+    "route": "/felix/components/input-group",
+    "demo": "FelixInputGroupUsageDemo",
+    "title": "Input group",
+    "source": "/input-group"
+  },
+  {
+    "slug": "validation",
+    "route": "/felix/components/validation",
+    "demo": "FelixValidationUsageDemo",
+    "title": "Validation and field states",
+    "source": "/validation"
+  },
+  {
+    "slug": "select",
+    "route": "/felix/components/select",
+    "demo": "FelixSelectUsageDemo",
+    "title": "Select",
+    "source": "/select"
+  },
+  {
+    "slug": "choices",
+    "route": "/felix/components/choices",
+    "demo": "FelixChoiceUsageDemo",
+    "title": "Checkbox, radio and switch",
+    "source": "/choices"
+  },
+  {
+    "slug": "range-slider",
+    "route": "/felix/components/range-slider",
+    "demo": "FelixRangeUsageDemo",
+    "title": "Range slider",
+    "source": "/range-slider"
+  },
+  {
+    "slug": "navs-tabs",
+    "route": "/felix/components/navs-tabs",
+    "demo": "FelixTabsUsageDemo",
+    "title": "Navs and tabs",
+    "source": "/navs-tabs"
+  },
+  {
+    "slug": "pagination",
+    "route": "/felix/components/pagination",
+    "demo": "FelixPaginationUsageDemo",
+    "title": "Pagination",
+    "source": "/pagination"
+  },
+  {
+    "slug": "breadcrumb",
+    "route": "/felix/components/breadcrumb",
+    "demo": "FelixBreadcrumbUsageDemo",
+    "title": "Breadcrumb",
+    "source": "/breadcrumb"
+  },
+  {
+    "slug": "language-select",
+    "route": "/felix/components/language-select",
+    "demo": "FelixLanguageUsageDemo",
+    "title": "Language select",
+    "source": "/language-select"
+  },
+  {
+    "slug": "dropdowns",
+    "route": "/felix/components/dropdowns",
+    "demo": "FelixDropdownUsageDemo",
+    "title": "Dropdowns",
+    "source": "/dropdowns"
+  },
+  {
+    "slug": "modals",
+    "route": "/felix/components/modals",
+    "demo": "FelixModalUsageDemo",
+    "title": "Modal",
+    "source": "/modals"
+  },
+  {
+    "slug": "offcanvas",
+    "route": "/felix/components/offcanvas",
+    "demo": "FelixOffcanvasUsageDemo",
+    "title": "Offcanvas",
+    "source": "/offcanvas"
+  },
+  {
+    "slug": "drawer",
+    "route": "/felix/components/drawer",
+    "demo": "FelixDrawerUsageDemo",
+    "title": "Drawer",
+    "source": "/drawer"
+  },
+  {
+    "slug": "sheet",
+    "route": "/felix/components/sheet",
+    "demo": "FelixSheetUsageDemo",
+    "title": "Sheet",
+    "source": "/sheet"
+  },
+  {
+    "slug": "calendar-picker",
+    "route": "/felix/components/calendar-picker",
+    "demo": "FelixCalendarUsageDemo",
+    "title": "Calendar date selection",
+    "source": "/calendar-picker"
+  }
+]

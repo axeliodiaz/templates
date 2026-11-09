@@ -1,0 +1,198 @@
+[
+  {
+    "slug": "line-chart",
+    "route": "/felix/components/line-chart",
+    "demo": "FelixLineChartUsageDemo",
+    "title": "Line chart",
+    "source": "/line-chart"
+  },
+  {
+    "slug": "area-chart",
+    "route": "/felix/components/area-chart",
+    "demo": "FelixAreaChartUsageDemo",
+    "title": "Area chart",
+    "source": "/area-chart"
+  },
+  {
+    "slug": "step-line-chart",
+    "route": "/felix/components/step-line-chart",
+    "demo": "FelixStepLineUsageDemo",
+    "title": "Step line chart",
+    "source": "/step-line-chart"
+  },
+  {
+    "slug": "stream-chart",
+    "route": "/felix/components/stream-chart",
+    "demo": "FelixStreamChartUsageDemo",
+    "title": "Stream chart",
+    "source": "/stream-chart"
+  },
+  {
+    "slug": "range-band-chart",
+    "route": "/felix/components/range-band-chart",
+    "demo": "FelixRangeBandUsageDemo",
+    "title": "Range band chart",
+    "source": "/range-band-chart"
+  },
+  {
+    "slug": "candlestick-chart",
+    "route": "/felix/components/candlestick-chart",
+    "demo": "FelixCandlestickUsageDemo",
+    "title": "Candlestick chart",
+    "source": "/candlestick-chart"
+  },
+  {
+    "slug": "sparkline",
+    "route": "/felix/components/sparkline",
+    "demo": "FelixSparklineUsageDemo",
+    "title": "Sparkline",
+    "source": "/sparkline"
+  },
+  {
+    "slug": "bar-chart",
+    "route": "/felix/components/bar-chart",
+    "demo": "FelixBarChartUsageDemo",
+    "title": "Bar chart",
+    "source": "/bar-chart"
+  },
+  {
+    "slug": "dumbbell-chart",
+    "route": "/felix/components/dumbbell-chart",
+    "demo": "FelixDumbbellChartUsageDemo",
+    "title": "Dumbbell chart",
+    "source": "/dumbbell-chart"
+  },
+  {
+    "slug": "bullet-chart",
+    "route": "/felix/components/bullet-chart",
+    "demo": "FelixBulletChartUsageDemo",
+    "title": "Bullet chart",
+    "source": "/bullet-chart"
+  },
+  {
+    "slug": "waterfall-chart",
+    "route": "/felix/components/waterfall-chart",
+    "demo": "FelixWaterfallChartUsageDemo",
+    "title": "Waterfall chart",
+    "source": "/waterfall-chart"
+  },
+  {
+    "slug": "polar-chart",
+    "route": "/felix/components/polar-chart",
+    "demo": "FelixPolarChartUsageDemo",
+    "title": "Polar chart",
+    "source": "/polar-chart"
+  },
+  {
+    "slug": "radar-chart",
+    "route": "/felix/components/radar-chart",
+    "demo": "FelixRadarChartUsageDemo",
+    "title": "Radar chart",
+    "source": "/radar-chart"
+  },
+  {
+    "slug": "radial-bar-chart",
+    "route": "/felix/components/radial-bar-chart",
+    "demo": "FelixRadialBarChartUsageDemo",
+    "title": "Radial bar chart",
+    "source": "/radial-bar-chart"
+  },
+  {
+    "slug": "donut-chart",
+    "route": "/felix/components/donut-chart",
+    "demo": "FelixDonutChartUsageDemo",
+    "title": "Donut chart",
+    "source": "/donut-chart"
+  },
+  {
+    "slug": "treemap",
+    "route": "/felix/components/treemap",
+    "demo": "FelixTreemapUsageDemo",
+    "title": "Treemap",
+    "source": "/treemap"
+  },
+  {
+    "slug": "sunburst-chart",
+    "route": "/felix/components/sunburst-chart",
+    "demo": "FelixSunburstChartUsageDemo",
+    "title": "Sunburst chart",
+    "source": "/sunburst-chart"
+  },
+  {
+    "slug": "pyramid-chart",
+    "route": "/felix/components/pyramid-chart",
+    "demo": "FelixPyramidChartUsageDemo",
+    "title": "Pyramid chart",
+    "source": "/pyramid-chart"
+  },
+  {
+    "slug": "scatter-plot",
+    "route": "/felix/components/scatter-plot",
+    "demo": "FelixScatterPlotUsageDemo",
+    "title": "Scatter plot",
+    "source": "/scatter-plot"
+  },
+  {
+    "slug": "bubble-chart",
+    "route": "/felix/components/bubble-chart",
+    "demo": "FelixBubbleChartUsageDemo",
+    "title": "Bubble chart",
+    "source": "/bubble-chart"
+  },
+  {
+    "slug": "histogram",
+    "route": "/felix/components/histogram",
+    "demo": "FelixHistogramUsageDemo",
+    "title": "Histogram",
+    "source": "/histogram"
+  },
+  {
+    "slug": "box-plot",
+    "route": "/felix/components/box-plot",
+    "demo": "FelixBoxPlotUsageDemo",
+    "title": "Box plot",
+    "source": "/box-plot"
+  },
+  {
+    "slug": "heatmap",
+    "route": "/felix/components/heatmap",
+    "demo": "FelixHeatmapUsageDemo",
+    "title": "Heatmap",
+    "source": "/heatmap"
+  },
+  {
+    "slug": "contribution-skyline",
+    "route": "/felix/components/contribution-skyline",
+    "demo": "FelixContributionSkylineDemo",
+    "title": "Contribution skyline",
+    "source": "/contribution-skyline"
+  },
+  {
+    "slug": "cohort-chart",
+    "route": "/felix/components/cohort-chart",
+    "demo": "FelixCohortUsageDemo",
+    "title": "Cohort retention chart",
+    "source": "/cohort-chart"
+  },
+  {
+    "slug": "gantt-chart",
+    "route": "/felix/components/gantt-chart",
+    "demo": "FelixGanttUsageDemo",
+    "title": "Gantt chart",
+    "source": "/gantt-chart"
+  },
+  {
+    "slug": "sankey-chart",
+    "route": "/felix/components/sankey-chart",
+    "demo": "FelixSankeyUsageDemo",
+    "title": "Sankey chart",
+    "source": "/sankey-chart"
+  },
+  {
+    "slug": "funnel-chart",
+    "route": "/felix/components/funnel-chart",
+    "demo": "FelixFunnelUsageDemo",
+    "title": "Funnel chart",
+    "source": "/funnel-chart"
+  }
+]
