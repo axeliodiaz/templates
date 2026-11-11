@@ -27,3 +27,8 @@ Cards enter with short fades; chart lines and bars reveal on load; controls tran
 Big balance, an open position with entry, take-profit and liquidation levels, a leverage multiplier and an equity curve. Switch market, side and range, pause the live ticks, close or reopen the position. It reads this template's theme tokens, and motion stops with reduced motion. Fictitious paper account.
 
 <TradingPanel />
+
+
+## Agent orchestration
+
+[Open the Spark orchestration demo](/spark/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

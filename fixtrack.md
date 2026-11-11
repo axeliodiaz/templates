@@ -16,3 +16,8 @@ Source-inspired implementation from [the reference post](https://x.com/nizamdesi
 ## Motion and accessibility
 
 Cards rise 8px and fade in over 280ms. Chart lines and bars still reveal on load. Controls lift 2px on hover, settle 1px on press, and show a focus ring. Local updates receive the shared state fade. Reduced motion stops animations and keeps all information visible. Native dialogs support Escape. Tables scroll on narrow screens. Tokens are `--m-rise` and `--m-hover` on `html[data-tpl="fixtrack"]`.
+
+
+## Agent orchestration
+
+[Open the Fixtrack orchestration demo](/fixtrack/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

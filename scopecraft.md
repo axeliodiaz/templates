@@ -32,3 +32,8 @@ Scopecraft does not bounce. Entrances move 4px. Hover does not lift cards or but
 ## Pages
 
 [Components](/scopecraft/components), and examples: [Dashboard](/scopecraft/dashboard), [Scope questions](/scopecraft/scope), [Similar projects](/scopecraft/similar), [Proposal](/scopecraft/proposal).
+
+
+## Agent orchestration
+
+[Open the Scopecraft orchestration demo](/scopecraft/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

@@ -18,3 +18,8 @@ Source-inspired recreation from [the reference post](https://x.com/nizamdesign/s
 Select companies and metrics, inspect monthly EBITDA, expand variance drivers and create local issues. The Issues tab lists demo-created entries. Other sections, favorites and company/team controls are illustrative. No real financial, payroll, company, tracker or messaging action occurs.
 
 Charts draw in on load. The shared layer adds a 4px entrance and color transitions on controls, without lifting cards: Crestway stays corporate. Reduced motion disables animation. Native dialogs support Escape. Layout stacks on narrow screens. Tokens are on `html[data-tpl="crestway"]` with `--m-hover: 0px`.
+
+
+## Agent orchestration
+
+[Open the Crestway orchestration demo](/crestway-financials/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

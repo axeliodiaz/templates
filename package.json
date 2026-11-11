@@ -25,7 +25,10 @@
     "test:flow-graph": "node tests/flow-graph.cjs",
     "test:css-cdn": "node tests/css-cdn.cjs",
     "test:contribution-skyline-geometry": "node --test tests/contribution-skyline-geometry.cjs",
-    "test:contribution-skyline": "node tests/contribution-skyline.cjs"
+    "test:contribution-skyline": "node tests/contribution-skyline.cjs",
+    "test:agent-orchestration-model": "node tests/agent-orchestration-model.cjs",
+    "test:agent-orchestration": "node tests/agent-orchestration.cjs",
+    "test:agent-orchestration-consumer": "node tests/agent-orchestration-consumer.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",

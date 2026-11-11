@@ -74,3 +74,8 @@ Motion handles node entrance, cancels on unmount and restores final styles on in
 - [Adrian: workflow builder](https://x.com/adriankuleszo/status/2108459992802328903)
 
 Original implementation, no source images, branding or code copied. This provides reusable component behavior, not a claim that every interaction from the reference videos is reproduced.
+
+
+## Run observation
+
+[Agent orchestration module and theme inventory](/agent-orchestration) documents the shared run graph, trace, usage and event views.

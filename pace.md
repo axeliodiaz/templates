@@ -28,3 +28,8 @@ Fresh green design system for fitness and cycling studios. One calm brand green 
 ## Using the system
 
 Load `studio-systems.css` and `pace-system.css`, wrap content in `studio-kit studio-pace` and use the `sk-*` classes. `StudioCatalog.vue` and `StudioExtended.vue` render live components with `theme="pace"`. Dark mode follows the site toggle (`html.tpl-dark`).
+
+
+## Agent orchestration
+
+[Open the Pace orchestration demo](/pace/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
