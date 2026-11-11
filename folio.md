@@ -37,3 +37,8 @@ Load `studio-systems.css`, wrap content in `studio-kit studio-folio` and use the
 Big balance, an open position with entry, take-profit and liquidation levels, a leverage multiplier and an equity curve. Switch market, side and range, pause the live ticks, close or reopen the position. It reads this template's theme tokens, and motion stops with reduced motion. Fictitious paper account.
 
 <TradingPanel />
+
+
+## Agent orchestration
+
+[Open the Folio orchestration demo](/folio/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

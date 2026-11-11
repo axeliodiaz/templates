@@ -22,3 +22,8 @@ import SankeyFunnel from './.vitepress/theme/SankeyFunnel.vue'
 <style>
 .tj-dark{--vp-c-bg:#0f1115;--vp-c-bg-soft:#171a20;--vp-c-divider:#2a2f3a;--vp-c-text-1:#e8eaf0;--vp-c-text-2:#8b93a4;--vp-c-text-3:#5c6475;--vp-c-default-soft:#252a35;--vp-c-brand-1:#8aa4ff;max-width:1000px;margin:24px auto}
 </style>
+
+
+## Agent orchestration
+
+[Open the Trial journey orchestration demo](/trial-journey/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

@@ -31,3 +31,8 @@ This collection preserves the core patterns without pretending to reproduce ever
 ## Added later
 
 - [Trial journey](./trial-journey): original Sankey conversion funnel from a pattern posted October 11 (@shuxer, ReUI). Stage counts are fictitious, interactions are local, no analytics service is connected.
+
+
+## Run observation
+
+[Agent orchestration module and theme inventory](/agent-orchestration) documents the shared run graph, trace, usage and event views.

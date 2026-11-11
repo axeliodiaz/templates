@@ -52,3 +52,8 @@ Chart series: gold `#C9A66B`, charcoal `#333`, bronze `#8b7355`, sand `#d4c4a8`,
 5. Raise only what moves or floats. Resting cards use the light shadow.
 6. Status is a soft tint with dark text, not a saturated fill.
 7. Digits are tabular wherever numbers line up.
+
+
+## Agent orchestration
+
+[Open the PulseFit orchestration demo](/pulsefit/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

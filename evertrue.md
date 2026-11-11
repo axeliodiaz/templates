@@ -16,3 +16,8 @@ Source-inspired implementation from [the distortgeekin Pages video](https://x.co
 ## Motion and accessibility
 
 The command line types itself on load, counters tick up, page cards rise on hover, KPI values flip vertically with their was-lines, refresh pills and captions cross-fade, and bars animate their height when a simulated refresh lands. Card selection switches the panel with a short rise transition. Reduced-motion preferences disable every animation and timer: the page renders its final state with all values visible. Cards, mini chips and the toggle are real buttons, keyboard reachable with visible focus. The grid collapses to two columns and then one on narrow screens via container queries.
+
+
+## Agent orchestration
+
+[Open the Evertrue orchestration demo](/evertrue/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

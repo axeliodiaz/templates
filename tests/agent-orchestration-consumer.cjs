@@ -1,0 +1,21 @@
+const fs=require('fs'),path=require('path'),os=require('os'),assert=require('node:assert/strict'),{spawn}=require('child_process'),{chromium}=require('playwright');
+const root=path.resolve(__dirname,'..'),tmp=fs.mkdtempSync(path.join(os.tmpdir(),'orch-consumer-'));fs.mkdirSync(path.join(tmp,'.vitepress'));fs.writeFileSync(path.join(tmp,'.vitepress/config.mts'),"export default {appearance:false}");fs.symlinkSync(path.join(root,'node_modules'),path.join(tmp,'node_modules'),'dir');fs.cpSync(path.join(root,'.vitepress/theme/agent-orchestration'),path.join(tmp,'module'),{recursive:true});
+fs.writeFileSync(path.join(tmp,'index.md'),`<script setup>
+import {ref} from 'vue'
+import View from './module/AgentOrchestration.vue'
+import {fixture} from './module/model'
+const data=ref(fixture()),mode=ref('ack'),count=ref(0)
+async function control(action,run){count.value++;await new Promise(r=>setTimeout(r,100));if(mode.value==='throw')throw Error('offline');if(mode.value==='error')return {state:'error',message:'Rejected by test adapter'};data.value={...data.value,nodes:data.value.nodes.map(n=>n.kind==='run'?{...n,status:'paused'}:n)};return {state:'ack',status:'paused',message:'Consumer ack'}}
+function update(){data.value={...data.value,nodes:data.value.nodes.map(n=>n.id==='claim'?{...n,label:'Updated claim'}:n)}}
+function replace(){data.value={...fixture(),id:'replacement'}}
+function invalid(){data.value={...fixture(),nodes:[]}}
+</script>
+<button id="update" @click="update">Update consumer</button><button id="replace" @click="replace">Replace consumer</button><button id="invalid" @click="invalid">Invalid consumer</button><select id="adapter-mode" v-model="mode"><option>ack</option><option>error</option><option>throw</option></select><span id="calls">{{count}}</span>
+<div id="active"><View :data="data" :control="control" /></div><div id="readonly"><View :data="data" /></div>
+`);
+(async()=>{let browser;const server=spawn(path.join(root,'node_modules/.bin/vitepress'),['dev',tmp,'--host','127.0.0.1','--port','4391'],{stdio:['ignore','ignore','pipe']});try{for(let i=0;i<100;i++){try{if((await fetch('http://127.0.0.1:4391')).ok)break}catch{}await new Promise(r=>setTimeout(r,150))}
+browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'/usr/bin/google-chrome',args:['--no-sandbox']});const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4391',{waitUntil:'networkidle'});const active=page.locator('#active .orch'),ro=page.locator('#readonly .orch');assert.equal(await ro.getByRole('button',{name:'Pause',exact:true}).isDisabled(),true);const ids=await page.locator('[role=tab]').evaluateAll(es=>es.map(e=>e.id));assert.equal(new Set(ids).size,6);
+await active.locator('.orch-node').filter({hasText:'Check claim'}).click();await page.locator('#update').click();assert.equal(await active.locator('.orch-drawer h3').innerText(),'Updated claim');await active.getByRole('button',{name:'Pause',exact:true}).click();await page.waitForTimeout(20);assert.match(await active.locator('.orch-live').innerText(),/Running/);await page.waitForTimeout(150);assert.match(await active.locator('.orch-live').innerText(),/Paused/);assert.equal(await page.locator('#calls').innerText(),'1');
+for(const mode of ['error','throw']){await page.locator('#replace').click();await page.locator('#adapter-mode').selectOption(mode);await active.getByRole('button',{name:'Pause',exact:true}).click();await page.waitForTimeout(150);assert.match(await active.locator('.orch-live').innerText(),/Running/);assert.equal(await active.locator('.orch-notice.orch-error').count(),1)}
+await page.locator('#invalid').click();assert.match(await active.locator('.orch-placeholder').innerText(),/One root run required/);assert.deepEqual(errors,[]);console.log('PASS consumer: controlled updates, multiple instances unique tab IDs, no callback read-only, pending acknowledgment, rejected and thrown errors without false ack, invalid data safe state')
+}finally{await browser?.close();server.kill();await new Promise(r=>server.on('exit',r));fs.rmSync(tmp,{recursive:true,force:true})}})().catch(e=>{console.error(e);process.exitCode=1});

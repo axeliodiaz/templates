@@ -28,3 +28,8 @@ Dark graphite control room for AI agents and MCP servers. The interface is a pla
 Guide pages load the shared studio catalog with `theme="relay"` inside `b2-bs6`, the Bootstrap 6 scope shared with Folio, Spark, and Pace. The control room uses a separate `@scope (.relay-bs6)` so its glassy layout does not restyle those catalogs or the VitePress shell. Bootstrap is pinned to `6.0.0-alpha.1`.
 
 [Implementation tokens](/relay/tokens) · [Full live catalog](/relay/components) · [Control room](/relay/overview)
+
+
+## Agent orchestration
+
+[Open the Relay orchestration demo](/relay/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

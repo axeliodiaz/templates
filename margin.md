@@ -141,3 +141,8 @@ A standalone original job economics template. Responsive, local interactive stat
 .lab-dark{--surface:#212731;--bg:#161c24;--soft:#2b3443}
 @media(max-width:600px){.lab main{padding:16px}.lab-brand{font-size:20px}}
 </style>
+
+
+## Agent orchestration
+
+[Open the Margin orchestration demo](/margin/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
