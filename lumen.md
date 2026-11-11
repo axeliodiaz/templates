@@ -44,3 +44,8 @@ The extended Bootstrap gallery uses **Bootstrap 6.0.0-alpha.1** (pinned with int
 ## Pages
 
 [Components](/lumen/components), [Charts](/lumen/charts) (animated chart patterns) and the [Overview](/lumen/overview), [Traces](/lumen/traces), [Agents](/lumen/agents) and [Evals](/lumen/evals) examples. More pages are added as the template grows: Prompts, Playground, Gateway, Cost and Budget, API Keys, Team, Settings.
+
+
+## Agent orchestration
+
+[Open the Lumen orchestration demo](/lumen/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

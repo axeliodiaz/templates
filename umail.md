@@ -51,3 +51,8 @@ The colors come from the live Umail stylesheet and Bootstrap 2 build, mapped to 
 - The primary blue `#0093D0` with white text is about 3.4:1, fine for large or bold button labels but under 4.5:1 for small text. Body links use `#2274BA` for that reason.
 - Loading, empty, search, filter, compose, archive and mark-unread states all work locally. Add your own persistence and authorization before production use.
 - Bootstrap and Motion load from jsDelivr with Bootstrap pinned and integrity-checked.
+
+
+## Agent orchestration
+
+[Open the Umail orchestration demo](/umail/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

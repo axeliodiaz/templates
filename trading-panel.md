@@ -20,3 +20,8 @@ A paper-trading dashboard block: balance display, open position with entry, take
 - With reduced motion, the balance and the curve are set directly with no animation.
 
 Pattern credit: the perps-bot UI in a post by @0xTenzo. Original code and fictitious data, nothing copied.
+
+
+## Agent orchestration
+
+[Open the Folio orchestration demo](/folio/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

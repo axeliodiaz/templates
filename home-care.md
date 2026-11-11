@@ -28,3 +28,8 @@ The other destination screens, local approval/create/reassign/note/verification 
 5. Preview Loading/Empty/Error, change theme, inspect narrow layouts and reset the sample.
 
 The fixed sample date is Monday, October 5, 2026, at 08:46. Times are local wall-clock fixtures, not live time or timezone-aware appointments. "In progress" and ETA are sample states, not GPS tracking. Candidate scores do not check travel, skills or availability. No clinical recommendation, staffing conflict solver, real EVV attestation, regulated record storage or production care system is bundled.
+
+
+## Agent orchestration
+
+[Open the Meadow orchestration demo](/home-care/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

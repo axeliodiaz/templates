@@ -42,3 +42,8 @@ Chart series, in order: blue `#2F6DB5`, yellow `#F2B84B`, sage `#6FA287`, deep h
 7. Dark mode is navy, not black, with the same hues lightened. Toggle in the bottom-right corner.
 
 Next: [components](/pawprint/components), [charts](/pawprint/charts), [pricing example](/pawprint/pricing), [pet dashboard](/pawprint/dashboard), [motion](/pawprint/motion).
+
+
+## Agent orchestration
+
+[Open the Pawprint orchestration demo](/pawprint/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

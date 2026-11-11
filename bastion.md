@@ -30,3 +30,8 @@ Infrastructure and ops monitoring in a retro-terminal brutalist style. Dark gree
 ## Using the system
 
 Wrap product UI in `.bst-root` with `data-bs-theme="dark"`, then `.bst`. Load the scoped Bootstrap 6 stylesheet only for that root. Details, alpha quirks, and the do-not list are in [Usage](/bastion/usage).
+
+
+## Agent orchestration
+
+[Open the Bastion orchestration demo](/bastion/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.

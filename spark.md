@@ -27,3 +27,8 @@ Dark analytics workspace with orange actions, pixel histograms and compact tabul
 Load `studio-systems.css`, wrap content in `studio-kit studio-spark` and use the `sk-*` component classes. `StudioCatalog.vue` renders the live component examples with `theme="spark"`. The dashboard has its own domain layout and keeps its existing URL.
 
 [Implementation tokens](/spark/tokens) · [Full live catalog](/spark/components)
+
+
+## Agent orchestration
+
+[Open the Spark orchestration demo](/spark/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
