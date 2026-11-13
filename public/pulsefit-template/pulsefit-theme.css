@@ -163,3 +163,8 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Standalone focus palette: opaque rings, including links and interactive cards. */
+body.standalone-export{--export-focus:#7a5a1f;--export-focus-surface:#fff;--export-skip-bg:#fff;--export-skip-ink:#172d2c}
+html[data-bs-theme=dark] body.standalone-export,body.standalone-export[data-theme=dark]{--export-focus:#e8d4a8;--export-focus-surface:#17171a;--export-skip-bg:#17171a;--export-skip-ink:#fefcf9}
+body.standalone-export :is(a[href],button,input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid var(--export-focus);outline-offset:3px;box-shadow:0 0 0 3px var(--export-focus-surface)}

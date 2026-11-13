@@ -33,7 +33,8 @@
     "test:reference-dashboards-a11y": "node tests/reference-dashboards-a11y.cjs",
     "test:reference-dashboards-themes": "node tests/reference-dashboards-themes.cjs",
     "test:pulse-dashboard-a11y": "node tests/pulse-dashboard-a11y.cjs",
-    "test:margin-projects:a11y": "node tests/margin-projects-a11y.cjs"
+    "test:margin-projects:a11y": "node tests/margin-projects-a11y.cjs",
+    "test:standalone-exports:a11y": "node tests/standalone-exports-a11y.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",

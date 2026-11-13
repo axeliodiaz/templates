@@ -125,3 +125,8 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Opaque scoped focus rings do not depend on Bootstrap's translucent default. */
+.sc-bs6-root{--sc-focus:#1f53ad;--sc-focus-surface:#fff}
+.sc-bs6-root[data-bs-theme=dark],[data-bs-theme=dark] .sc-bs6-root{--sc-focus:#8bb9ff;--sc-focus-surface:#17171a}
+.sc-bs6-root :is(a[href],button,input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid var(--sc-focus);outline-offset:3px;box-shadow:0 0 0 3px var(--sc-focus-surface)}

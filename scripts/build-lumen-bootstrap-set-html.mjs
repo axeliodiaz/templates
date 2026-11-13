@@ -49,6 +49,7 @@ function convertBsx(html) {
   if (!html.includes('bsx')) return ''
   let h = html.replace(/<div class="bsx bsx-lmn">/g, '').replace(/<div class="bsx-lmn">/g, '')
   if (h.endsWith('</div>')) h = h.slice(0, -6)
+  h = h.replace(/font-size:\s*10px/g, 'font-size:12px')
 
   for (let i = 0; i < 20; i++) {
     const next = h.replace(
@@ -116,7 +117,7 @@ const html = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lumen · Bootstrap 6 component set</title>
+<title>Lumen · Bootstrap 6 component set</title><link rel="stylesheet" href="/standalone-a11y.css">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
 <link rel="stylesheet" href="/lumen-template/lumen-theme.css">
@@ -128,13 +129,16 @@ const html = `<!doctype html>
   @media (prefers-reduced-motion: reduce) { .lmn-bs6-surface .btn-solid, .lmn-bs6-surface .btn-outline { transition: none; } * { animation-duration: 0.01ms !important; } }
 </style>
 </head>
-<body>
+<body class="standalone-export">
+<a class="skip-link" href="#main">Skip to main content</a>
 <header class="mb-4">
   <p class="text-uppercase text-secondary small mb-1">Lumen template</p>
   <h1 class="h3">Bootstrap 6 component set</h1>
   <p class="text-secondary">Bootstrap 6.0.0-alpha.1 with Lumen tokens. Fictitious data; interactions are local.</p>
 </header>
+<main id="main" tabindex="-1">
 ${body}
+</main>
 <script type="module">
 if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
   for (const el of document.querySelectorAll('.lmn-bs6-surface')) {
@@ -147,5 +151,6 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
 `
 
 const out = path.join(root, 'public/lumen-template/bootstrap-set.html')
+if (!body.includes('<section')) throw new Error('No exportable source sections. The current docs reference the standalone gallery; refusing to erase it. Pass a native source snapshot explicitly.')
 fs.writeFileSync(out, html)
 console.log('Wrote', out, body.split('<section').length - 1, 'sections')
