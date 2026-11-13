@@ -14,3 +14,12 @@
 @container(max-width:1000px){.folio-overview{grid-template-columns:1fr 1fr}.folio-payments{grid-column:1/-1;border-left:0;padding-left:0}.fix-kpis,.spark-kpis{grid-template-columns:repeat(2,1fr)}.fix-grid{grid-template-columns:1fr}.fix-bottom{grid-template-columns:1fr 1fr}.fix-bottom>article:last-child{grid-column:1/-1}.spark-grid{grid-template-columns:1fr}.ref-heading{align-items:flex-start}}
 @container(max-width:900px){.folio-content{padding:24px 18px}.folio-support{display:none}.fixtrack,.sparkdash{grid-template-columns:125px minmax(0,1fr)}.spark-top input{width:120px}}
 @media(max-width:700px){.reference-dashboard .rd-footnote,.spark-chart-legend,.fix-legend span{font-size:var(--rd-body-min)}.fixtrack,.sparkdash{display:block}.fix-sidebar,.spark-sidebar{display:none}.folio-overview,.fix-grid,.fix-bottom,.fix-detail-grid{display:block}.folio-overview>article,.fix-grid>article,.fix-bottom>article,.fix-detail-grid>article{margin-bottom:16px}.folio-header{padding:15px;gap:15px}.folio-workspace{font-size:11px}.folio-nav{padding:0 15px;font-size:12px;gap:15px}.folio-content{padding:24px 15px}.ref-heading{flex-direction:column;gap:15px}.reference-dashboard h2{font-size:24px}.folio-footer{flex-wrap:wrap}.folio-footer small{margin-left:0}.fix-main,.spark-main{padding:14px}.fix-kpis,.spark-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.spark-grid{display:block}.spark-grid>.spark-card{margin:12px 0}.spark-top input{max-width:100%}.fix-topbar .ref-avatar{display:none}.fix-mobile-nav,.spark-mobile-nav{display:block;margin-bottom:15px}.fix-mobile-nav label,.spark-mobile-nav label{width:100%}}
+
+/* The docs shell has a real light/dark toggle. These two reference dashboards
+   keep their own surfaces; scope shell tokens here so headings and table stripes
+   cannot inherit ink/backgrounds from the opposite surrounding page theme. */
+.reference-dashboard:is(.sparkdash,.fixtrack){--tpl-text:var(--rd-text);--tpl-text-2:var(--rd-muted);--tpl-text-3:var(--rd-muted);--tpl-bg:var(--rd-bg);--tpl-bg-alt:var(--rd-panel);--tpl-line:var(--rd-border)}
+.reference-dashboard:is(.sparkdash,.fixtrack) .rd-footnote{font-size:var(--rd-body-min)}
+/* Keep all small informative copy at body size, including mixed-case labels. */
+.reference-dashboard:is(.sparkdash,.fixtrack){--rd-label-size:12px}
+.reference-dashboard:is(.sparkdash,.fixtrack) .ref-avatar{font-size:12px}

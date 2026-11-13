@@ -10,8 +10,8 @@ fs.mkdirSync(path.join(out, 'after'), { recursive: true })
 
 const widths = [320, 375, 768, 1024, 1440]
 const shotWidths = [375, 768, 1280]
-const MIN_READING_PX = 11
-const MIN_LABEL_PX = 10.5
+const MIN_READING_PX = 12
+const MIN_LABEL_PX = 11
 const LABEL_SELECTOR =
   '.rd-nav-label, .fix-kpi small, .spark-kpi small, .fix-labels span, .spark-months span, .fix-request small, .fix-schedule-unit, .fix-card-meta, .spark-table-title, .spark-status, table th, .spark-month-long, .spark-month-short'
 
@@ -111,7 +111,7 @@ function parseRgb(css) {
           if (r.right > chartR.right + 1.5) return `tick ${sp.textContent} right ${r.right} > chart ${chartR.right}`
           if (r.left < chartR.left + 16) return `tick ${sp.textContent} left ${r.left} < chart ${chartR.left}`
           const vis = sp.querySelector('.spark-month-long, .spark-month-short') || sp
-          if (parseFloat(getComputedStyle(vis).fontSize) < 10.5) return `tick font too small`
+          if (parseFloat(getComputedStyle(vis).fontSize) < 11) return `tick font too small`
           if (r.width < 4) return `tick clipped width ${r.width}`
           if (!(sp.textContent || '').trim()) return 'tick empty label'
         }
