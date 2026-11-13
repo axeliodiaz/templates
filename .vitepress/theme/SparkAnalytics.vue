@@ -78,6 +78,20 @@ function add() {
 }
 const pixelFocus = ref(0)
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+const monthTicks = [
+  { long: 'JAN', short: 'J' },
+  { long: 'FEB', short: 'F' },
+  { long: 'MAR', short: 'M' },
+  { long: 'APR', short: 'A' },
+  { long: 'MAY', short: 'M' },
+  { long: 'JUN', short: 'J' },
+  { long: 'JUL', short: 'J' },
+  { long: 'AUG', short: 'A' },
+  { long: 'SEP', short: 'S' },
+  { long: 'OCT', short: 'O' },
+  { long: 'NOV', short: 'N' },
+  { long: 'DEC', short: 'D' },
+]
 function pixelLabel(i: number) {
   return `${monthNames[Math.floor(i / 5)]} 2026: new users ${heights.value[i] * 2}k, existing users ${heights.value[i]}k`
 }
@@ -188,7 +202,9 @@ const kpis = [
                 <i v-for="j in height" :key="j" class="spark-pixel" :class="{ existing: j > height * 0.7 }"></i>
               </div>
             </div>
-            <div class="spark-months"><span v-for="m in ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']" :key="m">{{ m }}</span></div>
+            <div class="spark-months" aria-hidden="true">
+              <span v-for="(m, i) in monthTicks" :key="m.long" :title="monthNames[i]"><span class="spark-month-long">{{ m.long }}</span><span class="spark-month-short">{{ m.short }}</span></span>
+            </div>
             <div class="spark-tooltip" v-if="selected !== null">
               {{ ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][Math.floor(selected / 5)] }} 2026<small>◦ New User &nbsp;{{ heights[selected] * 2 }}k</small
               ><small class="spark-tooltip-existing">• Existing User &nbsp;{{ heights[selected] }}k</small>
