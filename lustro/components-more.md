@@ -119,7 +119,7 @@ The blocks below are the legacy in-page `.bsx` previews (Bootstrap 5.3-depth mar
 
 ## Forms: floating labels and layout
 
-<div class="bsx bsx-lu"><div class="grid2"><div style="position:relative"><input class="inp" style="padding-top:20px" value="Axel"><span style="position:absolute;top:4px;left:12px;font-size:10px;color:var(--b-mut)">First name</span></div><div style="position:relative"><input class="inp" style="padding-top:20px" value="Diaz"><span style="position:absolute;top:4px;left:12px;font-size:10px;color:var(--b-mut)">Last name</span></div></div></div>
+<div class="bsx bsx-lu"><div class="grid2"><div style="position:relative"><input class="inp" style="padding-top:20px" value="Axel"><span style="position:absolute;top:4px;left:12px;font-size:12px;color:var(--b-mut)">First name</span></div><div style="position:relative"><input class="inp" style="padding-top:20px" value="Diaz"><span style="position:absolute;top:4px;left:12px;font-size:12px;color:var(--b-mut)">Last name</span></div></div></div>
 
 ## Select: variants
 

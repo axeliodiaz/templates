@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Felix template</title>
+<title>Felix template</title><link rel="stylesheet" href="/standalone-a11y.css">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
 <link rel="stylesheet" href="/felix-template/felix-theme.css">
@@ -17,7 +17,8 @@
 </style>
   <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
 </head>
-<body>
+<body class="standalone-export">
+<a class="skip-link" href="#main">Skip to main content</a>
 <nav class="navbar md:navbar-expand felix-navbar" aria-label="Felix">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="index.html"><span class="felix-mark" aria-hidden="true">F</span>Felix</a>
@@ -40,7 +41,7 @@
   </div>
 </nav>
 
-<main class="container-fluid py-3">
+<main id="main" tabindex="-1" class="container-fluid py-3">
   <div class="alert theme-info d-flex align-items-center justify-content-between gap-2 mb-3" role="note">
     <span>Original Felix remittance UI on Bootstrap 6 (alpha). Fictitious data; actions stay in the page.</span>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

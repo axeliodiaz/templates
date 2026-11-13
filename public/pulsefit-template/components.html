@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PulseFit Bootstrap 6 components</title>
+<title>PulseFit Bootstrap 6 components</title><link rel="stylesheet" href="/standalone-a11y.css">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +15,14 @@
 </style>
   <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
 </head>
-<body class="pf-gallery">
+<body class="standalone-export pf-gallery">
+<a class="skip-link" href="#main">Skip to main content</a>
 <header class="mb-4">
   <p class="text-muted small mb-1"><a href="index.html">PulseFit template</a> / Components</p>
   <h1 class="h3" style="font-family:Montserrat,sans-serif">Bootstrap 6 component gallery</h1>
   <p class="text-muted">Bootstrap 6.0.0-alpha.1 (pinned) with PulseFit tokens. Fictitious data; dialogs and toasts are local.</p>
 </header>
+<main id="main" tabindex="-1">
 
 <section id="buttons-variants"><h2>Buttons: variants</h2><div class="demo d-flex flex-wrap gap-2">
   <button type="button" class="btn-solid theme-primary">Primary</button>
@@ -137,6 +139,7 @@
   <div id="toastBad" class="toast text-bg-danger" role="alert"><div class="toast-body">Failed to save.</div></div>
 </div>
 
+</main>
 <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
 <script type="module">
 import { Toast, Dialog } from "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js";

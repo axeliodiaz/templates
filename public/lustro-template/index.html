@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lustro template (Bootstrap 6)</title>
+<title>Lustro template (Bootstrap 6)</title><link rel="stylesheet" href="/standalone-a11y.css">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
 <link rel="stylesheet" href="/lustro-template/lustro-theme.css">
@@ -21,7 +21,8 @@
 </style>
   <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
 </head>
-<body>
+<body class="standalone-export">
+<a class="skip-link" href="#main">Skip to main content</a>
 <div class="lustro-bs6-root container py-4" data-bs-theme="dark">
   <header class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
     <div class="d-flex align-items-center">
@@ -33,6 +34,7 @@
       <a class="btn-solid theme-primary btn-sm" href="/lustro/components">VitePress live catalog</a>
     </nav>
   </header>
+<main id="main" tabindex="-1">
   <div class="lustro-hero lu-bs6-block mb-4">
     <p class="text-secondary small mb-2">Bootstrap 6.0.0-alpha.1 · Lustro tokens · fictitious data</p>
     <h1 class="display-6 mb-3">Glass dashboards on real Bootstrap</h1>
@@ -68,6 +70,7 @@
       </div>
     </div>
   </div>
+</main>
 </div>
 <dialog class="dialog" id="welcome" aria-labelledby="welcomeTitle">
   <form method="dialog">

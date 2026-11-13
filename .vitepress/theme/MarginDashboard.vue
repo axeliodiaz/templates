@@ -304,11 +304,11 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
 
         <article class="mg-card mg-weeks">
           <div class="mg-card-head"><h3>Last 12 weeks</h3><small>Margin by week</small></div>
-          <div class="mg-bars" role="img" aria-label="Weekly margin from 36.1% down to 34.0% over 12 weeks, target 34%">
+          <div class="ref-table-scroll" tabindex="0" role="region" aria-label="Weekly margin chart, scroll horizontally for all weeks"><div class="mg-bars" role="img" aria-label="Weekly margin from 36.1% down to 34.0% over 12 weeks, target 34%">
             <div class="mg-target-line"><span>Target 34%</span></div>
             <button v-for="(w,i) in weeks" :key="i" class="mg-bar" :class="{last:i===weeks.length-1}" :style="{height:(w/40*100)+'%'}" :aria-label="`Week of ${weekLabels[i]}: ${w}%`" @click="say(`Week of ${weekLabels[i]} closed at ${w}%. Demo data.`)"><b v-if="i===weeks.length-1">34.0</b></button>
           </div>
-          <div class="mg-bar-labels"><span>{{ weekLabels[0] }}</span><span>{{ weekLabels[11] }}</span></div>
+          </div><div class="mg-bar-labels"><span>{{ weekLabels[0] }}</span><span>{{ weekLabels[11] }}</span></div>
         </article>
 
         <article class="mg-card mg-needs">
@@ -433,7 +433,7 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
         <div class="mg-card-head"><div><h3>Margin outlook</h3><small>Actual through September, forecast to December</small></div>
           <div class="mg-legend"><span><i class="ln solid-b"></i>Actual</span><span><i class="ln dash-b"></i>Current path</span><span><i class="ln solid-g"></i>With your changes</span><span><i class="ln band"></i>Likely range</span></div>
         </div>
-        <svg class="mg-fc-chart" viewBox="0 0 520 200" role="img" :aria-label="`Margin actual through September at 33.6%, current path to 36% in December, with your changes to ${changesPts[2].toFixed(1)}%`">
+        <div class="ref-table-scroll" tabindex="0" role="region" aria-label="Margin chart, scroll horizontally for all months"><svg class="mg-fc-chart" viewBox="0 0 520 200" role="img" :aria-label="`Margin actual through September at 33.6%, current path to 36% in December, with your changes to ${changesPts[2].toFixed(1)}%`">
           <g class="grid"><path d="M40 30 H505 M40 72 H505 M40 114 H505 M40 156 H505"/></g>
           <g class="ylabels"><text x="8" y="34">39%</text><text x="8" y="76">36%</text><text x="8" y="118">33%</text><text x="8" y="160">30%</text></g>
           <path class="range" :d="rangePath"/>
@@ -444,8 +444,8 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
           <g class="pts-open"><circle v-for="(v,i) in currentPath" :key="'c'+i" :cx="chartX(i+6)" :cy="chartY(v)" r="3.5"/></g>
           <g class="pts-g"><circle v-for="(v,i) in changesPts" :key="'g'+i" :cx="chartX(i+6)" :cy="chartY(v)" r="3.5"/></g>
           <g class="xlabels"><text v-for="(m,i) in months" :key="m" :x="chartX(i)" y="190">{{ m }}</text></g>
-          <g class="mg-fc-tip"><rect x="50" y="26" width="206" height="26" rx="6"/><text x="60" y="43">Oct <tspan class="tb">35.2%</tspan> current path · <tspan class="tg">{{ withChanges }}%</tspan> with changes</text></g>
-        </svg>
+          <g class="mg-fc-tip"><rect x="50" y="26" width="330" height="26" rx="6"/><text x="60" y="43">Oct <tspan class="tb">35.2%</tspan> current path · <tspan class="tg">{{ withChanges }}%</tspan> with changes</text></g>
+        </svg></div>
       </article>
       <div class="mg-scenarios">
         <article v-for="(s,i) in scenarios" :key="s.title" class="mg-card mg-scenario" :class="{on:s.on}">
@@ -469,7 +469,7 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
         <div class="mg-card-head"><div><h3>Planned $1,260, kept $400</h3><small>$860 of planned profit leaked in four places</small></div>
           <div class="mg-legend"><span><i class="dot hatch-b"></i>Profit left</span><span><i class="dot hatch-p"></i>Leaked</span><span><i class="dot solid-bb"></i>Kept</span></div>
         </div>
-        <div v-if="bridgeMode==='Planned vs actual'" class="mg-bridge" role="img" aria-label="Waterfall: planned profit $1,260, minus discount $260, labor overrun $260, callback $240, materials $100, actual profit kept $400">
+        <div v-if="bridgeMode==='Planned vs actual'" class="ref-table-scroll" tabindex="0" role="region" aria-label="Profit bridge, scroll horizontally for all stages"><div class="mg-bridge" role="img" aria-label="Waterfall: planned profit $1,260, minus discount $260, labor overrun $260, callback $240, materials $100, actual profit kept $400">
           <div v-for="(b,i) in bridge" :key="b.label" class="mg-bridge-col">
             <p class="mg-bridge-val">${{ b.value.toLocaleString('en-US') }}<small v-if="b.note" class="pink">{{ b.note }}</small></p>
             <div class="mg-bridge-bar" :style="{height:(b.value/1260*180)+'px'}">
@@ -480,7 +480,7 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
           </div>
           <div class="mg-bridge-tip"><b>$400</b> kept · <b>12.3%</b> margin · <b>32%</b> of plan</div>
         </div>
-        <div v-else class="mg-stack-wrap" role="img" aria-label="Full cost stack for job 5819: revenue $3,240 split into labor $1,480, materials $860, callback cost $240, other costs $260 and profit kept $400">
+        </div><div v-else class="mg-stack-wrap" role="img" aria-label="Full cost stack for job 5819: revenue $3,240 split into labor $1,480, materials $860, callback cost $240, other costs $260 and profit kept $400">
           <div class="mg-stack">
             <div v-for="c in costStack" :key="c.label" class="mg-stack-row">
               <span class="mg-stack-label">{{ c.label }}</span>
@@ -541,13 +541,13 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
     </template>
     <template v-else-if="page==='Trends'">
       <article class="mg-card"><div class="mg-card-head"><div><h3>Margin trend</h3><small>Weekly margin against the {{ target }}% target</small></div></div>
-        <svg class="mg-fc-chart" viewBox="0 0 520 200" role="img" aria-label="Margin drifts from 36.1% down to 34.0% over 12 weeks">
+        <div class="ref-table-scroll" tabindex="0" role="region" aria-label="Margin chart, scroll horizontally for all months"><svg class="mg-fc-chart" viewBox="0 0 520 200" role="img" aria-label="Margin drifts from 36.1% down to 34.0% over 12 weeks">
           <g class="grid"><path d="M40 30 H505 M40 72 H505 M40 114 H505 M40 156 H505"/></g>
           <path class="line-b" :d="weeks.map((v,i)=>(i?'L':'M')+chartX(i)+' '+chartY(v)).join(' ')"/>
           <g class="pts-b"><circle v-for="(v,i) in weeks" :key="i" :cx="chartX(i)" :cy="chartY(v)" r="3.5"/></g>
           <path class="line-t" :d="'M40 '+chartY(target)+' H505'"/>
           <g class="xlabels"><text :x="chartX(0)" y="190">{{ weekLabels[0] }}</text><text :x="chartX(5)" y="190">{{ weekLabels[5] }}</text><text :x="chartX(11)" y="190">{{ weekLabels[11] }}</text></g>
-        </svg>
+        </svg></div>
         <p class="mg-callout">Margin slipped 2.1 pts since early July; callbacks and labor overruns drive the slide. Demo data.</p>
       </article>
     </template>

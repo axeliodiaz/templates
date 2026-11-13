@@ -28,7 +28,13 @@
     "test:contribution-skyline": "node tests/contribution-skyline.cjs",
     "test:agent-orchestration-model": "node tests/agent-orchestration-model.cjs",
     "test:agent-orchestration": "node tests/agent-orchestration.cjs",
-    "test:agent-orchestration-consumer": "node tests/agent-orchestration-consumer.cjs"
+    "test:agent-orchestration-consumer": "node tests/agent-orchestration-consumer.cjs",
+    "test:reference-dashboards": "node tests/reference-dashboards.cjs",
+    "test:reference-dashboards-a11y": "node tests/reference-dashboards-a11y.cjs",
+    "test:reference-dashboards-themes": "node tests/reference-dashboards-themes.cjs",
+    "test:pulse-dashboard-a11y": "node tests/pulse-dashboard-a11y.cjs",
+    "test:margin-projects:a11y": "node tests/margin-projects-a11y.cjs",
+    "test:standalone-exports:a11y": "node tests/standalone-exports-a11y.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",

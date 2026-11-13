@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lustro — Bootstrap 6 component set</title>
+<title>Lustro — Bootstrap 6 component set</title><link rel="stylesheet" href="/standalone-a11y.css">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
 <link rel="stylesheet" href="/lustro-template/lustro-theme.css">
@@ -19,7 +19,8 @@
 </style>
   <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
 </head>
-<body>
+<body class="standalone-export">
+<a class="skip-link" href="#main">Skip to main content</a>
 <div class="lustro-bs6-root container-fluid py-3" data-bs-theme="dark">
   <header class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
     <div class="d-flex align-items-center">
@@ -31,6 +32,7 @@
     </div>
     <button type="button" class="btn-outline btn-sm theme-secondary" id="themeToggle" aria-pressed="true">Light mode</button>
   </header>
+  <main id="main" tabindex="-1">
   <p class="small text-secondary mb-4">Fictitious data. Interactive toasts and dialogs use Bootstrap 6 ESM. Chart-heavy Lustro pages stay on the VitePress catalog with existing motion.</p>
   <div class="d-flex flex-wrap gap-2 mb-4">
     <button type="button" class="btn-solid theme-primary btn-sm" id="demoToast">Show toast</button>
@@ -62,7 +64,7 @@
 <section class="mb-2" id="forms-sizes-textarea-and-file"><h2 class="lu-section-title h6">Forms: sizes, textarea and file</h2><div class="lu-bs6-block"><div class="d-flex flex-column gap-2"><input class="form-control form-control-sm" placeholder="Small"><input class="form-control" placeholder="Default"><input class="form-control form-control-lg" placeholder="Large"><textarea class="form-control" rows="3" placeholder="Textarea"></textarea><span class="btn">&#8679; Choose file</span></div></section>
 <section class="mb-2" id="forms-validation"><h2 class="lu-section-title h6">Forms: validation</h2><div class="lu-bs6-block"><div class="row g-3"><div><label class="form-label">Valid</label><input class="form-control is-valid" value="looks good"><div class="hint" style="color:var(--b-ok)">Looks good.</div></section>
 <section class="mb-2" id="forms-input-groups"><h2 class="lu-section-title h6">Forms: input groups</h2><div class="lu-bs6-block"><div class="col" style="max-width:420px"><div class="ig"><span class="pre">@</span><input class="form-control" placeholder="Username"></div></section>
-<section class="mb-2" id="forms-floating-labels-and-layout"><h2 class="lu-section-title h6">Forms: floating labels and layout</h2><div class="lu-bs6-block"><div class="row g-3"><div style="position:relative"><input class="form-control" style="padding-top:20px" value="Axel"><span style="position:absolute;top:4px;left:12px;font-size:10px;color:var(--b-mut)">First name</span></div></section>
+<section class="mb-2" id="forms-floating-labels-and-layout"><h2 class="lu-section-title h6">Forms: floating labels and layout</h2><div class="lu-bs6-block"><div class="row g-3"><div style="position:relative"><input class="form-control" style="padding-top:20px" value="Axel"><span style="position:absolute;top:4px;left:12px;font-size:12px;color:var(--b-mut)">First name</span></div></section>
 <section class="mb-2" id="select-variants"><h2 class="lu-section-title h6">Select: variants</h2><div class="lu-bs6-block"><div class="row g-3"><div><label class="form-label">Default</label><select class="form-select"><option>Choose...</option><option>One</option></select></div></section>
 <section class="mb-2" id="checks-and-radios"><h2 class="lu-section-title h6">Checks and radios</h2><div class="lu-bs6-block"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="ck on"><i>&#10003;</i> Checked</span><span class="ck"><i></i> Unchecked</span><span class="ck ind"><i>&#8211;</i> Indeterminate</span><span class="ck dis"><i></i> Disabled</span></div></section>
 <section class="mb-2" id="switches"><h2 class="lu-section-title h6">Switches</h2><div class="lu-bs6-block"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="sw on"><i></i> On</span><span class="sw"><i></i> Off</span><span class="sw on dis"><i></i> Disabled on</span><span class="sw dis"><i></i> Disabled off</span></div></section>
@@ -88,6 +90,7 @@
 <section class="mb-2" id="avatars-and-stacks"><h2 class="lu-section-title h6">Avatars and stacks</h2><div class="lu-bs6-block"><div class="d-flex flex-wrap gap-2 align-items-center mb-2"><span class="avatar sm">AD</span><span class="avatar">AD</span><span class="avatar lg">AD</span><span class="stack"><span class="avatar">AB</span><span class="avatar" style="background:var(--b-info)">CD</span><span class="avatar" style="background:var(--b-ok)">EF</span><span class="avatar" style="background:var(--b-warn)">+4</span></span></div></section>
 <section class="mb-2" id="placeholders-and-skeletons"><h2 class="lu-section-title h6">Placeholders and skeletons</h2><div class="lu-bs6-block"><div class="col" style="max-width:360px"><div class="ph" style="width:70%"></div></section>
 <section class="mb-2" id="steps-and-keyboard-keys"><h2 class="lu-section-title h6">Steps and keyboard keys</h2><div class="lu-bs6-block"><div class="step"><span class="s done"><i>&#10003;</i> Account</span><span class="ln"></span><span class="s cur"><i>2</i> Details</span><span class="ln"></span><span class="s"><i>3</i> Review</span></div></section>
+  </main>
 </div>
 <section class="mb-4" id="lateral-detail-drawer"><h2 class="lu-section-title h6">Lateral detail drawer</h2><div class="lu-bs6-block"><button type="button" class="btn-outline theme-primary btn-sm" data-detail-drawer>Open detail drawer</button></div></section>
 <dialog class="dialog" id="demoDialog" aria-labelledby="demoDialogTitle">
