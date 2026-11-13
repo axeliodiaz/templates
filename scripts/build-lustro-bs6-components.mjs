@@ -158,7 +158,7 @@ const html = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lustro — Bootstrap 6 component set</title>
+<title>Lustro — Bootstrap 6 component set</title><link rel="stylesheet" href="/standalone-a11y.css">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="${BS6_CSS}" integrity="${BS6_CSS_SRI}" crossorigin="anonymous">
 <link rel="stylesheet" href="/lustro-template/lustro-theme.css">
@@ -174,7 +174,8 @@ const html = `<!doctype html>
 </style>
   <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
 </head>
-<body>
+<body class="standalone-export">
+<a class="skip-link" href="#main">Skip to main content</a>
 <div class="lustro-bs6-root container-fluid py-3" data-bs-theme="dark">
   <header class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
     <div class="d-flex align-items-center">
@@ -186,12 +187,14 @@ const html = `<!doctype html>
     </div>
     <button type="button" class="btn-outline btn-sm theme-secondary" id="themeToggle" aria-pressed="true">Light mode</button>
   </header>
+  <main id="main" tabindex="-1">
   <p class="small text-secondary mb-4">Fictitious data. Interactive toasts and dialogs use Bootstrap 6 ESM. Chart-heavy Lustro pages stay on the VitePress catalog with existing motion.</p>
   <div class="d-flex flex-wrap gap-2 mb-4">
     <button type="button" class="btn-solid theme-primary btn-sm" id="demoToast">Show toast</button>
     <button type="button" class="btn-outline theme-primary btn-sm" data-bs-toggle="dialog" data-bs-target="#demoDialog">Open dialog</button>
   </div>
   ${sectionHtml}
+  </main>
 </div>
 <section class="mb-4" id="lateral-detail-drawer"><h2 class="lu-section-title h6">Lateral detail drawer</h2><div class="lu-bs6-block"><button type="button" class="btn-outline theme-primary btn-sm" data-detail-drawer>Open detail drawer</button></div></section>
 <dialog class="dialog" id="demoDialog" aria-labelledby="demoDialogTitle">

@@ -1,0 +1,24 @@
+/* Accessibility base for standalone exports. No selectors affect documentation hosts. */
+body.standalone-export :is(a[href],button,input,select,textarea,summary,[tabindex]):focus-visible {
+  outline:3px solid var(--export-focus,#3154ca);
+  outline-offset:3px;
+  box-shadow:0 0 0 3px var(--export-focus-surface,#fff);
+}
+body.standalone-export .skip-link {
+  position:fixed;top:12px;left:12px;z-index:1090;
+  padding:12px 18px;border:2px solid currentColor;border-radius:8px;
+  background:var(--export-skip-bg,#fff);color:var(--export-skip-ink,#172d2c);
+  font:600 14px/1.5 system-ui,sans-serif;text-decoration:underline;
+  transform:translateY(calc(-100% - 20px));
+}
+body.standalone-export .skip-link:focus {transform:none}
+@media(prefers-reduced-motion:reduce){
+ body.standalone-export *,body.standalone-export *::before,body.standalone-export *::after{
+  animation:none!important;transition:none!important;scroll-behavior:auto!important;
+ }
+}
+/* Bootstrap close controls are dimmed at rest; do not dim their focus ring. */
+body.standalone-export .btn-close:focus-visible{opacity:1}
+/* BS6 masks the whole close button, which also clips its outline. Mask only the icon. */
+body.standalone-export .btn-close{position:relative;mask-image:none;background:transparent}
+body.standalone-export .btn-close::before{content:"";position:absolute;inset:0;background:currentColor;mask:var(--bs-btn-close-icon) center/contain no-repeat;pointer-events:none}
