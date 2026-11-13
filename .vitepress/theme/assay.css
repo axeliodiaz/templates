@@ -752,7 +752,8 @@
 }
 
 /* The dedicated route has no product theme switch, including the injected guide toggle. */
-html[data-tpl="assay"] .lu-theme-toggle {
+html[data-tpl="assay"] .lu-theme-toggle,
+html[data-tpl="assay"] .tpl-theme-toggle {
   display: none !important;
 }
 .assay.assay-bs6 .as-trace .as-chip {

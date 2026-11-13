@@ -138,6 +138,7 @@ function textReport() {
       await page.goto(base + "/assay/dashboard", { waitUntil: "networkidle" });
       await page.locator(".assay").waitFor();
       assert.equal(await page.locator("main").count(), 1);
+      assert.equal(await page.locator(".tpl-theme-toggle").isVisible(), false);
       assert.equal(
         await page.locator(".assay").getAttribute("data-bs-theme"),
         "light",
