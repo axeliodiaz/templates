@@ -1,3 +1,5 @@
+import './assay-bs6.bootstrap.css'
+import './assay.css'
 import { h, nextTick, watchEffect } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import TemplateSideDrawer from './TemplateSideDrawer.vue'

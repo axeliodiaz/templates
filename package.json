@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "description": "Design-language guides written in Markdown, published at templates.axeldiaz.com",
   "scripts": {
-    "dev": "npm run build:batch2-bs6 && npm run build:bastion-bs6 && vitepress dev",
-    "build": "node --test tests/felix-json-contract.mjs && node tests/css-cdn.cjs && node scripts/build-lustro-bs6-components.mjs --check && npm run build:batch2-bs6 && node scripts/build-lustro-bs6-components.mjs && npm run build:scopecraft-bs6 && npm run build:bastion-bs6 && vitepress build",
+    "dev": "npm run build:assay-bs6 && npm run build:batch2-bs6 && npm run build:bastion-bs6 && vitepress dev",
+    "build": "npm run build:assay-bs6 && node --test tests/felix-json-contract.mjs && node tests/css-cdn.cjs && node scripts/build-lustro-bs6-components.mjs --check && npm run build:batch2-bs6 && node scripts/build-lustro-bs6-components.mjs && npm run build:scopecraft-bs6 && npm run build:bastion-bs6 && vitepress build",
     "build:lustro-bs6": "node scripts/build-lustro-bs6-components.mjs",
     "build:scopecraft-bs6": "node scripts/build-scopecraft-bs6-css.mjs",
     "preview": "vitepress preview",
@@ -34,7 +34,9 @@
     "test:reference-dashboards-themes": "node tests/reference-dashboards-themes.cjs",
     "test:pulse-dashboard-a11y": "node tests/pulse-dashboard-a11y.cjs",
     "test:margin-projects:a11y": "node tests/margin-projects-a11y.cjs",
-    "test:standalone-exports:a11y": "node tests/standalone-exports-a11y.cjs"
+    "test:standalone-exports:a11y": "node tests/standalone-exports-a11y.cjs",
+    "build:assay-bs6": "node scripts/build-assay-bs6.mjs",
+    "test:assay": "node tests/assay-dashboard.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",
