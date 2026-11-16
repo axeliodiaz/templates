@@ -115,7 +115,7 @@ fs.mkdirSync(out, { recursive: true })
       blue: getComputedStyle(el).getPropertyValue('--bs-blue-500').trim(),
     }))
     assert.ok(probe.gap, 'BS6 button token')
-    assert.match(probe.blue, /240deg/, 'BS6 palette token inherited inside .bst-root')
+    assert.match(probe.blue, /oklch\([^)]*\s240(?:deg)?\)/, 'BS6 palette token inherited inside .bst-root')
     const shell = await page.evaluate(() => ({
       navBlue: getComputedStyle(document.querySelector('.VPNav')).getPropertyValue('--bs-blue-500').trim(),
       htmlBlue: getComputedStyle(document.documentElement).getPropertyValue('--bs-blue-500').trim(),
@@ -124,7 +124,7 @@ fs.mkdirSync(out, { recursive: true })
     }))
     assert.equal(shell.navBastion, '', 'Bastion token leaked onto the shell')
     assert.equal(shell.rootBastion.toLowerCase(), '#62f56a')
-    assert.doesNotMatch(shell.htmlBlue, /240deg/, 'Bastion scoped blue overwrote the document')
+    assert.doesNotMatch(shell.htmlBlue, /oklch\([^)]*\s240(?:deg)?\)/, 'Bastion scoped blue overwrote the document')
     assert.notEqual(shell.navBlue, probe.blue, 'shell and Bastion root share one Bootstrap origin')
     await page.getByRole('combobox', { name: 'REGION', exact: true }).selectOption('eu-central-1')
     await page.locator('.bst-map').getByText('6ms', { exact: true }).waitFor()
