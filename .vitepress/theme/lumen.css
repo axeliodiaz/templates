@@ -59,3 +59,4 @@
 /* Ink follows the active light/dark surface and stays visible around controls. */
 .lmn :is(button,a,input,select,textarea,[tabindex]):focus-visible{outline:3px solid var(--text);outline-offset:3px}
 @media(forced-colors:active){.lmn :focus-visible{outline-color:Highlight}}
+.lmn small{font-size:11px}
