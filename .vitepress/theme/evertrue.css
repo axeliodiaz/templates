@@ -145,3 +145,6 @@
  .et-brand{justify-self:start}
  .et-kpi strong{font-size:26px}
 }
+
+/* Leave room for the absolute metric below wrapped card copy. */
+.evertrue .et-card{padding-bottom:38px}
