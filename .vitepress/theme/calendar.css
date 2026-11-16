@@ -124,8 +124,8 @@ html.felix.felix-dark .cal-f { --bg:#152b2a; --soft:#234343; --line:#35605f; --t
 .cal :is(button,a,input,select,[tabindex]):focus-visible{outline:3px solid var(--cal-focus);outline-offset:2px}
 .cal-ag-r:focus-visible,.cal-ag-r:focus-within{background:var(--soft)}
 .cal-wev small,.cal-wev.half b{font-size:12px}
-.cal-wev b{overflow-wrap:anywhere}
-@media(min-width:641px) and (max-width:1024px){.cal-wk{min-width:720px}}
+.cal-wev b{overflow-wrap:normal;word-break:normal}
+.cal-wk{min-width:1120px}
 @media(max-width:640px){
  .cal-mini{max-width:none;min-width:304px}
  .cal-mini-g :is(span,button):not(.dw){min-width:40px;height:40px}
