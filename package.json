@@ -36,7 +36,8 @@
     "test:margin-projects:a11y": "node tests/margin-projects-a11y.cjs",
     "test:standalone-exports:a11y": "node tests/standalone-exports-a11y.cjs",
     "build:assay-bs6": "node scripts/build-assay-bs6.mjs",
-    "test:assay": "node tests/assay-dashboard.cjs"
+    "test:assay": "node tests/assay-dashboard.cjs",
+    "test:agent-crew-model": "node --test tests/agent-crew-model.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",
