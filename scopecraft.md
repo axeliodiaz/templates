@@ -37,3 +37,8 @@ Scopecraft does not bounce. Entrances move 4px. Hover does not lift cards or but
 ## Agent orchestration
 
 [Open the Scopecraft orchestration demo](/scopecraft/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Scopecraft agent crew demo](/scopecraft/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

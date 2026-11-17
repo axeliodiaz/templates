@@ -51,3 +51,8 @@ Pattern reference: [Muiz](https://x.com/IamMuhammadMuiz/status/21084565537705208
 ## Agent orchestration
 
 [Open the Pace orchestration demo](/pace/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Pace agent crew demo](/pace/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

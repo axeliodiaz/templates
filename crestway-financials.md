@@ -23,3 +23,8 @@ Charts draw in on load. The shared layer adds a 4px entrance and color transitio
 ## Agent orchestration
 
 [Open the Crestway orchestration demo](/crestway-financials/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Crestway agent crew demo](/crestway-financials/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

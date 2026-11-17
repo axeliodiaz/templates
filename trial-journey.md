@@ -27,3 +27,8 @@ import SankeyFunnel from './.vitepress/theme/SankeyFunnel.vue'
 ## Agent orchestration
 
 [Open the Trial journey orchestration demo](/trial-journey/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Trial journey agent crew demo](/trial-journey/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

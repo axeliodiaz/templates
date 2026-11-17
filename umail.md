@@ -56,3 +56,8 @@ The colors come from the live Umail stylesheet and Bootstrap 2 build, mapped to 
 ## Agent orchestration
 
 [Open the Umail orchestration demo](/umail/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Umail agent crew demo](/umail/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

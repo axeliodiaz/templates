@@ -33,3 +33,8 @@ Guide pages load the shared studio catalog with `theme="relay"` inside `b2-bs6`,
 ## Agent orchestration
 
 [Open the Relay orchestration demo](/relay/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Relay agent crew demo](/relay/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

@@ -146,3 +146,8 @@ A standalone original job economics template. Responsive, local interactive stat
 ## Agent orchestration
 
 [Open the Margin orchestration demo](/margin/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Margin agent crew demo](/margin/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

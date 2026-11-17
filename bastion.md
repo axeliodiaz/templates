@@ -35,3 +35,8 @@ Wrap product UI in `.bst-root` with `data-bs-theme="dark"`, then `.bst`. Load th
 ## Agent orchestration
 
 [Open the Bastion orchestration demo](/bastion/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Bastion agent crew demo](/bastion/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

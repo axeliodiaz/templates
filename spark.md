@@ -32,3 +32,8 @@ Load `studio-systems.css`, wrap content in `studio-kit studio-spark` and use the
 ## Agent orchestration
 
 [Open the Spark orchestration demo](/spark/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Spark agent crew demo](/spark/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
