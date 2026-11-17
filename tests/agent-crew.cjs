@@ -23,7 +23,7 @@ fs.mkdirSync(out, { recursive: true })
       if (i === 119) throw new Error('Server failed')
     }
     browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', args: ['--no-sandbox'] })
-    const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' })
+    const page = await browser.newPage({ viewport: { width: 1720, height: 1100 }, reducedMotion: 'reduce' })
     const errors = []
     page.on('pageerror', e => errors.push(e.message))
     await page.goto('http://127.0.0.1:4389/agent-crew', { waitUntil: 'networkidle' })
@@ -34,7 +34,7 @@ fs.mkdirSync(out, { recursive: true })
     assert.match(await demo.locator('.crew__notice').innerText(), /Synthetic demo/)
     assert.match(await demo.locator('.crew__counts').innerText(), /\d+ working/)
     assert.match(await demo.locator('.crew__counts').innerText(), /\d+ agents/)
-  assert.equal(await demo.locator('[data-crew-card]').count(), 8)
+    assert.equal(await demo.locator('[data-crew-card]').count(), 8)
     await demo.locator('[data-crew-card="lead"]').focus()
     await page.keyboard.press('ArrowRight')
     await page.keyboard.press('Enter')
@@ -52,26 +52,59 @@ fs.mkdirSync(out, { recursive: true })
     await page.waitForTimeout(4000)
     const live = await demo.locator('.crew-live').innerText()
     assert.match(live, /handed/i)
-    for (const width of [1280, 390]) {
-      await page.setViewportSize({ width, height: width === 390 ? 844 : 900 })
+    for (const width of [1720, 390]) {
+      await page.setViewportSize({ width, height: width === 390 ? 844 : 1100 })
       await demo.scrollIntoViewIfNeeded()
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `overflow at ${width}`)
       await demo.screenshot({ path: path.join(out, `canonical-${width}.png`) })
     }
     const inventory = JSON.parse(fs.readFileSync(path.join(root, '.vitepress/theme/agent-crew/inventory.json')))
     assert.equal(inventory.length, 21)
+  if (!process.env.CREW_FELIX_ONLY) {
     for (const item of inventory.filter(x => !process.env.CREW_NAMES || process.env.CREW_NAMES.split(',').includes(x.name))) {
-      const route = item.route
-      const res = await page.goto(`http://127.0.0.1:4389${route}`, { waitUntil: 'networkidle' })
-      assert.ok(res?.ok(), `${item.name} route ${route} must respond 200`)
+      await page.setViewportSize({ width: 1720, height: 1100 })
+      const res = await page.goto(`http://127.0.0.1:4389${item.route}`, { waitUntil: 'networkidle' })
+      assert.ok(res?.ok(), `${item.name} route ${item.route} must respond 200`)
       await page.addStyleTag({ content: '.VPNav,.VPLocalNav,[class$=theme-toggle]{visibility:hidden!important}' })
       const host = page.locator('.crew')
       assert.ok(await host.count(), `${item.name} must render .crew`)
-      assert.match(await host.locator('.crew__counts').innerText(), /agents/, item.name)
-      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), item.name)
+      assert.equal(await host.locator('[data-crew-card]').count(), 8, item.name)
+      const variants = item.variants.includes('+') ? ['light', 'dark'] : [item.variants.includes('Dark') ? 'dark' : 'light']
+      const boards = {}
+      for (const variant of variants) {
+        await page.evaluate(({ name, dark }) => {
+          const h = document.documentElement
+          for (const c of ['dark', 'felix-dark', 'tpl-dark', 'lmn-dark', 'sc-dark', 'pf-dark', 'pp-dark', 'lu-light']) h.classList.remove(c)
+          const family = { Felix: 'felix-dark', Lumen: 'lmn-dark', Scopecraft: 'sc-dark', PulseFit: 'pf-dark', Pawprint: 'pp-dark' }[name]
+          if (dark) {
+            h.classList.add('dark')
+            if (family) h.classList.add(family)
+            else h.classList.add('tpl-dark')
+          }
+          if (name === 'Lustro' && !dark) h.classList.add('lu-light')
+        }, { name: item.name, dark: variant === 'dark' })
+        if (['Meadow', 'Sentinel', 'Brief'].includes(item.name)) {
+          const button = host.getByRole('button', { name: variant === 'dark' ? 'Dark mode' : 'Light mode', exact: true })
+          if (await button.count()) await button.click()
+        }
+        boards[variant] = await host.evaluate(el => ({
+          bg: getComputedStyle(el).backgroundColor,
+          text: getComputedStyle(el).color,
+          card: getComputedStyle(el.querySelector('.crew-card')).backgroundColor
+        }))
+        for (const width of [1720, 390]) {
+          await page.setViewportSize({ width, height: width === 390 ? 844 : 1100 })
+          await host.scrollIntoViewIfNeeded()
+          assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${item.name} overflow ${variant} ${width}`)
+          await host.screenshot({ path: path.join(out, `${item.name.toLowerCase().replace(/\s+/g, '-')}-${variant}-${width}.png`) })
+        }
+      }
+      fs.writeFileSync(path.join(out, `${item.name.toLowerCase().replace(/\s+/g, '-')}-tokens.json`), JSON.stringify(boards))
+      if (variants.length === 2) assert.notEqual(boards.light.bg, boards.dark.bg, `${item.name} variants must differ`)
     }
+  }
     assert.deepEqual(errors, [])
-    console.log('PASS agent-crew keyboard, dialog width, counts, inventory routes and overflow')
+    console.log('PASS agent-crew keyboard, dialog, variant sweep 1720/390, inventory and overflow')
   } finally {
     await browser?.close()
     server.kill()

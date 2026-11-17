@@ -38,6 +38,7 @@
     "build:assay-bs6": "node scripts/build-assay-bs6.mjs",
     "test:assay": "node tests/assay-dashboard.cjs",
     "test:agent-crew-model": "node --test tests/agent-crew-model.cjs",
+    "test:agent-crew-contrast": "python3 .vitepress/theme/agent-crew/verificacion/contraste.py",
     "test:agent-crew": "node tests/agent-crew.cjs",
     "test:agent-crew-motion": "node tests/agent-crew-motion.cjs"
   },

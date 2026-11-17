@@ -43,6 +43,8 @@ const stageRef = ref<HTMLElement | null>(null)
 const lastFocus = ref<HTMLElement | null>(null)
 const seenHandoffs = ref(new Set<string>())
 const stageWidth = ref(960)
+const localDark = ref(false)
+const localDarkThemes = new Set(['meadow', 'sentinel', 'brief'])
 
 let playTimer: ReturnType<typeof setInterval> | undefined
 let clockTimer: ReturnType<typeof setInterval> | undefined
@@ -246,7 +248,7 @@ onMounted(() => {
 <template>
   <section
     class="crew"
-    :class="[`crew-${theme ?? 'inherit'}`]"
+    :class="[`crew-${theme ?? 'inherit'}`, { 'crew-local-dark': localDark && localDarkThemes.has(theme ?? '') }]"
     :aria-label="title ?? 'Agent crew simulation'"
     role="tree"
     @keydown="onKeydown"
@@ -269,6 +271,11 @@ onMounted(() => {
       <button type="button" @click="togglePlay">{{ playing ? 'Pause run' : 'Play run' }}</button>
       <button type="button" :disabled="project.id !== 'onboarding' || stepIndex >= STEP_COUNT - 1" @click="stepOnce">Step</button>
       <button type="button" @click="resetDemo">Reset</button>
+      <button
+        v-if="localDarkThemes.has(theme ?? '')"
+        type="button"
+        @click="localDark = !localDark"
+      >{{ localDark ? 'Light mode' : 'Dark mode' }}</button>
     </div>
     <div v-if="errors.length" class="crew-error" role="status">{{ errors.join('; ') }}</div>
     <div v-else ref="stageRef" class="crew__stage" :style="{ minHeight: `${layout.height}px` }" tabindex="0">
