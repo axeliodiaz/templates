@@ -63,10 +63,10 @@ fs.mkdirSync(out, { recursive: true })
     for (const item of inventory.filter(x => !process.env.CREW_NAMES || process.env.CREW_NAMES.split(',').includes(x.name))) {
       const route = item.route
       const res = await page.goto(`http://127.0.0.1:4389${route}`, { waitUntil: 'networkidle' })
-      if (!res || !res.ok()) continue
+      assert.ok(res?.ok(), `${item.name} route ${route} must respond 200`)
       await page.addStyleTag({ content: '.VPNav,.VPLocalNav,[class$=theme-toggle]{visibility:hidden!important}' })
       const host = page.locator('.crew')
-      if (!(await host.count())) continue
+      assert.ok(await host.count(), `${item.name} must render .crew`)
       assert.match(await host.locator('.crew__counts').innerText(), /agents/, item.name)
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), item.name)
     }

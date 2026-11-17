@@ -133,3 +133,8 @@ See also the [Cart summary](/lustro/cart-summary) receipt component and the [Pri
 ## Agent orchestration
 
 [Open the Lustro orchestration demo](/lustro/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Lustro agent crew demo](/lustro/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

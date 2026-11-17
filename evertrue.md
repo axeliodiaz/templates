@@ -21,3 +21,8 @@ The command line types itself on load, counters tick up, page cards rise on hove
 ## Agent orchestration
 
 [Open the Evertrue orchestration demo](/evertrue/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Evertrue agent crew demo](/evertrue/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

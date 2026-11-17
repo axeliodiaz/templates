@@ -146,3 +146,8 @@ A standalone original agent security template. Responsive, local interactive sta
 ## Agent orchestration
 
 [Open the Sentinel orchestration demo](/agent-security/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Sentinel agent crew demo](/agent-security/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

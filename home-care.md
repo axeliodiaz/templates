@@ -33,3 +33,8 @@ The fixed sample date is Monday, October 5, 2026, at 08:46. Times are local wall
 ## Agent orchestration
 
 [Open the Meadow orchestration demo](/home-care/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Meadow agent crew demo](/home-care/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
