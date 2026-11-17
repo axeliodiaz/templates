@@ -90,10 +90,10 @@ export function contextLevel(context: CrewAgent['context']): { ratio: number | n
   const ratio = Math.max(0, Math.min(context.used / context.limit, 1))
   return { ratio, level: ratio >= 0.95 ? 'over' : ratio >= 0.8 ? 'late' : 'work' }
 }
-function tokenCount(value: number): string { return value >= 1000 ? `${Math.round(value / 1000)}k` : String(value) }
+function tokenCount(value: number): string { return value >= 1000 ? `${Math.floor(value / 1000)}k` : String(value) }
 export function formatContext(context: CrewAgent['context']): string {
   if (contextLevel(context).ratio === null) return 'n/a'
-  return `${tokenCount(context.used!)} / ${tokenCount(context.limit!)}`
+  return `${tokenCount(Math.max(0, context.used!))} / ${tokenCount(context.limit!)}`
 }
 export function formatCost(cost: number | null | undefined): string | null {
   if (cost == null) return 'n/a'

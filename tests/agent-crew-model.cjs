@@ -85,3 +85,10 @@ test('handoff crosses the common ancestor and supports root/same/missing endpoin
   assert.deepEqual(m.handoffPath(root, 'coder', 'coder'), ['coder'])
   assert.deepEqual(m.handoffPath(root, 'missing', 'coder'), [])
 })
+
+test('formatting never rounds up token capacity or shows a negative context', () => {
+  assert.equal(m.formatTokens(999500), '999k')
+  assert.equal(m.formatTokens(1999), '1k')
+  assert.equal(m.formatContext({ used: -1, limit: 200000 }), '0 / 200k')
+  assert.equal(m.formatContext({ used: 999500, limit: 1000000 }), '999k / 1000k')
+})
