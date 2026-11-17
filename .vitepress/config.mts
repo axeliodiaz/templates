@@ -80,6 +80,8 @@ export default defineConfig({
       '/trade-finance': [{ text: 'Run observation', items: [{ text: 'Agent orchestration', link: '/trade-finance/agent-orchestration' }] }, {"text": "Trade Finance", "items": [{"text": "Overview", "link": "/trade-finance"}]}],
       '/trial-journey': [{ text: 'Run observation', items: [{ text: 'Agent orchestration', link: '/trial-journey/agent-orchestration' }] }, {"text": "Trial Journey", "items": [{"text": "Overview", "link": "/trial-journey"}]}],
       '/graph-components': [{"text": "Graph Components", "items": [{"text": "Overview", "link": "/graph-components"}]}],
+      '/agent-orchestration': [{ text: 'Module', items: [{ text: 'Agent orchestration contract', link: '/agent-orchestration' }, { text: 'Agent crew contract', link: '/agent-crew' }] }],
+      '/agent-crew': [{ text: 'Module', items: [{ text: 'Agent crew contract', link: '/agent-crew' }, { text: 'Agent orchestration contract', link: '/agent-orchestration' }] }],
 
       '/assay': [{ text: 'Assay evaluation lab', items: [{ text: 'Overview', link: '/assay' }, { text: 'Foundations', link: '/assay/foundations' }, { text: 'Dashboard', link: '/assay/dashboard' }, { text: 'Agent orchestration', link: '/assay/agent-orchestration' }] }],
       '/relay': [{ text: 'Run observation', items: [{ text: 'Agent orchestration', link: '/relay/agent-orchestration' }] }, { text: 'Relay foundations', items: [{ text: 'Overview', link: '/relay' }, { text: 'Color, type, and tokens', link: '/relay/foundations' }, { text: 'CSS implementation', link: '/relay/tokens' }, { text: 'Motion', link: '/relay/motion' }] }, { text: 'Relay components', items: [{ text: 'Full live catalog', link: '/relay/components' }, { text: 'Workflow progress', link: '/relay/workflow-progress' }, { text: 'Flow graph (tool access map)', link: '/relay/flow-graph' }, { text: 'Buttons usage guide', link: '/buttons' }, { text: 'Button group guide', link: '/button-group' }, { text: 'Badge guide', link: '/badges' }, { text: 'Alerts guide', link: '/alerts' }, { text: 'Card guide', link: '/cards' }, { text: 'Forms guide', link: '/forms' }, { text: 'Input group guide', link: '/input-group' }, { text: 'Validation guide', link: '/validation' }, { text: 'Select guide', link: '/select' }, { text: 'Choice controls guide', link: '/choices' }, { text: 'Range slider guide', link: '/range-slider' }, { text: 'Navs and tabs guide', link: '/navs-tabs' }, { text: 'Pagination guide', link: '/pagination' }, { text: 'Breadcrumb guide', link: '/breadcrumb' }, { text: 'Language select guide', link: '/language-select' }, { text: 'Dropdowns guide', link: '/dropdowns' }, { text: 'Modal guide', link: '/modals' }, { text: 'Offcanvas guide', link: '/offcanvas' }, { text: 'Drawer guide', link: '/drawer' }, { text: 'Sheet guide', link: '/sheet' }, { text: 'Charts', link: '/relay/charts' }, { text: 'Layouts', link: '/relay/layouts' }, { text: 'Control room', link: '/relay/overview' }] }],
@@ -270,6 +272,7 @@ export default defineConfig({
             { text: 'Dependencies', link: '/felix/dependencies' },
             { text: 'Node flow', link: '/felix/node-flow' },
             { text: 'Agent orchestration', link: '/felix/agent-orchestration' },
+            { text: 'Agent crew', link: '/felix/agent-crew' },
             { text: 'Workflow progress', link: '/felix/workflow-progress' },
             { text: 'Decision tree', link: '/felix/decision-tree' },
             { text: 'Finance', link: '/felix/finance' },
@@ -623,6 +626,10 @@ export default defineConfig({
         { text: 'Clase cancelada', link: '/correos#clase-cancelada' },
         { text: 'Comprobante de compra', link: '/correos#comprobante-de-compra' },
         { text: 'Membresía por vencer', link: '/correos#membresia-por-vencer' }
+      ] },
+      { text: 'Agent modules', items: [
+        { text: 'Agent orchestration', link: '/agent-orchestration' },
+        { text: 'Agent crew', link: '/agent-crew' },
       ] },
       { text: 'Examples', collapsed: false, items: [
         { text: 'Messaging', link: '/messaging' },
