@@ -5,7 +5,7 @@ aside: false
 
 A light-only lab for AI agent and MCP tool evaluations. Warm paper, black type and one orange signal keep attention on the evidence. All data is synthetic; no backend, provider, email or billing account is connected.
 
-[Open the full dashboard](/assay/dashboard) · [Foundations](/assay/foundations) · [Agent orchestration](/assay/agent-orchestration)
+[Open the full dashboard](/assay/dashboard) · [Foundations](/assay/foundations) · [Agent orchestration](/assay/agent-orchestration) · [Agent crew](/assay/agent-crew)
 
 ![Assay run dashboard](/thumbnails/assay.webp)
 
