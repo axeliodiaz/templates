@@ -46,6 +46,8 @@ const stageWidth = ref(960)
 const localDark = ref(false)
 const localDarkThemes = new Set(['meadow', 'sentinel', 'brief'])
 
+const isClient = typeof window !== 'undefined'
+
 let playTimer: ReturnType<typeof setInterval> | undefined
 let clockTimer: ReturnType<typeof setInterval> | undefined
 let liveTimer: ReturnType<typeof setTimeout> | undefined
@@ -61,7 +63,7 @@ onBeforeUnmount(() => {
 })
 
 function announce(message?: string) {
-  if (!message) return
+  if (!isClient || !message) return
   liveBuffer.push(message)
   if (!liveTimer) {
     liveTimer = setTimeout(() => {
@@ -73,6 +75,7 @@ function announce(message?: string) {
 }
 
 function syncClock() {
+  if (!isClient) return
   if (ordered.value.some(a => a.status === 'working')) {
     if (!clockTimer) clockTimer = setInterval(() => { now.value = Date.now() }, 1000)
   } else if (clockTimer) {
@@ -188,6 +191,7 @@ function runStep() {
 }
 
 function togglePlay() {
+  if (!isClient) return
   if (playing.value) {
     playing.value = false
     if (playTimer) clearInterval(playTimer)

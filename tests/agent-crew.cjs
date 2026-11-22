@@ -59,7 +59,7 @@ fs.mkdirSync(out, { recursive: true })
       await demo.screenshot({ path: path.join(out, `canonical-${width}.png`) })
     }
     const inventory = JSON.parse(fs.readFileSync(path.join(root, '.vitepress/theme/agent-crew/inventory.json')))
-    assert.equal(inventory.length, 21)
+    assert.equal(inventory.length, 22)
   if (!process.env.CREW_FELIX_ONLY) {
     for (const item of inventory.filter(x => !process.env.CREW_NAMES || process.env.CREW_NAMES.split(',').includes(x.name))) {
       await page.setViewportSize({ width: 1720, height: 1100 })

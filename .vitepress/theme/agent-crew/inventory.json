@@ -1,5 +1,12 @@
 [
   {
+    "name": "Assay",
+    "source": "/assay",
+    "route": "/assay/agent-crew",
+    "variants": "Light only",
+    "adapter": "Assay evaluation lab palette (assay.css orch-assay tokens)"
+  },
+  {
     "name": "Felix",
     "source": "/felix",
     "route": "/felix/agent-crew",
