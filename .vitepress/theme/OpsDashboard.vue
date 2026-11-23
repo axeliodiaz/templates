@@ -49,11 +49,11 @@ onMounted(() => {
           <div class="od-g2">
             <div class="od-c"><div class="od-ct"><b>Workflow Performance</b><small>Success rate and volume, last 7 days</small></div>
               <div class="od-ch" @mouseleave="hov = null"><svg :viewBox="`0 0 ${W} ${H}`" role="img" aria-label="Success rate line over total runs bars, April 21 to 27, rising from 38 to 95 percent">
-                <g v-for="p in [0, 25, 50, 75, 100]" :key="p"><line :x1="36" :x2="W - 14" :y1="Y(p)" :y2="Y(p)" stroke="var(--o-bd)" stroke-dasharray="3 4" /><text x="30" :y="Y(p) + 3" text-anchor="end">{{ p }}%</text></g>
+                <g v-for="p in [0, 25, 50, 75, 100]" :key="p"><line :x1="36" :x2="W - 14" :y1="Y(p)" :y2="Y(p)" stroke="var(--o-bd)" stroke-dasharray="3 4" /><text v-if="p !== 0" x="2" :y="Y(p) + 3" text-anchor="start">{{ p }}%</text></g>
                 <rect v-for="(r, i) in runs" :key="'b' + i" class="od-bar" :x="X(i) - 6" :y="H - 24 - r * 1.3" width="12" :height="r * 1.3" rx="3" fill="var(--o-soft)" style="transform-origin:bottom;transform-box:fill-box" />
                 <path :d="line" fill="none" stroke="var(--o-pri)" stroke-width="2" stroke-linejoin="round" />
                 <g v-for="(r, i) in rate" :key="'d' + i"><circle :cx="X(i)" :cy="Y(r)" :r="hov === i ? 5 : 3" fill="var(--o-surf)" stroke="var(--o-pri)" stroke-width="2" /><circle :cx="X(i)" :cy="Y(r)" r="12" fill="transparent" tabindex="0" :aria-label="`${labels[i] || days[Math.floor(i / 2)]}: success ${r}%, ${runs[i] * 12} runs`" @mouseenter="hov = i" @focus="hov = i" /></g>
-                <text v-for="(l, i) in labels" :key="'l' + i" :x="X(i)" :y="H - 6" text-anchor="middle">{{ l }}</text></svg>
+                <text class="od-x-label" :class="{ 'od-x-minor': i % 4 !== 0 }" v-for="(l, i) in labels" :key="'l' + i" :x="X(i)" :y="H - 6" text-anchor="middle">{{ l }}</text></svg>
                 <div v-if="hov !== null" class="od-tip">{{ labels[hov] || days[Math.floor(hov / 2)] }}<br />Success rate <b>{{ rate[hov] }}%</b><br />Total runs <b>{{ runs[hov] * 12 }}</b></div></div></div>
             <div class="od-c"><div class="od-ct"><b>Recent Activity</b><small class="od-link">View all</small></div><div class="od-row" v-for="a in act" :key="a[0]"><i :class="a[3]"></i><div><b>{{ a[0] }}</b><small>{{ a[1] }}</small></div><small>{{ a[2] }}</small></div></div>
           </div>
@@ -71,8 +71,8 @@ onMounted(() => {
 </template>
 
 <style>
-.od{display:grid;grid-template-columns:170px 1fr;background:var(--o-bg);border:1px solid var(--o-bd);border-radius:calc(var(--o-r) + 4px);overflow:hidden;font:13px/1.4 var(--o-font);color:var(--o-ink);margin:12px 0;text-align:left}
-.od *{box-sizing:border-box}.od p,.od h3{margin:0!important}.od b{font-weight:600}.od small{font-size:11px;color:var(--o-mut)}
+.od{display:grid;grid-template-columns:170px minmax(0,1fr);background:var(--o-bg);border:1px solid var(--o-bd);border-radius:calc(var(--o-r) + 4px);overflow:hidden;font:13px/1.4 var(--o-font);color:var(--o-ink);margin:12px 0;text-align:left}
+.od *{box-sizing:border-box}.od p,.od h3{margin:0!important}.od b{font-weight:600}.od small{font-size:12px;color:var(--o-mut)}
 .od-side{padding:14px 10px;background:var(--o-surf);border-right:1px solid var(--o-bd);display:flex;flex-direction:column;gap:2px;min-height:560px}
 .od-brand{font-weight:700;font-size:16px;display:flex;gap:8px;align-items:center;padding:2px 6px 14px}.od-brand i{width:20px;height:20px;border-radius:6px;background:var(--o-pri)}
 .od-nav{display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:calc(var(--o-r) - 4px);color:var(--o-mut)}.od-nav u{width:12px;height:12px;border:1.5px solid currentColor;border-radius:3px}.od-nav.on{background:var(--o-soft);color:var(--o-ink);font-weight:600}
@@ -83,23 +83,31 @@ onMounted(() => {
 .od-pill{border:1px solid var(--o-bd);background:var(--o-surf);border-radius:calc(var(--o-r) - 2px);padding:7px 10px;font-size:12px;white-space:nowrap}
 .od-user{display:flex;gap:8px;align-items:center}.od-user i{width:30px;height:30px;border-radius:50%;background:var(--o-soft);border:2px solid var(--o-pri)}.od-user div{display:flex;flex-direction:column;line-height:1.2}
 .od-grid{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:12px}.od-left,.od-right{display:flex;flex-direction:column;gap:12px;min-width:0}
-.od-eye{letter-spacing:.1em;font-size:10px}.od-h{font:700 24px/1.15 var(--o-font);color:var(--o-ink);border:0!important}.od-sub{color:var(--o-mut);font-size:12px}
+.od-eye{letter-spacing:.1em;font-size:12px}.od-h{font:700 24px/1.15 var(--o-font);color:var(--o-ink);border:0!important}.od-sub{color:var(--o-mut);font-size:12px}
 .od-k4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .od-k{background:var(--o-surf);border:1px solid var(--o-bd);border-radius:var(--o-r);padding:10px;display:flex;flex-direction:column;gap:4px;position:relative}.od-k svg{position:absolute;right:8px;bottom:8px}
-.od-kl{display:flex;gap:6px;align-items:center;color:var(--o-mut);font-size:11px}.od-kl i{width:14px;height:14px;border-radius:50%;background:var(--o-soft);border:1.5px solid var(--o-pri);flex:none}
-.od-kv{font:700 22px var(--o-font)}.od-kf{display:flex;flex-direction:column}.od .up{color:var(--o-ok);font-size:11px}
+.od-kl{display:flex;gap:6px;align-items:center;color:var(--o-mut);font-size:12px}.od-kl i{width:14px;height:14px;border-radius:50%;background:var(--o-soft);border:1.5px solid var(--o-pri);flex:none}
+.od-kv{font:700 22px var(--o-font)}.od-kf{display:flex;flex-direction:column}.od .up{color:var(--o-ok);font-size:12px}
 .od-g2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:12px}
 .od-c{background:var(--o-surf);border:1px solid var(--o-bd);border-radius:var(--o-r);padding:12px;min-width:0}
 .od-ct{display:flex;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap}.od-link{color:var(--o-pri)!important;font-weight:600}
-.od-ch{position:relative}.od-ch svg{display:block;width:100%;height:auto}.od-ch text{fill:var(--o-mut);font:9px var(--o-font)}
-.od-tip{position:absolute;top:4px;right:8px;background:var(--o-surf);border:1px solid var(--o-bd);border-radius:8px;padding:6px 9px;font-size:11px;box-shadow:0 4px 14px rgba(0,0,0,.12);pointer-events:none}
+.od-ch{position:relative}.od-ch svg{display:block;width:100%;height:auto}.od-ch text{fill:var(--o-mut);font:24px var(--o-font)}
+.od-tip{position:absolute;top:4px;right:8px;background:var(--o-surf);border:1px solid var(--o-bd);border-radius:8px;padding:6px 9px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.12);pointer-events:none}
 .od-row{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;padding:7px 0;border-top:1px solid var(--o-bd)}.od-row:first-of-type{border-top:0}.od-row div{display:flex;flex-direction:column;min-width:0}
 .od-row i{width:26px;height:26px;border-radius:50%;background:var(--o-soft);border:2px solid var(--o-pri)}.od-row i.ok{border-color:var(--o-ok)}.od-row i.warn{border-color:var(--o-warn)}
-.od-tbl table{width:100%;border-collapse:collapse;display:table;margin:0}.od-tbl th{font-size:10px;color:var(--o-mut);text-align:left;font-weight:600;padding:6px;border:0;background:transparent}.od-tbl td{padding:8px 6px;border:0;border-top:1px solid var(--o-bd);font-size:11px;background:transparent;color:var(--o-ink)}.od-tbl tr{background:transparent!important;border:0}
-.od-st{border-radius:99px;padding:2px 9px;font-size:10px;font-weight:600;background:var(--o-soft)}.od-st.Success{background:color-mix(in srgb,var(--o-ok) 16%,transparent);color:var(--o-ok)}.od-st.Failed{background:color-mix(in srgb,var(--o-bad) 16%,transparent);color:var(--o-bad)}.od-st.Running{background:var(--o-soft);color:var(--o-pri)}
-.od-sm{display:flex;gap:6px;align-items:center;color:var(--o-mut);font-size:11px;margin:4px 0 6px}.od-sm i{width:7px;height:7px;border-radius:50%;background:var(--o-ok)}
+.od-tbl table{width:100%;border-collapse:collapse;display:table;margin:0}.od-tbl th{font-size:12px;color:var(--o-mut);text-align:left;font-weight:600;padding:6px;border:0;background:transparent}.od-tbl td{padding:8px 6px;border:0;border-top:1px solid var(--o-bd);font-size:12px;background:transparent;color:var(--o-ink)}.od-tbl tr{background:transparent!important;border:0}
+.od-st{border-radius:99px;padding:2px 9px;font-size:12px;font-weight:600;background:var(--o-soft)}.od-st.Success{background:color-mix(in srgb,var(--o-ok) 16%,transparent);color:var(--o-ok)}.od-st.Failed{background:color-mix(in srgb,var(--o-bad) 16%,transparent);color:var(--o-bad)}.od-st.Running{background:var(--o-soft);color:var(--o-pri)}
+.od-sm{display:flex;gap:6px;align-items:center;color:var(--o-mut);font-size:12px;margin:4px 0 6px}.od-sm i{width:7px;height:7px;border-radius:50%;background:var(--o-ok)}
 .od-rg{display:block;margin:6px auto 10px}.od-rv{font:700 20px var(--o-font);fill:var(--o-ink)}.od-ru{font:11px var(--o-font);fill:var(--o-mut)}
-.od-sv{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid var(--o-bd);font-size:12px}.od-ok{color:var(--o-ok);font-weight:600;font-size:11px}
+.od-sv{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid var(--o-bd);font-size:12px}.od-ok{color:var(--o-ok);font-weight:600;font-size:12px}
 .od-qa{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid var(--o-bd)}.od-qa div{display:flex;flex-direction:column}.od-qa>span{color:var(--o-mut);font-size:18px}
 @media(max-width:1000px){.od{grid-template-columns:1fr}.od-side{display:none}.od-grid{grid-template-columns:1fr}.od-k4{grid-template-columns:repeat(2,minmax(0,1fr))}.od-g2{grid-template-columns:1fr}}
+
+.od-eye,.od-tbl th{font-size:11px}
+.od-tbl{overflow-x:auto;max-width:100%}.od-tbl table{min-width:520px}
+.od-k,.od-top,.od-user,.od-search{min-width:0}.od-k{padding-bottom:32px}.od-ch{overflow:hidden}.od-x-minor{visibility:hidden}
+.od-top{flex-wrap:wrap}.od-search{flex-basis:160px}
+.od :is(a,button,input,select,summary,[tabindex]):focus-visible{outline:3px solid var(--o-ink);outline-offset:3px;box-shadow:0 0 0 6px var(--o-surf)}
+@media(min-width:768px) and (max-width:1100px){.od-grid,.od-g2{grid-template-columns:minmax(0,1fr)}.od-k4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.od-ch text{font-size:30px}.od-x-label:last-of-type{visibility:hidden}.od-kv{font-size:20px}}
 </style>
