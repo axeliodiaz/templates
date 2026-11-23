@@ -6,7 +6,7 @@
 .sc-app{display:grid;grid-template-columns:190px 1fr;gap:16px;min-width:0}
 .sc-side{background:var(--surf);border:1px solid var(--bd);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:2px;min-height:420px}
 .sc-brand{display:flex;gap:8px;align-items:center;padding:4px 6px 12px;font-weight:600}.sc-brand i{width:26px;height:26px;border-radius:7px;background:var(--ink);display:block}.sc-brand small{display:block;color:var(--muted);font-weight:400;font-size:11px}
-.sc-lab{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:12px 8px 4px}
+.sc-lab{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:12px 8px 4px}
 .sc-nav{display:flex;justify-content:space-between;align-items:center;padding:7px 8px;border-radius:8px;color:#33363b}.sc-nav.on{background:var(--bg);font-weight:600}
 .sc-main{min-width:0;display:flex;flex-direction:column;gap:12px}
 .sc-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.sc-search{flex:1;min-width:140px;background:var(--surf);border:1px solid var(--bd);border-radius:9px;padding:7px 10px;color:var(--faint)}.sc-search kbd{float:right;background:var(--bg);border-radius:4px;padding:0 5px;font:inherit;font-size:11px}
@@ -14,7 +14,7 @@
 .sc h4.sc-hi{font-size:19px;font-weight:600}.sc .sc-sub{color:var(--muted);font-size:12px}
 .sc-grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.sc-grid2{display:grid;grid-template-columns:1.9fr 1fr;gap:12px}.sc-grid2e{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .sc-card{background:var(--surf);border:1px solid var(--bd);border-radius:14px;padding:12px;box-shadow:var(--sh);min-width:0}
-.sc-cl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+.sc-cl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
 .sc-kpi{font-size:24px;font-weight:600;letter-spacing:-.02em}.sc-kpi small{font-size:12px;color:var(--muted);font-weight:400;letter-spacing:0}
 .sc-chip{display:inline-block;padding:1px 7px;border-radius:6px;font-size:11px;font-weight:600}.sc-chip.up{background:var(--ok-soft);color:var(--ok)}.sc-chip.dn{background:var(--bad-soft);color:var(--bad)}.sc-chip.wn{background:var(--warn-soft);color:var(--warn)}.sc-chip.bl{background:var(--blue-soft);color:var(--blue)}.sc-chip.gr{background:var(--bg);color:var(--muted)}
 .sc-row{display:grid;grid-template-columns:30px 1fr auto auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--bd2)}.sc-row:first-of-type{border-top:0}
@@ -24,7 +24,7 @@
 .sc-tabs{display:flex;gap:2px;flex-wrap:wrap;background:var(--surf);border:1px solid var(--bd);border-radius:11px;padding:4px}.sc-tabs span{padding:5px 10px;border-radius:7px;color:var(--muted)}.sc-tabs span.on{background:var(--bg);color:var(--text);font-weight:600}
 .sc-seg{display:inline-flex;gap:6px}.sc-seg span{padding:6px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--surf)}.sc-seg span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .sc-q{background:var(--surf);border:1px solid var(--bd);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:10px}.sc-q.act{border-color:var(--ink)}
-.sc-q .why{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--bd2);padding-top:8px;color:var(--muted);font-size:12px}.sc-q .why b{display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.sc-q .why b.e{color:var(--blue)}
+.sc-q .why{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--bd2);padding-top:8px;color:var(--muted);font-size:12px}.sc-q .why b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.sc-q .why b.e{color:var(--blue)}
 .sc-big{font-size:26px;font-weight:600}
 .sc-gauge{display:flex;flex-direction:column;align-items:center}
 .sc-doc{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px}.sc-doc h5{font-size:22px;font-weight:600}

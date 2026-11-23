@@ -20,7 +20,7 @@ const values = computed(() => periods.map((_, i) => {
 }))
 const complete = computed(() => values.value.slice(0, -1))
 const max = computed(() => Math.max(10, ...values.value.filter((v) => v !== null)) * 1.15)
-const W = 360, H = 190, L = 34, B = 24, T = 14
+const W = 360, H = 190, L = 62, B = 24, T = 14
 const bw = computed(() => (W - L - 8) / periods.length)
 const x = (i) => L + i * bw.value + bw.value * 0.18
 const y = (v) => T + (H - T - B) * (1 - v / max.value)
@@ -53,7 +53,7 @@ const ticks = computed(() => [0, 0.5, 1].map((t) => Math.round((max.value / 1.15
   <div class="st-bar" role="group" aria-label="Series filter">
     <button v-for="o in options" :key="o.id" type="button" class="st-btn" :aria-pressed="sel === o.id" @click="choose(o.id)">{{ o.label }}</button>
   </div>
-  <svg :key="run" class="st-plot" :viewBox="`0 0 ${W} ${H}`" role="img" :aria-label="label">
+  <div class="st-scroll"><svg :key="run" class="st-plot" :viewBox="`0 0 ${W} ${H}`" role="img" :aria-label="label">
     <g v-for="t in ticks" :key="t"><line :x1="L" :x2="W - 4" :y1="y(t)" :y2="y(t)" class="st-grid"/><text :x="L - 6" :y="y(t) + 4" text-anchor="end" class="st-tick">${{ t }}</text></g>
     <g v-for="(v, i) in values" :key="periods[i]">
       <rect v-if="v !== null" :x="x(i)" :y="y(v)" :width="bw * 0.64" :height="H - B - y(v)" rx="4" class="st-bar-rect" :class="{ 'is-current': i === periods.length - 1 }" :style="{ animationDelay: `${i * 60}ms` }"/>
@@ -62,7 +62,7 @@ const ticks = computed(() => [0, 0.5, 1].map((t) => Math.round((max.value / 1.15
       <text v-if="v !== null" :x="x(i) + bw * 0.32" :y="y(v) - 4" text-anchor="middle" class="st-val" :style="{ animationDelay: `${i * 60 + 250}ms` }">{{ v }}</text>
     </g>
     <path v-if="line" :d="line" class="st-trend" vector-effect="non-scaling-stroke"/>
-  </svg>
+  </svg></div>
   <p class="st-note">{{ note }} Sep is the current month and is left out.</p>
   <table class="st-list"><tbody>
     <tr v-for="(v, i) in values" :key="periods[i]"><th scope="row">{{ periods[i] }}{{ i === periods.length - 1 ? ' (current)' : '' }}</th><td>{{ v === null ? '—' : `$${v.toLocaleString('en-US')}` }}</td></tr>
@@ -77,10 +77,10 @@ const ticks = computed(() => [0, 0.5, 1].map((t) => Math.round((max.value / 1.15
 .st-btn:hover{border-color:var(--cg-accent)}
 .st-btn[aria-pressed="true"]{background:var(--cg-accent);border-color:var(--cg-accent);color:var(--cg-ink)}
 .st-btn:focus-visible{outline:2px solid var(--cg-accent);outline-offset:2px}
-.st-plot{width:100%;height:auto;display:block}
+.st-scroll{overflow-x:auto;max-width:100%}.st-plot{min-width:0;width:100%;height:auto;display:block}
 .st-grid{stroke:var(--cg-line);stroke-dasharray:3 3}
-.st-tick{fill:var(--cg-muted);font-size:10px;font-variant-numeric:tabular-nums}
-.st-val{fill:var(--cg-text);font-size:10px;font-weight:600;font-variant-numeric:tabular-nums;animation:cg-reveal .35s both}
+.st-tick{fill:var(--cg-muted);font-size:18px;font-variant-numeric:tabular-nums}
+.st-val{fill:var(--cg-text);font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;animation:cg-reveal .35s both}
 .st-bar-rect{fill:var(--cg-accent);transform-box:fill-box;transform-origin:bottom;animation:st-grow .5s cubic-bezier(.2,.8,.2,1) both}
 .st-bar-rect.is-current{opacity:.45}
 .st-trend{fill:none;stroke:var(--cg-text);stroke-width:2;stroke-linecap:round;stroke-dasharray:3000;animation:st-draw .7s ease-out .45s both}
