@@ -1,0 +1,156 @@
+[
+  {
+    "name": "Assay",
+    "source": "/assay",
+    "route": "/assay/agent-crew",
+    "variants": "Light only",
+    "adapter": "Assay evaluation lab palette (assay.css orch-assay tokens)"
+  },
+  {
+    "name": "Felix",
+    "source": "/felix",
+    "route": "/felix/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Felix route tokens"
+  },
+  {
+    "name": "Meadow",
+    "source": "/home-care",
+    "route": "/home-care/agent-crew",
+    "variants": "Light + local dark",
+    "adapter": "Local homecare palette"
+  },
+  {
+    "name": "Margin",
+    "source": "/margin",
+    "route": "/margin/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Page-theme tokens"
+  },
+  {
+    "name": "Evertrue",
+    "source": "/evertrue",
+    "route": "/evertrue/agent-crew",
+    "variants": "Light only",
+    "adapter": "Fixed cream terminal palette"
+  },
+  {
+    "name": "Sentinel",
+    "source": "/agent-security",
+    "route": "/agent-security/agent-crew",
+    "variants": "Light + local dark",
+    "adapter": "Local lab palette, isolated from shell"
+  },
+  {
+    "name": "Brief",
+    "source": "/agent-onboarding",
+    "route": "/agent-onboarding/agent-crew",
+    "variants": "Light + local dark",
+    "adapter": "Local lab palette, isolated from shell"
+  },
+  {
+    "name": "Pace",
+    "source": "/fitness; /pace",
+    "route": "/pace/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Shared page-theme family"
+  },
+  {
+    "name": "Cargo",
+    "source": "/trade-finance",
+    "route": "/trade-finance/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Page-theme tokens"
+  },
+  {
+    "name": "Trial journey",
+    "source": "/trial-journey",
+    "route": "/trial-journey/agent-crew",
+    "variants": "Dark only",
+    "adapter": "Chart example, shared dark shell"
+  },
+  {
+    "name": "Relay",
+    "source": "/relay",
+    "route": "/relay/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Page-theme tokens"
+  },
+  {
+    "name": "Folio",
+    "source": "/folio; /trading-panel",
+    "route": "/folio/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Shared page-theme family"
+  },
+  {
+    "name": "Spark",
+    "source": "/spark; /spark-analytics",
+    "route": "/spark/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Shared page-theme family"
+  },
+  {
+    "name": "Bastion",
+    "source": "/bastion",
+    "route": "/bastion/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Page-theme tokens, square mono panels"
+  },
+  {
+    "name": "Lustro",
+    "source": "/lustro",
+    "route": "/lustro/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Default shell and Lustro switch"
+  },
+  {
+    "name": "PulseFit",
+    "source": "/pulsefit",
+    "route": "/pulsefit/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Dedicated theme classes"
+  },
+  {
+    "name": "Scopecraft",
+    "source": "/scopecraft",
+    "route": "/scopecraft/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Dedicated theme classes"
+  },
+  {
+    "name": "Lumen",
+    "source": "/lumen",
+    "route": "/lumen/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Dedicated theme classes"
+  },
+  {
+    "name": "Pawprint",
+    "source": "/pawprint",
+    "route": "/pawprint/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Dedicated theme classes"
+  },
+  {
+    "name": "Umail",
+    "source": "/umail",
+    "route": "/umail/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Legacy page-theme tokens"
+  },
+  {
+    "name": "Fixtrack",
+    "source": "/fixtrack",
+    "route": "/fixtrack/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Legacy page-theme tokens"
+  },
+  {
+    "name": "Crestway",
+    "source": "/crestway-financials",
+    "route": "/crestway-financials/agent-crew",
+    "variants": "Light + dark",
+    "adapter": "Legacy page-theme tokens"
+  }
+]

@@ -7,7 +7,7 @@
 .lmn-side{padding:12px;border-right:1px solid var(--bd);display:flex;flex-direction:column;gap:1px;background:var(--app)}
 .lmn-brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:17px;padding:2px 4px 10px}.lmn-brand i{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle,#fff 0 22%,var(--amber) 24%);display:block;border:2px solid #1d1306}
 .lmn-ss{border:1px solid var(--bd);border-radius:9px;padding:7px 9px;color:var(--faint);background:#fff;margin-bottom:6px}.lmn-ss kbd{float:right;font:inherit;font-size:11px}
-.lmn-lab{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:12px 6px 4px}
+.lmn-lab{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:12px 6px 4px}
 .lmn-nav{display:flex;gap:8px;align-items:center;padding:7px 8px;border-radius:8px;color:#34363b}.lmn-nav.on{background:#eeeeed;font-weight:600}.lmn-nav u{width:12px;height:12px;border-radius:3px;border:1.5px solid #8b8d93;display:inline-block;text-decoration:none}
 .lmn-user{margin-top:auto;display:flex;gap:8px;align-items:center;border:1px solid var(--bd);background:#f3f3f2;border-radius:10px;padding:7px}.lmn-user i{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c89b6a,#6b4a30);display:block}.lmn-user small{display:block;color:var(--muted);font-size:11px}
 .lmn-main{min-width:0;display:flex;flex-direction:column}
@@ -49,9 +49,14 @@
 .lmn-chip.outline{background:var(--surf);color:var(--text);box-shadow:inset 0 0 0 1px var(--bd)}
 .lmn-chip.has-dot:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:middle}
 .lmn-chip.pill{border-radius:999px}
-.lmn-chip.sm{font-size:10.5px;padding:0 7px}
+.lmn-chip.sm{font-size:11px;padding:0 7px}
 .lmn-seg button{padding:4px 11px;border:0;border-radius:7px;background:transparent;color:var(--muted);font:inherit;cursor:pointer}
 .lmn-seg button[aria-pressed="true"]{background:var(--surf);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
 .lmn-btn.ico{width:42px;height:42px;padding:0;justify-content:center;border-radius:50%;position:relative;cursor:pointer}.lmn-btn.ico[aria-pressed=true]{border-color:var(--purple);color:#5446c9}
 .lmn-input.pill{border-radius:999px}select.lmn-input{min-width:0;font:inherit;color:var(--text)}.lmn-input.on{border-color:var(--purple);box-shadow:0 0 0 3px #7c6cf029}
 .lmn table.lmn-t{border-collapse:collapse;width:100%}.lmn table.lmn-t th{color:var(--muted);background:var(--surf);border-bottom:1px solid var(--bd);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:8px;text-align:left}.lmn table.lmn-t td{border-bottom:1px solid var(--bd2);padding:9px 8px;vertical-align:middle}
+
+/* Ink follows the active light/dark surface and stays visible around controls. */
+.lmn :is(button,a,input,select,textarea,[tabindex]):focus-visible{outline:3px solid var(--text);outline-offset:3px}
+@media(forced-colors:active){.lmn :focus-visible{outline-color:Highlight}}
+.lmn small{font-size:11px}

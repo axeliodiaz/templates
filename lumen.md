@@ -49,3 +49,8 @@ The extended Bootstrap gallery uses **Bootstrap 6.0.0-alpha.1** (pinned with int
 ## Agent orchestration
 
 [Open the Lumen orchestration demo](/lumen/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Lumen agent crew demo](/lumen/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

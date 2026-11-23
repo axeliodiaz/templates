@@ -48,3 +48,8 @@ Original pattern implementation. Credit: [Dapson](https://x.com/tp_dapson/status
 ## Agent orchestration
 
 [Open the Cargo orchestration demo](/trade-finance/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Cargo agent crew demo](/trade-finance/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

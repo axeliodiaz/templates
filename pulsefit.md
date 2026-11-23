@@ -57,3 +57,8 @@ Chart series: gold `#C9A66B`, charcoal `#333`, bronze `#8b7355`, sand `#d4c4a8`,
 ## Agent orchestration
 
 [Open the PulseFit orchestration demo](/pulsefit/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the PulseFit agent crew demo](/pulsefit/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

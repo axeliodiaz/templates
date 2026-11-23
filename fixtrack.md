@@ -21,3 +21,8 @@ Cards rise 8px and fade in over 280ms. Chart lines and bars still reveal on load
 ## Agent orchestration
 
 [Open the Fixtrack orchestration demo](/fixtrack/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Fixtrack agent crew demo](/fixtrack/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.

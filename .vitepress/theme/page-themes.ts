@@ -2,6 +2,7 @@
 // Existing templates that ship their own theme files (felix, lumen, pawprint, pulsefit, scopecraft, lustro) are not listed here.
 export interface PageTheme { id: string; base: string; defaultDark?: boolean }
 export const PAGE_THEMES: PageTheme[] = [
+  { id: 'assay', base: '/assay' },
   { id: 'umail', base: '/umail' },
   { id: 'folio', base: '/folio', defaultDark: true },
   { id: 'folio', base: '/trading-panel', defaultDark: true },

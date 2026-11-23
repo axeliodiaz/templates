@@ -42,3 +42,8 @@ Big balance, an open position with entry, take-profit and liquidation levels, a 
 ## Agent orchestration
 
 [Open the Folio orchestration demo](/folio/agent-orchestration) for a simulated multi-agent run, trace, usage and events in this template language.
+
+
+## Agent crew
+
+[Open the Folio agent crew demo](/folio/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
