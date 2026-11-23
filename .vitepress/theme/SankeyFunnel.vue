@@ -113,7 +113,7 @@ onUnmounted(()=>{disposed=true;cancelAnimationFrame(raf);settle();media?.removeE
 <g class="tj-nodes">
 <g v-for="n in model.nodes" :key="n.id" class="tj-node" :class="[n.kind,{on:picked===n.id}]" tabindex="0" role="button" :aria-label="`${n.id}: ${fmt(n.v)}`" @mouseenter="picked=n.id" @focus="picked=n.id" @click="picked=n.id" @keydown.enter.prevent="picked=n.id">
 <rect :x="n.x" :y="n.y" :width="nodeW" :height="n.h" rx="2"/>
-<text :x="n.x<W/2?n.x+nodeW+6:n.x-6" :y="n.y+Math.min(n.h/2,14)" :text-anchor="n.x<W/2?'start':'end'">{{n.id}}<tspan :x="n.x<W/2?n.x+nodeW+6:n.x-6" dy="12">{{fmt(n.v)}}</tspan></text>
+<text :x="n.x<W/2?n.x+nodeW+6:n.x-6" :y="n.y+Math.min(n.h/2,14)" :text-anchor="n.x<W/2?'start':'end'">{{n.id}}<tspan :x="n.x<W/2?n.x+nodeW+6:n.x-6" dy="15">{{fmt(n.v)}}</tspan></text>
 </g>
 </g>
 <g class="tj-particles" aria-hidden="true"></g>
@@ -131,22 +131,22 @@ onUnmounted(()=>{disposed=true;cancelAnimationFrame(raf);settle();media?.removeE
 .tj-head>div{min-width:0}
 .tj .tj-title{margin:0;border:0;padding:0;font-size:17px;letter-spacing:0;color:var(--ink)}
 .tj p{margin:4px 0 0;color:var(--mute);font-size:12px}
-.tj-pill{font-size:10px;font-weight:500;padding:2px 7px;border-radius:99px;background:var(--vp-c-default-soft);color:var(--mute);vertical-align:middle}
+.tj-pill{font-size:12px;font-weight:500;padding:2px 7px;border-radius:99px;background:var(--vp-c-default-soft);color:var(--mute);vertical-align:middle}
 .tj-tools{display:flex;gap:8px;flex-wrap:wrap}
 .tj-tools [role=group]{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.tj button{font:inherit;font-size:11px;color:var(--mute);background:transparent;border:1px solid var(--line);border-radius:8px;padding:5px 10px;cursor:pointer}
+.tj button{font:inherit;font-size:12px;color:var(--mute);background:transparent;border:1px solid var(--line);border-radius:8px;padding:5px 10px;cursor:pointer}
 .tj-tools [role=group] button{border:0;border-radius:0}
 .tj button.on{background:var(--vp-c-default-soft);color:var(--ink)}
 .tj button:disabled{opacity:.45;cursor:default}
 .tj button:focus-visible,.tj-node:focus-visible{outline:2px solid var(--vp-c-brand-1);outline-offset:2px}
 .tj-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
 .tj-kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:2px;min-width:0}
-.tj-kpi small{color:var(--mute);font-size:10px}
+.tj-kpi small{color:var(--mute);font-size:12px}
 .tj-kpi strong{font-size:18px}
-.tj-kpi span{font-size:11px;color:var(--mute)}
+.tj-kpi span{font-size:12px;color:var(--mute)}
 .tj-scroll{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;min-width:0}
-.tj svg{display:block;width:100%;min-width:640px;height:auto}
-.tj-col{fill:var(--mute);font-size:10px}
+.tj svg{display:block;width:100%;min-width:900px;height:auto}
+.tj-col{fill:var(--mute);font-size:12px}
 .tj-link{pointer-events:none;stroke:var(--vp-c-text-3);opacity:.35;transition:opacity .2s}
 .tj-link.drop{stroke:var(--down)}
 .tj-link.win{stroke:var(--up)}
@@ -155,18 +155,23 @@ onUnmounted(()=>{disposed=true;cancelAnimationFrame(raf);settle();media?.removeE
 .tj-node.drop rect{fill:var(--down)}
 .tj-node.win rect{fill:var(--up)}
 .tj-node{cursor:pointer;outline:none}
-.tj-node text{fill:var(--ink);font-size:10px;paint-order:stroke;stroke:var(--vp-c-bg-soft);stroke-width:3px;stroke-linejoin:round}
+.tj-node text{fill:var(--ink);font-size:12px;paint-order:stroke;stroke:var(--vp-c-bg-soft);stroke-width:3px;stroke-linejoin:round}
 .tj-node tspan{fill:var(--mute)}
 .tj-node.on text{font-weight:700}
 .tj-dot{fill:var(--vp-c-text-1);pointer-events:none}
 .tj-dot.drop{fill:var(--down)}
 .tj-detail{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;font-size:12px}
 .tj-detail span{color:var(--mute)}
-.tj-detail em{font-style:normal;font-size:10px;padding:2px 7px;border-radius:99px;background:color-mix(in srgb,var(--down) 22%,transparent);color:var(--ink)}
+.tj-detail em{font-style:normal;font-size:12px;padding:2px 7px;border-radius:99px;background:color-mix(in srgb,var(--down) 22%,transparent);color:var(--ink)}
 .tj-detail em.win{background:color-mix(in srgb,var(--up) 22%,transparent);color:var(--ink)}
-.tj-foot{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px!important;font-size:10px!important}
+.tj-foot{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px!important;font-size:12px}
 .tj-foot i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;background:var(--up)}
 .tj-foot i.drop{background:var(--down)}
 @media(max-width:600px){.tj{padding:12px;margin:12px 0}.tj-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.tj *{transition:none!important;animation:none!important}}
+
+/* Keep chart labels at their authored size; narrow screens scroll the chart only. */
+.tj-scroll{max-width:100%}
+.tj-col,.tj-node text{font-size:12px}
+@media(max-width:700px){.tj button{min-height:44px}.tj-tools [role=group]{flex-wrap:wrap}.tj-tools{max-width:100%}}
 </style>
