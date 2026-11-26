@@ -15,7 +15,6 @@ const routes = [
   '/margin/customize/color',
 ]
 
-<<<<<<< HEAD
 
 const server = spawn(path.join(root, 'node_modules/.bin/vitepress'), ['dev', root, '--port', '4348'], {
   stdio: 'ignore',
@@ -23,12 +22,6 @@ const server = spawn(path.join(root, 'node_modules/.bin/vitepress'), ['dev', roo
 try {
   let ready = false
   for (let i = 0; i < 160; i++) {
-=======
-const server = spawn(path.join(root, 'node_modules/.bin/vitepress'), ['dev', root, '--port', '4348'], { stdio: 'ignore' })
-try {
-  let ready = false
-  for (let i = 0; i < 120; i++) {
->>>>>>> origin/main
     try {
       if ((await fetch('http://localhost:4348/margin/components/accordion')).ok) {
         ready = true
@@ -41,7 +34,6 @@ try {
   const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox'] })
   const page = await browser.newPage({ viewport: { width: 1024, height: 900 } })
   for (const r of routes) {
-<<<<<<< HEAD
     await page.goto(`http://localhost:4348${r}`, { waitUntil: 'domcontentloaded' })
     await page.locator('.vp-doc h1').first().waitFor({ state: 'visible', timeout: 30000 })
     await page
@@ -78,19 +70,6 @@ try {
   }
   await browser.close()
   console.log('Saved validated screenshots for', routes.length, 'routes')
-=======
-    await page.goto(`http://localhost:4348${r}`, { waitUntil: 'networkidle' })
-    const slug = r.split('/').pop()
-    await page.screenshot({ path: path.join(out, `margin-after-${slug}-1024-light.png`) })
-    const btn = page.getByRole('button', { name: /dark preview/i }).first()
-    if (await btn.count()) {
-      await btn.click()
-      await page.waitForTimeout(400)
-      await page.screenshot({ path: path.join(out, `margin-after-${slug}-1024-dark-preview.png`) })
-    }
-  }
-  await browser.close()
->>>>>>> origin/main
 } finally {
   server.kill()
 }

@@ -338,7 +338,6 @@ html[data-tpl='margin'] .margin-bs6-root article.card h3 {
   --muted: #aab3c3;
   --line: #404757;
   --soft: #303747;
-<<<<<<< HEAD
 }
 
 /* BS6 doc previews: visible demo chips (utilities, layout, helpers) */
@@ -397,6 +396,4 @@ html[data-tpl='margin'] .mg-guide-preview .margin-content-demo .mg-content-block
   border: 1px solid var(--line, var(--k-border));
   border-radius: 10px;
   background: var(--surface, var(--b2-surface));
-=======
->>>>>>> origin/main
 }

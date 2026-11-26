@@ -7,11 +7,7 @@ const name = ref('')
 const email = ref('')
 </script>
 <template>
-<<<<<<< HEAD
   <div class="lab b2-bs6 b2-margin margin-bs6-root margin-bs6-forms">
-=======
-  <div class="lab b2-bs6 b2-margin margin-bs6-forms">
->>>>>>> origin/main
     <section v-show="show('overview')" class="l-demo l-form">
       <p>Forms use scoped Bootstrap 6 controls with Margin <code>.lab</code> tokens. Pair fields with visible labels; keep errors in text, not color alone.</p>
       <label class="form-label" for="mg-overview-name">Workspace</label>
