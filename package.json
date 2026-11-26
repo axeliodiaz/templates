@@ -35,6 +35,7 @@
     "test:reference-dashboards-themes": "node tests/reference-dashboards-themes.cjs",
     "test:pulse-dashboard-a11y": "node tests/pulse-dashboard-a11y.cjs",
     "test:margin-projects:a11y": "node tests/margin-projects-a11y.cjs",
+    "audit:margin-buttons": "node scripts/audit-margin-button-render.mjs",
     "test:standalone-exports:a11y": "node tests/standalone-exports-a11y.cjs",
     "build:assay-bs6": "node scripts/build-assay-bs6.mjs",
     "test:assay": "node tests/assay-dashboard.cjs",
