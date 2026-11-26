@@ -322,6 +322,12 @@ export default {
         nextTick(() => setTimeout(mountFxCharts, 150))
       })
     }
-    return h(DefaultTheme.Layout, null, { 'doc-after': () => h(TemplateSideDrawer, { key: route.path }) })
+    return h(DefaultTheme.Layout, null, {
+      'doc-after': () => {
+        const p = route.path
+        if (p === '/margin' || p.startsWith('/margin/')) return null
+        return h(TemplateSideDrawer, { key: p })
+      },
+    })
   }
 }
