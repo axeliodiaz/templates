@@ -9,3 +9,4 @@ node_modules
 .vitepress/theme/bastion-bs6.bootstrap.css
 .vitepress/theme/relay-bs6.bootstrap.css
 test-results/
+__pycache__/
