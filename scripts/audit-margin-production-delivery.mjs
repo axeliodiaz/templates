@@ -95,7 +95,7 @@ const t0 = Date.now()
 await page.locator('.VPSidebar a[href*="/margin/components/alert"]').first().click()
 await page.locator('.vp-doc h1').first().waitFor({ state: 'visible' })
 const dt = Date.now() - t0
-const hasCatalog = await page.locator('.mg-guide-preview .list-group, .mg-guide-preview .alert').first().isVisible()
+const hasCatalog = await page.locator('.mg-guide-preview .mg-guide-frame .margin-bs6-root').isVisible()
 hasCatalog && dt < 8000 ? pass('nav_flicker', `nav ${dt}ms; preview visible`) : fail('nav_flicker', `dt=${dt} catalog=${hasCatalog}`)
 
 // --- Component spot checks ---
@@ -146,10 +146,11 @@ await runStep('dialog_modal', async () => {
   await dialog.waitFor({ state: 'visible', timeout: 20000 })
   const box = await dialog.boundingBox()
   const vp = page.viewportSize()
+  const cy = box.y + box.height / 2
   const cx = Math.abs(box.x + box.width / 2 - vp.width / 2) < vp.width * 0.1
-  const topOk = box.y >= 8 && box.y <= vp.height * 0.4
+  const vert = Math.abs(cy - vp.height / 2) < vp.height * 0.15
   await page.keyboard.press('Escape')
-  cx && topOk ? pass('dialog_modal', `y=${Math.round(box.y)}`) : fail('dialog_modal', JSON.stringify(box))
+  cx && vert ? pass('dialog_modal', `centerY=${Math.round(cy)}`) : fail('dialog_modal', JSON.stringify(box))
 })
 
 await runStep('placeholders', async () => {
