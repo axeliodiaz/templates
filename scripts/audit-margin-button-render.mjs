@@ -105,8 +105,12 @@ const refOk = await refBtn.evaluate((node) => {
   const s = getComputedStyle(node)
   return {
     paddingTop: s.paddingTop,
+    paddingLeft: s.paddingLeft,
     backgroundColor: s.backgroundColor,
     borderTopWidth: s.borderTopWidth,
+    borderTopStyle: s.borderTopStyle,
+    borderTopColor: s.borderTopColor,
+    textDecorationLine: s.textDecorationLine,
   }
 })
 if (!looksStyled(refOk, 'btn-solid theme-primary')) {
