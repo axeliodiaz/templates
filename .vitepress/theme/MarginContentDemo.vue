@@ -27,7 +27,7 @@ const show = (id: string) => !props.section || props.section === id
         <figcaption class="figure-caption">Fig. 1 — Fictitious weekly margin trend.</figcaption>
       </figure>
     </section>
-    <section v-show="show('tables-figures')" class="mg-content-block" aria-label="Tables and figures">
+    <section v-show="show('tables') || show('tables-figures')" class="mg-content-block" aria-label="Tables">
       <div class="table-responsive">
         <table class="table table-striped table-hover align-middle">
           <caption class="caption-top">Sample job margins</caption>
@@ -42,6 +42,14 @@ const show = (id: string) => !props.section || props.section === id
         <blockquote class="blockquote"><p>Job #5812 lost 4.2 pts vs plan.</p></blockquote>
         <figcaption class="blockquote-footer">Operations review · Nov 2026</figcaption>
       </figure>
+    </section>
+    <section v-show="show('prose')" class="mg-content-block" aria-label="Prose">
+      <article>
+        <h3>Margin narrative</h3>
+        <p>Prose blocks use rebooted heading and paragraph styles inside <code>.lab</code>. Prefer <a href="/margin/content/typography">typography</a> for display utilities and the <a href="/margin">Margin overview</a> for dashboard type roles (DM Sans / Space Grotesk).</p>
+        <hr />
+        <p><abbr title="Gross margin">GM</abbr> reviews combine tables and short paragraphs.</p>
+      </article>
     </section>
   </div>
 </template>
