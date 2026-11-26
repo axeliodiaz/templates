@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+/**
+ * Static route map audit (demos registered). For styled controls, run:
+ *   node scripts/audit-margin-button-render.mjs
+ */
 import fs from 'node:fs'
 import { MARGIN_BS6_IA } from './margin-bs6-ia.mjs'
 
@@ -21,15 +25,6 @@ function hasProsePreview(routeKey) {
 const PROSE = new Set(['getting-started', 'guides', 'customize'])
 const emptyGeneric = []
 const proseNoPreview = []
-const unstyledButtons = []
-
-const btnRe = /class="[^"]*\bbtn\b(?!\-\w)[^"]*"/g
-for (const m of genericSrc.matchAll(btnRe)) {
-  if (!m[0].includes('btn-solid') && !m[0].includes('btn-outline')) unstyledButtons.push({ source: 'generic-demos', match: m[0] })
-}
-for (const m of proseSrc.matchAll(btnRe)) {
-  if (!m[0].includes('btn-solid') && !m[0].includes('btn-outline')) unstyledButtons.push({ source: 'prose', match: m[0] })
-}
 
 for (const [key, block] of Object.entries(MARGIN_BS6_IA)) {
   const area = key === 'gettingStarted' ? 'getting-started' : key
@@ -48,13 +43,12 @@ for (const [key, block] of Object.entries(MARGIN_BS6_IA)) {
 console.log(
   JSON.stringify(
     {
+      note: 'Use scripts/audit-margin-button-render.mjs for Playwright btn styling checks.',
       emptyGenericFallback: emptyGeneric,
       proseTextOnlyNoLivePreview: proseNoPreview,
-      unstyledBtnClasses: unstyledButtons,
       summary: {
         emptyGenericCount: emptyGeneric.length,
         proseNoPreviewCount: proseNoPreview.length,
-        unstyledBtnCount: unstyledButtons.length,
       },
     },
     null,

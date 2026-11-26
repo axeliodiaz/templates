@@ -29,3 +29,29 @@ html[data-tpl='margin'] .vp-doc .mg-guide-preview .mg-guide-frame > :not(.mg-swa
 .mg-guide-preview .margin-bs6-forms .l-demo {
   box-shadow: none;
 }
+
+/* WCAG AA: Margin guide inline + fenced code on light/dark template pages */
+html[data-tpl='margin'] .vp-doc :not(pre) > code {
+  color: #1a2744;
+  background: #e2e6f0;
+  border: 1px solid color-mix(in srgb, #1a2744 12%, #e2e6f0);
+}
+html[data-tpl='margin'].tpl-dark .vp-doc :not(pre) > code {
+  color: #e8edf8;
+  background: #303747;
+  border-color: #4a5568;
+}
+html.dark[data-tpl='margin']:not(.tpl-dark) .vp-doc div[class*='language-'] span,
+html[data-tpl='margin']:not(.tpl-dark) .vp-doc div[class*='language-'] span {
+  color: #1a2744 !important;
+}
+html.dark[data-tpl='margin'].tpl-dark .vp-doc div[class*='language-'] span,
+html[data-tpl='margin'].tpl-dark .vp-doc div[class*='language-'] span {
+  color: #e8edf8 !important;
+}
+html[data-tpl='margin'] .vp-doc div[class*='language-'] {
+  --vp-code-block-bg: var(--tpl-bg-alt, #eceef5);
+}
+html[data-tpl='margin'].tpl-dark .vp-doc div[class*='language-'] {
+  --vp-code-block-bg: var(--tpl-bg-alt, #242833);
+}
