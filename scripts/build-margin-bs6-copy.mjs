@@ -161,7 +161,8 @@ function extractGeneric(key) {
   if (m) return m[1].trim()
   const [area, slug] = key.split('/')
   if (area === 'utilities') {
-    const util = new RegExp(`  '${slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}': \`([\\s\\S]*?)\``,)
+    const esc = slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const util = new RegExp(`(?:'${esc}'|${esc}): \`([\\s\\S]*?)\``,)
     const u = genericSrc.match(util)
     if (u) return u[1].trim()
   }
