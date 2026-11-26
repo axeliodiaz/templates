@@ -646,10 +646,11 @@ html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 button
   border: 1px solid var(--line, var(--k-border));
   color: var(--ink, var(--k-text));
 }
-html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 button.chip.active {
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 button.chip.active,
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .chip.active:not(.theme-success):not(.theme-danger) {
   background-color: var(--bs-primary-bg, #6389ea) !important;
   border-color: var(--bs-primary-bg, #6389ea) !important;
-  color: var(--bs-primary-contrast, #0f1528) !important;
+  color: #fff !important;
 }
 html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .chip:not(button) {
   border-radius: var(--bs-chip-border-radius, 50rem);

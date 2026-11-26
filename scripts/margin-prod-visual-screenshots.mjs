@@ -4,7 +4,9 @@ import { chromium } from 'playwright'
 import path from 'node:path'
 
 const out = '/opt/cursor/artifacts'
-const base = (process.env.MARGIN_AUDIT_BASE ?? 'https://templates.axeldiaz.com').replace(/\/$/, '')
+const argBase = process.argv.find((a, i) => process.argv[i - 1] === '--base')
+const base = (argBase ?? process.env.MARGIN_AUDIT_BASE ?? 'https://templates.axeldiaz.com').replace(/\/$/, '')
+const withSlash = (p) => (p.endsWith('/') ? p : `${p}/`)
 
 const routes = [
   { path: '/margin/components/alert', name: 'alerts-polish', zoom: '.mg-alert-demo' },
@@ -27,9 +29,10 @@ const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome'
 
 for (const r of routes) {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } })
-  await page.goto(`${base}${r.path}`, { waitUntil: 'networkidle', timeout: 120000 })
+  await page.goto(`${base}${withSlash(r.path)}`, { waitUntil: 'domcontentloaded', timeout: 120000 })
   await page.locator('.vp-doc h1').first().waitFor({ state: 'visible', timeout: 45000 })
-  await page.waitForTimeout(600)
+  await page.locator('.mg-guide-preview').first().waitFor({ state: 'visible', timeout: 45000 })
+  await page.waitForTimeout(1200)
   if (r.openModal) {
     await page.getByRole('button', { name: /Default modal/i }).click()
     await page.locator('.modal.show .modal-dialog').first().waitFor({ state: 'visible', timeout: 15000 })
@@ -40,7 +43,7 @@ for (const r of routes) {
   } else {
     const sel = r.zoom ?? '.mg-guide-preview .margin-bs6-root, .mg-guide-preview .margin-bs6-forms'
     const target = page.locator(sel).first()
-    await target.waitFor({ state: 'visible', timeout: 20000 })
+    await target.waitFor({ state: 'visible', timeout: 45000 })
     await target.screenshot({ path: path.join(out, `margin-prod-${r.name}-1024.png`) })
   }
   await page.close()
@@ -49,7 +52,7 @@ for (const r of routes) {
 // Mobile dialog open
 {
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } })
-  await page.goto(`${base}/margin/components/modal`, { waitUntil: 'networkidle' })
+  await page.goto(`${base}/margin/components/modal/`, { waitUntil: 'domcontentloaded' })
   await page.locator('h1').first().waitFor()
   await page.getByRole('button', { name: /Default modal/i }).click()
   await page.locator('.modal.show .modal-dialog').first().waitFor({ state: 'visible' })
