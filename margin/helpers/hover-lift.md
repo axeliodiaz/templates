@@ -7,6 +7,4 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Hover lift
 
-Mirrors [Bootstrap v6.0 · Hover lift](https://getbootstrap.com/docs/6.0/helpers/hover-lift/) with Margin `.lab` / `b2-margin` styling.
-
 <MarginBs6Doc area="helpers" slug="hover-lift" label="Hover lift" />

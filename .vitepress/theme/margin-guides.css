@@ -24,6 +24,14 @@ html[data-tpl='margin'] .vp-doc .mg-guide-preview .mg-guide-frame > :not(.mg-swa
   background: var(--surface) !important;
   color: var(--ink) !important;
   border-color: var(--line) !important;
+  box-shadow: none !important;
+}
+html[data-tpl='margin'] .mg-guide-preview * {
+  view-transition-name: none;
+}
+html[data-tpl='margin'] .mg-guide-preview .tpl-content-enter-active,
+html[data-tpl='margin'] .mg-guide-preview .tpl-content-leave-active {
+  transition: none !important;
 }
 
 .mg-guide-preview .margin-bs6-forms .l-demo {

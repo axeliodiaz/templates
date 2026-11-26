@@ -22,7 +22,7 @@ Canonical \`.lab\` tokens with accent \`#6389ea\`. Swatches use automatic foregr
 <MarginBs6Doc area="customize" slug="color" label="${title}" />
 `
   }
-  const heading = isIndex ? `# ${title}\n\nIndex for Bootstrap v6 **${title}** docs on Margin tokens.` : `# ${title}`
+  const heading = isIndex ? `# ${title}\n\nMargin **${title}** reference with scoped \`.lab\` / \`b2-margin\` previews.` : `# ${title}`
   return `---
 pageClass: margin-scoped-guide
 ---
@@ -31,8 +31,6 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
 ${heading}
-
-Mirrors [Bootstrap v6.0 · ${title}](https://getbootstrap.com/docs/6.0/${area}/${slug === 'introduction' ? '' : slug}/) with Margin \`.lab\` / \`b2-margin\` styling.
 
 <MarginBs6Doc area="${area === 'gettingStarted' ? 'getting-started' : area}" slug="${slug}" label="${title}" />
 `

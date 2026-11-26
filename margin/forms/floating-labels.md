@@ -7,6 +7,4 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Floating labels
 
-Mirrors [Bootstrap v6.0 · Floating labels](https://getbootstrap.com/docs/6.0/forms/floating-labels/) with Margin `.lab` / `b2-margin` styling.
-
 <MarginBs6Doc area="forms" slug="floating-labels" label="Floating labels" />

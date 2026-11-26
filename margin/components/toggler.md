@@ -7,6 +7,4 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Toggler
 
-Mirrors [Bootstrap v6.0 · Toggler](https://getbootstrap.com/docs/6.0/components/toggler/) with Margin `.lab` / `b2-margin` styling.
-
 <MarginBs6Doc area="components" slug="toggler" label="Toggler" />

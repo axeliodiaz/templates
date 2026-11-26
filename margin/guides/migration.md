@@ -7,7 +7,7 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Migration
 
-Margin v6 doc routes mirror [Bootstrap 6.0](https://getbootstrap.com/docs/6.0/). Legacy paths redirect in `vercel.json`.
+Legacy paths redirect in `vercel.json`.
 
 ## Path changes
 

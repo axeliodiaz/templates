@@ -92,7 +92,7 @@ import MarginFormsSection from '../../.vitepress/theme/MarginFormsSection.vue'
 
 # ${title}
 
-Margin forms mirror Bootstrap’s form docs with \`form-control\`, labels, validation states, and layout utilities inside \`.lab\` / \`.b2-margin\`.
+Scoped \`form-control\` fields, labels, validation states, and layout utilities inside \`.lab\` / \`.b2-margin\`.
 
 <MarginFormsSection section="${sec}" label="${title}" />
 
