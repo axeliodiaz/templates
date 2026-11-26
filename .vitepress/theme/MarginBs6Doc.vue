@@ -15,7 +15,19 @@ const props = defineProps<{
   <MarginCustomizeColor v-if="area === 'customize' && slug === 'color'" :label="label" />
   <MarginCustomizeColor v-else-if="area === 'customize' && slug === 'color-modes'" mode-modes :label="label" />
   <MarginBs6Section v-else-if="area === 'components'" :section="slug" :label="label" />
-  <MarginFormsSection v-else-if="area === 'forms'" :section="['checkbox','radio'].includes(slug) ? 'checks-radios' : ['overview','form-control','select','range','input-group','floating-labels','layout','validation'].includes(slug) ? slug : 'form-control'" :label="label" />
+  <MarginFormsSection
+    v-else-if="area === 'forms'"
+    :section="
+      ['checkbox', 'radio'].includes(slug)
+        ? 'checks-radios'
+        : ['overview', 'form-control', 'field', 'form-adorn', 'select', 'combobox', 'range', 'input-group', 'floating-labels', 'layout', 'validation', 'switch', 'datepicker', 'otp-input', 'password-strength'].includes(slug)
+          ? slug === 'combobox'
+            ? 'combobox'
+            : slug
+          : 'form-control'
+    "
+    :label="label"
+  />
   <MarginContentSection v-else-if="area === 'content'" :section="slug === 'tables' ? 'tables-figures' : slug" :label="label" />
   <MarginBs6Generic v-else :area="area" :slug="slug" :label="label" />
 </template>

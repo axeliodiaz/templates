@@ -74,6 +74,53 @@ const email = ref('')
         </div>
       </div>
     </section>
+    <section v-show="show('field')" class="l-demo l-form">
+      <div class="field">
+        <label class="form-label" for="mg-field">Cost center</label>
+        <input id="mg-field" class="form-control" value="OPS-441" />
+        <p class="form-text mb-0">Field wrapper groups label, control, and help.</p>
+      </div>
+    </section>
+    <section v-show="show('form-adorn')" class="l-demo l-form">
+      <label class="form-label" for="mg-adorn">Rate</label>
+      <div class="input-group">
+        <input id="mg-adorn" class="form-control" type="number" value="32" aria-describedby="mg-adorn-suffix" />
+        <span id="mg-adorn-suffix" class="input-group-text">%</span>
+      </div>
+    </section>
+    <section v-show="show('switch')" class="l-demo l-form">
+      <div class="form-switch">
+        <input id="mg-sw" class="form-check-input" type="checkbox" role="switch" checked />
+        <label class="form-check-label" for="mg-sw">Include tax in margin</label>
+      </div>
+    </section>
+    <section v-show="show('combobox')" class="l-demo l-form">
+      <label class="form-label" for="mg-cb">Vendor</label>
+      <input id="mg-cb" class="form-control" list="mg-vendors" placeholder="Type to filter…" />
+      <datalist id="mg-vendors">
+        <option value="Northwind supplies" />
+        <option value="Contoso logistics" />
+      </datalist>
+    </section>
+    <section v-show="show('datepicker')" class="l-demo l-form">
+      <label class="form-label" for="mg-dp">Close date</label>
+      <input id="mg-dp" class="form-control" type="date" value="2026-11-26" />
+    </section>
+    <section v-show="show('otp-input')" class="l-demo l-form">
+      <p class="form-label" id="mg-otp-label">Verification code</p>
+      <div class="d-flex gap-2" role="group" aria-labelledby="mg-otp-label">
+        <input class="form-control text-center" inputmode="numeric" maxlength="1" aria-label="Digit 1" value="4" style="max-width:2.5rem" />
+        <input class="form-control text-center" inputmode="numeric" maxlength="1" aria-label="Digit 2" value="8" style="max-width:2.5rem" />
+        <input class="form-control text-center" inputmode="numeric" maxlength="1" aria-label="Digit 3" value="2" style="max-width:2.5rem" />
+      </div>
+    </section>
+    <section v-show="show('password-strength')" class="l-demo l-form">
+      <label class="form-label" for="mg-pw">Password</label>
+      <input id="mg-pw" class="form-control" type="password" value="Margin-demo" aria-describedby="mg-pw-meter" />
+      <div id="mg-pw-meter" class="progress mt-2" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+        <button type="button" class="progress-bar" style="width:60%">Medium</button>
+      </div>
+    </section>
     <section v-show="show('validation')" class="l-demo l-form">
       <form novalidate @submit.prevent="sent = true">
         <label class="form-label" for="mg-val">Project name</label>
