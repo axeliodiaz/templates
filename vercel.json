@@ -210,11 +210,6 @@
       "permanent": true
     },
     {
-      "source": "/margin/components/dialog",
-      "destination": "/margin/modules/dialog",
-      "permanent": true
-    },
-    {
       "source": "/margin/components/empty-loading",
       "destination": "/margin/modules/empty-loading",
       "permanent": true
@@ -236,6 +231,11 @@
     },
     {
       "source": "/margin/guides/dialog",
+      "destination": "/margin/components/dialog",
+      "permanent": true
+    },
+    {
+      "source": "/margin/modules/dialog",
       "destination": "/margin/components/dialog",
       "permanent": true
     },
