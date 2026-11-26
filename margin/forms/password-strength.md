@@ -7,6 +7,4 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Password strength
 
-Mirrors [Bootstrap v6.0 · Password strength](https://getbootstrap.com/docs/6.0/forms/password-strength/) with Margin `.lab` / `b2-margin` styling.
-
 <MarginBs6Doc area="forms" slug="password-strength" label="Password strength" />

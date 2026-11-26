@@ -7,6 +7,4 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Form adorn
 
-Mirrors [Bootstrap v6.0 · Form adorn](https://getbootstrap.com/docs/6.0/forms/form-adorn/) with Margin `.lab` / `b2-margin` styling.
-
 <MarginBs6Doc area="forms" slug="form-adorn" label="Form adorn" />

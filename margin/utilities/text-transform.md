@@ -7,6 +7,4 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Text transform
 
-Mirrors [Bootstrap v6.0 · Text transform](https://getbootstrap.com/docs/6.0/utilities/text-transform/) with Margin `.lab` / `b2-margin` styling.
-
 <MarginBs6Doc area="utilities" slug="text-transform" label="Text transform" />

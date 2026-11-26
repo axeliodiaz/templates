@@ -84,6 +84,21 @@
   color: var(--bs-btn-color);
   border-color: var(--bs-btn-border-color);
 }
+.b2-bs6 .input-group > :is(button, a).btn-solid,
+.b2-bs6 .input-group > :is(button, a).btn-outline,
+.b2-bs6 .input-group > .btn-solid,
+.b2-bs6 .input-group > .btn-outline,
+.b2-bs6 .input-group > .btn {
+  border-radius: 0;
+}
+.b2-bs6 .input-group > :first-child {
+  border-start-start-radius: var(--bs-control-border-radius, 0.5rem);
+  border-end-start-radius: var(--bs-control-border-radius, 0.5rem);
+}
+.b2-bs6 .input-group > :last-child {
+  border-start-end-radius: var(--bs-control-border-radius, 0.5rem);
+  border-end-end-radius: var(--bs-control-border-radius, 0.5rem);
+}
 .b2-bs6 .btn-link {
   border-color: transparent;
   background: transparent;
