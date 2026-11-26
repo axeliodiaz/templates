@@ -5,7 +5,9 @@ import { revealTheme } from './theme-reveal'
 const dashboardDark = ref(false)
 let themeObs: MutationObserver | undefined
 function readSiteDark() {
-  return document.documentElement.classList.contains('tpl-dark') || document.documentElement.classList.contains('dark')
+  const root = document.documentElement
+  if (root.classList.contains('lu-light')) return false
+  return root.classList.contains('tpl-dark') || root.classList.contains('dark')
 }
 function syncDashboardTheme() { dashboardDark.value = readSiteDark() }
 onMounted(() => {
@@ -21,6 +23,7 @@ function toggleDashboardTheme(e: Event) {
     const on = dashboardDark.value
     root.classList.toggle('tpl-dark', on)
     root.classList.toggle('dark', on)
+    root.classList.toggle('lu-light', !on)
     localStorage.setItem('tpl-theme-margin', on ? 'dark' : 'light')
   })
 }
