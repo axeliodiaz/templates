@@ -457,7 +457,17 @@ html[data-tpl='margin'] .mg-guide-preview .modal {
   z-index: var(--mg-modal-z);
 }
 html[data-tpl='margin'] .mg-guide-preview .modal.show {
-  display: block;
+  position: fixed;
+  inset: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+html[data-tpl='margin'] .mg-guide-preview .modal.show .modal-dialog {
+  margin: 0 auto;
 }
 html[data-tpl='margin'] .mg-guide-preview .modal-backdrop.show {
   position: fixed;
