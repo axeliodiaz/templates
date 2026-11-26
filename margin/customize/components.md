@@ -7,6 +7,6 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Components
 
-Mirrors [Bootstrap v6.0 · Components](https://getbootstrap.com/docs/6.0/customize/components/) with Margin `.lab` / `b2-margin` styling.
+Component surfaces inherit `--surface`, `--line`, and accent from `.lab`. Catalog sections set `kit-margin` variables in `margin-bs6.css`.
 
 <MarginBs6Doc area="customize" slug="components" label="Components" />

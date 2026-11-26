@@ -5,8 +5,12 @@ pageClass: margin-scoped-guide
 import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
-# CSS variables
+# Css Variables
 
-Mirrors [Bootstrap v6.0 · CSS variables](https://getbootstrap.com/docs/6.0/customize/css-variables/) with Margin `.lab` / `b2-margin` styling.
+Expose lab tokens to Bootstrap:
+
+```css
+.b2-margin { --b2-accent: #6389ea; --b2-on: #0f1528; }
+```
 
 <MarginBs6Doc area="customize" slug="css-variables" label="CSS variables" />

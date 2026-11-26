@@ -5,8 +5,8 @@ pageClass: margin-scoped-guide
 import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
-# RTL
+# Rtl
 
-Mirrors [Bootstrap v6.0 · RTL](https://getbootstrap.com/docs/6.0/customize/rtl/) with Margin `.lab` / `b2-margin` styling.
+Set `dir="rtl"` on a kit root; Bootstrap logical utilities mirror automatically.
 
 <MarginBs6Doc area="customize" slug="rtl" label="RTL" />

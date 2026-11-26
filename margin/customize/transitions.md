@@ -7,6 +7,6 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Transitions
 
-Mirrors [Bootstrap v6.0 · Transitions](https://getbootstrap.com/docs/6.0/customize/transitions/) with Margin `.lab` / `b2-margin` styling.
+Keep transitions tied to state changes; disable when `prefers-reduced-motion: reduce`.
 
 <MarginBs6Doc area="customize" slug="transitions" label="Transitions" />
