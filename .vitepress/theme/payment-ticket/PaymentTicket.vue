@@ -3,11 +3,8 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, useId,
 import { autoExploreScript, samplePaid } from './ticket.sample'
 import {
   countUpAmount,
-  keep,
   playEntrance,
   reducedNow,
-  runScan,
-  runTear,
   stopAll,
   type Controls,
   type MotionProfile,
@@ -59,8 +56,6 @@ const paperRef = ref<HTMLElement | null>(null)
 const stubRef = ref<HTMLElement | null>(null)
 const scanLineRef = ref<HTMLElement | null>(null)
 const barcodeRef = ref<HTMLElement | null>(null)
-const amountRef = ref<HTMLElement | null>(null)
-const lastFocusAct = ref<string | null>(null)
 const finePointer = ref(false)
 const tilt = ref({ x: 0, y: 0 })
 
@@ -80,14 +75,19 @@ const motionProfile = computed((): MotionProfile => {
   return 'default'
 })
 
-const errors = computed(() => {
-  if (props.demoState === 'invalid') return ['missing reference']
-  return validate(ticket.value)
-})
+const errors = computed(() => validate(ticket.value))
 const status = computed(() => ticket.value?.status ?? 'paid')
-const showEmpty = computed(() => props.demoState === 'empty' || ticket.value === null)
+const showEmpty = computed(() => ticket.value === null)
 const showDemoBar = computed(() => status.value === 'paid' && !showEmpty.value && errors.value.length === 0)
-const reduced = computed(() => (isClient ? reducedNow() : false))
+const reduced = ref(false)
+let disposed = false
+let generation = 0
+let scanTimer: ReturnType<typeof setTimeout> | undefined
+let scanFinishTimer: ReturnType<typeof setTimeout> | undefined
+let retryTimer: ReturnType<typeof setTimeout> | undefined
+let reducedHandler: (() => void) | undefined
+const scanning = ref(false)
+const scanned = ref(false)
 
 const barcode = computed(() => ticket.value ? barcodeBars(ticket.value.reference) : { bars: [] as [number, number][], width: 0 })
 const digitGroups = computed(() => ticket.value ? barcodeDigits(ticket.value.reference) : ['0', '', ''] as [string, string, string])
@@ -123,13 +123,14 @@ function stopExplore() {
 async function invoke(action: TicketAction): Promise<Ack> {
   if (!ticket.value) return { state: 'error', message: 'No ticket' }
   if (props.act) {
+    const revision = generation
     try {
       const result = await props.act(action, ticket.value)
-      emit('action', action, result)
+      if (!disposed && revision === generation) emit('action', action, result)
       return result
     } catch (e) {
       const result = { state: 'error' as const, message: String(e) }
-      emit('action', action, result)
+      if (!disposed && revision === generation) emit('action', action, result)
       return result
     }
   }
@@ -138,14 +139,15 @@ async function invoke(action: TicketAction): Promise<Ack> {
   return ack
 }
 
-function replayEntrance() {
+function replayEntrance(reset = true) {
   stopAll(motionSet)
+  for (const timer of [scanTimer, scanFinishTimer]) clearTimeout(timer)
+  scanned.value = scanning.value = false
   cardPinned.value = false
   cardHover.value = false
-  tornLocal.value = false
-  emit('update:torn', false)
+  if (reset) { tornLocal.value = false; emit('update:torn', false) }
   nextTick(() => {
-    if (!paperRef.value || !ticket.value) return
+    if (disposed || !paperRef.value || !ticket.value || reduced.value || status.value !== 'paid') return
     const minor = ticket.value.amount.minor
     playEntrance(paperRef.value, motionSet, motionProfile.value, (el, from, to) => {
       if (minor === null) el.textContent = 'n/a'
@@ -159,34 +161,41 @@ function loadSample() {
   replayEntrance()
 }
 
+function copyFailure() {
+  copyChip.value = 'failed'
+  announce('Copy unavailable. The number is selected; press Control or Command plus C')
+  const number = paperRef.value?.querySelector('.ticket__ref-text')
+  if (number) {
+    const range = document.createRange()
+    range.selectNodeContents(number)
+    const sel = window.getSelection()
+    sel?.removeAllRanges()
+    sel?.addRange(range)
+  }
+  emit('action', 'copy', { state: 'error', message: 'Copy unavailable' })
+}
 async function copyRef(userGesture: boolean) {
   if (!ticket.value || status.value !== 'paid') return
-  stopExplore()
-  if (userGesture && isClient && navigator.clipboard?.writeText) {
+  if (userGesture) stopExplore()
+  const revision = generation
+  if (userGesture) {
     try {
+      if (!navigator.clipboard?.writeText) throw new Error('Copy unavailable')
       await navigator.clipboard.writeText(ticket.value.reference)
+      if (disposed || revision !== generation) return
       copyChip.value = 'copied'
       announce('Ticket number copied')
-      await invoke('copy')
+      void invoke('copy')
     } catch {
-      copyChip.value = 'failed'
-      announce('Copy unavailable. The number is selected; press Control or Command plus C')
-      const btn = paperRef.value?.querySelector<HTMLButtonElement>('.ticket__ref')
-      btn?.focus()
-      if (btn && typeof document !== 'undefined') {
-        const range = document.createRange()
-        range.selectNodeContents(btn)
-        const sel = window.getSelection()
-        sel?.removeAllRanges()
-        sel?.addRange(range)
-      }
+      if (disposed || revision !== generation) return
+      copyFailure()
     }
-  } else if (!userGesture) {
+  } else {
     copyChip.value = 'copied'
     announce('Ticket number copied')
   }
   if (copyTimer) clearTimeout(copyTimer)
-  copyTimer = setTimeout(() => { copyChip.value = null }, copyChip.value === 'failed' ? 3200 : 1600)
+  copyTimer = setTimeout(() => { copyChip.value = null; copyTimer = undefined }, copyChip.value === 'failed' ? 3200 : 1600)
 }
 
 function onCardEnter() {
@@ -196,40 +205,60 @@ function onCardLeave() {
   if (!cardPinned.value) cardHover.value = false
 }
 function onCardClick() {
+  stopExplore()
   cardPinned.value = !cardPinned.value
   cardHover.value = cardPinned.value
   announce(cardPinned.value ? 'Card details pinned' : 'Hide card details')
   void invoke('reveal')
 }
 
-async function scanBarcode() {
-  if (!scanLineRef.value || !barcodeRef.value) return
-  stopExplore()
-  await runScan(scanLineRef.value, barcodeRef.value, motionSet)
-  announce('Demo scan complete. Barcode is decorative')
-  await invoke('scan')
+function scanBarcode(scripted = false) {
+  if (!barcodeRef.value || status.value !== 'paid') return
+  if (!scripted) stopExplore()
+  if (scanTimer) clearTimeout(scanTimer)
+  if (scanFinishTimer) clearTimeout(scanFinishTimer)
+  scanning.value = !reduced.value
+  scanned.value = reduced.value
+  const finish = () => {
+    scanning.value = false
+    scanned.value = true
+    announce('Demo scan complete. Barcode is decorative')
+    if (!scripted) void invoke('scan')
+    scanFinishTimer = setTimeout(() => { scanned.value = false; scanFinishTimer = undefined }, 1200)
+  }
+  if (reduced.value) finish()
+  else scanTimer = setTimeout(() => { scanTimer = undefined; finish() }, 1100)
 }
-
-async function toggleTear() {
-  if (!stubRef.value) return
-  stopExplore()
+function toggleTear(scripted = false) {
+  if (!stubRef.value || status.value !== 'paid') return
+  if (!scripted) stopExplore()
   tornLocal.value = !tornLocal.value
   emit('update:torn', tornLocal.value)
-  await runTear(stubRef.value, motionSet, tornLocal.value)
   announce(tornLocal.value ? 'Stub torn off' : 'Stub reattached')
-  await invoke(tornLocal.value ? 'tear' : 'attach')
+  if (!scripted) void invoke(tornLocal.value ? 'tear' : 'attach')
 }
-
 async function retryPayment() {
   if (!ticket.value) return
-  ticket.value = { ...ticket.value, status: 'pending' }
-  await new Promise(r => { tourTimers.push(setTimeout(r, 1400)) })
-  if (ticket.value) {
-    ticket.value = { ...ticket.value, status: 'paid' }
-    replayEntrance()
-    announce('Payment confirmed')
+  stopExplore()
+  const previous = ticket.value
+  const revision = generation
+  ticket.value = { ...previous, status: 'pending' }
+  if (props.act) {
+    const result = await invoke('retry')
+    if (disposed || revision !== generation) return
+    // The consumer supplies the next ticket through data. Never invent paid.
+    if (result.state === 'error') {
+      ticket.value = previous
+      announce(result.message)
+    }
+    return
   }
-  await invoke('retry')
+  retryTimer = setTimeout(() => {
+    retryTimer = undefined
+    if (disposed || revision !== generation) return
+    ticket.value = { ...previous, status: 'paid' }
+    replayEntrance()
+  }, 1400)
 }
 
 function startAutoExplore() {
@@ -243,11 +272,11 @@ function startAutoExplore() {
       if (step.action === 'replay') replayEntrance()
       else if (step.action === 'copy') void copyRef(false)
       else if (step.action === 'reveal') { cardPinned.value = true; cardHover.value = true }
-      else if (step.action === 'scan') void scanBarcode()
-      else if (step.action === 'tear') void toggleTear()
-      else if (step.action === 'attach') void toggleTear()
+      else if (step.action === 'scan') scanBarcode(true)
+      else if (step.action === 'tear') toggleTear(true)
+      else if (step.action === 'attach') toggleTear(true)
       else if (step.action === 'collapse') { cardPinned.value = false; cardHover.value = false }
-      else if (step.action === 'end') { autoExplore.value = false; announce('Auto-explore finished') }
+      else if (step.action === 'end') { clearTour(); announce('Auto-explore finished') }
     }, step.at))
   }
 }
@@ -272,13 +301,17 @@ function onPaperLeave() {
 
 watch(() => props.data, (d) => {
   const prevId = ticket.value?.id
+  if (d?.id !== prevId) resetWork()
   ticket.value = d === undefined ? samplePaid() : d
-  if (d && d.id !== prevId) replayEntrance()
+  if (d && d.id !== prevId) replayEntrance(false)
 }, { deep: true })
 
 watch(() => props.torn, v => { tornLocal.value = v })
 
+watch(status, (s, prev) => { if (s === 'paid' && prev === 'pending') announce('Payment confirmed') })
+
 watch(() => props.demoState, (s) => {
+  resetWork()
   if (s === 'pending') ticket.value = { ...samplePaid(), status: 'pending' }
   else if (s === 'failed') ticket.value = { ...samplePaid(), status: 'failed' }
   else if (s === 'empty') ticket.value = null
@@ -286,22 +319,42 @@ watch(() => props.demoState, (s) => {
   else if (s === 'paid') ticket.value = samplePaid()
 })
 
-onMounted(() => {
-  if (!isClient) return
-  finePointer.value = matchMedia('(pointer: fine)').matches
-  reducedMedia = matchMedia('(prefers-reduced-motion: reduce)')
-  reducedMedia.addEventListener('change', () => { if (reducedNow()) stopExplore() })
-  visibilityHandler = () => { if (document.hidden) stopExplore() }
-  document.addEventListener('visibilitychange', visibilityHandler)
-  replayEntrance()
-})
-
-onBeforeUnmount(() => {
+function resetWork() {
+  generation++
   stopAll(motionSet)
   clearTour()
-  if (copyTimer) clearTimeout(copyTimer)
-  if (liveTimer) clearTimeout(liveTimer)
-  reducedMedia?.removeEventListener('change', () => {})
+  for (const timer of [copyTimer, liveTimer, scanTimer, scanFinishTimer, retryTimer]) clearTimeout(timer)
+  copyTimer = liveTimer = scanTimer = scanFinishTimer = retryTimer = undefined
+  copyChip.value = null
+  scanned.value = scanning.value = false
+  cardPinned.value = cardHover.value = false
+  liveBuffer = []
+  tilt.value = { x: 0, y: 0 }
+}
+onMounted(() => {
+  finePointer.value = matchMedia('(pointer: fine)').matches
+  reducedMedia = matchMedia('(prefers-reduced-motion: reduce)')
+  reduced.value = reducedMedia.matches
+  reducedHandler = () => {
+    reduced.value = reducedMedia!.matches
+    if (reduced.value) {
+      resetWork()
+      if (paperRef.value) {
+        paperRef.value.getAnimations({ subtree: true }).forEach(a => { a.finish(); a.cancel() })
+        const amount = paperRef.value.querySelector('[data-ticket-amount]')
+        if (amount) amount.textContent = amountDisplay.value
+      }
+    }
+  }
+  reducedMedia.addEventListener('change', reducedHandler)
+  visibilityHandler = () => { if (document.hidden) stopExplore() }
+  document.addEventListener('visibilitychange', visibilityHandler)
+  replayEntrance(false)
+})
+onBeforeUnmount(() => {
+  disposed = true
+  resetWork()
+  if (reducedHandler) reducedMedia?.removeEventListener('change', reducedHandler)
   if (visibilityHandler) document.removeEventListener('visibilitychange', visibilityHandler)
 })
 
@@ -309,12 +362,13 @@ const sectionLabel = computed(() => props.title ?? 'Payment ticket demo')
 const paperStyle = computed(() => finePointer.value && !reduced.value && props.theme !== 'bastion'
   ? { transform: `perspective(900px) rotateX(${tilt.value.y}deg) rotateY(${tilt.value.x}deg)` }
   : undefined)
+const largeAmount = computed(() => (ticket.value?.amount.minor ?? 0) >= 100000000 || amountDisplay.value.length > 14)
 const amountDisplay = computed(() => {
   if (!ticket.value) return 'n/a'
   return formatMoney(ticket.value.amount.minor, ticket.value.amount.currency)
 })
 const dateLabel = computed(() => status.value === 'failed' ? 'Attempted on' : 'Paid on')
-const amountLabel = computed(() => status.value === 'failed' ? 'Not charged' : 'Amount')
+const amountLabel = computed(() => status.value === 'failed' ? 'Not charged' : status.value === 'paid' ? 'Paid' : 'Amount')
 </script>
 
 <template>
@@ -367,7 +421,7 @@ const amountLabel = computed(() => status.value === 'failed' ? 'Not charged' : '
 
             <div class="ticket__perf" aria-hidden="true" />
 
-            <dl class="ticket__facts">
+            <dl class="ticket__facts" :class="{ 'is-large': largeAmount }">
               <template v-if="status === 'pending'">
                 <dt>Ticket no.</dt>
                 <dd><span class="ticket__skel" /></dd>
@@ -394,21 +448,21 @@ const amountLabel = computed(() => status.value === 'failed' ? 'Not charged' : '
                     :title="ticket.reference"
                     @click="copyRef(true)"
                   >
-                    {{ ticket.reference }}
+                    <span class="ticket__ref-text">{{ ticket.reference }}</span>
                     <svg class="ticket__copy-ico" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M3 10V3h7" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
                   </button>
                   <span v-if="copyChip === 'copied'" class="ticket__chip ticket__chip--ok" role="status">Copied ✓</span>
                   <span v-if="copyChip === 'failed'" class="ticket__chip ticket__chip--fail" role="status">Copy failed</span>
                 </dd>
                 <dt>{{ amountLabel }}</dt>
-                <dd class="ticket__amt-col" data-ticket-amount :data-target="ticket.amount.minor ?? 0">{{ amountDisplay }}</dd>
+                <dd class="ticket__amt-col" :data-large="amountDisplay.length > 14 || undefined" data-ticket-amount :data-target="ticket.amount.minor ?? 0">{{ amountDisplay }}</dd>
                 <dt>{{ dateLabel }}</dt>
                 <dd>{{ formatPaidAt(ticket.paidAt, ticket.timeZone) }}</dd>
               </template>
             </dl>
 
             <button
-              v-if="ticket.method && status === 'paid'"
+              v-if="ticket.method && status !== 'pending'"
               type="button"
               class="ticket__method ticket__row"
               :aria-expanded="cardExpanded ? 'true' : 'false'"
@@ -430,8 +484,18 @@ const amountLabel = computed(() => status.value === 'failed' ? 'Not charged' : '
               <span class="sr-only">{{ cardExpanded ? 'Hide card details' : 'Show card details' }}</span>
             </button>
 
+
+          </div>
+
+          <div
+            v-if="status !== 'failed'"
+            ref="stubRef"
+            class="ticket__stub"
+            :class="{ 'is-off': tornLocal, 'is-reduced': reduced }"
+          >
+            <div class="ticket__perf ticket__perf--stub" aria-hidden="true" />
             <div v-if="status === 'paid'" class="ticket__barcode-wrap">
-              <div ref="barcodeRef" class="ticket__barcode" role="img" :aria-label="`Decorative demo barcode for ticket ${ticket.reference}. Not scannable.`">
+              <div ref="barcodeRef" class="ticket__barcode" :class="{ 'is-scanned': scanned, 'is-scanning': scanning }" role="img" :aria-label="`Decorative demo barcode for ticket ${ticket.reference}. Not scannable.`">
                 <div class="ticket__scanline" ref="scanLineRef" aria-hidden="true" />
                 <svg :viewBox="`0 0 ${barcode.width} 58`" preserveAspectRatio="none">
                   <rect v-for="([x, w], i) in barcode.bars" :key="i" class="ticket__barline" :x="x" :y="0" :width="w" height="58" />
@@ -443,14 +507,8 @@ const amountLabel = computed(() => status.value === 'failed' ? 'Not charged' : '
                 </template>
               </p>
             </div>
+            <span v-if="status === 'pending'" class="ticket__skel ticket__skel--stub" />
           </div>
-
-          <div
-            v-if="status !== 'failed'"
-            ref="stubRef"
-            class="ticket__stub"
-            :class="{ 'is-off': tornLocal }"
-          />
           <button v-else type="button" class="ticket__retry" @click="retryPayment">Try again</button>
         </article>
       </div>

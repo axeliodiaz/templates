@@ -39,7 +39,7 @@ function fractionDigits(currency: string): number {
 export function formatMoney(minor: number | null, currency: string, fraction?: number): string {
   if (minor === null) return 'n/a'
   const digits = fraction ?? fractionDigits(currency)
-  const scale = currency === 'CLP' ? 100 : 10 ** digits
+  const scale = 10 ** digits
   const major = minor / scale
   try {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency, minimumFractionDigits: digits, maximumFractionDigits: digits }).format(major)
@@ -71,11 +71,7 @@ export function formatPaidAt(iso: string | null, timeZone = 'UTC'): string {
     const minute = pick('minute')
     return `${day} ${month} ${year} · ${hour}:${minute}`
   } catch {
-    try {
-      return new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).format(ms)
-    } catch {
-      return 'n/a'
-    }
+    return timeZone !== 'UTC' ? formatPaidAt(iso, 'UTC') : 'n/a'
   }
 }
 

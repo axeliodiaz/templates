@@ -39,6 +39,14 @@ const PORT = 4391
     await page.waitForTimeout(300)
     assert.equal(await page.evaluate(() => navigator.clipboard.readText()), 'TK-7316-2048-55')
     assert.ok(await demo.locator('.ticket__chip--ok').count())
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { value: undefined, configurable: true }))
+    await ref.click()
+    assert.equal(await demo.locator('.ticket__chip--fail').count(), 1)
+    assert.equal(await page.evaluate(() => getSelection().toString()), 'TK-7316-2048-55')
+    await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.reject(new Error('denied')) }, configurable: true }))
+    await ref.click()
+    assert.equal(await demo.locator('.ticket__chip--fail').count(), 1)
+
 
     const card = demo.locator('.ticket__method')
     await card.hover()
@@ -85,6 +93,13 @@ const PORT = 4391
           const button = host.getByRole('button', { name: 'Dark mode', exact: true })
           if (await button.count()) await button.click()
         }
+        const failures = await host.evaluate(el => {
+          const read = name => { const probe = document.createElement('span'); probe.style.color = `var(--ticket-${name})`; el.append(probe); const c = getComputedStyle(probe).color; probe.remove(); return c.match(/[\d.]+/g).slice(0,3).map(Number) }
+          const lum = rgb => rgb.map(v => v / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4).reduce((v,n,i)=>v+n*[.2126,.7152,.0722][i],0)
+          const pairs = [['ink','paper',4.5],['muted','paper',4.5],['ink','field',4.5],['muted','field',4.5],['muted','stage',4.5],['accent','paper',3],['accent','stage',3],['bar','paper',3],['on-success','success',3],['danger','paper',4.5]]
+          return pairs.map(([a,b,min]) => { const x=lum(read(a)),y=lum(read(b)); return {a,b,min,ratio:(Math.max(x,y)+.05)/(Math.min(x,y)+.05)} }).filter(p=>p.ratio < p.min)
+        })
+        assert.deepEqual(failures, [], `${item.name} ${variant} computed contrast`)
         for (const width of [1720, 390]) {
           await page.setViewportSize({ width, height: width === 390 ? 844 : 1100 })
           await host.scrollIntoViewIfNeeded()

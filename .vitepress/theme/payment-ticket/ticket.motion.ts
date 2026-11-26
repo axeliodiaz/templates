@@ -1,7 +1,16 @@
 import { animate } from 'motion'
-import { EASE_OUT, keep, reducedNow, stopAll, type Controls } from '../flow-graph/flow-graph.motion'
+import { EASE_OUT, reducedNow, type Controls } from '../flow-graph/flow-graph.motion'
 
-export { EASE_OUT, keep, reducedNow, stopAll, type Controls }
+export { EASE_OUT, reducedNow, type Controls }
+export function keep(set: Set<Controls>, control: Controls) {
+  set.add(control)
+  control.finished.then(() => { control.complete(); control.cancel(); set.delete(control) }).catch(() => set.delete(control))
+  return control
+}
+export function stopAll(set: Set<Controls>) {
+  set.forEach(c => { c.complete(); c.cancel() })
+  set.clear()
+}
 
 export type MotionProfile = 'default' | 'calm' | 'terminal' | 'playful' | 'glass'
 
@@ -20,7 +29,7 @@ export function playEntrance(
   const sparks = [...paper.querySelectorAll<HTMLElement>('.ticket__spark')]
   const rows = [...paper.querySelectorAll<HTMLElement>('.ticket__row')]
   const bars = [...paper.querySelectorAll<HTMLElement>('.ticket__barline')]
-  keep(set, animate(paper, { opacity: [0, 1], y: [12, 0], scale: [0.98, 1] }, { duration: 0.52, ease: [...EASE_OUT] }))
+  keep(set, animate(paper.querySelector('.ticket__top')!, { opacity: [0, 1], y: [12, 0], scale: [0.98, 1] }, { duration: 0.52, ease: [...EASE_OUT] }))
   if (badge) {
     const spring = profile === 'playful' ? [0.4, 1.14, 1] : profile === 'calm' ? [0.9, 1] : [0.4, 1.08, 1]
     if (profile === 'terminal') {
@@ -53,46 +62,6 @@ export function playEntrance(
       keep(set, animate(el, { scaleY: [0, 1] }, { duration: 0.2, ease: [...EASE_OUT], delay: 0.6 + i * 0.005, transformOrigin: 'bottom' }))
     })
   }
-}
-
-export function runScan(line: HTMLElement, barcode: HTMLElement, set: Set<Controls>): Promise<void> {
-  const reduced = reducedNow()
-  if (reduced) {
-    barcode.classList.add('is-scanned')
-    return Promise.resolve()
-  }
-  return new Promise(resolve => {
-    keep(set, animate(line, {
-      top: ['0%', '8%', '92%', '8%', '0%'],
-      opacity: [0, 1, 1, 1, 0],
-    }, { duration: 1.1, ease: SCAN_EASE }), () => {
-      barcode.classList.add('is-scanned')
-      setTimeout(() => {
-        barcode.classList.remove('is-scanned')
-        resolve()
-      }, 1200)
-    })
-  })
-}
-
-export function runTear(stub: HTMLElement, set: Set<Controls>, tear: boolean): Promise<void> {
-  const reduced = reducedNow()
-  if (reduced) {
-    stub.style.transform = tear ? 'translateY(22px)' : ''
-    return Promise.resolve()
-  }
-  if (tear) {
-    return new Promise(resolve => {
-      keep(set, animate(stub, {
-        x: [0, 4],
-        y: [0, 22],
-        rotate: [0, -4],
-      }, { duration: 0.52, ease: TEAR_EASE }), () => resolve())
-    })
-  }
-  return new Promise(resolve => {
-    keep(set, animate(stub, { x: 0, y: 0, rotate: 0 }, { duration: 0.38, ease: [...EASE_OUT] }), () => resolve())
-  })
 }
 
 export function countUpAmount(el: HTMLElement, from: number, to: number, format: (n: number) => string, set: Set<Controls>) {

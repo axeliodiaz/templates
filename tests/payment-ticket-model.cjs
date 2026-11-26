@@ -21,7 +21,7 @@ test('null minor differs from zero', () => {
 })
 
 test('CLP and JPY fraction digits', () => {
-  assert.equal(m.formatMoney(10000, 'CLP'), 'CLP\xa0100')
+  assert.equal(m.formatMoney(10000, 'CLP'), 'CLP\xa010,000')
   assert.equal(m.formatMoney(1000, 'JPY'), '¥1,000')
 })
 
