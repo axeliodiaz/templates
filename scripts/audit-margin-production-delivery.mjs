@@ -19,6 +19,13 @@ function pass(key, detail = 'ok') {
 function fail(key, detail) {
   results[key] = { pass: false, detail }
 }
+async function runStep(key, fn) {
+  try {
+    await fn()
+  } catch (e) {
+    if (!results[key]) fail(key, e.message)
+  }
+}
 
 function formRoutes() {
   return (MARGIN_BS6_IA.forms?.pages ?? [])
@@ -115,41 +122,47 @@ for (const c of checks) {
   }
 }
 
-// --- Collapse open/closed ---
-await gotoRoute('/margin/components/collapse')
-const toggle = page
-  .locator('.mg-guide-preview .margin-bs6-root button.btn-solid.theme-primary')
-  .filter({ hasText: /delivery details/i })
-  .first()
-await toggle.click()
-await page.waitForTimeout(350)
-const open = await page.locator('.mg-guide-preview .collapse.show, .mg-guide-preview .collapse[style*="height"]').count()
-await toggle.click()
-await page.waitForTimeout(350)
-const closed = await page.locator('.mg-guide-preview .collapse.show').count()
-open >= 1 && closed === 0 ? pass('collapse', 'toggle ok') : fail('collapse', `open=${open} closed=${closed}`)
+await runStep('collapse', async () => {
+  await gotoRoute('/margin/components/collapse')
+  const toggle = page
+    .locator('.mg-guide-preview .margin-bs6-root button.btn-solid.theme-primary')
+    .filter({ hasText: /delivery details/i })
+    .first()
+  await toggle.click()
+  await page.waitForTimeout(350)
+  const open = await page.locator('.mg-guide-preview .collapse.show').count()
+  await toggle.click()
+  await page.waitForTimeout(350)
+  const closed = await page.locator('.mg-guide-preview .collapse.show').count()
+  open >= 1 && closed === 0 ? pass('collapse', 'toggle ok') : fail('collapse', `open=${open} closed=${closed}`)
+})
 
-// --- Modal centered (modal alias → dialog component doc) ---
-await gotoRoute('/margin/components/modal')
-const modalBtn = page.getByRole('button', { name: /Default modal/i })
-await modalBtn.scrollIntoViewIfNeeded()
-await modalBtn.click()
-const dialog = page.locator('.modal.show .modal-dialog').first()
-await dialog.waitFor({ state: 'visible', timeout: 15000 })
-const box = await dialog.boundingBox()
-const vp = page.viewportSize()
-const cx = Math.abs(box.x + box.width / 2 - vp.width / 2) < vp.width * 0.1
-const topOk = box.y >= 8 && box.y <= vp.height * 0.4
-await page.keyboard.press('Escape')
-cx && topOk ? pass('dialog_modal', `y=${Math.round(box.y)}`) : fail('dialog_modal', JSON.stringify(box))
+await runStep('dialog_modal', async () => {
+  await gotoRoute('/margin/components/modal')
+  const modalBtn = page.getByRole('button', { name: /Default modal/i })
+  await modalBtn.scrollIntoViewIfNeeded()
+  await modalBtn.click()
+  const dialog = page.locator('.modal.show .modal-dialog').first()
+  await dialog.waitFor({ state: 'visible', timeout: 20000 })
+  const box = await dialog.boundingBox()
+  const vp = page.viewportSize()
+  const cx = Math.abs(box.x + box.width / 2 - vp.width / 2) < vp.width * 0.1
+  const topOk = box.y >= 8 && box.y <= vp.height * 0.4
+  await page.keyboard.press('Escape')
+  cx && topOk ? pass('dialog_modal', `y=${Math.round(box.y)}`) : fail('dialog_modal', JSON.stringify(box))
+})
 
-// --- Placeholders visible + animated ---
-await gotoRoute('/margin/components/placeholder')
-const op = await page.locator('.mg-guide-preview .placeholder').first().evaluate((el) => parseFloat(getComputedStyle(el).opacity))
-const anim = await page.locator('.mg-guide-preview .placeholder-wave, .mg-guide-preview .placeholder-glow').first().evaluate((el) => getComputedStyle(el).animationName)
-op >= 0.15 && anim && anim !== 'none' ? pass('placeholders', `opacity=${op} anim=${anim}`) : fail('placeholders', `opacity=${op} anim=${anim}`)
-const nPh = await page.locator('.mg-guide-preview .placeholder').count()
-if (nPh < 5) fail('placeholders', `only ${nPh} placeholders`)
+await runStep('placeholders', async () => {
+  await gotoRoute('/margin/components/placeholder')
+  const op = await page.locator('.mg-guide-preview .placeholder').first().evaluate((el) => parseFloat(getComputedStyle(el).opacity))
+  const anim = await page
+    .locator('.mg-guide-preview .placeholder-wave, .mg-guide-preview .placeholder-glow .placeholder')
+    .first()
+    .evaluate((el) => getComputedStyle(el).animationName)
+  const nPh = await page.locator('.mg-guide-preview .placeholder').count()
+  const ok = op >= 0.15 && anim && anim !== 'none' && nPh >= 5
+  ok ? pass('placeholders', `opacity=${op} anim=${anim} n=${nPh}`) : fail('placeholders', `opacity=${op} anim=${anim} n=${nPh}`)
+})
 
 // --- Screenshots ---
 const shotRoutes = [

@@ -30,7 +30,8 @@ const collapseMultiA = ref(false)
 const collapseMultiB = ref(false)
 const chipActive = ref('Design')
 const listTab = ref('home')
-const navPane = ref('profile')`,
+const navPane = ref('profile')
+const mgModal = ref('')`,
   )
 }
 
@@ -122,26 +123,27 @@ replaceSection(
   'modal',
   `<section id="modal" class="kit-section" v-show="showSection('modal') && (!catalogSearch || &quot;modal&quot;.includes(catalogSearch.toLowerCase()))"><h2>Modal</h2><p>Bootstrap modals block the page, trap focus, and dismiss with Escape, backdrop click, or <code>btn-close</code>.</p>
 <div class="l-demo l-actions flex-wrap gap-2">
-  <button type="button" class="btn-solid theme-primary" data-bs-toggle="modal" data-bs-target="#mg-modal-default">Default modal</button>
-  <button type="button" class="btn-outline theme-secondary" data-bs-toggle="modal" data-bs-target="#mg-modal-centered">Vertically centered</button>
-  <button type="button" class="btn-outline theme-secondary" data-bs-toggle="modal" data-bs-target="#mg-modal-lg">Large</button>
+  <button type="button" class="btn-solid theme-primary" @click="mgModal='default'">Default modal</button>
+  <button type="button" class="btn-outline theme-secondary" @click="mgModal='centered'">Vertically centered</button>
+  <button type="button" class="btn-outline theme-secondary" @click="mgModal='lg'">Large</button>
 </div>
-<div class="modal fade" id="mg-modal-default" tabindex="-1" aria-labelledby="mg-modal-default-title" aria-hidden="true">
+<div v-if="mgModal" class="modal-backdrop fade show" aria-hidden="true" @click="mgModal=''"></div>
+<div class="modal fade" id="mg-modal-default" tabindex="-1" :class="{ show: mgModal === 'default' }" :style="mgModal === 'default' ? { display: 'block' } : undefined" aria-labelledby="mg-modal-default-title" :aria-hidden="mgModal !== 'default'">
   <div class="modal-dialog"><div class="modal-content">
-    <div class="modal-header"><h5 class="modal-title" id="mg-modal-default-title">Confirm archive</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+    <div class="modal-header"><h5 class="modal-title" id="mg-modal-default-title">Confirm archive</h5><button type="button" class="btn-close" aria-label="Close" @click="mgModal=''"></button></div>
     <div class="modal-body"><p class="mb-0">This demo does not change production data.</p></div>
-    <div class="modal-footer"><button type="button" class="btn-outline theme-secondary" data-bs-dismiss="modal">Cancel</button><button type="button" class="btn-solid theme-danger" data-bs-dismiss="modal">Archive</button></div>
+    <div class="modal-footer"><button type="button" class="btn-outline theme-secondary" @click="mgModal=''">Cancel</button><button type="button" class="btn-solid theme-danger" @click="mgModal=''">Archive</button></div>
   </div></div>
 </div>
-<div class="modal fade" id="mg-modal-centered" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="mg-modal-centered" tabindex="-1" :class="{ show: mgModal === 'centered' }" :style="mgModal === 'centered' ? { display: 'block' } : undefined" :aria-hidden="mgModal !== 'centered'">
   <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
-    <div class="modal-header"><h5 class="modal-title">Centered dialog</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+    <div class="modal-header"><h5 class="modal-title">Centered dialog</h5><button type="button" class="btn-close" aria-label="Close" @click="mgModal=''"></button></div>
     <div class="modal-body">Vertically centered in the viewport.</div>
   </div></div>
 </div>
-<div class="modal fade" id="mg-modal-lg" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="mg-modal-lg" tabindex="-1" :class="{ show: mgModal === 'lg' }" :style="mgModal === 'lg' ? { display: 'block' } : undefined" :aria-hidden="mgModal !== 'lg'">
   <div class="modal-dialog modal-lg modal-dialog-scrollable"><div class="modal-content">
-    <div class="modal-header"><h5 class="modal-title">Large scrollable</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+    <div class="modal-header"><h5 class="modal-title">Large scrollable</h5><button type="button" class="btn-close" aria-label="Close" @click="mgModal=''"></button></div>
     <div class="modal-body"><p v-for="n in 6" :key="n">Scrollable body copy block {{ n }}.</p></div>
   </div></div>
 </div>
