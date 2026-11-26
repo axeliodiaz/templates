@@ -643,6 +643,22 @@ html[data-tpl='margin'] .mg-guide-preview .b2-bs6.b2-margin .input-group-text {
   border-color: var(--line, var(--bs-border-color));
   color: var(--ink, var(--bs-fg-body));
 }
+
+/* Input-group joins: beat preview-wide btn border-radius (see forms CSS audit). */
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .input-group > :is(.form-control, .form-select, .input-group-text, button.btn-solid, button.btn-outline, .btn, .btn-solid, .btn-outline) {
+  border-radius: 0;
+}
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .input-group > :first-child {
+  border-start-start-radius: var(--bs-control-border-radius, 0.5rem);
+  border-end-start-radius: var(--bs-control-border-radius, 0.5rem);
+}
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .input-group > :last-child {
+  border-start-end-radius: var(--bs-control-border-radius, 0.5rem);
+  border-end-end-radius: var(--bs-control-border-radius, 0.5rem);
+}
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .input-group > :not(:first-child) {
+  margin-inline-start: calc(-1 * var(--bs-border-width, 1px));
+}
 html[data-tpl='margin'] .mg-guide-preview .b2-bs6.b2-margin .form-floating > .form-control {
   border-radius: var(--bs-control-border-radius, 0.5rem);
 }
