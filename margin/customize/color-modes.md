@@ -5,8 +5,8 @@ pageClass: margin-scoped-guide
 import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
-# Color modes
+# Color Modes
 
-Mirrors [Bootstrap v6.0 · Color modes](https://getbootstrap.com/docs/6.0/customize/color-modes/) with Margin `.lab` / `b2-margin` styling.
+Use `.lab-dark` on the kit root or `.margin.lab-dark` on dashboards. Token pairs are documented on [Color](/margin/customize/color).
 
 <MarginBs6Doc area="customize" slug="color-modes" label="Color modes" />

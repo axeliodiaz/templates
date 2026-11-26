@@ -10,26 +10,7 @@ const BUILTIN: Record<string, string> = {
   'layout/z-index': `<div class="mg-demo-surface position-relative"><span class="position-absolute top-0 start-0 badge text-bg-secondary" style="z-index:2">z-2</span><span class="position-absolute top-0 start-0 ms-4 badge text-bg-primary">z-1</span></div>`,
   'utilities/flex': `<div class="mg-demo-surface d-flex justify-content-between align-items-stretch gap-2"><div class="mg-demo-item mg-demo-item--accent flex-fill text-center">.flex-fill</div><div class="mg-demo-item mg-demo-item--accent flex-fill text-center">grows</div><div class="mg-demo-item align-self-center">.align-self-center</div></div>`,
   'utilities/display': `<div class="d-inline p-2 border">.d-inline</div> <span class="d-none d-md-inline p-2 border">.d-md-inline</span>`,
-  'helpers/focus-ring': `<button type="button" class="btn btn-solid theme-primary">Tab for focus ring</button>`,
-  'customize/overview': `<p class="mb-2">Margin maps <code>.lab</code> tokens into scoped <code>b2-margin</code> Bootstrap 6 via <code>scripts/build-margin-bs6-catalog.mjs</code>.</p><button type="button" class="btn btn-solid theme-primary">Sample control</button>`,
-  'getting-started/introduction': `<p>Margin docs mirror <a href="https://getbootstrap.com/docs/6.0/" rel="noopener">Bootstrap v6.0</a> section names with the <code>#6389ea</code> lab palette.</p>`,
-  'guides/quickstart': `<div class="mg-demo-item mg-demo-item--soft"><button type="button" class="btn btn-solid theme-primary">Primary</button> <button type="button" class="btn btn-outline theme-secondary">Outline</button></div>`,
-  'getting-started/approach': `<p>Margin keeps Bootstrap markup and layers <code>.lab</code> / <code>b2-margin</code> tokens for job-economics dashboards without forking component APIs.</p><ul class="mb-0"><li>Docs mirror BS6 section names</li><li>Live previews are scoped to <code>.lab</code></li></ul>`,
-  'getting-started/accessibility': `<button type="button" class="btn btn-solid theme-primary">Reviewable focus</button><p class="form-text mt-2 mb-0">Pair color with text; use visible labels on every control in previews.</p>`,
-  'getting-started/browsers-devices': `<p class="mb-2">Previews target evergreen desktop and mobile browsers supported by Bootstrap 6.</p><span class="mg-demo-item mg-demo-item--soft">Chrome</span> <span class="mg-demo-item mg-demo-item--soft">Firefox</span> <span class="mg-demo-item mg-demo-item--soft">Safari</span>`,
-  'getting-started/css-variables': `<div class="p-3 rounded border" style="background:var(--soft,#eceef5);color:var(--ink,#22252b)">Uses <code>--bg</code>, <code>--ink</code>, and mapped <code>--b2-*</code> variables.</div>`,
-  'getting-started/javascript': `<button type="button" class="btn btn-outline theme-secondary" data-bs-toggle="collapse" data-bs-target="#mg-gs-collapse">Toggle collapse</button><div class="collapse mt-2" id="mg-gs-collapse"><div class="mg-demo-item">Bootstrap 6 plugin region</div></div>`,
-  'getting-started/ai': `<p class="mb-2">When prompting agents, cite <code>/margin/components/button</code> paths and require <code>class="lab b2-bs6 b2-margin"</code> on examples.</p>`,
-  'guides/migration': `<p class="mb-0">v5 paths such as <code>/margin/components/buttons</code> redirect to v6 <code>/margin/components/button</code> via <code>vercel.json</code>.</p>`,
-  'guides/contribute': `<p class="mb-2">Regenerate stubs: <code>node scripts/scaffold-margin-bs6-ia.mjs</code> then <code>node scripts/patch-margin-sidebar.mjs</code>.</p><button type="button" class="btn btn-outline theme-primary">Run locally</button>`,
-  'customize/sass': `<p class="mb-0">Sass entry: <code>build-margin-bs6-catalog.mjs</code> emits scoped <code>margin-bs6.css</code> from the shared BS6 kit.</p>`,
-  'customize/theme': `<div class="d-flex gap-2"><span class="mg-demo-item mg-demo-item--soft" style="background:#6389ea;color:#22252b">Primary</span><span class="mg-demo-item mg-demo-item--soft bg-secondary-subtle">Secondary</span></div>`,
-  'customize/components': `<p class="mb-0">Component tokens inherit <code>--surface</code>, <code>--line</code>, and accent <code>#6389ea</code> inside <code>.lab</code>.</p>`,
-  'customize/css-variables': `<code style="display:block;padding:8px;border:1px solid var(--line);border-radius:8px">--lab-accent: #6389ea;</code>`,
-  'customize/options': `<p class="mb-0">Batch2 options tune radius, focus ring, and motion under <code>b2-margin</code>.</p>`,
-  'customize/optimize': `<p class="mb-0">Production builds tree-shake unused kit sections; catalog pages embed a single component slice.</p>`,
-  'customize/rtl': `<div dir="rtl" class="border rounded p-2"><button type="button" class="btn btn-outline theme-primary">زر تجريبي</button></div>`,
-  'customize/transitions': `<button type="button" class="btn btn-solid theme-primary" style="transition:transform .15s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">Hover lift</button>`,
+  'helpers/focus-ring': `<button type="button" class="btn-solid theme-primary">Tab for focus ring</button>`,
   'helpers/hover-lift': `<a href="/margin" class="icon-link icon-link-hover lift">Margin overview</a>`,
   'helpers/icon-link': `<a class="icon-link" href="/margin/components/button">Buttons <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>`,
   'helpers/position': `<div class="mg-demo-surface position-relative" style="height:4rem"><span class="position-absolute top-0 end-0 badge text-bg-secondary">.top-0.end-0</span></div>`,
@@ -37,7 +18,7 @@ const BUILTIN: Record<string, string> = {
   'helpers/stretched-link': `<div class="card position-relative" style="max-width:14rem"><div class="card-body"><h3 class="h6">Card title</h3><a href="/margin" class="stretched-link">Stretched link</a></div></div>`,
   'helpers/text-truncation': `<p class="text-truncate mb-0" style="max-width:12rem">Long margin narrative text truncates with ellipsis.</p>`,
   'helpers/vertical-rule': `<div class="d-flex gap-3 align-items-center"><span>Left</span><div class="vr"></div><span>Right</span></div>`,
-  'helpers/visually-hidden': `<button type="button" class="btn btn-outline theme-primary"><span class="visually-hidden">Settings</span><i class="fa-solid fa-gear" aria-hidden="true"></i></button>`,
+  'helpers/visually-hidden': `<button type="button" class="btn-outline theme-primary"><span class="visually-hidden">Settings</span><i class="fa-solid fa-gear" aria-hidden="true"></i></button>`,
   'utilities/api': `<p class="mb-2">Utilities are generated into <code>batch2-bs6.css</code> with Margin token defaults.</p><span class="mg-demo-item user-select-none">.user-select-none</span>`,
 }
 
@@ -68,13 +49,13 @@ const UTIL: Record<string, string> = {
   'line-height': `<p class="lh-1 mb-1">Tight line height</p><p class="lh-lg mb-0">Loose line height</p>`,
   link: `<a href="/margin" class="link-primary">Primary link</a>`,
   margin: `<div class="m-3 p-2 border rounded d-inline-block">.m-3</div>`,
-  motion: `<button type="button" class="btn btn-outline theme-primary motion-safe:lift">Respects prefers-reduced-motion</button>`,
+  motion: `<button type="button" class="btn-outline theme-primary motion-safe:lift">Respects prefers-reduced-motion</button>`,
   'object-fit': `<svg class="rounded border" width="120" height="60" role="img" aria-label="cover" style="object-fit:cover;background:var(--soft)"><text x="50%" y="55%" text-anchor="middle" font-size="11">cover</text></svg>`,
   opacity: `<span class="mg-demo-item opacity-50">.opacity-50</span>`,
   overflow: `<div class="border rounded p-2 overflow-hidden" style="max-height:3rem"><p class="mb-0">Clipped overflow content in a short box.</p><p class="mb-0">Extra line hidden.</p></div>`,
   padding: `<span class="p-4 border rounded d-inline-block">.p-4</span>`,
   'place-items': `<div class="mg-demo-surface d-grid place-items-center" style="height:4rem">Centered</div>`,
-  'pointer-events': `<button type="button" class="btn btn-outline theme-secondary pe-none" disabled>Pointer events demo</button>`,
+  'pointer-events': `<button type="button" class="btn-outline theme-secondary pe-none" disabled>Pointer events demo</button>`,
   position: `<div class="mg-demo-surface position-relative"><span class="position-absolute top-0 start-0 translate-middle badge text-bg-primary">.position-absolute</span></div>`,
   shadows: `<div class="mg-demo-item mg-demo-item--soft shadow">.shadow</div>`,
   space: `<div class="vstack gap-2"><span class="mg-demo-item">Block 1</span><span class="mg-demo-item">Block 2</span></div>`,
@@ -95,5 +76,5 @@ export function marginBs6GenericHtml(area: string, slug: string, label?: string)
   if (BUILTIN[key]) return BUILTIN[key]
   if (area === 'utilities' && UTIL[slug]) return UTIL[slug]
   const title = label ?? slug
-  return `<p class="mb-2">${title} — Margin <code>.lab</code> preview.</p><button type="button" class="btn btn-solid theme-primary">Sample</button>`
+  return ''
 }

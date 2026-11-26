@@ -5,8 +5,8 @@ pageClass: margin-scoped-guide
 import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
-# Browsers and devices
+# Browsers Devices
 
-Mirrors [Bootstrap v6.0 · Browsers and devices](https://getbootstrap.com/docs/6.0/getting-started/browsers-devices/) with Margin `.lab` / `b2-margin` styling.
+Previews target evergreen desktop and mobile browsers supported by Bootstrap 6. Touch targets on analytics use 40px min height below 700px width in `margin.css`.
 
 <MarginBs6Doc area="getting-started" slug="browsers-devices" label="Browsers and devices" />

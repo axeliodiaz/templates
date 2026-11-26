@@ -7,6 +7,6 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Options
 
-Mirrors [Bootstrap v6.0 · Options](https://getbootstrap.com/docs/6.0/customize/options/) with Margin `.lab` / `b2-margin` styling.
+Batch2 options tune radius, focus ring width, and motion under `b2-margin`.
 
 <MarginBs6Doc area="customize" slug="options" label="Options" />
