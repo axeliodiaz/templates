@@ -1,3 +1,12 @@
 /* Margin guide pages: keep previews readable inside VitePress prose */
 html .vp-doc .mg-guide-preview :is(h1,h2,h3,h4){color:var(--ink)!important;-webkit-text-fill-color:var(--ink)!important}
-html .vp-doc .mg-guide-preview small{color:var(--muted)!important}
+html .vp-doc .mg-guide-preview .mg-guide-frame > :not(.mg-swatch-grid) small{color:var(--muted)!important}
+.mg-guide-preview .mg-swatch,
+.mg-guide-preview .mg-swatch :is(small,strong){
+  color:var(--mg-swatch-fg)!important;
+  -webkit-text-fill-color:var(--mg-swatch-fg)!important;
+}
+.mg-guide-preview .mg-swatch small{
+  color:var(--mg-swatch-muted)!important;
+  -webkit-text-fill-color:var(--mg-swatch-muted)!important;
+}

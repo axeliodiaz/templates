@@ -2,7 +2,7 @@
 pageClass: margin-scoped-guide
 ---
 
-# Margin guides
+# Getting started
 
 Reuse the Margin job-economics template: homepage lab layout, analytics dashboard, transactional emails, and shared observation modules.
 
@@ -15,9 +15,9 @@ Reuse the Margin job-economics template: homepage lab layout, analytics dashboar
 - [Agent crew](/margin/agent-crew)
 - [Payment ticket](/margin/payment-ticket)
 
-## Guide map
+## Documentation sections
 
-Getting started, foundations, components, analytics patterns, and shared modules are listed in the sidebar.
+Use the Margin sidebar: **Getting started**, **Foundations**, **Components**, **Patterns**, and **Modules** sit alongside Overview, Analytics, and Transactional emails.
 
 
 ## Usage

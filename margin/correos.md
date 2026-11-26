@@ -22,7 +22,7 @@ onUnmounted(()=>{disposed=true;controls?.stop()})
 
 Original email examples in Margin's job-economics design language. Fictitious names, jobs and amounts. These previews do not send mail, save data, open accounts or take payments.
 
-See also the [emails guide](/margin/guides/emails) for inline colors and production notes.
+See also the [emails module guide](/margin/modules/emails) for inline colors and production notes.
 
 <div class="margin-mail">
 <nav aria-label="Email examples"><button v-for="item in messages" :key="item.id" :aria-pressed="selected===item.id" @click="choose(item.id)">{{item.label}}</button></nav>

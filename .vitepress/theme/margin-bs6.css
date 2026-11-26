@@ -1,0 +1,107 @@
+@import './batch2-bs6.bootstrap.css';
+
+.margin-bs6-root.kit-margin {
+  --k-bg: var(--bg, #f5f5f7);
+  --k-alt: var(--soft, #eceef5);
+  --k-text: var(--ink, #22252b);
+  --k-muted: var(--muted, #676e7b);
+  --k-border: var(--line, #e0e3e9);
+  --k-brand: #6389ea;
+  --k-radius: 10px;
+  font: 13px/1.5 'DM Sans', system-ui, sans-serif;
+  color: var(--k-text);
+}
+
+.b2-bs6.b2-margin {
+  --b2-accent: #6389ea;
+  --b2-on: #0f1528;
+  --b2-bg: var(--bg, #f5f5f7);
+  --b2-surface: var(--surface, #fff);
+  --b2-ink: var(--ink, #22252b);
+  --b2-muted: var(--muted, #676e7b);
+  --b2-line: var(--line, #e0e3e9);
+}
+
+.b2-bs6.b2-margin.lab-dark {
+  color-scheme: dark;
+}
+
+.margin-bs6-root .l-toast-stack {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: min(360px, 92vw);
+}
+
+.margin-bs6-root .l-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--k-border);
+  background: var(--b2-surface);
+  box-shadow: 0 10px 30px #22252b18;
+  color: var(--k-text);
+}
+
+.margin-bs6-root .l-toast-success { border-left: 4px solid #3aa981; }
+.margin-bs6-root .l-toast-warn { border-left: 4px solid #b4690a; }
+.margin-bs6-root .l-toast-error { border-left: 4px solid #b84d6f; }
+.margin-bs6-root .l-toast-info { border-left: 4px solid #6389ea; }
+
+.margin-bs6-root .kit-native {
+  border: 1px solid var(--k-border);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  max-width: min(500px, 90vw);
+  background: var(--b2-surface);
+  color: var(--k-text);
+}
+
+.margin-bs6-root .kit-sheet {
+  margin: 0 0 0 auto;
+  width: min(400px, 90vw);
+  height: 100dvh;
+  max-height: 100dvh;
+  border-radius: 0;
+}
+
+.margin-bs6-root .kit-intro h2 {
+  font: 600 1.35rem/1.2 'Space Grotesk', 'DM Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.margin-bs6-root .kit-section h2 {
+  font: 600 1.1rem/1.3 'Space Grotesk', sans-serif;
+  margin-top: 0;
+}
+
+.margin-bs6-root .l-demo {
+  padding: 12px;
+  border: 1px solid var(--k-border);
+  border-radius: var(--k-radius);
+  background: var(--b2-surface);
+  margin: 12px 0;
+}
+
+.margin-bs6-root .kit-note {
+  font-size: 12px;
+  color: var(--k-muted);
+}
+
+.margin-bs6-root :focus-visible {
+  outline: 2px solid #6389ea;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .margin-bs6-root *, .margin-bs6-root *::before, .margin-bs6-root *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

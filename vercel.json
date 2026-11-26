@@ -4,7 +4,251 @@
   "outputDirectory": ".vitepress/dist",
   "cleanUrls": true,
   "redirects": [
-    { "source": "/felix/graphs", "destination": "/felix/components/charts#graphs-and-flows", "permanent": true }
+    {
+      "source": "/felix/graphs",
+      "destination": "/felix/components/charts#graphs-and-flows",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides",
+      "destination": "/margin/getting-started",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/",
+      "destination": "/margin/getting-started/",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/quickstart",
+      "destination": "/margin/getting-started/quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/anatomy",
+      "destination": "/margin/getting-started/anatomy",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/accessibility",
+      "destination": "/margin/getting-started/accessibility",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/color",
+      "destination": "/margin/foundations/color",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/color-modes",
+      "destination": "/margin/foundations/color-modes",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/typography",
+      "destination": "/margin/foundations/typography",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/spacing",
+      "destination": "/margin/foundations/spacing",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/layout",
+      "destination": "/margin/foundations/layout",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/motion",
+      "destination": "/margin/foundations/motion",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/buttons",
+      "destination": "/margin/components/buttons",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/cards",
+      "destination": "/margin/components/card",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/forms",
+      "destination": "/margin/forms",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/sidebar",
+      "destination": "/margin/modules/sidebar",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/topbar",
+      "destination": "/margin/modules/topbar",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/breadcrumbs",
+      "destination": "/margin/components/breadcrumb",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/badges",
+      "destination": "/margin/components/badge",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/tables",
+      "destination": "/margin/modules/tables",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/cards",
+      "destination": "/margin/components/card",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/badges",
+      "destination": "/margin/components/badge",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/breadcrumbs",
+      "destination": "/margin/components/breadcrumb",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/forms",
+      "destination": "/margin/forms",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/sidebar",
+      "destination": "/margin/modules/sidebar",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/topbar",
+      "destination": "/margin/modules/topbar",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/tables",
+      "destination": "/margin/modules/tables",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/dialog",
+      "destination": "/margin/modules/dialog",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/empty-loading",
+      "destination": "/margin/modules/empty-loading",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/faq",
+      "destination": "/margin/modules/faq",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/avatars",
+      "destination": "/margin/modules/avatars",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/pagination",
+      "destination": "/margin/components/pagination",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/dialog",
+      "destination": "/margin/components/dialog",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/empty-loading",
+      "destination": "/margin/components/empty-loading",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/faq",
+      "destination": "/margin/components/faq",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/avatars",
+      "destination": "/margin/components/avatars",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/kpi",
+      "destination": "/margin/patterns/kpi",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/waterfall",
+      "destination": "/margin/patterns/waterfall",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/profit-bridge",
+      "destination": "/margin/patterns/profit-bridge",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/swarm",
+      "destination": "/margin/patterns/swarm",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/heatmap",
+      "destination": "/margin/patterns/heatmap",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/week-bars",
+      "destination": "/margin/patterns/week-bars",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/forecast",
+      "destination": "/margin/patterns/forecast",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/insight",
+      "destination": "/margin/patterns/insight",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/agent-orchestration",
+      "destination": "/margin/modules/agent-orchestration",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/agent-crew",
+      "destination": "/margin/modules/agent-crew",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/payment-ticket",
+      "destination": "/margin/modules/payment-ticket",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/drawer",
+      "destination": "/margin/modules/drawer",
+      "permanent": true
+    },
+    {
+      "source": "/margin/guides/emails",
+      "destination": "/margin/modules/emails",
+      "permanent": true
+    }
   ],
   "git": {
     "deploymentEnabled": {
