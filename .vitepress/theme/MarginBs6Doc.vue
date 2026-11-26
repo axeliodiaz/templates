@@ -4,6 +4,7 @@ import MarginFormsSection from './MarginFormsSection.vue'
 import MarginContentSection from './MarginContentSection.vue'
 import MarginCustomizeColor from './MarginCustomizeColor.vue'
 import MarginBs6Generic from './MarginBs6Generic.vue'
+import MarginBs6CopyBlock from './MarginBs6CopyBlock.vue'
 
 const props = defineProps<{
   area: string
@@ -12,6 +13,7 @@ const props = defineProps<{
 }>()
 </script>
 <template>
+  <div class="margin-bs6-doc">
   <MarginCustomizeColor v-if="area === 'customize' && slug === 'color'" :label="label" />
   <MarginCustomizeColor v-else-if="area === 'customize' && slug === 'color-modes'" mode-modes :label="label" />
   <MarginBs6Section v-else-if="area === 'components'" :section="slug" :label="label" />
@@ -30,4 +32,6 @@ const props = defineProps<{
   />
   <MarginContentSection v-else-if="area === 'content'" :section="slug === 'tables' ? 'tables-figures' : slug" :label="label" />
   <MarginBs6Generic v-else :area="area" :slug="slug" :label="label" />
+  <MarginBs6CopyBlock :area="area" :slug="slug" />
+  </div>
 </template>

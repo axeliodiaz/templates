@@ -1,9 +1,14 @@
 ---
 pageClass: margin-scoped-guide
 ---
+<script setup>
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
+</script>
 
-# Components
+# Accordion
 
-Bootstrap 6.0.0-alpha.1 component families styled with Margin `.lab` tokens (`#6389ea` accent). Each page has a live example, copyable shell markup, and accessibility notes.
+Index for Bootstrap v6 **Accordion** docs on Margin tokens.
 
-Dashboard-specific chrome (sidebar, top bar, `mg-*` tables) lives under [Modules](/margin/modules/). Analytics chart patterns are under [Patterns](/margin/patterns/).
+Mirrors [Bootstrap v6.0 · Accordion](https://getbootstrap.com/docs/6.0/components/accordion/) with Margin `.lab` / `b2-margin` styling.
+
+<MarginBs6Doc area="components" slug="accordion" label="Accordion" />
