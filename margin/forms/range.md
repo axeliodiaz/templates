@@ -10,9 +10,3 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 Mirrors [Bootstrap v6.0 · Range](https://getbootstrap.com/docs/6.0/forms/range/) with Margin `.lab` / `b2-margin` styling.
 
 <MarginBs6Doc area="forms" slug="range" label="Range" />
-
-```html
-<div class="lab b2-bs6 b2-margin">
-  <!-- forms/range -->
-</div>
-```

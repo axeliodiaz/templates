@@ -1,9 +1,14 @@
 ---
 pageClass: margin-scoped-guide
 ---
+<script setup>
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
+</script>
 
-# Content
+# Reboot
 
-Bootstrap **Content** docs for Margin: Reboot base styles, typography, images, and tables/figures — all using `.lab` tokens with light/dark previews.
+Index for Bootstrap v6 **Reboot** docs on Margin tokens.
 
-Dashboard-specific font stacks (DM Sans / Space Grotesk) are shown on the [Margin overview](/margin) and [Analytics](/margin/analytics) demos. This section covers global HTML defaults and prose patterns.
+Mirrors [Bootstrap v6.0 · Reboot](https://getbootstrap.com/docs/6.0/content/reboot/) with Margin `.lab` / `b2-margin` styling.
+
+<MarginBs6Doc area="content" slug="reboot" label="Reboot" />

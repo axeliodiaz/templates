@@ -10,9 +10,3 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 Mirrors [Bootstrap v6.0 · Button group](https://getbootstrap.com/docs/6.0/components/button-group/) with Margin `.lab` / `b2-margin` styling.
 
 <MarginBs6Doc area="components" slug="button-group" label="Button group" />
-
-```html
-<div class="lab b2-bs6 b2-margin">
-  <!-- components/button-group -->
-</div>
-```

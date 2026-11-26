@@ -1,9 +1,14 @@
 ---
 pageClass: margin-scoped-guide
 ---
+<script setup>
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
+</script>
 
-# Forms
+# Overview
 
-Bootstrap form patterns scoped to Margin. Each page includes a live preview and copyable HTML inside `.lab b2-bs6 b2-margin`.
+Index for Bootstrap v6 **Overview** docs on Margin tokens.
 
-See [Form control](/margin/forms/form-control) to start, or [Validation](/margin/forms/validation) for error states.
+Mirrors [Bootstrap v6.0 · Overview](https://getbootstrap.com/docs/6.0/forms/overview/) with Margin `.lab` / `b2-margin` styling.
+
+<MarginBs6Doc area="forms" slug="overview" label="Overview" />

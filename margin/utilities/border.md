@@ -10,9 +10,3 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 Mirrors [Bootstrap v6.0 · Border](https://getbootstrap.com/docs/6.0/utilities/border/) with Margin `.lab` / `b2-margin` styling.
 
 <MarginBs6Doc area="utilities" slug="border" label="Border" />
-
-```html
-<div class="lab b2-bs6 b2-margin">
-  <!-- utilities/border -->
-</div>
-```
