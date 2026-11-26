@@ -5,16 +5,10 @@ pageClass: margin-scoped-guide
 import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
-# Layout
+# Breakpoints
 
-Bootstrap **Layout** on Margin: breakpoints, containers, grid, columns, gutters, and z-index — all scoped to `.lab` / `b2-margin`.
+Index for Bootstrap v6 **Breakpoints** docs on Margin tokens.
 
-Start with [Breakpoints](/margin/layout/breakpoints).
+Mirrors [Bootstrap v6.0 · Breakpoints](https://getbootstrap.com/docs/6.0/layout/breakpoints/) with Margin `.lab` / `b2-margin` styling.
 
 <MarginBs6Doc area="layout" slug="breakpoints" label="Breakpoints" />
-
-```html
-<div class="lab b2-bs6 b2-margin container">
-  <!-- layout -->
-</div>
-```
