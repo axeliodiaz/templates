@@ -27,6 +27,7 @@ function toggle(e: Event) {
 .mg-guide-toggle:focus-visible{outline:2px solid #6389ea;outline-offset:3px}
 .mg-guide-label{font-size:12px;color:var(--muted)}
 .mg-guide-frame{padding:18px;min-width:0}
-.mg-guide-frame :deep(:is(h1,h2,h3,h4,p,li,dt,dd,th,td,strong,small)){color:var(--ink)}
-.mg-guide-frame :deep(small){color:var(--muted)}
+.mg-guide-frame :deep(:is(h1,h2,h3,h4,p,li,dt,dd,th,td)){color:var(--ink)}
+.mg-guide-frame :deep(:not(.mg-swatch) > strong){color:var(--ink)}
+.mg-guide-frame :deep(small:not(.mg-swatch small)){color:var(--muted)}
 </style>
