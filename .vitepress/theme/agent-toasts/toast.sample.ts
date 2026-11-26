@@ -1,172 +1,161 @@
 import type { AgentToastData } from './toast.model'
 
-/** Section 13 · original English demo copy (synthetic agent run). */
-export const originalData: AgentToastData[] = [
-  {
+export const samples = {
+  session: (): AgentToastData => ({
     id: 'session',
-    tone: 'info',
-    title: 'Session linked',
-    detail: 'Workspace cursor/agent-toasts-tem392 · read-only demo.',
-    visual: { type: 'context', used: 18400, total: 128000, phase: 'idle' },
-  },
-  {
-    id: 'tests',
-    tone: 'neutral',
-    title: 'Running tests',
-    detail: [{ text: '12 suites', kind: 'mono' }, { text: '· 248 cases', kind: 'mono' }],
-    visual: { type: 'tests', total: 248, passed: 196, running: true },
-    busy: true,
-  },
-  {
-    id: 'pr',
     tone: 'success',
-    title: 'Pull request ready',
-    detail: [{ text: '+42', kind: 'plus' }, { text: '−18', kind: 'minus' }, { text: '· 3 files', kind: 'mono' }],
-    visual: { type: 'diff', added: 42, removed: 18 },
-    action: { id: 'open-pr', label: 'Open PR' },
-  },
-  {
+    title: 'Session finished',
+    detail: [
+      { text: 'Search revamp · ' },
+      { text: '+96', kind: 'plus' },
+      { text: ' ' },
+      { text: '−24', kind: 'minus' },
+    ],
+    visual: { type: 'diff', added: 96, removed: 24 },
+  }),
+  testsRunning: (n: number): AgentToastData => ({
+    id: 'tests',
+    tone: 'info',
+    title: 'Running tests',
+    detail: `${n} of 48`,
+    visual: { type: 'tests', total: 48, passed: n, running: true },
+    busy: true,
+    dismissible: false,
+  }),
+  testsPassed: (): AgentToastData => ({
+    id: 'tests',
+    tone: 'success',
+    title: 'Tests passed',
+    detail: '48 in 58s',
+    visual: { type: 'tests', total: 48, passed: 48 },
+  }),
+  pr: (): AgentToastData => ({
+    id: 'pr',
+    tone: 'neutral',
+    title: 'PR #217 merged',
+    detail: [{ text: 'fix/login-redirect → main', kind: 'mono' }],
+    visual: { type: 'branch', state: 'merged', from: 'fix/login-redirect', to: 'main', commits: 2 },
+  }),
+  deployFail: (): AgentToastData => ({
+    id: 'deploy',
+    tone: 'danger',
+    title: 'Deploy failed',
+    detail: 'Migration timed out',
+    visual: { type: 'pipeline', steps: ['done', 'done', 'failed', 'pending', 'pending'] },
+    action: { id: 'retry', label: 'Retry' },
+  }),
+  deployBusy: (): AgentToastData => ({
     id: 'deploy',
     tone: 'info',
-    title: 'Deploy pipeline',
-    detail: 'Stage 4 of 5 · preview URL pending',
-    visual: { type: 'pipeline', steps: ['done', 'done', 'done', 'active', 'pending'] },
+    title: 'Deploying',
+    detail: 'Retrying from migrate',
+    visual: { type: 'pipeline', steps: ['done', 'done', 'active', 'pending', 'pending'] },
     busy: true,
-  },
-  {
+    dismissible: false,
+  }),
+  deployLive: (): AgentToastData => ({
+    id: 'deploy',
+    tone: 'success',
+    title: 'Deploy live',
+    detail: 'docs-site · 1m 38s',
+    visual: { type: 'pipeline', steps: ['done', 'done', 'done', 'done', 'final'] },
+  }),
+  build: (): AgentToastData => ({
     id: 'build',
-    tone: 'warning',
-    title: 'Build slower than usual',
-    detail: 'Median 62s · latest 94s',
-    visual: { type: 'bars', values: [48, 55, 60, 58, 62, 71, 94], unit: 's' },
-  },
-  {
+    tone: 'success',
+    title: 'Build 32% faster',
+    detail: '41s, usually 1m 0s',
+    visual: { type: 'bars', values: [62, 58, 64, 60, 59, 61, 41], unit: 's' },
+  }),
+  context: (): AgentToastData => ({
     id: 'context',
-    tone: 'danger',
-    title: 'Context nearly full',
-    detail: 'Compact or trim attachments before the next tool batch.',
-    visual: { type: 'context', used: 118000, total: 128000, phase: 'idle' },
+    tone: 'warning',
+    title: 'Context almost full',
+    detail: '172k of 200k',
+    visual: { type: 'context', used: 172_000, total: 200_000, phase: 'idle' },
     action: { id: 'compact', label: 'Compact' },
-    dismissible: true,
-  },
+  }),
+  contextBusy: (p: number): AgentToastData => ({
+    id: 'context',
+    tone: 'info',
+    title: 'Compacting',
+    detail: 'Summarizing 36 turns',
+    visual: { type: 'context', used: 172_000, total: 200_000, after: 58_000, phase: 'compacting', progress: p },
+    busy: true,
+    dismissible: false,
+  }),
+  contextDone: (): AgentToastData => ({
+    id: 'context',
+    tone: 'info',
+    title: 'Context compacted',
+    detail: '172k → 58k tokens',
+    visual: { type: 'context', used: 172_000, total: 200_000, after: 58_000, phase: 'done' },
+  }),
+}
+
+export type PlayStep =
+  | { at: number; push: () => AgentToastData }
+  | { at: number; update: { id: string; data: () => AgentToastData } }
+
+export const playScript: PlayStep[] = [
+  { at: 0, push: samples.session },
+  { at: 700, push: () => samples.testsRunning(0) },
+  { at: 850, update: { id: 'tests', data: () => samples.testsRunning(8) } },
+  { at: 1000, update: { id: 'tests', data: () => samples.testsRunning(16) } },
+  { at: 1150, update: { id: 'tests', data: () => samples.testsRunning(24) } },
+  { at: 1300, update: { id: 'tests', data: () => samples.testsRunning(32) } },
+  { at: 1450, update: { id: 'tests', data: () => samples.testsRunning(40) } },
+  { at: 1600, update: { id: 'tests', data: () => samples.testsPassed() } },
+  { at: 1650, push: samples.pr },
+  { at: 2100, push: samples.deployFail },
+  { at: 2800, push: samples.build },
+  { at: 3500, push: samples.context },
 ]
 
-export const deployDone: AgentToastData = {
-  id: 'deploy',
-  tone: 'success',
-  title: 'Deploy finished',
-  detail: 'Preview https://demo.local/agents · 5 of 5 steps',
-  visual: { type: 'pipeline', steps: ['done', 'done', 'done', 'done', 'final'] },
-  action: { id: 'open-preview', label: 'Open' },
-}
-
-export const compacting: AgentToastData = {
-  id: 'context',
-  tone: 'warning',
-  title: 'Compacting context',
-  detail: 'Reclaiming tokens from older turns.',
-  visual: { type: 'context', used: 118000, total: 128000, after: 72000, phase: 'compacting', progress: 0.45 },
-  busy: true,
-  duration: null,
-}
-
-export const compactDone: AgentToastData = {
-  id: 'context',
-  tone: 'success',
-  title: 'Context compacted',
-  detail: [{ text: '72k', kind: 'mono' }, { text: ' of 128k tokens', kind: 'mono' }],
-  visual: { type: 'context', used: 118000, total: 128000, after: 72000, phase: 'done' },
-}
-
-export const testsFailed: AgentToastData = {
-  id: 'tests',
-  tone: 'danger',
-  title: 'Tests failed',
-  detail: [{ text: '3 failing', kind: 'minus' }, { text: '· payments.spec.ts', kind: 'mono' }],
-  visual: { type: 'tests', total: 248, passed: 245, failed: 3 },
-  action: { id: 'retry-tests', label: 'Retry' },
-}
-
-const SEQUENCE_DELAYS = [0, 700, 1400, 2100, 2800, 3500]
-
-export function playSequence(
-  push: (data: AgentToastData) => void,
-  options?: { client?: boolean; onDone?: () => void },
-): () => void {
-  const client = options?.client ?? typeof window !== 'undefined'
+export function runPlaySequence(push: (d: AgentToastData) => void, update: (id: string, d: AgentToastData) => void, clear: () => void) {
+  clear()
   const timers: ReturnType<typeof setTimeout>[] = []
-  originalData.forEach((data, i) => {
-    const run = () => push({ ...data })
-    if (!client) {
-      run()
-      return
-    }
-    timers.push(setTimeout(run, SEQUENCE_DELAYS[i] ?? 0))
-  })
-  if (client && options?.onDone) {
-    const last = SEQUENCE_DELAYS[SEQUENCE_DELAYS.length - 1]! + 200
-    timers.push(setTimeout(options.onDone, last))
+  for (const step of playScript) {
+    timers.push(
+      setTimeout(() => {
+        if ('push' in step) push(step.push())
+        else update(step.update.id, step.update.data())
+      }, step.at),
+    )
   }
   return () => timers.forEach(t => clearTimeout(t))
 }
 
-export function demoRetry(store: { update: (id: string, data: AgentToastData) => void; push: (d: AgentToastData) => void }) {
-  store.update('tests', {
-    ...testsFailed,
-    busy: true,
-    title: 'Retrying tests',
-    detail: 'Running failed shard only.',
-    visual: { type: 'tests', total: 248, passed: 245, failed: 3, running: true },
-    action: undefined,
-  })
-  if (typeof window !== 'undefined') {
-    return window.setTimeout(() => {
-      store.update('tests', {
-        id: 'tests',
-        tone: 'success',
-        title: 'Tests passed',
-        detail: 'All 248 cases green after retry.',
-        visual: { type: 'tests', total: 248, passed: 248 },
-      })
-    }, 1400)
+export function runRetryScript(onUpdate: (id: string, data: AgentToastData) => void) {
+  const steps = [
+    { delay: 0, data: samples.deployBusy() },
+    {
+      delay: 800,
+      data: {
+        ...samples.deployBusy(),
+        visual: { type: 'pipeline' as const, steps: ['done', 'done', 'done', 'active', 'pending'] as const },
+      },
+    },
+  ]
+  const tail = { delay: 1600, data: samples.deployLive() }
+  const timers: ReturnType<typeof setTimeout>[] = []
+  let base = 0
+  for (const step of [...steps, tail]) {
+    base += step.delay
+    timers.push(setTimeout(() => onUpdate('deploy', { ...step.data, id: 'deploy' }), base))
   }
-  store.update('tests', {
-    id: 'tests',
-    tone: 'success',
-    title: 'Tests passed',
-    detail: 'All 248 cases green after retry.',
-    visual: { type: 'tests', total: 248, passed: 248 },
-  })
-  return undefined
+  return () => timers.forEach(t => clearTimeout(t))
 }
 
-export function demoCompact(store: {
-  update: (id: string, data: AgentToastData) => void
-  push: (d: AgentToastData) => void
-}) {
-  store.update('context', compacting)
-  let t2: ReturnType<typeof setTimeout> | undefined
-  const t1 =
-    typeof window !== 'undefined'
-      ? window.setTimeout(() => {
-          t2 = window.setTimeout(() => store.update('context', compactDone), 900)
-        }, 700)
-      : undefined
-  if (!t1) store.update('context', compactDone)
-  return () => {
-    if (t1) clearTimeout(t1)
-    if (t2) clearTimeout(t2)
-  }
-}
-
-export function queueBurst(push: (data: AgentToastData) => void) {
-  for (let i = 0; i < 9; i++) {
-    push({
-      id: `burst-${i}`,
-      tone: i % 3 === 0 ? 'warning' : 'neutral',
-      title: `Queued update ${i + 1}`,
-      detail: 'FIFO demo · max six visible.',
-      visual: { type: 'bars', values: [40 + i * 4, 44, 48], unit: 's' },
-    })
-  }
+export function runCompactScript(onUpdate: (id: string, data: AgentToastData) => void) {
+  const timers: ReturnType<typeof setTimeout>[] = []
+  ;[0.25, 0.5, 0.75, 1].forEach((p, i) => {
+    timers.push(
+      setTimeout(() => {
+        if (i < 3) onUpdate('context', { ...samples.contextBusy(p), id: 'context' })
+        else onUpdate('context', { ...samples.contextDone(), id: 'context' })
+      }, i * 500),
+    )
+  })
+  return () => timers.forEach(t => clearTimeout(t))
 }

@@ -74,20 +74,19 @@ export function createToastStore() {
 
   function push(data: AgentToastData, now = Date.now()) {
     const prevIds = new Set(state.items.map(itemId))
+    const prevQueue = state.queue.length
     const raw = reduce(state, { type: 'push', data, now })
-    const nudgeIdx = (raw as StackState & { _nudge?: number })._nudge
     syncState(raw)
-    state.items.forEach((item, idx) => {
+    state.items.forEach(item => {
       const id = itemId(item)
-      if (nudgeIdx === idx) {
-        scheduleItem(item, true)
-        return
-      }
       if (!prevIds.has(id)) {
         scheduleItem(item)
         onAnnounce(item.data)
       }
     })
+    if (state.queue.length > prevQueue) {
+      state.queue.slice(prevQueue).forEach(d => onAnnounce(d))
+    }
   }
 
   function update(id: string, data: AgentToastData) {

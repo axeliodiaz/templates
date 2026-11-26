@@ -38,3 +38,7 @@ Guide pages load the shared studio catalog with `theme="relay"` inside `b2-bs6`,
 ## Agent crew
 
 [Open the Relay agent crew demo](/relay/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Relay agent toasts demo](/relay/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

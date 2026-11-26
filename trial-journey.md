@@ -32,3 +32,7 @@ import SankeyFunnel from './.vitepress/theme/SankeyFunnel.vue'
 ## Agent crew
 
 [Open the Trial journey agent crew demo](/trial-journey/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Trial journey agent toasts demo](/trial-journey/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

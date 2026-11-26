@@ -15,9 +15,15 @@ export const EXIT = { duration: 0.22, ease: [...EASE_OUT] } as const
 export const STACK_SHIFT = { duration: 0.28, ease: [...EASE_OUT_CUBIC] } as const
 export const SWIPE_DISMISS = { duration: 0.24, ease: [...EASE_OUT] } as const
 export const ARM_GUARD_MS = 400
+export const ARM_GUARD = ARM_GUARD_MS
+export const GAP = 8
+export const PEEK = 8
+export const PEEK_SCALE = 0.05
+export const COLLAPSE_GRACE = 200
 
 export type MotionProfile = 'default' | 'calm' | 'terminal' | 'playful' | 'glass'
 
+export const motionProfile = profileForTheme
 export function profileForTheme(theme?: string): MotionProfile {
   const t = theme ?? 'lustro'
   if (t === 'evertrue') return 'calm'

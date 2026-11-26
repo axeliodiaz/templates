@@ -1,212 +1,168 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import AgentToaster from './AgentToaster.vue'
 import { createToastStore } from './toast.store'
-import {
-  demoCompact,
-  demoRetry,
-  deployDone,
-  originalData,
-  playSequence,
-  queueBurst,
-} from './toast.sample'
-import { profileForTheme, reducedNow } from './toast.motion'
+import { motionProfile } from './toast.motion'
+import { runCompactScript, runPlaySequence, runRetryScript, samples } from './toast.sample'
+import type { AgentToastData } from './toast.model'
 import './toasts.css'
 
 const props = withDefaults(
   defineProps<{
     theme?: string
-    demoState?: 'busy' | 'error' | 'queue' | 'empty' | 'index'
-    autoHide?: boolean
+    demoState?: 'busy' | 'error' | 'queue' | 'empty'
   }>(),
-  { demoState: 'index', autoHide: true },
+  { theme: 'lustro' },
 )
 
-const emit = defineEmits<{ spotlight: [id: string]; action: [id: string, actionId: string] }>()
-
-const store = createToastStore()
-const expanded = ref(false)
-const localDark = ref(false)
-const reduced = ref(false)
-const autoHideDemo = ref(props.autoHide)
-const spotlightId = ref<string | null>(null)
 const isClient = typeof window !== 'undefined'
-const localDarkThemes = new Set(['meadow', 'sentinel', 'brief'])
-const motionProfile = computed(() => profileForTheme(props.theme))
-
-let sequenceCancel: (() => void) | undefined
-let retryTimer: ReturnType<typeof setTimeout> | undefined
+const toasterRef = shallowRef<InstanceType<typeof AgentToaster> | null>(null)
+const expanded = ref(false)
+const autoHide = ref(true)
+const localDark = ref(false)
+const forceReduced = ref(false)
+const reduced = ref(false)
+const spotlightId = ref<string | null>(null)
+const playTimers: (() => void)[] = []
+let retryCancel: (() => void) | undefined
 let compactCancel: (() => void) | undefined
 let reducedMedia: MediaQueryList | undefined
 let reducedHandler: (() => void) | undefined
+let narrowMedia: MediaQueryList | undefined
 
-const themeClass = computed(() => `atoast-${props.theme ?? 'lustro'}`)
-const showDarkToggle = computed(() => localDarkThemes.has(props.theme ?? ''))
-const darkClass = computed(() => (localDark.value ? 'atoast-local-dark' : ''))
-const placement = ref<'bottom-right' | 'center'>('bottom-right')
-const stageEmpty = computed(() => props.demoState === 'empty')
+const localDarkThemes = new Set(['meadow', 'sentinel', 'brief'])
+const showDark = computed(() => localDarkThemes.has(props.theme))
+const profile = computed(() => motionProfile(props.theme ?? 'lustro'))
 
-function applyDemoState() {
-  store.clear()
-  if (props.demoState === 'empty') return
-  if (props.demoState === 'busy') {
-    store.push({ ...originalData[1]!, duration: null })
-    store.push({ ...originalData[3]!, duration: null })
-    return
-  }
-  if (props.demoState === 'error') {
-    store.push({
-      id: 'tests',
-      tone: 'danger',
-      title: 'Tests failed',
-      detail: 'payments.spec.ts · 3 assertions',
-      visual: { type: 'tests', total: 248, passed: 245, failed: 3 },
-      action: { id: 'retry-tests', label: 'Retry' },
-      duration: autoHideDemo.value ? undefined : null,
-    })
-    return
-  }
-  if (props.demoState === 'queue') {
-    queueBurst(d => store.push({ ...d, duration: autoHideDemo.value ? undefined : null }))
-    return
-  }
-  store.push({ ...originalData[0]!, duration: autoHideDemo.value ? undefined : null })
+const store = createToastStore()
+onMounted(() => {
+  store.setAnnounce((text, politeness) => toasterRef.value?.announce(text, politeness))
+})
+watch(autoHide, v => {
+  if (!v) store.pause()
+  else store.resume()
+})
+
+const items = computed(() => store.state.items)
+const placement = ref<'bottom-right' | 'bottom-center'>('bottom-right')
+
+function clearPlay() {
+  playTimers.forEach(c => c())
+  playTimers.length = 0
+  retryCancel?.()
+  compactCancel?.()
+  retryCancel = compactCancel = undefined
 }
 
-function runSequence() {
-  sequenceCancel?.()
-  store.clear()
-  sequenceCancel = playSequence(d => store.push({ ...d, duration: autoHideDemo.value ? undefined : null }))
+function onPlay() {
+  clearPlay()
+  const cancel = runPlaySequence(d => store.push(d), (id, d) => store.update(id, d), () => store.clear())
+  playTimers.push(cancel)
 }
 
-function pushSession() {
-  store.push({ ...originalData[0]!, duration: autoHideDemo.value ? undefined : null })
-}
-
-function pushTests() {
-  store.push({ ...originalData[1]!, duration: autoHideDemo.value ? undefined : null })
-}
-
-function pushPr() {
-  store.push({ ...originalData[2]!, duration: autoHideDemo.value ? undefined : null })
-}
-
-function pushDeploy() {
-  store.push({ ...originalData[3]!, duration: autoHideDemo.value ? undefined : null })
-}
-
-function pushBuild() {
-  store.push({ ...originalData[4]!, duration: autoHideDemo.value ? undefined : null })
-}
-
-function pushContext() {
-  store.push({ ...originalData[5]!, duration: autoHideDemo.value ? undefined : null })
+function pushOne(factory: () => AgentToastData) {
+  store.push(factory())
 }
 
 function onAction(id: string, actionId: string) {
-  emit('action', id, actionId)
-  if (actionId === 'retry-tests') retryTimer = demoRetry(store) as ReturnType<typeof setTimeout>
-  if (actionId === 'compact') compactCancel = demoCompact(store)
-  if (actionId === 'open-pr' || actionId === 'open-preview') {
-    store.update('deploy', { ...deployDone, duration: autoHideDemo.value ? undefined : null })
+  if (actionId === 'retry' && id === 'deploy') {
+    store.update(id, { ...samples.deployBusy(), id })
+    retryCancel = runRetryScript((rid, data) => store.update(rid, data))
+  }
+  if (actionId === 'compact' && id === 'context') {
+    store.update(id, { ...samples.contextBusy(0.25), id })
+    compactCancel = runCompactScript((rid, data) => store.update(rid, data))
   }
 }
 
-function onSpotlight(id: string) {
-  spotlightId.value = id
-  emit('spotlight', id)
+function applyDemoState() {
+  store.clear()
+  if (!props.demoState || props.demoState === 'empty') return
+  if (props.demoState === 'busy') store.push({ ...samples.deployBusy(), id: 'deploy' })
+  if (props.demoState === 'error') store.push(samples.deployFail())
+  if (props.demoState === 'queue') {
+    for (let i = 0; i < 7; i++) {
+      store.push({ ...samples.context(), id: `q-${i}` })
+    }
+  }
 }
 
-function syncPlacement() {
-  if (!isClient) return
-  placement.value = window.matchMedia('(max-width: 640px)').matches ? 'center' : 'bottom-right'
-}
-
-watch(
-  () => props.demoState,
-  () => applyDemoState(),
-)
+watch(() => props.demoState, applyDemoState)
 
 onMounted(() => {
-  if (!isClient) {
-    applyDemoState()
-    return
+  if (!isClient) return
+  reducedMedia = matchMedia('(prefers-reduced-motion: reduce)')
+  reducedHandler = () => {
+    reduced.value = forceReduced.value || reducedMedia!.matches
   }
-  syncPlacement()
-  window.addEventListener('resize', syncPlacement)
-  reducedMedia = window.matchMedia('(prefers-reduced-motion: reduce)')
-  reducedHandler = () => { reduced.value = reducedNow() }
-  reducedHandler()
   reducedMedia.addEventListener('change', reducedHandler)
+  reducedHandler()
+  narrowMedia = matchMedia('(max-width: 480px)')
+  const place = () => {
+    placement.value = narrowMedia!.matches ? 'bottom-center' : 'bottom-right'
+  }
+  narrowMedia.addEventListener('change', place)
+  place()
   applyDemoState()
 })
 
 onBeforeUnmount(() => {
-  sequenceCancel?.()
-  if (retryTimer) clearTimeout(retryTimer)
-  compactCancel?.()
+  clearPlay()
   store.dispose()
-  if (isClient) {
-    window.removeEventListener('resize', syncPlacement)
-    reducedMedia?.removeEventListener('change', reducedHandler!)
-  }
+  reducedMedia?.removeEventListener('change', reducedHandler!)
 })
+
+const rootClass = computed(() => [
+  'atoast',
+  `atoast-${props.theme}`,
+  `atoast--${profile.value}`,
+  localDark.value ? 'atoast-local-dark' : '',
+  forceReduced.value || reduced.value ? 'is-reduced' : '',
+])
 </script>
 
 <template>
-  <section
-    class="atoast"
-    :class="[themeClass, darkClass, `atoast-profile-${motionProfile}`, { 'is-reduced': reduced }]"
-    aria-label="Agent toasts module"
-  >
-    <header class="atoast__head">
-      <span class="atoast__eyebrow">AGENT TOASTS / DEMO</span>
-      <h2 class="atoast__title">Synthetic run feedback</h2>
-      <p class="atoast__lede">Original English copy. No agents, builds, or deploys are connected.</p>
-    </header>
-    <p v-if="spotlightId" class="atoast__spotlight" aria-live="polite">Spotlight: {{ spotlightId }}</p>
-    <div class="atoast__stage" :class="{ 'atoast__stage--empty': stageEmpty }">
-      <AgentToaster
-        :store="store"
-        :theme="theme"
-        :expanded="expanded"
-        :placement="placement"
-        :reduced="reduced"
-        @action="onAction"
-        @spotlight="onSpotlight"
-      />
-      <p v-if="stageEmpty" class="atoast__empty" role="status">No toasts. Use the demo bar or Play sequence.</p>
-    </div>
+  <div :class="rootClass">
     <div class="atoast__bar" role="toolbar" aria-label="Toast demo controls">
-      <button type="button" @click="runSequence">Play sequence</button>
-      <button type="button" @click="pushSession">Session</button>
-      <button type="button" @click="pushTests">Tests</button>
-      <button type="button" @click="pushPr">PR</button>
-      <button type="button" @click="pushDeploy">Deploy</button>
-      <button type="button" @click="pushBuild">Build</button>
-      <button type="button" @click="pushContext">Context</button>
-      <button type="button" @click="store.clear()">Clear</button>
-      <button type="button" :aria-pressed="expanded" @click="expanded = !expanded">
-        {{ expanded ? 'Deck' : 'Expanded' }}
-      </button>
-      <label class="atoast__check">
-        <input v-model="autoHideDemo" type="checkbox" />
-        Auto-hide
-      </label>
-      <button v-if="showDarkToggle" type="button" @click="localDark = !localDark">
-        {{ localDark ? 'Light' : 'Dark' }} mode
+      <button type="button" class="atoast__btn" @click="onPlay">Play sequence</button>
+      <button type="button" class="atoast__btn" @click="pushOne(samples.session)">Session</button>
+      <button type="button" class="atoast__btn" @click="pushOne(samples.testsPassed)">Tests</button>
+      <button type="button" class="atoast__btn" @click="pushOne(samples.pr)">PR</button>
+      <button type="button" class="atoast__btn" @click="pushOne(samples.deployFail)">Deploy</button>
+      <button type="button" class="atoast__btn" @click="pushOne(samples.build)">Build</button>
+      <button type="button" class="atoast__btn" @click="pushOne(samples.context)">Context</button>
+      <button type="button" class="atoast__btn" @click="store.clear()">Clear</button>
+      <button type="button" class="atoast__btn" :aria-pressed="expanded" @click="expanded = !expanded">Expanded</button>
+      <button type="button" class="atoast__btn" :aria-pressed="autoHide" @click="autoHide = !autoHide">Auto-hide</button>
+      <button v-if="showDark" type="button" class="atoast__btn" :aria-pressed="localDark" @click="localDark = !localDark">
+        Dark mode
       </button>
       <button
-        v-if="demoState === 'index'"
+        v-if="theme === 'lustro'"
         type="button"
-        :aria-pressed="reduced"
-        @click="reduced = !reduced"
+        class="atoast__btn"
+        :aria-pressed="forceReduced"
+        @click="forceReduced = !forceReduced; reduced = forceReduced || !!reducedMedia?.matches"
       >
-        {{ reduced ? 'Motion on' : 'Reduced' }}
+        Reduced motion
       </button>
     </div>
-    <p class="atoast__notice">
-      Max six visible · FIFO queue · dedupe within 4s · danger stays until dismissed · hover or tab hides timers.
-    </p>
-  </section>
+    <div class="atoast__stage">
+      <p v-if="!items.length" class="atoast__empty">No notifications yet. Use Play sequence or the buttons above.</p>
+      <AgentToaster
+        ref="toasterRef"
+        :items="items"
+        :queued="store.queueCount()"
+        v-model:expanded="expanded"
+        :placement="placement === 'bottom-center' ? 'bottom-center' : 'bottom-right'"
+        :reduced="reduced"
+        :spotlight-id="spotlightId"
+        @pause="() => store.pause()"
+        @resume="() => store.resume()"
+        @dismiss="(id, r) => store.dismiss(id, r)"
+        @action="onAction"
+        @spot="id => (spotlightId = id)"
+      />
+    </div>
+  </div>
 </template>

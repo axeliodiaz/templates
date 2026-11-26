@@ -160,3 +160,7 @@ html .vp-doc .lab small,html .vp-doc .lab .lab-title p{color:var(--muted)}
 ## Agent crew
 
 [Open the Margin agent crew demo](/margin/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Margin agent toasts demo](/margin/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

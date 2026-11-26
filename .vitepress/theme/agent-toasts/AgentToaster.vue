@@ -1,141 +1,167 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, useId } from 'vue'
 import AgentToast from './AgentToast.vue'
-import type { ToastStore } from './toast.store'
-import { enterToast, profileForTheme, reducedNow, shiftStack, stopAll, type Controls } from './toast.motion'
+import { COLLAPSE_GRACE, GAP, PEEK, PEEK_SCALE } from './toast.motion'
+import type { DismissReason, StackItem } from './toast.model'
 
 const props = withDefaults(
   defineProps<{
-    store: ToastStore
-    theme?: string
+    items: StackItem[]
+    queued: number
+    max?: number
+    placement?: 'bottom-right' | 'bottom-center'
     expanded?: boolean
-    placement?: 'bottom-right' | 'center'
     reduced?: boolean
+    spotlightId?: string | null
   }>(),
-  { expanded: false, placement: 'bottom-right' },
+  { max: 6, placement: 'bottom-right', expanded: false, reduced: false, spotlightId: null },
 )
 
-const emit = defineEmits<{ spotlight: [id: string]; action: [id: string, actionId: string] }>()
+const emit = defineEmits<{
+  'update:expanded': [boolean]
+  dismiss: [id: string, reason: DismissReason]
+  action: [id: string, actionId: string]
+  pause: []
+  resume: []
+  spot: [string | null]
+}>()
 
+const uid = useId()
 const regionRef = ref<HTMLElement | null>(null)
+const hover = ref(false)
+const focusIn = ref(false)
 const politeText = ref('')
 const assertiveText = ref('')
-const motionSet = new Set<Controls>()
-const isClient = typeof window !== 'undefined'
-const profile = computed(() => profileForTheme(props.theme))
-const items = computed(() => props.store.visible())
-const queueCount = computed(() => props.store.queueCount())
-const reduced = computed(() => props.reduced ?? (isClient && reducedNow()))
+let politeTimer: ReturnType<typeof setTimeout> | undefined
+let assertiveTimer: ReturnType<typeof setTimeout> | undefined
+let collapseTimer: ReturnType<typeof setTimeout> | undefined
 
-let visibilityHandler: (() => void) | undefined
+const expandedNow = computed(() => props.expanded || hover.value || focusIn.value)
 
-function onAnnounce(text: string, politeness: 'polite' | 'assertive') {
-  if (politeness === 'assertive') assertiveText.value = text
-  else politeText.value = text
+function announce(text: string, politeness: 'polite' | 'assertive') {
+  const clearPolite = () => {
+    politeText.value = ''
+    politeTimer = undefined
+  }
+  const clearAssertive = () => {
+    assertiveText.value = ''
+    assertiveTimer = undefined
+  }
+  if (politeness === 'assertive') {
+    assertiveText.value = ''
+    clearTimeout(assertiveTimer)
+    assertiveTimer = setTimeout(() => {
+      assertiveText.value = text
+      setTimeout(clearAssertive, 120)
+    }, 60)
+  } else {
+    politeText.value = ''
+    clearTimeout(politeTimer)
+    politeTimer = setTimeout(() => {
+      politeText.value = text
+      setTimeout(clearPolite, 120)
+    }, 60)
+  }
 }
 
-function onRegionEnter() {
-  props.store.pause()
+defineExpose({ announce })
+
+function depth(index: number) {
+  return props.items.length - 1 - index
 }
 
-function onRegionLeave() {
-  props.store.resume()
+function itemTransform(index: number) {
+  const d = depth(index)
+  if (expandedNow.value) {
+    let offset = 0
+    for (let i = index + 1; i < props.items.length; i++) offset += 64 + GAP
+    return `translateY(-${offset}px)`
+  }
+  if (d === 0) return 'translateY(0) scale(1)'
+  if (d === 1) return `translateY(-${PEEK}px) scale(${1 - PEEK_SCALE})`
+  if (d === 2) return `translateY(-${PEEK * 2}px) scale(${1 - PEEK_SCALE * 2})`
+  return `translateY(-${PEEK * 2}px) scale(.85)`
 }
 
-function onVisibility() {
-  if (!isClient) return
-  if (document.visibilityState === 'hidden') props.store.pause()
-  else props.store.resume()
+function onEnter() {
+  hover.value = true
+  clearTimeout(collapseTimer)
+  emit('pause')
 }
 
-watch(
-  () => props.store.visible().map(i => i.key).join(','),
-  async () => {
-    if (!isClient || reduced.value) return
-    await nextTick()
-    const list = regionRef.value?.querySelectorAll<HTMLElement>('.atoast-card')
-    if (!list?.length) return
-    const last = list[list.length - 1]
-    if (last) enterToast(last, motionSet, profile.value)
-    shiftStack([...list], motionSet)
-  },
-)
+function onLeave() {
+  hover.value = false
+  collapseTimer = setTimeout(() => {
+    if (!focusIn.value) emit('update:expanded', false)
+    if (!focusIn.value && !hover.value) emit('resume')
+  }, COLLAPSE_GRACE)
+}
 
-onMounted(() => {
-  props.store.setAnnounce(onAnnounce)
-  if (!isClient) return
-  visibilityHandler = onVisibility
-  document.addEventListener('visibilitychange', visibilityHandler)
-  const list = regionRef.value?.querySelectorAll<HTMLElement>('.atoast-card')
-  list?.forEach(el => enterToast(el, motionSet, profile.value))
-})
+function onFocusIn() {
+  focusIn.value = true
+  emit('update:expanded', true)
+  emit('pause')
+}
+
+function onFocusOut(e: FocusEvent) {
+  if (!regionRef.value?.contains(e.relatedTarget as Node)) {
+    focusIn.value = false
+    emit('resume')
+  }
+}
+
+function onKey(e: KeyboardEvent) {
+  if (e.key === 'Escape') emit('update:expanded', false)
+}
+
+function resolveId(item: StackItem) {
+  return item.data.id ?? item.key
+}
 
 onBeforeUnmount(() => {
-  stopAll(motionSet)
-  props.store.setAnnounce(undefined)
-  if (visibilityHandler) document.removeEventListener('visibilitychange', visibilityHandler)
+  clearTimeout(collapseTimer)
+  clearTimeout(politeTimer)
+  clearTimeout(assertiveTimer)
 })
-
-function onDismiss(id: string, reason: 'close' | 'swipe') {
-  props.store.dismiss(id, reason)
-}
-
-function onAction(id: string, actionId: string) {
-  emit('action', id, actionId)
-}
-
-function onSpotlight(id: string) {
-  emit('spotlight', id)
-}
 </script>
 
 <template>
-  <div
+  <section
     ref="regionRef"
-    class="atoast-region"
-    :class="[
-      `atoast-region--${placement}`,
-      { 'atoast-region--expanded': expanded, 'is-reduced': reduced },
-    ]"
+    class="atoast__region"
+    :class="[`atoast__region--${placement}`, { 'atoast__region--expanded': expandedNow }]"
     role="region"
     aria-label="Agent notifications"
-    @mouseenter="onRegionEnter"
-    @mouseleave="onRegionLeave"
-    @focusin="onRegionEnter"
-    @focusout="onRegionLeave"
+    @pointerenter="onEnter"
+    @pointerleave="onLeave"
+    @focusin="onFocusIn"
+    @focusout="onFocusOut"
+    @keydown="onKey"
   >
-    <p
-      class="atoast-live atoast-live--polite"
-      aria-live="polite"
-      aria-atomic="true"
-    >
-      {{ politeText }}
-    </p>
-    <p
-      class="atoast-live atoast-live--assertive"
-      aria-live="assertive"
-      aria-atomic="true"
-    >
-      {{ assertiveText }}
-    </p>
-    <p v-if="queueCount" class="atoast-queue" role="status">
-      +{{ queueCount }} queued
-    </p>
-    <ol class="atoast-list" :class="{ 'atoast-list--deck': !expanded }">
-      <AgentToast
+    <p v-if="queued > 0" class="atoast__queue" aria-hidden="true">+{{ Math.min(queued, 99) }} more</p>
+    <div class="atoast__live" aria-live="polite" aria-atomic="true">{{ politeText }}</div>
+    <div class="atoast__live" aria-live="assertive" aria-atomic="true">{{ assertiveText }}</div>
+    <ol class="atoast__list">
+      <li
         v-for="(item, index) in items"
         :key="item.key"
-        :toast-key="item.key"
-        :data="item.data"
-        :depth="expanded ? 0 : items.length - 1 - index"
-        :collapsed="!expanded"
-        :reduced="reduced"
-        @dismiss="onDismiss"
-        @action="onAction"
-        @spotlight="onSpotlight"
-        @pause="id => store.pause(id)"
-        @resume="id => store.resume(id)"
-      />
+        class="atoast__item"
+        :class="{ 'atoast__item--spot': spotlightId && spotlightId !== item.key }"
+        :style="{ transform: itemTransform(index), zIndex: 100 + index }"
+        :aria-busy="item.data.busy ? 'true' : undefined"
+      >
+        <AgentToast
+          :item="item"
+          :depth="depth(index)"
+          :expanded="expandedNow"
+          :reduced="reduced"
+          :compact="placement === 'bottom-center'"
+          :title-id="`${uid}-t-${index}`"
+          @dismiss="r => emit('dismiss', resolveId(item), r)"
+          @action="a => emit('action', resolveId(item), a)"
+          @spot="on => emit('spot', on ? item.key : null)"
+        />
+      </li>
     </ol>
-  </div>
+  </section>
 </template>

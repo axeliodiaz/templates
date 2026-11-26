@@ -54,3 +54,7 @@ The extended Bootstrap gallery uses **Bootstrap 6.0.0-alpha.1** (pinned with int
 ## Agent crew
 
 [Open the Lumen agent crew demo](/lumen/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Lumen agent toasts demo](/lumen/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

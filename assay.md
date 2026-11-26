@@ -33,3 +33,7 @@ import { assaySample } from './assay.sample'
 ```
 
 The component owns its `.assay.assay-bs6` wrapper and product `main` landmark. Mount it outside another `main`, as the full-page demo does. `config` accepts a typed run, navigation and label overrides. Events: `select-nav`, `compare`, `view-billing`, `view-all-failing`, `select-case` and `select-commit`. No event sends or saves anything.
+
+## Agent toasts
+
+[Open the Assay agent toasts demo](/assay/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

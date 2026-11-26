@@ -1,178 +1,120 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import ToastVisual from './ToastVisual.vue'
-import { altText, type AgentToastData, type DetailPart } from './toast.model'
-import { ARM_GUARD_MS, exitToast, reducedNow, type Controls } from './toast.motion'
+import { altText, plainDetail, type StackItem } from './toast.model'
+import { ARM_GUARD } from './toast.motion'
 
-const props = withDefaults(
-  defineProps<{
-    data: AgentToastData
-    toastKey: string
-    depth?: number
-    collapsed?: boolean
-    size?: 'md' | 'sm'
-    reduced?: boolean
-  }>(),
-  { depth: 0, collapsed: false, size: 'md', reduced: false },
-)
-
-const emit = defineEmits<{
-  dismiss: [id: string, reason: 'close' | 'swipe']
-  action: [id: string, actionId: string]
-  spotlight: [id: string]
-  pause: [id: string]
-  resume: [id: string]
+const props = defineProps<{
+  item: StackItem
+  depth: number
+  expanded: boolean
+  reduced: boolean
+  compact: boolean
+  titleId: string
 }>()
 
-const cardRef = ref<HTMLElement | null>(null)
-const armed = ref(false)
-const dragging = ref(false)
+const emit = defineEmits<{
+  dismiss: [reason: 'close' | 'swipe']
+  action: [actionId: string]
+  spot: [boolean]
+}>()
+
 const dragX = ref(0)
-let armTimer: ReturnType<typeof setTimeout> | undefined
+const armedAt = ref(0)
 let startX = 0
-let pointerId: number | null = null
-const motionSet = new Set<Controls>()
-const isClient = typeof window !== 'undefined'
+let startT = 0
+let trackingPointer = false
 
-const titleId = computed(() => `atoast-title-${props.toastKey}`)
-const detailId = computed(() => `atoast-detail-${props.toastKey}`)
-const toneClass = computed(() => `atoast-card--${props.data.tone}`)
-const graphicLabel = computed(() => props.data.alt ?? altText(props.data.visual))
-const detailParts = computed((): DetailPart[] | null => {
-  if (!props.data.detail) return null
-  if (typeof props.data.detail === 'string') return [{ text: props.data.detail }]
-  return props.data.detail
-})
-const showDismiss = computed(() => props.data.dismissible !== false && !props.data.busy)
-const inertBelow = computed(() => props.collapsed && props.depth >= 1)
-
-const fixTypo = computed(() => props.data.id ?? props.toastKey)
+const toast = computed(() => props.item.data)
+const alt = computed(() => toast.value.alt ?? altText(toast.value.visual))
+const dismissLabel = computed(() => `Dismiss notification: ${toast.value.title}`)
+const inertPeek = computed(() => !props.expanded && props.depth >= 1)
+const showAction = computed(() => !!toast.value.action && !toast.value.busy)
+const canDismiss = computed(() => toast.value.dismissible !== false)
 
 onMounted(() => {
-  if (!isClient) {
-    armed.value = true
+  armedAt.value = performance.now()
+})
+
+function onActionClick(e: MouseEvent) {
+  if (e.detail > 0 && armedAt.value > 0 && performance.now() - armedAt.value < ARM_GUARD) {
+    e.preventDefault()
     return
   }
-  armTimer = setTimeout(() => {
-    armed.value = true
-  }, ARM_GUARD_MS)
-})
-
-onBeforeUnmount(() => {
-  if (armTimer) clearTimeout(armTimer)
-})
-
-function handleDismiss(reason: 'close' | 'swipe') {
-  if (!armed.value && reason === 'swipe') return
-  const el = cardRef.value
-  const done = () => emit('dismiss', fixTypo.value, reason)
-  if (el && reason === 'swipe' && !reducedNow() && !props.reduced) {
-    exitToast(el, motionSet, done)
-  } else done()
+  if (toast.value.action && !toast.value.busy) emit('action', toast.value.action.id)
 }
 
-function onAction() {
-  if (!props.data.action || props.data.busy) return
-  emit('action', fixTypo.value, props.data.action.id)
-}
-
-function onPointerDown(e: PointerEvent) {
-  if (!isClient || !showDismiss.value || inertBelow.value) return
+function pointerDown(e: PointerEvent) {
   if ((e.target as HTMLElement).closest('button')) return
-  pointerId = e.pointerId
   startX = e.clientX
-  dragging.value = true
-  cardRef.value?.setPointerCapture(e.pointerId)
+  startT = performance.now()
+  trackingPointer = true
 }
 
-function onPointerMove(e: PointerEvent) {
-  if (!dragging.value || e.pointerId !== pointerId) return
-  dragX.value = Math.max(0, e.clientX - startX)
-  if (cardRef.value) cardRef.value.style.transform = `translateX(${dragX.value}px)`
+function pointerMove(e: PointerEvent) {
+  if (!trackingPointer) return
+  dragX.value = Math.min(Math.max(e.clientX - startX, -24), 120)
 }
 
-function onPointerUp(e: PointerEvent) {
-  if (!dragging.value || e.pointerId !== pointerId) return
-  dragging.value = false
-  pointerId = null
-  const threshold = 72
-  if (dragX.value > threshold) handleDismiss('swipe')
-  else if (cardRef.value) cardRef.value.style.transform = ''
+function pointerUp(e: PointerEvent) {
+  if (!trackingPointer) return
+  trackingPointer = false
+  const dx = e.clientX - startX
+  const dt = performance.now() - startT
+  const v = Math.abs(dx) / Math.max(dt, 1)
+  if (Math.abs(dx) >= 64 || v >= 0.45) {
+    emit('dismiss', 'swipe')
+    return
+  }
   dragX.value = 0
-}
-
-function onFocusIn() {
-  emit('spotlight', fixTypo.value)
-  emit('pause', fixTypo.value)
-}
-
-function onFocusOut() {
-  emit('resume', fixTypo.value)
-}
-
-function onEnter() {
-  emit('spotlight', fixTypo.value)
-  emit('pause', fixTypo.value)
-}
-
-function onLeave() {
-  emit('resume', fixTypo.value)
 }
 </script>
 
 <template>
-  <li
-    ref="cardRef"
-    class="atoast-card"
-    :class="[toneClass, { 'atoast-card--busy': data.busy, 'atoast-card--stacked': depth > 0, 'atoast-card--inert': inertBelow }]"
-    :style="depth ? { '--atoast-depth': depth } : undefined"
-    role="listitem"
+  <article
+    class="atoast__card"
+    :class="{ 'atoast__card--busy': toast.busy, 'atoast__card--peek': inertPeek }"
     :aria-labelledby="titleId"
-    :aria-describedby="detailParts ? detailId : undefined"
-    :inert="inertBelow || undefined"
-    @pointerdown="onPointerDown"
-    @pointermove="onPointerMove"
-    @pointerup="onPointerUp"
-    @pointercancel="onPointerUp"
-    @mouseenter="onEnter"
-    @mouseleave="onLeave"
-    @focusin="onFocusIn"
-    @focusout="onFocusOut"
+    :inert="inertPeek || undefined"
+    :style="dragX ? { transform: `translateX(${dragX}px)` } : undefined"
+    @pointerdown="pointerDown"
+    @pointermove="pointerMove"
+    @pointerup="pointerUp"
+    @pointercancel="pointerUp"
   >
-    <div class="atoast-card__graphic" role="img" :aria-label="graphicLabel">
-      <ToastVisual :visual="data.visual" :size="size" />
-    </div>
-    <div class="atoast-card__body">
-      <h3 :id="titleId" class="atoast-card__title" :class="{ 'atoast-card__title--busy': data.busy }">
-        {{ data.title }}
-      </h3>
-      <p v-if="detailParts" :id="detailId" class="atoast-card__detail">
-        <template v-for="(part, i) in detailParts" :key="i">
-          <span v-if="part.kind === 'plus'" class="atoast-detail--plus">{{ part.text }}</span>
-          <span v-else-if="part.kind === 'minus'" class="atoast-detail--minus">{{ part.text }}</span>
-          <span v-else-if="part.kind === 'mono'" class="atoast-detail--mono">{{ part.text }}</span>
-          <span v-else>{{ part.text }}</span>
+    <ToastVisual :visual="toast.visual" :size="compact ? 'sm' : 'md'" />
+    <div class="atoast__text">
+      <h4 :id="titleId" class="atoast__title" :title="toast.title">{{ toast.title }}</h4>
+      <p v-if="toast.detail" class="atoast__detail" :title="plainDetail(toast.detail)">
+        <template v-if="typeof toast.detail === 'string'">{{ toast.detail }}</template>
+        <template v-else>
+          <span
+            v-for="(part, i) in toast.detail"
+            :key="i"
+            :class="{
+              'atoast__mono': part.kind === 'mono',
+              'atoast__plus': part.kind === 'plus',
+              'atoast__minus': part.kind === 'minus',
+            }"
+          >{{ part.text }}</span>
         </template>
       </p>
+      <span class="atoast__vh">{{ alt }}</span>
     </div>
-    <div class="atoast-card__actions">
-      <button
-        v-if="data.action && !data.busy"
-        type="button"
-        class="atoast-card__action"
-        @click="onAction"
-      >
-        {{ data.action.label }}
-      </button>
-      <button
-        v-if="showDismiss"
-        type="button"
-        class="atoast-card__dismiss"
-        :aria-label="`Dismiss ${data.title}`"
-        @click="handleDismiss('close')"
-      >
-        ×
-      </button>
-    </div>
-  </li>
+    <button
+      v-if="showAction"
+      type="button"
+      class="atoast__act"
+      @click.stop="onActionClick"
+      @pointerenter="emit('spot', true)"
+      @pointerleave="emit('spot', false)"
+      @focusin="emit('spot', true)"
+      @focusout="emit('spot', false)"
+    >
+      {{ toast.action!.label }}
+    </button>
+    <button v-if="canDismiss" type="button" class="atoast__close" :aria-label="dismissLabel" @click="emit('dismiss', 'close')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </article>
 </template>
