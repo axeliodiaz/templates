@@ -3,7 +3,11 @@ const props = defineProps<{ section: string }>()
 const show = (id: string) => !props.section || props.section === id
 </script>
 <template>
+<<<<<<< HEAD
   <div class="lab b2-bs6 b2-margin margin-bs6-root margin-content-demo">
+=======
+  <div class="lab b2-bs6 b2-margin margin-content-demo">
+>>>>>>> origin/main
     <section v-show="show('reboot')" class="mg-content-block" aria-label="Reboot">
       <h1>Profit review</h1>
       <h2>Quarter summary</h2>
