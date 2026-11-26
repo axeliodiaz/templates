@@ -27,13 +27,18 @@ function showSection(id){
 )
 
 s = s.replace(
-  "import { initScopecraftBs6 } from './scopecraft-bs6-live'\nonMounted(() => initScopecraftBs6())",
-  "import { initMarginBs6 } from './margin-bs6-live'\nonMounted(() => initMarginBs6())"
+  "import { onBeforeUnmount, onMounted, ref } from 'vue'",
+  "import { inject, onBeforeUnmount, onMounted, ref } from 'vue'"
 )
-
+s = s.replace(
+  "import { initScopecraftBs6 } from './scopecraft-bs6-live'\nonMounted(() => initScopecraftBs6())",
+  `import { initMarginBs6 } from './margin-bs6-live'
+const previewDark = inject('marginGuidePreviewDark', ref(false))
+onMounted(() => initMarginBs6())`
+)
 s = s.replace(
   '<div class="sc-bs6-root kit kit-scopecraft" data-bs-theme="light">',
-  '<div class="margin-bs6-root lab b2-bs6 b2-margin kit kit-margin">'
+  '<div class="margin-bs6-root lab b2-bs6 b2-margin kit kit-margin" :class="{ \'kit-embedded\': embedded, \'lab-dark\': previewDark }">'
 )
 
 s = s.replace('<style src="./scopecraft-bs6.css"></style>', '<style src="./margin-bs6.css"></style>')

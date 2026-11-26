@@ -65,4 +65,15 @@ const show = (id: string) => !props.section || props.section === id
   outline: 2px solid #6389ea;
   outline-offset: 3px;
 }
+.margin-content-demo .display-6 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.margin-content-demo .lead {
+  font-size: 1.125rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
 </style>
