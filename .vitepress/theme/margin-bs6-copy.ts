@@ -141,16 +141,26 @@ export const MARGIN_BS6_COPY: Record<string, string> = {
   "components/tooltip": "<span class=\"kit-tooltip\"><button class=\"btn-outline theme-secondary\" aria-describedby=\"kit-tip\">Focus or hover for help</button><span id=\"kit-tip\" role=\"tooltip\">Changes apply to this workspace.</span></span>"
 }
 
+function isStandaloneCopy(raw: string): boolean {
+  const t = raw.trimStart()
+  const low = t.toLowerCase()
+  if (low.startsWith('<!doctype') || low.startsWith('<html')) return true
+  if (t.startsWith('#') || /^node scripts\//m.test(t)) return true
+  if (/^\.[\w-]+\s*\{/.test(t) && !t.includes('<')) return true
+  if (t.startsWith('<div class="lab')) return true
+  return false
+}
+
 function wrapMarkup(area: string, inner: string): string {
   if (area === 'customize' && inner.includes('--bg:')) return inner
-  return `<div class="lab b2-bs6 b2-margin margin-bs6-root">\n${inner}\n</div>`
+  return `<div class="lab b2-bs6 b2-margin margin-bs6-root kit kit-margin">\n${inner}\n</div>`
 }
 
 export function marginBs6CopyMarkup(area: string, slug: string): string {
   const key = `${area}/${slug}`
   const raw = MARGIN_BS6_COPY[key]
   if (!raw) return wrapMarkup(area, `<!-- ${key} -->`)
-  if (raw.trimStart().startsWith('<div class="lab')) return raw
+  if (isStandaloneCopy(raw)) return raw
   if (area === 'customize' && raw.includes('--bg:')) return raw
   return wrapMarkup(area, raw)
 }
