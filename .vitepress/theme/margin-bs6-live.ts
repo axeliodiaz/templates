@@ -16,7 +16,12 @@ export async function initMarginBs6() {
       const target = el.getAttribute('data-bs-target')
       if (!target) return
       const pane = document.querySelector<HTMLElement>(target)
-      if (pane) Modal.getOrCreateInstance(pane)
+      if (!pane) return
+      const instance = Modal.getOrCreateInstance(pane)
+      el.addEventListener('click', (event) => {
+        event.preventDefault()
+        instance.toggle()
+      })
     })
   }
   if (Collapse) {
