@@ -12,9 +12,11 @@ async function checkModal(page, viewport) {
   await dialog.waitFor({ state: 'visible', timeout: 15000 })
   const box = await dialog.boundingBox()
   if (!box) throw new Error('modal-dialog missing box')
-  const centeredX = Math.abs(box.x + box.width / 2 - viewport.width / 2) < viewport.width * 0.08
-  const topOk = box.y >= 16 && box.y <= viewport.height * 0.35
-  return { viewport, box, centeredX, topOk, pass: centeredX && topOk }
+  const centerX = box.x + box.width / 2
+  const centerY = box.y + box.height / 2
+  const centeredX = Math.abs(centerX - viewport.width / 2) < viewport.width * 0.08
+  const centeredY = Math.abs(centerY - viewport.height / 2) < viewport.height * 0.15
+  return { viewport, box, centeredX, centeredY, pass: centeredX && centeredY }
 }
 
 const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox'] })
