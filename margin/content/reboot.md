@@ -2,17 +2,19 @@
 pageClass: margin-scoped-guide
 ---
 <script setup>
-import MarginContentSection from '../../.vitepress/theme/MarginContentSection.vue'
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
 # Reboot
 
-Bootstrap **Content** (reboot) with Margin palette tokens. See also [Foundations typography](/margin/foundations/typography) for product type roles (DM Sans / Space Grotesk).
+Index for Bootstrap v6 **Reboot** docs on Margin tokens.
 
-<MarginContentSection section="reboot" label="Reboot" />
+Mirrors [Bootstrap v6.0 · Reboot](https://getbootstrap.com/docs/6.0/content/reboot/) with Margin `.lab` / `b2-margin` styling.
+
+<MarginBs6Doc area="content" slug="reboot" label="Reboot" />
 
 ```html
-<div class="lab b2-bs6 b2-margin margin-content-demo">
-  <!-- Reboot / typography / media markup -->
+<div class="lab b2-bs6 b2-margin">
+  <!-- content/reboot -->
 </div>
 ```

@@ -2,25 +2,17 @@
 pageClass: margin-scoped-guide
 ---
 <script setup>
-import MarginBs6Section from '../../.vitepress/theme/MarginBs6Section.vue'
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
 # Progress
 
-Bootstrap 5.3/6-compatible **progress** on scoped `b2-bs6` + Margin `.lab` tokens. Toggle **Dark preview** to verify AA contrast, keyboard focus, and `prefers-reduced-motion`.
+Mirrors [Bootstrap v6.0 · Progress](https://getbootstrap.com/docs/6.0/components/progress/) with Margin `.lab` / `b2-margin` styling.
 
-<MarginBs6Section section="progress" label="Progress" />
-
-## Markup shell
+<MarginBs6Doc area="components" slug="progress" label="Progress" />
 
 ```html
 <div class="lab b2-bs6 b2-margin">
-  <!-- Bootstrap component markup -->
+  <!-- components/progress -->
 </div>
 ```
-
-Fictitious sample data only. Wire your own API, authorization, and persistence before production.
-
-## Accessibility
-
-Tab through the live example. Use Enter/Space on buttons and toggles; Escape closes dialogs and offcanvas surfaces. Pair status with text, not color alone.

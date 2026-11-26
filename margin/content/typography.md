@@ -2,17 +2,17 @@
 pageClass: margin-scoped-guide
 ---
 <script setup>
-import MarginContentSection from '../../.vitepress/theme/MarginContentSection.vue'
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
 # Typography
 
-Bootstrap **Content** (typography) with Margin palette tokens. See also [Foundations typography](/margin/foundations/typography) for product type roles (DM Sans / Space Grotesk).
+Mirrors [Bootstrap v6.0 · Typography](https://getbootstrap.com/docs/6.0/content/typography/) with Margin `.lab` / `b2-margin` styling.
 
-<MarginContentSection section="typography" label="Typography" />
+<MarginBs6Doc area="content" slug="typography" label="Typography" />
 
 ```html
-<div class="lab b2-bs6 b2-margin margin-content-demo">
-  <!-- Reboot / typography / media markup -->
+<div class="lab b2-bs6 b2-margin">
+  <!-- content/typography -->
 </div>
 ```

@@ -2,18 +2,17 @@
 pageClass: margin-scoped-guide
 ---
 <script setup>
-import MarginFormsSection from '../../.vitepress/theme/MarginFormsSection.vue'
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
 # Floating labels
 
-Margin forms mirror Bootstrap’s form docs with `form-control`, labels, validation states, and layout utilities inside `.lab` / `.b2-margin`.
+Mirrors [Bootstrap v6.0 · Floating labels](https://getbootstrap.com/docs/6.0/forms/floating-labels/) with Margin `.lab` / `b2-margin` styling.
 
-<MarginFormsSection section="floating-labels" label="Floating labels" />
+<MarginBs6Doc area="forms" slug="floating-labels" label="Floating labels" />
 
 ```html
 <div class="lab b2-bs6 b2-margin">
-  <label class="form-label" for="sample">Label</label>
-  <input id="sample" class="form-control" />
+  <!-- forms/floating-labels -->
 </div>
 ```

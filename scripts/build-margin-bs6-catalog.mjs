@@ -18,7 +18,7 @@ s = s.replace(
   section:{type:String,default:''},
   embedded:{type:Boolean,default:false},
 })
-const sectionAliases={spinners:'spinners-loaders',navbar:'navbar-and-footer'}
+const sectionAliases={spinners:'spinners-loaders',spinner:'spinners-loaders',navbar:'navbar-and-footer',button:'buttons',buttons:'buttons',alert:'alerts',alerts:'alerts',dialog:'modal',popover:'popovers',popovers:'popovers',tooltip:'tooltips',tooltips:'tooltips',placeholder:'placeholders',placeholders:'placeholders',tab:'navs-tabs',nav:'navs-tabs','navs-tabs':'navs-tabs',menu:'dropdowns',dropdowns:'dropdowns',drawer:'offcanvas',offcanvas:'offcanvas'}
 function showSection(id){
   if(!props.section) return true
   const want=sectionAliases[props.section]??props.section
