@@ -11,7 +11,7 @@ onMounted(() => initMarginBs6())
 </script>
 <template>
   <MarginGuidePreview :label="label ?? slug">
-    <div class="lab b2-bs6 b2-margin margin-bs6-generic" v-html="html" />
+    <div class="lab b2-bs6 b2-margin margin-bs6-root margin-bs6-generic" v-html="html" />
   </MarginGuidePreview>
 </template>
 <style scoped>
