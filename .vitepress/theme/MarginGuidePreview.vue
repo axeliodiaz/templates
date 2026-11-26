@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { revealTheme } from './theme-reveal'
+import { provide, ref } from 'vue'
 defineProps<{ label?: string }>()
 const dark = ref(false)
-function toggle(e: Event) {
-  revealTheme(e.currentTarget as HTMLElement, () => { dark.value = !dark.value })
+provide('marginGuidePreviewDark', dark)
+function toggle() {
+  dark.value = !dark.value
 }
 </script>
 <template>
