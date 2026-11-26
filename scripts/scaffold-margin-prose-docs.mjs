@@ -10,7 +10,7 @@ const pages = {
     title: 'Quickstart',
     area: 'guides',
     slug: 'quickstart',
-    body: `Bootstrap-aligned Margin docs mirror [Bootstrap v6 Quickstart](https://getbootstrap.com/docs/6.0/guides/quickstart/). Use this page to drop Margin's scoped Bootstrap 6 kit into a static page or app shell.
+    body: `Use this page to drop Margin's scoped Bootstrap 6 kit into a static page or app shell.
 
 ## CSS
 
@@ -48,7 +48,7 @@ Toggle **Dark preview** on any Margin doc page to preview \`.lab-dark\` token va
     title: 'Migration',
     area: 'guides',
     slug: 'migration',
-    body: `Margin v6 doc routes mirror [Bootstrap 6.0](https://getbootstrap.com/docs/6.0/). Legacy paths redirect in \`vercel.json\`.
+    body: `Legacy paths redirect in \`vercel.json\`.
 
 ## Path changes
 

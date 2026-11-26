@@ -48,12 +48,43 @@ const email = ref('')
       <label class="form-label" for="mg-range">Threshold <output class="ms-1">64%</output></label>
       <input id="mg-range" class="form-range" type="range" min="0" max="100" value="64" />
     </section>
-    <section v-show="show('input-group')" class="l-demo l-form">
-      <label class="form-label" for="mg-ig">Budget</label>
-      <div class="input-group">
-        <span class="input-group-text">$</span>
-        <input id="mg-ig" class="form-control" type="number" min="0" value="1200" />
-        <button type="button" class="btn btn-outline theme-secondary">Apply</button>
+    <section v-show="show('input-group')" class="l-demo l-form vstack gap-3">
+      <div>
+        <label class="form-label" for="mg-ig">Prepend + button</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input id="mg-ig" class="form-control" type="number" min="0" value="1200" />
+          <button type="button" class="btn btn-outline theme-secondary">Apply</button>
+        </div>
+      </div>
+      <div>
+        <label class="form-label" for="mg-ig-append">Append</label>
+        <div class="input-group">
+          <input id="mg-ig-append" class="form-control" type="text" value="northstar" />
+          <span class="input-group-text">@workspace</span>
+        </div>
+      </div>
+      <div>
+        <label class="form-label" for="mg-ig-both">Both sides</label>
+        <div class="input-group">
+          <span class="input-group-text">https://</span>
+          <input id="mg-ig-both" class="form-control" type="text" value="templates.axeldiaz.com" />
+          <span class="input-group-text">.com</span>
+        </div>
+      </div>
+      <div>
+        <label class="form-label" for="mg-ig-sm">Small sizing</label>
+        <div class="input-group input-group-sm">
+          <span class="input-group-text">Qty</span>
+          <input id="mg-ig-sm" class="form-control" type="number" value="4" />
+        </div>
+      </div>
+      <div>
+        <label class="form-label" for="mg-ig-lg">Large + checkbox addon</label>
+        <div class="input-group input-group-lg">
+          <span class="input-group-text"><input class="form-check-input mt-0" type="checkbox" aria-label="Include tax" /></span>
+          <input id="mg-ig-lg" class="form-control" type="text" placeholder="Amount" />
+        </div>
       </div>
     </section>
     <section v-show="show('floating-labels')" class="l-demo l-form">

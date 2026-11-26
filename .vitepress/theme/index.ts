@@ -233,6 +233,7 @@ function syncLustroTheme() {
 }
 
 
+let lastPageThemeId: string | undefined
 let fxMotion: ReturnType<typeof mountChartMotion> | undefined
 function mountFxCharts() {
   fxMotion?.destroy(); fxMotion = undefined
@@ -295,15 +296,20 @@ export default {
         document.documentElement.classList.toggle('tpl-lmn', m('/lumen'))
         document.documentElement.classList.toggle('tpl-pp', m('/pawprint'))
         document.documentElement.classList.toggle('relay-dash', p === '/relay/overview' || p === '/relay/overview.html')
-        nextTick(() => setTimeout(mountBsxLive, 80))
-        nextTick(() => setTimeout(() => mountTplLive(route.path), 80))
+        const onMargin = m('/margin')
+        if (!onMargin) nextTick(() => setTimeout(mountBsxLive, 80))
+        if (!onMargin) nextTick(() => setTimeout(() => mountTplLive(route.path), 80))
         if (route.path.endsWith('/cart-summary') || route.path.endsWith('/lustro')) nextTick(() => setTimeout(mountCartMotion, 50))
         if (route.path.startsWith('/lumen/')) nextTick(() => setTimeout(mountLumenMotion, 50))
         if (m('/lumen')) nextTick(() => setTimeout(mountLumenBs6, 60))
         if (m('/lumen') || p === '/lumen') syncLumenTheme()
         else document.documentElement.classList.remove('lmn-dark')
         const pageTheme = pageThemeFor(p)
-        syncPageTheme(pageTheme?.id, pageTheme?.defaultDark)
+        const tplId = pageTheme?.id
+        if (tplId !== lastPageThemeId) {
+          syncPageTheme(tplId, pageTheme?.defaultDark)
+          lastPageThemeId = tplId
+        }
         const onLustro = !(m('/felix') || m('/pulsefit') || m('/scopecraft') || m('/lumen') || m('/pawprint') || pageTheme)
         document.documentElement.classList.toggle('tpl-lu', onLustro)
         if (onLustro) syncLustroTheme()
@@ -318,7 +324,7 @@ export default {
         } else document.documentElement.classList.remove('sc-dark')
         if (onFelix) syncFelixTheme()
         if (onFelix) nextTick(() => mountFelixDemos())
-        nextTick(() => setTimeout(mountTemplateMotion, 120))
+        if (!onMargin) nextTick(() => setTimeout(mountTemplateMotion, 120))
         nextTick(() => setTimeout(mountFxCharts, 150))
       })
     }
