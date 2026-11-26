@@ -541,10 +541,6 @@ html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .chip.
   --bs-chip-bg: var(--bs-success-bg-subtle, #d8f3e8);
   --bs-chip-color: var(--bs-success-fg, #1e6b4f);
 }
-html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .chip.active.theme-primary {
-  background-color: var(--bs-primary-bg, #6389ea) !important;
-  color: var(--bs-primary-contrast, #0f1528) !important;
-}
 
 html[data-tpl='margin'] .mg-guide-preview .alert.theme-primary {
   background-color: color-mix(in srgb, var(--bs-primary-bg, #6389ea) 14%, var(--surface, #fff));
@@ -578,6 +574,116 @@ html[data-tpl='margin'] .mg-guide-preview.lab-dark .alert.theme-primary {
 html[data-tpl='margin'] .mg-guide-preview .alert .alert-link {
   color: var(--bs-primary-fg, #6389ea);
   font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* BS6 .alert is flex-row — stack doc demos like Bootstrap */
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .alert.mg-bs6-alert {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 1rem 1.25rem;
+  border-width: 1px;
+  width: 100%;
+}
+html[data-tpl='margin'] .mg-guide-preview .alert.mg-bs6-alert .alert-heading {
+  margin: 0 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  width: 100%;
+}
+html[data-tpl='margin'] .mg-guide-preview .alert.mg-bs6-alert p {
+  margin-bottom: 0.15rem;
+  line-height: 1.45;
+}
+html[data-tpl='margin'] .mg-guide-preview .alert.mg-bs6-alert strong {
+  font-weight: 600;
+}
+html[data-tpl='margin'] .mg-guide-preview .alert.mg-bs6-alert.alert-dismissible {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding-right: 3.25rem;
+  position: relative;
+}
+html[data-tpl='margin'] .mg-guide-preview .alert.mg-bs6-alert .mg-alert-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+html[data-tpl='margin'] .mg-guide-preview .alert.mg-bs6-alert .btn-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .mg-badge-demo .badge {
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: var(--bs-border-radius, 0.375rem);
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-badge-demo .badge.rounded-pill {
+  border-radius: var(--bs-border-radius-pill, 50rem);
+}
+
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 button.chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: var(--bs-chip-height, 1.75rem);
+  padding: 0 var(--bs-chip-padding-x, 0.625rem);
+  border-radius: var(--bs-chip-border-radius, 50rem) !important;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  background-color: var(--bs-chip-bg, var(--soft, #eceef5));
+  border: 1px solid var(--line, var(--k-border));
+  color: var(--ink, var(--k-text));
+}
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 button.chip.active {
+  background-color: var(--bs-primary-bg, #6389ea) !important;
+  border-color: var(--bs-primary-bg, #6389ea) !important;
+  color: var(--bs-primary-contrast, #0f1528) !important;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .chip:not(button) {
+  border-radius: var(--bs-chip-border-radius, 50rem);
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .input-group {
+  align-items: stretch;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .input-group > .input-group-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex: 0 0 auto;
+  min-width: 2.75rem;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  background-color: var(--soft, var(--bs-bg-2, #eceef5)) !important;
+  border: var(--bs-border-width, 1px) solid var(--line, var(--bs-border-color)) !important;
+  color: var(--ink, var(--bs-fg-body));
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .input-group > .form-control {
+  min-height: calc(1.5em + 0.75rem + 2px);
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .input-group-sm > .input-group-text {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .input-group-lg > .input-group-text {
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
 }
 
 html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .l-card-foot {

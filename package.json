@@ -39,6 +39,7 @@
     "audit:margin-previews": "node scripts/audit-margin-previews.mjs",
     "audit:margin-modal": "node scripts/audit-margin-modal-center.mjs",
     "screenshots:margin-prod": "node scripts/margin-prod-screenshots.mjs",
+    "screenshots:margin-visual": "node scripts/margin-prod-visual-screenshots.mjs",
     "test:standalone-exports:a11y": "node tests/standalone-exports-a11y.cjs",
     "build:assay-bs6": "node scripts/build-assay-bs6.mjs",
     "test:assay": "node tests/assay-dashboard.cjs",
