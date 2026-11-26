@@ -15,10 +15,20 @@ const routes = [
   '/margin/customize/color',
 ]
 
+<<<<<<< HEAD
+
+const server = spawn(path.join(root, 'node_modules/.bin/vitepress'), ['dev', root, '--port', '4348'], {
+  stdio: 'ignore',
+})
+try {
+  let ready = false
+  for (let i = 0; i < 160; i++) {
+=======
 const server = spawn(path.join(root, 'node_modules/.bin/vitepress'), ['dev', root, '--port', '4348'], { stdio: 'ignore' })
 try {
   let ready = false
   for (let i = 0; i < 120; i++) {
+>>>>>>> origin/main
     try {
       if ((await fetch('http://localhost:4348/margin/components/accordion')).ok) {
         ready = true
@@ -31,6 +41,44 @@ try {
   const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox'] })
   const page = await browser.newPage({ viewport: { width: 1024, height: 900 } })
   for (const r of routes) {
+<<<<<<< HEAD
+    await page.goto(`http://localhost:4348${r}`, { waitUntil: 'domcontentloaded' })
+    await page.locator('.vp-doc h1').first().waitFor({ state: 'visible', timeout: 30000 })
+    await page
+      .locator(
+        '.mg-guide-preview .margin-bs6-root, .mg-guide-preview .margin-bs6-generic, .mg-guide-preview .kit-embedded, .mg-guide-preview .mg-swatch-grid',
+      )
+      .first()
+      .waitFor({ state: 'visible', timeout: 30000 })
+    await page.waitForFunction(
+      () => {
+        const frame = document.querySelector('.mg-guide-preview .mg-guide-frame')
+        return frame && (frame.textContent?.trim().length ?? 0) > 8
+      },
+      { timeout: 30000 },
+    )
+    const title = await page.locator('.vp-doc h1').first().innerText()
+    if (!title?.trim()) throw new Error(`missing h1 on ${r}`)
+    await page.waitForTimeout(500)
+    const slug = r.split('/').pop()
+    const light = path.join(out, `margin-after-${slug}-1024-light.png`)
+    await page.locator('.VPContent').screenshot({ path: light })
+    const btn = page.getByRole('button', { name: /dark preview/i }).first()
+    if (await btn.count()) {
+      await btn.click()
+      await page.waitForFunction(
+        () => document.querySelector('.mg-guide-preview.lab-dark') !== null,
+        undefined,
+        { timeout: 5000 },
+      )
+      await page.waitForTimeout(400)
+      const dark = path.join(out, `margin-after-${slug}-1024-dark-preview.png`)
+      await page.locator('.VPContent').screenshot({ path: dark })
+    }
+  }
+  await browser.close()
+  console.log('Saved validated screenshots for', routes.length, 'routes')
+=======
     await page.goto(`http://localhost:4348${r}`, { waitUntil: 'networkidle' })
     const slug = r.split('/').pop()
     await page.screenshot({ path: path.join(out, `margin-after-${slug}-1024-light.png`) })
@@ -42,6 +90,7 @@ try {
     }
   }
   await browser.close()
+>>>>>>> origin/main
 } finally {
   server.kill()
 }

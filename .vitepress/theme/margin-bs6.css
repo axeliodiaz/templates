@@ -338,4 +338,65 @@ html[data-tpl='margin'] .margin-bs6-root article.card h3 {
   --muted: #aab3c3;
   --line: #404757;
   --soft: #303747;
+<<<<<<< HEAD
+}
+
+/* BS6 doc previews: visible demo chips (utilities, layout, helpers) */
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .mg-demo-surface {
+  padding: 0.75rem;
+  border: 1px solid var(--line, var(--k-border, #e0e3e9));
+  border-radius: 10px;
+  background: var(--surface, var(--b2-surface, #fff));
+  color: var(--ink, var(--k-text, #22252b));
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .mg-demo-item {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.5rem 0.75rem;
+  min-height: 2.25rem;
+  min-width: 2.5rem;
+  border: 1px solid var(--line, var(--k-border, #e0e3e9));
+  border-radius: 8px;
+  background: var(--surface, var(--b2-surface, #fff));
+  color: var(--ink, var(--k-text, #22252b));
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .mg-demo-item--soft {
+  background: var(--soft, var(--k-alt, #eceef5));
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .mg-demo-item--accent {
+  background: color-mix(in srgb, var(--accent, #6389ea) 18%, var(--surface, #fff));
+  border-color: color-mix(in srgb, var(--accent, #6389ea) 40%, var(--line, #e0e3e9));
+}
+
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .margin-bs6-root .mg-demo-item,
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .margin-bs6-root .mg-demo-surface {
+  border-color: var(--line, #404757);
+  background: var(--surface, #242833);
+  color: var(--ink, #f1f3f8);
+}
+
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .margin-bs6-root .mg-demo-item--soft {
+  background: var(--soft, #303747);
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .l-demo {
+  padding: 0.75rem;
+  border: 1px solid var(--line, var(--k-border));
+  border-radius: 10px;
+  background: var(--surface, var(--b2-surface));
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-content-demo .mg-content-block {
+  padding: 0.75rem;
+  border: 1px solid var(--line, var(--k-border));
+  border-radius: 10px;
+  background: var(--surface, var(--b2-surface));
+=======
+>>>>>>> origin/main
 }
