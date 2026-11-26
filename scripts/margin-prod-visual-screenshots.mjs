@@ -11,7 +11,7 @@ const withSlash = (p) => (p.endsWith('/') ? p : `${p}/`)
 const routes = [
   { path: '/margin/components/alert', name: 'alerts-polish', zoom: '.mg-alert-demo' },
   { path: '/margin/components/badge', name: 'badge-polish', zoom: '.mg-badge-demo' },
-  { path: '/margin/components/chips', name: 'chips-polish' },
+  { path: '/margin/components/chips', name: 'chips-polish', zoom: '.mg-chips-demo' },
   { path: '/margin/forms/input-group', name: 'forms-input-group-polish' },
   { path: '/margin/components/card', name: 'card-polish' },
   { path: '/margin/components/carousel', name: 'carousel-polish' },

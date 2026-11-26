@@ -223,7 +223,7 @@ replaceSection(
 <div><p class="small text-body-secondary mb-2">Pill</p><div class="d-flex flex-wrap gap-2"><span class="badge rounded-pill text-bg-primary">12</span><span class="badge rounded-pill text-bg-success">Ready</span></div></div>
 <div><p class="small text-body-secondary mb-2">Headings</p><h2>Example <span class="badge text-bg-secondary">New</span></h2><h4>Section <span class="badge text-bg-info">Beta</span></h4></div>
 <div><p class="small text-body-secondary mb-2">Inside buttons</p><button type="button" class="btn btn-solid theme-primary position-relative">Inbox <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger">9</span></button><button type="button" class="btn btn-outline theme-secondary">Profile <span class="badge text-bg-warning ms-1">3</span></button></div>
-<div class="position-relative d-inline-block border rounded p-4"><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger">99+</span>Positioned badge anchor</div>
+<div><p class="small text-body-secondary mb-2">Positioned badge</p><button type="button" class="btn btn-outline theme-secondary position-relative">Notifications <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger">99+</span></button></div>
 </div>
 ${note}<details v-show="!embedded" class="kit-code"><summary>Copy badge markup</summary><pre><code>&lt;span class="badge text-bg-primary"&gt;Primary&lt;/span&gt;</code></pre></details></section>`,
 )
@@ -238,7 +238,7 @@ ${note}<details v-show="!embedded" class="kit-code"><summary>Copy card markup</s
 replaceSection(
   'chips',
   `<section id="chips" class="kit-section" v-show="showSection('chips') && (!catalogSearch || &quot;chips&quot;.includes(catalogSearch.toLowerCase()))"><h2>Chips</h2><p>Compact filters and metadata. Pair text with color; do not rely on hue alone.</p>
-<div class="l-demo vstack gap-3">
+<div class="l-demo vstack gap-3 mg-chips-demo">
 <div class="d-flex flex-wrap gap-2 align-items-center"><span class="chip">Default</span><span class="chip theme-primary">Primary</span><span class="chip theme-secondary">Secondary</span><span class="chip theme-success">Success</span><span class="chip theme-warning">Warning</span><span class="chip theme-danger">Danger</span><span class="chip theme-info">Info</span></div>
 <div class="d-flex flex-wrap gap-2"><button v-for="item in ['Design','Code','Preview']" :key="item" type="button" class="chip" :class="{ active: chipActive===item }" @click="chipActive=item">{{ item }}</button></div>
 <div class="d-flex flex-wrap gap-2 align-items-center"><span class="chip theme-secondary"><span class="chip-icon" aria-hidden="true">★</span> Starred</span><span class="chip active">Selected</span><span class="chip">Draft<button type="button" class="chip-dismiss" aria-label="Remove Draft" @click="showToast('Chip removed','info')"></button></span></div>
