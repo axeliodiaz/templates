@@ -1,5 +1,32 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { revealTheme } from './theme-reveal'
+
+const dashboardDark = ref(false)
+let themeObs: MutationObserver | undefined
+function readSiteDark() {
+  const root = document.documentElement
+  if (root.classList.contains('lu-light')) return false
+  return root.classList.contains('tpl-dark') || root.classList.contains('dark')
+}
+function syncDashboardTheme() { dashboardDark.value = readSiteDark() }
+onMounted(() => {
+  syncDashboardTheme()
+  themeObs = new MutationObserver(syncDashboardTheme)
+  themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+})
+onUnmounted(() => themeObs?.disconnect())
+function toggleDashboardTheme(e: Event) {
+  revealTheme(e.currentTarget as HTMLElement, () => {
+    dashboardDark.value = !dashboardDark.value
+    const root = document.documentElement
+    const on = dashboardDark.value
+    root.classList.toggle('tpl-dark', on)
+    root.classList.toggle('dark', on)
+    root.classList.toggle('lu-light', !on)
+    localStorage.setItem('tpl-theme-margin', on ? 'dark' : 'light')
+  })
+}
 
 type Page = 'Overview'|'Jobs'|'Leakage'|'Forecast'|'JobDetail'|'Customers'|'JobTypes'|'Technicians'|'Branches'|'Trends'|'Notifications'|'Settings'|'Help'
 const page = ref<Page>('Overview')
@@ -65,7 +92,7 @@ const dots = computed(() => {
     return { job: j, x: bx, y: stacks[bx] }
   })
 })
-const dotColor = (s: Job['status']) => s === 'Critical' ? '#e5488c' : s === 'At risk' ? '#f79009' : s === 'Below target' ? '#4f7cff' : '#3aa981'
+const dotColor = (s: Job['status']) => s === 'Critical' ? '#b84d6f' : s === 'At risk' ? '#b4690a' : s === 'Below target' ? '#6389ea' : '#2d8f6a'
 
 // Gross margin waterfall (Overview) - reacts to the Settings target
 const leakCauses = [
@@ -211,7 +238,7 @@ function onSearch() { if (query.value) { go('Jobs'); say(`Filtering jobs by “$
 const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Leakage: 'Leakage', Forecast: 'Forecast', JobDetail: 'Job detail', Customers: 'Customers', JobTypes: 'Job types', Technicians: 'Technicians', Branches: 'Branches', Trends: 'Trends', Notifications: 'Notifications', Settings: 'Settings', Help: 'Help' }
 </script>
 <template>
-<section class="reference-dashboard margin" :class="{'mg-menu-open':menuOpen}" aria-label="Margin profitability analytics demo" @keydown.esc="closeMenu(true)">
+<section class="reference-dashboard margin" :class="{'mg-menu-open':menuOpen,'lab-dark':dashboardDark}" aria-label="Margin profitability analytics demo" @keydown.esc="closeMenu(true)">
   <div class="mg-mobile-nav"><button ref="menuButton" class="mg-chip" type="button" aria-controls="margin-navigation" :aria-expanded="menuOpen" @click="menuOpen=!menuOpen">{{ menuOpen ? 'Close menu' : 'Menu' }}</button><span>{{ pageTitle[page] }}</span></div>
   <aside id="margin-navigation" class="mg-sidebar">
     <div class="mg-brand"><span class="mg-logo" aria-hidden="true">◺</span> margin <span class="mg-collapse" aria-hidden="true">⇤</span></div>
@@ -250,6 +277,7 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
           <button class="mg-chip" @click="say('Share link would copy in the real product. Demo only.')">⤴ Share</button>
         </template>
         <template v-else>
+          <button type="button" class="mg-light" @click="toggleDashboardTheme">{{ dashboardDark ? 'Light' : 'Dark' }} mode</button>
           <select class="mg-chip mg-select" v-model="period" aria-label="Reporting period">
             <option>Sep 21 to 27</option><option>Sep 14 to 20</option><option>Sep 1 to 27</option>
           </select>
@@ -325,7 +353,7 @@ const pageTitle: Record<Page, string> = { Overview: 'Overview', Jobs: 'Jobs', Le
     <template v-else-if="page==='Jobs'">
       <article class="mg-card mg-swarm-card">
         <div class="mg-card-head"><div><h3>{{ filteredJobs.length }} jobs by margin</h3><small>One dot per job completed this week</small></div>
-          <div class="mg-legend"><span><i class="dot" style="background:#e5488c"></i>Critical {{ jobs.filter(j=>j.status==='Critical').length }}</span><span><i class="dot" style="background:#f79009"></i>At risk {{ jobs.filter(j=>j.status==='At risk').length }}</span><span><i class="dot" style="background:#4f7cff"></i>Below target {{ jobs.filter(j=>j.status==='Below target').length }}</span><span><i class="dot" style="background:#3aa981"></i>On target {{ jobs.filter(j=>j.status==='On target').length }}</span></div>
+          <div class="mg-legend"><span><i class="dot" style="background:#b84d6f"></i>Critical {{ jobs.filter(j=>j.status==='Critical').length }}</span><span><i class="dot" style="background:#b4690a"></i>At risk {{ jobs.filter(j=>j.status==='At risk').length }}</span><span><i class="dot" style="background:#6389ea"></i>Below target {{ jobs.filter(j=>j.status==='Below target').length }}</span><span><i class="dot" style="background:#2d8f6a"></i>On target {{ jobs.filter(j=>j.status==='On target').length }}</span></div>
         </div>
         <div class="mg-swarm-scroll" role="region" aria-label="Job margin chart, scroll horizontally" tabindex="0"><div class="mg-swarm" role="img" :aria-label="`Dot plot of ${filteredJobs.length} jobs by margin, most between 30 and 45 percent`">
           <button v-for="(d,i) in dots" :key="d.job.id" class="mg-dot" :class="{sel:selectedDot===i}" :style="{left:'calc('+(d.x/60*100)+'% - 4px)',bottom:'calc('+(d.y*9)+'px)'}" :title="d.job.id+' '+d.job.margin+'%'" :aria-label="`Job ${d.job.id}, margin ${d.job.margin} percent, ${d.job.customer}`" :tabindex="d.job.margin<23?0:-1" @click="selectedDot=i" @keydown.enter="selectedDot=i" :data-c="dotColor(d.job.status)"></button>
