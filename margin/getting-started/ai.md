@@ -5,8 +5,12 @@ pageClass: margin-scoped-guide
 import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
-# AI assistant tips
+# Ai
 
-Mirrors [Bootstrap v6.0 · AI assistant tips](https://getbootstrap.com/docs/6.0/getting-started/ai/) with Margin `.lab` / `b2-margin` styling.
+When prompting agents:
+
+- Cite concrete paths, e.g. `/margin/components/button`
+- Require `class="lab b2-bs6 b2-margin margin-bs6-root kit kit-margin"` on examples
+- Run a11y matrix after palette edits
 
 <MarginBs6Doc area="getting-started" slug="ai" label="AI assistant tips" />

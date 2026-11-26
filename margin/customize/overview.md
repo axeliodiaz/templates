@@ -7,6 +7,6 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Overview
 
-Mirrors [Bootstrap v6.0 · Overview](https://getbootstrap.com/docs/6.0/customize/overview/) with Margin `.lab` / `b2-margin` styling.
+See [Sass](/margin/customize/sass), [Color](/margin/customize/color), and [CSS variables](/margin/customize/css-variables) for token sources. Margin never replaces Bootstrap APIs — it scopes them under `.lab`.
 
 <MarginBs6Doc area="customize" slug="overview" label="Overview" />

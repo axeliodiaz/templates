@@ -12,6 +12,23 @@ const catalogPath = path.join(root, '.vitepress/theme/MarginBs6Catalog.vue')
 const catalog = fs.readFileSync(catalogPath, 'utf8')
 const genericPath = path.join(root, '.vitepress/theme/margin-bs6-generic-demos.ts')
 const genericSrc = fs.readFileSync(genericPath, 'utf8')
+const prosePath = path.join(root, '.vitepress/theme/margin-bs6-prose.ts')
+const proseSrc = fs.readFileSync(prosePath, 'utf8')
+
+function parseTsStringRecord(exportName) {
+  const re = new RegExp(`export const ${exportName}[^=]*= \\{([\\s\\S]*?)\\}\\s*\\n\\nexport`, 'm')
+  const m = proseSrc.match(re)
+  if (!m) return {}
+  const out = {}
+  const entry = /['"]([^'"]+)['"]:\s*`([\s\S]*?)`,/g
+  let hit
+  while ((hit = entry.exec(m[1]))) out[hit[1]] = hit[2]
+  return out
+}
+
+const PROSE_PREVIEWS = parseTsStringRecord('MARGIN_BS6_PREVIEWS')
+const PROSE_COPY = parseTsStringRecord('MARGIN_BS6_PROSE_COPY')
+const PROSE_AREAS = new Set(['getting-started', 'guides', 'customize'])
 
 const FORM_COPY = {
   overview: `<label class="form-label" for="mg-overview-name">Workspace</label>
@@ -182,6 +199,15 @@ for (const [key, block] of Object.entries(MARGIN_BS6_IA)) {
     if (area === 'customize' && slug === 'color-modes') {
       copies[routeKey] =
         CUSTOMIZE_COLOR + '\n\n<div class="lab b2-bs6 b2-margin margin-bs6-root lab-dark">\n  <p>Dark mode surface using <code>.lab-dark</code>.</p>\n</div>'
+      continue
+    }
+    if (PROSE_AREAS.has(area)) {
+      if (PROSE_COPY[routeKey]) copies[routeKey] = PROSE_COPY[routeKey]
+      else if (PROSE_PREVIEWS[routeKey]) {
+        copies[routeKey] = `<div class="lab b2-bs6 b2-margin margin-bs6-root kit kit-margin">\n${PROSE_PREVIEWS[routeKey]}\n</div>`
+      } else {
+        copies[routeKey] = `<div class="lab b2-bs6 b2-margin margin-bs6-root kit kit-margin">\n<!-- ${routeKey} — see page prose -->\n</div>`
+      }
       continue
     }
     const g = extractGeneric(routeKey)

@@ -4,7 +4,10 @@ import MarginFormsSection from './MarginFormsSection.vue'
 import MarginContentSection from './MarginContentSection.vue'
 import MarginCustomizeColor from './MarginCustomizeColor.vue'
 import MarginBs6Generic from './MarginBs6Generic.vue'
+import MarginBs6ProsePreview from './MarginBs6ProsePreview.vue'
 import MarginBs6CopyBlock from './MarginBs6CopyBlock.vue'
+
+const PROSE_AREAS = new Set(['getting-started', 'guides', 'customize'])
 
 const props = defineProps<{
   area: string
@@ -31,6 +34,7 @@ const props = defineProps<{
     :label="label"
   />
   <MarginContentSection v-else-if="area === 'content'" :section="slug === 'tables' ? 'tables-figures' : slug" :label="label" />
+  <MarginBs6ProsePreview v-else-if="PROSE_AREAS.has(area)" :area="area" :slug="slug" :label="label" />
   <MarginBs6Generic v-else :area="area" :slug="slug" :label="label" />
   <MarginBs6CopyBlock :area="area" :slug="slug" />
   </div>

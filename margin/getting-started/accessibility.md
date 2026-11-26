@@ -7,6 +7,6 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Accessibility
 
-Mirrors [Bootstrap v6.0 · Accessibility](https://getbootstrap.com/docs/6.0/getting-started/accessibility/) with Margin `.lab` / `b2-margin` styling.
+Pair color with text labels, keep focus visible, and respect `prefers-reduced-motion` (see `margin-bs6.css`).
 
-<MarginBs6Doc area="getting-started" slug="accessibility" label="Accessibility" />
+<MarginBs6Doc area="getting-started" slug="accessibility" label="Focus example" />
