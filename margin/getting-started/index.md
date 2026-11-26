@@ -1,29 +1,20 @@
 ---
 pageClass: margin-scoped-guide
 ---
+<script setup>
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
+</script>
 
-# Getting started
+# Introduction
 
-Reuse the Margin job-economics template: homepage lab layout, analytics dashboard, transactional emails, and shared observation modules.
+Index for Bootstrap v6 **Introduction** docs on Margin tokens.
 
-## Live demos
+Mirrors [Bootstrap v6.0 · Introduction](https://getbootstrap.com/docs/6.0/getting-started//) with Margin `.lab` / `b2-margin` styling.
 
-- [Overview](/margin)
-- [Analytics](/margin/analytics)
-- [Transactional emails](/margin/correos)
-- [Agent orchestration](/margin/agent-orchestration)
-- [Agent crew](/margin/agent-crew)
-- [Payment ticket](/margin/payment-ticket)
+<MarginBs6Doc area="getting-started" slug="introduction" label="Introduction" />
 
-## Documentation sections
-
-Use the Margin sidebar: **Getting started**, **Foundations**, **Components**, **Patterns**, and **Modules** sit alongside Overview, Analytics, and Transactional emails.
-
-
-## Usage
-
-Fictitious sample data only. Wire your own API, authorization, and persistence before production.
-
-## Accessibility
-
-Test keyboard focus, visible rings (`outline: 2px solid #6389ea; outline-offset: 3px`), and `prefers-reduced-motion` alongside light and dark previews.
+```html
+<div class="lab b2-bs6 b2-margin">
+  <!-- getting-started/introduction -->
+</div>
+```

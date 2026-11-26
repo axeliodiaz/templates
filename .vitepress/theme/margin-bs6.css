@@ -105,3 +105,237 @@
     transition: none !important;
   }
 }
+
+/* Override global Lustro .l-demo rules (custom.css) inside Margin doc previews */
+html[data-tpl='margin'] .margin-bs6-root.kit-margin {
+  --bg: #f5f5f7;
+  --surface: #fff;
+  --ink: #22252b;
+  --muted: #676e7b;
+  --line: #e0e3e9;
+  --soft: #eceef5;
+  color: var(--k-text);
+  background: transparent;
+}
+
+html[data-tpl='margin'] .margin-bs6-root.kit-margin.lab-dark,
+.mg-guide-preview.lab-dark .margin-bs6-root.kit-margin {
+  --bg: #181b22;
+  --surface: #242833;
+  --ink: #f1f3f8;
+  --muted: #aab3c3;
+  --line: #404757;
+  --soft: #303747;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-demo,
+.mg-guide-preview .margin-bs6-root .l-demo {
+  position: relative;
+  margin: 12px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--k-border, var(--line, #e0e3e9));
+  border-radius: var(--k-radius, 10px);
+  background: var(--b2-surface, var(--surface, #fff));
+  color: var(--k-text, var(--ink, #22252b));
+  box-shadow: none;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-demo :is(p, h3, li, span, strong, label, legend, small),
+.mg-guide-preview .margin-bs6-root .l-demo :is(p, h3, li, span, strong, label, legend, small) {
+  color: inherit;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .kit-section > h2,
+.mg-guide-preview .margin-bs6-root .kit-section > h2 {
+  color: var(--k-text, var(--ink, #22252b)) !important;
+  -webkit-text-fill-color: var(--k-text, var(--ink, #22252b)) !important;
+  margin: 0 0 10px;
+}
+
+html[data-tpl='margin'] .margin-bs6-root.kit-embedded .kit-section > h2 {
+  display: none;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .kit-section > p {
+  color: var(--k-muted, var(--muted, #676e7b));
+  margin: 0 0 12px;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .kit-note,
+.mg-guide-preview .margin-bs6-root .kit-note {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--k-muted, var(--muted, #676e7b)) !important;
+  background: var(--soft, #eceef5);
+  border: 1px solid var(--k-border, var(--line, #e0e3e9));
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 14px 0 0;
+}
+
+.mg-guide-preview.lab-dark .margin-bs6-root.lab-dark .kit-note {
+  background: var(--soft);
+  border-color: var(--line);
+  color: var(--muted) !important;
+}
+
+.mg-guide-preview.lab-dark .margin-bs6-root.lab-dark .kit-note strong {
+  color: var(--ink) !important;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .kit-note strong,
+.mg-guide-preview .margin-bs6-root .kit-note strong {
+  color: var(--k-text, var(--ink, #22252b)) !important;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .kit-code summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--k-text);
+  margin-top: 10px;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .kit-code pre {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--k-border);
+  background: var(--soft);
+  overflow: auto;
+  font-size: 11px;
+}
+
+/* Legacy catalog primitives (l-*) scoped to Margin tokens */
+html[data-tpl='margin'] .margin-bs6-root .l-accordion {
+  border-color: var(--k-border);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-accordion button,
+html[data-tpl='margin'] .margin-bs6-root .l-expand-button {
+  color: var(--k-text) !important;
+  background: transparent !important;
+  border: 0;
+  font: 600 15px 'DM Sans', system-ui, sans-serif;
+  padding: 12px 2px;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-accordion button span {
+  color: var(--k-muted);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-accordion p {
+  margin: 0 0 12px;
+  padding: 0 2px 12px;
+  color: var(--k-muted);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-tabs {
+  border-color: var(--k-border);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-tabs button {
+  color: var(--k-muted) !important;
+  background: transparent !important;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-tabs button[aria-pressed='true'],
+html[data-tpl='margin'] .margin-bs6-root .l-tabs button[aria-selected='true'] {
+  color: var(--k-text) !important;
+  border-color: #6389ea !important;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-breadcrumb,
+html[data-tpl='margin'] .margin-bs6-root .l-breadcrumb a {
+  color: var(--k-muted) !important;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-breadcrumb strong {
+  color: var(--k-text) !important;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-list li {
+  border-color: var(--k-border);
+  color: var(--k-text);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-segment {
+  background: var(--soft);
+  border-color: var(--k-border);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-segment button {
+  color: var(--k-muted) !important;
+  background: transparent !important;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-segment button.is-active {
+  background: var(--b2-surface) !important;
+  color: var(--k-text) !important;
+  box-shadow: 0 0 0 1px var(--k-border);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-dropdown summary,
+html[data-tpl='margin'] .margin-bs6-root .l-pages button,
+html[data-tpl='margin'] .margin-bs6-root .l-icon-btn {
+  color: var(--k-text) !important;
+  background: var(--b2-surface) !important;
+  border-color: var(--k-border) !important;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-menu {
+  background: var(--b2-surface);
+  border-color: var(--k-border);
+  box-shadow: 0 8px 24px #22252b14;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-menu button {
+  color: var(--k-text) !important;
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-menu button:hover {
+  background: var(--soft);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-field-label {
+  color: var(--k-text);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-form input:not([type='checkbox']):not([type='radio']),
+html[data-tpl='margin'] .margin-bs6-root .l-form select,
+html[data-tpl='margin'] .margin-bs6-root .l-form textarea {
+  background: var(--b2-surface);
+  color: var(--k-text);
+  border-color: var(--k-border);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-grid .card,
+html[data-tpl='margin'] .margin-bs6-root .l-grid article.card {
+  background: var(--b2-surface);
+  border-color: var(--k-border);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-eyebrow {
+  color: var(--k-muted);
+}
+
+html[data-tpl='margin'] .margin-bs6-root .l-card h3,
+html[data-tpl='margin'] .margin-bs6-root article.card h3 {
+  color: var(--k-text) !important;
+}
+
+.mg-guide-preview .margin-bs6-forms .l-demo,
+.mg-guide-preview .margin-content-demo,
+.mg-guide-preview .margin-bs6-generic {
+  color: var(--ink);
+}
+
+.mg-guide-preview.lab-dark .margin-bs6-forms .l-demo,
+.mg-guide-preview.lab-dark .margin-content-demo,
+.mg-guide-preview.lab-dark .margin-bs6-generic.lab {
+  --bg: #181b22;
+  --surface: #242833;
+  --ink: #f1f3f8;
+  --muted: #aab3c3;
+  --line: #404757;
+  --soft: #303747;
+}

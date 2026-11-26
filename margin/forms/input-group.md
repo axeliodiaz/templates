@@ -2,18 +2,17 @@
 pageClass: margin-scoped-guide
 ---
 <script setup>
-import MarginFormsSection from '../../.vitepress/theme/MarginFormsSection.vue'
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
 # Input group
 
-Margin forms mirror Bootstrap’s form docs with `form-control`, labels, validation states, and layout utilities inside `.lab` / `.b2-margin`.
+Mirrors [Bootstrap v6.0 · Input group](https://getbootstrap.com/docs/6.0/forms/input-group/) with Margin `.lab` / `b2-margin` styling.
 
-<MarginFormsSection section="input-group" label="Input group" />
+<MarginBs6Doc area="forms" slug="input-group" label="Input group" />
 
 ```html
 <div class="lab b2-bs6 b2-margin">
-  <label class="form-label" for="sample">Label</label>
-  <input id="sample" class="form-control" />
+  <!-- forms/input-group -->
 </div>
 ```

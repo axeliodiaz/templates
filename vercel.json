@@ -11,17 +11,12 @@
     },
     {
       "source": "/margin/guides",
-      "destination": "/margin/getting-started",
+      "destination": "/margin/guides/",
       "permanent": true
     },
     {
-      "source": "/margin/guides/",
-      "destination": "/margin/getting-started/",
-      "permanent": true
-    },
-    {
-      "source": "/margin/guides/quickstart",
-      "destination": "/margin/getting-started/quickstart",
+      "source": "/margin/getting-started/quickstart",
+      "destination": "/margin/guides/quickstart",
       "permanent": true
     },
     {
@@ -36,37 +31,112 @@
     },
     {
       "source": "/margin/guides/color",
-      "destination": "/margin/foundations/color",
+      "destination": "/margin/customize/color",
       "permanent": true
     },
     {
       "source": "/margin/guides/color-modes",
-      "destination": "/margin/foundations/color-modes",
+      "destination": "/margin/customize/color-modes",
       "permanent": true
     },
     {
       "source": "/margin/guides/typography",
-      "destination": "/margin/foundations/typography",
+      "destination": "/margin/content/typography",
       "permanent": true
     },
     {
       "source": "/margin/guides/spacing",
-      "destination": "/margin/foundations/spacing",
+      "destination": "/margin/layout/gutters",
       "permanent": true
     },
     {
       "source": "/margin/guides/layout",
-      "destination": "/margin/foundations/layout",
+      "destination": "/margin/layout/grid",
       "permanent": true
     },
     {
       "source": "/margin/guides/motion",
-      "destination": "/margin/foundations/motion",
+      "destination": "/margin/utilities/motion",
       "permanent": true
     },
     {
       "source": "/margin/guides/buttons",
-      "destination": "/margin/components/buttons",
+      "destination": "/margin/components/button",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/buttons",
+      "destination": "/margin/components/button",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/alerts",
+      "destination": "/margin/components/alert",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/modal",
+      "destination": "/margin/components/dialog",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/offcanvas",
+      "destination": "/margin/components/drawer",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/dropdowns",
+      "destination": "/margin/components/menu",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/navs-tabs",
+      "destination": "/margin/components/tab",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/spinners",
+      "destination": "/margin/components/spinner",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/tooltips",
+      "destination": "/margin/components/tooltip",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/popovers",
+      "destination": "/margin/components/popover",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/placeholders",
+      "destination": "/margin/components/placeholder",
+      "permanent": true
+    },
+    {
+      "source": "/margin/content/tables-figures",
+      "destination": "/margin/content/tables",
+      "permanent": true
+    },
+    {
+      "source": "/margin/foundations/:path*",
+      "destination": "/margin/customize/color",
+      "permanent": true
+    },
+    {
+      "source": "/margin/foundations",
+      "destination": "/margin/customize/",
+      "permanent": true
+    },
+    {
+      "source": "/margin/forms/checks-radios",
+      "destination": "/margin/forms/checkbox",
+      "permanent": true
+    },
+    {
+      "source": "/margin/forms/select",
+      "destination": "/margin/forms/combobox",
       "permanent": true
     },
     {

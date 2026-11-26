@@ -2,23 +2,17 @@
 pageClass: margin-scoped-guide
 ---
 <script setup>
-import MarginGuidePreview from '../../.vitepress/theme/MarginGuidePreview.vue'
+import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 </script>
 
 # Accessibility
 
-Keyboard paths, visible focus, dialogs, reduced motion, and automated checks used in CI.<MarginGuidePreview label="Live classes"><p class="mg-note">See the product demo for the full interactive pattern: <a href="/margin/analytics">Analytics</a> or <a href="/margin">Overview</a>.</p></MarginGuidePreview>
+Mirrors [Bootstrap v6.0 · Accessibility](https://getbootstrap.com/docs/6.0/getting-started/accessibility/) with Margin `.lab` / `b2-margin` styling.
+
+<MarginBs6Doc area="getting-started" slug="accessibility" label="Accessibility" />
 
 ```html
-<!-- Representative markup; see /margin/analytics for the full shell -->
-<div class="margin lab-dark">…</div>
+<div class="lab b2-bs6 b2-margin">
+  <!-- getting-started/accessibility -->
+</div>
 ```
-
-
-## Usage
-
-Fictitious sample data only. Wire your own API, authorization, and persistence before production.
-
-## Accessibility
-
-Test keyboard focus, visible rings (`outline: 2px solid #6389ea; outline-offset: 3px`), and `prefers-reduced-motion` alongside light and dark previews.

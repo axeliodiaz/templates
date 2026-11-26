@@ -18,7 +18,7 @@ s = s.replace(
   section:{type:String,default:''},
   embedded:{type:Boolean,default:false},
 })
-const sectionAliases={spinners:'spinners-loaders',navbar:'navbar-and-footer'}
+const sectionAliases={spinners:'spinners-loaders',spinner:'spinners-loaders',navbar:'navbar-and-footer',button:'buttons',buttons:'buttons',alert:'alerts',alerts:'alerts',dialog:'modal',popover:'popovers',popovers:'popovers',tooltip:'tooltips',tooltips:'tooltips',placeholder:'placeholders',placeholders:'placeholders',tab:'navs-tabs',nav:'navs-tabs','navs-tabs':'navs-tabs',menu:'dropdowns',dropdowns:'dropdowns',drawer:'offcanvas',offcanvas:'offcanvas'}
 function showSection(id){
   if(!props.section) return true
   const want=sectionAliases[props.section]??props.section
@@ -27,13 +27,18 @@ function showSection(id){
 )
 
 s = s.replace(
-  "import { initScopecraftBs6 } from './scopecraft-bs6-live'\nonMounted(() => initScopecraftBs6())",
-  "import { initMarginBs6 } from './margin-bs6-live'\nonMounted(() => initMarginBs6())"
+  "import { onBeforeUnmount, onMounted, ref } from 'vue'",
+  "import { inject, onBeforeUnmount, onMounted, ref } from 'vue'"
 )
-
+s = s.replace(
+  "import { initScopecraftBs6 } from './scopecraft-bs6-live'\nonMounted(() => initScopecraftBs6())",
+  `import { initMarginBs6 } from './margin-bs6-live'
+const previewDark = inject('marginGuidePreviewDark', ref(false))
+onMounted(() => initMarginBs6())`
+)
 s = s.replace(
   '<div class="sc-bs6-root kit kit-scopecraft" data-bs-theme="light">',
-  '<div class="margin-bs6-root lab b2-bs6 b2-margin kit kit-margin">'
+  '<div class="margin-bs6-root lab b2-bs6 b2-margin kit kit-margin" :class="{ \'kit-embedded\': embedded, \'lab-dark\': previewDark }">'
 )
 
 s = s.replace('<style src="./scopecraft-bs6.css"></style>', '<style src="./margin-bs6.css"></style>')

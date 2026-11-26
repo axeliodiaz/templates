@@ -6,4 +6,4 @@ pageClass: margin-scoped-guide
 
 Bootstrap **Content** docs for Margin: Reboot base styles, typography, images, and tables/figures — all using `.lab` tokens with light/dark previews.
 
-Product-specific font stacks and dashboard scale live under [Foundations → Typography](/margin/foundations/typography); this section covers global HTML defaults and prose patterns.
+Dashboard-specific font stacks (DM Sans / Space Grotesk) are shown on the [Margin overview](/margin) and [Analytics](/margin/analytics) demos. This section covers global HTML defaults and prose patterns.
