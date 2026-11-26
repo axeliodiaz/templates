@@ -82,7 +82,7 @@ if (!s.includes('id="chips"')) {
   <span class="chip theme-info">Info</span>
 </div>
 <div class="l-demo l-actions flex-wrap gap-2">
-  <button v-for="item in ['Design','Code','Preview']" :key="item" type="button" class="chip" :class="{ active: chipActive===item, 'theme-primary': chipActive===item }" @click="chipActive=item">{{ item }}</button>
+  <button v-for="item in ['Design','Code','Preview']" :key="item" type="button" class="chip" :class="{ active: chipActive===item }" @click="chipActive=item">{{ item }}</button>
 </div>
 <div class="l-demo l-actions flex-wrap gap-2 align-items-center">
   <span class="chip theme-secondary"><span class="chip-icon" aria-hidden="true">★</span> Starred</span>
@@ -204,17 +204,48 @@ replaceSection(
 ${note}</section>`,
 )
 
+replaceSection(
+  'badge',
+  `<section id="badge" class="kit-section" v-show="showSection('badge') && (!catalogSearch || &quot;badge&quot;.includes(catalogSearch.toLowerCase()))"><h2>Badge</h2><p>Short labels — always pair with text; never rely on color alone.</p>
+<div class="l-demo vstack gap-3 mg-badge-demo">
+<div><p class="small text-body-secondary mb-2">Colors</p><div class="d-flex flex-wrap gap-2 align-items-center"><span class="badge text-bg-primary">Primary</span><span class="badge text-bg-secondary">Secondary</span><span class="badge text-bg-success">Success</span><span class="badge text-bg-danger">Danger</span><span class="badge text-bg-warning">Warning</span><span class="badge text-bg-info">Info</span><span class="badge text-bg-light">Light</span><span class="badge text-bg-dark">Dark</span></div></div>
+<div><p class="small text-body-secondary mb-2">Pill</p><div class="d-flex flex-wrap gap-2"><span class="badge rounded-pill text-bg-primary">12</span><span class="badge rounded-pill text-bg-success">Ready</span></div></div>
+<div><p class="small text-body-secondary mb-2">Headings</p><h2>Example <span class="badge text-bg-secondary">New</span></h2><h4>Section <span class="badge text-bg-info">Beta</span></h4></div>
+<div><p class="small text-body-secondary mb-2">Inside buttons</p><button type="button" class="btn btn-solid theme-primary position-relative">Inbox <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger">9</span></button><button type="button" class="btn btn-outline theme-secondary">Profile <span class="badge text-bg-warning ms-1">3</span></button></div>
+<div class="position-relative d-inline-block border rounded p-4"><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-danger">99+</span>Positioned badge anchor</div>
+</div>
+${note}<details v-show="!embedded" class="kit-code"><summary>Copy badge markup</summary><pre><code>&lt;span class="badge text-bg-primary"&gt;Primary&lt;/span&gt;</code></pre></details></section>`,
+)
+
+replaceSection(
+  'card',
+  `<section id="card" class="kit-section" v-show="showSection('card') && (!catalogSearch || &quot;card&quot;.includes(catalogSearch.toLowerCase()))"><h2>Card</h2><p>Summaries with header, body, and footer actions.</p>
+<div class="l-demo"><div class="row g-3"><div class="col-md-6"><div class="card h-100"><div class="card-header">Featured</div><div class="card-body"><h3 class="h6 card-title">Review changes</h3><p class="card-text small">The latest request is waiting for your review.</p></div><div class="card-footer d-flex justify-content-between align-items-center gap-2"><span class="badge text-bg-warning">Needs review</span><button type="button" class="btn btn-sm btn-outline theme-secondary" @click="showToast('Open')">Open</button></div></div></div><div class="col-md-6"><div class="card h-100 border-success"><div class="card-body"><p class="text-success small mb-1">TASK · 024</p><h3 class="h6 card-title">Ready to ship</h3><p class="card-text small">Checks completed. The next step is a merge.</p></div><div class="card-footer"><button type="button" class="btn btn-sm btn-solid theme-primary">Continue</button></div></div></div></div></div>
+${note}<details v-show="!embedded" class="kit-code"><summary>Copy card markup</summary><pre><code>&lt;div class="card"&gt;&lt;div class="card-body"&gt;…&lt;/div&gt;&lt;div class="card-footer"&gt;…&lt;/div&gt;&lt;/div&gt;</code></pre></details></section>`,
+)
+
+replaceSection(
+  'chips',
+  `<section id="chips" class="kit-section" v-show="showSection('chips') && (!catalogSearch || &quot;chips&quot;.includes(catalogSearch.toLowerCase()))"><h2>Chips</h2><p>Compact filters and metadata. Pair text with color; do not rely on hue alone.</p>
+<div class="l-demo vstack gap-3">
+<div class="d-flex flex-wrap gap-2 align-items-center"><span class="chip">Default</span><span class="chip theme-primary">Primary</span><span class="chip theme-secondary">Secondary</span><span class="chip theme-success">Success</span><span class="chip theme-warning">Warning</span><span class="chip theme-danger">Danger</span><span class="chip theme-info">Info</span></div>
+<div class="d-flex flex-wrap gap-2"><button v-for="item in ['Design','Code','Preview']" :key="item" type="button" class="chip" :class="{ active: chipActive===item }" @click="chipActive=item">{{ item }}</button></div>
+<div class="d-flex flex-wrap gap-2 align-items-center"><span class="chip theme-secondary"><span class="chip-icon" aria-hidden="true">★</span> Starred</span><span class="chip active">Selected</span><span class="chip">Draft<button type="button" class="chip-dismiss" aria-label="Remove Draft" @click="showToast('Chip removed','info')"></button></span></div>
+</div>
+${note}<details v-show="!embedded" class="kit-code"><summary>Copy chip markup</summary><pre><code>&lt;button type="button" class="chip active"&gt;Design&lt;/button&gt;</code></pre></details></section>`,
+)
+
 // Alerts: use btn-close + more variants
 replaceSection(
   'alerts',
   `<section id="alerts" class="kit-section" v-show="showSection('alerts') && (!catalogSearch || &quot;alerts&quot;.includes(catalogSearch.toLowerCase()))"><h2>Alerts</h2><p>Alerts occupy the page and stay until dismissed. Pair severity with text — not color alone.</p>
-<div class="l-demo vstack gap-2">
-<div class="alert theme-primary" role="alert"><h4 class="alert-heading">Primary</h4><p class="mb-0">Neutral workspace update.</p><a href="#" class="alert-link" @click.prevent>Show details</a></div>
-<div class="alert theme-success" role="alert"><strong>Saved</strong><p class="mb-0">Your changes are up to date.</p></div>
-<div class="alert theme-warning d-flex align-items-start gap-2" role="alert"><div class="flex-grow-1"><strong>Needs attention</strong><p class="mb-0">Two checks are waiting for review.</p></div><button type="button" class="btn-close" aria-label="Close" @click="showToast('Warning dismissed','warn')"></button></div>
-<div class="alert theme-danger" role="alert"><strong>Blocked</strong><p class="mb-0">Fix validation errors before continuing.</p></div>
-<div class="alert theme-info" role="alert"><strong>Info</strong><p class="mb-0">Scheduled maintenance tonight.</p></div>
-<div class="alert theme-secondary" role="alert">Secondary surface message.</div>
+<div class="l-demo vstack gap-2 mg-alert-demo">
+<div class="alert theme-primary mg-bs6-alert" role="alert"><h4 class="alert-heading">Primary</h4><p class="mb-1">Neutral workspace update.</p><a href="#" class="alert-link" @click.prevent>Show details</a></div>
+<div class="alert theme-success mg-bs6-alert" role="alert"><p class="mb-0"><strong>Saved.</strong> Your changes are up to date.</p></div>
+<div class="alert theme-warning alert-dismissible fade show mg-bs6-alert" role="alert"><div class="mg-alert-text"><p class="mb-0"><strong>Needs attention.</strong> Two checks are waiting for review.</p></div><button type="button" class="btn-close" aria-label="Close" @click="showToast('Warning dismissed','warn')"></button></div>
+<div class="alert theme-danger mg-bs6-alert" role="alert"><p class="mb-0"><strong>Blocked.</strong> Fix validation errors before continuing.</p></div>
+<div class="alert theme-info mg-bs6-alert" role="alert"><p class="mb-0"><strong>Info.</strong> Scheduled maintenance tonight.</p></div>
+<div class="alert theme-secondary mg-bs6-alert" role="alert"><p class="mb-0">Secondary surface message.</p></div>
 </div>
 ${note}<details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code>&lt;div class="alert theme-success" role="alert"&gt;…&lt;/div&gt;</code></pre></details></section>`,
 )
