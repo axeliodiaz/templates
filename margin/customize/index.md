@@ -7,8 +7,6 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Overview
 
-Index for Bootstrap v6 **Overview** docs on Margin tokens.
-
-Mirrors [Bootstrap v6.0 · Overview](https://getbootstrap.com/docs/6.0/customize/overview/) with Margin `.lab` / `b2-margin` styling.
+Margin **Overview** reference with scoped `.lab` / `b2-margin` previews.
 
 <MarginBs6Doc area="customize" slug="overview" label="Overview" />

@@ -11,6 +11,17 @@ const routes = [
   { path: '/margin/customize/overview', name: 'customize-overview' },
   { path: '/margin/guides/migration', name: 'guides-migration' },
   { path: '/margin/guides/contribute', name: 'guides-contribute' },
+  { path: '/margin/components/list-group', name: 'component-list-group', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/components/nav', name: 'component-navs-tabs', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/components/placeholders', name: 'component-placeholders', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/components/alerts', name: 'component-alerts', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/components/badge', name: 'component-badge', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/components/carousel', name: 'component-carousel', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/components/chips', name: 'component-chips', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/components/close-button', name: 'component-close-button', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/components/collapse', name: 'component-collapse', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/components/dialog', name: 'component-dialog', zoom: '.mg-guide-preview .margin-bs6-root' },
+  { path: '/margin/forms/overview', name: 'forms-overview', zoom: '.mg-guide-preview .margin-bs6-root' },
 ]
 
 const browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox'] })

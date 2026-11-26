@@ -7,7 +7,7 @@ import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
 
 # Quickstart
 
-Bootstrap-aligned Margin docs mirror [Bootstrap v6 Quickstart](https://getbootstrap.com/docs/6.0/guides/quickstart/). Use this page to drop Margin's scoped Bootstrap 6 kit into a static page or app shell.
+Use this page to drop Margin's scoped Bootstrap 6 kit into a static page or app shell.
 
 ## CSS
 
