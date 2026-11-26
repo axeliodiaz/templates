@@ -33,6 +33,7 @@ A standalone original job economics template. Responsive, local interactive stat
 
 ## Template guide
 
+- [Margin reuse guides](/margin/guides/) document colors, components, patterns and modules.
 - Use the standalone page as a Vue3 layout or adapt its scoped `.lab` tokens to your app. Existing `motion` handles card entrances. The shared layer adds an 8px rise, a 1px hover and a 1px press on `html[data-tpl="margin"]`, and both stop with reduced motion.
 - Light/dark, narrow layouts and Loading/Empty/Ready can be tested from the header.
 - Actions update this example session only. Add your own persistence, source validation and authorization before production use. No API, secret handling, telemetry or financial execution is bundled.
@@ -135,11 +136,19 @@ A standalone original job economics template. Responsive, local interactive stat
 }
 
 
-.lab :is(h1,h2,h3,h4,p,label,dt,dd,li,th,td){color:inherit!important}
-.lab>header{position:relative}.lab button:focus-visible{outline:3px solid #6389ea}
+.lab :is(h1,h2,h3,h4){color:var(--ink)!important;-webkit-text-fill-color:var(--ink)!important}
+.lab :is(p,label,dt,dd,li,th,td,strong,small){color:var(--ink)}
+.lab small,.lab-title p{color:var(--muted)}
+.lab>header{position:relative}.lab button:focus-visible{outline:2px solid #6389ea;outline-offset:3px}
 .lab>header>div{margin-right:auto}.lab-brand{font-size:22px;letter-spacing:-1px}.lab main{padding:28px}
-.lab-dark{--surface:#212731;--bg:#161c24;--soft:#2b3443}
 @media(max-width:600px){.lab main{padding:16px}.lab-brand{font-size:20px}}
+</style>
+
+<style>
+/* VitePress prose must not override embedded lab headings when the widget is dark. */
+html .vp-doc .lab :is(h1,h2,h3,h4){color:var(--ink)!important;-webkit-text-fill-color:var(--ink)!important}
+html .vp-doc .lab :is(p,li,dt,dd,th,td,strong){color:var(--ink)}
+html .vp-doc .lab small,html .vp-doc .lab .lab-title p{color:var(--muted)}
 </style>
 
 
