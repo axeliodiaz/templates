@@ -71,37 +71,92 @@
     },
     {
       "source": "/margin/guides/cards",
-      "destination": "/margin/components/cards",
+      "destination": "/margin/components/card",
       "permanent": true
     },
     {
       "source": "/margin/guides/forms",
-      "destination": "/margin/components/forms",
+      "destination": "/margin/forms",
       "permanent": true
     },
     {
       "source": "/margin/guides/sidebar",
-      "destination": "/margin/components/sidebar",
+      "destination": "/margin/modules/sidebar",
       "permanent": true
     },
     {
       "source": "/margin/guides/topbar",
-      "destination": "/margin/components/topbar",
+      "destination": "/margin/modules/topbar",
       "permanent": true
     },
     {
       "source": "/margin/guides/breadcrumbs",
-      "destination": "/margin/components/breadcrumbs",
+      "destination": "/margin/components/breadcrumb",
       "permanent": true
     },
     {
       "source": "/margin/guides/badges",
-      "destination": "/margin/components/badges",
+      "destination": "/margin/components/badge",
       "permanent": true
     },
     {
       "source": "/margin/guides/tables",
-      "destination": "/margin/components/tables",
+      "destination": "/margin/modules/tables",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/cards",
+      "destination": "/margin/components/card",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/badges",
+      "destination": "/margin/components/badge",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/breadcrumbs",
+      "destination": "/margin/components/breadcrumb",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/forms",
+      "destination": "/margin/forms",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/sidebar",
+      "destination": "/margin/modules/sidebar",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/topbar",
+      "destination": "/margin/modules/topbar",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/tables",
+      "destination": "/margin/modules/tables",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/dialog",
+      "destination": "/margin/modules/dialog",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/empty-loading",
+      "destination": "/margin/modules/empty-loading",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/faq",
+      "destination": "/margin/modules/faq",
+      "permanent": true
+    },
+    {
+      "source": "/margin/components/avatars",
+      "destination": "/margin/modules/avatars",
       "permanent": true
     },
     {

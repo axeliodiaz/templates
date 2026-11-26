@@ -2,23 +2,25 @@
 pageClass: margin-scoped-guide
 ---
 <script setup>
-import MarginGuidePreview from '../../.vitepress/theme/MarginGuidePreview.vue'
+import MarginBs6Section from '../../.vitepress/theme/MarginBs6Section.vue'
 </script>
 
 # Pagination
 
-`.mg-pagination` and carousel `.mg-pager` controls.<MarginGuidePreview label="Live classes"><p class="mg-note">See the product demo for the full interactive pattern: <a href="/margin/analytics">Analytics</a> or <a href="/margin">Overview</a>.</p></MarginGuidePreview>
+Bootstrap 5.3/6-compatible **pagination** on scoped `b2-bs6` + Margin `.lab` tokens. Toggle **Dark preview** to verify AA contrast, keyboard focus, and `prefers-reduced-motion`.
+
+<MarginBs6Section section="pagination" label="Pagination" />
+
+## Markup shell
 
 ```html
-<!-- Representative markup; see /margin/analytics for the full shell -->
-<div class="margin lab-dark">…</div>
+<div class="lab b2-bs6 b2-margin">
+  <!-- Bootstrap component markup -->
+</div>
 ```
-
-
-## Usage
 
 Fictitious sample data only. Wire your own API, authorization, and persistence before production.
 
 ## Accessibility
 
-Test keyboard focus, visible rings (`outline: 2px solid #6389ea; outline-offset: 3px`), and `prefers-reduced-motion` alongside light and dark previews.
+Tab through the live example. Use Enter/Space on buttons and toggles; Escape closes dialogs and offcanvas surfaces. Pair status with text, not color alone.

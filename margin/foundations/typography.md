@@ -7,7 +7,9 @@ import MarginGuidePreview from '../../.vitepress/theme/MarginGuidePreview.vue'
 
 # Typography
 
-system-ui on the homepage lab, DM Sans and Space Grotesk on the dashboard, safe stacks in email.<MarginGuidePreview label="Live classes"><p class="mg-note">See the product demo for the full interactive pattern: <a href="/margin/analytics">Analytics</a> or <a href="/margin">Overview</a>.</p></MarginGuidePreview>
+Product **type roles** for Margin: system-ui on the homepage `.lab`, DM Sans and Space Grotesk on the analytics `.margin` shell, safe stacks in email. For Bootstrap Reboot defaults, heading scale, and prose patterns inside `.lab`, see [Content → Typography](/margin/content/typography).
+
+<MarginGuidePreview label="Live classes"><p class="mg-note">See the product demo for the full interactive pattern: <a href="/margin/analytics">Analytics</a> or <a href="/margin">Overview</a>.</p></MarginGuidePreview>
 
 ```html
 <!-- Representative markup; see /margin/analytics for the full shell -->
