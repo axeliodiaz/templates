@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import ToastVisual from './ToastVisual.vue'
 import { altText, plainDetail, type StackItem } from './toast.model'
 import { ARM_GUARD } from './toast.motion'
@@ -11,19 +11,24 @@ const props = defineProps<{
   reduced: boolean
   compact: boolean
   titleId: string
+  layoutTick?: string
 }>()
 
 const emit = defineEmits<{
   dismiss: [reason: 'close' | 'swipe']
   action: [actionId: string]
   spot: [boolean]
+  layout: []
 }>()
 
+const cardRef = ref<HTMLElement | null>(null)
 const dragX = ref(0)
 const armedAt = ref(0)
+const entering = ref(true)
 let startX = 0
 let startT = 0
 let trackingPointer = false
+let narrow = false
 
 const toast = computed(() => props.item.data)
 const alt = computed(() => toast.value.alt ?? altText(toast.value.visual))
@@ -32,9 +37,26 @@ const inertPeek = computed(() => !props.expanded && props.depth >= 1)
 const showAction = computed(() => !!toast.value.action && !toast.value.busy)
 const canDismiss = computed(() => toast.value.dismissible !== false)
 
-onMounted(() => {
+function armGuard() {
   armedAt.value = performance.now()
+}
+
+onMounted(() => {
+  armGuard()
+  if (typeof matchMedia !== 'undefined') narrow = matchMedia('(max-width: 480px)').matches
+  setTimeout(() => {
+    entering.value = false
+    emit('layout')
+  }, 360)
 })
+
+watch(
+  () => props.layoutTick,
+  () => {
+    armGuard()
+    emit('layout')
+  },
+)
 
 function onActionClick(e: MouseEvent) {
   if (e.detail > 0 && armedAt.value > 0 && performance.now() - armedAt.value < ARM_GUARD) {
@@ -53,7 +75,12 @@ function pointerDown(e: PointerEvent) {
 
 function pointerMove(e: PointerEvent) {
   if (!trackingPointer) return
-  dragX.value = Math.min(Math.max(e.clientX - startX, -24), 120)
+  const raw = e.clientX - startX
+  if (!narrow && raw < 0) {
+    dragX.value = Math.max(raw, -24)
+    return
+  }
+  dragX.value = Math.min(Math.max(raw, narrow ? -120 : -24), 120)
 }
 
 function pointerUp(e: PointerEvent) {
@@ -62,25 +89,45 @@ function pointerUp(e: PointerEvent) {
   const dx = e.clientX - startX
   const dt = performance.now() - startT
   const v = Math.abs(dx) / Math.max(dt, 1)
-  if (Math.abs(dx) >= 64 || v >= 0.45) {
-    emit('dismiss', 'swipe')
+  if (!narrow && dx < 0) {
+    dragX.value = 0
     return
   }
+  if ((narrow ? Math.abs(dx) : dx) >= 64 || v >= 0.45) {
+    if (narrow || dx > 0) {
+      emit('dismiss', 'swipe')
+      return
+    }
+  }
   dragX.value = 0
+}
+
+function pointerCancel() {
+  trackingPointer = false
+  dragX.value = 0
+}
+
+function onClose() {
+  emit('dismiss', 'close')
 }
 </script>
 
 <template>
   <article
+    ref="cardRef"
     class="atoast__card"
-    :class="{ 'atoast__card--busy': toast.busy, 'atoast__card--peek': inertPeek }"
+    :class="{
+      'atoast__card--busy': toast.busy,
+      'atoast__card--peek': inertPeek,
+      'atoast__card--enter': entering && !reduced,
+    }"
     :aria-labelledby="titleId"
     :inert="inertPeek || undefined"
     :style="dragX ? { transform: `translateX(${dragX}px)` } : undefined"
     @pointerdown="pointerDown"
     @pointermove="pointerMove"
     @pointerup="pointerUp"
-    @pointercancel="pointerUp"
+    @pointercancel="pointerCancel"
   >
     <ToastVisual :visual="toast.visual" :size="compact ? 'sm' : 'md'" />
     <div class="atoast__text">
@@ -113,7 +160,7 @@ function pointerUp(e: PointerEvent) {
     >
       {{ toast.action!.label }}
     </button>
-    <button v-if="canDismiss" type="button" class="atoast__close" :aria-label="dismissLabel" @click="emit('dismiss', 'close')">
+    <button v-if="canDismiss" type="button" class="atoast__close" :aria-label="dismissLabel" @click.stop="onClose">
       <span aria-hidden="true">×</span>
     </button>
   </article>

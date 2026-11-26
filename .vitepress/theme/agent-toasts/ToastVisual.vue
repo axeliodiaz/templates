@@ -5,21 +5,21 @@ import { cells, type Visual, type CellFill } from './toast.model'
 const props = withDefaults(defineProps<{ visual: Visual; size?: 'md' | 'sm' }>(), { size: 'md' })
 
 const shapes = computed(() => cells(props.visual))
-const vb = computed(() => (props.size === 'sm' ? '0 0 48 32' : '0 0 58 32'))
+const vb = computed(() => (props.size === 'sm' ? '0 0 48 28' : '0 0 56 32'))
 
 function fillClass(f?: CellFill): string {
-  if (!f) return 'atoast-viz__ink'
-  return `atoast-viz__${f.replace(/-/g, '-')}`
+  if (!f) return 'atoast__fill--ink'
+  return `atoast__fill--${f}`
 }
 </script>
 
 <template>
   <svg
-    class="atoast-viz"
-    :class="`atoast-viz--${size}`"
+    class="atoast__viz"
+    :class="`atoast__viz--${size}`"
     :viewBox="vb"
-    width="58"
-    height="32"
+    :width="size === 'sm' ? 48 : 56"
+    :height="size === 'sm' ? 28 : 32"
     aria-hidden="true"
     focusable="false"
     xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ function fillClass(f?: CellFill): string {
         :cx="s.cx"
         :cy="s.cy"
         :r="s.r"
-        :class="[fillClass(s.fill), s.stroke ? `atoast-viz__stroke-${s.stroke}` : '']"
+        :class="[fillClass(s.fill), s.stroke ? `atoast__stroke--${s.stroke}` : '']"
         :stroke-width="s.strokeWidth ?? 0"
         :fill="s.fill ? undefined : 'none'"
       />
@@ -49,14 +49,14 @@ function fillClass(f?: CellFill): string {
         :y1="s.y1"
         :x2="s.x2"
         :y2="s.y2"
-        :class="`atoast-viz__stroke-${s.stroke}`"
+        :class="`atoast__stroke--${s.stroke}`"
         :stroke-width="s.strokeWidth ?? 1"
         :stroke-dasharray="s.dash"
       />
       <path
         v-else-if="s.kind === 'path'"
         :d="s.d"
-        :class="[s.fill ? fillClass(s.fill) : '', s.stroke ? `atoast-viz__stroke-${s.stroke}` : '']"
+        :class="[s.fill ? fillClass(s.fill) : '', s.stroke ? `atoast__stroke--${s.stroke}` : '']"
         :stroke-width="s.strokeWidth ?? 1"
         :fill="s.fill ? undefined : 'none'"
         :stroke-dasharray="s.dash"

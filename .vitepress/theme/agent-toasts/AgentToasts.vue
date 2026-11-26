@@ -17,6 +17,7 @@ const props = withDefaults(
 
 const isClient = typeof window !== 'undefined'
 const toasterRef = shallowRef<InstanceType<typeof AgentToaster> | null>(null)
+const stageRef = ref<HTMLElement | null>(null)
 const expanded = ref(false)
 const autoHide = ref(true)
 const localDark = ref(false)
@@ -29,6 +30,8 @@ let compactCancel: (() => void) | undefined
 let reducedMedia: MediaQueryList | undefined
 let reducedHandler: (() => void) | undefined
 let narrowMedia: MediaQueryList | undefined
+let narrowHandler: (() => void) | undefined
+let visibilityHandler: (() => void) | undefined
 
 const localDarkThemes = new Set(['meadow', 'sentinel', 'brief'])
 const showDark = computed(() => localDarkThemes.has(props.theme))
@@ -38,9 +41,15 @@ const store = createToastStore()
 onMounted(() => {
   store.setAnnounce((text, politeness) => toasterRef.value?.announce(text, politeness))
 })
+
 watch(autoHide, v => {
-  if (!v) store.pause()
-  else store.resume()
+  if (!v) store.pause('autohide')
+  else store.resume('autohide')
+})
+
+watch(expanded, v => {
+  if (v) store.pause('expanded')
+  else store.resume('expanded')
 })
 
 const items = computed(() => store.state.items)
@@ -89,6 +98,14 @@ function applyDemoState() {
 
 watch(() => props.demoState, applyDemoState)
 
+function onStagePointerDown(e: PointerEvent) {
+  if (!expanded.value) return
+  const region = stageRef.value?.querySelector('.atoast__region')
+  if (!region || region.contains(e.target as Node)) return
+  expanded.value = false
+  toasterRef.value?.collapseTouch()
+}
+
 onMounted(() => {
   if (!isClient) return
   reducedMedia = matchMedia('(prefers-reduced-motion: reduce)')
@@ -98,11 +115,16 @@ onMounted(() => {
   reducedMedia.addEventListener('change', reducedHandler)
   reducedHandler()
   narrowMedia = matchMedia('(max-width: 480px)')
-  const place = () => {
+  narrowHandler = () => {
     placement.value = narrowMedia!.matches ? 'bottom-center' : 'bottom-right'
   }
-  narrowMedia.addEventListener('change', place)
-  place()
+  narrowMedia.addEventListener('change', narrowHandler)
+  narrowHandler()
+  visibilityHandler = () => {
+    if (document.hidden) store.pause('hidden')
+    else store.resume('hidden')
+  }
+  document.addEventListener('visibilitychange', visibilityHandler)
   applyDemoState()
 })
 
@@ -110,6 +132,8 @@ onBeforeUnmount(() => {
   clearPlay()
   store.dispose()
   reducedMedia?.removeEventListener('change', reducedHandler!)
+  narrowMedia?.removeEventListener('change', narrowHandler!)
+  if (visibilityHandler) document.removeEventListener('visibilitychange', visibilityHandler)
 })
 
 const rootClass = computed(() => [
@@ -147,7 +171,7 @@ const rootClass = computed(() => [
         Reduced motion
       </button>
     </div>
-    <div class="atoast__stage">
+    <div ref="stageRef" class="atoast__stage" @pointerdown.capture="onStagePointerDown">
       <p v-if="!items.length" class="atoast__empty">No notifications yet. Use Play sequence or the buttons above.</p>
       <AgentToaster
         ref="toasterRef"
@@ -157,8 +181,8 @@ const rootClass = computed(() => [
         :placement="placement === 'bottom-center' ? 'bottom-center' : 'bottom-right'"
         :reduced="reduced"
         :spotlight-id="spotlightId"
-        @pause="() => store.pause()"
-        @resume="() => store.resume()"
+        @pause="r => store.pause(r)"
+        @resume="r => store.resume(r)"
         @dismiss="(id, r) => store.dismiss(id, r)"
         @action="onAction"
         @spot="id => (spotlightId = id)"
