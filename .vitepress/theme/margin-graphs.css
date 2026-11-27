@@ -1,0 +1,152 @@
+/* Margin Graphs — Felix chart preview inside guide labs */
+
+html[data-tpl='margin'] .mg-graph-lab {
+  --mg-chart-enter-duration: 0.45s;
+  --mg-chart-enter-ease: ease-out;
+  --mg-chart-line-duration: 0.65s;
+  --mg-chart-bar-duration: 0.55s;
+  --mg-chart-arc-duration: 0.7s;
+  --mg-chart-value-duration: 0.4s;
+  --mg-chart-morph-duration: 0.5s;
+  --mg-chart-hover-duration: 0.15s;
+}
+
+html[data-tpl='margin'] .mg-graph-lab .fj-chart {
+  --fj-c1: var(--brand, #0da4a3);
+}
+
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .mg-graph-lab .fj-chart {
+  --fj-card: var(--surface, #242833);
+  --fj-ink: var(--ink, #f1f3f8);
+  --fj-muted: var(--muted, #aab3c3);
+  --fj-border: var(--line, #404757);
+}
+
+html[data-tpl='margin'] .mg-graph-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 12px;
+}
+
+html[data-tpl='margin'] .mg-graph-toolbar select {
+  font: inherit;
+  font-size: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-tpl='margin'] .mg-graph-lab[style*='--mg-chart-motion: none'] .fj-plot,
+  html[data-tpl='margin'] .mg-graph-lab[style*='--mg-chart-motion: none'] .fj-plot * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-graph-lab .fj-plot.fj-plot--motion-ready {
+    animation: mg-chart-enter var(--mg-chart-enter-duration) var(--mg-chart-enter-ease);
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-graph-lab .fj-plot.fj-plot--motion-ready line:not(.fj-grid line) {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: mg-chart-line-draw var(--mg-chart-line-duration) ease-out forwards;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-graph-lab .fj-plot.fj-plot--motion-ready rect {
+    transform: scaleY(0);
+    transform-origin: center bottom;
+    transform-box: fill-box;
+    animation: mg-chart-bar-grow var(--mg-chart-bar-duration) ease-out forwards;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-graph-lab .fj-plot.fj-plot--motion-ready path[stroke] {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: mg-chart-line-draw var(--mg-chart-arc-duration) ease-out forwards;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-graph-lab .fj-plot text {
+    animation: mg-chart-value-in var(--mg-chart-value-duration) ease-out;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-graph-lab .fj-plot.fj-plot--motion-ready[data-mg-morph='1'] rect,
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-graph-lab .fj-plot.fj-plot--motion-ready[data-mg-morph='1'] path,
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-graph-lab .fj-plot.fj-plot--motion-ready[data-mg-morph='1'] line {
+    transition: all var(--mg-chart-morph-duration) ease-out;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-graph-lab .fj-plot [tabindex] {
+    transition: opacity var(--mg-chart-hover-duration) ease, filter var(--mg-chart-hover-duration) ease;
+  }
+}
+
+@keyframes mg-chart-enter {
+  from {
+    opacity: 0.4;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mg-chart-line-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes mg-chart-bar-grow {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes mg-chart-value-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-tpl='margin'] .mg-graph-lab .fj-plot,
+  html[data-tpl='margin'] .mg-graph-lab .fj-plot * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+html[data-tpl='margin'] .margin-graph-overview {
+  display: grid;
+  gap: 12px 20px;
+  margin: 20px 0 32px;
+}
+
+html[data-tpl='margin'] .margin-graph-overview h3 {
+  margin: 24px 0 8px;
+  font-size: 15px;
+}
+
+html[data-tpl='margin'] .margin-graph-overview ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  columns: 2;
+  column-gap: 24px;
+}
+
+@media (max-width: 640px) {
+  html[data-tpl='margin'] .margin-graph-overview ul {
+    columns: 1;
+  }
+}

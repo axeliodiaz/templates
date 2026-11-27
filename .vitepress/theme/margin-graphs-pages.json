@@ -1,0 +1,384 @@
+{
+  "groups": [
+    {
+      "id": "trends",
+      "title": "Trends over time"
+    },
+    {
+      "id": "comparison",
+      "title": "Comparison"
+    },
+    {
+      "id": "parts",
+      "title": "Parts of a whole"
+    },
+    {
+      "id": "distribution",
+      "title": "Distribution and relationships"
+    },
+    {
+      "id": "activity",
+      "title": "Activity and time grids"
+    },
+    {
+      "id": "kpi",
+      "title": "KPIs and progress"
+    },
+    {
+      "id": "flows",
+      "title": "Flows and funnels"
+    }
+  ],
+  "pages": [
+    {
+      "slug": "arc",
+      "exampleKey": "arc",
+      "title": "Arc meter",
+      "component": "felix-arc",
+      "group": "kpi"
+    },
+    {
+      "slug": "area",
+      "exampleKey": "area",
+      "title": "Area chart",
+      "component": "area",
+      "group": "trends"
+    },
+    {
+      "slug": "bar",
+      "exampleKey": "bar",
+      "title": "Bar chart",
+      "component": "bar",
+      "group": "comparison"
+    },
+    {
+      "slug": "boxplot",
+      "exampleKey": "boxplot",
+      "title": "Box plot",
+      "component": "box",
+      "group": "distribution"
+    },
+    {
+      "slug": "bubble",
+      "exampleKey": "bubble",
+      "title": "Bubble chart",
+      "component": "bubble",
+      "group": "distribution"
+    },
+    {
+      "slug": "bullet",
+      "exampleKey": "bullet",
+      "title": "Bullet chart",
+      "component": "bullet",
+      "group": "comparison"
+    },
+    {
+      "slug": "candlestick",
+      "exampleKey": "candlestick",
+      "title": "Candlestick",
+      "component": "felix-candlestick",
+      "group": "trends"
+    },
+    {
+      "slug": "cohort",
+      "exampleKey": "cohort",
+      "title": "Cohort chart",
+      "component": "cohort",
+      "group": "activity"
+    },
+    {
+      "slug": "column",
+      "exampleKey": "column",
+      "title": "Column chart",
+      "component": "column",
+      "group": "comparison"
+    },
+    {
+      "slug": "combo",
+      "exampleKey": "combo",
+      "title": "Combo / dual axis",
+      "component": "combo",
+      "group": "trends"
+    },
+    {
+      "slug": "contribution-skyline",
+      "exampleKey": "contribution-skyline",
+      "title": "Contribution skyline",
+      "component": "felix-contribution-skyline",
+      "group": "trends"
+    },
+    {
+      "slug": "dependency",
+      "exampleKey": "dependency",
+      "title": "Dependency graph",
+      "component": "felix-dependency",
+      "group": "flows"
+    },
+    {
+      "slug": "donut",
+      "exampleKey": "donut",
+      "title": "Donut chart",
+      "component": "donut",
+      "group": "parts"
+    },
+    {
+      "slug": "dumbbell",
+      "exampleKey": "dumbbell",
+      "title": "Dumbbell",
+      "component": "dumbbell",
+      "group": "comparison"
+    },
+    {
+      "slug": "flowchart",
+      "exampleKey": "flowchart",
+      "title": "Flowchart",
+      "component": "felix-flowchart",
+      "group": "flows"
+    },
+    {
+      "slug": "funnel",
+      "exampleKey": "funnel",
+      "title": "Funnel",
+      "component": "funnel",
+      "group": "flows"
+    },
+    {
+      "slug": "gantt",
+      "exampleKey": "gantt",
+      "title": "Gantt timeline",
+      "component": "timeline",
+      "group": "activity"
+    },
+    {
+      "slug": "grouped",
+      "exampleKey": "grouped",
+      "title": "Grouped bar",
+      "component": "grouped",
+      "group": "comparison"
+    },
+    {
+      "slug": "heatmap",
+      "exampleKey": "heatmap",
+      "title": "Heatmap",
+      "component": "heatmap",
+      "group": "activity"
+    },
+    {
+      "slug": "heatmap-b",
+      "exampleKey": "heatmap-b",
+      "title": "Heatmap (variant B)",
+      "component": "heatmap",
+      "group": "activity"
+    },
+    {
+      "slug": "heatmap-c",
+      "exampleKey": "heatmap-c",
+      "title": "Heatmap (variant C)",
+      "component": "heatmap",
+      "group": "activity"
+    },
+    {
+      "slug": "histogram",
+      "exampleKey": "histogram",
+      "title": "Histogram",
+      "component": "histogram",
+      "group": "distribution"
+    },
+    {
+      "slug": "hourmap",
+      "exampleKey": "hourmap",
+      "title": "Day × hour heatmap",
+      "component": "felix-hourmap",
+      "group": "activity"
+    },
+    {
+      "slug": "hybrid",
+      "exampleKey": "hybrid",
+      "title": "Hybrid bar + line",
+      "component": "felix-hybrid",
+      "group": "trends"
+    },
+    {
+      "slug": "kpi",
+      "exampleKey": "kpi",
+      "title": "KPI with sparkline",
+      "component": "kpi",
+      "group": "kpi"
+    },
+    {
+      "slug": "line",
+      "exampleKey": "line",
+      "title": "Line chart",
+      "component": "line",
+      "group": "trends"
+    },
+    {
+      "slug": "matrix",
+      "exampleKey": "matrix",
+      "title": "Dot-matrix heatmap",
+      "component": "felix-matrix",
+      "group": "activity"
+    },
+    {
+      "slug": "pie",
+      "exampleKey": "pie",
+      "title": "Pie chart",
+      "component": "felix-pie",
+      "group": "parts"
+    },
+    {
+      "slug": "polar",
+      "exampleKey": "polar",
+      "title": "Polar chart",
+      "component": "felix-polar",
+      "group": "comparison"
+    },
+    {
+      "slug": "process",
+      "exampleKey": "process",
+      "title": "Process graph",
+      "component": "felix-process",
+      "group": "flows"
+    },
+    {
+      "slug": "pyramid",
+      "exampleKey": "pyramid",
+      "title": "Pyramid chart",
+      "component": "pyramid",
+      "group": "parts"
+    },
+    {
+      "slug": "radar",
+      "exampleKey": "radar",
+      "title": "Radar chart",
+      "component": "radar",
+      "group": "comparison"
+    },
+    {
+      "slug": "radial",
+      "exampleKey": "radial",
+      "title": "Radial bar",
+      "component": "felix-radial",
+      "group": "comparison"
+    },
+    {
+      "slug": "range",
+      "exampleKey": "range",
+      "title": "Range chart",
+      "component": "range",
+      "group": "trends"
+    },
+    {
+      "slug": "rings",
+      "exampleKey": "rings",
+      "title": "Concentric gauge (rings)",
+      "component": "felix-rings",
+      "group": "kpi"
+    },
+    {
+      "slug": "sankey",
+      "exampleKey": "sankey",
+      "title": "Sankey",
+      "component": "sankey",
+      "group": "flows"
+    },
+    {
+      "slug": "scatter",
+      "exampleKey": "scatter",
+      "title": "Scatter chart",
+      "component": "scatter",
+      "group": "distribution"
+    },
+    {
+      "slug": "series-trend",
+      "exampleKey": "series-trend",
+      "title": "Series trend",
+      "component": "felix-series-trend",
+      "group": "trends"
+    },
+    {
+      "slug": "sparkline",
+      "exampleKey": "sparkline",
+      "title": "Sparkline",
+      "component": "sparkline",
+      "group": "trends"
+    },
+    {
+      "slug": "speed",
+      "exampleKey": "speed",
+      "title": "Speedometer",
+      "component": "felix-speed",
+      "group": "kpi"
+    },
+    {
+      "slug": "stacked",
+      "exampleKey": "stacked",
+      "title": "Stacked bar",
+      "component": "stackedbar",
+      "group": "comparison"
+    },
+    {
+      "slug": "state-diagram",
+      "exampleKey": "state-diagram",
+      "title": "State diagram",
+      "component": "felix-state-diagram",
+      "group": "flows"
+    },
+    {
+      "slug": "status-funnel",
+      "exampleKey": "status-funnel",
+      "title": "Status funnel",
+      "component": "felix-status-funnel",
+      "group": "flows"
+    },
+    {
+      "slug": "status-gauge",
+      "exampleKey": "status-gauge",
+      "title": "Status gauge",
+      "component": "felix-status-gauge",
+      "group": "kpi"
+    },
+    {
+      "slug": "step",
+      "exampleKey": "step",
+      "title": "Step chart",
+      "component": "felix-step",
+      "group": "trends"
+    },
+    {
+      "slug": "stream",
+      "exampleKey": "stream",
+      "title": "Stream chart",
+      "component": "felix-stream",
+      "group": "trends"
+    },
+    {
+      "slug": "sunburst",
+      "exampleKey": "sunburst",
+      "title": "Sunburst",
+      "component": "sunburst",
+      "group": "parts"
+    },
+    {
+      "slug": "telemetry",
+      "exampleKey": "telemetry",
+      "title": "Telemetry (multi-line)",
+      "component": "felix-telemetry",
+      "group": "trends"
+    },
+    {
+      "slug": "treemap",
+      "exampleKey": "treemap",
+      "title": "Treemap",
+      "component": "treemap",
+      "group": "parts"
+    },
+    {
+      "slug": "waterfall",
+      "exampleKey": "waterfall",
+      "title": "Waterfall",
+      "component": "waterfall",
+      "group": "comparison"
+    }
+  ]
+}
