@@ -7,7 +7,7 @@ import {
   squashedCommits,
 } from './commit-data.mjs'
 
-/** @typedef {'loading'|'expanded'|'rebasing'|'squashed'|'pushing'|'pr-running'|'pr-passed'} SquashStateId */
+/** @typedef {'loading'|'expanded'|'rebasing'|'squashed'|'pushing'|'pr-running'|'pr-passed'|'pr-running-checks-open'|'pr-passed-checks-open'} SquashStateId */
 
 /**
  * @param {SquashStateId} id
@@ -102,6 +102,16 @@ export function squashStatePreset(id, opts = {}) {
         purple: true,
         compact: true,
       }
+    case 'pr-running-checks-open':
+      return {
+        ...squashStatePreset('pr-running'),
+        checksExpanded: true,
+      }
+    case 'pr-passed-checks-open':
+      return {
+        ...squashStatePreset('pr-passed'),
+        checksExpanded: true,
+      }
     default:
       return base
   }
@@ -143,5 +153,17 @@ export const GALLERY_STATES = [
     id: 'pr-passed',
     title: '5b · 6 checks passed',
     code: '<MarginSquashForcePush state="pr-passed" :motion="false" :autoplay="false" />',
+  },
+  {
+    id: 'pr-running-checks-open',
+    title: '5a′ · Checks list (running)',
+    code: '<MarginSquashForcePush state="pr-running-checks-open" :checks-expanded="true" :motion="false" :autoplay="false" />',
+    checksExpanded: true,
+  },
+  {
+    id: 'pr-passed-checks-open',
+    title: '5b′ · Checks list (all passed)',
+    code: '<MarginSquashForcePush state="pr-passed-checks-open" :checks-expanded="true" :motion="false" :autoplay="false" />',
+    checksExpanded: true,
   },
 ]

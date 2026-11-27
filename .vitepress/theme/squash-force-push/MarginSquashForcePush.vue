@@ -2,6 +2,7 @@
 import { computed, onMounted, onUnmounted, ref, toRef, watch } from 'vue'
 import { BRANCH, prNumber, prTitle } from './commit-data.mjs'
 import SqBranchHeader from './components/SqBranchHeader.vue'
+import SqChecksPanel from './components/SqChecksPanel.vue'
 import SqBranchRail from './components/SqBranchRail.vue'
 import SqCommitRow from './components/SqCommitRow.vue'
 import SqHoldPushButton from './components/SqHoldPushButton.vue'
@@ -17,6 +18,8 @@ const props = defineProps({
   /** Static reference frame from @pitus_ video */
   state: { type: String, default: '' },
   pushProgress: { type: Number, default: 0 },
+  /** When set, freezes expanded checks list for static frames */
+  checksExpanded: { type: Boolean, default: null },
 })
 
 const isStatic = computed(() => Boolean(props.state))
@@ -25,6 +28,8 @@ const reducedMotion = ref(false)
 const motion = toRef(props, 'motion')
 const autoplay = toRef(props, 'autoplay')
 const replayKey = ref(0)
+const checksOpen = ref(false)
+const checksPanelId = `mg-sq-checks-${Math.random().toString(36).slice(2, 9)}`
 
 const flow = useSquashFlow({
   motion,
@@ -58,6 +63,8 @@ const view = computed(() => {
       TARGET: p.TARGET,
       loading: props.state === 'loading',
       expanded: p.showRows,
+      checks: p.checks ?? null,
+      checksOpen: checksOpen.value,
     }
   }
   return {
@@ -82,8 +89,14 @@ const view = computed(() => {
     TARGET: flow.TARGET,
     loading: flow.phase.value === 'loading',
     expanded: flow.showRows.value,
+    checks: null,
+    checksOpen: checksOpen.value,
   }
 })
+
+function toggleChecks() {
+  checksOpen.value = !checksOpen.value
+}
 
 function onSquash() {
   if (!isStatic.value) flow.runSquash(false)
@@ -102,8 +115,16 @@ function onWindowUp() {
 function replay() {
   if (isStatic.value) return
   replayKey.value++
+  checksOpen.value = false
   flow.replay()
 }
+
+watch(
+  () => flow.checksState.value,
+  (next, prev) => {
+    if (!isStatic.value && prev !== 'idle' && next === 'idle') checksOpen.value = false
+  },
+)
 
 onMounted(() => {
   reducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -121,7 +142,13 @@ onUnmounted(() => {
   }
 })
 
-watch(() => props.state, () => {})
+watch(
+  () => [props.state, props.checksExpanded],
+  () => {
+    checksOpen.value = props.checksExpanded ?? false
+  },
+  { immediate: true },
+)
 
 defineExpose({ replay })
 </script>
@@ -137,6 +164,7 @@ defineExpose({ replay })
       'mg-squash--purple': view.purple,
       'mg-squash--motion-off': isStatic || !motion || reducedMotion,
       'mg-squash--compact': view.compact,
+      'mg-squash--checks-open': view.checksOpen && view.checksState !== 'idle',
     }"
     :style="{ '--mg-sq-rows': view.rows.length }"
     data-tpl="margin"
@@ -149,6 +177,17 @@ defineExpose({ replay })
       :pr-number="prNumber"
       :pr-title="prTitle"
       :checks-state="view.checksState"
+      :checks-expanded="view.checksOpen"
+      :checks-panel-id="checksPanelId"
+      @toggle-checks="toggleChecks"
+    />
+
+    <SqChecksPanel
+      v-if="view.checksState !== 'idle'"
+      :checks-state="view.checksState"
+      :checks="view.checks"
+      :open="view.checksOpen"
+      :panel-id="checksPanelId"
     />
 
     <div class="mg-squash__body">
