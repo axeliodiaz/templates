@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import { provide, ref } from 'vue'
+import { onMounted, provide, ref } from 'vue'
 defineProps<{ label?: string }>()
 const dark = ref(false)
+const motionReady = ref(false)
 provide('marginGuidePreviewDark', dark)
+onMounted(() => {
+  requestAnimationFrame(() => {
+    motionReady.value = true
+  })
+})
 function toggle() {
   dark.value = !dark.value
 }
 </script>
 <template>
-  <div class="mg-guide-preview" :class="{ 'lab-dark': dark }">
+  <div class="mg-guide-preview" :class="{ 'lab-dark': dark, 'mg-guide-motion': motionReady }">
     <div class="mg-guide-toolbar" aria-label="Preview appearance">
       <button type="button" class="mg-guide-toggle" @click="toggle">{{ dark ? 'Light' : 'Dark' }} preview</button>
       <span v-if="label" class="mg-guide-label">{{ label }}</span>
