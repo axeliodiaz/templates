@@ -34,8 +34,8 @@ Gallery: `MarginSquashStateGallery` on `/margin/squash-force-push` and `/margin/
 ## Checklist
 
 - [ ] Solid blue Squash button in every frame
-- [ ] 392px card, 14px type, 18–20px radius, soft shadow, gray stage
-- [ ] 2-col grid / 390px single column
+- [ ] ~580px card (X reference), 14px type, 18–20px radius, soft shadow, gray stage
+- [ ] 1-col gallery until ≥1240px container; 390px full width + message ellipsis
 - [ ] No ghost rows after squash in autoplay
 - [ ] Copy blocks under each frame
 - [ ] Checks status expands to 6 rows (running + passed icons)
