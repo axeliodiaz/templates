@@ -230,12 +230,25 @@ function extensionContract(id) {
         properties: {
           highlight: { type: "string" },
           max: { type: "number", minimum: 0.000001 },
+          maximum: { type: "number", minimum: 0.000001 },
           unit: { type: "string" },
           currentPeriod: { type: "string" },
           weights: { type: "object" },
           interactive: { type: "boolean" },
           selectedSeries: { type: "string" },
           polarEncoding: { enum: ["radius", "area"] },
+          ...(ext.type === "arc"
+            ? {
+                fields: { type: "object" },
+                series: { type: "array" },
+                arcMode: { type: "string" },
+                arcSweep: { type: "number" },
+                arcStart: { type: "number" },
+                strokeWidth: { type: "number" },
+                ringGap: { type: "number" },
+                baseRadius: { type: "number" },
+              }
+            : {}),
         },
       },
     },
@@ -414,10 +427,24 @@ export function resolveSpec(input, sources) {
       (extensions[input.component]
         ? [
             "highlight",
-            ...(["polar", "radial", "rings", "speed", "arc"].includes(
+            ...(["polar", "radial", "rings", "speed"].includes(
               extensions[input.component].type,
             )
               ? ["max"]
+              : []),
+            ...(extensions[input.component]?.type === "arc"
+              ? [
+                  "max",
+                  "maximum",
+                  "fields",
+                  "series",
+                  "arcMode",
+                  "arcSweep",
+                  "arcStart",
+                  "strokeWidth",
+                  "ringGap",
+                  "baseRadius",
+                ]
               : []),
             ...(input.component === "felix-series-trend"
               ? ["currentPeriod", "selectedSeries"]
@@ -631,10 +658,11 @@ export function resolveSpec(input, sources) {
       if (numeric.includes(ch) && !(kind === "sankey" && ch === "target")) {
         if (
           val === null &&
-          ["line", "sparkline", "step", "telemetry", "series-trend"].includes(
+          ((["line", "sparkline", "step", "telemetry", "series-trend"].includes(
             kind,
           ) &&
-          ["value", "secondary"].includes(ch)
+            ["value", "secondary"].includes(ch)) ||
+            (kind === "arc" && ch === "value"))
         )
           continue;
         need(
@@ -751,12 +779,15 @@ export function resolveSpec(input, sources) {
     ids.forEach(visit);
   }
   if (["radial", "rings", "speed", "arc", "polar", "radar"].includes(kind))
-    for (const r of norm)
+    for (const r of norm) {
+      const raw = v(r, "value");
+      if (raw === null || raw === "") continue;
       need(
-        v(r, "value") <= (options.maximum ?? 100),
+        raw <= (options.maximum ?? options.max ?? 100),
         "data",
         "value exceeds the chart maximum",
       );
+    }
   if (["dependency", "process", "flowchart", "state-diagram"].includes(kind))
     need(norm.length <= 20, "data", "node charts support at most20nodes");
   if (options.weights)
@@ -803,6 +834,7 @@ export function chartGeometry(m) {
   const marks = [],
     texts = [],
     lines = [],
+    legend = [],
     n = r.length,
     W = 600,
     H = 320,
@@ -902,19 +934,46 @@ export function chartGeometry(m) {
   }
   if (c === "stacked-bar")
     nums = r.map((a) => v(a, "value") + v(a, "secondary"));
-  const lo = o.domain?.[0] ?? Math.min(0, ...nums),
-    hi = o.domain?.[1] ?? Math.max(1, ...nums) * 1.1,
+  const dataMax = Math.max(1, ...nums),
+    dataMin = Math.min(0, ...nums),
+    cartesian = [
+      "line",
+      "area",
+      "step",
+      "sparkline",
+      "telemetry",
+      "hybrid",
+      "combo",
+      "series-trend",
+      "stream",
+      "range",
+    ].includes(c),
+    lo =
+      o.domain?.[0] ??
+      (cartesian && dataMax <= 100 && dataMin >= 0 ? 0 : dataMin),
+    hi =
+      o.domain?.[1] ??
+      (cartesian && dataMax <= 100 && dataMin >= 0 ? 100 : dataMax * 1.1),
     Y = (x) => T + ph - ((x - lo) / (hi - lo)) * ph,
     X = (i) => L + (pw * (i + 0.5)) / Math.max(1, n),
     step = pw / Math.max(1, n),
     cx = 300,
     cy = 150;
   const axis = () => {
-    for (let i = 0; i <= 4; i++) {
-      const val = lo + ((hi - lo) * i) / 4,
-        y = Y(val);
+    const yTicks =
+      o.yTicks ??
+      (lo === 0 && hi === 100 ? [0, 25, 50, 75, 100] : null);
+  const tickValues =
+      yTicks ??
+      Array.from({ length: 5 }, (_, i) => lo + ((hi - lo) * i) / 4);
+    for (const val of tickValues) {
+      const y = Y(val);
       lines.push({ x1: L, x2: W - R, y1: y, y2: y });
-      text(L - 8, y + 4, Number(val.toFixed(2)), "end");
+      const label =
+        Number.isInteger(val) && Math.abs(val - Math.round(val)) < 0.001
+          ? String(val)
+          : Number(val.toFixed(1));
+      text(L - 8, y + 4, label, "end");
     }
     r.forEach((a, i) => {
       if (n <= 20) text(X(i), H - 18, label(a));
@@ -936,7 +995,15 @@ export function chartGeometry(m) {
       .join(" ");
   const series = (key = "value") => r.map((a) => v(a, key));
   if (!n || o.state === "empty" || o.state === "loading")
-    return { marks, texts, lines, width: W, height: H, domain: [lo, hi] };
+    return {
+      marks,
+      texts,
+      lines,
+      legend,
+      width: W,
+      height: H,
+      domain: [lo, hi],
+    };
   if (
     [
       "line",
@@ -1326,13 +1393,117 @@ export function chartGeometry(m) {
         const [x, y] = point(max * 1.18, i);
         text(x, y, label(a));
       });
-    } else if (
-      ["rings", "radial", "speed", "arc", "status-gauge"].includes(c)
-    ) {
-      const rr = ["speed", "arc", "status-gauge"].includes(c) ? [r[0]] : r;
+    } else if (c === "arc") {
+      const field = (a, key) => {
+          const mapped = o.fields?.[key];
+          if (mapped && a[mapped] !== undefined) return a[mapped];
+          const cap = key.charAt(0).toUpperCase() + key.slice(1);
+          return a[key] ?? a[cap];
+        },
+        series = Array.isArray(o.series)
+          ? o.series
+          : (o.arcMode === "single" ? [r[0]] : r).map((a, i) => {
+              const status = String(field(a, "status") ?? "ready");
+              const raw = v(a, "value");
+              const unavailable =
+                status === "unavailable" || raw === null || raw === "";
+              return {
+                label: label(a),
+                value: unavailable ? null : Number(raw),
+                max: Number(field(a, "max") ?? o.maximum ?? 100),
+                color: field(a, "color") ?? colors[i % colors.length],
+                note: String(field(a, "note") ?? ""),
+                unavailable,
+              };
+            });
+      const dialCx = W / 2,
+        dialCy = T + 92,
+        sweep = ((o.arcSweep ?? 270) * Math.PI) / 180,
+        startAng = ((o.arcStart ?? 135) * Math.PI) / 180,
+        strokeW = o.strokeWidth ?? 14,
+        ringGap = o.ringGap ?? 18,
+        baseR = o.baseRadius ?? 86;
+      const arcPath = (radius, fraction) => {
+        const end = startAng + sweep * Math.min(0.9999, fraction);
+        const x1 = dialCx + Math.cos(startAng) * radius,
+          y1 = dialCy + Math.sin(startAng) * radius,
+          x2 = dialCx + Math.cos(end) * radius,
+          y2 = dialCy + Math.sin(end) * radius;
+        const large = sweep * fraction > Math.PI ? 1 : 0;
+        return `M${x1},${y1} A${radius},${radius} 0 ${large} 1 ${x2},${y2}`;
+      };
+      series.forEach((s, i) => {
+        const radius = baseR - i * ringGap,
+          ratio =
+            s.value === null || !Number.isFinite(s.value)
+              ? 0
+              : Math.max(0, Math.min(1, s.value / Math.max(1, s.max))),
+          trackColor = s.unavailable
+            ? "var(--fj-muted)"
+            : "var(--fj-border)";
+        add(
+          "path",
+          {
+            d: arcPath(radius, 1),
+            fill: false,
+            strokeWidth: strokeW,
+            opacity: s.unavailable ? 0.35 : 0.22,
+            color: trackColor,
+            strokeLinecap: "round",
+          },
+          i,
+        );
+        if (!s.unavailable && s.value !== null) {
+          add(
+            "path",
+            {
+              d: arcPath(radius, ratio),
+              fill: false,
+              strokeWidth: strokeW,
+              color: s.color,
+              strokeLinecap: "round",
+              seriesIndex: i,
+              readout: `${s.label}: ${s.value}% of ${s.max}`,
+            },
+            i,
+          );
+          const endAng = startAng + sweep * ratio,
+            ex = dialCx + Math.cos(endAng) * radius,
+            ey = dialCy + Math.sin(endAng) * radius;
+          text(
+            ex + (ex < dialCx ? -10 : 10),
+            ey + 4,
+            `${Math.round(s.value)}%`,
+            ex < dialCx ? "end" : "start",
+          );
+        } else if (s.unavailable) {
+          const endAng = startAng + sweep * 0.15,
+            ex = dialCx + Math.cos(endAng) * radius,
+            ey = dialCy + Math.sin(endAng) * radius;
+          text(ex + (ex < dialCx ? -10 : 10), ey + 4, "--", ex < dialCx ? "end" : "start");
+        }
+        const pctRemaining =
+          s.value === null
+            ? null
+            : Math.max(0, Math.round(100 - ratio * 100));
+        const secondary =
+          s.note ||
+          (s.unavailable
+            ? "Source unavailable"
+            : `${pctRemaining}% remaining`);
+        legend.push({
+          label: s.label,
+          valueText: s.unavailable ? "Unavailable" : `${s.value}%`,
+          note: secondary,
+          color: s.color,
+          unavailable: s.unavailable,
+        });
+      });
+    } else if (["rings", "radial", "speed", "status-gauge"].includes(c)) {
+      const rr = ["speed", "status-gauge"].includes(c) ? [r[0]] : r;
       rr.forEach((a, i) => {
         const radius = R - i * (R / Math.max(rr.length, 2)),
-          half = ["speed", "arc", "status-gauge"].includes(c),
+          half = ["speed", "status-gauge"].includes(c),
           val =
             c === "status-gauge"
               ? (r.reduce(
@@ -1404,6 +1575,17 @@ export function chartGeometry(m) {
         add("path", { d, fill: true, label: label(a) }, i);
         cursor += angle;
       });
+      if (c === "donut" && total)
+        r.forEach((a, i) => {
+          const val = v(a, "value");
+          legend.push({
+            label: label(a),
+            valueText: String(val),
+            note: `${((val / total) * 100).toFixed(0)}% share`,
+            color: colors[i % colors.length],
+            unavailable: false,
+          });
+        });
     }
   } else if (["scatter", "bubble"].includes(c)) {
     const xs = series("x"),
@@ -1684,7 +1866,17 @@ export function chartGeometry(m) {
   } else if (c === "kpi") {
     text(cx, cy, `${label(r[0])}: ${v(r[0], "value")} ${o.unit ?? ""}`);
   }
-  return { marks, texts, lines, width: W, height: H, domain: [lo, hi] };
+  const plotH =
+    c === "arc" ? Math.min(H, T + 188 + Math.max(0, legend.length - 1) * 8) : H;
+  return {
+    marks,
+    texts,
+    lines,
+    legend,
+    width: W,
+    height: plotH,
+    domain: [lo, hi],
+  };
 }
 
 export function advanceNode(spec, sources, id) {

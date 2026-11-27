@@ -10,11 +10,10 @@ const out = '/opt/cursor/artifacts/margin-graphs'
 fs.mkdirSync(out, { recursive: true })
 
 const routes = [
-  ['overview', '/margin/graphs/'],
+  ['arc', '/margin/graphs/arc'],
   ['line', '/margin/graphs/line'],
   ['bar', '/margin/graphs/bar'],
   ['donut', '/margin/graphs/donut'],
-  ['sankey', '/margin/graphs/sankey'],
 ]
 
 const server = spawn(path.join(root, 'node_modules/.bin/vitepress'), ['dev', root, '--port', '4352'], {

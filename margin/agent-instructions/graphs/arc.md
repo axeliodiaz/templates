@@ -4,68 +4,36 @@ Margin graphs · `arc` · component `felix-arc`
 
 ## Preview
 
-- Scoped `.mg-graph-lab` Felix JSON chart with **Replay**, **Shuffle data**, and data-state select.
-- Dark preview toggle on the guide frame; motion waits until after hydration (`mg-guide-motion`).
+- Variant select: **Single**, **Multiple (2–4 rings)**, **With unavailable**, **Compact size**.
+- Toolbar buttons match **Dark preview** (`btn-outline-secondary btn-sm`): **Replay**, **Shuffle data**.
+- Concentric arcs with endpoint value labels and legend rows (dot, name, value, note).
 
-## Spec
+## Data contract
 
-- Example key: `arc`
-- Component id: `felix-arc`
-- Data is synthetic; wire your own API and validation in production.
+Use `options.series[]` **or** source rows with columns mapped via `options.fields`:
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| `label` | yes | Series name (`encoding.category`) |
+| `value` | yes | Number or `null` when unavailable |
+| `max` | no | Default `options.maximum` (100) |
+| `color` | no | Stroke color |
+| `note` | no | Secondary legend (e.g. “Resets in 5h”) |
+| `status` | no | `ready` or `unavailable` |
+
+Single row → one ring (backwards compatible). `status: unavailable` → muted track, `--` endpoint label, `Unavailable` in legend.
 
 ## Motion
 
-Charts reuse the Margin preview motion stack (`margin-motion.css`) together with Felix SVG enter/update hooks on `.fj-plot`.
+- Rings sweep on enter with stagger (`--mg-arc-stagger` × 0.12s per index).
+- **Shuffle data** morphs numeric values; **Replay** remounts enter.
+- `prefers-reduced-motion`: instant arcs.
 
-| Token | Default | Used for |
-| --- | --- | --- |
-| `--mg-chart-enter-duration` | `0.45s` | Plot fade/slide on enter |
-| `--mg-chart-line-duration` | `0.65s` | Line and path stroke draw-in |
-| `--mg-chart-bar-duration` | `0.55s` | Bars and columns growing from baseline |
-| `--mg-chart-arc-duration` | `0.7s` | Donut, gauge, and arc sweeps |
-| `--mg-chart-value-duration` | `0.4s` | Label/value count-up opacity |
-| `--mg-chart-morph-duration` | `0.5s` | Data update morph after **Shuffle data** |
-| `--mg-chart-hover-duration` | `0.15s` | Mark hover and readout easing |
-
-All durations use `ease-out` unless noted in `margin-graphs.css`. Set `--mg-chart-motion: none` on `.mg-graph-lab` to disable chart motion while keeping theme transitions.
-
-### Enter
-
-- **Replay** increments the chart revision so the SVG remounts: lines draw in, bars grow from the baseline, donut and gauge arcs sweep, and values ease in.
-- Motion starts only after hydration: `.mg-guide-motion` is applied on the next `requestAnimationFrame` after mount (same pattern as component previews). No enter animation runs on the server HTML.
-
-### Data updates
-
-- **Shuffle data** perturbs numeric cells in the local source and bumps revision so marks morph smoothly (token `--mg-chart-morph-duration`).
-- Loading and empty states skip motion; the readout uses `role="status"`.
-
-### Hover and tooltips
-
-- Focusable marks use `--mg-chart-hover-duration` for opacity and stroke emphasis; exact values stay in the status readout and Data view table.
-
-### Reduced motion
-
-When `prefers-reduced-motion: reduce` is set, chart CSS forces instant render (no stroke draw, grow, sweep, or count-up). **Replay** still remounts data for testing but without animated transitions.
-
-### Disable locally
-
-```css
-.mg-graph-lab {
-  --mg-chart-motion: none;
-}
-```
-
-**This chart:** Marks use the shared enter duration on replay.
-
-## Accessibility
-
-- SVG `role="img"` with title; marks are keyboard-focusable with `role="button"`.
-- Status readout uses `role="status"`.
-- Honor `prefers-reduced-motion` (instant render).
+See shared motion tokens in other graph agent stubs (`margin-motion.css`, `--mg-chart-arc-duration`).
 
 ## Checklist
 
-- [ ] Replay enter motion without flashing before hydration
-- [ ] Shuffle data morphs smoothly (or instant when reduced motion)
-- [ ] Loading and empty states show status text
-- [ ] Dark preview maintains readable grid and labels
+- [ ] Single-row spec still renders one arc
+- [ ] Legend matches MultiGauge semantics (value + note per row)
+- [ ] Unavailable series muted, not empty layout
+- [ ] Dark preview + 390px: labels readable, no overflow
