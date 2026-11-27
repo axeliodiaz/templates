@@ -1,0 +1,203 @@
+/* Bootstrap-like 12-column grid scoped to Margin layout previews (batch2 has no .col-md-*). */
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout {
+  container-type: inline-size;
+  container-name: mg-layout;
+  width: 100%;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .container,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .container-fluid {
+  width: 100%;
+  padding-right: calc(var(--mg-layout-gutter-x, 1rem) * 0.5);
+  padding-left: calc(var(--mg-layout-gutter-x, 1rem) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .container {
+  max-width: 100%;
+}
+
+@container mg-layout (min-width: 576px) {
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .container {
+    max-width: 540px;
+  }
+}
+
+@container mg-layout (min-width: 768px) {
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .container {
+    max-width: 720px;
+  }
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .row {
+  --mg-layout-gutter-x: 1rem;
+  --mg-layout-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--mg-layout-gutter-y));
+  margin-right: calc(-0.5 * var(--mg-layout-gutter-x));
+  margin-left: calc(-0.5 * var(--mg-layout-gutter-x));
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .row.g-0 {
+  --mg-layout-gutter-x: 0;
+  --mg-layout-gutter-y: 0;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .row.g-3,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .row.gy-3 {
+  --mg-layout-gutter-x: 1rem;
+  --mg-layout-gutter-y: 1rem;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .row.g-5,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .row.gy-5 {
+  --mg-layout-gutter-x: 3rem;
+  --mg-layout-gutter-y: 3rem;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--mg-layout-gutter-x, 1rem) * 0.5);
+  padding-left: calc(var(--mg-layout-gutter-x, 1rem) * 0.5);
+  margin-top: var(--mg-layout-gutter-y, 0);
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col {
+  flex: 1 0 0%;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-1 { flex: 0 0 auto; width: 8.333333%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-2 { flex: 0 0 auto; width: 16.666667%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-3 { flex: 0 0 auto; width: 25%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-4 { flex: 0 0 auto; width: 33.333333%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-5 { flex: 0 0 auto; width: 41.666667%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-6 { flex: 0 0 auto; width: 50%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-7 { flex: 0 0 auto; width: 58.333333%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-8 { flex: 0 0 auto; width: 66.666667%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-9 { flex: 0 0 auto; width: 75%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-10 { flex: 0 0 auto; width: 83.333333%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-11 { flex: 0 0 auto; width: 91.666667%; }
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-12 { flex: 0 0 auto; width: 100%; }
+
+@media (min-width: 768px) {
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-md-3 { flex: 0 0 auto; width: 25%; }
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-md-4 { flex: 0 0 auto; width: 33.333333%; }
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-md-6 { flex: 0 0 auto; width: 50%; }
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-md-8 { flex: 0 0 auto; width: 66.666667%; }
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .offset-md-4 { margin-left: 33.333333%; }
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .order-md-last { order: 6; }
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .row-cols-md-3 > * {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+}
+
+@media (min-width: 992px) {
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-lg-3 { flex: 0 0 auto; width: 25%; }
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .row-cols-2 > * {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .order-first {
+  order: -1;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .order-last {
+  order: 6;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .align-items-start {
+  align-items: flex-start;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .align-items-center {
+  align-items: center;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .align-items-end {
+  align-items: end;
+}
+
+/* Container query widths for layout slabs (honest when preview is narrower than viewport). */
+@container mg-layout (min-width: 768px) {
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-cq-md-4 {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .col-cq-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .mg-demo-item {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.75rem;
+  box-sizing: border-box;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .mg-layout-bp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.8125rem;
+  color: var(--muted, #676e7b);
+  background: var(--soft, #eceef5);
+  border: 1px solid var(--line, #e0e3e9);
+  border-radius: 8px;
+}
+
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .margin-bs6-layout .mg-layout-bp {
+  background: var(--soft, #303747);
+  border-color: var(--line, #404757);
+  color: var(--muted, #aab3c3);
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .mg-layout-block {
+  margin-bottom: 1.25rem;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .mg-layout-block-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted, #676e7b);
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .mg-layout-tall {
+  min-height: 5.5rem;
+  background: color-mix(in srgb, var(--accent, #6389ea) 6%, var(--surface, #fff));
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .mg-css-grid-demo {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@container mg-layout (max-width: 420px) {
+  html[data-tpl='margin'] .mg-guide-preview .margin-bs6-layout .mg-css-grid-demo {
+    grid-template-columns: 1fr;
+  }
+}
