@@ -261,5 +261,21 @@ replaceSection(
 ${note}<details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code>&lt;div class="alert theme-success" role="alert"&gt;…&lt;/div&gt;</code></pre></details></section>`,
 )
 
+replaceSection(
+  'accordion',
+  `<section id="accordion" class="kit-section" v-show="showSection('accordion') && (!catalogSearch || &quot;accordion&quot;.includes(catalogSearch.toLowerCase()))"><h2>Accordion</h2><p>One panel open at a time. Panel height animates (~300ms) with a rotating chevron; respect <code>prefers-reduced-motion</code> for instant toggles.</p>
+<div class="l-demo">
+<div v-for="item in ['Tokens','Behavior','Accessibility']" :key="item" class="l-accordion border-bottom">
+<button type="button" class="w-100" :aria-expanded="accordion===item" @click="accordion=accordion===item?'':item">{{ item }} <span class="mg-accordion-chevron" :class="{ 'is-open': accordion===item }" aria-hidden="true">⌄</span></button>
+<div class="mg-accordion-panel" :class="{ 'is-open': accordion===item }"><div class="mg-accordion-panel-inner"><p>{{ item==='Tokens'?'Use the shared color, type and spacing tokens.':item==='Behavior'?'Keep transitions short and tied to a state change.':'Use labels, visible focus and reduced-motion fallbacks.' }}</p></div></div>
+</div>
+<div class="l-accordion border-bottom">
+<button type="button" class="w-100" aria-expanded="true">Always open <span class="mg-accordion-chevron is-open" aria-hidden="true">⌄</span></button>
+<div class="mg-accordion-panel is-open"><div class="mg-accordion-panel-inner"><p>Parent stays expanded (always-open pattern).</p></div></div>
+</div>
+</div>
+${note}<details v-show="!embedded" class="kit-code"><summary>Copy accordion markup</summary><pre><code>&lt;div class="accordion"&gt;&lt;div class="accordion-item"&gt;…&lt;/div&gt;&lt;/div&gt;</code></pre></details></section>`,
+)
+
 fs.writeFileSync(out, s)
 console.log('Patched', out)
