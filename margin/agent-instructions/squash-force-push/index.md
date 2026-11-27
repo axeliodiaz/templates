@@ -1,48 +1,38 @@
 # Squash → force push
 
-Margin · Run observation · `/margin/squash-force-push`
+Margin · Run observation · [reference](https://x.com/pitus_/status/2126383874775118012)
 
-## Purpose
+## Composed card
 
-Live card that walks an agent (or human operator) through: **read commits → squash fixups → hold to force-push → PR checks**. Synthetic data only; no real git remote.
+`MarginSquashForcePush` = sub-modules + `useSquashFlow` orchestration.
 
-## Preview chrome
+- **Autoplay** (default): 2s load/expand → pause → auto squash → hold push 2s → purple PR + checks 3s.
+- **Interactive**: user Squash / hold push any time (cancels autoplay for that run).
+- **Replay**: resets timeline.
 
-- **Dark preview** toggle on the guide frame (inherits Margin lab).
-- Toolbar: **Replay** (calls exposed `replay()`), **Motion on/off** (`:motion` prop).
-- Card max-width ~420px; lab padding supports **390px** width (hash/time stack on small screens).
+Props: `motion`, `autoplay`. Method: `replay()`.
 
-## Build checklist
+## Sub-modules
 
-- [ ] Loading: `feat/session-refresh` blue pill → gray `main`; spinner “Reading 10 commits”.
-- [ ] Expanded: branch rail + `origin/feat/session-refresh`; 10 rows with correct node glyphs and hashes from spec.
-- [ ] Squash: footer “7 of 10…” + ✨ Squash; rebasing spinner; fixup/wip rows collapse; 3 commits + base remain.
-- [ ] Force push: yellow dot warning; hold button ~2s fill; early release cancels.
-- [ ] Done: purple `#491` header; checks running → 6 passed; Pushed / Delete / GitHub actions.
-- [ ] Colors: blue / red / purple / green / yellow per visual system.
-- [ ] `prefers-reduced-motion` and `--mg-squash-motion: 0` instant.
+Import from `.vitepress/theme/squash-force-push/components/`:
 
-## Component API
+| Module | File | Role |
+| --- | --- | --- |
+| Branch header | `SqBranchHeader.vue` | Branch pill → main, or PR # + title; loading / commit count / checks |
+| Commit row | `SqCommitRow.vue` | Grid row + node; kinds: commit, fixup (×), wip/base (hollow) |
+| Branch rail | `SqBranchRail.vue` | Vertical line + elbow + `origin/…` pill; purple when pushed |
+| Footer status | `SqRunFooterStatus.vue` | Fixup hint, rebasing spinner, yellow warning, Pushed ✓ |
+| Squash button | `SqSquashButton.vue` | ✨ Squash + fade on press |
+| Hold push | `SqHoldPushButton.vue` | 2s fill, cancel on release, keyboard |
+| PR actions | `SqPrFooterActions.vue` | Delete branch + GitHub CTA |
 
-```vue
-<MarginSquashForcePush ref="squash" :motion="true" />
-```
+## Visual tokens
 
-- `replay()` — reset to loading and replay expand.
-- `motion` — when false, skips timed delays (push still completes on hold).
+`margin-squash-force-push.css`: `--mg-squash-motion`, `--mg-squash-enter` (2s), blue/red/purple/green/yellow accents. Card max-width **392px**. 390px: hash stacks, time hidden.
 
-## Files
+## Checklist
 
-- `.vitepress/theme/squash-force-push/MarginSquashForcePush.vue`
-- `.vitepress/theme/margin-squash-force-push.css`
-- Demo: `MarginSquashForcePushDemo.vue` inside `MarginGuidePreview`
-
-## Motion tokens
-
-| Token | Role |
-| --- | --- |
-| `--mg-squash-motion` | Master 0/1 multiplier |
-| `--mg-squash-enter` | Card expand duration |
-| `--mg-squash-spring` | Expand easing |
-
-Disable: `mg-squash--motion-off` or `prefers-reduced-motion`.
+- [ ] Autoplay matches video timing; Replay works
+- [ ] Submodule gallery on `/margin/squash-force-push`
+- [ ] Dark preview + 390px without overflow
+- [ ] `prefers-reduced-motion` instant
