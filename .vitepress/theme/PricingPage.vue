@@ -149,6 +149,8 @@ const cellLabel = v => (v === true ? 'Included' : v === false ? 'Not included' :
 .pr{--pr-bg:#111120;--pr-panel:#1a192c;--pr-line:#353149;--pr-text:#f5f3ff;--pr-muted:#b4afcb;--pr-accent:#a6a7ff;--pr-on:#17162b;--pr-soft:#292743;--pr-pos:#78ddbe;background:var(--pr-bg);color:var(--pr-text);border:1px solid var(--pr-line);border-radius:20px;padding:28px;margin:20px 0;font-family:'DM Sans',sans-serif}
 .pr-felix{--pr-bg:#f5f1eb;--pr-panel:#fffefa;--pr-line:#ded9d1;--pr-text:#172d2c;--pr-muted:#586966;--pr-accent:#087b76;--pr-on:#fff;--pr-soft:#dcefeb;--pr-pos:#147c56;border-radius:24px}
 html.felix-dark .pr-felix{--pr-bg:#082422;--pr-panel:#152f2e;--pr-line:#35605f;--pr-text:#fefcf9;--pr-muted:#c3e2e1;--pr-accent:#69d7d2;--pr-on:#082422;--pr-soft:#1a4b47;--pr-pos:#91dfb2}
+.pr-margin{--pr-bg:#f5f5f7;--pr-panel:#fff;--pr-line:#e0e3e9;--pr-text:#22252b;--pr-muted:#676e7b;--pr-accent:#6389ea;--pr-on:#0f1528;--pr-soft:#eceef5;--pr-pos:#198754;border-radius:12px;font-family:system-ui,-apple-system,sans-serif}
+.mg-guide-preview.lab-dark .pr-margin{--pr-bg:#1a1d24;--pr-panel:#252a33;--pr-line:#3a404c;--pr-text:#f5f5f7;--pr-muted:#a8b0bd;--pr-accent:#8aa8f0;--pr-on:#0f1528;--pr-soft:#2d3340;--pr-pos:#5fd39a}
 .pr-pulsefit{--pr-bg:#f5f5f5;--pr-panel:#fff;--pr-line:#dedede;--pr-text:#212121;--pr-muted:#5f666d;--pr-accent:#7a5a1f;--pr-on:#fff;--pr-soft:#f5e6d3;--pr-pos:#11643b;font-family:'Rubik',sans-serif;border-radius:16px}
 .pr *{box-sizing:border-box}
 .pr h3,.pr h4,.pr p,.pr blockquote,.pr cite{margin:0!important;border:0!important;padding-top:0!important;letter-spacing:normal}
