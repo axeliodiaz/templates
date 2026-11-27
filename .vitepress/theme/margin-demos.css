@@ -1,0 +1,24 @@
+.mg-margin-demo__copy { margin-top: 14px; border: 1px solid var(--mg-line, #e0e3e9); border-radius: 12px; overflow: hidden; }
+.mg-margin-demo__copy-head { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #f5f5f7; font-size: 12px; font-weight: 600; }
+.mg-guide-preview.lab-dark .mg-margin-demo__copy-head { background: #252a33; }
+.mg-margin-demo__copy-btn { border: 1px solid #e0e3e9; border-radius: 8px; padding: 4px 10px; font-size: 12px; cursor: pointer; background: #fff; }
+.mg-guide-preview.lab-dark .mg-margin-demo__copy-btn { background: #1a1d24; border-color: #3a404c; color: #f5f5f7; }
+.mg-margin-demo__copy-pre { margin: 0; padding: 12px; font-size: 12px; overflow-x: auto; background: #fff; }
+.mg-guide-preview.lab-dark .mg-margin-demo__copy-pre { background: #1a1d24; }
+.mg-margin-demo__hint { font-size: 12px; color: var(--vp-c-text-2); margin-top: 10px; }
+
+/* Studio graph demos: nudge Felix chrome toward Margin inside previews */
+.mg-guide-preview .dep-graph,
+.mg-guide-preview .proj-ws,
+.mg-guide-preview .nf-root {
+  --studio-accent: #6389ea;
+  --studio-bg: #f5f5f7;
+  --studio-ink: #22252b;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+.mg-guide-preview.lab-dark .dep-graph,
+.mg-guide-preview.lab-dark .proj-ws,
+.mg-guide-preview.lab-dark .nf-root {
+  --studio-bg: #1a1d24;
+  --studio-ink: #f5f5f7;
+}

@@ -76,8 +76,10 @@ Motion handles node entrance, cancels on unmount and restores final styles on in
 Original implementation, no source images, branding or code copied. This provides reusable component behavior, not a claim that every interaction from the reference videos is reproduced.
 
 
-## Run observation
+## Examples
 
 [Agent orchestration module and theme inventory](/agent-orchestration) documents the shared run graph, trace, usage and event views.
+
+Margin docs group these under **Examples** in the sidebar (emails, squash, agent modules). Felix studio dashboards are ported under [Margin Demos](/margin/demos/).
 
 [Squash → force push](/margin/squash-force-push) — interactive branch cleanup card (read commits, squash fixups, hold to force-push, PR checks).

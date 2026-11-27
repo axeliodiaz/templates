@@ -8,7 +8,7 @@ import MarginSquashForcePushDoc from '../.vitepress/theme/MarginSquashForcePushD
 
 # Squash → force push
 
-Run observation module for cleaning up agent-driven branch history before updating origin.
+Examples module for cleaning up agent-driven branch history before updating origin.
 
 Reference frames: [state gallery](/margin/squash-force-push/submodules) (also below).
 
