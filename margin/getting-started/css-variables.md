@@ -1,21 +1,19 @@
 ---
 pageClass: margin-scoped-guide
 ---
+
 <script setup>
-import MarginBs6Doc from '../../.vitepress/theme/MarginBs6Doc.vue'
+import { onMounted } from 'vue'
+import { useRouter } from 'vitepress'
+
+const router = useRouter()
+onMounted(() => {
+  void router.go('/margin/customize/css-variables')
+})
 </script>
 
-# Css Variables
+# CSS variables
 
-Lab tokens map into `--b2-*` Bootstrap variables inside `.b2-margin`:
+This page moved to **[Customize → CSS variables](/margin/customize/css-variables)**.
 
-```css
-.lab {
-  --bg: #f5f5f7;
-  --surface: #fff;
-  --ink: #22252b;
-  --accent: #6389ea;
-}
-```
-
-<MarginBs6Doc area="getting-started" slug="css-variables" label="CSS variables" />
+If you are not redirected automatically, use that link.
