@@ -140,7 +140,7 @@ export function createToastStore() {
       const id = itemId(item)
       const prev = prevByKey.get(item.key)
       if (prev) {
-        resetTimer(item, true)
+        if (prev.data !== item.data || prev.dedupeAt !== item.dedupeAt) resetTimer(item, true)
         const dedupeRefresh = !item.data.id && prev.dedupeAt !== item.dedupeAt
         const titleChanged = prev.data.title !== item.data.title
         if (!dedupeRefresh && titleChanged) onAnnounce(item.data)
@@ -180,12 +180,14 @@ export function createToastStore() {
     clearTimer(id)
     syncState(reduce(state, { type: 'dismiss', id, reason }))
     dequeueIfRoom()
+    state.items.forEach(item => {
+      if (!timers.has(itemId(item))) scheduleNew(item)
+    })
   }
 
   function clear() {
     timers.forEach((_, id) => clearTimer(id))
     timers.clear()
-    pauseReasons.clear()
     syncState(reduce(state, { type: 'clear' }))
   }
 
@@ -217,6 +219,6 @@ export function createToastStore() {
     pause,
     resume,
     setAnnounce,
-    dispose: clear,
+    dispose: () => { clear(); pauseReasons.clear(); announceHandler = undefined },
   }
 }

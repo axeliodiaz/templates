@@ -63,6 +63,11 @@ function clearPlay() {
   retryCancel = compactCancel = undefined
 }
 
+function onClear() {
+  clearPlay()
+  store.clear()
+}
+
 function onPlay() {
   clearPlay()
   const cancel = runPlaySequence(d => store.push(d), (id, d) => store.update(id, d), () => store.clear())
@@ -99,7 +104,6 @@ function applyDemoState() {
 watch(() => props.demoState, applyDemoState)
 
 function onStagePointerDown(e: PointerEvent) {
-  if (!expanded.value) return
   const region = stageRef.value?.querySelector('.atoast__region')
   if (!region || region.contains(e.target as Node)) return
   expanded.value = false
@@ -155,7 +159,7 @@ const rootClass = computed(() => [
       <button type="button" class="atoast__btn" @click="pushOne(samples.deployFail)">Deploy</button>
       <button type="button" class="atoast__btn" @click="pushOne(samples.build)">Build</button>
       <button type="button" class="atoast__btn" @click="pushOne(samples.context)">Context</button>
-      <button type="button" class="atoast__btn" @click="store.clear()">Clear</button>
+      <button type="button" class="atoast__btn" @click="onClear">Clear</button>
       <button type="button" class="atoast__btn" :aria-pressed="expanded" @click="expanded = !expanded">Expanded</button>
       <button type="button" class="atoast__btn" :aria-pressed="autoHide" @click="autoHide = !autoHide">Auto-hide</button>
       <button v-if="showDark" type="button" class="atoast__btn" :aria-pressed="localDark" @click="localDark = !localDark">

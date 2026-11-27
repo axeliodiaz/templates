@@ -54,7 +54,7 @@ Demo controls (`Play sequence`, per-variant triggers, `Expanded`, `Auto-hide`) l
 
 | Reduced motion | Behavior |
 | --- | --- |
-| Entry / exit | Opacity only |
+| Entry / exit | Instant, without transform animation |
 | Stack expand | Instant positions |
 | Spotlight | Opacity only, no blur |
 | Busy title | Static muted text |
@@ -66,4 +66,4 @@ Pattern reference: agentic toasts by [@pitus_](https://x.com/pitus_/status/21256
 
 ## Verification
 
-Run `npm run test:agent-toasts-model`, `npm run test:agent-toasts-contrast`, `npm run test:agent-toasts`, `npm run test:agent-toasts-motion`, and `npm run build`. Contrast: [measured pairs](/agent-toasts-contrastes).
+After `npm run build`, run `npm run test:agent-toasts` to regenerate browser-computed contrast evidence and screenshots. Then run `npm run test:agent-toasts-store`, `npm run test:agent-toasts-model`, `npm run test:agent-toasts-contrast`, `npm run test:agent-toasts`, `npm run test:agent-toasts-motion`, and `npm run build`. Contrast: [measured pairs](/agent-toasts-contrastes).

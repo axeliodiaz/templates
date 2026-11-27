@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from 'vue'
 import AgentToast from './AgentToast.vue'
-import { COLLAPSE_GRACE, GAP, PEEK, PEEK_SCALE } from './toast.motion'
+import { COLLAPSE_GRACE, PEEK, PEEK_SCALE } from './toast.motion'
 import type { PauseReason } from './toast.store'
 import type { DismissReason, StackItem } from './toast.model'
 
@@ -71,7 +71,7 @@ function announce(text: string, politeness: 'polite' | 'assertive') {
   }
 }
 
-defineExpose({ announce, collapseTouch: () => { touchDeck.value = false } })
+defineExpose({ announce, collapseTouch: () => { touchDeck.value = false; hover.value = false; emit('resume', 'hover') } })
 
 function depth(index: number) {
   return props.items.length - 1 - index
@@ -116,7 +116,8 @@ function scheduleCollapse() {
   }, COLLAPSE_GRACE)
 }
 
-function onEnter() {
+function onEnter(e: PointerEvent) {
+  if (e.pointerType === 'touch' || e.pointerType === 'pen') return
   hover.value = true
   clearTimeout(collapseTimer)
   emit('pause', 'hover')
@@ -155,6 +156,7 @@ function onKey(e: KeyboardEvent) {
   if (e.key !== 'Escape') return
   e.stopPropagation()
   touchDeck.value = false
+  hover.value = false
   focusIn.value = false
   emit('update:expanded', false)
   emit('resume', 'focus')
@@ -166,13 +168,18 @@ function onKey(e: KeyboardEvent) {
   })
 }
 
-function rescueFocus(id: string) {
+function dismissItem(id: string, reason: DismissReason) {
+  const root = regionRef.value
+  const rows = [...(root?.querySelectorAll<HTMLElement>('.atoast__item') ?? [])]
+  const index = props.items.findIndex(item => resolveId(item) === id)
+  const hadFocus = !!rows[index]?.contains(document.activeElement)
+  emit('dismiss', id, reason)
+  if (!hadFocus) return
   nextTick(() => {
-    const root = regionRef.value
-    if (!root) return
-    const buttons = [...root.querySelectorAll<HTMLElement>('.atoast__close,.atoast__act')]
-    const stageBtn = root.closest('.atoast')?.querySelector<HTMLElement>('.atoast__btn')
-    const target = buttons.find(b => b.offsetParent !== null) ?? stageBtn
+    const remaining = root?.querySelectorAll<HTMLElement>('.atoast__item')
+    const row = remaining?.[Math.min(index, (remaining?.length ?? 1) - 1)]
+    const target = row?.querySelector<HTMLElement>('.atoast__act,.atoast__close')
+      ?? root?.closest('.atoast')?.querySelector<HTMLElement>('.atoast__btn')
     target?.focus()
     if (!target) emit('focusExit')
   })
@@ -265,7 +272,7 @@ onBeforeUnmount(() => {
           :compact="placement === 'bottom-center'"
           :title-id="`${uid}-t-${index}`"
           :layout-tick="itemHeights.join(',')"
-          @dismiss="r => { emit('dismiss', resolveId(item), r); rescueFocus(resolveId(item)) }"
+          @dismiss="r => dismissItem(resolveId(item), r)"
           @action="a => emit('action', resolveId(item), a)"
           @spot="on => emit('spot', on ? item.key : null)"
           @layout="measureHeights"

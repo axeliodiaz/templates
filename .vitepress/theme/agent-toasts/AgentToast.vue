@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import ToastVisual from './ToastVisual.vue'
 import { altText, plainDetail, type StackItem } from './toast.model'
 import { ARM_GUARD } from './toast.motion'
@@ -29,6 +29,7 @@ let startX = 0
 let startT = 0
 let trackingPointer = false
 let narrow = false
+let enterTimer: ReturnType<typeof setTimeout> | undefined
 
 const toast = computed(() => props.item.data)
 const alt = computed(() => toast.value.alt ?? altText(toast.value.visual))
@@ -44,11 +45,13 @@ function armGuard() {
 onMounted(() => {
   armGuard()
   if (typeof matchMedia !== 'undefined') narrow = matchMedia('(max-width: 480px)').matches
-  setTimeout(() => {
+  enterTimer = setTimeout(() => {
     entering.value = false
     emit('layout')
   }, 360)
 })
+
+onBeforeUnmount(() => clearTimeout(enterTimer))
 
 watch(
   () => props.layoutTick,
@@ -67,14 +70,16 @@ function onActionClick(e: MouseEvent) {
 }
 
 function pointerDown(e: PointerEvent) {
-  if ((e.target as HTMLElement).closest('button')) return
+  if (!canDismiss.value || (e.target as HTMLElement).closest('button')) return
   startX = e.clientX
   startT = performance.now()
   trackingPointer = true
+  if (e.isTrusted) (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId)
 }
 
 function pointerMove(e: PointerEvent) {
   if (!trackingPointer) return
+  narrow = matchMedia('(max-width: 480px)').matches
   const raw = e.clientX - startX
   if (!narrow && raw < 0) {
     dragX.value = Math.max(raw, -24)
