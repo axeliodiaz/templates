@@ -38,6 +38,9 @@ const headerRight = computed(() =>
 const headerChecks = computed(() =>
   flow.phase.value === 'done' ? flow.checksState.value : 'idle',
 )
+const bodyCompact = computed(() =>
+  ['squashed', 'pushing', 'done'].includes(flow.phase.value),
+)
 
 function onSquash() {
   flow.runSquash(false)
@@ -86,7 +89,9 @@ defineExpose({ replay })
       'mg-squash--expanded': flow.showRows.value,
       'mg-squash--purple': flow.isPurple.value,
       'mg-squash--motion-off': !motion || reducedMotion,
+      'mg-squash--compact': bodyCompact,
     }"
+    :style="{ '--mg-sq-rows': flow.visibleRows.value.length }"
     data-tpl="margin"
   >
     <SqBranchHeader
