@@ -40,6 +40,12 @@ const choice = ref('Design')
 const accordion = ref('Tokens')
 const page = ref(1)
 const slide = ref(0)
+const slideFade = ref(0)
+const carouselSlides = [
+  { src: '/margin/carousel/slide-coast.svg', alt: 'Sunrise over a calm coastal shoreline', title: 'Coastline', caption: 'Kick off with the overview slide.' },
+  { src: '/margin/carousel/slide-ridge.svg', alt: 'Purple dusk over layered mountain ridges', title: 'Highlands', caption: 'Drill into product details on slide two.' },
+  { src: '/margin/carousel/slide-meadow.svg', alt: 'Rolling green hills under a bright sky', title: 'Next steps', caption: 'Wrap up with actions in context.' },
+]
 const drawerOpen = ref(false)
 const collapseMain = ref(false)
 const collapseHoriz = ref(false)
@@ -179,8 +185,66 @@ onBeforeUnmount(()=>toastTimers.forEach(clearTimeout))
 <p class="kit-note"><strong>Keyboard:</strong> Tab to interactive controls. Enter activates buttons and links; Space toggles native choices. Disabled controls cannot be activated. Use Escape to close modal surfaces.</p><details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code>&lt;button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"&gt;…&lt;/button&gt;</code></pre></details></section>
 <section id="tooltips" class="kit-section" v-show="showSection('tooltips') && (!catalogSearch || &quot;tooltips&quot;.includes(catalogSearch.toLowerCase()))"><h2>Tooltips</h2><p>Optional help appears on hover and keyboard focus. Required instructions stay visible.</p>
 <div class="l-demo"><span class="kit-tooltip"><button class="btn-outline theme-secondary" aria-describedby="kit-tip">Focus or hover for help</button><span id="kit-tip" role="tooltip">Changes apply to this workspace.</span></span></div><p class="kit-note"><strong>Keyboard:</strong> Tab to interactive controls. Enter activates buttons and links; Space toggles native choices. Disabled controls cannot be activated. Use Escape to close modal surfaces.</p><details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code v-text="&quot;&lt;div class=\&quot;l-demo\&quot;&gt;&lt;span class=\&quot;kit-tooltip\&quot;&gt;&lt;button class=\&quot;l-btn l-secondary\&quot; aria-describedby=\&quot;kit-tip\&quot;&gt;Focus or hover for help&lt;/button&gt;&lt;span id=\&quot;kit-tip\&quot; role=\&quot;tooltip\&quot;&gt;Changes apply to this workspace.&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&quot;"></code></pre></details></section><section id="popovers" class="kit-section" v-show="showSection('popovers') && (!catalogSearch || &quot;popovers&quot;.includes(catalogSearch.toLowerCase()))"><h2>Popovers</h2><p>The adjacent disclosure stays open for longer text.</p>
-<div class="l-demo l-actions"><details class="l-dropdown"><summary>More information</summary><div class="l-menu l-popover">This content stays visible until you close the panel.</div></details></div><p class="kit-note"><strong>Keyboard:</strong> Tab to interactive controls. Enter activates buttons and links; Space toggles native choices. Disabled controls cannot be activated. Use Escape to close modal surfaces.</p><details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code v-text="&quot;&lt;div class=\&quot;l-demo l-actions\&quot;&gt;&lt;details class=\&quot;l-dropdown\&quot;&gt;&lt;summary&gt;More information&lt;/summary&gt;&lt;div class=\&quot;l-menu l-popover\&quot;&gt;This content stays visible until you close the panel.&lt;/div&gt;&lt;/details&gt;&lt;/div&gt;&quot;"></code></pre></details></section><section id="carousel" class="kit-section" v-show="showSection('carousel') && (!catalogSearch || &quot;carousel&quot;.includes(catalogSearch.toLowerCase()))"><h2>Carousel</h2><p>A short series of related previews; arrows and dots remain keyboard-operable.</p>
-<div class="l-demo l-carousel"><button class="btn-outline theme-secondary" aria-label="Previous slide" @click="slide=(slide+2)%3">‹</button><article :key="slide" class="card" aria-live="polite"><span class="l-eyebrow">{{slide+1}} / 3</span><h3>{{['Overview','Details','Next steps'][slide]}}</h3><p>{{['Start with the foundation.','Try one interaction.','Check the result in context.'][slide]}}</p></article><button class="btn-outline theme-secondary" aria-label="Next slide" @click="slide=(slide+1)%3">›</button><div class="l-carousel-dots"><button v-for="n in 3" :key="n" :aria-label="`Go to slide ${n}`" :aria-current="slide===n?'true':undefined" @click="slide=n-1">{{n}}</button></div></div><p class="kit-note"><strong>Keyboard:</strong> Tab to interactive controls. Enter activates buttons and links; Space toggles native choices. Disabled controls cannot be activated. Use Escape to close modal surfaces.</p><details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code v-text="&quot;&lt;div class=\&quot;l-demo l-carousel\&quot;&gt;&lt;button class=\&quot;l-btn l-secondary\&quot; aria-label=\&quot;Previous slide\&quot; @click=\&quot;slide=(slide+2)%3\&quot;&gt;\u2039&lt;/button&gt;&lt;article class=\&quot;l-card\&quot; aria-live=\&quot;polite\&quot;&gt;&lt;span class=\&quot;l-eyebrow\&quot;&gt;{{slide+1}} / 3&lt;/span&gt;&lt;h3&gt;{{[&#x27;Overview&#x27;,&#x27;Details&#x27;,&#x27;Next steps&#x27;][slide]}}&lt;/h3&gt;&lt;p&gt;{{[&#x27;Start with the foundation.&#x27;,&#x27;Try one interaction.&#x27;,&#x27;Check the result in context.&#x27;][slide]}}&lt;/p&gt;&lt;/article&gt;&lt;button class=\&quot;l-btn l-secondary\&quot; aria-label=\&quot;Next slide\&quot; @click=\&quot;slide=(slide+1)%3\&quot;&gt;\u203a&lt;/button&gt;&lt;div class=\&quot;l-carousel-dots\&quot;&gt;&lt;button v-for=\&quot;n in 3\&quot; :key=\&quot;n\&quot; :aria-label=\&quot;`Go to slide ${n}`\&quot; :aria-current=\&quot;slide===n?&#x27;true&#x27;:undefined\&quot; @click=\&quot;slide=n-1\&quot;&gt;{{n}}&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&quot;"></code></pre></details></section><section id="chips" class="kit-section" v-show="showSection('chips') && (!catalogSearch || &quot;chips&quot;.includes(catalogSearch.toLowerCase()))"><h2>Chips</h2><p>Compact filters and metadata. Pair text with color; do not rely on hue alone.</p>
+<div class="l-demo l-actions"><details class="l-dropdown"><summary>More information</summary><div class="l-menu l-popover">This content stays visible until you close the panel.</div></details></div><p class="kit-note"><strong>Keyboard:</strong> Tab to interactive controls. Enter activates buttons and links; Space toggles native choices. Disabled controls cannot be activated. Use Escape to close modal surfaces.</p><details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code v-text="&quot;&lt;div class=\&quot;l-demo l-actions\&quot;&gt;&lt;details class=\&quot;l-dropdown\&quot;&gt;&lt;summary&gt;More information&lt;/summary&gt;&lt;div class=\&quot;l-menu l-popover\&quot;&gt;This content stays visible until you close the panel.&lt;/div&gt;&lt;/details&gt;&lt;/div&gt;&quot;"></code></pre></details></section><section id="carousel" class="kit-section" v-show="showSection('carousel') && (!catalogSearch || &quot;carousel&quot;.includes(catalogSearch.toLowerCase()))"><h2>Carousel</h2><p>Image slides with indicators and prev/next controls. Below uses Vue state (no Bootstrap JS); images are committed under <code>/margin/carousel/</code>.</p>
+<div class="l-demo vstack gap-4 mg-carousel-demo">
+<div>
+<p class="small text-body-secondary mb-2">Slide motion — captions, indicators, controls</p>
+<div id="mgCarouselSlide" class="carousel slide mg-carousel-slide" aria-roledescription="carousel" aria-label="Product tour">
+<div class="carousel-indicators">
+<button v-for="n in 3" :key="'slide-ind-'+n" type="button" data-bs-target="#mgCarouselSlide" :data-bs-slide-to="n-1" :class="{ active: slide===n-1 }" :aria-label="`Slide ${n}`" :aria-current="slide===n-1?'true':undefined" @click="slide=n-1"></button>
+</div>
+<div class="carousel-inner mg-carousel-inner-track" :style="{ transform: `translateX(-${slide * 100}%)` }" aria-live="polite">
+<div v-for="(item, i) in carouselSlides" :key="item.src" class="carousel-item" :class="{ active: slide===i }">
+<img :src="item.src" class="mg-carousel-img w-100 d-block" width="800" height="450" :alt="item.alt" loading="lazy" decoding="async">
+<div class="mg-carousel-caption"><h5 class="mb-1">{{ item.title }}</h5><p class="mb-0 small">{{ item.caption }}</p></div>
+</div>
+</div>
+<div class="carousel-overlay"><div class="carousel-overlay-controls">
+<button type="button" class="btn btn-outline btn-sm" aria-label="Previous slide" @click="slide=(slide+2)%3"><span class="carousel-icon-prev" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+<button type="button" class="btn btn-outline btn-sm" aria-label="Next slide" @click="slide=(slide+1)%3"><span class="carousel-icon-next" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+</div></div>
+</div>
+</div>
+<div>
+<p class="small text-body-secondary mb-2">Crossfade variant</p>
+<div id="mgCarouselFade" class="carousel slide carousel-fade mg-carousel-fade" aria-roledescription="carousel" aria-label="Gallery crossfade">
+<div class="carousel-indicators">
+<button v-for="n in 3" :key="'fade-ind-'+n" type="button" :class="{ active: slideFade===n-1 }" :aria-label="`Slide ${n}`" :aria-current="slideFade===n-1?'true':undefined" @click="slideFade=n-1"></button>
+</div>
+<div class="carousel-inner" aria-live="polite">
+<div v-for="(item, i) in carouselSlides" :key="'fade-'+item.src" class="carousel-item" :class="{ active: slideFade===i }">
+<img :src="item.src" class="mg-carousel-img w-100 d-block" width="800" height="450" :alt="item.alt" loading="lazy" decoding="async">
+</div>
+</div>
+<div class="carousel-overlay"><div class="carousel-overlay-controls">
+<button type="button" class="btn btn-outline btn-sm" aria-label="Previous slide" @click="slideFade=(slideFade+2)%3"><span class="carousel-icon-prev" aria-hidden="true"></span></button>
+<button type="button" class="btn btn-outline btn-sm" aria-label="Next slide" @click="slideFade=(slideFade+1)%3"><span class="carousel-icon-next" aria-hidden="true"></span></button>
+</div></div>
+</div>
+</div>
+</div>
+<p class="kit-note"><strong>Keyboard:</strong> Tab to interactive controls. Enter activates buttons and links; Space toggles native choices. Disabled controls cannot be activated. Use Escape to close modal surfaces.</p><details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code>&lt;div id=&quot;carouselExample&quot; class=&quot;carousel slide&quot;&gt;
+&lt;div class=&quot;carousel-indicators&quot;&gt;
+&lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExample&quot; data-bs-slide-to=&quot;0&quot; class=&quot;active&quot; aria-label=&quot;Slide 1&quot; aria-current=&quot;true&quot;&gt;&lt;/button&gt;
+&lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExample&quot; data-bs-slide-to=&quot;1&quot; aria-label=&quot;Slide 2&quot;&gt;&lt;/button&gt;
+&lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExample&quot; data-bs-slide-to=&quot;2&quot; aria-label=&quot;Slide 3&quot;&gt;&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;carousel-inner&quot;&gt;
+&lt;div class=&quot;carousel-item active&quot;&gt;
+&lt;img src=&quot;/margin/carousel/slide-coast.svg&quot; class=&quot;mg-carousel-img w-100 d-block&quot; width=&quot;800&quot; height=&quot;450&quot; alt=&quot;Sunrise over a calm coastal shoreline&quot;&gt;
+&lt;div class=&quot;mg-carousel-caption&quot;&gt;&lt;h5&gt;Coastline&lt;/h5&gt;&lt;p class=&quot;mb-0 small&quot;&gt;Kick off with the overview slide.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;carousel-item&quot;&gt;
+&lt;img src=&quot;/margin/carousel/slide-ridge.svg&quot; class=&quot;mg-carousel-img w-100 d-block&quot; width=&quot;800&quot; height=&quot;450&quot; alt=&quot;Purple dusk over layered mountain ridges&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;carousel-item&quot;&gt;
+&lt;img src=&quot;/margin/carousel/slide-meadow.svg&quot; class=&quot;mg-carousel-img w-100 d-block&quot; width=&quot;800&quot; height=&quot;450&quot; alt=&quot;Rolling green hills under a bright sky&quot;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;button type=&quot;button&quot; class=&quot;carousel-control-prev&quot; aria-label=&quot;Previous&quot;&gt;&lt;span class=&quot;carousel-icon-prev&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;carousel-control-next&quot; aria-label=&quot;Next&quot;&gt;&lt;span class=&quot;carousel-icon-next&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;carouselFade&quot; class=&quot;carousel slide carousel-fade&quot;&gt;…&lt;/div&gt;</code></pre></details></section><section id="chips" class="kit-section" v-show="showSection('chips') && (!catalogSearch || &quot;chips&quot;.includes(catalogSearch.toLowerCase()))"><h2>Chips</h2><p>Compact filters and metadata. Pair text with color; do not rely on hue alone.</p>
 <div class="l-demo vstack gap-3 mg-chips-demo">
 <div class="d-flex flex-wrap gap-2 align-items-center"><span class="chip">Default</span><span class="chip theme-primary">Primary</span><span class="chip theme-secondary">Secondary</span><span class="chip theme-success">Success</span><span class="chip theme-warning">Warning</span><span class="chip theme-danger">Danger</span><span class="chip theme-info">Info</span></div>
 <div class="d-flex flex-wrap gap-2"><button v-for="item in ['Design','Code','Preview']" :key="item" type="button" class="chip" :class="{ active: chipActive===item }" @click="chipActive=item">{{ item }}</button></div>

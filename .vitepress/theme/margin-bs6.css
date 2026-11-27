@@ -846,41 +846,79 @@ html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .card .btn-outline.th
   border: 1px solid var(--line, var(--b2-line)) !important;
   color: var(--ink, var(--b2-ink)) !important;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line, var(--b2-line, #e0e3e9));
+  border-radius: 0.75rem;
+  background: var(--surface, var(--b2-surface, #fff));
+  max-width: 100%;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel .card {
-  flex: 1 1 12rem;
-  min-width: min(240px, 100%);
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-indicators {
+  padding-top: 0.65rem;
+  margin-bottom: 0;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel-dots {
-  display: flex;
-  gap: 0.5rem;
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-img {
+  display: block;
   width: 100%;
-  justify-content: center;
+  aspect-ratio: 16 / 9;
+  max-height: min(52vw, 280px);
+  object-fit: cover;
+  object-position: center;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel-dots button {
-  border: 1px solid var(--line, #e0e3e9);
-  background: var(--surface, #fff);
-  color: var(--ink, #22252b);
-  border-radius: 8px;
-  padding: 0.35rem 0.65rem;
-  font: inherit;
-  font-size: 0.8125rem;
-  cursor: pointer;
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-item {
+  position: relative;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel-dots button[aria-current] {
-  background: color-mix(in srgb, #6389ea 18%, var(--surface, #fff));
-  border-color: #6389ea;
-  color: var(--ink, #22252b);
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-caption {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  padding: 1.75rem 1rem 1rem;
+  color: #fff;
+  text-align: start;
+  background: linear-gradient(to top, rgb(15 21 40 / 0.72), transparent 70%);
+  pointer-events: none;
 }
-html[data-tpl='margin'] .mg-guide-preview.lab-dark .l-carousel-dots button {
-  background: var(--surface, #242833);
-  border-color: var(--line, #404757);
-  color: var(--ink, #f1f3f8);
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-caption h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-slide .carousel-inner.mg-carousel-inner-track {
+  display: flex;
+  gap: 0;
+  padding-inline: 0;
+  overflow: hidden;
+  scroll-snap-type: none;
+  transition: transform 0.45s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-tpl='margin'] .mg-guide-preview .mg-carousel-slide .carousel-inner.mg-carousel-inner-track {
+    transition: transform 0.45s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-tpl='margin'] .mg-guide-preview .mg-carousel-slide .carousel-inner.mg-carousel-inner-track {
+    transition: none;
+  }
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-slide .carousel-item {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: unset;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-fade .carousel-inner {
+  min-height: min(52vw, 280px);
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-overlay {
+  pointer-events: none;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-overlay-controls .btn {
+  pointer-events: auto;
+  background: color-mix(in srgb, var(--surface, #fff) 88%, transparent);
+  backdrop-filter: blur(6px);
+}
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .mg-carousel-demo .carousel-overlay-controls .btn {
+  background: color-mix(in srgb, var(--surface, #242833) 88%, transparent);
 }
 
 html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .collapse .card {
