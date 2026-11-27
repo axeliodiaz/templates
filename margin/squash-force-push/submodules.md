@@ -4,13 +4,15 @@ pageClass: margin-scoped-guide
 
 <script setup>
 import MarginGuidePreview from '../../.vitepress/theme/MarginGuidePreview.vue'
-import MarginSquashSubmoduleDemos from '../../.vitepress/theme/squash-force-push/MarginSquashSubmoduleDemos.vue'
+import MarginSquashStateGallery from '../../.vitepress/theme/squash-force-push/MarginSquashStateGallery.vue'
 </script>
 
-# Squash → force push · sub-modules
+# Squash → force push · reference frames
 
-Isolated demos for each piece of the [@pitus_ reference](https://x.com/pitus_/status/2126383874775118012). The [composed card](/margin/squash-force-push) wires them through `useSquashFlow`.
+Each card is a static <code>MarginSquashForcePush</code> with a <code>state</code> prop matching one frame of the [@pitus_ reference](https://x.com/pitus_/status/2126383874775118012).
 
-<MarginGuidePreview label="Sub-module gallery">
-  <MarginSquashSubmoduleDemos />
+[Composed autoplay card](/margin/squash-force-push)
+
+<MarginGuidePreview label="State gallery">
+  <MarginSquashStateGallery />
 </MarginGuidePreview>

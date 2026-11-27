@@ -856,6 +856,59 @@ html[data-tpl='margin'] .vp-doc .mg-guide-preview .mg-sq-btn--squash:not(:disabl
   filter: brightness(1.05);
 }
 
+html[data-tpl='margin'] .mg-squash--static.mg-squash--expanded .mg-squash__body,
+html[data-tpl='margin'] .mg-squash--static.mg-squash--compact .mg-squash__body {
+  max-height: calc(48px + var(--mg-sq-rows, 4) * 46px);
+  opacity: 1;
+  transition: none;
+}
+
+html[data-tpl='margin'] .mg-squash--static.mg-squash--loading .mg-squash__body {
+  max-height: 0;
+  opacity: 0;
+}
+
+html[data-tpl='margin'] .mg-sq-state-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+  width: 100%;
+  max-width: 820px;
+  margin: 0;
+}
+
+html[data-tpl='margin'] .mg-sq-state-gallery__title {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5c6370;
+}
+
+html[data-tpl='margin'] .mg-sq-state-gallery__stage {
+  background: #eef0f4;
+  border-radius: 14px;
+  padding: 16px 12px 14px;
+}
+
+html[data-tpl='margin'] .lab-dark .mg-sq-state-gallery__stage {
+  background: #12151c;
+}
+
+html[data-tpl='margin'] .mg-sq-state-gallery__stage .mg-squash {
+  margin: 0 auto;
+}
+
+html[data-tpl='margin'] .mg-squash--static {
+  font-size: 14px;
+}
+
+@media (max-width: 420px) {
+  html[data-tpl='margin'] .mg-sq-state-gallery {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+}
+
 html[data-tpl='margin'] .mg-squash-modules {
   width: 100%;
   max-width: 392px;
