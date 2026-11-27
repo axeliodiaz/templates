@@ -79,3 +79,5 @@ Original implementation, no source images, branding or code copied. This provide
 ## Run observation
 
 [Agent orchestration module and theme inventory](/agent-orchestration) documents the shared run graph, trace, usage and event views.
+
+[Squash → force push](/margin/squash-force-push) — interactive branch cleanup card (read commits, squash fixups, hold to force-push, PR checks).

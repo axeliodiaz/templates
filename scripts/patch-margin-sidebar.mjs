@@ -26,7 +26,7 @@ function sectionBlock(key, block) {
 const bsBlocks = Object.entries(MARGIN_BS6_IA).map(([k, b]) => sectionBlock(k, b))
 
 const marginSidebar = `      '/margin': [
-        { text: 'Run observation', items: [{ text: 'Agent orchestration', link: '/margin/agent-orchestration' }, { text: 'Agent crew', link: '/margin/agent-crew' }, { text: 'Payment ticket', link: '/margin/payment-ticket' }] },
+        { text: 'Run observation', items: [{ text: 'Agent orchestration', link: '/margin/agent-orchestration' }, { text: 'Agent crew', link: '/margin/agent-crew' }, { text: 'Payment ticket', link: '/margin/payment-ticket' }, { text: 'Squash → force push', link: '/margin/squash-force-push' }] },
         { text: 'Margin', items: [{ text: 'Overview', link: '/margin' }, { text: 'Analytics', link: '/margin/analytics' }, { text: 'Transactional emails', link: '/margin/correos' }] },
 ${bsBlocks.join('\n')}
         { text: 'Patterns', collapsed: true, link: '/margin/patterns/', items: [
