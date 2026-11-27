@@ -3088,6 +3088,8 @@
       },
       "options": {
         "max": 100,
+        "plotWidth": 280,
+        "plotHeight": 200,
         "fields": {
           "max": "Max",
           "color": "Color",

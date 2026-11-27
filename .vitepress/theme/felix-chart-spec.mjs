@@ -237,8 +237,8 @@ function extensionContract(id) {
           interactive: { type: "boolean" },
           selectedSeries: { type: "string" },
           polarEncoding: { enum: ["radius", "area"] },
-          ...(ext.type === "arc"
-            ? {
+            ...(ext.type === "arc"
+              ? {
                 fields: { type: "object" },
                 series: { type: "array" },
                 arcMode: { type: "string" },
@@ -247,8 +247,10 @@ function extensionContract(id) {
                 strokeWidth: { type: "number" },
                 ringGap: { type: "number" },
                 baseRadius: { type: "number" },
+                plotWidth: { type: "number" },
+                plotHeight: { type: "number" },
               }
-            : {}),
+              : {}),
         },
       },
     },
@@ -444,6 +446,8 @@ export function resolveSpec(input, sources) {
                   "strokeWidth",
                   "ringGap",
                   "baseRadius",
+                  "plotWidth",
+                  "plotHeight",
                 ]
               : []),
             ...(input.component === "felix-series-trend"
@@ -883,6 +887,7 @@ export function chartGeometry(m) {
       readout: m.rowReadouts?.[i],
       ...attrs,
       color:
+        attrs.color ??
         attrs.semanticColor ??
         ((o.highlight ?? defaultHighlight)
           ? entity === (o.highlight ?? defaultHighlight)
@@ -1394,7 +1399,8 @@ export function chartGeometry(m) {
         text(x, y, label(a));
       });
     } else if (c === "arc") {
-      const field = (a, key) => {
+      const arcPalette = ["#3b82f6", "#22a06b", "#d97706", "#dc4a62"],
+        field = (a, key) => {
           const mapped = o.fields?.[key];
           if (mapped && a[mapped] !== undefined) return a[mapped];
           const cap = key.charAt(0).toUpperCase() + key.slice(1);
@@ -1407,22 +1413,27 @@ export function chartGeometry(m) {
               const raw = v(a, "value");
               const unavailable =
                 status === "unavailable" || raw === null || raw === "";
+              const seriesColor =
+                field(a, "color") ?? arcPalette[i % arcPalette.length];
               return {
                 label: label(a),
                 value: unavailable ? null : Number(raw),
                 max: Number(field(a, "max") ?? o.maximum ?? 100),
-                color: field(a, "color") ?? colors[i % colors.length],
+                color: seriesColor,
+                legendColor: seriesColor,
                 note: String(field(a, "note") ?? ""),
                 unavailable,
               };
             });
-      const dialCx = W / 2,
-        dialCy = T + 92,
+      const plotW = o.plotWidth ?? 280,
+        plotH = o.plotHeight ?? 200,
+        dialCx = plotW / 2,
+        dialCy = plotH * 0.52,
         sweep = ((o.arcSweep ?? 270) * Math.PI) / 180,
         startAng = ((o.arcStart ?? 135) * Math.PI) / 180,
         strokeW = o.strokeWidth ?? 14,
         ringGap = o.ringGap ?? 18,
-        baseR = o.baseRadius ?? 86;
+        baseR = o.baseRadius ?? Math.min(92, plotW * 0.33);
       const arcPath = (radius, fraction) => {
         const end = startAng + sweep * Math.min(0.9999, fraction);
         const x1 = dialCx + Math.cos(startAng) * radius,
@@ -1477,10 +1488,11 @@ export function chartGeometry(m) {
             ex < dialCx ? "end" : "start",
           );
         } else if (s.unavailable) {
-          const endAng = startAng + sweep * 0.15,
-            ex = dialCx + Math.cos(endAng) * radius,
-            ey = dialCy + Math.sin(endAng) * radius;
-          text(ex + (ex < dialCx ? -10 : 10), ey + 4, "--", ex < dialCx ? "end" : "start");
+          const sx = dialCx + Math.cos(startAng) * radius,
+            sy = dialCy + Math.sin(startAng) * radius,
+            ox = Math.cos(startAng) * 14,
+            oy = Math.sin(startAng) * 14;
+          text(sx + ox, sy + oy + 4, "--", startAng > Math.PI ? "end" : "start");
         }
         const pctRemaining =
           s.value === null
@@ -1495,10 +1507,11 @@ export function chartGeometry(m) {
           label: s.label,
           valueText: s.unavailable ? "Unavailable" : `${s.value}%`,
           note: secondary,
-          color: s.color,
+          color: s.legendColor ?? s.color,
           unavailable: s.unavailable,
         });
       });
+      o.__arcPlot = { width: plotW, height: plotH };
     } else if (["rings", "radial", "speed", "status-gauge"].includes(c)) {
       const rr = ["speed", "status-gauge"].includes(c) ? [r[0]] : r;
       rr.forEach((a, i) => {
@@ -1866,15 +1879,16 @@ export function chartGeometry(m) {
   } else if (c === "kpi") {
     text(cx, cy, `${label(r[0])}: ${v(r[0], "value")} ${o.unit ?? ""}`);
   }
-  const plotH =
-    c === "arc" ? Math.min(H, T + 188 + Math.max(0, legend.length - 1) * 8) : H;
+  const outWidth = c === "arc" ? (o.__arcPlot?.width ?? o.plotWidth ?? 280) : W;
+  const outHeight =
+    c === "arc" ? (o.__arcPlot?.height ?? o.plotHeight ?? 200) : H;
   return {
     marks,
     texts,
     lines,
     legend,
-    width: W,
-    height: plotH,
+    width: outWidth,
+    height: outHeight,
     domain: [lo, hi],
   };
 }
