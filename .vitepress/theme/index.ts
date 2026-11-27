@@ -3,7 +3,8 @@ import './assay.css'
 import { h, nextTick, watchEffect } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import TemplateSideDrawer from './TemplateSideDrawer.vue'
-import { inBrowser, useRoute } from 'vitepress'
+import { inBrowser, useData, useRoute } from 'vitepress'
+import MarginAgentPanel from './MarginAgentPanel.vue'
 import './batch2-bs6.bootstrap.css'
 import './bastion-bs6.bootstrap.css'
 import './relay-bs6.bootstrap.css'
@@ -286,6 +287,7 @@ export default {
   },
   Layout() {
     const route = useRoute()
+    const { page } = useData()
     if (inBrowser) {
       watchEffect(() => {
         const onFelix = route.path === '/felix' || route.path.startsWith('/felix/')
@@ -332,6 +334,10 @@ export default {
     return h(DefaultTheme.Layout, null, {
       'doc-after': () => {
         const p = route.path
+        const marginGuide = page.value.frontmatter?.pageClass === 'margin-scoped-guide'
+        if (marginGuide && /^\/margin\/(foundations|patterns|modules)\b/.test(p)) {
+          return h(MarginAgentPanel, { key: `${p}-agents` })
+        }
         if (p === '/margin' || p.startsWith('/margin/')) return null
         return h(TemplateSideDrawer, { key: p })
       },

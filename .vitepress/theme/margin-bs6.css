@@ -100,7 +100,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .margin-bs6-root *, .margin-bs6-root *::before, .margin-bs6-root *::after {
+  .margin-bs6-root *:not(.spinner-border):not(.spinner-grow),
+  .margin-bs6-root *:not(.spinner-border):not(.spinner-grow)::before,
+  .margin-bs6-root *:not(.spinner-border):not(.spinner-grow)::after {
     animation: none !important;
     transition: none !important;
   }
@@ -769,6 +771,113 @@ html[data-tpl='margin'] .mg-guide-preview .alert.mg-bs6-alert .btn-close {
   right: 0.85rem;
 }
 
+html[data-tpl='margin'] .mg-guide-preview .mg-close-demo > div > .small {
+  font-size: 0.8125rem;
+  color: var(--muted, var(--k-muted));
+  margin-bottom: 0.5rem;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-close-demo .card.card-body {
+  padding: 1rem 1.15rem;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-close-demo .alert.mg-bs6-alert {
+  margin-bottom: 0;
+  width: 100%;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-close-demo .toast {
+  width: 100%;
+  max-width: 22.5rem;
+  background: var(--surface, var(--b2-surface));
+  border-color: var(--line, var(--k-border)) !important;
+  color: var(--ink, var(--k-text));
+  opacity: 1;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-close-demo .toast-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.95rem;
+  background: color-mix(in srgb, var(--bs-primary-bg, #6389ea) 10%, var(--surface, #fff));
+  border-bottom: 1px solid var(--line, var(--k-border));
+  color: var(--ink, var(--k-text));
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-close-demo .toast-header .btn-close {
+  position: static;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-close-demo .toast-body {
+  padding: 0.9rem 0.95rem;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-close-header-demo {
+  background: var(--bs-primary-bg, #6389ea);
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-close-header-demo .modal-header {
+  padding: 0.9rem 1.1rem;
+  gap: 0.75rem;
+  align-items: center;
+  background: transparent;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-close-header-demo .modal-title {
+  color: #fff;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .mg-close-demo .toast-header {
+  background: color-mix(in srgb, var(--bs-primary-bg, #6389ea) 22%, var(--surface, #242833));
+}
+
+html[data-tpl='margin'] .mg-guide-preview .mg-card-demo .card-footer {
+  padding: 0.85rem 1rem;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-card-demo .mg-card-status {
+  padding: 0.42em 0.78em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--bs-warning-contrast, #1a1400) !important;
+  background-color: color-mix(in srgb, var(--bs-warning-bg, #f0c000) 92%, #fff) !important;
+  border: 1px solid color-mix(in srgb, var(--bs-warning-bg, #c9a000) 55%, transparent);
+}
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .mg-card-demo .mg-card-status {
+  color: #1f1600 !important;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .mg-spinner-demo .spinner-border,
+html[data-tpl='margin'] .mg-guide-preview .mg-spinner-demo .spinner-grow {
+  flex-shrink: 0;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .mg-stepper-demo .stepper {
+  margin-bottom: 0;
+  max-width: 100%;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-stepper-demo .stepper-title {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-stepper-demo .stepper-item.mg-stepper-done::before {
+  color: var(--bs-success-contrast, #fff);
+  background-color: var(--bs-success-bg, #198754);
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-stepper-demo .stepper-horizontal {
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .mg-toggler-demo .mg-toggler-navbar {
+  background: var(--surface, var(--b2-surface));
+  width: 100%;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-toggler-demo .navbar-toggler {
+  border-color: var(--line, var(--bs-border-color));
+  padding: 0.35rem 0.6rem;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-toggler-demo .navbar-toggler-icon {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 html[data-tpl='margin'] .mg-guide-preview .mg-badge-demo .badge {
   padding: 0.35em 0.65em;
   font-size: 0.75em;
@@ -846,41 +955,79 @@ html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .card .btn-outline.th
   border: 1px solid var(--line, var(--b2-line)) !important;
   color: var(--ink, var(--b2-ink)) !important;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line, var(--b2-line, #e0e3e9));
+  border-radius: 0.75rem;
+  background: var(--surface, var(--b2-surface, #fff));
+  max-width: 100%;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel .card {
-  flex: 1 1 12rem;
-  min-width: min(240px, 100%);
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-indicators {
+  padding-top: 0.65rem;
+  margin-bottom: 0;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel-dots {
-  display: flex;
-  gap: 0.5rem;
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-img {
+  display: block;
   width: 100%;
-  justify-content: center;
+  aspect-ratio: 16 / 9;
+  max-height: min(52vw, 280px);
+  object-fit: cover;
+  object-position: center;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel-dots button {
-  border: 1px solid var(--line, #e0e3e9);
-  background: var(--surface, #fff);
-  color: var(--ink, #22252b);
-  border-radius: 8px;
-  padding: 0.35rem 0.65rem;
-  font: inherit;
-  font-size: 0.8125rem;
-  cursor: pointer;
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-item {
+  position: relative;
 }
-html[data-tpl='margin'] .mg-guide-preview .l-carousel-dots button[aria-current] {
-  background: color-mix(in srgb, #6389ea 18%, var(--surface, #fff));
-  border-color: #6389ea;
-  color: var(--ink, #22252b);
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-caption {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  padding: 1.75rem 1rem 1rem;
+  color: #fff;
+  text-align: start;
+  background: linear-gradient(to top, rgb(15 21 40 / 0.72), transparent 70%);
+  pointer-events: none;
 }
-html[data-tpl='margin'] .mg-guide-preview.lab-dark .l-carousel-dots button {
-  background: var(--surface, #242833);
-  border-color: var(--line, #404757);
-  color: var(--ink, #f1f3f8);
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-caption h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-slide .carousel-inner.mg-carousel-inner-track {
+  display: flex;
+  gap: 0;
+  padding-inline: 0;
+  overflow: hidden;
+  scroll-snap-type: none;
+  transition: transform 0.45s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-tpl='margin'] .mg-guide-preview .mg-carousel-slide .carousel-inner.mg-carousel-inner-track {
+    transition: transform 0.45s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-tpl='margin'] .mg-guide-preview .mg-carousel-slide .carousel-inner.mg-carousel-inner-track {
+    transition: none;
+  }
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-slide .carousel-item {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: unset;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-fade .carousel-inner {
+  min-height: min(52vw, 280px);
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-overlay {
+  pointer-events: none;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-overlay-controls .btn {
+  pointer-events: auto;
+  background: color-mix(in srgb, var(--surface, #fff) 88%, transparent);
+  backdrop-filter: blur(6px);
+}
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .mg-carousel-demo .carousel-overlay-controls .btn {
+  background: color-mix(in srgb, var(--surface, #242833) 88%, transparent);
 }
 
 html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .collapse .card {
