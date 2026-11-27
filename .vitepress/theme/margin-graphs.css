@@ -59,8 +59,8 @@ html[data-tpl='margin'] .fj-legend-note {
   font-size: 12px;
 }
 
-html[data-tpl='margin'] .fj-legend-row.is-unavailable .fj-legend-dot {
-  background: var(--fj-muted, #aab3c3) !important;
+html[data-tpl='margin'] .fj-legend-row.is-unavailable .fj-legend-value {
+  color: var(--muted);
 }
 
 html[data-tpl='margin'] .fj-plot .fj-arc-series {

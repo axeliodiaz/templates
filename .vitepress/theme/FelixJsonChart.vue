@@ -57,6 +57,11 @@ const model = computed(() => result.value.model),
         })
       : null,
   );
+const isArcMeter = computed(
+  () =>
+    applied.value.component === "felix-arc" ||
+    model.value?.component === "arc",
+);
 const status = computed(() => {
   if (markReadout.value) return markReadout.value;
   const m = model.value;
@@ -331,11 +336,18 @@ function markAttrs(mark) {
             No rows match this spec. Change its filters or source.
           </p>
           <template v-else>
-            <svg
+            <div
               v-if="!dataView"
+              class="fj-plot-stack"
+              :class="{ 'fj-plot-stack--arc': isArcMeter }"
+            >
+            <svg
               :key="revision"
               class="fj-plot"
-              :class="{ 'fj-plot--motion-ready': motionReady }"
+              :class="{
+                'fj-plot--motion-ready': motionReady,
+                'fj-plot--arc': isArcMeter,
+              }"
               :viewBox="`0 0 ${geometry.width} ${geometry.height}`"
               role="img"
               :aria-label="model.title + '. Exact values are in Data view.'"
@@ -382,6 +394,7 @@ function markAttrs(mark) {
             <ul
               v-if="geometry.legend?.length"
               class="fj-legend"
+              :class="{ 'fj-legend--arc': isArcMeter }"
               role="list"
               aria-label="Chart legend"
             >
@@ -398,6 +411,7 @@ function markAttrs(mark) {
                 <small v-if="row.note" class="fj-legend-note">{{ row.note }}</small>
               </li>
             </ul>
+            </div>
             <p class="fj-readout" role="status">{{ status }}</p>
             <div
               v-if="dataView"
@@ -625,8 +639,25 @@ function markAttrs(mark) {
   color: var(--fj-muted);
   font-size: 12px;
 }
-.fj-legend-row.is-unavailable .fj-legend-dot {
-  background: var(--fj-muted) !important;
+.fj-legend-row.is-unavailable .fj-legend-value {
+  color: var(--fj-muted);
+}
+.fj-plot-stack--arc {
+  width: fit-content;
+  max-width: 100%;
+  margin: 12px auto 0;
+}
+.fj-plot.fj-plot--arc {
+  width: 280px;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 0;
+  border-radius: 16px;
+}
+.fj-legend--arc {
+  width: 280px;
+  max-width: 100%;
+  margin: 10px auto 0;
 }
 .fj-plot {
   display: block;

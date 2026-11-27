@@ -26,6 +26,8 @@ const bundle = computed(() => {
       strokeWidth: 10,
       baseRadius: 72,
       ringGap: 14,
+      plotWidth: 240,
+      plotHeight: 176,
     }
     base.title = 'Compact multi-series'
   } else if (variant.value === 'unavailable') {
