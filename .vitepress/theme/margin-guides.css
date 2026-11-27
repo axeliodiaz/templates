@@ -34,6 +34,21 @@ html[data-tpl='margin'] .mg-guide-preview .tpl-content-leave-active {
   transition: none !important;
 }
 
+/* Tab panel swap: quick fade (catalog l-tabs) */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-tpl='margin'] .mg-guide-preview .l-tabpanel {
+    animation: mg-tab-fade 0.2s ease;
+  }
+}
+@keyframes mg-tab-fade {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .mg-guide-preview .margin-bs6-forms .l-demo {
   box-shadow: none;
 }

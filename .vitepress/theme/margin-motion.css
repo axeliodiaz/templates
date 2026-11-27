@@ -1,0 +1,113 @@
+/* Margin docs — Bootstrap-aligned motion inside guide previews */
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion {
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-guide-toolbar,
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-guide-frame,
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .margin-bs6-root.b2-bs6,
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .margin-content-demo,
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .l-demo {
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion .mg-guide-toggle {
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .collapse {
+    --bs-transition-collapse-duration: 0.3s;
+    --bs-transition-collapse-timing: ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .mg-accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .mg-accordion-panel.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .mg-accordion-panel-inner {
+    overflow: hidden;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .mg-accordion-chevron {
+    display: inline-flex;
+    width: 1rem;
+    height: 1rem;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .mg-accordion-chevron.is-open {
+    transform: rotate(180deg);
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .l-tabpanel,
+  html[data-tpl='margin'] .mg-guide-preview .mg-nav-tabpanel {
+    transition: opacity 0.2s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .modal.fade {
+    transition: opacity 0.3s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .modal.fade:not(.show) {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .modal.fade:not(.show) .modal-dialog {
+    transform: scale(0.96);
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .modal-backdrop.fade {
+    transition: opacity 0.3s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .offcanvas {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .dropdown-menu {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .progress-bar {
+    transition: width 0.6s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .l-toast-stack .l-toast {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  html[data-tpl='margin'] .mg-guide-preview .carousel-item {
+    transition: transform 0.6s ease-in-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion,
+  html[data-tpl='margin'] .mg-guide-preview.mg-guide-motion * {
+    transition: none !important;
+  }
+}
