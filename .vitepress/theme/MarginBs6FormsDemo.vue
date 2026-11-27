@@ -26,7 +26,7 @@ const email = ref('')
     </section>
     <section v-show="show('select')" class="l-demo l-form">
       <label class="form-label" for="mg-sel">Scenario</label>
-      <select id="mg-sel" class="form-control">
+      <select id="mg-sel" class="form-select">
         <option>Base case</option>
         <option>Upside</option>
         <option>Downside</option>
@@ -92,13 +92,55 @@ const email = ref('')
         </div>
       </div>
     </section>
-    <section v-show="show('floating-labels')" class="l-demo l-form">
+    <section v-show="show('floating-labels')" class="l-demo l-form vstack gap-3 mg-float-demo">
+      <div class="form-floating">
+        <input id="mg-float-email" class="form-control" type="email" placeholder="name@example.com" autocomplete="off" />
+        <label for="mg-float-email">Email address</label>
+      </div>
       <div class="form-floating">
         <input id="mg-float" class="form-control" placeholder="Branch" value="Austin hub" />
         <label for="mg-float">Branch</label>
       </div>
+      <div class="form-floating">
+        <input id="mg-float-pw" class="form-control" type="password" placeholder="Password" value="Margin-demo" autocomplete="off" />
+        <label for="mg-float-pw">Password</label>
+      </div>
+      <div class="form-floating">
+        <textarea id="mg-float-ta" class="form-control" placeholder="Notes" style="height: 6.5rem">Waiting on finance approval.</textarea>
+        <label for="mg-float-ta">Notes</label>
+      </div>
+      <div class="form-floating">
+        <select id="mg-float-sel" class="form-select">
+          <option value="base" selected>Base case</option>
+          <option value="up">Upside</option>
+          <option value="down">Downside</option>
+        </select>
+        <label for="mg-float-sel">Scenario</label>
+      </div>
+      <div class="form-floating">
+        <input id="mg-float-disabled" class="form-control" placeholder="Reference" value="REF-1001" disabled />
+        <label for="mg-float-disabled">Reference (disabled)</label>
+      </div>
+      <div class="form-floating">
+        <input id="mg-float-readonly" class="form-control-plaintext" readonly value="Northstar HQ" placeholder="Office" />
+        <label for="mg-float-readonly">Office (readonly)</label>
+      </div>
+      <div>
+        <div class="form-floating">
+          <input id="mg-float-invalid" class="form-control is-invalid" placeholder="Code" value="12" aria-describedby="mg-float-invalid-fb" />
+          <label for="mg-float-invalid">Project code</label>
+        </div>
+        <div id="mg-float-invalid-fb" class="invalid-feedback">Use three letters and a dash (e.g. OPS-12).</div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">@</span>
+        <div class="form-floating">
+          <input id="mg-float-ig" class="form-control" placeholder="Handle" value="margin" />
+          <label for="mg-float-ig">Handle</label>
+        </div>
+      </div>
     </section>
-    <section v-show="show('layout')" class="l-demo l-form">
+    <section v-show="show('layout')" class="l-demo l-form layout-demo">
       <div class="row g-2">
         <div class="col-md-6">
           <label class="form-label" for="mg-a">From</label>
@@ -154,7 +196,7 @@ const email = ref('')
       <label class="form-label" for="mg-pw">Password</label>
       <input id="mg-pw" class="form-control" type="password" value="Margin-demo" aria-describedby="mg-pw-meter" />
       <div id="mg-pw-meter" class="progress mt-2" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-        <button type="button" class="progress-bar" style="width:60%">Medium</button>
+        <div class="progress-bar" style="width:60%">Medium</div>
       </div>
     </section>
     <section v-show="show('validation')" class="l-demo l-form">

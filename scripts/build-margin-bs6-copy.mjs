@@ -66,8 +66,16 @@ const FORM_COPY = {
   <button type="button" class="btn btn-outline theme-secondary">Apply</button>
 </div>`,
   'floating-labels': `<div class="form-floating">
+  <input id="mg-float-email" class="form-control" type="email" placeholder="name@example.com" />
+  <label for="mg-float-email">Email address</label>
+</div>
+<div class="form-floating">
   <input id="mg-float" class="form-control" placeholder="Branch" value="Austin hub" />
   <label for="mg-float">Branch</label>
+</div>
+<div class="form-floating">
+  <select id="mg-float-sel" class="form-select"><option selected>Base case</option></select>
+  <label for="mg-float-sel">Scenario</label>
 </div>`,
   layout: `<div class="row g-2">
   <div class="col-md-6"><input class="form-control" type="date" aria-label="From" /></div>

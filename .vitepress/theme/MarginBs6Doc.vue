@@ -4,6 +4,9 @@ import MarginFormsSection from './MarginFormsSection.vue'
 import MarginContentSection from './MarginContentSection.vue'
 import MarginCustomizeColor from './MarginCustomizeColor.vue'
 import MarginBs6Generic from './MarginBs6Generic.vue'
+import MarginLayoutSection from './MarginLayoutSection.vue'
+
+const LAYOUT_DEMO_SLUGS = new Set(['grid', 'columns', 'gutters', 'containers', 'breakpoints', 'css-grid'])
 import MarginBs6ProsePreview from './MarginBs6ProsePreview.vue'
 import MarginBs6CopyBlock from './MarginBs6CopyBlock.vue'
 
@@ -35,6 +38,11 @@ const props = defineProps<{
     :label="label"
   />
   <MarginContentSection v-else-if="area === 'content'" :section="slug === 'tables' ? 'tables-figures' : slug" :label="label" />
+  <MarginLayoutSection
+    v-else-if="area === 'layout' && LAYOUT_DEMO_SLUGS.has(slug)"
+    :section="slug"
+    :label="label"
+  />
   <MarginBs6ProsePreview v-else-if="PROSE_AREAS.has(area)" :area="area" :slug="slug" :label="label" />
   <MarginBs6Generic v-else :area="area" :slug="slug" :label="label" />
   <MarginBs6CopyBlock :area="area" :slug="slug" />

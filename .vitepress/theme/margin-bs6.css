@@ -1439,8 +1439,163 @@ html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .input
 html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .input-group > :not(:first-child) {
   margin-inline-start: calc(-1 * var(--bs-border-width, 1px));
 }
-html[data-tpl='margin'] .mg-guide-preview .b2-bs6.b2-margin .form-floating > .form-control {
+/* Floating labels: BS6 :has() expects label-before-control; Margin uses Bootstrap DOM (control then label). */
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating {
+  position: relative;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > :is(.form-control, .form-select),
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > :is(.form-control, .form-select) {
+  display: block;
+  width: 100%;
+  height: calc(3.5rem + 2px);
+  min-height: calc(3.5rem + 2px);
+  padding: 1.625rem 0.75rem 0.625rem;
+  line-height: 1.25;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > textarea.form-control,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > textarea.form-control {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 6.5rem;
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
+  resize: vertical;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-control::placeholder,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > .form-control::placeholder {
+  color: transparent;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 1rem 0.75rem;
+  overflow: hidden;
+  color: var(--muted, var(--bs-fg-3, #676e7b));
+  text-align: start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transform-origin: 0 0;
+  transition:
+    opacity 0.1s ease-in-out,
+    transform 0.1s ease-in-out;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > textarea.form-control ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > textarea.form-control ~ label {
+  height: auto;
+  padding-top: 1rem;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-control:is(:focus, :not(:placeholder-shown)) ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-control-plaintext ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-select ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-control:is([type='date'], [type='time'], [type='datetime-local']) ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > .form-control:is(:focus, :not(:placeholder-shown)) ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > .form-control-plaintext ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > .form-select ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > .form-control:is([type='date'], [type='time'], [type='datetime-local']) ~ label {
+  opacity: 0.65;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+  color: var(--muted, var(--bs-fg-3, #676e7b));
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > :is(.form-control, .form-select):disabled ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > :is(.form-control, .form-select):disabled ~ label {
+  color: var(--muted, #aab3c3);
+  opacity: 0.65;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-control,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-select,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > .form-control,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .form-floating > .form-select {
   border-radius: var(--bs-control-border-radius, 0.5rem);
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-control-plaintext {
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
+  border: 0;
+  background: transparent;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .input-group > .form-floating {
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .input-group > .form-floating > .form-control {
+  border-radius: 0;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .input-group > .form-floating:first-child > .form-control {
+  border-start-start-radius: var(--bs-control-border-radius, 0.5rem);
+  border-end-start-radius: var(--bs-control-border-radius, 0.5rem);
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .input-group > .form-floating:not(:first-child) > .form-control {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-control.is-invalid ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-control.is-invalid:focus ~ label,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating > .form-control.is-invalid:not(:placeholder-shown) ~ label {
+  color: var(--bs-danger-bg, #b84d6f);
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: var(--bs-danger-bg, #b84d6f);
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms :is(.form-control, .form-select).is-invalid ~ .invalid-feedback,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-floating:has(.is-invalid) + .invalid-feedback {
+  display: block;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-label {
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-text {
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: var(--muted, #676e7b);
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  min-height: 1.5rem;
+  padding-left: 0;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-check-input {
+  flex-shrink: 0;
+  width: 1.1em;
+  height: 1.1em;
+  margin-top: 0.15em;
+  margin-left: 0;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-check-label {
+  line-height: 1.35;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .form-range {
+  width: 100%;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .layout-demo .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+}
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-forms .layout-demo .row > [class*='col-'] {
+  flex: 1 1 calc(50% - 0.375rem);
+  min-width: min(100%, 9rem);
+  padding: 0;
 }
 html[data-tpl='margin'] .mg-guide-preview .progress {
   background: var(--soft, #eceef5);

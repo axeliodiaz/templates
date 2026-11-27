@@ -1,6 +1,6 @@
 /** Live HTML snippets for Margin BS6 doc pages outside the embedded catalog. */
 const BUILTIN: Record<string, string> = {
-  'layout/grid': `<div class="container"><div class="row g-2"><div class="col-md-4"><div class="mg-demo-item mg-demo-item--soft">Column</div></div><div class="col-md-4"><div class="mg-demo-item mg-demo-item--soft">Column</div></div><div class="col-md-4"><div class="mg-demo-item mg-demo-item--soft">Column</div></div></div></div>`,
+  'layout/grid': `<div class="margin-bs6-layout"><div class="row g-2"><div class="col-md-4"><div class="mg-demo-item mg-demo-item--soft">.col-md-4</div></div><div class="col-md-4"><div class="mg-demo-item mg-demo-item--soft">.col-md-4</div></div><div class="col-md-4"><div class="mg-demo-item mg-demo-item--soft">.col-md-4</div></div></div></div>`,
   'layout/containers': `<div class="container mg-demo-surface py-2 mb-2">.container</div><div class="container-fluid mg-demo-surface py-2">.container-fluid</div>`,
   'layout/breakpoints': `<p class="small text-body-secondary mb-2">Resize the preview: columns stack below <code>md</code>.</p><div class="row g-2"><div class="col-12 col-md-6"><div class="mg-demo-item">.col-md-6</div></div><div class="col-12 col-md-6"><div class="mg-demo-item">.col-md-6</div></div></div>`,
   'layout/columns': `<div class="row g-2"><div class="col"><div class="mg-demo-item">.col</div></div><div class="col-4"><div class="mg-demo-item">.col-4</div></div><div class="col"><div class="mg-demo-item">.col</div></div></div>`,
