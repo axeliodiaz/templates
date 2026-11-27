@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Green meadow gradient landscape">
+  <defs>
+    <linearGradient id="meadow-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87ceeb"/>
+      <stop offset="100%" stop-color="#e8f4ff"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#meadow-sky)"/>
+  <ellipse cx="160" cy="85" rx="70" ry="32" fill="#fff" opacity="0.9"/>
+  <ellipse cx="260" cy="95" rx="55" ry="28" fill="#fff" opacity="0.85"/>
+  <path fill="url(#hill)" d="M0 260 Q200 200 400 235 T800 220 L800 450 L0 450 Z"/>
+  <path fill="#166534" opacity="0.7" d="M0 290 Q180 255 360 275 T720 265 L800 270 L800 450 L0 450 Z"/>
+  <g fill="#22c55e" opacity="0.85">
+    <ellipse cx="180" cy="318" rx="22" ry="14"/>
+    <ellipse cx="420" cy="305" rx="26" ry="16"/>
+    <ellipse cx="580" cy="328" rx="20" ry="12"/>
+  </g>
+</svg>
