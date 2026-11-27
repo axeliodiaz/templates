@@ -1,38 +1,41 @@
 # Squash → force push
 
-Margin · Run observation · [reference](https://x.com/pitus_/status/2126383874775118012)
+Margin · Run observation · [@pitus_ reference](https://x.com/pitus_/status/2126383874775118012)
 
 ## Composed card
 
-`MarginSquashForcePush` = sub-modules + `useSquashFlow` orchestration.
+`<MarginSquashForcePush :motion="true" :autoplay="true" />` — full timeline with Replay.
 
-- **Autoplay** (default): 2s load/expand → pause → auto squash → hold push 2s → purple PR + checks 3s.
-- **Interactive**: user Squash / hold push any time (cancels autoplay for that run).
-- **Replay**: resets timeline.
+## Static reference frames (`state` prop)
 
-Props: `motion`, `autoplay`. Method: `replay()`.
+Same component, frozen UI matching the video:
 
-## Sub-modules
+| `state` | Frame |
+| --- | --- |
+| `loading` | Branch pill + “Reading 10 commits” |
+| `expanded` | 10 commits + ✨ Squash |
+| `rebasing` | Mid-collapse + “Rebasing onto main” |
+| `squashed` | 3 commits + base, hold to force push |
+| `pushing` | `push-progress` ~0.6, “Pushing 3 of 3” |
+| `pr-running` | Purple rail, #491, Checks running |
+| `pr-passed` | 6 checks passed, Pushed / GitHub footer |
+| `pr-running-checks-open` | Same as `pr-running` with checks list open |
+| `pr-passed-checks-open` | Same as `pr-passed` with checks list open |
 
-Import from `.vitepress/theme/squash-force-push/components/`:
+## Expandable checks sub-module
 
-| Module | File | Role |
-| --- | --- | --- |
-| Branch header | `SqBranchHeader.vue` | Branch pill → main, or PR # + title; loading / commit count / checks |
-| Commit row | `SqCommitRow.vue` | Grid row + node; kinds: commit, fixup (×), wip/base (hollow) |
-| Branch rail | `SqBranchRail.vue` | Vertical line + elbow + `origin/…` pill; purple when pushed |
-| Footer status | `SqRunFooterStatus.vue` | Fixup hint, rebasing spinner, yellow warning, Pushed ✓ |
-| Squash button | `SqSquashButton.vue` | ✨ Squash + fade on press |
-| Hold push | `SqHoldPushButton.vue` | 2s fill, cancel on release, keyboard |
-| PR actions | `SqPrFooterActions.vue` | Delete branch + GitHub CTA |
+- `checks-data.mjs` — Build, Lint, Typecheck, Unit tests, E2E tests, Vercel Preview
+- `SqChecksTrigger.vue` — header button, `aria-expanded`, Enter/Space
+- `SqChecksPanel.vue` — list with pass icon or spinner + duration
+- Wired in `SqBranchHeader` + `MarginSquashForcePush` (`mg-squash--checks-open` height motion)
 
-## Visual tokens
-
-`margin-squash-force-push.css`: `--mg-squash-motion`, `--mg-squash-enter` (2s), blue/red/purple/green/yellow accents. Card max-width **392px**. 390px: hash stacks, time hidden.
+Gallery: `MarginSquashStateGallery` on `/margin/squash-force-push` and `/margin/squash-force-push/submodules`.
 
 ## Checklist
 
-- [ ] Autoplay matches video timing; Replay works
-- [ ] Submodule gallery on `/margin/squash-force-push`
-- [ ] Dark preview + 390px without overflow
-- [ ] `prefers-reduced-motion` instant
+- [ ] Solid blue Squash button in every frame
+- [ ] 392px card, 14px type, 18–20px radius, soft shadow, gray stage
+- [ ] 2-col grid / 390px single column
+- [ ] No ghost rows after squash in autoplay
+- [ ] Copy blocks under each frame
+- [ ] Checks status expands to 6 rows (running + passed icons)
