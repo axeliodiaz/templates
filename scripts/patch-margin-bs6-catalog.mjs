@@ -330,14 +330,14 @@ replaceSection(
 <div>
 <p class="small text-body-secondary mb-2">Slide motion — captions, indicators, controls</p>
 <div id="mgCarouselSlide" class="carousel slide mg-carousel-slide" aria-roledescription="carousel" aria-label="Product tour">
-<div class="carousel-indicators">
-<button v-for="n in 3" :key="'slide-ind-'+n" type="button" data-bs-target="#mgCarouselSlide" :data-bs-slide-to="n-1" :class="{ active: slide===n-1 }" :aria-label="\`Slide \${n}\`" :aria-current="slide===n-1?'true':undefined" @click="slide=n-1"></button>
-</div>
 <div class="carousel-inner mg-carousel-inner-track" :style="{ transform: \`translateX(-\${slide * 100}%)\` }" aria-live="polite">
 <div v-for="(item, i) in carouselSlides" :key="item.src" class="carousel-item" :class="{ active: slide===i }">
 <img :src="item.src" class="mg-carousel-img w-100 d-block" width="800" height="450" :alt="item.alt" loading="lazy" decoding="async">
 <div class="mg-carousel-caption"><h5 class="mb-1">{{ item.title }}</h5><p class="mb-0 small">{{ item.caption }}</p></div>
 </div>
+</div>
+<div class="carousel-indicators">
+<button v-for="n in 3" :key="'slide-ind-'+n" type="button" data-bs-target="#mgCarouselSlide" :data-bs-slide-to="n-1" :class="{ active: slide===n-1 }" :aria-label="\`Slide \${n}\`" :aria-current="slide===n-1?'true':undefined" @click="slide=n-1"></button>
 </div>
 <div class="carousel-overlay"><div class="carousel-overlay-controls">
 <button type="button" class="btn btn-outline btn-sm" aria-label="Previous slide" @click="slide=(slide+2)%3"><span class="carousel-icon-prev" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
@@ -348,13 +348,13 @@ replaceSection(
 <div>
 <p class="small text-body-secondary mb-2">Crossfade variant</p>
 <div id="mgCarouselFade" class="carousel slide carousel-fade mg-carousel-fade" aria-roledescription="carousel" aria-label="Gallery crossfade">
-<div class="carousel-indicators">
-<button v-for="n in 3" :key="'fade-ind-'+n" type="button" :class="{ active: slideFade===n-1 }" :aria-label="\`Slide \${n}\`" :aria-current="slideFade===n-1?'true':undefined" @click="slideFade=n-1"></button>
-</div>
 <div class="carousel-inner" aria-live="polite">
 <div v-for="(item, i) in carouselSlides" :key="'fade-'+item.src" class="carousel-item" :class="{ active: slideFade===i }">
 <img :src="item.src" class="mg-carousel-img w-100 d-block" width="800" height="450" :alt="item.alt" loading="lazy" decoding="async">
 </div>
+</div>
+<div class="carousel-indicators">
+<button v-for="n in 3" :key="'fade-ind-'+n" type="button" :class="{ active: slideFade===n-1 }" :aria-label="\`Slide \${n}\`" :aria-current="slideFade===n-1?'true':undefined" @click="slideFade=n-1"></button>
 </div>
 <div class="carousel-overlay"><div class="carousel-overlay-controls">
 <button type="button" class="btn btn-outline btn-sm" aria-label="Previous slide" @click="slideFade=(slideFade+2)%3"><span class="carousel-icon-prev" aria-hidden="true"></span></button>
