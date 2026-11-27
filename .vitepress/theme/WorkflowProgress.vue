@@ -14,6 +14,7 @@ const T: Record<string, Tokens> = {
   lumen:      { bg: '#f8f8f5', surf: '#fff',    ink: '#252b38', mut: '#606675', line: '#d9dbe3', acc: '#6653c4', onAcc: '#fff',    warn: '#e08a1e', font: "'Inter',sans-serif", r: '9px' },
   scopecraft: { bg: '#fafafa', surf: '#fff',    ink: '#202020', mut: '#626262', line: '#dddddd', acc: '#252525', onAcc: '#fff',    warn: '#9a6a00', font: "ui-sans-serif,system-ui,sans-serif", r: '8px' },
   pulsefit:   { bg: '#faf8f1', surf: '#fff',    ink: '#272721', mut: '#68665b', line: '#d9d4c3', acc: '#aa7300', onAcc: '#fff',    warn: '#8a5a00', font: "'Rubik',sans-serif", r: '12px' },
+  margin:     { bg: '#f5f5f7', surf: '#fff', ink: '#22252b', mut: '#676e7b', line: '#e0e3e9', acc: '#6389ea', onAcc: '#0f1528', warn: '#b77900', font: 'system-ui,-apple-system,sans-serif', r: '12px' },
   pawprint:   { bg: '#fbf6ee', surf: '#fff',    ink: '#2a2a35', mut: '#7a7264', line: '#e7dcc8', acc: '#2f6db5', onAcc: '#fff',    warn: '#c98a1f', font: "'Nunito',sans-serif", r: '16px' },
   relay:      { bg: '#070910', surf: '#141624', ink: '#f4f6fb', mut: '#b7c0d6', line: '#3a3458', acc: '#6d4dff', onAcc: '#fff',    warn: '#f0c36d', font: "'DM Sans',sans-serif", r: '16px' },
   folio:      { bg: '#232423', surf: '#2a2c2a', ink: '#edf0eb', mut: '#b5bdb5', line: '#414641', acc: '#a7d9c5', onAcc: '#163f35', warn: '#edc17a', font: "'DM Sans',sans-serif", r: '10px' },

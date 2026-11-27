@@ -1,0 +1,24 @@
+# Demos index
+
+- [Gauges](https://templates.axeldiaz.com/margin/demos/gauges): `<GaugeLab theme="margin" />`
+- [Operations dashboard](https://templates.axeldiaz.com/margin/demos/ops-dashboard): `<OpsDashboard theme="margin" />`
+- [Waste dashboard](https://templates.axeldiaz.com/margin/demos/waste-dashboard): `<WasteDashboard theme="margin" />`
+- [Project dashboard](https://templates.axeldiaz.com/margin/demos/project-dashboard): `<ProjectDash theme="margin" />`
+- [Forecast](https://templates.axeldiaz.com/margin/demos/forecast): `<ForecastDash theme="margin" />`
+- [Order view](https://templates.axeldiaz.com/margin/demos/order-view): `<OrderView theme="margin" />`
+- [Dashboard blocks](https://templates.axeldiaz.com/margin/demos/blocks): `<ShadcnBlocks theme="margin" />`
+- [Sales dashboard](https://templates.axeldiaz.com/margin/demos/sales-dashboard): `<SalesDash theme="margin" />`
+- [Accounts payable dashboard](https://templates.axeldiaz.com/margin/demos/ap-dashboard): `<ClearbillDash theme="margin" />`
+- [Log an entry](https://templates.axeldiaz.com/margin/demos/log-entry): `<QanunLog theme="margin" />`
+- [Workflow operations](https://templates.axeldiaz.com/margin/demos/workflow-ops): `<WorkflowOps theme="margin" />`
+- [Messaging](https://templates.axeldiaz.com/margin/demos/messaging): `<MarginMessagingDemo />`
+- [Calendar](https://templates.axeldiaz.com/margin/demos/calendar): `<MarginCalendarDemo />`
+- [Project workspaces](https://templates.axeldiaz.com/margin/demos/projects): `<ProjectWorkspace scenario="launch" />`
+- [Dependency graph](https://templates.axeldiaz.com/margin/demos/dependencies): `<DependencyGraph scenario="launch" />`
+- [Node flow builder](https://templates.axeldiaz.com/margin/demos/node-flow): `<NodeFlow />`
+- [Workflow progress](https://templates.axeldiaz.com/margin/demos/workflow-progress): `<WorkflowProgress theme="margin" />`
+- [Decision tree](https://templates.axeldiaz.com/margin/demos/decision-tree): `<DecisionTree />`
+- [Finance overview](https://templates.axeldiaz.com/margin/demos/finance): `<FinanceDashboard language="margin" />`
+- [Reports and analytics](https://templates.axeldiaz.com/margin/demos/reports): `<ReportsDashboard language="margin" />`
+- [Order shipping](https://templates.axeldiaz.com/margin/demos/shipping): `<ShippingLabel language="margin" />`
+- [Pricing](https://templates.axeldiaz.com/margin/demos/pricing): `<PricingPage language="margin" />`
