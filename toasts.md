@@ -7,6 +7,8 @@ import ToastUsageDemo from './.vitepress/theme/ToastUsageDemo.vue'
 
 # Toasts
 
+For agent results with a data graphic and in-place progress, see [Agent toasts](/agent-toasts).
+
 A toast is short, non-blocking feedback after an action. Use it for a brief confirmation, not the only copy of an important error, deadline or required next step. Persistent events belong in a notification inbox; field errors belong beside the field. Do not steal focus when a toast arrives.
 
 ## Try stacking, dismissal and auto-hide

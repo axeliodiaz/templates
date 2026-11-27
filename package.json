@@ -54,7 +54,13 @@
     "test:payment-ticket-model": "node --test tests/payment-ticket-model.cjs",
     "test:payment-ticket-contrast": "python3 .vitepress/theme/payment-ticket/verificacion/contraste.py",
     "test:payment-ticket": "node tests/payment-ticket.cjs",
-    "test:payment-ticket-motion": "node tests/payment-ticket-motion.cjs"
+    "test:payment-ticket-motion": "node tests/payment-ticket-motion.cjs",
+    "test:agent-toasts-model": "node --test tests/agent-toasts-model.cjs",
+    "test:agent-toasts-store": "node --test tests/agent-toasts-store.cjs",
+    "test:agent-toasts-contrast": "node tests/agent-toasts-contrast.cjs",
+    "test:agent-toasts": "node tests/agent-toasts.cjs",
+    "test:agent-toasts-interaction": "node tests/agent-toasts-interaction.cjs",
+    "test:agent-toasts-motion": "node tests/agent-toasts-motion.cjs"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.3.1",

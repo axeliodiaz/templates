@@ -38,3 +38,7 @@ The fixed sample date is Monday, October 5, 2026, at 08:46. Times are local wall
 ## Agent crew
 
 [Open the Meadow agent crew demo](/home-care/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Meadow agent toasts demo](/home-care/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

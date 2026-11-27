@@ -42,3 +42,7 @@ Scopecraft does not bounce. Entrances move 4px. Hover does not lift cards or but
 ## Agent crew
 
 [Open the Scopecraft agent crew demo](/scopecraft/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Scopecraft agent toasts demo](/scopecraft/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

@@ -62,3 +62,7 @@ Chart series: gold `#C9A66B`, charcoal `#333`, bronze `#8b7355`, sand `#d4c4a8`,
 ## Agent crew
 
 [Open the PulseFit agent crew demo](/pulsefit/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the PulseFit agent toasts demo](/pulsefit/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

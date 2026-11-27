@@ -28,3 +28,7 @@ Charts draw in on load. The shared layer adds a 4px entrance and color transitio
 ## Agent crew
 
 [Open the Crestway agent crew demo](/crestway-financials/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Crestway agent toasts demo](/crestway-financials/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.
