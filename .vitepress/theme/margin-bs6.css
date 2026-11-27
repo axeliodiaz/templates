@@ -1257,6 +1257,8 @@ html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .card .btn-outline.th
 }
 html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel {
   position: relative;
+  display: block;
+  gap: 0;
   overflow: hidden;
   border: 1px solid var(--line, var(--b2-line, #e0e3e9));
   border-radius: 0.75rem;
