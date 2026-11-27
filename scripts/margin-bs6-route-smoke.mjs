@@ -33,10 +33,16 @@ try {
     await page.goto(`http://localhost:4349${r}`, { waitUntil: 'networkidle' })
     await page.getByRole('button', { name: /dark preview/i }).first().click().catch(() => {})
     await page.waitForTimeout(150)
-    const hasCopy = await page.locator('.margin-bs6-doc-code').count()
-    const placeholder = await page.locator('.margin-bs6-doc-code-gap').count()
-    if (!hasCopy) errors.push({ r, reason: 'missing copy block' })
-    if (placeholder) errors.push({ r, reason: 'placeholder copy' })
+    const isGraph = r.startsWith('/margin/graphs')
+    if (isGraph) {
+      const hasGraph = await page.locator('.margin-graph-doc, .margin-graph-overview').count()
+      if (!hasGraph) errors.push({ r, reason: 'missing graph doc' })
+    } else {
+      const hasCopy = await page.locator('.margin-bs6-doc-code').count()
+      const placeholder = await page.locator('.margin-bs6-doc-code-gap').count()
+      if (!hasCopy) errors.push({ r, reason: 'missing copy block' })
+      if (placeholder) errors.push({ r, reason: 'placeholder copy' })
+    }
     if (pe.length) errors.push({ r, reason: pe[0] })
   }
   await browser.close()

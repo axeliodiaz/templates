@@ -67,6 +67,7 @@ function lookupMarkup(area, slug) {
     `customize/${slug}`,
     `getting-started/${slug}`,
     `guides/${slug}`,
+    `graphs/${slug}`,
   ]
   for (const k of keys) {
     if (copyMarkup.has(k)) return copyMarkup.get(k)

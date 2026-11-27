@@ -37,6 +37,7 @@ ${heading}
 }
 
 for (const [key, block] of Object.entries(MARGIN_BS6_IA)) {
+  if (key === 'graphs') continue
   const area = key === 'gettingStarted' ? 'getting-started' : key
   const dir = path.join(root, 'margin', area)
   fs.mkdirSync(dir, { recursive: true })

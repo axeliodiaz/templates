@@ -9,6 +9,10 @@ import {
 const props = defineProps({
   spec: { type: Object, required: true },
   sources: { type: Object, required: true },
+  embedded: { type: Boolean, default: false },
+  motionReady: { type: Boolean, default: true },
+  hideChrome: { type: Boolean, default: false },
+  previewState: { type: String, default: "" },
 });
 function sampleSources() {
   return JSON.parse(
@@ -29,6 +33,13 @@ const uid = useId(),
   revision = ref(0),
   state = ref("ready"),
   dataView = ref(false);
+watch(
+  () => props.previewState,
+  (v) => {
+    if (v) state.value = v;
+  },
+  { immediate: true },
+);
 watch(() => props.spec, reset);
 const result = computed(() => {
   try {
@@ -91,6 +102,40 @@ function reset() {
   state.value = "ready";
   dataView.value = false;
 }
+function replay() {
+  selected.value = -1;
+  markReadout.value = "";
+  revision.value++;
+}
+function shuffleNumeric(sourceRows, headers) {
+  const numeric = headers.filter((h) =>
+    sourceRows.some((r) => typeof r[h] === "number"),
+  );
+  if (!numeric.length) return sourceRows;
+  return sourceRows.map((row) => {
+    const next = { ...row };
+    for (const h of numeric) {
+      if (typeof row[h] !== "number") continue;
+      const spread = Math.max(1, Math.abs(row[h]) * 0.35);
+      next[h] = Math.round(row[h] + (Math.random() - 0.5) * spread * 2);
+    }
+    return next;
+  });
+}
+function shuffleData() {
+  const src = props.spec.data.source;
+  const block = localSources.value[src];
+  if (!block?.rows?.length) return;
+  const headers = block.headers || Object.keys(block.rows[0] || {});
+  localSources.value = {
+    ...localSources.value,
+    [src]: { ...block, rows: shuffleNumeric(block.rows, headers) },
+  };
+  selected.value = -1;
+  markReadout.value = "";
+  revision.value++;
+}
+defineExpose({ replay, shuffleData, reset, state, revision, dataView });
 function keyTab(e, i) {
   if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(e.key)) return;
   e.preventDefault();
@@ -187,8 +232,12 @@ function markAttrs(mark) {
 }
 </script>
 <template>
-  <section class="fj-chart" :aria-label="model?.title || 'JSON chart'">
-    <div class="fj-tabs" role="tablist" aria-label="Chart documentation">
+  <section
+    class="fj-chart"
+    :class="{ 'fj-chart--embedded': embedded, 'fj-chart--chromeless': hideChrome }"
+    :aria-label="model?.title || 'JSON chart'"
+  >
+  <div v-if="!embedded" class="fj-tabs" role="tablist" aria-label="Chart documentation">
       <button
         v-for="(name, i) in ['Preview', 'Spec', 'Example']"
         :id="uid + '-tab-' + i"
@@ -212,14 +261,14 @@ function markAttrs(mark) {
       "
       tabindex="0"
     >
-      <div v-if="tab === 'Preview'">
+      <div v-if="embedded || tab === 'Preview'">
         <p v-if="result.error" role="alert">{{ result.error }}</p>
         <template v-else>
-          <header class="fj-head">
+          <header v-if="!hideChrome" class="fj-head">
             <h3>{{ model.title }}</h3>
             <p v-if="model.subtitle">{{ model.subtitle }}</p>
           </header>
-          <div class="fj-toolbar">
+          <div v-if="!hideChrome && !embedded" class="fj-toolbar">
             <button type="button" @click="revision++">Replay motion</button
             ><button
               type="button"
@@ -285,6 +334,7 @@ function markAttrs(mark) {
               v-if="!dataView"
               :key="revision"
               class="fj-plot"
+              :class="{ 'fj-plot--motion-ready': motionReady }"
               :viewBox="`0 0 ${geometry.width} ${geometry.height}`"
               role="img"
               :aria-label="model.title + '. Exact values are in Data view.'"
@@ -512,6 +562,15 @@ function markAttrs(mark) {
   background: var(--fj-card);
   color: var(--fj-ink);
 }
+.fj-chart--embedded {
+  margin: 0;
+  min-width: 0;
+}
+.fj-chart--chromeless .fj-insight,
+.fj-chart--chromeless .fj-source,
+.fj-chart--chromeless .fj-warning {
+  display: none;
+}
 .fj-plot {
   display: block;
   width: 100%;
@@ -522,7 +581,10 @@ function markAttrs(mark) {
   border-radius: 22px;
   margin-top: 16px;
   overflow: visible;
-  animation: fj-reveal 0.35s ease-out;
+}
+.fj-plot.fj-plot--motion-ready {
+  animation: fj-reveal var(--mg-chart-enter-duration, 0.35s)
+    var(--mg-chart-enter-ease, ease-out);
 }
 .fj-plot text {
   fill: var(--fj-ink);
@@ -648,7 +710,8 @@ function markAttrs(mark) {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .fj-plot {
+  .fj-plot,
+  .fj-plot.fj-plot--motion-ready {
     animation: none;
   }
   .fj-plot [tabindex] {

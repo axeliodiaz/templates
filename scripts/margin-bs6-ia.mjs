@@ -1,4 +1,6 @@
 /** Bootstrap v6.0 doc IA mirrored under /margin (tooling pages omitted). */
+import { MARGIN_GRAPH_PAGES } from './margin-graphs-catalog.mjs'
+
 export const MARGIN_BS6_IA = {
   gettingStarted: {
     title: 'Getting started',
@@ -120,6 +122,14 @@ export const MARGIN_BS6_IA = {
       ['toasts', 'Toasts'],
       ['toggler', 'Toggler'],
       ['tooltip', 'Tooltip'],
+    ],
+  },
+  graphs: {
+    title: 'Graphs',
+    link: '/margin/graphs/',
+    pages: [
+      ['overview', 'Overview', true],
+      ...MARGIN_GRAPH_PAGES.map((p) => [p.slug, p.title]),
     ],
   },
   helpers: {
