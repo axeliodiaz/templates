@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { useMarginPreviewDark } from './useMarginPreviewDark'
 const props = defineProps<{ section: string }>()
+const previewDark = useMarginPreviewDark()
 const show = (id: string) => !props.section || props.section === id
 </script>
 <template>
-  <div class="lab b2-bs6 b2-margin margin-bs6-root margin-content-demo">
+  <div
+    class="lab b2-bs6 b2-margin margin-bs6-root margin-content-demo"
+    :class="{ 'lab-dark': previewDark }"
+  >
     <section v-show="show('reboot')" class="mg-content-block" aria-label="Reboot">
       <h1>Profit review</h1>
       <h2>Quarter summary</h2>
@@ -55,7 +60,6 @@ const show = (id: string) => !props.section || props.section === id
 </template>
 <style scoped>
 .margin-content-demo {
-  padding: 4px 2px;
   font: 13px/1.55 'DM Sans', system-ui, sans-serif;
 }
 .mg-content-block :is(h1, h2, h3, p, li, th, td, a, blockquote, figcaption) {
