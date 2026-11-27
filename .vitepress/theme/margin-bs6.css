@@ -1267,6 +1267,14 @@ html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel {
 }
 html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-inner {
   line-height: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  scroll-padding: 0 !important;
+  align-items: flex-start;
+}
+html[data-tpl='margin'] .mg-guide-preview .mg-carousel-fade .carousel-inner {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-indicators {
   position: absolute;
@@ -1299,6 +1307,7 @@ html[data-tpl='margin'] .mg-guide-preview .mg-carousel-demo .carousel-indicators
 html[data-tpl='margin'] .mg-guide-preview .mg-carousel-img {
   display: block;
   width: 100%;
+  margin: 0 !important;
   aspect-ratio: 16 / 9;
   max-height: min(52vw, 280px);
   object-fit: cover;
