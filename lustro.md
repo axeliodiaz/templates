@@ -138,3 +138,7 @@ See also the [Cart summary](/lustro/cart-summary) receipt component and the [Pri
 ## Agent crew
 
 [Open the Lustro agent crew demo](/lustro/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Lustro agent toasts demo](/lustro/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

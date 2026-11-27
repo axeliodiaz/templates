@@ -52,3 +52,7 @@ Next: [components](/pawprint/components), [charts](/pawprint/charts), [pricing e
 ## Agent crew
 
 [Open the Pawprint agent crew demo](/pawprint/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Pawprint agent toasts demo](/pawprint/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

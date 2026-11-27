@@ -26,3 +26,7 @@ Cards rise 8px and fade in over 280ms. Chart lines and bars still reveal on load
 ## Agent crew
 
 [Open the Fixtrack agent crew demo](/fixtrack/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Fixtrack agent toasts demo](/fixtrack/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

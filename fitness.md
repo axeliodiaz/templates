@@ -56,3 +56,7 @@ Pattern reference: [Muiz](https://x.com/IamMuhammadMuiz/status/21084565537705208
 ## Agent crew
 
 [Open the Pace agent crew demo](/pace/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Pace agent toasts demo](/pace/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

@@ -26,3 +26,7 @@ The command line types itself on load, counters tick up, page cards rise on hove
 ## Agent crew
 
 [Open the Evertrue agent crew demo](/evertrue/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Evertrue agent toasts demo](/evertrue/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

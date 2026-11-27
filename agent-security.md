@@ -151,3 +151,7 @@ A standalone original agent security template. Responsive, local interactive sta
 ## Agent crew
 
 [Open the Sentinel agent crew demo](/agent-security/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Sentinel agent toasts demo](/agent-security/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

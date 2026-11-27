@@ -40,3 +40,7 @@ Wrap product UI in `.bst-root` with `data-bs-theme="dark"`, then `.bst`. Load th
 ## Agent crew
 
 [Open the Bastion agent crew demo](/bastion/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Bastion agent toasts demo](/bastion/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

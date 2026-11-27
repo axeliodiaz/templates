@@ -151,3 +151,7 @@ A standalone original agent onboarding template. Responsive, local interactive s
 ## Agent crew
 
 [Open the Brief agent crew demo](/agent-onboarding/agent-crew) for a synthetic multi-agent tree with handoff connectors and read-only details in this template language.
+
+## Agent toasts
+
+[Open the Brief agent toasts demo](/agent-onboarding/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.

@@ -29,3 +29,7 @@ Version 1.0.0 Alpha. This guide is the Markdown build reference for the live sys
 ## Motion
 
 Felix motion is short and warm. Surfaces rise 6px over 280ms with a linen shadow and no bounce. Hover lifts 2px; press settles 1px. Disabled controls stay put. Loaders may loop; everything else runs once. Reduced motion cancels the movement and leaves the final state on screen. The tokens are `--m-rise`, `--m-ease`, `--m-hover` and `--m-glow` on `html.felix`.
+
+## Agent toasts
+
+[Open the Felix agent toasts demo](/felix/agent-toasts) for synthetic agent results as toasts with a data graphic, in-place retry and a collapsible stack in this template language.
