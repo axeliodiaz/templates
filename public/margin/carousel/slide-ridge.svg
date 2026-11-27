@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Mountain ridge gradient landscape">
+  <defs>
+    <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a1f4e"/>
+      <stop offset="45%" stop-color="#6b4c9a"/>
+      <stop offset="100%" stop-color="#f0a574"/>
+    </linearGradient>
+    <linearGradient id="ridge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#dusk)"/>
+  <path fill="url(#ridge)" opacity="0.55" d="M0 320 L140 210 L280 265 L400 175 L520 240 L640 155 L800 230 L800 450 L0 450 Z"/>
+  <path fill="#0b1220" opacity="0.85" d="M0 300 L120 200 L260 248 L380 165 L500 225 L660 140 L800 205 L800 450 L0 450 Z"/>
+  <circle cx="120" cy="95" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="220" cy="70" r="2" fill="#fff" opacity="0.65"/>
+  <circle cx="340" cy="110" r="2.5" fill="#fff" opacity="0.7"/>
+</svg>
