@@ -561,6 +561,112 @@ html[data-tpl='margin'] .mg-sq-header__ok {
   margin-right: 4px;
 }
 
+html[data-tpl='margin'] .mg-sq-checks__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #5c6370;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: right;
+  transition: background calc(0.15s * var(--mg-squash-motion) + 0.01s) ease;
+}
+
+html[data-tpl='margin'] .mg-sq-checks__trigger:hover {
+  background: rgba(28, 32, 44, 0.06);
+}
+
+html[data-tpl='margin'] .lab-dark .mg-sq-checks__trigger:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-tpl='margin'] .mg-sq-checks__trigger:focus-visible {
+  outline: 2px solid var(--mg-squash-blue);
+  outline-offset: 2px;
+}
+
+html[data-tpl='margin'] .mg-sq-checks__trigger.is-passed {
+  color: var(--mg-squash-green);
+}
+
+html[data-tpl='margin'] .mg-sq-checks__ok {
+  color: var(--mg-squash-green);
+  font-weight: 700;
+}
+
+html[data-tpl='margin'] .mg-sq-checks__chevron {
+  font-size: 11px;
+  opacity: 0.65;
+  margin-left: 2px;
+}
+
+html[data-tpl='margin'] .mg-sq-checks__panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  border-top: 1px solid transparent;
+  transition:
+    max-height calc(0.38s * var(--mg-squash-motion) + 0.01s) var(--mg-squash-spring),
+    opacity calc(0.22s * var(--mg-squash-motion) + 0.01s) ease,
+    border-color 0.15s ease;
+}
+
+html[data-tpl='margin'] .mg-sq-checks__panel.is-open {
+  max-height: 240px;
+  opacity: 1;
+  border-top-color: #e8eaef;
+}
+
+html[data-tpl='margin'] .lab-dark .mg-sq-checks__panel.is-open {
+  border-top-color: #2c3038;
+}
+
+html[data-tpl='margin'] .mg-squash--checks-open {
+  transition:
+    max-height calc(0.45s * var(--mg-squash-motion) + 0.01s) var(--mg-squash-spring),
+    box-shadow 0.2s ease;
+}
+
+html[data-tpl='margin'] .mg-sq-checks__list {
+  list-style: none;
+  margin: 0;
+  padding: 8px 16px 12px;
+}
+
+html[data-tpl='margin'] .mg-sq-checks__row {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 13px;
+  color: #5c6370;
+}
+
+html[data-tpl='margin'] .mg-sq-checks__pass {
+  color: var(--mg-squash-green);
+  font-weight: 700;
+}
+
+html[data-tpl='margin'] .mg-sq-checks__dur {
+  font-size: 12px;
+  color: #9399a5;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-tpl='margin'] .mg-sq-spin--sm {
+  width: 14px;
+  height: 14px;
+  border-width: 2px;
+}
+
 html[data-tpl='margin'] .mg-sq-rail {
   position: absolute;
   left: 22px;

@@ -16,6 +16,7 @@ import { GALLERY_STATES } from './squash-state-presets.mjs'
         <MarginSquashForcePush
           :state="item.id"
           :push-progress="item.pushProgress ?? 0"
+          :checks-expanded="item.checksExpanded ?? null"
           :motion="false"
           :autoplay="false"
         />

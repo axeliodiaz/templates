@@ -10,6 +10,7 @@ for (const url of urls) {
   const ok =
     res.ok &&
     (text.includes('mg-sq-state-gallery') ||
+      text.includes('mg-sq-checks__trigger') ||
       text.includes('mg-squash') ||
       text.includes('mg-sq-'))
   console.log(url, res.status, ok ? 'ok' : 'BAD')

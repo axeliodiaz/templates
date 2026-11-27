@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MarginGuidePreview from './MarginGuidePreview.vue'
 import MarginSquashForcePushDemo from './squash-force-push/MarginSquashForcePushDemo.vue'
+import MarginSquashChecksSubmodule from './squash-force-push/MarginSquashChecksSubmodule.vue'
 import MarginSquashStateGallery from './squash-force-push/MarginSquashStateGallery.vue'
 </script>
 
@@ -23,9 +24,15 @@ import MarginSquashStateGallery from './squash-force-push/MarginSquashStateGalle
       <MarginSquashStateGallery />
     </MarginGuidePreview>
 
+    <h2>Sub-modules</h2>
+    <MarginSquashChecksSubmodule />
+
     <h2>Motion &amp; timing</h2>
     <ul>
-      <li>Autoplay: 2s load → expanded → squash → 2s hold → purple PR + checks.</li>
+      <li>
+        Autoplay: 2s load → expanded → squash → 2s hold → purple PR + checks (click status to
+        expand the six check rows).
+      </li>
       <li>Static frames: <code>:motion="false" :autoplay="false"</code>.</li>
       <li><code>--mg-squash-motion: 0</code> respects reduced motion.</li>
     </ul>
