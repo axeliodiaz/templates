@@ -1058,24 +1058,56 @@
     "sample.arc": {
       "headers": [
         "Category",
-        "Value"
+        "Value",
+        "Max",
+        "Color",
+        "Note",
+        "Status"
+      ],
+      "rows": [
+        [
+          "Five-hour window",
+          0,
+          100,
+          "#3b82f6",
+          "Resets in 5h",
+          "ready"
+        ],
+        [
+          "Weekly allowance",
+          29,
+          100,
+          "#22a06b",
+          "71% remaining",
+          "ready"
+        ],
+        [
+          "Monthly spend",
+          null,
+          100,
+          "#d97706",
+          "Source unavailable",
+          "unavailable"
+        ]
+      ]
+    },
+    "sample.arc.single": {
+      "headers": [
+        "Category",
+        "Value",
+        "Max",
+        "Color",
+        "Note",
+        "Status"
       ],
       "rows": [
         [
           "North",
-          35
-        ],
-        [
-          "South",
-          25
-        ],
-        [
-          "East",
-          20
-        ],
-        [
-          "West",
-          10
+          35,
+          100,
+          "#6389ea",
+          "Single limit",
+          "ready"
         ]
       ]
     },
@@ -3045,7 +3077,7 @@
     },
     "arc": {
       "component": "felix-arc",
-      "title": "Arc",
+      "title": "Independent usage limits",
       "subtitle": "Fictitious local data",
       "data": {
         "source": "sample.arc"
@@ -3054,7 +3086,15 @@
         "category": "Category",
         "value": "Value"
       },
-      "options": {}
+      "options": {
+        "max": 100,
+        "fields": {
+          "max": "Max",
+          "color": "Color",
+          "note": "Note",
+          "status": "Status"
+        }
+      }
     },
     "radar": {
       "component": "radar",

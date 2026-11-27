@@ -2,9 +2,9 @@
 pageClass: margin-scoped-guide
 ---
 <script setup>
-import MarginGraphDoc from '../../.vitepress/theme/MarginGraphDoc.vue'
+import MarginArcMeterDoc from '../../.vitepress/theme/MarginArcMeterDoc.vue'
 </script>
 
 # Arc meter
 
-<MarginGraphDoc slug="arc" label="Arc meter" component="felix-arc" />
+<MarginArcMeterDoc />
