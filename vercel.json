@@ -15,6 +15,11 @@
       "permanent": true
     },
     {
+      "source": "/margin/getting-started/css-variables",
+      "destination": "/margin/customize/css-variables",
+      "permanent": true
+    },
+    {
       "source": "/margin/getting-started/quickstart",
       "destination": "/margin/guides/quickstart",
       "permanent": true

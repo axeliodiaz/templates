@@ -67,53 +67,42 @@ html[data-tpl='margin'].margin-scoped-guide .vp-doc > :is(h1, h2, h3, h4) {
   scroll-margin-top: calc(var(--vp-nav-height, 64px) + 24px);
 }
 
-/* Agent instructions panel (Para agentes) */
-.mg-agent-panel {
-  --mg-agent-bg: var(--line, #e0e3e9);
-  margin: 16px 0 20px;
-  border: 1px solid var(--line, #e0e3e9);
-  border-radius: 12px;
-  overflow: hidden;
+/* Agent instructions panel (embedded in preview card) */
+.mg-guide-preview .mg-agent-panel__body {
+  border-top: 1px solid var(--line, #e0e3e9);
   background: var(--surface, #fff);
   color: var(--ink, #22252b);
+  padding: 12px 14px 16px;
 }
-html[data-tpl='margin'].tpl-dark .mg-agent-panel,
-html[data-tpl='margin'] .vp-doc .mg-agent-panel {
-  --line: #e0e3e9;
+.mg-guide-preview.lab-dark .mg-agent-panel__body {
+  background: var(--surface, #242833);
+  border-top-color: var(--line, #404757);
+  color: var(--ink, #f1f3f8);
 }
-html[data-tpl='margin'].tpl-dark .mg-agent-panel {
-  border-color: #404757;
-  background: #242833;
-  color: #f1f3f8;
+@media (prefers-reduced-motion: no-preference) {
+  .mg-agents-panel-enter-active,
+  .mg-agents-panel-leave-active {
+    overflow: hidden;
+    transition:
+      opacity 0.28s ease,
+      max-height 0.32s ease;
+  }
+  .mg-agents-panel-enter-from,
+  .mg-agents-panel-leave-to {
+    opacity: 0;
+    max-height: 0;
+  }
+  .mg-agents-panel-enter-to,
+  .mg-agents-panel-leave-from {
+    opacity: 1;
+    max-height: min(70vh, 560px);
+  }
 }
-.mg-agent-panel__bar {
-  display: flex;
-  align-items: center;
-  padding: 10px 14px;
-  border-bottom: 1px solid transparent;
-}
-.mg-agent-panel--open .mg-agent-panel__bar {
-  border-bottom-color: var(--line, #e0e3e9);
-}
-.mg-agent-panel__toggle {
-  border: 1px solid var(--line, #e0e3e9);
-  background: var(--soft, #eceef5);
-  color: var(--ink, #22252b);
-  border-radius: 8px;
-  padding: 7px 12px;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-}
-html[data-tpl='margin'].tpl-dark .mg-agent-panel__toggle {
-  background: #303747;
-  border-color: #404757;
-  color: #f1f3f8;
-}
-.mg-agent-panel__toggle:focus-visible {
-  outline: 2px solid #6389ea;
-  outline-offset: 3px;
+@media (prefers-reduced-motion: reduce) {
+  .mg-agents-panel-enter-active,
+  .mg-agents-panel-leave-active {
+    transition: opacity 0.15s ease;
+  }
 }
 .mg-agent-panel__body {
   padding: 12px 14px 16px;
@@ -175,29 +164,6 @@ html[data-tpl='margin'].tpl-dark .mg-agent-panel__toggle {
 .mg-agent-panel__error {
   color: #b84d6f;
   font-size: 13px;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .mg-agent-panel.mg-agent-motion .mg-agent-panel__body {
-    animation: mg-agent-panel-in 0.25s ease;
-  }
-  .mg-agent-panel.mg-agent-motion .mg-agent-panel__toggle {
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .mg-agent-panel.mg-agent-motion .mg-agent-panel__body {
-    animation: none;
-  }
-}
-@keyframes mg-agent-panel-in {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* WCAG AA: Margin guide inline + fenced code on light/dark template pages */
