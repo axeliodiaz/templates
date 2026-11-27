@@ -1,6 +1,9 @@
 node_modules
 .vitepress/dist
 .vitepress/cache
+public/margin/agents/
+public/margin/llms.txt
+public/margin/llms-full.txt
 .DS_Store
 .artifacts/
 

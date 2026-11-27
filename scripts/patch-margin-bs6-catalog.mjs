@@ -52,11 +52,15 @@ const note =
 replaceSection(
   'close-button',
   `<section id="close-button" class="kit-section" v-show="showSection('close-button') && (!catalogSearch || &quot;close button&quot;.includes(catalogSearch.toLowerCase()))"><h2>Close button</h2><p>Icon dismiss controls with an accessible name. Use <code>btn-close</code> (not bare text) and pair with visible context.</p>
-<div class="l-demo l-actions flex-wrap gap-2 align-items-center"><button type="button" class="btn-close" aria-label="Close"></button><button type="button" class="btn-close" disabled aria-label="Close (disabled)"></button></div>
-<div class="l-demo"><div class="alert theme-info d-flex align-items-start gap-2" role="alert"><div class="flex-grow-1"><strong>Heads up</strong><p class="mb-0">Dismissible alerts use <code>btn-close</code> on the trailing edge.</p></div><button type="button" class="btn-close" aria-label="Close alert" @click="showToast('Alert dismissed','info')"></button></div></div>
-<div class="l-demo mg-demo-surface-dark" style="background:var(--ink,#22252b);border-radius:10px;padding:12px 14px"><div class="d-flex align-items-center justify-content-between gap-2"><span class="text-white">Modal header (demo)</span><button type="button" class="btn-close btn-close-white" aria-label="Close dialog"></button></div></div>
-<div class="l-demo l-actions flex-wrap gap-2 align-items-center"><span class="chip theme-secondary">Filters<button type="button" class="chip-dismiss" aria-label="Remove Filters" @click="showToast('Chip removed','info')"></button></span></div>
-${note}<details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code>&lt;button type="button" class="btn-close" aria-label="Close"&gt;&lt;/button&gt;</code></pre></details></section>`,
+<div class="l-demo vstack gap-3 mg-close-demo">
+<div><p class="small text-body-secondary mb-2">Standalone</p><div class="card card-body border"><div class="d-flex flex-wrap gap-3 align-items-center"><button type="button" class="btn-close" aria-label="Close"></button><button type="button" class="btn-close" disabled aria-label="Close (disabled)"></button></div></div></div>
+<div><p class="small text-body-secondary mb-2">Primary alert</p><div class="alert theme-primary alert-dismissible fade show mg-bs6-alert" role="alert"><div class="mg-alert-text"><strong class="d-block mb-1">Heads up</strong><p class="mb-0">Use <code>alert-dismissible</code> so copy keeps padding away from the close control.</p></div><button type="button" class="btn-close" aria-label="Close alert" @click="showToast('Alert dismissed','info')"></button></div></div>
+<div><p class="small text-body-secondary mb-2">Info alert</p><div class="alert theme-info alert-dismissible fade show mg-bs6-alert" role="alert"><div class="mg-alert-text"><strong class="d-block mb-1">Reminder</strong><p class="mb-0">Trailing <code>btn-close</code> with an accessible label.</p></div><button type="button" class="btn-close" aria-label="Close reminder" @click="showToast('Reminder dismissed','info')"></button></div></div>
+<div><p class="small text-body-secondary mb-2">Toast</p><div class="toast show border shadow-sm" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="me-auto">Margin</strong><small class="text-body-secondary">Just now</small><button type="button" class="btn-close" aria-label="Close toast" @click="showToast('Toast dismissed','info')"></button></div><div class="toast-body">Hello — this is a toast with header padding.</div></div></div>
+<div><p class="small text-body-secondary mb-2">Primary header</p><div class="mg-close-header-demo rounded overflow-hidden"><div class="modal-header border-0"><h5 class="modal-title fs-6 mb-0">Modal title</h5><button type="button" class="btn-close btn-close-white" aria-label="Close dialog"></button></div></div></div>
+<div><p class="small text-body-secondary mb-2">Removable chip</p><span class="chip">Filters<button type="button" class="chip-dismiss" aria-label="Remove Filters" @click="showToast('Chip removed','info')"></button></span></div>
+</div>
+${note}<details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code>&lt;div class="alert alert-dismissible theme-primary" role="alert"&gt;…&lt;button type="button" class="btn-close" aria-label="Close"&gt;&lt;/button&gt;&lt;/div&gt;</code></pre></details></section>`,
 )
 
 replaceSection(
@@ -114,13 +118,12 @@ ${note}<details v-show="!embedded" class="kit-code"><summary>Copy implementation
   if (s.includes(insertBefore)) s = s.replace(insertBefore, block + insertBefore)
 }
 
-if (!s.includes('id="toggler"')) {
-  const insertBefore = '<section id="tooltips"'
-  const block = `<section id="toggler" class="kit-section" v-show="showSection('toggler') && (!catalogSearch || &quot;toggler&quot;.includes(catalogSearch.toLowerCase()))"><h2>Toggler</h2><p>Navbar togglers expand collapsed navigation on small screens.</p>
-<div class="l-demo"><button class="btn btn-outline theme-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#mg-nav-collapse" aria-controls="mg-nav-collapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse mt-2" id="mg-nav-collapse"><div class="card card-body py-2">Collapsed nav region</div></div></div>
-${note}<details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code>&lt;button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"&gt;…&lt;/button&gt;</code></pre></details></section>
-`
-  if (s.includes(insertBefore)) s = s.replace(insertBefore, block + insertBefore)
+if (!s.includes('stepperLabels')) {
+  s = s.replace(/const step\s*=\s*ref\(1\)/, `const step=ref(1)\nconst stepperLabels = ['Details', 'Review', 'Done']`)
+}
+
+if (!s.includes('navTogglerOpen')) {
+  s = s.replace('const navOpen = ref(false)', `const navOpen = ref(false)\nconst navTogglerOpen = ref(false)\nconst togglerCheck = ref(false)`)
 }
 
 // Carousel: drop cross-page transition that flashes on client nav in docs shell
@@ -231,9 +234,49 @@ ${note}<details v-show="!embedded" class="kit-code"><summary>Copy badge markup</
 replaceSection(
   'card',
   `<section id="card" class="kit-section" v-show="showSection('card') && (!catalogSearch || &quot;card&quot;.includes(catalogSearch.toLowerCase()))"><h2>Card</h2><p>Summaries with header, body, and footer actions.</p>
-<div class="l-demo"><div class="row g-3"><div class="col-md-6"><div class="card h-100"><div class="card-header">Featured</div><div class="card-body"><h3 class="h6 card-title">Review changes</h3><p class="card-text small">The latest request is waiting for your review.</p></div><div class="card-footer d-flex justify-content-between align-items-center gap-2"><span class="badge text-bg-warning">Needs review</span><button type="button" class="btn btn-sm btn-outline theme-secondary" @click="showToast('Open')">Open</button></div></div></div><div class="col-md-6"><div class="card h-100 border-success"><div class="card-body"><p class="text-success small mb-1">TASK · 024</p><h3 class="h6 card-title">Ready to ship</h3><p class="card-text small">Checks completed. The next step is a merge.</p></div><div class="card-footer"><button type="button" class="btn btn-sm btn-solid theme-primary">Continue</button></div></div></div></div></div>
-${note}<details v-show="!embedded" class="kit-code"><summary>Copy card markup</summary><pre><code>&lt;div class="card"&gt;&lt;div class="card-body"&gt;…&lt;/div&gt;&lt;div class="card-footer"&gt;…&lt;/div&gt;&lt;/div&gt;</code></pre></details></section>`,
+<div class="l-demo mg-card-demo"><div class="row g-3"><div class="col-md-6"><div class="card h-100"><div class="card-header">Featured</div><div class="card-body"><h3 class="h6 card-title">Review changes</h3><p class="card-text small mb-0">The latest request is waiting for your review.</p></div><div class="card-footer d-flex justify-content-between align-items-center gap-2 flex-wrap"><span class="badge text-bg-warning mg-card-status">Needs review</span><button type="button" class="btn btn-sm btn-outline theme-secondary" @click="showToast('Open','info')">Open</button></div></div></div><div class="col-md-6"><div class="card h-100 border-success"><div class="card-body"><p class="text-success small mb-1">TASK · 024</p><h3 class="h6 card-title">Ready to ship</h3><p class="card-text small mb-0">Checks completed. The next step is a merge.</p></div><div class="card-footer"><button type="button" class="btn btn-sm btn-solid theme-primary">Continue</button></div></div></div></div></div>
+${note}<details v-show="!embedded" class="kit-code"><summary>Copy card markup</summary><pre><code>&lt;div class="card"&gt;&lt;div class="card-body"&gt;…&lt;/div&gt;&lt;div class="card-footer d-flex justify-content-between align-items-center gap-2"&gt;&lt;span class="badge text-bg-warning mg-card-status"&gt;Needs review&lt;/span&gt;&lt;button class="btn btn-sm btn-outline"&gt;Open&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;</code></pre></details></section>`,
 )
+
+replaceSection(
+  'spinners-loaders',
+  `<section id="spinners-loaders" class="kit-section" v-show="showSection('spinners-loaders') && (!catalogSearch || &quot;spinners/loaders&quot;.includes(catalogSearch.toLowerCase()))"><h2>Spinners/Loaders</h2><p>Indicate a loading state. Use <code>role="status"</code> with visible text or an <code>aria-label</code>.</p>
+<div class="l-demo vstack gap-3 mg-spinner-demo">
+<div><p class="small text-body-secondary mb-2">Border spinners</p><div class="d-flex flex-wrap gap-3 align-items-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading…</span></div><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Primary</span></div><div class="spinner-border text-success" role="status"><span class="visually-hidden">Success</span></div><div class="spinner-border text-danger" role="status"><span class="visually-hidden">Danger</span></div></div></div>
+<div><p class="small text-body-secondary mb-2">Sizes</p><div class="d-flex flex-wrap gap-3 align-items-center"><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Small</span></div><div class="spinner-border" role="status"><span class="visually-hidden">Default</span></div><div class="spinner-border spinner-border-lg" role="status"><span class="visually-hidden">Large</span></div></div></div>
+<div><p class="small text-body-secondary mb-2">Growing spinners</p><div class="d-flex flex-wrap gap-3 align-items-center"><div class="spinner-grow" role="status"><span class="visually-hidden">Loading…</span></div><div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Primary</span></div><div class="spinner-grow spinner-grow-sm" role="status"><span class="visually-hidden">Small grow</span></div></div></div>
+<div><p class="small text-body-secondary mb-2">Inside buttons</p><div class="d-flex flex-wrap gap-2"><button type="button" class="btn btn-solid theme-primary" disabled><span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Loading</button><button type="button" class="btn btn-outline theme-secondary" disabled><span class="spinner-grow spinner-grow-sm me-2" role="status" aria-hidden="true"></span>Saving</button></div></div>
+<div><p class="small text-body-secondary mb-2">Flex alignment</p><div class="d-flex align-items-center gap-2"><strong>Loading workspace</strong><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading…</span></div></div></div>
+</div>
+${note}<details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code>&lt;div class="spinner-border" role="status"&gt;&lt;span class="visually-hidden"&gt;Loading…&lt;/span&gt;&lt;/div&gt;
+&lt;div class="spinner-grow text-primary" role="status"&gt;&lt;span class="visually-hidden"&gt;Loading…&lt;/span&gt;&lt;/div&gt;</code></pre></details></section>`,
+)
+
+replaceSection(
+  'stepper',
+  `<section id="stepper" class="kit-section" v-show="showSection('stepper') && (!catalogSearch || &quot;stepper&quot;.includes(catalogSearch.toLowerCase()))"><h2>Stepper</h2><p>Show a finite workflow with numbered steps and connectors. Production steps must not bypass required validation.</p>
+<div class="l-demo vstack gap-4 mg-stepper-demo">
+<div><p class="small text-body-secondary mb-2">Vertical</p><ol class="stepper" aria-label="Checkout progress"><li v-for="(label,i) in stepperLabels" :key="'v-'+label" class="stepper-item" :class="{ active: step===i+1, 'mg-stepper-done': step>i+1 }"><span class="stepper-title">{{ label }}</span><p class="stepper-description small text-body-secondary mb-0">{{ i===0?'Contact and billing':i===1?'Confirm line items':'Receipt and summary' }}</p></li></ol></div>
+<div><p class="small text-body-secondary mb-2">Horizontal</p><ol class="stepper stepper-horizontal w-100" aria-label="Pipeline steps"><li v-for="(label,i) in stepperLabels" :key="'h-'+label" class="stepper-item" :class="{ active: step===i+1, 'mg-stepper-done': step>i+1 }"><span class="stepper-title">{{ label }}</span></li></ol></div>
+<div class="d-flex flex-wrap gap-2"><button type="button" class="btn btn-outline theme-secondary" :disabled="step===1" @click="step--">Back</button><button type="button" class="btn btn-solid theme-primary" :disabled="step===3" @click="step++">Continue</button><span class="small text-body-secondary align-self-center">Step {{ step }} of 3</span></div>
+</div>
+${note}<details v-show="!embedded" class="kit-code"><summary>Copy stepper markup</summary><pre><code>&lt;ol class="stepper"&gt;&lt;li class="stepper-item active"&gt;&lt;span class="stepper-title"&gt;Details&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;</code></pre></details></section>`,
+)
+
+const togglerSection = `<section id="toggler" class="kit-section" v-show="showSection('toggler') && (!catalogSearch || &quot;toggler&quot;.includes(catalogSearch.toLowerCase()))"><h2>Toggler</h2><p>Navbar togglers and <code>btn-check</code> controls collapse regions on small screens. Below uses Vue state (no Bootstrap JS).</p>
+<div class="l-demo vstack gap-3 mg-toggler-demo">
+<div><p class="small text-body-secondary mb-2">Navbar</p><nav class="navbar navbar-expand-lg border rounded px-2 py-1 mg-toggler-navbar"><a class="navbar-brand fs-6 mb-0" href="#" @click.prevent>Margin</a><button type="button" class="navbar-toggler" :aria-expanded="navTogglerOpen" aria-controls="mg-toggler-nav" aria-label="Toggle navigation" @click="navTogglerOpen=!navTogglerOpen"><span class="navbar-toggler-icon"></span></button><div id="mg-toggler-nav" class="collapse navbar-collapse" :class="{ show: navTogglerOpen }"><ul class="navbar-nav ms-auto gap-lg-2"><li class="nav-item"><a class="nav-link active" href="#" @click.prevent>Home</a></li><li class="nav-item"><a class="nav-link" href="#" @click.prevent>Docs</a></li><li class="nav-item"><a class="nav-link" href="#" @click.prevent>Support</a></li></ul></div></nav></div>
+<div><p class="small text-body-secondary mb-2">Collapse target</p><button type="button" class="btn btn-outline theme-secondary mb-2" :aria-expanded="navTogglerOpen" aria-controls="mg-toggler-panel" @click="navTogglerOpen=!navTogglerOpen">Toggle panel</button><div id="mg-toggler-panel" class="collapse" :class="{ show: navTogglerOpen }"><div class="card card-body border">Collapsed region with links and actions.</div></div></div>
+<div><p class="small text-body-secondary mb-2">Button check toggler</p><input type="checkbox" class="btn-check" id="mg-toggler-check" v-model="togglerCheck" autocomplete="off"><label class="btn btn-outline theme-secondary" for="mg-toggler-check">{{ togglerCheck ? 'On' : 'Off' }}</label><p class="small text-body-secondary mt-2 mb-0" v-show="togglerCheck">Toggle is on — paired content can show here.</p></div>
+</div>
+${note}<details v-show="!embedded" class="kit-code"><summary>Copy implementation markup</summary><pre><code>&lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false"&gt;&lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;&lt;/button&gt;</code></pre></details></section>`
+if (s.includes('id="toggler"')) {
+  replaceSection('toggler', togglerSection)
+} else {
+  const insertBefore = '<section id="tooltips"'
+  if (s.includes(insertBefore)) s = s.replace(insertBefore, togglerSection + insertBefore)
+  else console.warn('patch-margin-bs6-catalog: toggler insert point missing')
+}
 
 replaceSection(
   'chips',

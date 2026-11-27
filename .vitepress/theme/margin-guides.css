@@ -67,6 +67,139 @@ html[data-tpl='margin'].margin-scoped-guide .vp-doc > :is(h1, h2, h3, h4) {
   scroll-margin-top: calc(var(--vp-nav-height, 64px) + 24px);
 }
 
+/* Agent instructions panel (Para agentes) */
+.mg-agent-panel {
+  --mg-agent-bg: var(--line, #e0e3e9);
+  margin: 16px 0 20px;
+  border: 1px solid var(--line, #e0e3e9);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface, #fff);
+  color: var(--ink, #22252b);
+}
+html[data-tpl='margin'].tpl-dark .mg-agent-panel,
+html[data-tpl='margin'] .vp-doc .mg-agent-panel {
+  --line: #e0e3e9;
+}
+html[data-tpl='margin'].tpl-dark .mg-agent-panel {
+  border-color: #404757;
+  background: #242833;
+  color: #f1f3f8;
+}
+.mg-agent-panel__bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid transparent;
+}
+.mg-agent-panel--open .mg-agent-panel__bar {
+  border-bottom-color: var(--line, #e0e3e9);
+}
+.mg-agent-panel__toggle {
+  border: 1px solid var(--line, #e0e3e9);
+  background: var(--soft, #eceef5);
+  color: var(--ink, #22252b);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+html[data-tpl='margin'].tpl-dark .mg-agent-panel__toggle {
+  background: #303747;
+  border-color: #404757;
+  color: #f1f3f8;
+}
+.mg-agent-panel__toggle:focus-visible {
+  outline: 2px solid #6389ea;
+  outline-offset: 3px;
+}
+.mg-agent-panel__body {
+  padding: 12px 14px 16px;
+}
+.mg-agent-panel__modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.mg-agent-panel__modes button {
+  border: 1px solid var(--line, #e0e3e9);
+  background: transparent;
+  color: inherit;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.mg-agent-panel__modes button.active {
+  border-color: #6389ea;
+  background: color-mix(in srgb, #6389ea 12%, transparent);
+}
+.mg-agent-panel__copy {
+  margin-left: auto;
+}
+.mg-agent-panel__raw {
+  margin: 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line, #e0e3e9);
+  background: var(--soft, #eceef5);
+  overflow: auto;
+  font-size: 11px;
+  line-height: 1.45;
+  max-height: min(60vh, 480px);
+}
+.mg-agent-panel__render {
+  font-size: 13px;
+  line-height: 1.55;
+  max-height: min(60vh, 480px);
+  overflow: auto;
+}
+.mg-agent-panel__render :is(h1, h2, h3) {
+  margin: 0.75rem 0 0.35rem;
+  font-size: 1rem;
+  border: 0;
+  padding: 0;
+}
+.mg-agent-panel__render pre {
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--soft, #eceef5);
+  overflow: auto;
+  font-size: 11px;
+}
+.mg-agent-panel__error {
+  color: #b84d6f;
+  font-size: 13px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mg-agent-panel.mg-agent-motion .mg-agent-panel__body {
+    animation: mg-agent-panel-in 0.25s ease;
+  }
+  .mg-agent-panel.mg-agent-motion .mg-agent-panel__toggle {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mg-agent-panel.mg-agent-motion .mg-agent-panel__body {
+    animation: none;
+  }
+}
+@keyframes mg-agent-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* WCAG AA: Margin guide inline + fenced code on light/dark template pages */
 html[data-tpl='margin'] .vp-doc :not(pre) > code {
   color: #1a2744;
