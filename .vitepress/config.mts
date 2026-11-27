@@ -1,7 +1,90 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitepress'
 import { pageThemeForFile } from './theme/page-themes'
 
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const agentPub = path.join(repoRoot, 'public/margin/agents')
+const llmsTxt = path.join(repoRoot, 'public/margin/llms.txt')
+const llmsFull = path.join(repoRoot, 'public/margin/llms-full.txt')
+
+function marginAgentStaticMiddleware(
+  req: import('node:http').IncomingMessage,
+  res: import('node:http').ServerResponse,
+  next: () => void,
+) {
+  const url = req.url?.split('?')[0] ?? ''
+  if (url === '/margin/llms.txt' && fs.existsSync(llmsTxt)) {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+    res.end(fs.readFileSync(llmsTxt))
+    return
+  }
+  if (url === '/margin/llms-full.txt' && fs.existsSync(llmsFull)) {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+    res.end(fs.readFileSync(llmsFull))
+    return
+  }
+  const agentPrefix = '/margin/agents/'
+  if (url.startsWith(agentPrefix) && url.endsWith('.md')) {
+    const rel = url.slice(agentPrefix.length)
+    if (rel.includes('..')) {
+      next()
+      return
+    }
+    const file = path.join(agentPub, rel)
+    if (fs.existsSync(file)) {
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+      res.end(fs.readFileSync(file))
+      return
+    }
+  }
+  next()
+}
+
+function marginAgentStaticPlugin(distRoot?: string) {
+  return {
+    name: 'margin-agent-static',
+    configureServer(server: { middlewares: { use: (fn: typeof marginAgentStaticMiddleware) => void } }) {
+      server.middlewares.use(marginAgentStaticMiddleware)
+    },
+    configurePreviewServer(server: { middlewares: { use: (fn: typeof marginAgentStaticMiddleware) => void } }) {
+      if (!distRoot) return
+      const previewAgents = path.join(distRoot, 'margin/agents')
+      const previewLlms = path.join(distRoot, 'margin/llms.txt')
+      const previewLlmsFull = path.join(distRoot, 'margin/llms-full.txt')
+      server.middlewares.use((req, res, next) => {
+        const url = req.url?.split('?')[0] ?? ''
+        if (url === '/margin/llms.txt' && fs.existsSync(previewLlms)) {
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+          res.end(fs.readFileSync(previewLlms))
+          return
+        }
+        if (url === '/margin/llms-full.txt' && fs.existsSync(previewLlmsFull)) {
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+          res.end(fs.readFileSync(previewLlmsFull))
+          return
+        }
+        const agentPrefix = '/margin/agents/'
+        if (url.startsWith(agentPrefix) && url.endsWith('.md')) {
+          const rel = url.slice(agentPrefix.length)
+          if (!rel.includes('..')) {
+            const file = path.join(previewAgents, rel)
+            if (fs.existsSync(file)) {
+              res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+              res.end(fs.readFileSync(file))
+              return
+            }
+          }
+        }
+        next()
+      })
+    },
+  }
+}
+
 export default defineConfig({
+  srcExclude: ['margin/agent-instructions/**'],
   transformHtml(code, _id, ctx) {
     const pt = pageThemeForFile(ctx.page)
     if (pt) return code.replace('<html ', `<html data-tpl="${pt.id}" `).replace(/(<html[^>]*?class=")/, pt.defaultDark ? '$1tpl-dark ' : '$1')
@@ -864,5 +947,8 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/axeliodiaz/templates' }
     ]
-  }
+  },
+  vite: {
+    plugins: [marginAgentStaticPlugin(path.join(repoRoot, '.vitepress/dist'))],
+  },
 })
