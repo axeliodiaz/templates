@@ -7,7 +7,7 @@ let fail = 0
 for (const url of urls) {
   const res = await fetch(url)
   const text = await res.text()
-  const ok = res.ok && text.includes('mg-squash') || text.includes('mg-sq-')
+  const ok = res.ok && (text.includes('mg-squash') || text.includes('mg-sq-'))
   console.log(url, res.status, ok ? 'ok' : 'BAD')
   if (!ok) fail = 1
 }
