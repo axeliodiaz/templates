@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-<<<<<<< HEAD
 import { useMarginPreviewDark } from './useMarginPreviewDark'
 const previewDark = useMarginPreviewDark()
-=======
->>>>>>> origin/main
 const props = defineProps<{ section: string }>()
 const show = (id: string) => !props.section || props.section === id
 const sent = ref(false)
@@ -12,14 +9,10 @@ const name = ref('')
 const email = ref('')
 </script>
 <template>
-<<<<<<< HEAD
   <div
     class="lab b2-bs6 b2-margin margin-bs6-root margin-bs6-forms"
     :class="{ 'lab-dark': previewDark }"
   >
-=======
-  <div class="lab b2-bs6 b2-margin margin-bs6-root margin-bs6-forms">
->>>>>>> origin/main
     <section v-show="show('overview')" class="l-demo l-form">
       <p>Forms use scoped Bootstrap 6 controls with Margin <code>.lab</code> tokens. Pair fields with visible labels; keep errors in text, not color alone.</p>
       <label class="form-label" for="mg-overview-name">Workspace</label>
