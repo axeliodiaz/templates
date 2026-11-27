@@ -86,15 +86,16 @@ export function useSquashFlow(opts) {
       later(() => {
         collapsing.value = new Set([...collapsing.value, row.id])
         later(() => {
-          visibleRows.value = visibleRows.value.filter((r) => r.id !== row.id)
           const next = new Set(collapsing.value)
           next.delete(row.id)
           collapsing.value = next
-        }, dur(260))
+          visibleRows.value = visibleRows.value.filter((r) => r.id !== row.id)
+        }, dur(220))
       }, i * stagger)
     })
     const total = toRemove.length * stagger + dur(520)
     later(() => {
+      collapsing.value = new Set()
       visibleRows.value = structuredClone(squashedCommits)
       phase.value = 'squashed'
       if (opts.autoplay.value && !userTookOver) {
