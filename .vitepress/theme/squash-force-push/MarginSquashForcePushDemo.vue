@@ -5,6 +5,7 @@ import MarginSquashForcePush from './MarginSquashForcePush.vue'
 const dark = inject('marginGuidePreviewDark', ref(false))
 const squashRef = ref(null)
 const motionOn = ref(true)
+const autoplayOn = ref(true)
 
 function replay() {
   squashRef.value?.replay()
@@ -30,7 +31,20 @@ function replay() {
       >
         {{ motionOn ? 'Motion on' : 'Motion off' }}
       </button>
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-sm"
+        :class="{ active: !autoplayOn }"
+        :aria-pressed="!autoplayOn"
+        @click="autoplayOn = !autoplayOn"
+      >
+        {{ autoplayOn ? 'Autoplay on' : 'Autoplay off' }}
+      </button>
     </div>
-    <MarginSquashForcePush ref="squashRef" :motion="motionOn" />
+    <MarginSquashForcePush
+      ref="squashRef"
+      :motion="motionOn"
+      :autoplay="autoplayOn"
+    />
   </div>
 </template>
