@@ -50,7 +50,7 @@ try {
 
   const page = await browser.newPage()
   const accordion = await (await fetch(`${base}/margin/components/accordion`)).text()
-  const hasAgent = /Para agentes|para agentes/i.test(accordion)
+  const hasAgent = /\bAgents\b/.test(accordion) && !/Para agentes/i.test(accordion)
   const mdRes = await fetch(`${base}/margin/agents/components/accordion.md`)
   const llmsRes = await fetch(`${base}/margin/llms.txt`)
   console.log(

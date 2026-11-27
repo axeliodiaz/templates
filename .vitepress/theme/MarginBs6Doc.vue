@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import MarginBs6Section from './MarginBs6Section.vue'
-import MarginAgentPanel from './MarginAgentPanel.vue'
 import MarginFormsSection from './MarginFormsSection.vue'
 import MarginContentSection from './MarginContentSection.vue'
 import MarginCustomizeColor from './MarginCustomizeColor.vue'
@@ -38,7 +37,6 @@ const props = defineProps<{
   <MarginContentSection v-else-if="area === 'content'" :section="slug === 'tables' ? 'tables-figures' : slug" :label="label" />
   <MarginBs6ProsePreview v-else-if="PROSE_AREAS.has(area)" :area="area" :slug="slug" :label="label" />
   <MarginBs6Generic v-else :area="area" :slug="slug" :label="label" />
-  <MarginAgentPanel />
   <MarginBs6CopyBlock :area="area" :slug="slug" />
   </div>
 </template>
