@@ -128,6 +128,38 @@ html[data-tpl='margin'] .margin-bs6-root.kit-margin.lab-dark,
   --soft: #303747;
 }
 
+/* All Margin guide previews: no square dark lab shell behind rounded demos */
+html[data-tpl='margin'] .mg-guide-preview .mg-guide-frame > .margin-bs6-root.b2-bs6.b2-margin {
+  color-scheme: light;
+  background: transparent !important;
+  --bs-bg-body: var(--b2-bg);
+  --bs-bg-1: var(--b2-surface);
+  --bs-bg-2: var(--b2-surface);
+  --bs-fg-body: var(--b2-ink);
+}
+
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .mg-guide-frame > .margin-bs6-root.b2-bs6.b2-margin,
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .margin-bs6-root.b2-bs6.b2-margin.lab-dark {
+  color-scheme: dark;
+  --bg: #181b22;
+  --surface: #242833;
+  --ink: #f1f3f8;
+  --muted: #aab3c3;
+  --line: #404757;
+  --soft: #303747;
+  --b2-bg: var(--bg);
+  --b2-surface: var(--surface);
+  --b2-ink: var(--ink);
+  --b2-muted: var(--muted);
+  --b2-line: var(--line);
+  --bs-bg-body: var(--b2-bg);
+  --bs-bg-1: var(--b2-surface);
+  --bs-bg-2: var(--b2-surface);
+  --bs-fg-body: var(--b2-ink);
+  background: transparent !important;
+  color: var(--ink);
+}
+
 html[data-tpl='margin'] .margin-bs6-root .l-demo,
 .mg-guide-preview .margin-bs6-root .l-demo {
   position: relative;
@@ -391,11 +423,36 @@ html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root .l-demo {
   background: var(--surface, var(--b2-surface));
 }
 
-html[data-tpl='margin'] .mg-guide-preview .margin-content-demo .mg-content-block {
-  padding: 0.75rem;
+html[data-tpl='margin'] .mg-guide-preview .margin-content-demo {
+  padding: 0.875rem 1rem;
   border: 1px solid var(--line, var(--k-border));
   border-radius: 10px;
   background: var(--surface, var(--b2-surface));
+  color: var(--ink, var(--k-text));
+  box-shadow: none;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-content-demo .mg-content-block {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-content-demo .mg-content-block :is(h1, h2, h3, h4) {
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+  border: 0 !important;
+  padding-bottom: 0 !important;
+  color: var(--ink, var(--bs-heading-color));
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-content-demo .mg-content-block :is(p, ul, ol) {
+  margin-bottom: 0.75rem;
+}
+
+html[data-tpl='margin'] .mg-guide-preview .margin-content-demo .mg-content-block :is(ul, ol) {
+  padding-left: 1.25rem;
 }
 
 /* VitePress .vp-doc resets beat @scope Bootstrap — one selector per rule (minifier-safe). */
@@ -532,6 +589,42 @@ html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .badge
 html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .badge.text-bg-info {
   background-color: var(--bs-info-bg, #4a9fd4) !important;
   color: var(--bs-info-contrast, #0f1528) !important;
+}
+/* BS5 text-bg-light / text-bg-dark — semantic paints (not color-scheme adaptive) */
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .text-bg-light,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .text-bg-light {
+  --bs-theme-bg: #f8f9fa;
+  --bs-theme-contrast: #212529;
+  --bs-badge-bg: #f8f9fa;
+  --bs-badge-color: #212529;
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+  -webkit-text-fill-color: #212529 !important;
+  border: 1px solid #dee2e6;
+}
+html[data-tpl='margin'] .vp-doc .mg-guide-preview .margin-bs6-root.b2-bs6 .text-bg-dark,
+html[data-tpl='margin'] .mg-guide-preview .margin-bs6-root.b2-bs6 .text-bg-dark {
+  --bs-theme-bg: #212529;
+  --bs-theme-contrast: #fff;
+  --bs-badge-bg: #212529;
+  --bs-badge-color: #fff;
+  background-color: #212529 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 1px solid #212529;
+}
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .margin-bs6-root.b2-bs6 .text-bg-light,
+html[data-tpl='margin'].tpl-dark .mg-guide-preview .margin-bs6-root.b2-bs6 .text-bg-light {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+  -webkit-text-fill-color: #212529 !important;
+  border-color: #ced4da !important;
+}
+html[data-tpl='margin'] .mg-guide-preview.lab-dark .margin-bs6-root.b2-bs6 .text-bg-dark,
+html[data-tpl='margin'].tpl-dark .mg-guide-preview .margin-bs6-root.b2-bs6 .text-bg-dark {
+  background-color: #212529 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 html[data-tpl='margin'] .mg-guide-preview .mg-chips-demo .d-flex {
   gap: 0.5rem !important;

@@ -34,8 +34,37 @@ html[data-tpl='margin'] .mg-guide-preview .tpl-content-leave-active {
   transition: none !important;
 }
 
+/* Tab panel swap: quick fade (catalog l-tabs) */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-tpl='margin'] .mg-guide-preview .l-tabpanel {
+    animation: mg-tab-fade 0.2s ease;
+  }
+}
+@keyframes mg-tab-fade {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .mg-guide-preview .margin-bs6-forms .l-demo {
   box-shadow: none;
+}
+
+/* Preview demos: never inherit VitePress doc heading rules (border-bottom / scroll clip) */
+html[data-tpl='margin'] .mg-guide-preview :is(h1, h2, h3, h4, h5, h6) {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  scroll-margin-top: 0;
+}
+
+html[data-tpl='margin'] .vp-doc.margin-scoped-guide > :is(h1, h2, h3, h4),
+html[data-tpl='margin'].margin-scoped-guide .vp-doc > :is(h1, h2, h3, h4) {
+  scroll-margin-top: calc(var(--vp-nav-height, 64px) + 24px);
 }
 
 /* WCAG AA: Margin guide inline + fenced code on light/dark template pages */
