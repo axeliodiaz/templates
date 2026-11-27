@@ -19,7 +19,10 @@ import MarginSquashStateGallery from './squash-force-push/MarginSquashStateGalle
     </MarginGuidePreview>
 
     <h2 id="reference-frames">Reference frames (X sequence)</h2>
-    <p>Full white cards on a light gray stage — 2 columns desktop, 1 column at 390px.</p>
+    <p>
+      Full white cards (~580px) on a light gray stage — one column until the viewport is at least
+      1240px (then two columns), full width with ellipsized messages at 390px.
+    </p>
     <MarginGuidePreview label="State gallery">
       <MarginSquashStateGallery />
     </MarginGuidePreview>

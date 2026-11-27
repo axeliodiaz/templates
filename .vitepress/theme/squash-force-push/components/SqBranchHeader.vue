@@ -20,7 +20,7 @@ const emit = defineEmits(['toggle-checks'])
     <div class="mg-sq-header__left">
       <template v-if="variant === 'pr'">
         <span class="mg-sq-header__pr">#{{ prNumber }}</span>
-        <span class="mg-sq-header__pr-title">{{ prTitle }}</span>
+        <span class="mg-sq-header__pr-title" :title="prTitle">{{ prTitle }}</span>
       </template>
       <template v-else>
         <span class="mg-sq-header__branch">{{ branch }}</span>
