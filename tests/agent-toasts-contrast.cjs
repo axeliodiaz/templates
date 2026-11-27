@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict')
 const fs = require('node:fs')
-const rows = JSON.parse(fs.readFileSync('.artifacts/agent-toasts/contrast.json'))
+const rows = JSON.parse(fs.readFileSync('.vitepress/theme/agent-toasts/verificacion/contrast.json'))
 assert.equal(rows.length, 41)
 for (const row of rows) for (const pair of row.pairs) assert.ok(pair.ratio >= pair.min, `${row.name} ${row.variant}: ${pair.name} ${pair.ratio.toFixed(2)}`)
 console.log('PASS 41 browser-measured contrast variants. Run test:agent-toasts after each build to regenerate measurements.')

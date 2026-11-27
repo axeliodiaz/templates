@@ -272,12 +272,9 @@ export function reduce(state: StackState, ev: StackEvent): StackState {
         const evictIdx = items.findIndex(it => !isPersistent(it.data))
         if (evictIdx >= 0) {
           items = items.filter((_, i) => i !== evictIdx)
-        } else if (isPersistent(raw)) {
+        } else {
           queue.push(raw)
           return { ...state, items, queue }
-        } else {
-          const oldIdx = items.findIndex(it => !isPersistent(it.data))
-          if (oldIdx >= 0) items = items.filter((_, i) => i !== oldIdx)
         }
       }
 
