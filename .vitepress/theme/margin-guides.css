@@ -38,6 +38,20 @@ html[data-tpl='margin'] .mg-guide-preview .tpl-content-leave-active {
   box-shadow: none;
 }
 
+/* Preview demos: never inherit VitePress doc heading rules (border-bottom / scroll clip) */
+html[data-tpl='margin'] .mg-guide-preview :is(h1, h2, h3, h4, h5, h6) {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  scroll-margin-top: 0;
+}
+
+html[data-tpl='margin'] .vp-doc.margin-scoped-guide > :is(h1, h2, h3, h4),
+html[data-tpl='margin'].margin-scoped-guide .vp-doc > :is(h1, h2, h3, h4) {
+  scroll-margin-top: calc(var(--vp-nav-height, 64px) + 24px);
+}
+
 /* WCAG AA: Margin guide inline + fenced code on light/dark template pages */
 html[data-tpl='margin'] .vp-doc :not(pre) > code {
   color: #1a2744;
