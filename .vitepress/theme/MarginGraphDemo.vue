@@ -35,8 +35,8 @@ function shuffle() {
 <template>
   <div class="mg-graph-lab lab b2-margin" :class="{ 'lab-dark': previewDark }">
     <div class="mg-graph-toolbar" role="toolbar" aria-label="Chart preview controls">
-      <button type="button" class="mg-guide-toggle" @click="replay">Replay</button>
-      <button type="button" class="mg-guide-toggle" @click="shuffle">Shuffle data</button>
+      <button type="button" class="btn btn-outline-secondary btn-sm" @click="replay">Replay</button>
+      <button type="button" class="btn btn-outline-secondary btn-sm" @click="shuffle">Shuffle data</button>
       <label class="mg-graph-state">
         <span class="visually-hidden">Data state</span>
         Data state

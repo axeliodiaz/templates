@@ -227,6 +227,7 @@ function markAttrs(mark) {
     stroke: color,
     "stroke-width": strokeWidth ?? (type === "path" ? 2.5 : 1),
     "stroke-dasharray": dash,
+    "stroke-linecap": mark.strokeLinecap,
     opacity: opacity ?? 1,
   };
 }
@@ -348,7 +349,15 @@ function markAttrs(mark) {
                 v-for="(m, i) in geometry.marks"
                 :key="'mark' + i"
                 v-bind="markAttrs(m)"
-                :class="{ 'fj-selected': selected === m.index }"
+                :class="{
+                  'fj-selected': selected === m.index,
+                  'fj-arc-series': m.seriesIndex != null,
+                }"
+                :style="
+                  m.seriesIndex != null
+                    ? { '--mg-arc-stagger': m.seriesIndex }
+                    : undefined
+                "
                 tabindex="0"
                 role="button"
                 :aria-label="describe(m)"
@@ -370,6 +379,25 @@ function markAttrs(mark) {
                 {{ t.value }}
               </text>
             </svg>
+            <ul
+              v-if="geometry.legend?.length"
+              class="fj-legend"
+              role="list"
+              aria-label="Chart legend"
+            >
+              <li
+                v-for="(row, i) in geometry.legend"
+                :key="'leg' + i"
+                class="fj-legend-row"
+                :class="{ 'is-unavailable': row.unavailable }"
+                role="listitem"
+              >
+                <span class="fj-legend-dot" :style="{ background: row.color }" aria-hidden="true" />
+                <span class="fj-legend-label">{{ row.label }}</span>
+                <strong class="fj-legend-value">{{ row.valueText }}</strong>
+                <small v-if="row.note" class="fj-legend-note">{{ row.note }}</small>
+              </li>
+            </ul>
             <p class="fj-readout" role="status">{{ status }}</p>
             <div
               v-if="dataView"
@@ -570,6 +598,35 @@ function markAttrs(mark) {
 .fj-chart--chromeless .fj-source,
 .fj-chart--chromeless .fj-warning {
   display: none;
+}
+.fj-legend {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.fj-legend-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 2px 10px;
+  align-items: center;
+  font-size: 13px;
+}
+.fj-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  grid-row: span 2;
+}
+.fj-legend-note {
+  grid-column: 2 / -1;
+  color: var(--fj-muted);
+  font-size: 12px;
+}
+.fj-legend-row.is-unavailable .fj-legend-dot {
+  background: var(--fj-muted) !important;
 }
 .fj-plot {
   display: block;
