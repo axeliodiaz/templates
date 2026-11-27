@@ -20,7 +20,7 @@ defineProps({
   >
     <SqCommitNode :kind="kind" :purple="purple" />
     <span class="mg-sq-row__msg">
-      {{ message }}
+      <span class="mg-sq-row__text" :title="message">{{ message }}</span>
       <span v-if="extra" class="mg-sq-row__extra">+{{ extra }}</span>
       <span v-if="branchPill" class="mg-sq-row__base-pill">{{ branchPill }}</span>
     </span>
