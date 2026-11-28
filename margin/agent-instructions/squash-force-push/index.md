@@ -1,6 +1,6 @@
 # Squash → force push
 
-Margin · Examples · [@pitus_ reference](https://x.com/pitus_/status/2126383874775118012)
+Margin · Examples · Squash force push
 
 ## Composed card
 

@@ -9,7 +9,7 @@ const usage = '<ShadcnBlocks theme="margin" />'
 
 # Dashboard blocks
 
-Studio example from the Felix catalog, restyled with Margin tokens (`#6389ea`, `#f5f5f7`, system UI). Fictitious data only.
+Studio dashboard example, restyled with Margin tokens (`#6389ea`, `#f5f5f7`, system UI). Fictitious data only.
 
 <MarginDemoShell :copy="usage">
   <ShadcnBlocks theme="margin" />
