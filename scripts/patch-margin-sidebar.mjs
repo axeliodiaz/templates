@@ -27,16 +27,11 @@ function sectionBlock(key, block) {
 const bsBlocks = Object.entries(MARGIN_BS6_IA).map(([k, b]) => sectionBlock(k, b))
 
 const demoItems = MARGIN_DEMOS.map(
-  (d) => `          { text: '${d.title.replace(/'/g, "\\'")}', link: '/margin/demos/${d.slug}' },`,
+  (d) => `              { text: '${d.title.replace(/'/g, "\\'")}', link: '/margin/demos/${d.slug}' },`,
 ).join('\n')
 
 const marginSidebar = `      '/margin': [
-        { text: 'Examples', items: [{ text: 'Agent orchestration', link: '/margin/agent-orchestration' }, { text: 'Agent crew', link: '/margin/agent-crew' }, { text: 'Payment ticket', link: '/margin/payment-ticket' }, { text: 'Agent toasts', link: '/margin/agent-toasts' }, { text: 'Transactional emails', link: '/margin/correos' }, { text: 'Squash → force push', link: '/margin/squash-force-push' }, { text: 'Squash sub-modules', link: '/margin/squash-force-push/submodules' }] },
         { text: 'Margin', items: [{ text: 'Overview', link: '/margin' }, { text: 'Analytics', link: '/margin/analytics' }] },
-        { text: 'Demos', collapsed: true, link: '/margin/demos/', items: [
-          { text: 'Overview', link: '/margin/demos/' },
-${demoItems}
-        ]},
 ${bsBlocks.join('\n')}
         { text: 'Patterns', collapsed: true, link: '/margin/patterns/', items: [
           { text: 'Overview', link: '/margin/patterns/' },
@@ -64,8 +59,24 @@ ${bsBlocks.join('\n')}
           { text: 'Drawer', link: '/margin/modules/drawer' },
           { text: 'Emails', link: '/margin/modules/emails' },
         ]},
+        { text: 'Examples & Demos', items: [
+          { text: 'Examples', items: [
+              { text: 'Agent orchestration', link: '/margin/agent-orchestration' },
+              { text: 'Agent crew', link: '/margin/agent-crew' },
+              { text: 'Payment ticket', link: '/margin/payment-ticket' },
+              { text: 'Agent toasts', link: '/margin/agent-toasts' },
+              { text: 'Transactional emails', link: '/margin/correos' },
+              { text: 'Squash → force push', link: '/margin/squash-force-push' },
+              { text: 'Squash sub-modules', link: '/margin/squash-force-push/submodules' },
+              { text: 'Agent Router', link: '/margin/agent-router' },
+          ]},
+          { text: 'Demos', collapsed: true, link: '/margin/demos/', items: [
+              { text: 'Overview', link: '/margin/demos/' },
+${demoItems}
+          ]},
+        ]},
       ],`
 
 config = config.replace(/      '\/margin': \[[\s\S]*?      \],\n      '\/evertrue':/, `${marginSidebar}\n      '/evertrue':`)
 fs.writeFileSync(configPath, config)
-console.log('Patched margin sidebar in config.mts (Examples + Demos)')
+console.log('Patched margin sidebar in config.mts (Examples & Demos at end)')
