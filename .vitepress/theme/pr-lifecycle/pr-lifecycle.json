@@ -1,0 +1,539 @@
+{
+  "type": "lifecycle",
+  "version": 1,
+  "meta": {
+    "number": 491,
+    "title": "Refresh sessions near expiry",
+    "head": "feat/session-refresh",
+    "base": "main",
+    "author": "@luis",
+    "mergeCommit": "a41c9e2"
+  },
+  "motion": {
+    "easeOut": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "spring": "cubic-bezier(0.34, 1.25, 0.64, 1)",
+    "easeIo": "cubic-bezier(0.65, 0, 0.35, 1)",
+    "easeIn": "cubic-bezier(0.4, 0, 1, 1)"
+  },
+  "deepLink": {
+    "prefix": "phase",
+    "hashPattern": "#phase-{id}"
+  },
+  "spine": ["draft", "checks", "review", "approvals", "ready", "merged"],
+  "focusOrder": ["draft", "checks", "review", "resolve", "approvals", "ready", "merged"],
+  "phases": [
+    {
+      "id": "draft",
+      "label": "Draft",
+      "step": 1,
+      "gridColumn": 1,
+      "notchPercent": "8.33%",
+      "connector": true
+    },
+    {
+      "id": "checks",
+      "label": "Checks",
+      "step": 2,
+      "gridColumn": 2,
+      "notchPercent": "25%",
+      "connector": true,
+      "markerRunningWhen": { "state": "active" }
+    },
+    {
+      "id": "review",
+      "label": "Review",
+      "step": 3,
+      "gridColumn": 3,
+      "notchPercent": "41.67%",
+      "connector": true
+    },
+    {
+      "id": "resolve",
+      "label": "Resolve comments",
+      "step": null,
+      "rework": true,
+      "lane": { "under": "review", "gridColumn": 3, "gridRow": 3 },
+      "notchPercent": "41.67%",
+      "connector": false
+    },
+    {
+      "id": "approvals",
+      "label": "Approvals",
+      "step": 4,
+      "gridColumn": 4,
+      "notchPercent": "58.33%",
+      "connector": true
+    },
+    {
+      "id": "ready",
+      "label": "Ready to merge",
+      "step": 5,
+      "gridColumn": 5,
+      "notchPercent": "75%",
+      "connector": true
+    },
+    {
+      "id": "merged",
+      "label": "Merged",
+      "step": 6,
+      "gridColumn": 6,
+      "notchPercent": "91.67%",
+      "connector": false
+    }
+  ],
+  "lanes": [
+    {
+      "id": "resolve",
+      "underPhase": "review",
+      "label": "Resolve comments"
+    }
+  ],
+  "loops": [
+    {
+      "id": "fix-push",
+      "variant": "top",
+      "label": "Fix & push",
+      "counterKey": "fixCount",
+      "flags": { "fly": "loopFixFly", "hist": "loopFixHist" },
+      "arcVar": "loopFixFly",
+      "stackChip": {
+        "phaseId": "checks",
+        "text": "↩ Sent back to Draft {pill}"
+      }
+    },
+    {
+      "id": "review-resolve",
+      "variant": "mid",
+      "counterKey": "changesCount",
+      "flags": { "down": "loopChgDown", "up": "loopChgUp", "hist": "loopChgHist" },
+      "stackChip": {
+        "phaseId": "review",
+        "text": "↩ Changes requested {pill}"
+      }
+    }
+  ],
+  "datasets": {
+    "checks": [
+      { "name": "Build", "duration": "1m 12s" },
+      { "name": "Lint", "duration": "24s" },
+      { "name": "Typecheck", "duration": "38s" },
+      { "name": "Unit tests", "duration": "52s" },
+      { "name": "E2E tests", "duration": "3m 04s" },
+      { "name": "Vercel Preview", "duration": "1m 48s" }
+    ],
+    "reviewers": [
+      { "handle": "@ana", "role": "code owner" },
+      { "handle": "@sam", "role": "" }
+    ],
+    "threads": [
+      { "loc": "src/session.ts:42", "preview": "Use the token expiry, not Date.now()" },
+      { "loc": "src/refresh.ts:18", "preview": "Extract the 30s skew into a constant" },
+      { "loc": "tests/session.test.ts:7", "preview": "Cover the expired-token path" }
+    ]
+  },
+  "stateLabels": {
+    "pending": "Pending",
+    "active": "In progress",
+    "done": "Done",
+    "blocked": "Blocked",
+    "failed": "Failed",
+    "skipped": "Not needed",
+    "stopped": "Stopped"
+  },
+  "legend": ["pending", "active", "done", "blocked", "failed"],
+  "metrics": {
+    "draft": [{ "if": { "m.fixCount_gt": 0 }, "text": "Round {m.fixCount_plus_1}" }, { "text": "4 commits" }],
+    "checks": [
+      { "if": { "state": "failed" }, "text": "1 failed" },
+      { "if": { "state": "pending" }, "text": "6 checks" },
+      { "text": "{m.checksPassed}/6 passed" }
+    ],
+    "review": [
+      { "if": { "state": "blocked" }, "text": "Changes requested" },
+      { "if": { "state": "active" }, "text": "In review" },
+      { "if": { "state": "done" }, "text": "Reviewed" },
+      { "text": "2 reviewers" }
+    ],
+    "resolve": [
+      { "if": { "state": "skipped" }, "text": "Not needed" },
+      { "if": { "state": "active" }, "text": "{m.openThreads} open" },
+      { "if": { "state": "done" }, "text": "All resolved" },
+      { "text": "If needed" }
+    ],
+    "approvals": [
+      { "if": { "state": "blocked" }, "text": "{m.approvalsHave} of 2 · needs 1 more" },
+      { "if": { "state": "pending" }, "text": "2 required" },
+      { "text": "{m.approvalsHave} of 2" }
+    ],
+    "ready": [
+      { "if": { "state": "active" }, "text": "No conflicts" },
+      { "if": { "state": "done" }, "text": "Mergeable" },
+      { "text": "—" }
+    ],
+    "merged": [{ "if": { "state": "done" }, "text": "{meta.mergeCommit}" }, { "text": "—" }]
+  },
+  "headlines": [
+    {
+      "if": { "m.closed": true },
+      "tone": "closed",
+      "chip": "Closed",
+      "h1": "Closed without merging",
+      "h2": "Stopped at {focus.label} · reopen to continue"
+    },
+    {
+      "if": { "phase.merged.state": "done" },
+      "tone": "merged",
+      "chip": "Merged",
+      "h1": "Merged into main",
+      "h2": "Squash and merge · {meta.mergeCommit} · branch deleted"
+    },
+    {
+      "if": { "phase.ready.state": "active" },
+      "tone": "ready",
+      "chip": "Ready to merge",
+      "h1": "Ready to merge",
+      "h2": "All required checks and approvals are in · no conflicts"
+    },
+    {
+      "if": { "focus.state": "failed" },
+      "tone": "failed",
+      "chip": "Failed",
+      "h1": "Checks failed — fix and push",
+      "h2": "E2E tests failed after 3m 04s · sent back to Draft ×{m.fixCount}"
+    },
+    {
+      "if": { "focus.id": "review", "focus.state": "blocked" },
+      "tone": "blocked",
+      "chip": "Blocked",
+      "h1": "Changes requested",
+      "h2": "{m.changesCount} rounds · resolve the open threads"
+    },
+    {
+      "if": { "focus.state": "blocked", "focus.id": "approvals" },
+      "tone": "blocked",
+      "chip": "Blocked",
+      "h1": "Waiting on 1 more approval",
+      "h2": "@ana (code owner) hasn’t reviewed yet"
+    },
+    {
+      "if": { "focus.id": "draft" },
+      "tone": "draft",
+      "chip": "Draft",
+      "h1": "Draft — not ready for review",
+      "h2Choices": [
+        { "if": { "m.fixCount_gt": 0 }, "text": "Fix pushed · round {m.fixCount_plus_1}" },
+        { "text": "4 commits · opened 3h ago" }
+      ]
+    },
+    {
+      "if": { "focus.id": "checks" },
+      "tone": "active",
+      "chip": "In progress",
+      "h1": "Running checks",
+      "h2": "{m.checksPassed} of 6 passed"
+    },
+    {
+      "if": { "focus.id": "review" },
+      "tone": "active",
+      "chip": "In progress",
+      "h1": "In review",
+      "h2": "Waiting on @ana and @sam"
+    },
+    {
+      "if": { "focus.id": "resolve" },
+      "tone": "active",
+      "chip": "In progress",
+      "h1": "Resolving {m.openThreads} open thread(s)",
+      "h2": "Round {m.changesCount}"
+    },
+    {
+      "if": { "focus.id": "approvals" },
+      "tone": "active",
+      "chip": "In progress",
+      "h1": "Approvals {m.approvalsHave} of 2",
+      "h2": "Required by CODEOWNERS"
+    },
+    {
+      "tone": "active",
+      "chip": "In progress",
+      "h1": "In progress",
+      "h2": ""
+    }
+  ],
+  "panels": {
+    "draft": {
+      "rows": [
+        { "kind": "split", "label": "Author", "value": "{meta.author}" },
+        { "kind": "full", "text": "4 commits · +186 −42 · 6 files" },
+        {
+          "kind": "full",
+          "if": { "state": "done" },
+          "text": "Marked ready for review",
+          "elseText": "Mark as ready for review to start checks"
+        }
+      ]
+    },
+    "checks": {
+      "stat": "{m.checksPassed} of 6 passed",
+      "calloutFailed": "E2E tests failed. Fix and push to re-run all checks.",
+      "rowsFrom": "checks",
+      "rowKind": "check"
+    },
+    "review": {
+      "calloutBlocked": "@sam requested changes · 3 open threads",
+      "rows": [
+        { "kind": "split", "label": "@ana", "value": "code owner · Requested" },
+        {
+          "kind": "split",
+          "label": "@sam",
+          "valueIf": { "state": "blocked", "then": "Changes requested", "else": "Requested" }
+        }
+      ]
+    },
+    "resolve": {
+      "statSkipped": "No comments to resolve",
+      "statActive": "{m.openThreads} open · {threads.resolvedCount} resolved",
+      "rowsFrom": "threads",
+      "rowKind": "thread",
+      "showWhenStateNotIn": ["pending", "skipped"]
+    },
+    "approvals": {
+      "calloutBlocked": "Needs 1 more approval from a code owner: @ana",
+      "rows": [
+        {
+          "kind": "split",
+          "label": "@sam",
+          "valueIf": { "key": "m.approvalsHave_gt", "n": 0, "then": "Approved", "else": "Waiting" }
+        },
+        {
+          "kind": "split",
+          "label": "@ana",
+          "valuePrefix": "code owner · ",
+          "valueIf": { "key": "m.approvalsHave_gt", "n": 1, "then": "Approved", "else": "Waiting" }
+        }
+      ]
+    },
+    "ready": {
+      "rows": [
+        { "kind": "split", "label": "Required checks", "value": "6 of 6" },
+        { "kind": "split", "label": "Approvals", "value": "2 of 2" },
+        { "kind": "full", "text": "No conflicts with main" },
+        { "kind": "split", "label": "Merge method", "value": "Squash and merge" }
+      ]
+    },
+    "merged": {
+      "rows": [
+        {
+          "kind": "split",
+          "label": "Destination",
+          "valueIf": { "state": "done", "then": "Merged into main", "else": "Not merged yet" }
+        },
+        { "kind": "split", "label": "Commit", "value": "{meta.mergeCommit}" },
+        {
+          "kind": "split",
+          "label": "Branch",
+          "value": "{meta.head} · {merged.branchTail}"
+        }
+      ]
+    }
+  },
+  "autoplay": {
+    "steps": [
+      [1400, "liveStart"],
+      [900, "advanceDraftChecks"],
+      [700, "checks2"],
+      [700, "checks4"],
+      [1600, "backFix"],
+      [900, "advanceDraftChecks"],
+      [700, "checks2"],
+      [700, "checks4"],
+      [900, "checks6"],
+      [1200, "advanceChecksReview"],
+      [3600, "changesLoop"],
+      [1000, "advanceReviewApprovals"],
+      [2000, "approvals1"],
+      [2200, "approvalsBlock"],
+      [700, "approvals2"],
+      [1300, "advanceApprovalsReady"],
+      [600, "advanceReadyMerged"],
+      [0, "finish"]
+    ]
+  },
+  "galleryStates": [
+    {
+      "id": "loading",
+      "title": "Loading",
+      "code": "<MarginPrLifecycle state=\"loading\" :motion=\"false\" :autoplay=\"false\" />",
+      "view": "loading"
+    },
+    {
+      "id": "empty",
+      "title": "Empty",
+      "code": "<MarginPrLifecycle state=\"empty\" :motion=\"false\" :autoplay=\"false\" />",
+      "view": "empty"
+    },
+  {
+      "id": "draft",
+      "title": "Draft",
+      "code": "<MarginPrLifecycle state=\"draft\" :motion=\"false\" :autoplay=\"false\" />"
+    },
+    {
+      "id": "checks-running",
+      "title": "Checks running",
+      "open": "checks",
+      "code": "<MarginPrLifecycle state=\"checks-running\" open=\"checks\" :motion=\"false\" :autoplay=\"false\" />",
+      "patch": { "phases.draft": "done", "phases.checks": "active", "checksPassed": 2 }
+    },
+    {
+      "id": "checks-failed",
+      "title": "Checks failed",
+      "open": "checks",
+      "code": "<MarginPrLifecycle state=\"checks-failed\" open=\"checks\" :motion=\"false\" :autoplay=\"false\" />",
+      "patch": {
+        "phases.draft": "done",
+        "phases.checks": "failed",
+        "checksPassed": 4,
+        "failIdx": 4,
+        "fixCount": 1,
+        "loopFixHist": true
+      }
+    },
+    {
+      "id": "changes-requested",
+      "title": "Changes requested",
+      "open": "resolve",
+      "code": "<MarginPrLifecycle state=\"changes-requested\" open=\"resolve\" :motion=\"false\" :autoplay=\"false\" />",
+      "patch": {
+        "phases": {
+          "draft": "done",
+          "checks": "done",
+          "review": "blocked",
+          "resolve": "active",
+          "approvals": "pending",
+          "ready": "pending",
+          "merged": "pending"
+        },
+        "checksPassed": 6,
+        "openThreads": 2,
+        "changesCount": 1,
+        "fixCount": 1,
+        "loopChgDown": true,
+        "loopChgHist": true,
+        "loopFixHist": true
+      }
+    },
+    {
+      "id": "approval-blocked",
+      "title": "Approval blocked",
+      "open": "approvals",
+      "code": "<MarginPrLifecycle state=\"approval-blocked\" open=\"approvals\" :motion=\"false\" :autoplay=\"false\" />",
+      "patch": {
+        "phases": {
+          "draft": "done",
+          "checks": "done",
+          "review": "done",
+          "resolve": "done",
+          "approvals": "blocked",
+          "ready": "pending",
+          "merged": "pending"
+        },
+        "checksPassed": 6,
+        "approvalsHave": 1,
+        "fixCount": 1,
+        "changesCount": 1,
+        "loopFixHist": true,
+        "loopChgHist": true
+      }
+    },
+    {
+      "id": "ready",
+      "title": "Ready to merge",
+      "code": "<MarginPrLifecycle state=\"ready\" :motion=\"false\" :autoplay=\"false\" />",
+      "patch": {
+        "phases.approvals": "done",
+        "phases.ready": "active",
+        "approvalsHave": 2,
+        "checksPassed": 6,
+        "fixCount": 1,
+        "changesCount": 1,
+        "loopFixHist": true,
+        "loopChgHist": true,
+        "phases.draft": "done",
+        "phases.checks": "done",
+        "phases.review": "done",
+        "phases.resolve": "done"
+      }
+    },
+    {
+      "id": "merged",
+      "title": "Merged",
+      "code": "<MarginPrLifecycle state=\"merged\" :motion=\"false\" :autoplay=\"false\" />",
+      "patch": {
+        "phases.approvals": "done",
+        "phases.ready": "done",
+        "phases.merged": "done",
+        "approvalsHave": 2,
+        "checksPassed": 6,
+        "fixCount": 1,
+        "changesCount": 1,
+        "loopFixHist": true,
+        "loopChgHist": true,
+        "phases.draft": "done",
+        "phases.checks": "done",
+        "phases.review": "done",
+        "phases.resolve": "done"
+      }
+    },
+    {
+      "id": "error",
+      "title": "Error",
+      "code": "<MarginPrLifecycle state=\"error\" :motion=\"false\" :autoplay=\"false\" />",
+      "view": "error",
+      "open": "approvals",
+      "patch": {
+        "phases": {
+          "draft": "done",
+          "checks": "done",
+          "review": "done",
+          "resolve": "done",
+          "approvals": "blocked",
+          "ready": "pending",
+          "merged": "pending"
+        },
+        "checksPassed": 6,
+        "approvalsHave": 1,
+        "fixCount": 1,
+        "changesCount": 1,
+        "loopFixHist": true,
+        "loopChgHist": true
+      }
+    },
+    {
+      "id": "closed",
+      "title": "Closed",
+      "code": "<MarginPrLifecycle state=\"closed\" :motion=\"false\" :autoplay=\"false\" />",
+      "patch": {
+        "phases.draft": "done",
+        "phases.checks": "done",
+        "phases.review": "active",
+        "closed": true,
+        "checksPassed": 6
+      }
+    }
+  ],
+  "mobileGalleryStates": [
+    { "id": "approval-blocked", "title": "Approval blocked (closed panel)", "open": "" },
+    { "id": "changes-requested", "title": "Changes requested (resolve open)", "open": "resolve" },
+    { "id": "checks-failed", "title": "Checks failed", "open": "checks" }
+  ],
+  "ui": {
+    "trackAriaLabel": "Pull request lifecycle, 6 phases and 1 optional rework step",
+    "legendLabels": {
+      "pending": "Pending",
+      "active": "In progress",
+      "done": "Done",
+      "blocked": "Blocked",
+      "failed": "Failed"
+    }
+  }
+}

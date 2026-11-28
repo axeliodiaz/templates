@@ -1,6 +1,16 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref, toRef, useId, watch } from 'vue'
-import { CHECKS, PHASES, PR_META, SPINE } from './lifecycle-data.mjs'
+import {
+  FOCUS_ORDER,
+  LOOPS,
+  LIFECYCLE_DEF,
+  PHASES,
+  PR_META,
+  SPINE,
+  gridColumnFor,
+  loopById,
+  notchFor,
+} from './lifecycle-data.mjs'
 import { ariaLabelFor, headlineFor, phaseSub } from './lifecycle-headlines.mjs'
 import { lifecycleStatePreset } from './lifecycle-state-presets.mjs'
 import { usePrLifecycleFlow } from './usePrLifecycleFlow.mjs'
@@ -91,7 +101,7 @@ const showDemoBar = computed(() => isLive.value && props.autoplay)
 const head = computed(() => headlineFor(M.value))
 
 const focusId = computed(() => {
-  const spine = [...SPINE, 'resolve']
+  const spine = FOCUS_ORDER
   for (const k of ['failed', 'blocked']) {
     for (const id of spine) if (M.value.phases[id] === k) return id
   }
@@ -106,17 +116,9 @@ const demoInfo = computed(() => {
   return flow.demoLabel.value
 })
 
-const NOTCH = {
-  draft: '8.33%',
-  checks: '25%',
-  review: '41.67%',
-  resolve: '41.67%',
-  approvals: '58.33%',
-  ready: '75%',
-  merged: '91.67%',
-}
-
-const NODE_ORDER = ['draft', 'checks', 'review', 'resolve', 'approvals', 'ready', 'merged']
+const NODE_ORDER = FOCUS_ORDER
+const loopFix = computed(() => loopById('fix-push'))
+const loopChg = computed(() => loopById('review-resolve'))
 
 const openPhase = computed(() => PHASES.find((p) => p.id === openId.value))
 
@@ -203,7 +205,7 @@ function resolveSpineOpen(stacked) {
 }
 
 function phaseCol(id) {
-  return { draft: 1, checks: 2, review: 3, approvals: 4, ready: 5, merged: 6 }[id]
+  return gridColumnFor(id)
 }
 
 function markerStep(phase) {
@@ -439,7 +441,7 @@ onUnmounted(() => {
         v-if="!isEmpty && !isLoading"
         class="mg-prl__track"
         role="list"
-        aria-label="Pull request lifecycle, 6 phases and 1 optional rework step"
+        :aria-label="LIFECYCLE_DEF.ui.trackAriaLabel"
         @keydown="onTrackKeydown"
       >
         <div
@@ -459,7 +461,7 @@ onUnmounted(() => {
             :data-hot="M.fixCount >= 3 ? 1 : 0"
             :title="`Sent back ${M.fixCount} time${M.fixCount > 1 ? 's' : ''}`"
           >
-            <span class="lbl">Fix &amp; push</span>
+            <span class="lbl">{{ loopFix?.label }}</span>
             <span aria-hidden="true">{{ pillN(M.fixCount) }}</span>
           </span>
         </div>
@@ -491,7 +493,7 @@ onUnmounted(() => {
             <PrLifecycleMarker
               :step="markerStep(phase)"
               :state="phaseState(phase.id)"
-              :running="phase.id === 'checks' && phaseState('checks') === 'active'"
+              :running="Boolean(phase.markerRunningWhen && phaseState(phase.id) === phase.markerRunningWhen.state)"
               :pop="isFlash(phase.id, 'pop')"
               :shake="isFlash(phase.id, 'shake')"
             />
@@ -501,7 +503,7 @@ onUnmounted(() => {
             </span>
             <span class="sr">{{ ariaLabelFor(phase, M) }}</span>
             <span
-              v-if="phase.id !== 'resolve' && phase.id !== 'merged'"
+              v-if="phase.connector !== false"
               class="mg-prl__conn"
               aria-hidden="true"
               :data-wall="connWall(phase.id)"
@@ -517,15 +519,15 @@ onUnmounted(() => {
           </component>
 
           <span
-            v-if="phase.id === 'checks' && M.fixCount"
+            v-if="loopFix?.stackChip?.phaseId === phase.id && M.fixCount"
             class="mg-prl__stackchip"
             aria-hidden="true"
-          >↩ Sent back to Draft {{ pillN(M.fixCount) }}</span>
+          >{{ loopFix.stackChip.text.replace('{pill}', pillN(M.fixCount)) }}</span>
           <span
-            v-if="phase.id === 'review' && M.changesCount"
+            v-if="loopChg?.stackChip?.phaseId === phase.id && M.changesCount"
             class="mg-prl__stackchip"
             aria-hidden="true"
-          >↩ Changes requested {{ pillN(M.changesCount) }}</span>
+          >{{ loopChg.stackChip.text.replace('{pill}', pillN(M.changesCount)) }}</span>
 
           <div
             v-if="layoutStacked && !isEmpty"
@@ -572,11 +574,9 @@ onUnmounted(() => {
         </div>
 
         <div class="mg-prl__legend" aria-hidden="true">
-          <span><i class="l-pending" /> Pending</span>
-          <span><i class="l-active" /> In progress</span>
-          <span><i class="l-done" /> Done</span>
-          <span><i class="l-blocked" /> Blocked</span>
-          <span><i class="l-failed" /> Failed</span>
+          <span v-for="key in LIFECYCLE_DEF.legend" :key="key">
+            <i :class="'l-' + key" /> {{ LIFECYCLE_DEF.ui.legendLabels[key] }}
+          </span>
         </div>
 
         <div
@@ -592,7 +592,7 @@ onUnmounted(() => {
               <span
                 v-if="openId"
                 class="mg-prl__notch"
-                :style="{ '--mg-prl-notch': NOTCH[openId] }"
+                :style="{ '--mg-prl-notch': openId ? notchFor(openId) : '50%' }"
                 aria-hidden="true"
               />
               <div v-if="openId && openPhase" class="mg-prl__panel-wrap">

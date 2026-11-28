@@ -6,6 +6,7 @@ const ok =
   res.ok &&
   text.includes('mg-margin-pr-lifecycle') &&
   text.includes('mg-prl__track') &&
-  text.includes('Pull request lifecycle')
+  text.includes('Pull request lifecycle') &&
+  text.includes('mg-prl-doc-tabs')
 console.log(url, res.status, ok ? 'ok' : 'BAD')
 process.exit(ok ? 0 : 1)
