@@ -476,6 +476,7 @@ onUnmounted(() => {
             :is="isEmpty ? 'span' : 'button'"
             :type="isEmpty ? undefined : 'button'"
             class="mg-prl__node"
+            :data-state="phaseState(phase.id)"
             :class="{ 'is-changed': M.changedId === phase.id }"
             :id="`mg-prl-node-${phase.id}`"
             :aria-expanded="openId === phase.id ? 'true' : 'false'"
@@ -571,11 +572,11 @@ onUnmounted(() => {
         </div>
 
         <div class="mg-prl__legend" aria-hidden="true">
-          <span>Pending</span>
-          <span>In progress</span>
-          <span>Done</span>
-          <span>Blocked</span>
-          <span>Failed</span>
+          <span><i class="l-pending" /> Pending</span>
+          <span><i class="l-active" /> In progress</span>
+          <span><i class="l-done" /> Done</span>
+          <span><i class="l-blocked" /> Blocked</span>
+          <span><i class="l-failed" /> Failed</span>
         </div>
 
         <div
