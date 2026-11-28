@@ -9,7 +9,7 @@ const usage = '<DependencyGraph scenario="launch" />'
 
 # Dependency graph
 
-Studio example from the Felix catalog, restyled with Margin tokens (`#6389ea`, `#f5f5f7`, system UI). Fictitious data only.
+Studio dashboard example, restyled with Margin tokens (`#6389ea`, `#f5f5f7`, system UI). Fictitious data only.
 
 <MarginDemoShell :copy="usage">
   <DependencyGraph scenario="launch" />

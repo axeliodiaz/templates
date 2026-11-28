@@ -4,7 +4,7 @@ pageClass: margin-scoped-guide
 
 # Demos
 
-Felix dashboard and product examples restyled with Margin design tokens. Each page includes a live preview (light/dark), copyable markup, and a 390px-friendly layout inside `MarginGuidePreview`.
+Dashboard and product examples restyled with Margin design tokens. Each page includes a live preview (light/dark), copyable markup, and a 390px-friendly layout inside `MarginGuidePreview`.
 
 <span id="mg-margin-demos-index" hidden aria-hidden="true"></span>
 

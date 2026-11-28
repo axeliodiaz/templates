@@ -8,9 +8,7 @@ import MarginSquashStateGallery from './squash-force-push/MarginSquashStateGalle
 <template>
   <div class="margin-squash-doc">
     <p>
-      Pixel-close to
-      <a href="https://x.com/pitus_/status/2126383874775118012" rel="noopener noreferrer">@pitus_</a>:
-      composed card <strong>autoplays</strong> below; reference frames use
+      The composed card <strong>autoplays</strong> below; reference frames use
       <code>state="loading" | "expanded" | "rebasing" | "squashed" | "pushing" | "pr-running" | "pr-passed"</code>
       on the same <code>MarginSquashForcePush</code> component.
     </p>
@@ -18,7 +16,7 @@ import MarginSquashStateGallery from './squash-force-push/MarginSquashStateGalle
       <MarginSquashForcePushDemo />
     </MarginGuidePreview>
 
-    <h2 id="reference-frames">Reference frames (X sequence)</h2>
+    <h2 id="reference-frames">Reference frames</h2>
     <p>
       Full white cards (~580px) on a light gray stage — one column until the viewport is at least
       1240px (then two columns), full width with ellipsized messages at 390px.
