@@ -1,6 +1,6 @@
 <script setup>
+import MarginPrLifecycleExampleTabs from './MarginPrLifecycleExampleTabs.vue'
 import MarginGuidePreview from '../MarginGuidePreview.vue'
-import MarginPrLifecycleDemo from './MarginPrLifecycleDemo.vue'
 import MarginPrLifecycleStateGallery from './MarginPrLifecycleStateGallery.vue'
 </script>
 
@@ -10,9 +10,7 @@ import MarginPrLifecycleStateGallery from './MarginPrLifecycleStateGallery.vue'
       Track a pull request from draft through checks, review, optional comment resolution, approvals,
       merge readiness, and merged. Synthetic data for PR #491 continues the Squash force-push storyline.
     </p>
-    <MarginGuidePreview label="Live lifecycle (autoplay once when visible)">
-      <MarginPrLifecycleDemo />
-    </MarginGuidePreview>
+    <MarginPrLifecycleExampleTabs />
 
     <h2 id="reference-states">Reference states</h2>
     <p>Full cards (720px max) — loading, empty, draft, checks, review loops, blocked approvals, ready, merged, error, and closed.</p>
@@ -29,7 +27,7 @@ import MarginPrLifecycleStateGallery from './MarginPrLifecycleStateGallery.vue'
         <tr><td>Phase advance</td><td>≈650 ms</td><td>Connector 360 ms ease-io; next phase at 80%</td></tr>
         <tr><td>Fix &amp; push</td><td>≈1.7 s</td><td>Arc 520 ms; arc fades to history 400 ms</td></tr>
         <tr><td>Review ⇄ Resolve</td><td>≈3.3 s</td><td>Threads every 350 ms</td></tr>
-        <tr><td>Autoplay</td><td>≈21 s</td><td>18 steps; pause on interaction or hidden tab</td></tr>
+        <tr><td>Autoplay</td><td>≈18 steps</td><td>Pause on interaction or hidden tab</td></tr>
       </tbody>
     </table>
   </div>

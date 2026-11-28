@@ -1,26 +1,7 @@
 import { computed, ref } from 'vue'
-import { freshModel } from './lifecycle-data.mjs'
+import { freshModel, AUTOPLAY_STEPS } from './lifecycle-data.mjs'
 
-const SCRIPT = [
-  [1400, 'liveStart'],
-  [900, 'advanceDraftChecks'],
-  [700, 'checks2'],
-  [700, 'checks4'],
-  [1600, 'backFix'],
-  [900, 'advanceDraftChecks'],
-  [700, 'checks2'],
-  [700, 'checks4'],
-  [900, 'checks6'],
-  [1200, 'advanceChecksReview'],
-  [3600, 'changesLoop'],
-  [1000, 'advanceReviewApprovals'],
-  [2000, 'approvals1'],
-  [2200, 'approvalsBlock'],
-  [700, 'approvals2'],
-  [1300, 'advanceApprovalsReady'],
-  [600, 'advanceReadyMerged'],
-  [0, 'finish'],
-]
+const SCRIPT = AUTOPLAY_STEPS
 
 /**
  * @param {{ motion: import('vue').Ref<boolean>, autoplay: import('vue').Ref<boolean>, reducedMotion?: import('vue').Ref<boolean>, onLive?: (m: string) => void, onPhaseAnnounce?: (m: string) => void }} opts
