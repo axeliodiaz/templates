@@ -1394,10 +1394,12 @@ html[data-tpl='margin'] .mg-prl-lab__toolbar {
   margin-bottom: 12px;
 }
 
+html[data-tpl='margin'] .mg-example-tabs,
 html[data-tpl='margin'] .mg-prl-doc-tabs {
   margin: 1.25rem 0 2rem;
 }
 
+html[data-tpl='margin'] .mg-example-tabs .l-tabs,
 html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -1405,6 +1407,7 @@ html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs {
   margin-bottom: 14px;
 }
 
+html[data-tpl='margin'] .mg-example-tabs .l-tabs button,
 html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs button {
   border: 1px solid var(--vp-c-divider, #e0e3e9);
   background: var(--vp-c-bg, #fff);
@@ -1417,6 +1420,8 @@ html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs button {
   cursor: pointer;
 }
 
+html[data-tpl='margin'] .mg-example-tabs .l-tabs button.is-active,
+html[data-tpl='margin'] .mg-example-tabs .l-tabs button[aria-selected='true'],
 html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs button.is-active,
 html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs button[aria-selected='true'] {
   border-color: #6389ea;

@@ -1,0 +1,33 @@
+{
+  "type": "email",
+  "defaultId": "quote",
+  "messages": [
+    {
+      "id": "quote",
+      "label": "Quote approved",
+      "subject": "Your estimate is approved",
+      "heading": "Ready to get to work",
+      "body": "Your estimate for the Riverside kitchen project has been approved. Your project team can now confirm the schedule.",
+      "detail": "Estimate EST-1042 · Sample total $2,300",
+      "action": "View estimate"
+    },
+    {
+      "id": "invoice",
+      "label": "Invoice ready",
+      "subject": "Your invoice is ready",
+      "heading": "A clear view of your costs",
+      "body": "Your latest project invoice is ready to review. Check the work, materials and approved changes before making a payment.",
+      "detail": "Invoice INV-2084 · Sample balance $1,450",
+      "action": "Review invoice"
+    },
+    {
+      "id": "update",
+      "label": "Job update",
+      "subject": "An update on your project",
+      "heading": "Your project is moving forward",
+      "body": "The preparation stage is complete. Your project team has added a progress note and the next steps to your project workspace.",
+      "detail": "Job JOB-031 · Preparation complete",
+      "action": "View project"
+    }
+  ]
+}

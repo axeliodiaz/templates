@@ -3,8 +3,7 @@ pageClass: margin-scoped-guide
 ---
 
 <script setup>
-import MarginGuidePreview from '../../.vitepress/theme/MarginGuidePreview.vue'
-import MarginSquashStateGallery from '../../.vitepress/theme/squash-force-push/MarginSquashStateGallery.vue'
+import MarginSquashSubmodulesDoc from '../../.vitepress/theme/margin-examples/MarginSquashSubmodulesDoc.vue'
 </script>
 
 # Squash → force push · reference frames
@@ -13,6 +12,4 @@ Each card is a static <code>MarginSquashForcePush</code> with a <code>state</cod
 
 [Composed autoplay card](/margin/squash-force-push)
 
-<MarginGuidePreview label="State gallery">
-  <MarginSquashStateGallery />
-</MarginGuidePreview>
+<MarginSquashSubmodulesDoc />

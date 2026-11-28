@@ -1,0 +1,215 @@
+{
+  "type": "git-graph",
+  "meta": {
+    "branch": "feat/session-refresh",
+    "target": "main"
+  },
+  "commits": {
+    "initial": [
+      {
+        "id": "c1",
+        "kind": "fixup",
+        "message": "ok now it works",
+        "hash": "7e0c3b8",
+        "time": "now",
+        "squashInto": "c2"
+      },
+      {
+        "id": "c2",
+        "kind": "commit",
+        "message": "Add session refresh tests",
+        "hash": "d29f50a",
+        "time": "3m",
+        "extra": 1
+      },
+      {
+        "id": "c3",
+        "kind": "fixup",
+        "message": "pls work",
+        "hash": "b81f4c2",
+        "time": "9m",
+        "squashInto": "c2"
+      },
+      {
+        "id": "c4",
+        "kind": "fixup",
+        "message": "remove console.logs",
+        "hash": "3e6b0d7",
+        "time": "12m",
+        "squashInto": "c2"
+      },
+      {
+        "id": "c5",
+        "kind": "fixup",
+        "message": "fix typo again",
+        "hash": "9a7c11e",
+        "time": "15m",
+        "squashInto": "c2"
+      },
+      {
+        "id": "c6",
+        "kind": "fixup",
+        "message": "fix typo",
+        "hash": "b38f7c4",
+        "time": "16m",
+        "squashInto": "c2"
+      },
+      {
+        "id": "c7",
+        "kind": "commit",
+        "message": "Refresh sessions near expiry",
+        "hash": "c70a92b",
+        "time": "25m",
+        "extra": 3
+      },
+      {
+        "id": "c8",
+        "kind": "fixup",
+        "message": "add console.logs",
+        "hash": "8e19aa0",
+        "time": "31m",
+        "squashInto": "c7"
+      },
+      {
+        "id": "c9",
+        "kind": "wip",
+        "message": "wip",
+        "hash": "0b47d2f",
+        "time": "36m",
+        "squashInto": "c10"
+      },
+      {
+        "id": "c10",
+        "kind": "commit",
+        "message": "Read session expiry from the token",
+        "hash": "1f8e3b6",
+        "time": "40m",
+        "extra": 1
+      },
+      {
+        "id": "c11",
+        "kind": "base",
+        "message": "Bump next to 16.3",
+        "hash": "9c2d4a1",
+        "time": "3h",
+        "branchPill": "main"
+      }
+    ],
+    "squashed": [
+      {
+        "id": "c2",
+        "kind": "commit",
+        "message": "Add session refresh tests",
+        "hash": "686258a",
+        "time": "3m",
+        "extra": 1
+      },
+      {
+        "id": "c7",
+        "kind": "commit",
+        "message": "Refresh sessions near expiry",
+        "hash": "cc6667b",
+        "time": "25m",
+        "extra": 3
+      },
+      {
+        "id": "c10",
+        "kind": "commit",
+        "message": "Read session expiry from the token",
+        "hash": "dd921ed",
+        "time": "40m",
+        "extra": 1
+      },
+      {
+        "id": "c11",
+        "kind": "base",
+        "message": "Bump next to 16.3",
+        "hash": "9c2d4a1",
+        "time": "3h",
+        "branchPill": "main"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "build",
+      "name": "Build",
+      "duration": "1m 12s"
+    },
+    {
+      "id": "lint",
+      "name": "Lint",
+      "duration": "24s"
+    },
+    {
+      "id": "typecheck",
+      "name": "Typecheck",
+      "duration": "38s"
+    },
+    {
+      "id": "unit",
+      "name": "Unit tests",
+      "duration": "52s"
+    },
+    {
+      "id": "e2e",
+      "name": "E2E tests",
+      "duration": "3m 04s"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel Preview",
+      "duration": "1m 48s"
+    }
+  ],
+  "galleryStates": [
+    {
+      "id": "loading",
+      "title": "1 · Loading",
+      "code": "<MarginSquashForcePush state=\"loading\" :motion=\"false\" :autoplay=\"false\" />"
+    },
+    {
+      "id": "expanded",
+      "title": "2 · Expanded (10 commits)",
+      "code": "<MarginSquashForcePush state=\"expanded\" :motion=\"false\" :autoplay=\"false\" />"
+    },
+    {
+      "id": "rebasing",
+      "title": "3 · Rebasing (mid-collapse)",
+      "code": "<MarginSquashForcePush state=\"rebasing\" :motion=\"false\" :autoplay=\"false\" />"
+    },
+    {
+      "id": "squashed",
+      "title": "4 · Squashed (hold to push)",
+      "code": "<MarginSquashForcePush state=\"squashed\" :motion=\"false\" :autoplay=\"false\" />"
+    },
+    {
+      "id": "pushing",
+      "title": "4b · Pushing (~60% fill)",
+      "code": "<MarginSquashForcePush state=\"pushing\" :push-progress=\"0.6\" :motion=\"false\" :autoplay=\"false\" />",
+      "pushProgress": 0.6
+    },
+    {
+      "id": "pr-running",
+      "title": "5a · Pushed / checks running",
+      "code": "<MarginSquashForcePush state=\"pr-running\" :motion=\"false\" :autoplay=\"false\" />"
+    },
+    {
+      "id": "pr-passed",
+      "title": "5b · 6 checks passed",
+      "code": "<MarginSquashForcePush state=\"pr-passed\" :motion=\"false\" :autoplay=\"false\" />"
+    },
+    {
+      "id": "pr-running-checks-open",
+      "title": "5a′ · Checks list (running)",
+      "code": "<MarginSquashForcePush state=\"pr-running-checks-open\" :checks-expanded=\"true\" :motion=\"false\" :autoplay=\"false\" />",
+      "checksExpanded": true
+    },
+    {
+      "id": "pr-passed-checks-open",
+      "title": "5b′ · Checks list (all passed)",
+      "code": "<MarginSquashForcePush state=\"pr-passed-checks-open\" :checks-expanded=\"true\" :motion=\"false\" :autoplay=\"false\" />",
+      "checksExpanded": true
+    }
+  ]
+}

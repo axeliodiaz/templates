@@ -1,0 +1,54 @@
+{
+  "type": "ticket",
+  "ticket": {
+    "id": "sample-1",
+    "status": "paid",
+    "reference": "TK-7316-2048-55",
+    "amount": {
+      "minor": 4820,
+      "currency": "USD"
+    },
+    "paidAt": "2026-03-14T18:40:00Z",
+    "timeZone": "UTC",
+    "method": {
+      "kind": "card",
+      "holder": "Rowan Avery",
+      "last4": "6021",
+      "funding": "debit"
+    }
+  },
+  "autoExplore": [
+    {
+      "at": 0,
+      "action": "replay"
+    },
+    {
+      "at": 2000,
+      "action": "copy"
+    },
+    {
+      "at": 3600,
+      "action": "reveal"
+    },
+    {
+      "at": 5200,
+      "action": "scan"
+    },
+    {
+      "at": 6800,
+      "action": "tear"
+    },
+    {
+      "at": 8600,
+      "action": "attach"
+    },
+    {
+      "at": 10200,
+      "action": "collapse"
+    },
+    {
+      "at": 10200,
+      "action": "end"
+    }
+  ]
+}

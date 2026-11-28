@@ -1,4 +1,5 @@
 import type { CrewAgent, CrewHandoff, CrewProject } from './crew.model'
+import crewDef from './crew.json'
 
 const iso = '2026-11-17T12:00:00Z'
 
@@ -254,6 +255,7 @@ function migrateTree(): CrewAgent {
 }
 
 export function projects(): CrewProject[] {
+  if (crewDef.projects?.length) return structuredClone(crewDef.projects) as CrewProject[]
   return [
     { id: 'onboarding', name: 'Ship the onboarding fix', root: onboardingTree() },
     { id: 'audit', name: 'Audit dependencies', root: auditTree() },
@@ -262,7 +264,7 @@ export function projects(): CrewProject[] {
 }
 
 export function initialHandoffs(): CrewHandoff[] {
-  return []
+  return structuredClone(crewDef.handoffs ?? []) as CrewHandoff[]
 }
 
 type StepResult = { root: CrewAgent; handoffs: CrewHandoff[]; newHandoffId?: string; announce?: string }
@@ -370,7 +372,7 @@ const STEPS: Array<(root: CrewAgent, handoffs: CrewHandoff[]) => StepResult> = [
   (root, handoffs) => ({ root, handoffs }),
 ]
 
-export const STEP_COUNT = STEPS.length
+export const STEP_COUNT = crewDef.stepCount ?? STEPS.length
 
 export function resetProject(projectId: string): StepResult {
   const project = projects().find(p => p.id === projectId)!
