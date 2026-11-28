@@ -15,7 +15,7 @@ export const GALLERY_STATES = [
 ]
 
 export const MOBILE_GALLERY = [
-  { id: 'approval-blocked', title: 'Approval blocked (closed panel)' },
+  { id: 'approval-blocked', title: 'Approval blocked (closed panel)', open: '' },
   { id: 'changes-requested', title: 'Changes requested (resolve open)', open: 'resolve' },
   { id: 'checks-failed', title: 'Checks failed', open: 'checks' },
 ]
@@ -85,6 +85,7 @@ export function lifecycleStatePreset(state, { open } = {}) {
       m.failIdx = 4
       m.fixCount = 1
       m.loopFixHist = true
+      m.loopFixFly = false
       return { mode: 'static', model: m, open: open ?? 'checks' }
     }
     case 'changes-requested': {
@@ -103,6 +104,7 @@ export function lifecycleStatePreset(state, { open } = {}) {
       m.changesCount = 1
       m.fixCount = 1
       m.loopChgDown = true
+      m.loopChgHist = true
       m.loopFixHist = true
       return { mode: 'static', model: m, open: open ?? 'resolve' }
     }

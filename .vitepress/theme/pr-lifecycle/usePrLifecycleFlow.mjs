@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue'
-import { freshModel, SPINE } from './lifecycle-data.mjs'
+import { freshModel } from './lifecycle-data.mjs'
 
 const SCRIPT = [
   [1400, 'liveStart'],
@@ -23,17 +23,18 @@ const SCRIPT = [
 ]
 
 /**
- * @param {{ motion: import('vue').Ref<boolean>, autoplay: import('vue').Ref<boolean>, reducedMotion?: import('vue').Ref<boolean>, onLive?: (m: string) => void }} opts
+ * @param {{ motion: import('vue').Ref<boolean>, autoplay: import('vue').Ref<boolean>, reducedMotion?: import('vue').Ref<boolean>, onLive?: (m: string) => void, onPhaseAnnounce?: (m: string) => void }} opts
  */
 export function usePrLifecycleFlow(opts) {
   const model = ref(freshModel())
   const stepIdx = ref(0)
   const playing = ref(false)
   const userPaused = ref(false)
-  const pendingQueue = ref([])
+  const pendingQueue = []
   let timers = []
   let gen = 0
   let busy = false
+  let currentActionKey = null
 
   const motionOn = computed(() => opts.motion.value && !opts.reducedMotion?.value)
 
@@ -41,10 +42,12 @@ export function usePrLifecycleFlow(opts) {
     timers.forEach(clearTimeout)
     timers = []
     gen++
+    busy = false
+    pendingQueue.length = 0
   }
 
   function dur(ms) {
-    return motionOn.value ? ms : Math.min(ms, 60)
+    return motionOn.value ? ms : 60
   }
 
   function later(fn, ms) {
@@ -55,172 +58,271 @@ export function usePrLifecycleFlow(opts) {
     timers.push(t)
   }
 
-  function queueOrRun(fn) {
-    if (busy) {
-      if (pendingQueue.value.length >= 2) {
-        flushFast()
+  function cueChange(id) {
+    model.value.changedId = id
+    later(() => {
+      if (model.value.changedId === id) model.value.changedId = null
+    }, motionOn.value ? 1500 : 1500)
+  }
+
+  function flash(id, kind) {
+    model.value.flashId = id
+    model.value.flashKind = kind
+    cueChange(id)
+    later(() => {
+      if (model.value.flashId === id) {
+        model.value.flashId = null
+        model.value.flashKind = null
       }
-      pendingQueue.value.push(fn)
-      if (pendingQueue.value.length > 2) pendingQueue.value = pendingQueue.value.slice(-2)
-      drainQueue()
+    }, dur(400))
+  }
+
+  function endBusy() {
+    busy = false
+    if (pendingQueue.length) {
+      const next = pendingQueue.shift()
+      runSeq(next.key, next.run)
+    }
+  }
+
+  function queueOrRun(key, run) {
+    if (busy) {
+      if (pendingQueue.length >= 2) {
+        flushFast(run)
+        return
+      }
+      pendingQueue.push({ key, run })
       return
     }
-    runSeq(fn)
+    runSeq(key, run)
   }
 
-  function drainQueue() {
-    if (busy || !pendingQueue.value.length) return
-    const fn = pendingQueue.value.shift()
-    runSeq(fn)
-  }
-
-  function flushFast() {
-    pendingQueue.value = []
+  function flushFast(latestRun) {
     gen++
+    timers.forEach(clearTimeout)
+    timers = []
     busy = false
+    pendingQueue.length = 0
+    if (currentActionKey && actions[currentActionKey]?.finalize) {
+      actions[currentActionKey].finalize()
+    }
+    later(() => {
+      latestRun()
+      endBusy()
+    }, 60)
   }
 
-  function runSeq(fn) {
+  function runSeq(key, run) {
     busy = true
-    fn()
-    later(() => {
-      busy = false
-      drainQueue()
-    }, dur(650))
+    currentActionKey = key
+    run()
+    later(endBusy, 650)
   }
 
   function advance(a, b, bState = 'active') {
     model.value.phases[a] = 'done'
+    flash(a, 'pop')
+    opts.onPhaseAnnounce?.(`${PHASE_LABEL[a]} done.`)
     later(() => {
       model.value.phases[b] = bState
-    }, dur(410))
+      flash(b, 'pop')
+      if (b === 'checks' && bState === 'active') opts.onPhaseAnnounce?.('Running checks.')
+    }, 120)
+  }
+
+  const PHASE_LABEL = {
+    draft: 'Draft',
+    checks: 'Checks',
+    review: 'Review',
+    resolve: 'Resolve comments',
+    approvals: 'Approvals',
+    ready: 'Ready to merge',
+    merged: 'Merged',
   }
 
   function backFix() {
     model.value.phases.checks = 'failed'
     model.value.failIdx = 4
-    model.value.loopFixLit = true
+    flash('checks', 'shake')
+    opts.onPhaseAnnounce?.('Checks failed. Sent back to Draft, 1 time.')
     later(() => {
+      model.value.loopFixFly = true
       model.value.drainDraftConn = true
-    }, dur(300))
+    }, 300)
     later(() => {
       model.value.fixCount += 1
-    }, dur(560))
+    }, 560)
     later(() => {
       model.value.phases.draft = 'active'
       model.value.checksPassed = 0
       model.value.failIdx = -1
       model.value.phases.checks = 'pending'
       model.value.drainDraftConn = false
-    }, dur(820))
+      flash('draft', 'pop')
+    }, 820)
     later(() => {
       model.value.loopFixHist = true
-      model.value.loopFixLit = false
-    }, dur(1300))
+      model.value.loopFixFly = false
+    }, 1300)
+  }
+  backFix.finalize = () => {
+    model.value.phases.checks = 'failed'
+    model.value.failIdx = 4
+    model.value.fixCount = Math.max(1, model.value.fixCount)
+    model.value.loopFixHist = true
+    model.value.loopFixFly = false
+    model.value.phases.draft = 'active'
+    model.value.checksPassed = 0
+    model.value.phases.checks = 'pending'
   }
 
   function changesLoop() {
     model.value.phases.review = 'blocked'
     model.value.openThreads = 3
-    model.value.loopChgDown = true
+    model.value.loopChgFly = true
     later(() => {
+      model.value.loopChgDown = true
       model.value.changesCount += 1
-    }, dur(560))
+    }, 300)
     later(() => {
       model.value.phases.resolve = 'active'
-    }, dur(780))
+      flash('resolve', 'pop')
+    }, 780)
     later(() => {
       model.value.openThreads = 2
-    }, dur(1500))
+    }, 1500)
     later(() => {
       model.value.openThreads = 1
-    }, dur(1850))
+    }, 1850)
     later(() => {
       model.value.openThreads = 0
       model.value.phases.resolve = 'done'
-    }, dur(2200))
+      flash('resolve', 'pop')
+    }, 2200)
     later(() => {
       model.value.loopChgUp = true
-    }, dur(2500))
+    }, 2500)
     later(() => {
       model.value.phases.review = 'active'
-    }, dur(2980))
+      flash('review', 'pop')
+      opts.onPhaseAnnounce?.('Resolve comments done. Review requested again.')
+    }, 2980)
     later(() => {
       model.value.loopChgHist = true
       model.value.loopChgDown = false
       model.value.loopChgUp = false
-    }, dur(3300))
+      model.value.loopChgFly = false
+    }, 3300)
+  }
+  changesLoop.finalize = () => {
+    model.value.phases.review = 'active'
+    model.value.phases.resolve = 'done'
+    model.value.openThreads = 0
+    model.value.changesCount = Math.max(1, model.value.changesCount)
+    model.value.loopChgHist = true
+    model.value.loopChgDown = false
+    model.value.loopChgUp = false
   }
 
-  /** Downstream reset when a new push lands (spec §2.8.4) */
   function downstreamReset() {
-    const order = ['merged', 'ready', 'approvals', 'resolve', 'review', 'checks']
+    const order = ['merged', 'ready', 'approvals', 'review', 'checks']
+    model.value.downstreamDrain = true
     order.forEach((id, i) => {
       later(() => {
-        if (model.value.phases[id] === 'done' || model.value.phases[id] === 'active') {
+        if (['done', 'active', 'blocked'].includes(model.value.phases[id])) {
           model.value.phases[id] = 'pending'
         }
-      }, i * dur(40))
+      }, i * 40)
     })
-    model.value.approvalsHave = 0
-    model.value.checksPassed = 0
-    model.value.phases.draft = 'active'
-    model.value.fixCount += 1
-    model.value.loopFixLit = true
+    later(() => {
+      model.value.downstreamDrain = false
+      model.value.approvalsHave = 0
+      model.value.checksPassed = 0
+      model.value.phases.draft = 'active'
+      model.value.phases.resolve = 'pending'
+      model.value.fixCount += 1
+      model.value.loopFixFly = true
+      flash('draft', 'pop')
+    }, order.length * 40 + 200)
     later(() => {
       model.value.loopFixHist = true
-      model.value.loopFixLit = false
-    }, dur(1700))
+      model.value.loopFixFly = false
+    }, 1700)
+  }
+  downstreamReset.finalize = () => {
+    ;['merged', 'ready', 'approvals', 'review', 'checks', 'resolve'].forEach((id) => {
+      model.value.phases[id] = 'pending'
+    })
+    model.value.phases.draft = 'active'
+    model.value.approvalsHave = 0
+    model.value.checksPassed = 0
+    model.value.fixCount += 1
+    model.value.loopFixHist = true
+    model.value.loopFixFly = false
   }
 
   const actions = {
-    liveStart() {
-      opts.onLive?.('Demo started. Use Pause or Step to control it.')
+    liveStart: {
+      run: () => opts.onLive?.('Demo started. Use Pause or Step to control it.'),
     },
-    advanceDraftChecks: () => advance('draft', 'checks', 'active'),
-    checks2: () => {
-      model.value.checksPassed = 2
+    advanceDraftChecks: { run: () => advance('draft', 'checks', 'active') },
+    checks2: { run: () => { model.value.checksPassed = 2 } },
+    checks4: { run: () => { model.value.checksPassed = 4 } },
+    backFix: { run: backFix, finalize: backFix.finalize },
+    checks6: {
+      run: () => {
+        model.value.checksPassed = 6
+        model.value.phases.checks = 'done'
+        flash('checks', 'pop')
+      },
     },
-    checks4: () => {
-      model.value.checksPassed = 4
+    advanceChecksReview: {
+      run: () => {
+        model.value.phases.checks = 'done'
+        advance('checks', 'review', 'active')
+      },
     },
-    backFix,
-    checks6: () => {
-      model.value.checksPassed = 6
-      model.value.phases.checks = 'done'
+    changesLoop: { run: changesLoop, finalize: changesLoop.finalize },
+    advanceReviewApprovals: {
+      run: () => {
+        model.value.phases.review = 'done'
+        model.value.phases.resolve = 'skipped'
+        advance('review', 'approvals', 'active')
+      },
     },
-    advanceChecksReview: () => {
-      model.value.phases.checks = 'done'
-      advance('checks', 'review', 'active')
+    approvals1: { run: () => { model.value.approvalsHave = 1 } },
+    approvalsBlock: {
+      run: () => {
+        model.value.phases.approvals = 'blocked'
+        flash('approvals', 'pop')
+        opts.onPhaseAnnounce?.('Approvals blocked. Needs 1 more approval from @ana.')
+      },
     },
-    changesLoop,
-    advanceReviewApprovals: () => {
-      model.value.phases.review = 'done'
-      model.value.phases.resolve = 'skipped'
-      advance('review', 'approvals', 'active')
+    approvals2: {
+      run: () => {
+        model.value.approvalsHave = 2
+        model.value.phases.approvals = 'active'
+      },
     },
-    approvals1: () => {
-      model.value.approvalsHave = 1
+    advanceApprovalsReady: {
+      run: () => {
+        model.value.phases.approvals = 'done'
+        advance('approvals', 'ready', 'active')
+        opts.onPhaseAnnounce?.('Ready to merge.')
+      },
     },
-    approvalsBlock: () => {
-      model.value.phases.approvals = 'blocked'
+    advanceReadyMerged: {
+      run: () => {
+        model.value.phases.ready = 'done'
+        advance('ready', 'merged', 'done')
+      },
     },
-    approvals2: () => {
-      model.value.approvalsHave = 2
-      model.value.phases.approvals = 'active'
-    },
-    advanceApprovalsReady: () => {
-      model.value.phases.approvals = 'done'
-      advance('approvals', 'ready', 'active')
-    },
-    advanceReadyMerged: () => {
-      model.value.phases.ready = 'done'
-      advance('ready', 'merged', 'done')
-    },
-    finish: () => {
-      model.value.phases.merged = 'done'
-      playing.value = false
-      opts.onLive?.('Merged into main.')
+    finish: {
+      run: () => {
+        model.value.phases.merged = 'done'
+        playing.value = false
+        opts.onLive?.('Merged into main.')
+      },
     },
   }
 
@@ -228,8 +330,8 @@ export function usePrLifecycleFlow(opts) {
     const row = SCRIPT[i]
     if (!row) return
     const [, key] = row
-    const fn = actions[key]
-    if (fn) queueOrRun(fn)
+    const act = actions[key]
+    if (act) queueOrRun(key, act.run)
     stepIdx.value = i
   }
 
@@ -254,8 +356,6 @@ export function usePrLifecycleFlow(opts) {
     playing.value = false
     userPaused.value = true
     clearTimers()
-    busy = false
-    pendingQueue.value = []
   }
 
   function replay() {
@@ -276,15 +376,6 @@ export function usePrLifecycleFlow(opts) {
     stepIdx.value = next
   }
 
-  function resetLive() {
-    clearTimers()
-    model.value = freshModel()
-    stepIdx.value = 0
-    playing.value = false
-    pendingQueue.value = []
-    busy = false
-  }
-
   const demoLabel = computed(() => {
     if (!motionOn.value) return 'Demo · autoplay off (reduced motion) — use Step'
     if (!playing.value && stepIdx.value >= SCRIPT.length - 1)
@@ -303,7 +394,6 @@ export function usePrLifecycleFlow(opts) {
     pause,
     replay,
     step,
-    resetLive,
     clearTimers,
     downstreamReset,
     demoLabel,

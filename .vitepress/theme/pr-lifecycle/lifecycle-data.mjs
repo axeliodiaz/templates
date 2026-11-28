@@ -62,10 +62,15 @@ export function freshModel() {
     changesCount: 0,
     loopFixLit: false,
     loopFixHist: false,
+    loopFixFly: false,
     loopChgDown: false,
     loopChgUp: false,
     loopChgHist: false,
+    loopChgFly: false,
     drainDraftConn: false,
-    errorRetries: 0,
+    downstreamDrain: false,
+    flashId: null,
+    flashKind: null,
+    changedId: null,
   }
 }
