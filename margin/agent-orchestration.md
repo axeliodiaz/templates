@@ -4,14 +4,14 @@ sidebar: false
 pageClass: orch-page
 ---
 <script setup>
-import AgentOrchestration from '../.vitepress/theme/agent-orchestration/AgentOrchestration.vue'
+import MarginOrchestrationPage from '../.vitepress/theme/margin-examples/MarginOrchestrationPage.vue'
 </script>
 
 # Agent orchestration (Margin)
 
 The shared run-observation module in the Margin language. Light + dark support follows the host template. All data, model names, controls and amounts are synthetic.
 
-<AgentOrchestration theme="margin" />
+<MarginOrchestrationPage />
 
 [Return to Margin](/margin) · [Contract, consumer adapter and catalog scope](/agent-orchestration)
 

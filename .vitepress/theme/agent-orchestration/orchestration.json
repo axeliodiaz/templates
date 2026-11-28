@@ -1,0 +1,468 @@
+{
+  "type": "orchestration",
+  "run": {
+    "id": "demo-market-01",
+    "label": "Market research",
+    "created": "2026-11-01T12:00:00.000Z",
+    "started": "2026-11-01T12:00:00.000Z",
+    "ended": null,
+    "nodes": [
+      {
+        "id": "run",
+        "kind": "run",
+        "parent": null,
+        "label": "Market research",
+        "status": "running",
+        "model": null,
+        "started": "2026-11-01T12:00:00.000Z",
+        "ended": null,
+        "duration": 103
+      },
+      {
+        "id": "research",
+        "kind": "phase",
+        "parent": "run",
+        "label": "Research",
+        "status": "succeeded",
+        "model": null,
+        "started": "2026-11-01T12:00:00.000Z",
+        "ended": "2026-11-01T12:00:41.000Z",
+        "duration": 41
+      },
+      {
+        "id": "analyse",
+        "kind": "phase",
+        "parent": "run",
+        "label": "Analyse",
+        "status": "succeeded",
+        "model": null,
+        "started": "2026-11-01T12:00:12.000Z",
+        "ended": "2026-11-01T12:01:11.000Z",
+        "duration": 59
+      },
+      {
+        "id": "write",
+        "kind": "phase",
+        "parent": "run",
+        "label": "Writing",
+        "status": "needs_input",
+        "model": null,
+        "started": "2026-11-01T12:00:40.000Z",
+        "ended": null,
+        "duration": 59
+      },
+      {
+        "id": "review",
+        "kind": "phase",
+        "parent": "run",
+        "label": "Review",
+        "status": "running",
+        "model": null,
+        "started": "2026-11-01T12:01:10.000Z",
+        "ended": null,
+        "duration": 31
+      },
+      {
+        "id": "repeat",
+        "kind": "phase",
+        "parent": "run",
+        "label": "Repeat",
+        "status": "queued",
+        "model": null,
+        "started": null,
+        "ended": null,
+        "duration": null
+      },
+      {
+        "id": "researcher",
+        "kind": "agent",
+        "parent": "research",
+        "label": "Researcher",
+        "status": "succeeded",
+        "model": "Atlas",
+        "started": "2026-11-01T12:00:00.000Z",
+        "ended": "2026-11-01T12:00:41.000Z",
+        "duration": 41
+      },
+      {
+        "id": "analyst",
+        "kind": "agent",
+        "parent": "analyse",
+        "label": "Data analyst",
+        "status": "succeeded",
+        "model": "Mica",
+        "started": "2026-11-01T12:00:12.000Z",
+        "ended": "2026-11-01T12:01:11.000Z",
+        "duration": 59
+      },
+      {
+        "id": "writer",
+        "kind": "agent",
+        "parent": "write",
+        "label": "Writer",
+        "status": "needs_input",
+        "model": "Atlas",
+        "started": "2026-11-01T12:00:40.000Z",
+        "ended": null,
+        "duration": 59
+      },
+      {
+        "id": "checker",
+        "kind": "agent",
+        "parent": "review",
+        "label": "Fact checker",
+        "status": "running",
+        "model": "Cedar",
+        "started": "2026-11-01T12:01:10.000Z",
+        "ended": null,
+        "duration": 31
+      },
+      {
+        "id": "reviewer",
+        "kind": "agent",
+        "parent": "repeat",
+        "label": "Reviewer",
+        "status": "queued",
+        "model": "Cedar",
+        "started": null,
+        "ended": null,
+        "duration": null
+      },
+      {
+        "id": "search",
+        "kind": "task",
+        "parent": "researcher",
+        "label": "Web search",
+        "status": "succeeded",
+        "model": "Mica",
+        "started": "2026-11-01T12:00:00.000Z",
+        "ended": "2026-11-01T12:00:12.000Z",
+        "duration": 12
+      },
+      {
+        "id": "read",
+        "kind": "task",
+        "parent": "researcher",
+        "label": "Read sources",
+        "status": "succeeded",
+        "model": "Mica",
+        "started": "2026-11-01T12:00:12.000Z",
+        "ended": "2026-11-01T12:00:41.000Z",
+        "duration": 29
+      },
+      {
+        "id": "market",
+        "kind": "task",
+        "parent": "analyst",
+        "label": "Size the market",
+        "status": "succeeded",
+        "model": "Mica",
+        "started": "2026-11-01T12:00:12.000Z",
+        "ended": "2026-11-01T12:01:11.000Z",
+        "duration": 59
+      },
+      {
+        "id": "outline",
+        "kind": "task",
+        "parent": "writer",
+        "label": "Draft outline",
+        "status": "succeeded",
+        "model": "Atlas",
+        "started": "2026-11-01T12:00:40.000Z",
+        "ended": "2026-11-01T12:00:58.000Z",
+        "duration": 18
+      },
+      {
+        "id": "draft",
+        "kind": "task",
+        "parent": "writer",
+        "label": "Confirm audience",
+        "status": "needs_input",
+        "model": "Atlas",
+        "started": "2026-11-01T12:00:58.000Z",
+        "ended": null,
+        "duration": null
+      },
+      {
+        "id": "claim",
+        "kind": "task",
+        "parent": "checker",
+        "label": "Check claim",
+        "status": "failed",
+        "model": "Cedar",
+        "started": "2026-11-01T12:01:10.000Z",
+        "ended": null,
+        "duration": 8,
+        "error": "The synthetic source could not substantiate this claim."
+      },
+      {
+        "id": "retry",
+        "kind": "task",
+        "parent": "checker",
+        "label": "Cross-check source",
+        "status": "running",
+        "model": "Cedar",
+        "started": "2026-11-01T12:01:20.000Z",
+        "ended": null,
+        "duration": 21
+      },
+      {
+        "id": "publish",
+        "kind": "task",
+        "parent": "reviewer",
+        "label": "Review draft",
+        "status": "queued",
+        "model": "Cedar",
+        "started": null,
+        "ended": null,
+        "duration": null
+      }
+    ],
+    "edges": [
+      {
+        "from": "run",
+        "to": "research",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "run",
+        "to": "analyse",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "run",
+        "to": "write",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "run",
+        "to": "review",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "run",
+        "to": "repeat",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "research",
+        "to": "researcher",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "analyse",
+        "to": "analyst",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "write",
+        "to": "writer",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "review",
+        "to": "checker",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "repeat",
+        "to": "reviewer",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "researcher",
+        "to": "search",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "researcher",
+        "to": "read",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "analyst",
+        "to": "market",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "writer",
+        "to": "outline",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "writer",
+        "to": "draft",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "checker",
+        "to": "claim",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "checker",
+        "to": "retry",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "reviewer",
+        "to": "publish",
+        "kind": "hierarchy"
+      },
+      {
+        "from": "read",
+        "to": "market",
+        "kind": "handoff"
+      },
+      {
+        "from": "outline",
+        "to": "claim",
+        "kind": "dependency"
+      }
+    ],
+    "usage": [
+      {
+        "id": "u1",
+        "subject": "search",
+        "model": "Mica",
+        "input": 12000,
+        "output": 1800,
+        "cache": 4000,
+        "cost": 0.06,
+        "currency": "USD",
+        "basis": "exclusive"
+      },
+      {
+        "id": "u2",
+        "subject": "read",
+        "model": "Mica",
+        "input": 18000,
+        "output": 2200,
+        "cache": 6000,
+        "cost": 0.08,
+        "currency": "USD",
+        "basis": "exclusive"
+      },
+      {
+        "id": "u3",
+        "subject": "market",
+        "model": "Mica",
+        "input": 24000,
+        "output": 4100,
+        "cache": 0,
+        "cost": 0.19,
+        "currency": "USD",
+        "basis": "exclusive"
+      },
+      {
+        "id": "u4",
+        "subject": "outline",
+        "model": "Atlas",
+        "input": 16000,
+        "output": 2800,
+        "cache": 8000,
+        "cost": 0.12,
+        "currency": "USD",
+        "basis": "exclusive"
+      },
+      {
+        "id": "u5",
+        "subject": "draft",
+        "model": "Atlas",
+        "input": null,
+        "output": null,
+        "cache": null,
+        "cost": null,
+        "currency": "USD",
+        "basis": "exclusive"
+      },
+      {
+        "id": "u6",
+        "subject": "claim",
+        "model": "Cedar",
+        "input": 5000,
+        "output": 600,
+        "cache": 0,
+        "cost": 0.03,
+        "currency": "USD",
+        "basis": "exclusive"
+      },
+      {
+        "id": "u7",
+        "subject": "retry",
+        "model": "Cedar",
+        "input": 7000,
+        "output": 900,
+        "cache": 1000,
+        "cost": 0.04,
+        "currency": "USD",
+        "basis": "exclusive"
+      },
+      {
+        "id": "u8",
+        "subject": "publish",
+        "model": "Cedar",
+        "input": 0,
+        "output": 0,
+        "cache": 0,
+        "cost": 0,
+        "currency": "USD",
+        "basis": "exclusive"
+      }
+    ],
+    "events": [
+      {
+        "id": "e1",
+        "ts": "2026-11-01T12:00:01.000Z",
+        "kind": "tool_call",
+        "subject": "search",
+        "summary": "Searched the synthetic source index."
+      },
+      {
+        "id": "e2",
+        "ts": "2026-11-01T12:00:41.000Z",
+        "kind": "handoff",
+        "subject": "market",
+        "summary": "Research summary passed to the analyst."
+      },
+      {
+        "id": "e3",
+        "ts": "2026-11-01T12:00:58.000Z",
+        "kind": "approval",
+        "subject": "draft",
+        "summary": "Waiting for the sample audience brief. No approval action is connected."
+      },
+      {
+        "id": "e4",
+        "ts": "2026-11-01T12:01:18.000Z",
+        "kind": "error",
+        "subject": "claim",
+        "summary": "Claim could not be verified in the sample source."
+      },
+      {
+        "id": "e5",
+        "ts": "2026-11-01T12:01:20.000Z",
+        "kind": "status_change",
+        "subject": "retry",
+        "summary": "Cross-check started in the simulated run."
+      }
+    ],
+    "capabilities": {
+      "pause": true,
+      "resume": true,
+      "stop": true,
+      "retry": true
+    }
+  },
+  "labels": {
+    "statusLabel": {
+      "queued": "Queued",
+      "running": "Running",
+      "paused": "Paused",
+      "succeeded": "Done",
+      "failed": "Failed",
+      "canceled": "Canceled",
+      "needs_input": "Needs you"
+    }
+  }
+}

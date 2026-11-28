@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import MarginExampleTabs from './MarginExampleTabs.vue'
 import MarginGraphSection from './MarginGraphSection.vue'
 import MarginGraphMotionProse from './MarginGraphMotionProse.vue'
 import { MARGIN_GRAPH_ENTER_NOTES } from './margin-graphs-prose'
+import { marginChartDefinition, CHART_SCHEMA_FIELDS } from './margin-chart-definition.mjs'
 
 const props = defineProps<{
   slug: string
@@ -13,6 +15,10 @@ const props = defineProps<{
 const enterNote = computed(
   () => MARGIN_GRAPH_ENTER_NOTES[props.slug] || MARGIN_GRAPH_ENTER_NOTES.default,
 )
+const definition = computed(() => marginChartDefinition(props.slug))
+const codeSnippet = computed(
+  () => `<MarginGraphDemo example-key="${props.slug}" />`,
+)
 </script>
 <template>
   <div class="margin-graph-doc">
@@ -21,7 +27,15 @@ const enterNote = computed(
       <strong>Replay</strong>, <strong>Shuffle data</strong>, and loading/empty states. Toggle <strong>Dark
         preview</strong> for contrast checks.
     </p>
-    <MarginGraphSection :example-key="slug" :label="label" />
+    <MarginExampleTabs
+      :definition="definition"
+      json-path="felix-chart-examples.json (via margin-chart-definition.mjs)"
+      :schema-fields="CHART_SCHEMA_FIELDS"
+      :code-snippet="codeSnippet"
+      :tabs-aria-label="`${label} chart`"
+    >
+      <MarginGraphSection :example-key="slug" :label="label" />
+    </MarginExampleTabs>
     <h2>Data contract</h2>
     <p>
       Each chart is driven by a JSON spec plus a named source block (headers + rows). See Felix

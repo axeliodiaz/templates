@@ -1,0 +1,366 @@
+{
+  "type": "crew",
+  "projects": [
+    {
+      "id": "onboarding",
+      "name": "Ship the onboarding fix",
+      "root": {
+        "id": "lead",
+        "name": "Lead",
+        "model": "Model A · large",
+        "hue": "c1",
+        "icon": "squares-four-duotone",
+        "status": "working",
+        "activity": "Coordinating the onboarding fix",
+        "context": {
+          "used": 42000,
+          "limit": 200000
+        },
+        "tools": [
+          {
+            "id": "plan",
+            "name": "Planner",
+            "icon": "flow-arrow-duotone"
+          }
+        ],
+        "task": "Ship the onboarding fix without regressing checkout.",
+        "startedAt": "2026-11-17T12:00:00Z",
+        "cost": 0.08,
+        "tokens": {
+          "input": 12000,
+          "output": 3400
+        },
+        "children": [
+          {
+            "id": "researcher",
+            "name": "Researcher",
+            "model": "Model B · medium",
+            "hue": "c2",
+            "icon": "magnifying-glass-duotone",
+            "status": "idle",
+            "activity": "Standing by",
+            "context": {
+              "used": 28000,
+              "limit": 200000
+            },
+            "tools": [
+              {
+                "id": "web",
+                "name": "Web search",
+                "icon": "notebook-duotone"
+              }
+            ],
+            "startedAt": "2026-11-17T12:00:00Z",
+            "children": [
+              {
+                "id": "web-search",
+                "name": "Web search",
+                "model": null,
+                "hue": "c3",
+                "icon": "notebook-duotone",
+                "status": "idle",
+                "activity": "Idle",
+                "context": {
+                  "used": 8000,
+                  "limit": 80000
+                },
+                "tools": [],
+                "startedAt": "2026-11-17T12:00:00Z"
+              }
+            ]
+          },
+          {
+            "id": "coder",
+            "name": "Coder",
+            "model": "Model B · medium",
+            "hue": "c4",
+            "icon": "code-duotone",
+            "status": "idle",
+            "activity": "Waiting for research",
+            "context": {
+              "used": 36000,
+              "limit": 200000
+            },
+            "tools": [
+              {
+                "id": "lint",
+                "name": "Linter",
+                "icon": "hammer-duotone"
+              },
+              {
+                "id": "test",
+                "name": "Test runner",
+                "icon": "git-merge-duotone"
+              }
+            ],
+            "startedAt": "2026-11-17T12:00:00Z",
+            "children": [
+              {
+                "id": "linter",
+                "name": "Linter",
+                "model": null,
+                "hue": "c5",
+                "icon": "hammer-duotone",
+                "status": "idle",
+                "activity": "Idle",
+                "context": {
+                  "used": 2000,
+                  "limit": 50000
+                },
+                "tools": [],
+                "startedAt": "2026-11-17T12:00:00Z"
+              },
+              {
+                "id": "test-runner",
+                "name": "Test runner",
+                "model": null,
+                "hue": "c6",
+                "icon": "git-merge-duotone",
+                "status": "idle",
+                "activity": "Idle",
+                "context": {
+                  "used": 4000,
+                  "limit": 50000
+                },
+                "tools": [],
+                "startedAt": "2026-11-17T12:00:00Z"
+              }
+            ]
+          },
+          {
+            "id": "reviewer",
+            "name": "Reviewer",
+            "model": "Model A · large",
+            "hue": "c3",
+            "icon": "vault-duotone",
+            "status": "idle",
+            "activity": "Idle",
+            "context": {
+              "used": 22000,
+              "limit": 200000
+            },
+            "tools": [
+              {
+                "id": "docs",
+                "name": "Docs writer",
+                "icon": "notebook-duotone"
+              }
+            ],
+            "startedAt": "2026-11-17T12:00:00Z",
+            "children": [
+              {
+                "id": "docs-writer",
+                "name": "Docs writer",
+                "model": null,
+                "hue": "c2",
+                "icon": "notebook-duotone",
+                "status": "idle",
+                "activity": "Idle",
+                "context": {
+                  "used": 6000,
+                  "limit": 80000
+                },
+                "tools": [],
+                "startedAt": "2026-11-17T12:00:00Z"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "audit",
+      "name": "Audit dependencies",
+      "root": {
+        "id": "audit-lead",
+        "name": "Lead",
+        "model": "Model A · large",
+        "hue": "c1",
+        "icon": "squares-four-duotone",
+        "status": "working",
+        "activity": "Tracking dependency audit",
+        "context": {
+          "used": 52000,
+          "limit": 200000
+        },
+        "tools": [
+          {
+            "id": "triage",
+            "name": "Triage board",
+            "icon": "tray-duotone"
+          }
+        ],
+        "startedAt": "2026-11-17T12:00:00Z",
+        "children": [
+          {
+            "id": "scanner",
+            "name": "Scanner",
+            "model": "Model C · small",
+            "hue": "c4",
+            "icon": "cpu-duotone",
+            "status": "working",
+            "activity": "Scanning lockfiles",
+            "context": {
+              "used": 31000,
+              "limit": 120000
+            },
+            "tools": [
+              {
+                "id": "vault",
+                "name": "Vault",
+                "icon": "vault-duotone"
+              }
+            ],
+            "startedAt": "2026-11-17T12:00:00Z"
+          },
+          {
+            "id": "triage",
+            "name": "Triage",
+            "model": "Model B · medium",
+            "hue": "c2",
+            "status": "working",
+            "activity": "Ranking CVEs",
+            "context": {
+              "used": 44000,
+              "limit": 200000
+            },
+            "tools": [
+              {
+                "id": "changelog",
+                "name": "Changelog reader",
+                "icon": "git-diff-duotone"
+              }
+            ],
+            "startedAt": "2026-11-17T12:00:00Z",
+            "children": [
+              {
+                "id": "changelog",
+                "name": "Changelog reader",
+                "model": null,
+                "hue": "c6",
+                "icon": "git-diff-duotone",
+                "status": "idle",
+                "activity": "Parsing releases",
+                "context": {
+                  "used": 12000,
+                  "limit": 80000
+                },
+                "tools": [],
+                "startedAt": "2026-11-17T12:00:00Z"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "migrate",
+      "name": "Migrate the reports database",
+      "root": {
+        "id": "migrate-lead",
+        "name": "Lead",
+        "model": "Model A · large",
+        "hue": "c1",
+        "icon": "path-duotone",
+        "status": "working",
+        "activity": "Coordinating cutover",
+        "context": {
+          "used": 60000,
+          "limit": 200000
+        },
+        "tools": [],
+        "startedAt": "2026-11-17T12:00:00Z",
+        "children": [
+          {
+            "id": "planner",
+            "name": "Planner",
+            "model": "Model B · medium",
+            "hue": "c2",
+            "status": "working",
+            "activity": "Sequencing batches",
+            "context": {
+              "used": 48000,
+              "limit": 200000
+            },
+            "tools": [],
+            "startedAt": "2026-11-17T12:00:00Z"
+          },
+          {
+            "id": "migrator",
+            "name": "Migrator",
+            "model": "Model B · medium",
+            "hue": "c4",
+            "status": "working",
+            "activity": "Copying partitions",
+            "context": {
+              "used": 92000,
+              "limit": 200000
+            },
+            "tools": [
+              {
+                "id": "backup",
+                "name": "Backup",
+                "icon": "cloud-duotone"
+              },
+              {
+                "id": "verify",
+                "name": "Verifier",
+                "icon": "check-square-offset-duotone"
+              }
+            ],
+            "startedAt": "2026-11-17T12:00:00Z",
+            "children": [
+              {
+                "id": "backup",
+                "name": "Backup",
+                "model": null,
+                "hue": "c5",
+                "icon": "cloud-duotone",
+                "status": "working",
+                "activity": "Snapshotting",
+                "context": {
+                  "used": 15000,
+                  "limit": 80000
+                },
+                "tools": [],
+                "startedAt": "2026-11-17T12:00:00Z"
+              },
+              {
+                "id": "verifier",
+                "name": "Verifier",
+                "model": null,
+                "hue": "c6",
+                "icon": "check-square-offset-duotone",
+                "status": "idle",
+                "activity": "Waiting",
+                "context": {
+                  "used": 4000,
+                  "limit": 80000
+                },
+                "tools": [],
+                "startedAt": "2026-11-17T12:00:00Z"
+              }
+            ]
+          },
+          {
+            "id": "monitor",
+            "name": "Monitor",
+            "model": "Model C · small",
+            "hue": "c3",
+            "icon": "broadcast-duotone",
+            "status": "working",
+            "activity": "Watching lag",
+            "context": {
+              "used": 24000,
+              "limit": 120000
+            },
+            "tools": [],
+            "startedAt": "2026-11-17T12:00:00Z"
+          }
+        ]
+      }
+    }
+  ],
+  "handoffs": [],
+  "stepCount": 12
+}

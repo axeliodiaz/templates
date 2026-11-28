@@ -4,14 +4,14 @@ sidebar: false
 pageClass: crew-page
 ---
 <script setup>
-import AgentCrew from '../.vitepress/theme/agent-crew/AgentCrew.vue'
+import MarginCrewPage from '../.vitepress/theme/margin-examples/MarginCrewPage.vue'
 </script>
 
 # Agent crew (Margin)
 
 The shared Agent Crew module in the Margin language. Light + dark support follows the host template. All data, model names, controls and amounts are synthetic.
 
-<AgentCrew theme="margin" />
+<MarginCrewPage />
 
 [Return to Margin](/margin) · [Module contract, scope and theme inventory](/agent-crew)
 

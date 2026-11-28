@@ -2,18 +2,14 @@
 pageClass: margin-scoped-guide
 ---
 <script setup>
-import MarginGuidePreview from '../../.vitepress/theme/MarginGuidePreview.vue'
+import MarginEmailsModuleDoc from '../../.vitepress/theme/margin-examples/MarginEmailsModuleDoc.vue'
 </script>
 
 # Emails
 
 Transactional previews at `/margin/correos` with inline lab colors.
 
-## Product demo
-
-- [Open demo](/margin/correos)
-- [Canonical contract or full preview](/margin/correos)
-
+<MarginEmailsModuleDoc />
 
 ## Usage
 
