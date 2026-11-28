@@ -1,6 +1,6 @@
 # PR lifecycle (Margin example)
 
-Build under `.vitepress/theme/pr-lifecycle/`. Prefix `mg-prl`, motion var `--mg-prl-motion`.
+Build under `.vitepress/theme/pr-lifecycle/`. Definition: `pr-lifecycle.json` (`type: "lifecycle"`). Prefix `mg-prl`, motion var `--mg-prl-motion`.
 
 Production marker: `#mg-margin-pr-lifecycle` on `/margin/pr-lifecycle`.
 

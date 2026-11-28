@@ -1394,6 +1394,91 @@ html[data-tpl='margin'] .mg-prl-lab__toolbar {
   margin-bottom: 12px;
 }
 
+html[data-tpl='margin'] .mg-prl-doc-tabs {
+  margin: 1.25rem 0 2rem;
+}
+
+html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs button {
+  border: 1px solid var(--vp-c-divider, #e0e3e9);
+  background: var(--vp-c-bg, #fff);
+  color: var(--vp-c-text-1, #22252b);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs button.is-active,
+html[data-tpl='margin'] .mg-prl-doc-tabs .l-tabs button[aria-selected='true'] {
+  border-color: #6389ea;
+  background: color-mix(in srgb, #6389ea 12%, var(--vp-c-bg, #fff));
+}
+
+html[data-tpl='margin'] .mg-prl-doc-tabs__hint {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--vp-c-text-2, #676e7b);
+}
+
+html[data-tpl='margin'] .mg-prl-schema-table {
+  width: 100%;
+  margin: 12px 0 16px;
+  font-size: 13px;
+}
+
+html[data-tpl='margin'] .mg-prl-structure-pre {
+  max-height: min(70vh, 640px);
+  overflow: auto;
+  margin: 0;
+}
+
+html[data-tpl='margin'] .mg-prl-copy {
+  border: 1px solid var(--vp-c-divider, #e0e3e9);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+html[data-tpl='margin'] .mg-prl-copy__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--vp-c-bg-soft, #eceef5);
+  border-bottom: 1px solid var(--vp-c-divider, #e0e3e9);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+html[data-tpl='margin'] .mg-prl-copy__btn {
+  border: 1px solid var(--vp-c-divider, #e0e3e9);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--vp-c-bg, #fff);
+  cursor: pointer;
+}
+
+html[data-tpl='margin'] .mg-prl-copy__pre {
+  margin: 0;
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.45;
+  overflow: auto;
+}
+
 html[data-tpl='margin'] .mg-prl .sr {
   position: absolute;
   width: 1px;
