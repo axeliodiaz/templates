@@ -37,7 +37,7 @@ const usage = '${usage}'
 
 # ${demo.title}
 
-Studio example from the Felix catalog, restyled with Margin tokens (\`#6389ea\`, \`#f5f5f7\`, system UI). Fictitious data only.
+Studio dashboard example restyled with Margin tokens (\`#6389ea\`, \`#f5f5f7\`, system UI). Fictitious data only.
 
 <MarginDemoShell :copy="usage">
   ${tag}
@@ -68,7 +68,7 @@ const indexLines = [
   '',
   '# Demos',
   '',
-  'Felix dashboard and product examples restyled with Margin design tokens. Each page includes a live preview (light/dark), copyable markup, and a 390px-friendly layout inside `MarginGuidePreview`.',
+  'Dashboard and product examples restyled with Margin design tokens. Each page includes a live preview (light/dark), copyable markup, and a 390px-friendly layout inside `MarginGuidePreview`.',
   '',
   '<span id="mg-margin-demos-index" hidden aria-hidden="true"></span>',
   '',

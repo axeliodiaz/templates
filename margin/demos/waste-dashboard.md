@@ -9,7 +9,7 @@ const usage = '<WasteDashboard theme="margin" />'
 
 # Waste dashboard
 
-Studio example from the Felix catalog, restyled with Margin tokens (`#6389ea`, `#f5f5f7`, system UI). Fictitious data only.
+Studio dashboard example, restyled with Margin tokens (`#6389ea`, `#f5f5f7`, system UI). Fictitious data only.
 
 <MarginDemoShell :copy="usage">
   <WasteDashboard theme="margin" />
