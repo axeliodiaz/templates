@@ -1,14 +1,7 @@
 import type { PaymentTicketData } from './ticket.model'
+import ticketDef from './payment-ticket.json'
 
-export const sampleTicket: PaymentTicketData = {
-  id: 'sample-1',
-  status: 'paid',
-  reference: 'TK-7316-2048-55',
-  amount: { minor: 4820, currency: 'USD' },
-  paidAt: '2026-03-14T18:40:00Z',
-  timeZone: 'UTC',
-  method: { kind: 'card', holder: 'Rowan Avery', last4: '6021', funding: 'debit' },
-}
+export const sampleTicket: PaymentTicketData = ticketDef.ticket as PaymentTicketData
 
 export function samplePaid(): PaymentTicketData {
   return JSON.parse(JSON.stringify(sampleTicket))
@@ -24,13 +17,6 @@ export function sampleFailed(): PaymentTicketData {
 
 export type TourStep = { at: number; action: 'replay' | 'copy' | 'reveal' | 'scan' | 'tear' | 'attach' | 'collapse' | 'end' }
 
-export const autoExploreScript: TourStep[] = [
-  { at: 0, action: 'replay' },
-  { at: 2000, action: 'copy' },
-  { at: 3600, action: 'reveal' },
-  { at: 5200, action: 'scan' },
-  { at: 6800, action: 'tear' },
-  { at: 8600, action: 'attach' },
-  { at: 10200, action: 'collapse' },
-  { at: 10200, action: 'end' },
-]
+export const autoExploreScript: TourStep[] = ticketDef.autoExplore as TourStep[]
+
+export { ticketDef as TICKET_DEF }

@@ -1,0 +1,200 @@
+{
+  "type": "toast",
+  "samples": {
+    "session": {
+      "id": "session",
+      "tone": "success",
+      "title": "Session finished",
+      "detail": [
+        {
+          "text": "Search revamp · "
+        },
+        {
+          "text": "+96",
+          "kind": "plus"
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "−24",
+          "kind": "minus"
+        }
+      ],
+      "visual": {
+        "type": "diff",
+        "added": 96,
+        "removed": 24
+      }
+    },
+    "testsRunning": {
+      "id": "tests",
+      "tone": "info",
+      "title": "Running tests",
+      "detail": "undefined of 48",
+      "visual": {
+        "type": "tests",
+        "total": 48,
+        "running": true
+      },
+      "busy": true,
+      "dismissible": false
+    },
+    "testsPassed": {
+      "id": "tests",
+      "tone": "success",
+      "title": "Tests passed",
+      "detail": "48 in 58s",
+      "visual": {
+        "type": "tests",
+        "total": 48,
+        "passed": 48
+      }
+    },
+    "pr": {
+      "id": "pr",
+      "tone": "neutral",
+      "title": "PR #217 merged",
+      "detail": [
+        {
+          "text": "fix/login-redirect → main",
+          "kind": "mono"
+        }
+      ],
+      "visual": {
+        "type": "branch",
+        "state": "merged",
+        "from": "fix/login-redirect",
+        "to": "main",
+        "commits": 2
+      }
+    },
+    "deployFail": {
+      "id": "deploy",
+      "tone": "danger",
+      "title": "Deploy failed",
+      "detail": "Migration timed out",
+      "visual": {
+        "type": "pipeline",
+        "steps": [
+          "done",
+          "done",
+          "failed",
+          "pending",
+          "pending"
+        ]
+      },
+      "action": {
+        "id": "retry",
+        "label": "Retry"
+      }
+    },
+    "deployBusy": {
+      "id": "deploy",
+      "tone": "info",
+      "title": "Deploying",
+      "detail": "Retrying from migrate",
+      "visual": {
+        "type": "pipeline",
+        "steps": [
+          "done",
+          "done",
+          "active",
+          "pending",
+          "pending"
+        ]
+      },
+      "busy": true,
+      "dismissible": false
+    },
+    "deployLive": {
+      "id": "deploy",
+      "tone": "success",
+      "title": "Deploy live",
+      "detail": "docs-site · 1m 38s",
+      "visual": {
+        "type": "pipeline",
+        "steps": [
+          "done",
+          "done",
+          "done",
+          "done",
+          "final"
+        ]
+      }
+    },
+    "build": {
+      "id": "build",
+      "tone": "success",
+      "title": "Build 32% faster",
+      "detail": "41s, usually 1m 0s",
+      "visual": {
+        "type": "bars",
+        "values": [
+          62,
+          58,
+          64,
+          60,
+          59,
+          61,
+          41
+        ],
+        "unit": "s"
+      }
+    },
+    "context": {
+      "id": "context",
+      "tone": "warning",
+      "title": "Context almost full",
+      "detail": "172k of 200k",
+      "visual": {
+        "type": "context",
+        "used": 172000,
+        "total": 200000,
+        "phase": "idle"
+      },
+      "action": {
+        "id": "compact",
+        "label": "Compact"
+      }
+    },
+    "contextBusy": {
+      "id": "context",
+      "tone": "info",
+      "title": "Compacting",
+      "detail": "Summarizing 36 turns",
+      "visual": {
+        "type": "context",
+        "used": 172000,
+        "total": 200000,
+        "after": 58000,
+        "phase": "compacting"
+      },
+      "busy": true,
+      "dismissible": false
+    },
+    "contextDone": {
+      "id": "context",
+      "tone": "info",
+      "title": "Context compacted",
+      "detail": "172k → 58k tokens",
+      "visual": {
+        "type": "context",
+        "used": 172000,
+        "total": 200000,
+        "after": 58000,
+        "phase": "done"
+      }
+    }
+  },
+  "sequence": [
+    "session",
+    "testsRunning",
+    "testsPassed",
+    "pr",
+    "deployFail",
+    "deployBusy",
+    "deployLive",
+    "context"
+  ]
+}

@@ -1,11 +1,6 @@
-export const CI_CHECKS = [
-  { id: 'build', name: 'Build', duration: '1m 12s' },
-  { id: 'lint', name: 'Lint', duration: '24s' },
-  { id: 'typecheck', name: 'Typecheck', duration: '38s' },
-  { id: 'unit', name: 'Unit tests', duration: '52s' },
-  { id: 'e2e', name: 'E2E tests', duration: '3m 04s' },
-  { id: 'vercel', name: 'Vercel Preview', duration: '1m 48s' },
-]
+import { CI_CHECKS as CHECKS, SQUASH_DEF } from './squash-definition.mjs'
+
+export const CI_CHECKS = CHECKS
 
 /** @param {'running'|'passed'} phase */
 export function checksForPhase(phase) {
@@ -18,3 +13,5 @@ export function checksForPhase(phase) {
     duration: i < 3 ? c.duration : '…',
   }))
 }
+
+export { SQUASH_DEF }

@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import MarginExampleTabs from './MarginExampleTabs.vue'
 import MarginGuidePreview from './MarginGuidePreview.vue'
 import MarginArcMeterDemo from './MarginArcMeterDemo.vue'
 import MarginGraphMotionProse from './MarginGraphMotionProse.vue'
+import { marginChartDefinition, CHART_SCHEMA_FIELDS } from './margin-chart-definition.mjs'
+
+const definition = computed(() => marginChartDefinition('arc'))
 </script>
 <template>
   <div class="margin-graph-doc">
@@ -11,64 +16,22 @@ import MarginGraphMotionProse from './MarginGraphMotionProse.vue'
       each endpoint and a legend row per series (dot, name, value, secondary note). One row still renders a single
       ring (<strong>backwards compatible</strong>).
     </p>
-    <MarginGuidePreview label="Arc meter">
-      <MarginArcMeterDemo />
-    </MarginGuidePreview>
+    <MarginExampleTabs
+      :definition="definition"
+      json-path="felix-chart-examples.json (arc)"
+      :schema-fields="CHART_SCHEMA_FIELDS"
+      code-snippet='<MarginArcMeterDemo />'
+      tabs-aria-label="Arc meter chart"
+    >
+      <MarginGuidePreview label="Arc meter">
+        <MarginArcMeterDemo />
+      </MarginGuidePreview>
+    </MarginExampleTabs>
     <h2>Data contract</h2>
     <p>
       Pass a <code>series</code> array in <code>options.series</code> <em>or</em> a tabular source with one row per
-      ring. Each series entry / row supports:
+      ring. Each series entry / row supports label, value, max, color, note, and status fields (see Structure tab).
     </p>
-    <table>
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>Required</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>label</code></td>
-          <td>yes</td>
-          <td>Legend name (encoding <code>category</code> column)</td>
-        </tr>
-        <tr>
-          <td><code>value</code></td>
-          <td>yes</td>
-          <td>Numeric or <code>null</code> when unavailable</td>
-        </tr>
-        <tr>
-          <td><code>max</code></td>
-          <td>no</td>
-          <td>Default <code>options.maximum</code> (100)</td>
-        </tr>
-        <tr>
-          <td><code>color</code></td>
-          <td>no</td>
-          <td>Stroke color; palette fallback</td>
-        </tr>
-        <tr>
-          <td><code>note</code></td>
-          <td>no</td>
-          <td>Secondary legend line (e.g. “71% remaining”)</td>
-        </tr>
-        <tr>
-          <td><code>status</code></td>
-          <td>no</td>
-          <td><code>ready</code> or <code>unavailable</code> (muted track, <code>--</code> label)</td>
-        </tr>
-      </tbody>
-    </table>
-    <pre><code class="language-json">{
-  "component": "felix-arc",
-  "data": { "source": "limits" },
-  "encoding": { "category": "label", "value": "value" },
-  "options": {
-    "maximum": 100,
-    "fields": { "max": "max", "color": "color", "note": "note", "status": "status" }
-  }
-}</code></pre>
     <h2>Motion</h2>
     <p>
       <strong>This chart:</strong> each ring sweeps on enter with
