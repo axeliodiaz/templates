@@ -80,6 +80,6 @@ Original implementation, no source images, branding or code copied. This provide
 
 [Agent orchestration module and theme inventory](/agent-orchestration) documents the shared run graph, trace, usage and event views.
 
-Margin docs group these under **Examples** in the sidebar (emails, squash, agent modules). Felix studio dashboards are ported under [Margin Demos](/margin/demos/).
+Margin docs group these under **Examples & Demos** at the end of the sidebar (Examples: agent modules, emails, squash, [Agent router](/margin/agent-router)). Felix studio dashboards are under [Demos](/margin/demos/).
 
 [Squash → force push](/margin/squash-force-push) — interactive branch cleanup card (read commits, squash fixups, hold to force-push, PR checks).
