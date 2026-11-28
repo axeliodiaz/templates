@@ -402,6 +402,7 @@ export default defineConfig({
               { text: 'Squash → force push', link: '/margin/squash-force-push' },
               { text: 'Squash sub-modules', link: '/margin/squash-force-push/submodules' },
               { text: 'Agent Router', link: '/margin/agent-router' },
+              { text: 'PR lifecycle', link: '/margin/pr-lifecycle' },
           ]},
           { text: 'Demos', collapsed: true, link: '/margin/demos/', items: [
               { text: 'Overview', link: '/margin/demos/' },

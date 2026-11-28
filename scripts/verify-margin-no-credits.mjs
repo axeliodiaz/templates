@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const paths = [
   '/margin/agent-router',
+  '/margin/pr-lifecycle',
   '/margin/squash-force-push',
   '/margin/squash-force-push/submodules',
   '/margin/agent-orchestration',
