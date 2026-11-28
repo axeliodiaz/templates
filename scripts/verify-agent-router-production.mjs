@@ -10,7 +10,9 @@ for (const url of urls) {
   const ok =
     res.ok &&
     (url.includes('agent-router')
-      ? text.includes('mg-margin-agent-router') && text.includes('mg-ar')
+      ? text.includes('mg-margin-agent-router') &&
+        text.includes('mg-ar__alert-title') &&
+        text.includes('mg-ar__btn--primary')
       : text.includes('mg-margin-demos-index'))
   console.log(url, res.status, ok ? 'ok' : 'BAD')
   if (!ok) fail = 1
